@@ -387,6 +387,30 @@ HTTP定义了与服务器交互的不同方法，最基本的方法有4种，分
         64 bytes from 192.168.0.106: icmp_seq=3 ttl=64 time=188.800 ms
         
         
+#### BGP
+
+* 边界网关协议（BGP）是运行于 TCP 上的一种自治系统的路由协议
+
+* BGP 是唯一一个用来处理像因特网大小的网络的协议，也是唯一能够妥善处理好不相关路由域间的多路连接的协议。
+
+* BGP是一种外部网关协议（Exterior Gateway Protocol，EGP），与OSPF、RIP等内部网关协议（Interior Gateway Protocol，IGP）不同，BGP不在于发现和计算路由，而在于控制路由的传播和选择最佳路由。
+
+* BGP使用TCP作为其传输层协议（端口号179），提高了协议的可靠性。
+
+* BGP既不是纯粹的矢量距离协议，也不是纯粹的链路状态协议 
+
+* BGP支持CIDR（Classless Inter-Domain Routing，无类别域间路由）。
+    
+* 路由更新时，BGP只发送更新的路由，大大减少了BGP传播路由所占用的带宽，适用于在Internet上传播大量的路由信息。
+   
+* BGP路由通过携带AS路径信息彻底解决路由环路问题。
+    
+* BGP提供了丰富的路由策略，能够对路由实现灵活的过滤和选择。
+    
+* BGP易于扩展，能够适应网络新的发展。
+
+
+        
 参考资料:
 
 * http://www.cnblogs.com/Torres_fans/archive/2011/03/21/1990377.html
