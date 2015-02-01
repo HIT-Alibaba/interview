@@ -5,12 +5,12 @@
 
 * [网络](#网络)
     * [HTTP](#HTTP)
-        * [HTTP的特性](#HTTP的特性)
-        * [HTTP报文](#HTTP报文)
-        * [HTTP持久连接](#HTTP持久连接)
-        * [HTTP会话跟踪](#HTTP会话跟踪)
+        * [HTTP的特性](#http的特性)
+        * [HTTP报文](#http报文)
+        * [HTTP持久连接](#http持久连接)
+        * [HTTP会话跟踪](#http会话跟踪)
     * [TCP](#tcp) 
-        * [TCP的特性](#TCP的特性)
+        * [TCP的特性](#tcp的特性)
         * [三次握手与四次挥手](#三次握手与四次挥手)
         * [SYN攻击](#syn攻击)
 * [数据结构和算法](#数据结构和算法)
@@ -134,7 +134,7 @@ HTTP定义了与服务器交互的不同方法，最基本的方法有4种，分
 * http://www.cnblogs.com/skynet/archive/2010/12/11/1903347.html
 * http://www.cnblogs.com/skynet/archive/2010/05/18/1738301.html
 * http://blog.163.com/chfyljt@126/blog/static/11758032520127302714624/
-* 百度百科：HTTP
+* [百度百科：HTTP](http://baike.baidu.com/view/9472.htm)
 
 ### TCP
 
@@ -230,7 +230,7 @@ HTTP定义了与服务器交互的不同方法，最基本的方法有4种，分
 * http://www.cnblogs.com/hnrainll/archive/2011/10/14/2212415.html
 * http://www.cnblogs.com/rootq/articles/1377355.html
 * http://blog.csdn.net/whuslei/article/details/6667471
-* 百度百科：SYN攻击
+* [百度百科：SYN攻击](http://baike.baidu.com/subview/32754/8048820.htm)
 
 数据结构和算法
 ------------
