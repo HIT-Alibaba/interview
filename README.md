@@ -85,7 +85,7 @@ HTTP定义了与服务器交互的不同方法，最基本的方法有4种，分
 
 * HTTP 长连接不可能一直保持，例如 `Keep-Alive: timeout=5, max=100`，表示这个TCP通道可以保持20秒，max=XXX，表示这个长连接最多接收XXX次请求就断开。
 
-* HTTP是一个无状态协议，这意味着每个请求都是独立的，Keep-Alive没能改变这个结果。另外，Keep-Alive也不能保证客户端和服务器之间的连接一定是活跃的，在HTTP1.1版本中也如此。唯一能保证的就是当连接被关闭时你能得到一个通知，所以不应该让程序依赖于Keep-Alive的保持连接特性，否则会有意想不到的后果
+* HTTP是一个无状态协议，这意味着每个请求都是独立的，Keep-Alive没能改变这个结果。另外，Keep-Alive也不能保证客户端和服务器之间的连接一定是活跃的，在HTTP1.1版本中也如此。唯一能保证的就是当连接被关闭时你能得到一个通知，所以不应该让程序依赖于Keep-Alive的保持连接特性，否则会有意想不到的后果。
 
 * 使用长连接之后，客户端、服务端怎么知道本次传输结束呢？两部分：1是判断传输数据是否达到了Content-Length 指示的大小；2动态生成的文件没有 Content-Length ，它是分块传输（chunked），这时候就要根据 chunked 编码来判断，chunked 编码的数据在最后有一个空 chunked块，表明本次传输数据结束，详见[这里](http://www.cnblogs.com/skynet/archive/2010/12/11/1903347.html)。
 
@@ -349,15 +349,13 @@ HTTP定义了与服务器交互的不同方法，最基本的方法有4种，分
     
      当前的看法是这种广播是陈旧过时的，更好的方式是使用多播而不是对所有子网的广播。
   
-  广播示例:
+    广播示例:
   
         PING 192.168.0.255 (192.168.0.255): 56 data bytes
         64 bytes from 192.168.0.107: icmp_seq=0 ttl=64 time=0.199 ms
-        64 bytes from 192.168.0.106: icmp_seq=0 ttl=64 time=45.357 ms
-        
+        64 bytes from 192.168.0.106: icmp_seq=0 ttl=64 time=45.357 ms 
         64 bytes from 192.168.0.107: icmp_seq=1 ttl=64 time=0.203 ms
-        64 bytes from 192.168.0.106: icmp_seq=1 ttl=64 time=269.475 ms
-        
+        64 bytes from 192.168.0.106: icmp_seq=1 ttl=64 time=269.475 ms  
         64 bytes from 192.168.0.107: icmp_seq=2 ttl=64 time=0.102 ms
         64 bytes from 192.168.0.106: icmp_seq=2 ttl=64 time=189.881 ms
        
@@ -395,23 +393,23 @@ HTTP定义了与服务器交互的不同方法，最基本的方法有4种，分
 
 * 边界网关协议（BGP）是运行于 TCP 上的一种自治系统的路由协议
 
-* BGP 是唯一一个用来处理像因特网大小的网络的协议，也是唯一能够妥善处理好不相关路由域间的多路连接的协议。
+* BGP 是唯一一个用来处理像因特网大小的网络的协议，也是唯一能够妥善处理好不相关路由域间的多路连接的协议
 
-* BGP是一种外部网关协议（Exterior Gateway Protocol，EGP），与OSPF、RIP等内部网关协议（Interior Gateway Protocol，IGP）不同，BGP不在于发现和计算路由，而在于控制路由的传播和选择最佳路由。
+* BGP是一种外部网关协议（Exterior Gateway Protocol，EGP），与OSPF、RIP等内部网关协议（Interior Gateway Protocol，IGP）不同，BGP不在于发现和计算路由，而在于控制路由的传播和选择最佳路由
 
-* BGP使用TCP作为其传输层协议（端口号179），提高了协议的可靠性。
+* BGP使用TCP作为其传输层协议（端口号179），提高了协议的可靠性
 
 * BGP既不是纯粹的矢量距离协议，也不是纯粹的链路状态协议 
 
-* BGP支持CIDR（Classless Inter-Domain Routing，无类别域间路由）。
+* BGP支持CIDR（Classless Inter-Domain Routing，无类别域间路由）
     
-* 路由更新时，BGP只发送更新的路由，大大减少了BGP传播路由所占用的带宽，适用于在Internet上传播大量的路由信息。
+* 路由更新时，BGP只发送更新的路由，大大减少了BGP传播路由所占用的带宽，适用于在Internet上传播大量的路由信息
    
-* BGP路由通过携带AS路径信息彻底解决路由环路问题。
+* BGP路由通过携带AS路径信息彻底解决路由环路问题
     
-* BGP提供了丰富的路由策略，能够对路由实现灵活的过滤和选择。
+* BGP提供了丰富的路由策略，能够对路由实现灵活的过滤和选择
     
-* BGP易于扩展，能够适应网络新的发展。
+* BGP易于扩展，能够适应网络新的发展
 
 
         
