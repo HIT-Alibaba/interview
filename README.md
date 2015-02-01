@@ -16,6 +16,7 @@
         * [SYN攻击](#syn攻击)
     * [IP](#ip)
         * [广播与多播](#广播与多播)
+        * [BGP](#bgp)
 * [数据结构和算法](#数据结构和算法)
 * [体系结构和操作系统](#体系结构和操作系统)
 * [编译原理](#编译原理)
@@ -208,15 +209,14 @@ HTTP定义了与服务器交互的不同方法，最基本的方法有4种，分
 
 参考资料：
 
-* http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html
-* http://www.cnblogs.com/cswuyg/p/3653263.html
-* http://www.w3school.com.cn/tags/html_ref_httpmethods.asp
-* http://www.cnblogs.com/skynet/archive/2010/12/11/1903347.html
-* http://www.cnblogs.com/skynet/archive/2010/05/18/1738301.html
-* http://blog.163.com/chfyljt@126/blog/static/11758032520127302714624/
-* https://blog.tonyseek.com/post/introduce-to-xss-and-csrf/
-* http://drops.wooyun.org/papers/155
-* http://blog.csdn.net/ghsau/article/details/17027893
+* [浅谈HTTP中Get与Post的区别](http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html)
+* [HTTP中的长连接与短连接](http://www.cnblogs.com/cswuyg/p/3653263.html)
+* [HTTP Keep-Alive模式](http://www.cnblogs.com/skynet/archive/2010/12/11/1903347.html)
+* [HTTP协议及其POST与GET操作差异 & C#中如何使用POST、GET等](http://www.cnblogs.com/skynet/archive/2010/05/18/1738301.html)
+* [会话跟踪](http://blog.163.com/chfyljt@126/blog/static/11758032520127302714624/)
+* [总结 XSS 与 CSRF 两种跨站攻击](https://blog.tonyseek.com/post/introduce-to-xss-and-csrf/)
+* [CSRF简单介绍与利用方法](http://drops.wooyun.org/papers/155)
+* [XSS攻击及防御](http://blog.csdn.net/ghsau/article/details/17027893)
 * [百度百科：HTTP](http://baike.baidu.com/view/9472.htm)
 
 ### TCP
@@ -310,9 +310,9 @@ HTTP定义了与服务器交互的不同方法，最基本的方法有4种，分
 参考资料: 
 
 * 计算机网络：自顶向下方法
-* http://www.cnblogs.com/hnrainll/archive/2011/10/14/2212415.html
-* http://www.cnblogs.com/rootq/articles/1377355.html
-* http://blog.csdn.net/whuslei/article/details/6667471
+* [TCP三次握手及四次挥手详细图解](http://www.cnblogs.com/hnrainll/archive/2011/10/14/2212415.html)
+* [TCP协议三次握手过程分析](http://www.cnblogs.com/rootq/articles/1377355.html)
+* [TCP协议中的三次握手和四次挥手(图解)](http://blog.csdn.net/whuslei/article/details/6667471)
 * [百度百科：SYN攻击](http://baike.baidu.com/subview/32754/8048820.htm)
 
 ### IP
@@ -413,9 +413,10 @@ HTTP定义了与服务器交互的不同方法，最基本的方法有4种，分
         
 参考资料:
 
-* http://www.cnblogs.com/Torres_fans/archive/2011/03/21/1990377.html
-* http://www.cnblogs.com/happyhotty/articles/1874720.html
-* http://blog.sina.com.cn/s/blog_ac9fdc0b0101pw7w.html
+* [多播与广播](http://www.cnblogs.com/Torres_fans/archive/2011/03/21/1990377.html)
+* [TCP_IP：广播和多播](http://blog.sina.com.cn/s/blog_ac9fdc0b0101pw7w.html)
+* [百度百科：BGP](http://baike.baidu.com/view/875886.htm?fromtitle=bgp&fromid=91408&type=syn)
+
 
 数据结构和算法
 ------------
