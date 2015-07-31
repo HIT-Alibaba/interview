@@ -33,6 +33,8 @@
         * [面向对象基础](basic/design/OO-Basic.md)
 * [iOS 开发](iOS/README.md)
     * [Objective-C 语言基础](iOS/ObjC-Basic/README.md)
+        * [类与对象](iOS/ObjC-Basic/Class.md)
+        * [Block 编程](iOS/ObjC-Basic/Block.md)
         * [Objective-C Runtime](iOS/ObjC-Basic/Runtime.md)
         * [Objective-C 内存管理](iOS/ObjC-Basic/MM.md)
     * [Cocoa Touch](iOS/Cocoa-Touch/README.md)
