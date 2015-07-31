@@ -1,0 +1,1035 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>事务处理 | </title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.2.0">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../../gitbook/style.css">
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../../basic/compiler/index.html" />
+    
+    
+    <link rel="prev" href="../../basic/db/index.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book" data-level="1.4.1" data-basepath="../.." data-revision="Fri Jul 31 2015 19:09:56 GMT+0800 (CST)">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        
+
+        
+
+        
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="basic/index.html">
+            
+                
+                    <a href="../../basic/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        基础知识
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="basic/network/index.html">
+            
+                
+                    <a href="../../basic/network/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        计算机网络
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="basic/network/HTTP.html">
+            
+                
+                    <a href="../../basic/network/HTTP.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.1.</b>
+                        
+                        HTTP 协议
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="basic/network/TCP.html">
+            
+                
+                    <a href="../../basic/network/TCP.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.2.</b>
+                        
+                        TCP 协议
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="basic/network/IP.html">
+            
+                
+                    <a href="../../basic/network/IP.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.3.</b>
+                        
+                        IP 协议
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.4" data-path="basic/network/Socket-Programming-Basic.html">
+            
+                
+                    <a href="../../basic/network/Socket-Programming-Basic.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.4.</b>
+                        
+                        Socket 编程
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="basic/algo/index.html">
+            
+                
+                    <a href="../../basic/algo/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        数据结构与算法
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="basic/algo/Linked-List.html">
+            
+            <span><b>1.2.1.</b> 链表</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="basic/algo/Tree.html">
+            
+                
+                    <a href="../../basic/algo/Tree.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.2.</b>
+                        
+                        树
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="basic/algo/Hash-Table.html">
+            
+                
+                    <a href="../../basic/algo/Hash-Table.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.</b>
+                        
+                        哈希表
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="basic/algo/Sorting.html">
+            
+                
+                    <a href="../../basic/algo/Sorting.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.</b>
+                        
+                        排序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" >
+            
+            <span><b>1.2.5.</b> 搜索</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" >
+            
+            <span><b>1.2.6.</b> 字符串</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" >
+            
+            <span><b>1.2.7.</b> 向量/矩阵</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" >
+            
+            <span><b>1.2.8.</b> 随机</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" >
+            
+            <span><b>1.2.9.</b> 贪心</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" >
+            
+            <span><b>1.2.10.</b> 动态规划</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="basic/arch/index.html">
+            
+                
+                    <a href="../../basic/arch/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        体系结构与操作系统
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="basic/arch/Arch.html">
+            
+                
+                    <a href="../../basic/arch/Arch.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.1.</b>
+                        
+                        体系结构基础
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="basic/arch/OS.html">
+            
+                
+                    <a href="../../basic/arch/OS.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.2.</b>
+                        
+                        操作系统基础
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="basic/arch/Concurrency.html">
+            
+                
+                    <a href="../../basic/arch/Concurrency.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.3.</b>
+                        
+                        并发技术
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="basic/arch/Memory-Management.html">
+            
+                
+                    <a href="../../basic/arch/Memory-Management.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.4.</b>
+                        
+                        内存管理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="basic/arch/Disk-And-File.html">
+            
+                
+                    <a href="../../basic/arch/Disk-And-File.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.5.</b>
+                        
+                        磁盘与文件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" >
+            
+            <span><b>1.3.6.</b> 进程管理</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="basic/db/index.html">
+            
+                
+                    <a href="../../basic/db/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        数据库系统
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.4.1" data-path="basic/db/Transaction.html">
+            
+                
+                    <a href="../../basic/db/Transaction.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.1.</b>
+                        
+                        事务处理
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="basic/compiler/index.html">
+            
+                
+                    <a href="../../basic/compiler/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        编译原理
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="basic/compiler/Compiler-Arch.html">
+            
+                
+                    <a href="../../basic/compiler/Compiler-Arch.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.1.</b>
+                        
+                        编译器架构
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="basic/design/index.html">
+            
+                
+                    <a href="../../basic/design/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        设计模式
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="basic/design/OO-Basic.html">
+            
+                
+                    <a href="../../basic/design/OO-Basic.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.1.</b>
+                        
+                        面向对象基础
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="iOS/index.html">
+            
+            <span><b>2.</b> iOS 开发</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="iOS/ObjC-Basic/index.html">
+            
+                
+                    <a href="../../iOS/ObjC-Basic/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Objective-C 语言基础
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="iOS/ObjC-Basic/Runtime.html">
+            
+            <span><b>2.1.1.</b> Objective-C Runtime</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="iOS/ObjC-Basic/MM.html">
+            
+                
+                    <a href="../../iOS/ObjC-Basic/MM.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.2.</b>
+                        
+                        Objective-C 内存管理
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="iOS/Cocoa-Touch/index.html">
+            
+                
+                    <a href="../../iOS/Cocoa-Touch/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        Cocoa Touch
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="iOS/Cocoa-Touch/Event-Handling.html">
+            
+                
+                    <a href="../../iOS/Cocoa-Touch/Event-Handling.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.1.</b>
+                        
+                        事件处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="iOS/Cocoa-Touch/UIApplication.html">
+            
+                
+                    <a href="../../iOS/Cocoa-Touch/UIApplication.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.2.</b>
+                        
+                        UIApplication
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="iOS/Cocoa-Touch/UIView.html">
+            
+            <span><b>2.2.3.</b> UIView</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.4" data-path="iOS/Cocoa-Touch/UIViewController.html">
+            
+                
+                    <a href="../../iOS/Cocoa-Touch/UIViewController.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.4.</b>
+                        
+                        UIViewController
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="Android/index.html">
+            
+                
+                    <a href="../../Android/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Android 开发
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="Android/Java/index.html">
+            
+                
+                    <a href="../../Android/Java/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        Java 基础
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="Android/Java/Questions.html">
+            
+                
+                    <a href="../../Android/Java/Questions.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.1.</b>
+                        
+                        面试问题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="Android/basic/index.html">
+            
+                
+                    <a href="../../Android/basic/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        Android 基础
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="Android/basic/Android-Arch.html">
+            
+                
+                    <a href="../../Android/basic/Android-Arch.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.1.</b>
+                        
+                        Android 系统架构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="Android/basic/Activity-Service-Lifecircle.html">
+            
+                
+                    <a href="../../Android/basic/Activity-Service-Lifecircle.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.2.</b>
+                        
+                        Activity/Service 生命周期
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.3" data-path="Android/basic/Android-Animation.html">
+            
+                
+                    <a href="../../Android/basic/Android-Animation.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.3.</b>
+                        
+                        Android 中的动画(补帧与逐帧)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.4" data-path="Android/basic/Android-LaunchMode.html">
+            
+                
+                    <a href="../../Android/basic/Android-LaunchMode.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.4.</b>
+                        
+                        Activity 的 4 种启动模式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.5" data-path="Android/basic/ListView-Optimize.html">
+            
+                
+                    <a href="../../Android/basic/ListView-Optimize.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.5.</b>
+                        
+                        ListView原理与优化
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.6" data-path="Android/basic/Android-handler-thread-looper.html">
+            
+                
+                    <a href="../../Android/basic/Android-handler-thread-looper.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.6.</b>
+                        
+                        Android 中的 Thread, Looper 和 Handler 机制
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="Android/Questions.html">
+            
+                
+                    <a href="../../Android/Questions.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        面试问题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                Published with GitBook
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    Share on Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    Share on Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    Share on Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    Share on Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    Share on Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+    
+
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../" ></a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h2 id="%E4%BA%8B%E5%8A%A1%E7%9A%84%E6%A6%82%E5%BF%B5">&#x4E8B;&#x52A1;&#x7684;&#x6982;&#x5FF5;</h2>
+<p>&#x4E8B;&#x52A1;&#x7684;&#x6982;&#x5FF5;&#x6765;&#x81EA;&#x4E8E;&#x4E24;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x9700;&#x6C42;&#xFF1A;&#x5E76;&#x53D1;&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#xFF0C;&#x7CFB;&#x7EDF;&#x9519;&#x8BEF;&#x6062;&#x590D;&#x3002;</p>
+<p>&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#x662F;&#x53EF;&#x4EE5;&#x88AB;&#x770B;&#x4F5C;&#x4E00;&#x4E2A;&#x5355;&#x5143;&#x7684;&#x4E00;&#x7CFB;&#x5217;SQL&#x8BED;&#x53E5;&#x7684;&#x96C6;&#x5408;&#x3002;</p>
+<h2 id="%E4%BA%8B%E5%8A%A1%E7%9A%84%E7%89%B9%E6%80%A7%EF%BC%88acid%EF%BC%89">&#x4E8B;&#x52A1;&#x7684;&#x7279;&#x6027;&#xFF08;ACID&#xFF09;</h2>
+<ul>
+<li><p>A, atomacity &#x539F;&#x5B50;&#x6027;
+&#x4E8B;&#x52A1;&#x5FC5;&#x987B;&#x662F;&#x539F;&#x5B50;&#x5DE5;&#x4F5C;&#x5355;&#x5143;&#xFF1B;&#x5BF9;&#x4E8E;&#x5176;&#x6570;&#x636E;&#x4FEE;&#x6539;&#xFF0C;&#x8981;&#x4E48;&#x5168;&#x90FD;&#x6267;&#x884C;&#xFF0C;&#x8981;&#x4E48;&#x5168;&#x90FD;&#x4E0D;&#x6267;&#x884C;&#x3002;&#x901A;&#x5E38;&#xFF0C;&#x4E0E;&#x67D0;&#x4E2A;&#x4E8B;&#x52A1;&#x5173;&#x8054;&#x7684;&#x64CD;&#x4F5C;&#x5177;&#x6709;&#x5171;&#x540C;&#x7684;&#x76EE;&#x6807;&#xFF0C;&#x5E76;&#x4E14;&#x662F;&#x76F8;&#x4E92;&#x4F9D;&#x8D56;&#x7684;&#x3002;&#x5982;&#x679C;&#x7CFB;&#x7EDF;&#x53EA;&#x6267;&#x884C;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x7684;&#x4E00;&#x4E2A;&#x5B50;&#x96C6;&#xFF0C;&#x5219;&#x53EF;&#x80FD;&#x4F1A;&#x7834;&#x574F;&#x4E8B;&#x52A1;&#x7684;&#x603B;&#x4F53;&#x76EE;&#x6807;&#x3002;&#x539F;&#x5B50;&#x6027;&#x6D88;&#x9664;&#x4E86;&#x7CFB;&#x7EDF;&#x5904;&#x7406;&#x64CD;&#x4F5C;&#x5B50;&#x96C6;&#x7684;&#x53EF;&#x80FD;&#x6027;&#x3002;</p>
+</li>
+<li><p>C, consistency &#x4E00;&#x81F4;&#x6027; </p>
+<p>&#x4E8B;&#x52A1;&#x5C06;&#x6570;&#x636E;&#x5E93;&#x4ECE;&#x4E00;&#x79CD;&#x4E00;&#x81F4;&#x72B6;&#x6001;&#x8F6C;&#x53D8;&#x4E3A;&#x4E0B;&#x4E00;&#x79CD;&#x4E00;&#x81F4;&#x72B6;&#x6001;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x4E8B;&#x52A1;&#x5728;&#x5B8C;&#x6210;&#x65F6;&#xFF0C;&#x5FC5;&#x987B;&#x4F7F;&#x6240;&#x6709;&#x7684;&#x6570;&#x636E;&#x90FD;&#x4FDD;&#x6301;&#x4E00;&#x81F4;&#x72B6;&#x6001;&#xFF08;&#x5404;&#x79CD; constraint &#x4E0D;&#x88AB;&#x7834;&#x574F;&#xFF09;&#x3002;</p>
+</li>
+<li><p>I, isolation &#x9694;&#x79BB;&#x6027;
+&#x7531;&#x5E76;&#x53D1;&#x4E8B;&#x52A1;&#x6240;&#x4F5C;&#x7684;&#x4FEE;&#x6539;&#x5FC5;&#x987B;&#x4E0E;&#x4EFB;&#x4F55;&#x5176;&#x5B83;&#x5E76;&#x53D1;&#x4E8B;&#x52A1;&#x6240;&#x4F5C;&#x7684;&#x4FEE;&#x6539;&#x9694;&#x79BB;&#x3002;&#x4E8B;&#x52A1;&#x67E5;&#x770B;&#x6570;&#x636E;&#x65F6;&#x6570;&#x636E;&#x6240;&#x5904;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x8981;&#x4E48;&#x662F;&#x53E6;&#x4E00;&#x5E76;&#x53D1;&#x4E8B;&#x52A1;&#x4FEE;&#x6539;&#x5B83;&#x4E4B;&#x524D;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x8981;&#x4E48;&#x662F;&#x53E6;&#x4E00;&#x4E8B;&#x52A1;&#x4FEE;&#x6539;&#x5B83;&#x4E4B;&#x540E;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x4E8B;&#x52A1;&#x4E0D;&#x4F1A;&#x67E5;&#x770B;&#x4E2D;&#x95F4;&#x72B6;&#x6001;&#x7684;&#x6570;&#x636E;&#x3002;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#x7684;&#x5F71;&#x54CD;&#x5728;&#x8BE5;&#x4E8B;&#x52A1;&#x63D0;&#x4EA4;&#x524D;&#x5BF9;&#x5176;&#x4ED6;&#x4E8B;&#x52A1;&#x90FD;&#x4E0D;&#x53EF;&#x89C1;&#x3002;</p>
+</li>
+<li><p>D, durability &#x6301;&#x4E45;&#x6027;</p>
+<p>&#x4E8B;&#x52A1;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x5B83;&#x5BF9;&#x4E8E;&#x7CFB;&#x7EDF;&#x7684;&#x5F71;&#x54CD;&#x662F;&#x6C38;&#x4E45;&#x6027;&#x7684;&#x3002;&#x8BE5;&#x4FEE;&#x6539;&#x5373;&#x4F7F;&#x51FA;&#x73B0;&#x81F4;&#x547D;&#x7684;&#x7CFB;&#x7EDF;&#x6545;&#x969C;&#x4E5F;&#x5C06;&#x4E00;&#x76F4;&#x4FDD;&#x6301;&#x3002;</p>
+</li>
+</ul>
+<h2 id="%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB">&#x4E8B;&#x52A1;&#x7684;&#x9694;&#x79BB;&#x7EA7;&#x522B;</h2>
+<p>&#x5982;&#x679C;&#x4E0D;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x8FDB;&#x884C;&#x5E76;&#x53D1;&#x63A7;&#x5236;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x4EA7;&#x751F;&#x5F02;&#x5E38;&#x60C5;&#x51B5;&#xFF1A;</p>
+<ol>
+<li><p>&#x810F;&#x8BFB;(Dirty Read)</p>
+<p>&#x5F53;&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#x8BFB;&#x53D6;&#x53E6;&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#x5C1A;&#x672A;&#x63D0;&#x4EA4;&#x7684;&#x4FEE;&#x6539;&#x65F6;&#xFF0C;&#x4EA7;&#x751F;&#x810F;&#x8BFB;&#x3002;</p>
+<p>&#x540C;&#x4E00;&#x4E8B;&#x52A1;&#x5185;&#x4E0D;&#x662F;&#x810F;&#x8BFB;&#x3002;
+&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#x5F00;&#x59CB;&#x8BFB;&#x53D6;&#x4E86;&#x67D0;&#x884C;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x662F;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#x5DF2;&#x7ECF;&#x66F4;&#x65B0;&#x4E86;&#x6B64;&#x6570;&#x636E;&#x4F46;&#x6CA1;&#x6709;&#x80FD;&#x591F;&#x53CA;&#x65F6;&#x63D0;&#x4EA4;&#x3002;&#x8FD9;&#x662F;&#x76F8;&#x5F53;&#x5371;&#x9669;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x5F88;&#x53EF;&#x80FD;&#x6240;&#x6709;&#x7684;&#x64CD;&#x4F5C;&#x90FD;&#x88AB;&#x56DE;&#x6EDA;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x8BFB;&#x53D6;&#x51FA;&#x7684;&#x6570;&#x636E;&#x5176;&#x5B9E;&#x662F;&#x9519;&#x8BEF;&#x7684;&#x3002;</p>
+</li>
+<li><p>&#x975E;&#x91CD;&#x590D;&#x8BFB;(Nonrepeatable Read)
+&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#x5BF9;&#x540C;&#x4E00;&#x884C;&#x6570;&#x636E;&#x91CD;&#x590D;&#x8BFB;&#x53D6;&#x4E24;&#x6B21;&#xFF0C;&#x4F46;&#x662F;&#x5374;&#x5F97;&#x5230;&#x4E86;&#x4E0D;&#x540C;&#x7684;&#x7ED3;&#x679C;&#x3002;&#x540C;&#x4E00;&#x67E5;&#x8BE2;&#x5728;&#x540C;&#x4E00;&#x4E8B;&#x52A1;&#x4E2D;&#x591A;&#x6B21;&#x8FDB;&#x884C;&#xFF0C;&#x7531;&#x4E8E;&#x5176;&#x4ED6;&#x63D0;&#x4EA4;&#x4E8B;&#x52A1;&#x6240;&#x505A;&#x7684;&#x4FEE;&#x6539;&#x6216;&#x5220;&#x9664;&#xFF0C;&#x6BCF;&#x6B21;&#x8FD4;&#x56DE;&#x4E0D;&#x540C;&#x7684;&#x7ED3;&#x679C;&#x96C6;&#xFF0C;&#x6B64;&#x65F6;&#x53D1;&#x751F;&#x975E;&#x91CD;&#x590D;&#x8BFB;&#x3002; </p>
+</li>
+<li><p>&#x5E7B;&#x50CF;&#x8BFB;(Phantom Reads) 
+&#x4E8B;&#x52A1;&#x5728;&#x64CD;&#x4F5C;&#x8FC7;&#x7A0B;&#x4E2D;&#x8FDB;&#x884C;&#x4E24;&#x6B21;&#x67E5;&#x8BE2;&#xFF0C;&#x7B2C;&#x4E8C;&#x6B21;&#x67E5;&#x8BE2;&#x7684;&#x7ED3;&#x679C;&#x5305;&#x542B;&#x4E86;&#x7B2C;&#x4E00;&#x6B21;&#x67E5;&#x8BE2;&#x4E2D;&#x672A;&#x51FA;&#x73B0;&#x7684;&#x6570;&#x636E;&#xFF08;&#x8FD9;&#x91CC;&#x5E76;&#x4E0D;&#x8981;&#x6C42;&#x4E24;&#x6B21;&#x67E5;&#x8BE2;&#x7684;SQL&#x8BED;&#x53E5;&#x76F8;&#x540C;&#xFF09;&#x3002;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x5728;&#x4E24;&#x6B21;&#x67E5;&#x8BE2;&#x8FC7;&#x7A0B;&#x4E2D;&#x6709;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#x63D2;&#x5165;&#x6570;&#x636E;&#x9020;&#x6210;&#x7684;&#x3002;</p>
+<p>&#x5F53;&#x5BF9;&#x67D0;&#x884C;&#x6267;&#x884C;&#x63D2;&#x5165;&#x6216;&#x5220;&#x9664;&#x64CD;&#x4F5C;&#xFF0C;&#x800C;&#x8BE5;&#x884C;&#x5C5E;&#x4E8E;&#x67D0;&#x4E2A;&#x4E8B;&#x52A1;&#x6B63;&#x5728;&#x8BFB;&#x53D6;&#x7684;&#x884C;&#x7684;&#x8303;&#x56F4;&#x65F6;&#xFF0C;&#x4F1A;&#x53D1;&#x751F;&#x5E7B;&#x50CF;&#x8BFB;&#x95EE;&#x9898;&#x3002;</p>
+</li>
+<li><p>&#x4E22;&#x5931;&#x4FEE;&#x6539;(Lost Update) </p>
+<p>&#x7B2C;&#x4E00;&#x7C7B;&#xFF1A;&#x5F53;&#x4E24;&#x4E2A;&#x4E8B;&#x52A1;&#x66F4;&#x65B0;&#x76F8;&#x540C;&#x7684;&#x6570;&#x636E;&#x6E90;&#xFF0C;&#x5982;&#x679C;&#x7B2C;&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#x88AB;&#x63D0;&#x4EA4;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x5374;&#x88AB;&#x64A4;&#x9500;&#xFF0C;&#x90A3;&#x4E48;&#x8FDE;&#x540C;&#x7B2C;&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#x505A;&#x7684;&#x66F4;&#x65B0;&#x4E5F;&#x88AB;&#x64A4;&#x9500;&#x3002;</p>
+<p>&#x7B2C;&#x4E8C;&#x7C7B;&#xFF1A;&#x6709;&#x4E24;&#x4E2A;&#x5E76;&#x53D1;&#x4E8B;&#x52A1;&#x540C;&#x65F6;&#x8BFB;&#x53D6;&#x540C;&#x4E00;&#x884C;&#x6570;&#x636E;&#xFF0C;&#x7136;&#x540E;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x5BF9;&#x5B83;&#x8FDB;&#x884C;&#x4FEE;&#x6539;&#x63D0;&#x4EA4;&#xFF0C;&#x800C;&#x53E6;&#x4E00;&#x4E2A;&#x4E5F;&#x8FDB;&#x884C;&#x4E86;&#x4FEE;&#x6539;&#x63D0;&#x4EA4;&#x3002;&#x8FD9;&#x5C31;&#x4F1A;&#x9020;&#x6210;&#x7B2C;&#x4E00;&#x6B21;&#x5199;&#x64CD;&#x4F5C;&#x5931;&#x6548;&#x3002;</p>
+</li>
+</ol>
+<p>&#x4E3A;&#x4E86;&#x517C;&#x987E;&#x5E76;&#x53D1;&#x6548;&#x7387;&#x548C;&#x5F02;&#x5E38;&#x63A7;&#x5236;&#xFF0C;&#x5728;&#x6807;&#x51C6;SQL&#x89C4;&#x8303;&#x4E2D;&#xFF0C;&#x5B9A;&#x4E49;&#x4E86;4&#x4E2A;&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#xFF0C;&#xFF08; Oracle &#x548C; SQL Server &#x5BF9;&#x6807;&#x51C6;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x5B9E;&#x73B0; &#xFF09;  </p>
+<ol>
+<li><p>&#x672A;&#x63D0;&#x4EA4;&#x8BFB;(Read Uncommitted) </p>
+<p>&#x76F4;&#x8BD1;&#x5C31;&#x662F;&quot;&#x8BFB;&#x672A;&#x63D0;&#x4EA4;&quot;&#xFF0C;&#x610F;&#x601D;&#x5C31;&#x662F;&#x5373;&#x4F7F;&#x4E00;&#x4E2A;&#x66F4;&#x65B0;&#x8BED;&#x53E5;&#x6CA1;&#x6709;&#x63D0;&#x4EA4;&#xFF0C;&#x4F46;&#x662F;&#x522B;&#x7684;&#x4E8B;&#x52A1;&#x53EF;&#x4EE5;&#x8BFB;&#x5230;&#x8FD9;&#x4E2A;&#x6539;&#x53D8;&#x3002;</p>
+<p>Read Uncommitted&#x5141;&#x8BB8;&#x810F;&#x8BFB;&#x3002;</p>
+</li>
+<li><p>&#x5DF2;&#x63D0;&#x4EA4;&#x8BFB;(Read Committed)</p>
+<p>&#x76F4;&#x8BD1;&#x5C31;&#x662F;&quot;&#x8BFB;&#x63D0;&#x4EA4;&quot;&#xFF0C;&#x610F;&#x601D;&#x5C31;&#x662F;&#x8BED;&#x53E5;&#x63D0;&#x4EA4;&#x4EE5;&#x540E;&#xFF0C;&#x5373;&#x6267;&#x884C;&#x4E86; Commit &#x4EE5;&#x540E;&#x522B;&#x7684;&#x4E8B;&#x52A1;&#x5C31;&#x80FD;&#x8BFB;&#x5230;&#x8FD9;&#x4E2A;&#x6539;&#x53D8;&#xFF0C;&#x53EA;&#x80FD;&#x8BFB;&#x53D6;&#x5230;&#x5DF2;&#x7ECF;&#x63D0;&#x4EA4;&#x7684;&#x6570;&#x636E;&#x3002;Oracle&#x7B49;&#x591A;&#x6570;&#x6570;&#x636E;&#x5E93;&#x9ED8;&#x8BA4;&#x90FD;&#x662F;&#x8BE5;&#x7EA7;&#x522B;&#x3002;</p>
+<p>Read Commited &#x4E0D;&#x5141;&#x8BB8;&#x810F;&#x8BFB;&#xFF0C;&#x4F46;&#x4F1A;&#x51FA;&#x73B0;&#x975E;&#x91CD;&#x590D;&#x8BFB;&#x3002;</p>
+</li>
+</ol>
+<ol>
+<li><p>&#x53EF;&#x91CD;&#x590D;&#x8BFB;(Repeatable Read)&#xFF1A;</p>
+<p>&#x76F4;&#x8BD1;&#x5C31;&#x662F;&quot;&#x53EF;&#x4EE5;&#x91CD;&#x590D;&#x8BFB;&quot;&#xFF0C;&#x8FD9;&#x662F;&#x8BF4;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#x91CC;&#x9762;&#x5148;&#x540E;&#x6267;&#x884C;&#x540C;&#x4E00;&#x4E2A;&#x67E5;&#x8BE2;&#x8BED;&#x53E5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5F97;&#x5230;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;</p>
+<p>Repeatable Read &#x4E0D;&#x5141;&#x8BB8;&#x810F;&#x8BFB;&#xFF0C;&#x4E0D;&#x5141;&#x8BB8;&#x975E;&#x91CD;&#x590D;&#x8BFB;&#xFF0C;&#x4F46;&#x662F;&#x4F1A;&#x51FA;&#x73B0;&#x5E7B;&#x8C61;&#x8BFB;&#x3002;</p>
+</li>
+</ol>
+<ol>
+<li><p>&#x4E32;&#x884C;&#x8BFB;(Serializable)</p>
+<p>&#x76F4;&#x8BD1;&#x5C31;&#x662F;&quot;&#x5E8F;&#x5217;&#x5316;&quot;&#xFF0C;&#x610F;&#x601D;&#x662F;&#x8BF4;&#x8FD9;&#x4E2A;&#x4E8B;&#x52A1;&#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#x4E0D;&#x5141;&#x8BB8;&#x522B;&#x7684;&#x4E8B;&#x52A1;&#x5E76;&#x53D1;&#x6267;&#x884C;&#x3002;&#x5B8C;&#x5168;&#x4E32;&#x884C;&#x5316;&#x7684;&#x8BFB;&#xFF0C;&#x6BCF;&#x6B21;&#x8BFB;&#x90FD;&#x9700;&#x8981;&#x83B7;&#x5F97;&#x8868;&#x7EA7;&#x5171;&#x4EAB;&#x9501;&#xFF0C;&#x8BFB;&#x5199;&#x76F8;&#x4E92;&#x90FD;&#x4F1A;&#x963B;&#x585E;&#x3002;</p>
+<p>Serializable &#x4E0D;&#x5141;&#x8BB8;&#x4E0D;&#x4E00;&#x81F4;&#x73B0;&#x8C61;&#x7684;&#x51FA;&#x73B0;&#x3002;</p>
+</li>
+</ol>
+<h2 id="%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%9A%84%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E9%94%81">&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7684;&#x5B9E;&#x73B0;&#x2014;&#x2014;&#x9501;</h2>
+<ol>
+<li><p>&#x5171;&#x4EAB;&#x9501;(S&#x9501;)</p>
+<p>&#x7528;&#x4E8E;&#x53EA;&#x8BFB;&#x64CD;&#x4F5C;(SELECT)&#xFF0C;&#x9501;&#x5B9A;&#x5171;&#x4EAB;&#x7684;&#x8D44;&#x6E90;&#x3002;&#x5171;&#x4EAB;&#x9501;&#x4E0D;&#x4F1A;&#x963B;&#x6B62;&#x5176;&#x4ED6;&#x7528;&#x6237;&#x8BFB;&#xFF0C;&#x4F46;&#x662F;&#x963B;&#x6B62;&#x5176;&#x4ED6;&#x7684;&#x7528;&#x6237;&#x5199;&#x548C;&#x4FEE;&#x6539;&#x3002;</p>
+</li>
+<li><p>&#x66F4;&#x65B0;&#x9501;(U&#x9501;)</p>
+<p>&#x7528;&#x4E8E;&#x53EF;&#x66F4;&#x65B0;&#x7684;&#x8D44;&#x6E90;&#x4E2D;&#x3002;&#x9632;&#x6B62;&#x5F53;&#x591A;&#x4E2A;&#x4F1A;&#x8BDD;&#x5728;&#x8BFB;&#x53D6;&#x3001;&#x9501;&#x5B9A;&#x4EE5;&#x53CA;&#x968F;&#x540E;&#x53EF;&#x80FD;&#x8FDB;&#x884C;&#x7684;&#x8D44;&#x6E90;&#x66F4;&#x65B0;&#x65F6;&#x53D1;&#x751F;&#x5E38;&#x89C1;&#x5F62;&#x5F0F;&#x7684;&#x6B7B;&#x9501;&#x3002;</p>
+</li>
+<li><p>&#x72EC;&#x5360;&#x9501;(X&#x9501;&#xFF0C;&#x4E5F;&#x53EB;&#x6392;&#x4ED6;&#x9501;)</p>
+<p>&#x4E00;&#x6B21;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;&#x72EC;&#x5360;&#x9501;&#x7528;&#x5728;&#x4E00;&#x4E2A;&#x8D44;&#x6E90;&#x4E0A;&#xFF0C;&#x5E76;&#x4E14;&#x963B;&#x6B62;&#x5176;&#x4ED6;&#x6240;&#x6709;&#x7684;&#x9501;&#x5305;&#x62EC;&#x5171;&#x4EAB;&#x7F29;&#x3002;&#x5199;&#x662F;&#x72EC;&#x5360;&#x9501;&#xFF0C;&#x53EF;&#x4EE5;&#x6709;&#x6548;&#x7684;&#x9632;&#x6B62;&#x201C;&#x810F;&#x8BFB;&#x201D;&#x3002;</p>
+</li>
+</ol>
+<p>Read Uncommited &#x5982;&#x679C;&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#x5DF2;&#x7ECF;&#x5F00;&#x59CB;&#x5199;&#x6570;&#x636E;&#xFF0C;&#x5219;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5219;&#x4E0D;&#x5141;&#x8BB8;&#x540C;&#x65F6;&#x8FDB;&#x884C;&#x5199;&#x64CD;&#x4F5C;&#xFF0C;&#x4F46;&#x5141;&#x8BB8;&#x5176;&#x4ED6;&#x4E8B;&#x52A1;&#x8BFB;&#x6B64;&#x884C;&#x6570;&#x636E;&#x3002;&#x8BE5;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x201C;&#x6392;&#x4ED6;&#x5199;&#x9501;&#x201D;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>Read Committed &#x8BFB;&#x53D6;&#x6570;&#x636E;&#x7684;&#x4E8B;&#x52A1;&#x5141;&#x8BB8;&#x5176;&#x4ED6;&#x4E8B;&#x52A1;&#x7EE7;&#x7EED;&#x8BBF;&#x95EE;&#x8BE5;&#x884C;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x662F;&#x672A;&#x63D0;&#x4EA4;&#x7684;&#x5199;&#x4E8B;&#x52A1;&#x5C06;&#x4F1A;&#x7981;&#x6B62;&#x5176;&#x4ED6;&#x4E8B;&#x52A1;&#x8BBF;&#x95EE;&#x8BE5;&#x884C;&#x3002;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x201C;&#x77AC;&#x95F4;&#x5171;&#x4EAB;&#x8BFB;&#x9501;&#x201D;&#x548C;&#x201C;&#x6392;&#x4ED6;&#x5199;&#x9501;&#x201D;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>Repeatable Read &#x8BFB;&#x53D6;&#x6570;&#x636E;&#x7684;&#x4E8B;&#x52A1;&#x5C06;&#x4F1A;&#x7981;&#x6B62;&#x5199;&#x4E8B;&#x52A1;&#xFF08;&#x4F46;&#x5141;&#x8BB8;&#x8BFB;&#x4E8B;&#x52A1;&#xFF09;&#xFF0C;&#x5199;&#x4E8B;&#x52A1;&#x5219;&#x7981;&#x6B62;&#x4EFB;&#x4F55;&#x5176;&#x4ED6;&#x4E8B;&#x52A1;&#x3002;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x201C;&#x5171;&#x4EAB;&#x8BFB;&#x9501;&#x201D;&#x548C;&#x201C;&#x6392;&#x4ED6;&#x5199;&#x9501;&#x201D;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>Serializable &#x8BFB;&#x52A0;&#x5171;&#x4EAB;&#x9501;&#xFF0C;&#x5199;&#x52A0;&#x6392;&#x4ED6;&#x9501;&#xFF0C;&#x8BFB;&#x5199;&#x4E92;&#x65A5;&#x3002;</p>
+<h3 id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
+<ul>
+<li><a href="http://baike.baidu.com/view/1298364.htm" target="_blank">&#x767E;&#x5EA6;&#x767E;&#x79D1;&#xFF1A;&#x6570;&#x636E;&#x5E93;&#x4E8B;&#x52A1;</a></li>
+<li><a href="http://www.cnblogs.com/tqsummer/archive/2010/07/11/1775209.html" target="_blank">&#x6570;&#x636E;&#x5E93;&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#x4E0E;&#x9501;</a></li>
+<li><a href="http://www.cnblogs.com/chillsrc/archive/2013/04/27/3047547.html" target="_blank">SQL SERVER&#x7684;&#x9501;&#x673A;&#x5236;&#xFF08;&#x56DB;&#xFF09;&#x2014;&#x2014;&#x6982;&#x8FF0;&#xFF08;&#x5404;&#x79CD;&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#x53D1;&#x751F;&#x7684;&#x5F71;&#x54CD;&#xFF09;</a></li>
+<li><a href="http://www.cnblogs.com/zhouqianhua/archive/2011/04/15/2017049.html" target="_blank">&#x6570;&#x636E;&#x5E93;&#x9501;</a></li>
+<li><a href="http://news.e800.com.cn/articles/2011/0803/492650.shtml" target="_blank">&#x5173;&#x4E8E;&#x6570;&#x636E;&#x5E93;&#x4E8B;&#x52A1;&#x3001;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#x3001;&#x9501;&#x7684;&#x7406;&#x89E3;&#x4E0E;&#x6574;&#x7406;</a></li>
+<li><a href="http://tech.meituan.com/innodb-lock.html" target="_blank">Innodb&#x4E2D;&#x7684;&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#x548C;&#x9501;&#x7684;&#x5173;&#x7CFB;</a></li>
+</ul>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../../basic/db/index.html" class="navigation navigation-prev " aria-label="Previous page: 数据库系统"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../../basic/compiler/index.html" class="navigation navigation-next " aria-label="Next page: 编译原理"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../../gitbook/app.js"></script>
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

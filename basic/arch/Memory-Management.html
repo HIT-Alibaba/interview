@@ -1,0 +1,989 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>内存管理 | </title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.2.0">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../../gitbook/style.css">
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../../basic/arch/Disk-And-File.html" />
+    
+    
+    <link rel="prev" href="../../basic/arch/Concurrency.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book" data-level="1.3.4" data-basepath="../.." data-revision="Fri Jul 31 2015 19:09:56 GMT+0800 (CST)">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        
+
+        
+
+        
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="basic/index.html">
+            
+                
+                    <a href="../../basic/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        基础知识
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="basic/network/index.html">
+            
+                
+                    <a href="../../basic/network/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        计算机网络
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="basic/network/HTTP.html">
+            
+                
+                    <a href="../../basic/network/HTTP.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.1.</b>
+                        
+                        HTTP 协议
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="basic/network/TCP.html">
+            
+                
+                    <a href="../../basic/network/TCP.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.2.</b>
+                        
+                        TCP 协议
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="basic/network/IP.html">
+            
+                
+                    <a href="../../basic/network/IP.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.3.</b>
+                        
+                        IP 协议
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.4" data-path="basic/network/Socket-Programming-Basic.html">
+            
+                
+                    <a href="../../basic/network/Socket-Programming-Basic.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.4.</b>
+                        
+                        Socket 编程
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="basic/algo/index.html">
+            
+                
+                    <a href="../../basic/algo/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        数据结构与算法
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="basic/algo/Linked-List.html">
+            
+            <span><b>1.2.1.</b> 链表</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="basic/algo/Tree.html">
+            
+                
+                    <a href="../../basic/algo/Tree.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.2.</b>
+                        
+                        树
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="basic/algo/Hash-Table.html">
+            
+                
+                    <a href="../../basic/algo/Hash-Table.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.</b>
+                        
+                        哈希表
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="basic/algo/Sorting.html">
+            
+                
+                    <a href="../../basic/algo/Sorting.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.4.</b>
+                        
+                        排序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" >
+            
+            <span><b>1.2.5.</b> 搜索</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" >
+            
+            <span><b>1.2.6.</b> 字符串</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" >
+            
+            <span><b>1.2.7.</b> 向量/矩阵</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" >
+            
+            <span><b>1.2.8.</b> 随机</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" >
+            
+            <span><b>1.2.9.</b> 贪心</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" >
+            
+            <span><b>1.2.10.</b> 动态规划</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="basic/arch/index.html">
+            
+                
+                    <a href="../../basic/arch/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        体系结构与操作系统
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="basic/arch/Arch.html">
+            
+                
+                    <a href="../../basic/arch/Arch.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.1.</b>
+                        
+                        体系结构基础
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="basic/arch/OS.html">
+            
+                
+                    <a href="../../basic/arch/OS.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.2.</b>
+                        
+                        操作系统基础
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="basic/arch/Concurrency.html">
+            
+                
+                    <a href="../../basic/arch/Concurrency.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.3.</b>
+                        
+                        并发技术
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.4" data-path="basic/arch/Memory-Management.html">
+            
+                
+                    <a href="../../basic/arch/Memory-Management.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.4.</b>
+                        
+                        内存管理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="basic/arch/Disk-And-File.html">
+            
+                
+                    <a href="../../basic/arch/Disk-And-File.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.5.</b>
+                        
+                        磁盘与文件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" >
+            
+            <span><b>1.3.6.</b> 进程管理</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="basic/db/index.html">
+            
+                
+                    <a href="../../basic/db/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        数据库系统
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="basic/db/Transaction.html">
+            
+                
+                    <a href="../../basic/db/Transaction.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.1.</b>
+                        
+                        事务处理
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="basic/compiler/index.html">
+            
+                
+                    <a href="../../basic/compiler/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        编译原理
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="basic/compiler/Compiler-Arch.html">
+            
+                
+                    <a href="../../basic/compiler/Compiler-Arch.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.1.</b>
+                        
+                        编译器架构
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="basic/design/index.html">
+            
+                
+                    <a href="../../basic/design/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        设计模式
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="basic/design/OO-Basic.html">
+            
+                
+                    <a href="../../basic/design/OO-Basic.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.1.</b>
+                        
+                        面向对象基础
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="iOS/index.html">
+            
+            <span><b>2.</b> iOS 开发</span>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="iOS/ObjC-Basic/index.html">
+            
+                
+                    <a href="../../iOS/ObjC-Basic/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Objective-C 语言基础
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="iOS/ObjC-Basic/Runtime.html">
+            
+            <span><b>2.1.1.</b> Objective-C Runtime</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="iOS/ObjC-Basic/MM.html">
+            
+                
+                    <a href="../../iOS/ObjC-Basic/MM.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.2.</b>
+                        
+                        Objective-C 内存管理
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="iOS/Cocoa-Touch/index.html">
+            
+                
+                    <a href="../../iOS/Cocoa-Touch/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        Cocoa Touch
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="iOS/Cocoa-Touch/Event-Handling.html">
+            
+                
+                    <a href="../../iOS/Cocoa-Touch/Event-Handling.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.1.</b>
+                        
+                        事件处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="iOS/Cocoa-Touch/UIApplication.html">
+            
+                
+                    <a href="../../iOS/Cocoa-Touch/UIApplication.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.2.</b>
+                        
+                        UIApplication
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="iOS/Cocoa-Touch/UIView.html">
+            
+            <span><b>2.2.3.</b> UIView</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.4" data-path="iOS/Cocoa-Touch/UIViewController.html">
+            
+                
+                    <a href="../../iOS/Cocoa-Touch/UIViewController.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.4.</b>
+                        
+                        UIViewController
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="Android/index.html">
+            
+                
+                    <a href="../../Android/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Android 开发
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="Android/Java/index.html">
+            
+                
+                    <a href="../../Android/Java/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        Java 基础
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="Android/Java/Questions.html">
+            
+                
+                    <a href="../../Android/Java/Questions.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.1.</b>
+                        
+                        面试问题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="Android/basic/index.html">
+            
+                
+                    <a href="../../Android/basic/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        Android 基础
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="Android/basic/Android-Arch.html">
+            
+                
+                    <a href="../../Android/basic/Android-Arch.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.1.</b>
+                        
+                        Android 系统架构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="Android/basic/Activity-Service-Lifecircle.html">
+            
+                
+                    <a href="../../Android/basic/Activity-Service-Lifecircle.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.2.</b>
+                        
+                        Activity/Service 生命周期
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.3" data-path="Android/basic/Android-Animation.html">
+            
+                
+                    <a href="../../Android/basic/Android-Animation.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.3.</b>
+                        
+                        Android 中的动画(补帧与逐帧)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.4" data-path="Android/basic/Android-LaunchMode.html">
+            
+                
+                    <a href="../../Android/basic/Android-LaunchMode.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.4.</b>
+                        
+                        Activity 的 4 种启动模式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.5" data-path="Android/basic/ListView-Optimize.html">
+            
+                
+                    <a href="../../Android/basic/ListView-Optimize.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.5.</b>
+                        
+                        ListView原理与优化
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.6" data-path="Android/basic/Android-handler-thread-looper.html">
+            
+                
+                    <a href="../../Android/basic/Android-handler-thread-looper.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.6.</b>
+                        
+                        Android 中的 Thread, Looper 和 Handler 机制
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="Android/Questions.html">
+            
+                
+                    <a href="../../Android/Questions.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        面试问题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                Published with GitBook
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    Share on Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    Share on Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    Share on Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    Share on Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    Share on Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+    
+
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../" ></a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h2 id="%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D">&#x5185;&#x5B58;&#x5206;&#x914D;</h2>
+<ul>
+<li>&#x865A;&#x62DF;&#x5730;&#x5740;&#xFF1A;&#x7528;&#x6237;&#x7F16;&#x7A0B;&#x65F6;&#x5C06;&#x4EE3;&#x7801;&#xFF08;&#x6216;&#x6570;&#x636E;&#xFF09;&#x5206;&#x6210;&#x82E5;&#x5E72;&#x4E2A;&#x6BB5;&#xFF0C;&#x6BCF;&#x6761;&#x4EE3;&#x7801;&#x6216;&#x6BCF;&#x4E2A;&#x6570;&#x636E;&#x7684;&#x5730;&#x5740;&#x7531;&#x6BB5;&#x540D;&#x79F0; + &#x6BB5;&#x5185;&#x76F8;&#x5BF9;&#x5730;&#x5740;&#x6784;&#x6210;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x7A0B;&#x5E8F;&#x5730;&#x5740;&#x79F0;&#x4E3A;&#x865A;&#x62DF;&#x5730;&#x5740;</li>
+<li>&#x903B;&#x8F91;&#x5730;&#x5740;&#xFF1A;&#x865A;&#x62DF;&#x5730;&#x5740;&#x4E2D;&#xFF0C;&#x6BB5;&#x5185;&#x76F8;&#x5BF9;&#x5730;&#x5740;&#x90E8;&#x5206;&#x79F0;&#x4E3A;&#x903B;&#x8F91;&#x5730;&#x5740;</li>
+<li><p>&#x7269;&#x7406;&#x5730;&#x5740;&#xFF1A;&#x5B9E;&#x9645;&#x7269;&#x7406;&#x5185;&#x5B58;&#x4E2D;&#x6240;&#x770B;&#x5230;&#x7684;&#x5B58;&#x50A8;&#x5730;&#x5740;&#x79F0;&#x4E3A;&#x7269;&#x7406;&#x5730;&#x5740;</p>
+</li>
+<li><p>&#x903B;&#x8F91;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF1A;&#x5728;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x5C06;&#x865A;&#x62DF;&#x5730;&#x5740;&#x548C;&#x903B;&#x8F91;&#x5730;&#x5740;&#x7ECF;&#x5E38;&#x4E0D;&#x52A0;&#x533A;&#x5206;&#xFF0C;&#x901A;&#x79F0;&#x4E3A;&#x903B;&#x8F91;&#x5730;&#x5740;&#x3002;&#x903B;&#x8F91;&#x5730;&#x5740;&#x7684;&#x96C6;&#x5408;&#x79F0;&#x4E3A;&#x903B;&#x8F91;&#x5730;&#x5740;&#x7A7A;&#x95F4;</p>
+</li>
+<li>&#x7EBF;&#x6027;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF1A;CPU&#x5730;&#x5740;&#x603B;&#x7EBF;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x7684;&#x6240;&#x6709;&#x5730;&#x5740;&#x96C6;&#x5408;&#x79F0;&#x4E3A;&#x7EBF;&#x6027;&#x5730;&#x5740;&#x7A7A;&#x95F4;</li>
+<li><p>&#x7269;&#x7406;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF1A;&#x5B9E;&#x9645;&#x5B58;&#x5728;&#x7684;&#x53EF;&#x8BBF;&#x95EE;&#x7684;&#x7269;&#x7406;&#x5185;&#x5B58;&#x5730;&#x5740;&#x96C6;&#x5408;&#x79F0;&#x4E3A;&#x7269;&#x7406;&#x5730;&#x5740;&#x7A7A;&#x95F4;</p>
+</li>
+<li><p>MMU(Memery Management Unit&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x5355;&#x5143;)&#xFF1A;&#x5B9E;&#x73B0;&#x5C06;&#x7528;&#x6237;&#x7A0B;&#x5E8F;&#x7684;&#x865A;&#x62DF;&#x5730;&#x5740;&#xFF08;&#x903B;&#x8F91;&#x5730;&#x5740;&#xFF09; &#x2192; &#x7269;&#x7406;&#x5730;&#x5740;&#x6620;&#x5C04;&#x7684;CPU&#x4E2D;&#x7684;&#x786C;&#x4EF6;&#x7535;&#x8DEF;</p>
+</li>
+<li>&#x57FA;&#x5730;&#x5740;&#xFF1A;&#x5728;&#x8FDB;&#x884C;&#x5730;&#x5740;&#x6620;&#x5C04;&#x65F6;&#xFF0C;&#x7ECF;&#x5E38;&#x4EE5;&#x6BB5;&#x6216;&#x9875;&#x4E3A;&#x5355;&#x4F4D;&#x5E76;&#x4EE5;&#x5176;&#x6700;&#x5C0F;&#x5730;&#x5740;&#xFF08;&#x5373;&#x8D77;&#x59CB;&#x5730;&#x5740;&#xFF09;&#x4E3A;&#x57FA;&#x503C;&#x6765;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;</li>
+<li>&#x504F;&#x79FB;&#x91CF;&#xFF1A;&#x5728;&#x4EE5;&#x6BB5;&#x6216;&#x9875;&#x4E3A;&#x5355;&#x4F4D;&#x8FDB;&#x884C;&#x5730;&#x5740;&#x6620;&#x5C04;&#x65F6;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E;&#x57FA;&#x5730;&#x5740;&#x7684;&#x5730;&#x5740;&#x503C;</li>
+</ul>
+<p>&#x865A;&#x62DF;&#x5730;&#x5740;&#x5148;&#x7ECF;&#x8FC7;&#x5206;&#x6BB5;&#x673A;&#x5236;&#x6620;&#x5C04;&#x5230;&#x7EBF;&#x6027;&#x5730;&#x5740;&#xFF0C;&#x7136;&#x540E;&#x7EBF;&#x6027;&#x5730;&#x5740;&#x901A;&#x8FC7;&#x5206;&#x9875;&#x673A;&#x5236;&#x6620;&#x5C04;&#x5230;&#x7269;&#x7406;&#x5730;&#x5740;&#x3002;</p>
+<h2 id="%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98">&#x865A;&#x62DF;&#x5185;&#x5B58;</h2>
+<ul>
+<li>&#x8BF7;&#x6C42;&#x8C03;&#x9875;&#xFF0C;&#x4E5F;&#x79F0;&#x6309;&#x9700;&#x8C03;&#x9875;&#xFF0C;&#x5373;&#x5BF9;&#x4E0D;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x201C;&#x9875;&#x201D;&#xFF0C;&#x5F53;&#x8FDB;&#x7A0B;&#x6267;&#x884C;&#x65F6;&#x8981;&#x7528;&#x65F6;&#x624D;&#x8C03;&#x5165;&#xFF0C;&#x5426;&#x5219;&#x6709;&#x53EF;&#x80FD;&#x5230;&#x7A0B;&#x5E8F;&#x7ED3;&#x675F;&#x65F6;&#x4E5F;&#x4E0D;&#x4F1A;&#x8C03;&#x5165;</li>
+</ul>
+<h3 id="%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95">&#x9875;&#x9762;&#x7F6E;&#x6362;&#x7B97;&#x6CD5;</h3>
+<ul>
+<li><p>FIFO&#x7B97;&#x6CD5;</p>
+<p>&#x5148;&#x5165;&#x5148;&#x51FA;&#xFF0C;&#x5373;&#x6DD8;&#x6C70;&#x6700;&#x65E9;&#x8C03;&#x5165;&#x7684;&#x9875;&#x9762;&#x3002;</p>
+</li>
+<li><p>OPT(MIN)&#x7B97;&#x6CD5;</p>
+<p>&#x9009;&#x672A;&#x6765;&#x6700;&#x8FDC;&#x5C06;&#x4F7F;&#x7528;&#x7684;&#x9875;&#x6DD8;&#x6C70;&#xFF0C;&#x662F;&#x4E00;&#x79CD;&#x6700;&#x4F18;&#x7684;&#x65B9;&#x6848;&#xFF0C;&#x53EF;&#x4EE5;&#x8BC1;&#x660E;&#x7F3A;&#x9875;&#x6570;&#x6700;&#x5C0F;&#x3002;</p>
+<p>&#x53EF;&#x60DC;&#xFF0C;MIN&#x9700;&#x8981;&#x77E5;&#x9053;&#x5C06;&#x6765;&#x53D1;&#x751F;&#x7684;&#x4E8B;&#xFF0C;&#x53EA;&#x80FD;&#x5728;&#x7406;&#x8BBA;&#x4E2D;&#x5B58;&#x5728;&#xFF0C;&#x5B9E;&#x9645;&#x4E0D;&#x53EF;&#x5E94;&#x7528;&#x3002;</p>
+</li>
+<li><p>LRU(Least-Recently-Used)&#x7B97;&#x6CD5;</p>
+<p>&#x7528;&#x8FC7;&#x53BB;&#x7684;&#x5386;&#x53F2;&#x9884;&#x6D4B;&#x5C06;&#x6765;&#xFF0C;&#x9009;&#x6700;&#x8FD1;&#x6700;&#x957F;&#x65F6;&#x95F4;&#x6CA1;&#x6709;&#x4F7F;&#x7528;&#x7684;&#x9875;&#x6DD8;&#x6C70;(&#x4E5F;&#x79F0;&#x6700;&#x8FD1;&#x6700;&#x5C11;&#x4F7F;&#x7528;)&#x3002;</p>
+<p>LRU&#x51C6;&#x786E;&#x5B9E;&#x73B0;&#xFF1A;&#x8BA1;&#x6570;&#x5668;&#x6CD5;&#xFF0C;&#x9875;&#x7801;&#x6808;&#x6CD5;&#x3002;</p>
+<p>&#x7531;&#x4E8E;&#x4EE3;&#x4EF7;&#x8F83;&#x9AD8;&#xFF0C;&#x901A;&#x5E38;&#x4E0D;&#x4F7F;&#x7528;&#x51C6;&#x786E;&#x5B9E;&#x73B0;&#xFF0C;&#x800C;&#x662F;&#x91C7;&#x7528;&#x8FD1;&#x4F3C;&#x5B9E;&#x73B0;&#xFF0C;&#x4F8B;&#x5982;Clock&#x7B97;&#x6CD5;&#x3002;</p>
+</li>
+</ul>
+<p><strong>&#x5185;&#x5B58;&#x6296;&#x52A8;&#x73B0;&#x8C61;</strong>&#xFF1A;&#x9875;&#x9762;&#x7684;&#x9891;&#x7E41;&#x66F4;&#x6362;&#xFF0C;&#x5BFC;&#x81F4;&#x6574;&#x4E2A;&#x7CFB;&#x7EDF;&#x6548;&#x7387;&#x6025;&#x5267;&#x4E0B;&#x964D;&#xFF0C;&#x8FD9;&#x4E2A;&#x73B0;&#x8C61;&#x79F0;&#x4E3A;&#x5185;&#x5B58;&#x6296;&#x52A8;&#xFF08;&#x6216;&#x98A0;&#x7C38;&#xFF09;&#x3002;&#x6296;&#x52A8;&#x4E00;&#x822C;&#x662F;&#x5185;&#x5B58;&#x5206;&#x914D;&#x7B97;&#x6CD5;&#x4E0D;&#x597D;&#xFF0C;&#x5185;&#x5B58;&#x592A;&#x5C0F;&#x5F15;&#x6216;&#x8005;&#x7A0B;&#x5E8F;&#x7684;&#x7B97;&#x6CD5;&#x4E0D;&#x4F73;&#x5F15;&#x8D77;&#x7684;&#x3002;</p>
+<p><strong>Belady&#x73B0;&#x8C61;</strong>&#xFF1A;&#x5BF9;&#x6709;&#x7684;&#x9875;&#x9762;&#x7F6E;&#x6362;&#x7B97;&#x6CD5;&#xFF0C;&#x9875;&#x9519;&#x8BEF;&#x7387;&#x53EF;&#x80FD;&#x4F1A;&#x968F;&#x7740;&#x5206;&#x914D;&#x5E27;&#x6570;&#x589E;&#x52A0;&#x800C;&#x589E;&#x52A0;&#x3002;</p>
+<p>FIFO&#x4F1A;&#x4EA7;&#x751F;Belady&#x5F02;&#x5E38;&#x3002;</p>
+<p>&#x6808;&#x5F0F;&#x7B97;&#x6CD5;&#x65E0;Belady&#x5F02;&#x5E38;&#xFF0C;LRU&#xFF0C;LFU&#xFF08;&#x6700;&#x4E0D;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#xFF09;&#xFF0C;OPT&#x90FD;&#x5C5E;&#x4E8E;&#x6808;&#x5F0F;&#x7B97;&#x6CD5;&#x3002;</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../../basic/arch/Concurrency.html" class="navigation navigation-prev " aria-label="Previous page: 并发技术"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../../basic/arch/Disk-And-File.html" class="navigation navigation-next " aria-label="Next page: 磁盘与文件"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../../gitbook/app.js"></script>
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
