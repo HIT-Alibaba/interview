@@ -40,7 +40,7 @@
     * [Cocoa Touch](iOS/Cocoa-Touch/README.md)
         * [事件处理](iOS/Cocoa-Touch/Event-Handling.md)
         * [UIApplication](iOS/Cocoa-Touch/UIApplication.md)
-        * [UIView](iOS/Cocoa-Touch/UIView.md)
+        * [UIView](iOS/Cocoa-Touch/UIView-Basic.md)
         * [UIViewController](iOS/Cocoa-Touch/UIViewController.md)
 
 * [Android 开发](Android/README.md)
