@@ -1,7 +1,7 @@
 笔试面试知识整理
 =============
 
-### 详见 [Wiki](https://github.com/HIT-Alibaba/interview/wiki)
+[在线阅读]()
 
 所有引用内容版权归原作者所有。
 
