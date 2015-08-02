@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>操作系统基础 | </title>
+        <title>Core Animation | </title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.2.0">
@@ -25,10 +25,10 @@
         
     
     
-    <link rel="next" href="../../basic/arch/Concurrency.html" />
+    <link rel="next" href="../../iOS/Questions.html" />
     
     
-    <link rel="prev" href="../../basic/arch/Arch.html" />
+    <link rel="prev" href="../../iOS/Cocoa-Touch/UIViewController.html" />
     
 
         
@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="1.3.2" data-basepath="../.." data-revision="Sun Aug 02 2015 10:38:45 GMT+0800 (CST)">
+    <div class="book" data-level="2.2.5" data-basepath="../.." data-revision="Sun Aug 02 2015 10:38:45 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -309,7 +309,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.2" data-path="basic/arch/OS.html">
+        <li class="chapter " data-level="1.3.2" data-path="basic/arch/OS.html">
             
                 
                     <a href="../../basic/arch/OS.html">
@@ -667,7 +667,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.5" data-path="iOS/Cocoa-Touch/Animation.html">
+        <li class="chapter active" data-level="2.2.5" data-path="iOS/Cocoa-Touch/Animation.html">
             
                 
                     <a href="../../iOS/Cocoa-Touch/Animation.html">
@@ -995,36 +995,243 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h2 id="%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8F%90%E4%BE%9B%E7%9A%84%E6%9C%8D%E5%8A%A1">&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x7684;&#x670D;&#x52A1;</h2>
-<p>&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x4E94;&#x5927;&#x529F;&#x80FD;&#xFF0C;&#x5206;&#x522B;&#x4E3A;&#xFF1A;&#x4F5C;&#x4E1A;&#x7BA1;&#x7406;&#x3001;&#x6587;&#x4EF6;&#x7BA1;&#x7406;&#x3001;&#x5B58;&#x50A8;&#x7BA1;&#x7406;&#x3001;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x3001;&#x8FDB;&#x7A0B;&#x53CA;&#x5904;&#x7406;&#x673A;&#x7BA1;&#x7406;</p>
-<h2 id="%E4%B8%AD%E6%96%AD%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8">&#x4E2D;&#x65AD;&#x4E0E;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;</h2>
-<h3 id="%E4%B8%AD%E6%96%AD">&#x4E2D;&#x65AD;</h3>
-<p>&#x6240;&#x8C13;&#x7684;&#x4E2D;&#x65AD;&#x5C31;&#x662F;&#x5728;&#x8BA1;&#x7B97;&#x673A;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x7531;&#x4E8E;&#x51FA;&#x73B0;&#x4E86;&#x67D0;&#x4E9B;&#x7279;&#x6B8A;&#x4E8B;&#x60C5;&#xFF0C;&#x4F7F;&#x5F97;CPU&#x6682;&#x505C;&#x5BF9;&#x7A0B;&#x5E8F;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x8F6C;&#x800C;&#x53BB;&#x6267;&#x884C;&#x5904;&#x7406;&#x8FD9;&#x4E00;&#x4E8B;&#x4EF6;&#x7684;&#x7A0B;&#x5E8F;&#x3002;&#x7B49;&#x8FD9;&#x4E9B;&#x7279;&#x6B8A;&#x4E8B;&#x60C5;&#x5904;&#x7406;&#x5B8C;&#x4E4B;&#x540E;&#x518D;&#x56DE;&#x53BB;&#x6267;&#x884C;&#x4E4B;&#x524D;&#x7684;&#x7A0B;&#x5E8F;&#x3002;&#x4E2D;&#x65AD;&#x4E00;&#x822C;&#x5206;&#x4E3A;&#x4E09;&#x7C7B;&#xFF1A;</p>
-<ol>
-<li>&#x7531;&#x8BA1;&#x7B97;&#x673A;&#x786C;&#x4EF6;&#x5F02;&#x5E38;&#x6216;&#x6545;&#x969C;&#x5F15;&#x8D77;&#x7684;&#x4E2D;&#x65AD;&#xFF0C;&#x79F0;&#x4E3A;&#x5185;&#x90E8;&#x5F02;&#x5E38;&#x4E2D;&#x65AD;&#xFF1B;</li>
-<li>&#x7531;&#x7A0B;&#x5E8F;&#x4E2D;&#x6267;&#x884C;&#x4E86;&#x5F15;&#x8D77;&#x4E2D;&#x65AD;&#x7684;&#x6307;&#x4EE4;&#x800C;&#x9020;&#x6210;&#x7684;&#x4E2D;&#x65AD;&#xFF0C;&#x79F0;&#x4E3A;&#x8F6F;&#x4E2D;&#x65AD;&#xFF08;&#x8FD9;&#x4E5F;&#x662F;&#x548C;&#x6211;&#x4EEC;&#x5C06;&#x8981;&#x8BF4;&#x660E;&#x7684;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x76F8;&#x5173;&#x7684;&#x4E2D;&#x65AD;&#xFF09;&#xFF1B;</li>
-<li>&#x7531;&#x5916;&#x90E8;&#x8BBE;&#x5907;&#x8BF7;&#x6C42;&#x5F15;&#x8D77;&#x7684;&#x4E2D;&#x65AD;&#xFF0C;&#x79F0;&#x4E3A;&#x5916;&#x90E8;&#x4E2D;&#x65AD;&#x3002;&#x7B80;&#x5355;&#x6765;&#x8BF4;&#xFF0C;&#x5BF9;&#x4E2D;&#x65AD;&#x7684;&#x7406;&#x89E3;&#x5C31;&#x662F;&#x5BF9;&#x4E00;&#x4E9B;&#x7279;&#x6B8A;&#x4E8B;&#x60C5;&#x7684;&#x5904;&#x7406;&#x3002;</li>
-</ol>
-<p>&#x4E0E;&#x4E2D;&#x65AD;&#x7D27;&#x5BC6;&#x76F8;&#x8FDE;&#x7684;&#x4E00;&#x4E2A;&#x6982;&#x5FF5;&#x5C31;&#x662F;&#x4E2D;&#x65AD;&#x5904;&#x7406;&#x7A0B;&#x5E8F;&#x4E86;&#x3002;&#x5F53;&#x4E2D;&#x65AD;&#x53D1;&#x751F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x7CFB;&#x7EDF;&#x9700;&#x8981;&#x53BB;&#x5BF9;&#x4E2D;&#x65AD;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x5BF9;&#x8FD9;&#x4E9B;&#x4E2D;&#x65AD;&#x7684;&#x5904;&#x7406;&#x662F;&#x7531;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5185;&#x6838;&#x4E2D;&#x7684;&#x7279;&#x5B9A;&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x7684;&#xFF0C;&#x8FD9;&#x4E9B;&#x5904;&#x7406;&#x4E2D;&#x65AD;&#x7684;&#x7279;&#x5B9A;&#x7684;&#x51FD;&#x6570;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x6240;&#x8BF4;&#x7684;&#x4E2D;&#x65AD;&#x5904;&#x7406;&#x7A0B;&#x5E8F;&#x4E86;&#x3002;</p>
-<p>&#x53E6;&#x4E00;&#x4E2A;&#x4E0E;&#x4E2D;&#x65AD;&#x7D27;&#x5BC6;&#x76F8;&#x8FDE;&#x7684;&#x6982;&#x5FF5;&#x5C31;&#x662F;&#x4E2D;&#x65AD;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x3002;&#x4E2D;&#x65AD;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x8BF4;&#x660E;&#x7684;&#x662F;&#x5F53;&#x4E00;&#x4E2A;&#x4E2D;&#x65AD;&#x6B63;&#x5728;&#x88AB;&#x5904;&#x7406;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5904;&#x7406;&#x5668;&#x80FD;&#x63A5;&#x53D7;&#x7684;&#x4E2D;&#x65AD;&#x7684;&#x7EA7;&#x522B;&#x3002;&#x4E2D;&#x65AD;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x4E5F;&#x8868;&#x660E;&#x4E86;&#x4E2D;&#x65AD;&#x9700;&#x8981;&#x88AB;&#x5904;&#x7406;&#x7684;&#x7D27;&#x6025;&#x7A0B;&#x5EA6;&#x3002;&#x6BCF;&#x4E2A;&#x4E2D;&#x65AD;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x5BF9;&#x5E94;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#xFF0C;&#x5F53;&#x5904;&#x7406;&#x5668;&#x5728;&#x5904;&#x7406;&#x67D0;&#x4E00;&#x4E2D;&#x65AD;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EA;&#x6709;&#x6BD4;&#x8FD9;&#x4E2A;&#x4E2D;&#x65AD;&#x4F18;&#x5148;&#x7EA7;&#x9AD8;&#x7684;&#x4E2D;&#x65AD;&#x53EF;&#x4EE5;&#x88AB;&#x5904;&#x7406;&#x5668;&#x63A5;&#x53D7;&#x5E76;&#x4E14;&#x88AB;&#x5904;&#x7406;&#x3002;&#x4F18;&#x5148;&#x7EA7;&#x6BD4;&#x8FD9;&#x4E2A;&#x5F53;&#x524D;&#x6B63;&#x5728;&#x88AB;&#x5904;&#x7406;&#x7684;&#x4E2D;&#x65AD;&#x4F18;&#x5148;&#x7EA7;&#x8981;&#x4F4E;&#x7684;&#x4E2D;&#x65AD;&#x5C06;&#x4F1A;&#x88AB;&#x5FFD;&#x7565;&#x3002;</p>
-<p>&#x5178;&#x578B;&#x7684;&#x4E2D;&#x65AD;&#x4F18;&#x5148;&#x7EA7;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
-<pre><code>&#x673A;&#x5668;&#x9519;&#x8BEF; &gt; &#x65F6;&#x949F; &gt; &#x78C1;&#x76D8; &gt; &#x7F51;&#x7EDC;&#x8BBE;&#x5907; &gt;  &#x7EC8;&#x7AEF; &gt; &#x8F6F;&#x4EF6;&#x4E2D;&#x65AD;
-</code></pre><p>&#x5F53;&#x53D1;&#x751F;&#x8F6F;&#x4EF6;&#x4E2D;&#x65AD;&#x65F6;&#xFF0C;&#x5176;&#x4ED6;&#x6240;&#x6709;&#x7684;&#x4E2D;&#x65AD;&#x90FD;&#x53EF;&#x80FD;&#x53D1;&#x751F;&#x5E76;&#x88AB;&#x5904;&#x7406;&#xFF1B;&#x4F46;&#x5F53;&#x53D1;&#x751F;&#x78C1;&#x76D8;&#x4E2D;&#x65AD;&#x65F6;&#xFF0C;&#x5C31;&#x53EA;&#x6709;&#x65F6;&#x949F;&#x4E2D;&#x65AD;&#x548C;&#x673A;&#x5668;&#x9519;&#x8BEF;&#x4E2D;&#x65AD;&#x80FD;&#x88AB;&#x5904;&#x7406;&#x4E86;&#x3002;</p>
-<h5 id="%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8">&#x7CFB;&#x7EDF;&#x8C03;&#x7528;</h5>
-<p>&#x5728;&#x8BB2;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x4E4B;&#x524D;&#xFF0C;&#x5148;&#x8BF4;&#x4E0B;&#x8FDB;&#x7A0B;&#x7684;&#x6267;&#x884C;&#x5728;&#x7CFB;&#x7EDF;&#x4E0A;&#x7684;&#x4E24;&#x4E2A;&#x7EA7;&#x522B;&#xFF1A;&#x7528;&#x6237;&#x7EA7;&#x548C;&#x6838;&#x5FC3;&#x7EA7;&#xFF0C;&#x4E5F;&#x79F0;&#x4E3A;&#x7528;&#x6237;&#x6001;&#x548C;&#x7CFB;&#x7EDF;&#x6001;(user mode and kernel mode)&#x3002;</p>
-<p>&#x7A0B;&#x5E8F;&#x7684;&#x6267;&#x884C;&#x4E00;&#x822C;&#x662F;&#x5728;&#x7528;&#x6237;&#x6001;&#x4E0B;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x4F46;&#x5F53;&#x7A0B;&#x5E8F;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x7684;&#x670D;&#x52A1;&#x65F6;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#x6253;&#x5F00;&#x67D0;&#x4E00;&#x8BBE;&#x5907;&#x3001;&#x521B;&#x5EFA;&#x6587;&#x4EF6;&#x3001;&#x8BFB;&#x5199;&#x6587;&#x4EF6;&#x7B49;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x5411;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x53D1;&#x51FA;&#x8C03;&#x7528;&#x670D;&#x52A1;&#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x3002;</p>
-<p>Linux&#x7CFB;&#x7EDF;&#x6709;&#x4E13;&#x95E8;&#x7684;&#x51FD;&#x6570;&#x5E93;&#x6765;&#x63D0;&#x4F9B;&#x8FD9;&#x4E9B;&#x8BF7;&#x6C42;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x670D;&#x52A1;&#x7684;&#x5165;&#x53E3;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5E93;&#x4E2D;&#x5305;&#x542B;&#x4E86;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x6240;&#x63D0;&#x4F9B;&#x7684;&#x5BF9;&#x5916;&#x670D;&#x52A1;&#x7684;&#x63A5;&#x53E3;&#x3002;&#x5F53;&#x8FDB;&#x7A0B;&#x53D1;&#x51FA;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x4E4B;&#x540E;&#xFF0C;&#x5B83;&#x6240;&#x5904;&#x7684;&#x8FD0;&#x884C;&#x72B6;&#x6001;&#x5C31;&#x4F1A;&#x7531;&#x7528;&#x6237;&#x6001;&#x53D8;&#x6210;&#x6838;&#x5FC3;&#x6001;&#x3002;&#x4F46;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#xFF0C;&#x8FDB;&#x7A0B;&#x672C;&#x8EAB;&#x5176;&#x5B9E;&#x5E76;&#x6CA1;&#x6709;&#x505A;&#x4EC0;&#x4E48;&#x4E8B;&#x60C5;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x662F;&#x7531;&#x5185;&#x6838;&#x5728;&#x505A;&#x76F8;&#x5E94;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x53BB;&#x5B8C;&#x6210;&#x8FDB;&#x7A0B;&#x6240;&#x63D0;&#x51FA;&#x7684;&#x8FD9;&#x4E9B;&#x8BF7;&#x6C42;&#x3002;</p>
-<p>&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x548C;&#x4E2D;&#x65AD;&#x7684;&#x5173;&#x7CFB;&#x5C31;&#x5728;&#x4E8E;&#xFF0C;&#x5F53;&#x8FDB;&#x7A0B;&#x53D1;&#x51FA;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7533;&#x8BF7;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x8F6F;&#x4EF6;&#x4E2D;&#x65AD;&#x3002;&#x4EA7;&#x751F;&#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x4E2D;&#x65AD;&#x4EE5;&#x540E;&#xFF0C;&#x7CFB;&#x7EDF;&#x4F1A;&#x53BB;&#x5BF9;&#x8FD9;&#x4E2A;&#x8F6F;&#x4E2D;&#x65AD;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x8FDB;&#x7A0B;&#x5C31;&#x5904;&#x4E8E;&#x6838;&#x5FC3;&#x6001;&#x4E86;&#x3002;</p>
-<p>&#x90A3;&#x4E48;&#x7528;&#x6237;&#x6001;&#x548C;&#x6838;&#x5FC3;&#x6001;&#x4E4B;&#x95F4;&#x7684;&#x533A;&#x522B;&#x662F;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;&#xFF08;&#x4EE5;&#x4E0B;&#x533A;&#x522B;&#x6458;&#x81F3;&#x300A;UNIX&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x8BBE;&#x8BA1;&#x300B;&#xFF09;</p>
-<ol>
-<li>&#x7528;&#x6237;&#x6001;&#x7684;&#x8FDB;&#x7A0B;&#x80FD;&#x5B58;&#x53D6;&#x5B83;&#x4EEC;&#x81EA;&#x5DF1;&#x7684;&#x6307;&#x4EE4;&#x548C;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x4E0D;&#x80FD;&#x5B58;&#x53D6;&#x5185;&#x6838;&#x6307;&#x4EE4;&#x548C;&#x6570;&#x636E;&#xFF08;&#x6216;&#x5176;&#x4ED6;&#x8FDB;&#x7A0B;&#x7684;&#x6307;&#x4EE4;&#x548C;&#x6570;&#x636E;&#xFF09;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x6838;&#x5FC3;&#x6001;&#x4E0B;&#x7684;&#x8FDB;&#x7A0B;&#x80FD;&#x591F;&#x5B58;&#x53D6;&#x5185;&#x6838;&#x548C;&#x7528;&#x6237;&#x5730;&#x5740;</li>
-<li>&#x67D0;&#x4E9B;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x662F;&#x7279;&#x6743;&#x6307;&#x4EE4;&#xFF0C;&#x5728;&#x7528;&#x6237;&#x6001;&#x4E0B;&#x6267;&#x884C;&#x7279;&#x6743;&#x6307;&#x4EE4;&#x4F1A;&#x5F15;&#x8D77;&#x9519;&#x8BEF;</li>
-</ol>
-<p>&#x5BF9;&#x6B64;&#x8981;&#x7406;&#x89E3;&#x7684;&#x4E00;&#x4E2A;&#x662F;&#xFF0C;&#x5728;&#x7CFB;&#x7EDF;&#x4E2D;&#x5185;&#x6838;&#x5E76;&#x4E0D;&#x662F;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x4E0E;&#x7528;&#x6237;&#x8FDB;&#x7A0B;&#x5E73;&#x884C;&#x7684;&#x4F30;&#x8BA1;&#x7684;&#x8FDB;&#x7A0B;&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x5185;&#x6838;&#x662F;&#x4E3A;&#x7528;&#x6237;&#x8FDB;&#x7A0B;&#x8FD0;&#x884C;&#x7684;&#x3002;</p>
-<h3 id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
+                        <h2 id="core-animation">Core Animation</h2>
+<p><strong>&#x6CE8;</strong>&#xFF1A;&#x793A;&#x4F8B;&#x4E2D;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x7684;&#x5B8C;&#x6574;&#x7248;&#x53EF;&#x4EE5;&#x5728;<a href="https://github.com/yixiangboy/IOSAnimationDemo" target="_blank">&#x8FD9;&#x91CC;</a>&#x627E;&#x5230;&#x3002;</p>
+<h3 id="uiview-animation">UIView Animation</h3>
+<h4 id="%E7%AE%80%E5%8D%95%E5%8A%A8%E7%94%BB">&#x7B80;&#x5355;&#x52A8;&#x753B;</h4>
+<p>&#x5BF9;&#x4E8E; UIView &#x4E0A;&#x7B80;&#x5355;&#x7684;&#x52A8;&#x753B;&#xFF0C;iOS &#x63D0;&#x4F9B;&#x4E86;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code>+ animateWithDuration:animations:
+</code></pre><p>&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x52A8;&#x753B;&#x7684;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x4E00;&#x4E2A; block&#xFF0C;&#x5728; <code>animations</code> block &#x4E2D;&#x5BF9; UIView &#x7684;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x8C03;&#x6574;&#xFF0C;&#x8BBE;&#x7F6E; UIView &#x52A8;&#x753B;&#x7ED3;&#x675F;&#x540E;&#x6700;&#x7EC8;&#x7684;&#x6548;&#x679C;&#xFF0C;iOS &#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x8865;&#x5145;&#x4E2D;&#x95F4;&#x5E27;&#xFF0C;&#x5F62;&#x6210;&#x52A8;&#x753B;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x66F4;&#x6539;&#x7684;&#x5C5E;&#x6027;&#x6709;:</p>
 <ul>
-<li><a href="http://www.linuxidc.com/Linux/2012-11/74486.htm" target="_blank">Linux&#x7CFB;&#x7EDF;&#x7684;&#x4E2D;&#x65AD;&#x3001;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x4E8E;&#x8C03;&#x5EA6;&#x6982;&#x8FF0;</a></li>
+<li>frame</li>
+<li>bounds</li>
+<li>center</li>
+<li>transform</li>
+<li>alpha</li>
+<li>backgroundColor</li>
+<li>contentStretch</li>
 </ul>
+<p>&#x8FD9;&#x4E9B;&#x5C5E;&#x6027;&#x5927;&#x90FD;&#x662F; View &#x7684;&#x57FA;&#x672C;&#x5C5E;&#x6027;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#x7684;&#x52A8;&#x753B;&#x4F1A;&#x540C;&#x65F6;&#x6539;&#x53D8; View &#x7684; <code>frame</code>&#xFF0C;<code>backgroundColor</code> &#x548C; <code>alpha</code> &#xFF1A;</p>
+<pre><code class="lang-objective-c">[UIView animateWithDuration:2.0 animations:^{
+    myView.frame = CGRectMake(50, 200, 200, 200);
+    myView.backgroundColor = [UIColor blueColor];
+    myView.alpha = 0.7;
+}];
+</code></pre>
+<p>&#x5176;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#x7684; <code>transform</code> &#x5C5E;&#x6027;&#xFF0C;&#x5B83;&#x7684;&#x7C7B;&#x578B;&#x662F; <code>CGAffineTransform</code>&#xFF0C;&#x5373; 2D &#x4EFF;&#x5C04;&#x53D8;&#x6362;&#xFF0C;&#x8FD9;&#x662F;&#x4E2A;&#x6570;&#x5B66;&#x4E2D;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x7528;&#x4E00;&#x4E2A;&#x4E09;&#x7EF4;&#x77E9;&#x9635;&#x6765;&#x8868;&#x8FF0; 2D &#x56FE;&#x5F62;&#x7684;&#x77E2;&#x91CF;&#x53D8;&#x6362;&#x3002;&#x7528; <code>transform</code> &#x5C5E;&#x6027;&#x5BF9; View &#x8FDB;&#x884C;&#xFF1A;</p>
+<ul>
+<li>&#x65CB;&#x8F6C;</li>
+<li>&#x7F29;&#x653E;</li>
+<li>&#x5176;&#x4ED6;&#x81EA;&#x5B9A;&#x4E49; 2D &#x53D8;&#x6362;</li>
+</ul>
+<p>iOS &#x63D0;&#x4F9B;&#x4E86;&#x4E0B;&#x9762;&#x7684;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x7B80;&#x5355;&#x7684; 2D &#x53D8;&#x6362;&#xFF1A;</p>
+<ul>
+<li><code>CGAffineTransformMakeScale</code></li>
+<li><code>CGAffineTransformMakeRotation</code></li>
+<li><code>CGAffineTransformMakeTranslation</code></li>
+</ul>
+<p>&#x4F8B;&#x5982;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4F1A;&#x5C06; View &#x7F29;&#x5C0F;&#x81F3;&#x539F;&#x6765;&#x7684; 1/4 &#x5927;&#x5C0F;&#xFF1A;</p>
+<pre><code class="lang-objective-c">[UIView animateWithDuration:2.0 animations:^{
+    myView.transform = CGAffineTransformMakeScale(0.5, 0.5);
+}];
+</code></pre>
+<h4 id="%E8%B0%83%E8%8A%82%E5%8F%82%E6%95%B0">&#x8C03;&#x8282;&#x53C2;&#x6570;</h4>
+<p>&#x5B8C;&#x6574;&#x7248;&#x7684; animate &#x51FD;&#x6570;&#x5176;&#x5B9E;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
+<pre><code>+ animateWithDuration:delay:options:animations:completion:
+</code></pre><p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>delay</code> &#x53C2;&#x6570;&#x8C03;&#x8282;&#x8BA9;&#x52A8;&#x753B;&#x5EF6;&#x8FDF;&#x4EA7;&#x751F;&#xFF0C;&#x540C;&#x65F6;&#x8FD8;&#x4E00;&#x4E2A; <code>options</code> &#x9009;&#x9879;&#x53EF;&#x4EE5;&#x8C03;&#x8282;&#x52A8;&#x753B;&#x8FDB;&#x884C;&#x7684;&#x65B9;&#x5F0F;&#x3002;&#x53EF;&#x7528;&#x7684; <code>options</code> &#x53EF;&#x5206;&#x4E3A;&#x4E24;&#x7C7B;&#xFF1A;</p>
+<p><strong>&#x63A7;&#x5236;&#x8FC7;&#x7A0B;</strong></p>
+<p>&#x4F8B;&#x5982; <code>UIViewAnimationOptionRepeat</code> &#x53EF;&#x4EE5;&#x8BA9;&#x52A8;&#x753B;&#x53CD;&#x590D;&#x8FDB;&#x884C;&#xFF0C; <code>UIViewAnimationOptionAllowUserInteraction</code> &#x53EF;&#x4EE5;&#x8BA9;&#x5141;&#x8BB8;&#x7528;&#x6237;&#x5BF9;&#x52A8;&#x753B;&#x8FDB;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x540C; View &#x8FDB;&#x884C;&#x4EA4;&#x4E92;&#xFF08;&#x9ED8;&#x8BA4;&#x662F;&#x4E0D;&#x5141;&#x8BB8;&#x7684;&#xFF09;</p>
+<p><strong>&#x63A7;&#x5236;&#x901F;&#x5EA6;</strong></p>
+<p>&#x52A8;&#x753B;&#x7684;&#x8FDB;&#x884C;&#x901F;&#x5EA6;&#x53EF;&#x4EE5;&#x7528;&#x901F;&#x5EA6;&#x66F2;&#x7EBF;&#x6765;&#x8868;&#x793A;&#xFF08;&#x53C2;&#x8003;<a href="http://zhuanlan.zhihu.com/cheerfox/20031427#!" target="_blank">&#x8FD9;&#x91CC;</a>&#xFF09;&#xFF0C;&#x63D0;&#x4F9B;&#x7684;&#x9009;&#x9879;&#x4F8B;&#x5982; <code>UIViewAnimationOptionCurveEaseIn</code> &#x662F;&#x5148;&#x6162;&#x540E;&#x5FEB;&#xFF0C;<code>UIViewAnimationOptionCurveEaseOut</code> &#x662F;&#x5148;&#x5FEB;&#x540E;&#x6162;&#x3002;</p>
+<p>&#x4E0D;&#x540C;&#x7684;&#x9009;&#x9879;&#x76F4;&#x63A5;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x201C;&#x4E0E;&#x201D;&#x64CD;&#x4F5C;&#x8FDB;&#x884C;&#x5408;&#x5E76;&#xFF0C;&#x540C;&#x65F6;&#x4F7F;&#x7528;&#xFF0C;&#x4F8B;&#x5982;:</p>
+<pre><code>UIViewAnimationOptionRepeat | UIViewAnimationOptionAllowUserInteraction
+</code></pre><h4 id="%E5%85%B3%E9%94%AE%E5%B8%A7%E5%8A%A8%E7%94%BB">&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;</h4>
+<p>&#x4E0A;&#x9762;&#x4ECB;&#x7ECD;&#x7684;&#x52A8;&#x753B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x80FD;&#x63A7;&#x5236;&#x5F00;&#x59CB;&#x548C;&#x7ED3;&#x675F;&#x65F6;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x7136;&#x540E;&#x7531;&#x7CFB;&#x7EDF;&#x8865;&#x5168;&#x4E2D;&#x95F4;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x6709;&#x4E9B;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x8BBE;&#x5B9A;&#x82E5;&#x5E72;&#x5173;&#x952E;&#x5E27;&#xFF0C;&#x5B9E;&#x73B0;&#x66F4;&#x590D;&#x6742;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x5C31;&#x9700;&#x8981;&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;&#x7684;&#x652F;&#x6301;&#x4E86;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-objective-c">[UIView animateKeyframesWithDuration:2.0 delay:0.0 options:UIViewKeyframeAnimationOptionRepeat | UIViewKeyframeAnimationOptionAutoreverse animations:^{
+    [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.5 animations:^{
+        self.myView.frame = CGRectMake(10, 50, 100, 100);
+    }];
+    [UIView addKeyframeWithRelativeStartTime: 0.5 relativeDuration:0.3 animations:^{
+        self.myView.frame = CGRectMake(20, 100, 100, 100);
+    }];
+    [UIView addKeyframeWithRelativeStartTime:0.8 relativeDuration:0.2 animations:^{
+        self.myView.transform = CGAffineTransformMakeScale(0.5, 0.5);
+    }];
+} completion:nil];
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x6DFB;&#x52A0;&#x4E86;&#x4E09;&#x4E2A;&#x5173;&#x952E;&#x5E27;&#xFF0C;&#x5728;&#x5916;&#x9762;&#x7684; <code>animateKeyframesWithDuration</code> &#x4E2D;&#x6211;&#x4EEC;&#x8BBE;&#x7F6E;&#x4E86;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x4E3A; 2.0 &#x79D2;&#xFF0C;&#x8FD9;&#x662F;&#x771F;&#x5B9E;&#x610F;&#x4E49;&#x4E0A;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x91CC;&#x9762;&#x7684; <code>startTime</code> &#x548C; <code>relativeDuration</code> &#x90FD;&#x662F;&#x76F8;&#x5BF9;&#x65F6;&#x95F4;&#x3002;&#x4EE5;&#x7B2C;&#x4E00;&#x4E2A;&#x4E3A;&#x4F8B;&#xFF0C;<code>startTime</code> &#x4E3A; 0.0&#xFF0C;<code>relativeTime</code> &#x4E3A; 0.5&#xFF0C;&#x8FD9;&#x4E2A;&#x52A8;&#x753B;&#x4F1A;&#x76F4;&#x63A5;&#x5F00;&#x59CB;&#xFF0C;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x4E3A; 2.0 X 0.5 = 1.0 &#x79D2;&#xFF0C;&#x4E0B;&#x9762;&#x7B2C;&#x4E8C;&#x4E2A;&#x7684;&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#x662F; 0.5&#xFF0C;&#x6B63;&#x597D;&#x627F;&#x63A5;&#x4E0A;&#x4E00;&#x4E2A;&#x7ED3;&#x675F;&#xFF0C;&#x7B2C;&#x4E09;&#x4E2A;&#x540C;&#x7406;&#xFF0C;&#x8FD9;&#x6837;&#x4E09;&#x4E2A;&#x52A8;&#x753B;&#x5C31;&#x53D8;&#x6210;&#x8FDE;&#x7EED;&#x7684;&#x52A8;&#x753B;&#x4E86;&#x3002;</p>
+<h4 id="view-%E7%9A%84%E8%BD%AC%E6%8D%A2">View &#x7684;&#x8F6C;&#x6362;</h4>
+<p>iOS &#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x7528;&#x4E8E;&#x8FDB;&#x884C;&#x4E24;&#x4E2A; View &#x4E4B;&#x95F4;&#x901A;&#x8FC7;&#x52A8;&#x753B;&#x6362;&#x573A;&#xFF1A;</p>
+<pre><code>+ transitionWithView:duration:options:animations:completion:
++ transitionFromView:toView:duration:options:completion:
+</code></pre><p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x6362;&#x573A;&#x52A8;&#x753B;&#x4F1A;&#x5728;&#x8FD9;&#x4E24;&#x4E2A; View &#x5171;&#x540C;&#x7684;&#x7236; View &#x4E0A;&#x8FDB;&#x884C;&#xFF0C;&#x5728;&#x5199;&#x52A8;&#x753B;&#x4E4B;&#x524D;&#xFF0C;&#x5148;&#x8981;&#x8BBE;&#x8BA1;&#x597D; View &#x7684;&#x7EE7;&#x627F;&#x7ED3;&#x6784;&#x3002;</p>
+<p>&#x540C;&#x6837;&#xFF0C;View &#x4E4B;&#x95F4;&#x7684;&#x8F6C;&#x6362;&#x4E5F;&#x6709;&#x5F88;&#x591A;&#x9009;&#x9879;&#x53EF;&#x9009;&#xFF0C;&#x4F8B;&#x5982; <code>UIViewAnimationOptionTransitionFlipFromLeft</code> &#x4ECE;&#x5DE6;&#x8FB9;&#x7FFB;&#x8F6C;&#xFF0C;<code>UIViewAnimationOptionTransitionCrossDissolve</code> &#x6E10;&#x53D8;&#x7B49;&#x7B49;&#x3002;</p>
+<h3 id="calayer-animation">CALayer Animation</h3>
+<p>UIView &#x7684;&#x52A8;&#x753B;&#x7B80;&#x5355;&#x6613;&#x7528;&#xFF0C;&#x4F46;&#x662F;&#x80FD;&#x5B9E;&#x73B0;&#x7684;&#x6548;&#x679C;&#x76F8;&#x5BF9;&#x6709;&#x9650;&#xFF0C;&#x4E0A;&#x9762;&#x4ECB;&#x7ECD;&#x7684; UIView &#x7684;&#x51E0;&#x79CD;&#x52A8;&#x753B;&#x65B9;&#x5F0F;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x5BF9;&#x5E95;&#x5C42; CALayer &#x52A8;&#x753B;&#x7684;&#x4E00;&#x79CD;&#x5C01;&#x88C5;&#x3002;&#x76F4;&#x63A5;&#x4F7F;&#x7528; CALayer &#x5C42;&#x7684;&#x52A8;&#x753B;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x66F4;&#x591A;&#x9AD8;&#x7EA7;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;&#x3002;</p>
+<p><strong>&#x6CE8;&#x610F;</strong>&#xFF1A;&#x4F7F;&#x7528; CALayer &#x52A8;&#x753B;&#x4E4B;&#x524D;&#xFF0C;&#x9996;&#x5148;&#x9700;&#x8981;&#x5F15;&#x5165; QuartzCore.framework&#x3002;</p>
+<h4 id="%E5%9F%BA%E6%9C%AC%E5%8A%A8%E7%94%BB%EF%BC%88cabasicanimation%EF%BC%89">&#x57FA;&#x672C;&#x52A8;&#x753B;&#xFF08;CABasicAnimation&#xFF09;</h4>
+<p>CABasicAnimation &#x7528;&#x4E8E;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; CALayer &#x4E0A;&#x7684;&#x57FA;&#x672C;&#x52A8;&#x753B;&#x6548;&#x679C;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code class="lang-objective-c">CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@&quot;position.x&quot;];
+animation.toValue = @200;
+animation.duration = 0.8;
+animation.repeatCount = 5;
+animation.beginTime = CACurrentMediaTime() + 0.5;
+animation.fillMode = kCAFillModeRemoved;
+[self.myView.layer addAnimation:animation forKey:nil];
+</code></pre>
+<h5 id="keypath">KeyPath</h5>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x4E86; <code>animationWithKeyPath</code> &#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x6765;&#x6539;&#x53D8; layer &#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;&#x6709;&#x5F88;&#x591A;&#xFF0C;&#x5177;&#x4F53;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/AnimatableProperties/AnimatableProperties.html" target="_blank">&#x8FD9;&#x91CC;</a>&#x548C;<a href="http://www.cnblogs.com/pengyingh/articles/2379631.html" target="_blank">&#x8FD9;&#x91CC;</a>&#x3002;&#x5176;&#x4E2D;&#x5F88;&#x591A;&#x5C5E;&#x6027;&#x5728;&#x524D;&#x9762;&#x4ECB;&#x7ECD;&#x7684; UIView &#x52A8;&#x753B;&#x90E8;&#x5206;&#x6211;&#x4EEC;&#x4E5F;&#x770B;&#x5230;&#x8FC7;&#xFF0C;&#x8FDB;&#x4E00;&#x6B65;&#x9A8C;&#x8BC1;&#x4E86; UIView &#x7684;&#x52A8;&#x753B;&#x65B9;&#x6CD5;&#x662F;&#x5BF9;&#x5E95;&#x5C42; CALayer &#x7684;&#x4E00;&#x79CD;&#x5C01;&#x88C5;&#x3002;</p>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x4E00;&#x70B9;&#x662F;&#xFF0C;&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x4E86; <code>position</code> &#x5C5E;&#x6027;&#xFF0C; layer &#x7684;&#x8FD9;&#x4E2A; <code>position</code> &#x5C5E;&#x6027;&#x548C; View &#x7684; <code>frame</code> &#x4EE5;&#x53CA; <code>bounds</code> &#x5C5E;&#x6027;&#x90FD;&#x4E0D;&#x76F8;&#x540C;&#xFF0C;&#x800C;&#x662F;&#x548C; Layer &#x7684; <code>anchorPoint</code> &#x6709;&#x5173;&#xFF0C;&#x53EF;&#x4EE5;&#x7531;&#x4E0B;&#x9762;&#x7684;&#x516C;&#x5F0F;&#x8BA1;&#x7B97;&#x5F97;&#x5230;&#xFF1A;</p>
+<pre><code class="lang-objective-c">position.x = frame.origin.x + 0.5 * bounds.size.width&#xFF1B;  
+position.y = frame.origin.y + 0.5 * bounds.size.height&#xFF1B;
+</code></pre>
+<p>&#x5173;&#x4E8E; <code>anchorPoint</code> &#x548C; <code>position</code> &#x5C5E;&#x6027;&#x7684;&#x4EE5;&#x53CA;&#x5177;&#x4F53;&#x8BA1;&#x7B97;&#x7684;&#x539F;&#x7406;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="http://wonderffee.github.io/blog/2013/10/13/understand-anchorpoint-and-position/" target="_blank">&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;</a>&#x3002;</p>
+<h5 id="%E5%B1%9E%E6%80%A7">&#x5C5E;&#x6027;</h5>
+<p>CABasicAnimation &#x7684;&#x5C5E;&#x6027;&#x6709;&#x4E0B;&#x9762;&#x51E0;&#x4E2A;&#xFF1A;</p>
+<ul>
+<li>beginTime</li>
+<li>duration</li>
+<li>fromValue</li>
+<li>toValue</li>
+<li>byValue</li>
+<li>repeatCount</li>
+<li>autoreverses</li>
+<li>timingFunction</li>
+</ul>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5176;&#x4E2D; beginTime&#xFF0C;duration&#xFF0C;repeatCount &#x7B49;&#x5C5E;&#x6027;&#x548C;&#x4E0A;&#x9762;&#x5728; UIView &#x4E2D;&#x4F7F;&#x7528;&#x5230;&#x7684; duration&#xFF0C;UIViewAnimationOptionRepeat &#x7B49;&#x9009;&#x9879;&#x662F;&#x76F8;&#x5BF9;&#x5E94;&#x7684;&#xFF0C;&#x4E0D;&#x8FC7;&#x8FD9;&#x91CC;&#x7684;&#x9009;&#x9879;&#x80FD;&#x591F;&#x63D0;&#x4F9B;&#x66F4;&#x591A;&#x7684;&#x6269;&#x5C55;&#x6027;&#x3002;</p>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F; <code>fromValue</code>&#xFF0C;<code>toValue</code>&#xFF0C;<code>byValue</code> &#x8FD9;&#x51E0;&#x4E2A;&#x9009;&#x9879;&#xFF0C;&#x652F;&#x6301;&#x7684;&#x8BBE;&#x7F6E;&#x6A21;&#x5F0F;&#x6709;&#x4E0B;&#x9762;&#x51E0;&#x79CD;&#xFF1A;</p>
+<ul>
+<li>&#x8BBE;&#x7F6E; fromValue &#x548C; toValue&#xFF1A;&#x4ECE; fromValue &#x53D8;&#x5316;&#x5230; toValue</li>
+<li>&#x8BBE;&#x7F6E; fromValue &#x548C; byValue&#xFF1A;&#x4ECE; fromValue &#x53D8;&#x5316;&#x5230; fromValue + byValue</li>
+<li>&#x8BBE;&#x7F6E; byValue &#x548C; toValue&#xFF1A;&#x4ECE; toValue - byValue &#x53D8;&#x5316;&#x5230; toValue</li>
+<li>&#x8BBE;&#x7F6E; fromValue&#xFF1A; &#x4ECE; fromValue &#x53D8;&#x5316;&#x5230;&#x5C5E;&#x6027;&#x5F53;&#x524D;&#x503C;</li>
+<li>&#x8BBE;&#x7F6E; toValue&#xFF1A;&#x4ECE;&#x5C5E;&#x6027;&#x5F53;&#x524D;&#x503C;&#x53D8;&#x5316;&#x5230; toValue</li>
+<li>&#x8BBE;&#x7F6E; byValue&#xFF1A;&#x4ECE;&#x5C5E;&#x6027;&#x5F53;&#x524D;&#x503C;&#x53D8;&#x5316;&#x5230;&#x5C5E;&#x6027;&#x5F53;&#x524D;&#x503C; + toValue</li>
+</ul>
+<p>&#x770B;&#x8D77;&#x6765;&#x633A;&#x590D;&#x6742;&#xFF0C;&#x5176;&#x5B9E;&#x6982;&#x62EC;&#x8D77;&#x6765;&#x57FA;&#x672C;&#x5C31;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x67D0;&#x4E2A;&#x503C;&#x4E0D;&#x8BBE;&#x7F6E;&#xFF0C;&#x5C31;&#x662F;&#x7528;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x5F53;&#x524D;&#x7684;&#x503C;&#x3002;</p>
+<p>&#x53E6;&#x5916;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7684;:</p>
+<pre><code class="lang-objecitive-c">animation.toValue = @200;
+</code></pre>
+<p>&#x800C;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x4F7F;&#x7528; 200&#xFF0C;&#x56E0;&#x4E3A; <code>toValue</code> &#x4E4B;&#x7C7B;&#x7684;&#x5C5E;&#x6027;&#x4E3A; <code>id</code> &#x7C7B;&#x578B;&#xFF0C;&#x6216;&#x8005;&#x50CF;&#x8FD9;&#x6837;&#x4F7F;&#x7528; @ &#x7B26;&#x53F7;&#xFF0C;&#x6216;&#x8005;&#x4F7F;&#x7528;&#xFF1A;</p>
+<pre><code class="lang-objecitive-c">animation.toValue = [NSNumber numberWithInt:200];
+</code></pre>
+<p>&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x6709;&#x610F;&#x601D;&#x7684;&#x662F; <code>timingFunction</code> &#x5C5E;&#x6027;&#xFF0C;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x52A8;&#x753B;&#x7684;&#x8FD0;&#x52A8;&#x66F2;&#x7EBF;&#xFF08;&#x8282;&#x594F;&#xFF0C;pacing&#xFF09;&#xFF0C;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x4E86;&#x4E94;&#x79CD;&#x503C;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#xFF1A;</p>
+<ul>
+<li>kCAMediaTimingFunctionLinear &#x7EBF;&#x6027;&#x52A8;&#x753B;</li>
+<li>kCAMediaTimingFunctionEaseIn &#x5148;&#x5FEB;&#x540E;&#x6162;</li>
+<li>kCAMediaTimingFunctionEaseOut &#x5148;&#x6162;&#x540E;&#x5FEB;</li>
+<li>kCAMediaTimingFunctionEaseInEaseOut &#x5148;&#x6162;&#x540E;&#x5FEB;&#x518D;&#x6162;</li>
+<li>kCAMediaTimingFunctionDefault &#x9ED8;&#x8BA4;&#xFF0C;&#x4E5F;&#x5C5E;&#x4E8E;&#x4E2D;&#x95F4;&#x6BD4;&#x8F83;&#x5FEB;</li>
+</ul>
+<p>&#x6B64;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; [CAMediaTimingFunction functionWithControlPoints] &#x65B9;&#x6CD5;&#x6765;&#x81EA;&#x5B9A;&#x4E49;&#x8FD0;&#x52A8;&#x66F2;&#x7EBF;&#xFF0C;<a href="http://netcetera.org/camtf-playground.html" target="_blank">&#x8FD9;&#x4E2A;&#x7F51;&#x7AD9;</a>&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x5C06;&#x53C2;&#x6570;&#x8C03;&#x8282;&#x53EF;&#x89C6;&#x5316;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x5173;&#x4E8E;&#x52A8;&#x753B;&#x65F6;&#x95F4;&#x7CFB;&#x7EDF;&#x7684;&#x5177;&#x4F53;&#x4ECB;&#x7ECD;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="http://geeklu.com/2012/09/animation-in-ios/" target="_blank">&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;</a>&#x3002;</p>
+<h4 id="%E5%85%B3%E9%94%AE%E5%B8%A7%E5%8A%A8%E7%94%BB%EF%BC%88cakeyframeanimation%EF%BC%89">&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;&#xFF08;CAKeyframeAnimation&#xFF09;</h4>
+<p>&#x540C; UIView &#x4E2D;&#x7684;&#x7C7B;&#x4F3C;&#xFF0C;CALayer &#x5C42;&#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;&#x7684;&#x652F;&#x6301;&#xFF0C;CAKeyFrameAnimation &#x548C; CABasicAnimation &#x90FD;&#x7EE7;&#x627F;&#x81EA; CAPropertyAnimation&#xFF0C;&#x56E0;&#x6B64;&#x5B83;&#x6709;&#x5177;&#x6709;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x90A3;&#x4E9B;&#x5C5E;&#x6027;&#xFF0C;&#x6B64;&#x5916;&#xFF0C;CAKeyFrameAnimation &#x8FD8;&#x6709;&#x7279;&#x6709;&#x7684;&#x51E0;&#x4E2A;&#x5C5E;&#x6027;&#x3002;</p>
+<h5 id="values-%E5%92%8C-keytimes">values &#x548C; keyTimes</h5>
+<p>&#x4F7F;&#x7528; <code>values</code> &#x548C; <code>keyTimes</code> &#x53EF;&#x4EE5;&#x5171;&#x540C;&#x786E;&#x5B9A;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x7684;&#x82E5;&#x5E72;&#x5173;&#x952E;&#x5E27;&#xFF0C;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-objective-c">CAKeyframeAnimation *anima = [CAKeyframeAnimation animationWithKeyPath:@&quot;transform.rotation&quot;];//&#x5728;&#x8FD9;&#x91CC;@&quot;transform.rotation&quot;==@&quot;transform.rotation.z&quot;
+NSValue *value1 = [NSNumber numberWithFloat:-M_PI/180*4];
+NSValue *value2 = [NSNumber numberWithFloat:M_PI/180*4];
+NSValue *value3 = [NSNumber numberWithFloat:-M_PI/180*4];
+anima.values = @[value1,value2,value3];
+// anima.keyTimes = @[@0.0, @0.5, @1.0];
+anima.repeatCount = MAXFLOAT;
+
+[_demoView.layer addAnimation:anima forKey:@&quot;shakeAnimation&quot;];
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x52A8;&#x753B;&#x5171;&#x6709;&#x4E09;&#x4E2A;&#x5173;&#x952E;&#x5E27;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x6307;&#x5B9A; <code>keyTimes</code> &#x5219;&#x5404;&#x4E2A;&#x5173;&#x952E;&#x5E27;&#x4F1A;&#x5E73;&#x5206;&#x6574;&#x4E2A;&#x52A8;&#x753B;&#x7684;&#x65F6;&#x95F4;(duration)&#x3002;</p>
+<h5 id="path">path</h5>
+<p>&#x4F7F;&#x7528; path &#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x7684;&#x8FD0;&#x52A8;&#x8DEF;&#x5F84;&#xFF0C;&#x6CE8;&#x610F; path &#x53EA;&#x5BF9; CALayer &#x7684; anchorPoint &#x548C;position &#x5C5E;&#x6027;&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x53E6;&#x5916;&#x5982;&#x679C;&#x4F60;&#x8BBE;&#x7F6E;&#x4E86; path &#xFF0C;&#x90A3;&#x4E48; values &#x5C06;&#x88AB;&#x5FFD;&#x7565;&#x3002;</p>
+<pre><code class="lang-objective-c">CAKeyframeAnimation *anima = [CAKeyframeAnimation animationWithKeyPath:@&quot;position&quot;];
+UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(SCREEN_WIDTH/2-100, SCREEN_HEIGHT/2-100, 200, 200)];
+anima.path = path.CGPath;
+anima.duration = 2.0f;
+[_demoView.layer addAnimation:anima forKey:@&quot;pathAnimation&quot;];
+</code></pre>
+<h4 id="%E7%BB%84%E5%8A%A8%E7%94%BB%EF%BC%88caanimationgroup">&#x7EC4;&#x52A8;&#x753B;&#xFF08;CAAnimationGroup)</h4>
+<p>&#x7EC4;&#x52A8;&#x753B;&#x53EF;&#x4EE5;&#x5C06;&#x4E00;&#x7EC4;&#x52A8;&#x753B;&#x7EC4;&#x5408;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x6240;&#x6709;&#x52A8;&#x753B;&#x5BF9;&#x8C61;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x8FD0;&#x884C;&#xFF0C;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-objective-c">CAAnimationGroup *group = [[CAAnimationGroup alloc] init];
+CABasicAnimation *animationOne = [CABasicAnimation animationWithKeyPath:@&quot;transform.scale&quot;];
+
+animationOne.toValue = @2.0;
+animationOne.duration = 1.0;
+
+CABasicAnimation *animationTwo = [CABasicAnimation animationWithKeyPath:@&quot;position.x&quot;];
+animationTwo.toValue = @400;
+animationTwo.duration = 1.0;
+
+[group setAnimations:@[animationOne, animationTwo]];
+[self.myView.layer addAnimation:group forKey:nil];
+</code></pre>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x4E00;&#x4E2A; group &#x7EC4;&#x5185;&#x7684;&#x67D0;&#x4E2A;&#x52A8;&#x753B;&#x7684;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#xFF08;duration&#xFF09;&#xFF0C;&#x5982;&#x679C;&#x8D85;&#x8FC7;&#x4E86;&#x6574;&#x4E2A;&#x7EC4;&#x7684;&#x52A8;&#x753B;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#xFF0C;&#x90A3;&#x4E48;&#x591A;&#x51FA;&#x7684;&#x52A8;&#x753B;&#x65F6;&#x95F4;&#x5C06;&#x4E0D;&#x4F1A;&#x88AB;&#x5C55;&#x793A;&#x3002;&#x4F8B;&#x5982;&#x4E00;&#x4E2A; group  &#x7684;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x662F; 5s&#xFF0C;&#x800C;&#x7EC4;&#x5185;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x4E3A; 10s &#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A; 10s &#x7684;&#x52A8;&#x753B;&#x53EA;&#x4F1A;&#x5C55;&#x793A;&#x524D; 5s &#x3002;</p>
+<h4 id="%E5%88%87%E6%8D%A2%E5%8A%A8%E7%94%BB%EF%BC%88catransition%EF%BC%89">&#x5207;&#x6362;&#x52A8;&#x753B;&#xFF08;CATransition&#xFF09;</h4>
+<p>CATransition &#x53EF;&#x4EE5;&#x7528;&#x4E8E; View &#x6216; ViewController &#x76F4;&#x63A5;&#x7684;&#x6362;&#x573A;&#x52A8;&#x753B;&#xFF1A;</p>
+<pre><code class="lang-objective-c">self.myView.backgroundColor = [UIColor blueColor];
+CATransition *trans = [CATransition animation];
+trans.duration = 1.0;
+trans.type = @&quot;push&quot;;
+
+[self.myView.layer addAnimation:trans forKey:nil];
+
+// &#x8FD9;&#x53E5;&#x653E;&#x5728;&#x4E0B;&#x9762;&#x4E5F;&#x53EF;&#x4EE5;
+// self.myView.backgroundColor = [UIColor blueColor];
+</code></pre>
+<p>&#x4E3A;&#x4EC0;&#x4E48;&#x6539;&#x53D8;&#x989C;&#x8272;&#x653E;&#x5728;&#x524D;&#x540E;&#x90FD;&#x53EF;&#x4EE5;&#x5462;&#xFF1F;&#x5177;&#x4F53;&#x7684;&#x89E3;&#x91CA;&#x53EF;&#x4EE5;&#x53C2;&#x8003; SO &#x4E0A;&#x7684;<a href="http://stackoverflow.com/questions/2233692/how-does-catransition-work" target="_blank">&#x8FD9;&#x4E2A;&#x56DE;&#x7B54;</a>&#x3002;&#x7B80;&#x5355;&#x6765;&#x8BF4;&#x5C31;&#x662F;&#x52A8;&#x753B;&#x548C;&#x7ED8;&#x5236;&#x4E4B;&#x95F4;&#x5E76;&#x4E0D;&#x51B2;&#x7A81;&#x3002;</p>
+<h3 id="%E6%9B%B4%E9%AB%98%E7%BA%A7%E7%9A%84%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C">&#x66F4;&#x9AD8;&#x7EA7;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;</h3>
+<h4 id="cadisplaylink">CADisplayLink</h4>
+<p>CADisplayLink &#x662F;&#x4E00;&#x4E2A;&#x8BA1;&#x65F6;&#x5668;&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x5468;&#x671F;&#x6027;&#x7684;&#x8C03;&#x7528;&#x67D0;&#x4E2A; selecor &#x65B9;&#x6CD5;&#x3002;&#x76F8;&#x6BD4; NSTimer &#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x4EE5;&#x548C;&#x5C4F;&#x5E55;&#x5237;&#x65B0;&#x7387;&#x540C;&#x6B65;&#x7684;&#x9891;&#x7387;&#xFF08;&#x6BCF;&#x79D2;60&#x6B21;&#xFF09;&#x6765;&#x8C03;&#x7528;&#x7ED8;&#x5236;&#x51FD;&#x6570;&#xFF0C;&#x5B9E;&#x73B0;&#x754C;&#x9762;&#x8FDE;&#x7EED;&#x7684;&#x4E0D;&#x505C;&#x91CD;&#x7ED8;&#xFF0C;&#x4ECE;&#x800C;&#x5B9E;&#x73B0;&#x52A8;&#x753B;&#x6548;&#x679C;&#x3002;</p>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF08;&#x4FEE;&#x6539;&#x81EA;<a href="http://www.cocoachina.com/ios/20150320/11382.html" target="_blank">&#x8FD9;&#x91CC;</a>)&#xFF1A;</p>
+<pre><code class="lang-objective-c">#import &quot;BlockView.h&quot;
+
+@implementation BlockView
+
+- (void)startAnimationFrom:(CGFloat)from To:(CGFloat)to
+{
+    self.from = from;
+    self.to = to;
+    if (self.displayLink == nil) {
+        self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(tick:)];
+        [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop]
+                               forMode:NSDefaultRunLoopMode];
+    }
+}
+
+// &#x91CD;&#x590D;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4EE5;&#x91CD;&#x7ED8;&#x6574;&#x4E2A; View
+- (void)tick:(CADisplayLink *)displayLink
+{
+    [self setNeedsDisplay];
+}
+
+- (void)endAnimation
+{
+    [self.displayLink invalidate];
+    self.displayLink = nil;
+}
+
+- (void)drawRect:(CGRect)rect
+{
+    CALayer *layer = self.layer.presentationLayer;
+    CGFloat progress = 1 - (layer.position.y - self.to) / (self.from - self.to);
+    CGFloat height = CGRectGetHeight(rect);
+    CGFloat deltaHeight = height / 2 * (0.5 - fabs(progress - 0.5));
+    CGPoint topLeft = CGPointMake(0, deltaHeight);
+    CGPoint topRight = CGPointMake(CGRectGetWidth(rect), deltaHeight);
+    CGPoint bottomLeft = CGPointMake(0, height);
+    CGPoint bottomRight = CGPointMake(CGRectGetWidth(rect), height);
+    UIBezierPath* path = [UIBezierPath bezierPath];
+    [[UIColor blueColor] setFill];
+    [path moveToPoint:topLeft];
+    [path addQuadCurveToPoint:topRight controlPoint:CGPointMake(CGRectGetMidX(rect), 0)];
+    [path addLineToPoint:bottomRight];
+    [path addQuadCurveToPoint:bottomLeft controlPoint:CGPointMake(CGRectGetMidX(rect), height - deltaHeight)];
+    [path closePath];
+    [path fill];
+}
+
+@end
+</code></pre>
+<h4 id="uidynamicanimator">UIDynamicAnimator</h4>
+<h4 id="caemitterlayer">CAEmitterLayer</h4>
 
                     
                     </section>
@@ -1035,10 +1242,10 @@
         </div>
 
         
-        <a href="../../basic/arch/Arch.html" class="navigation navigation-prev " aria-label="Previous page: 体系结构基础"><i class="fa fa-angle-left"></i></a>
+        <a href="../../iOS/Cocoa-Touch/UIViewController.html" class="navigation navigation-prev " aria-label="Previous page: UIViewController"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../basic/arch/Concurrency.html" class="navigation navigation-next " aria-label="Next page: 并发技术"><i class="fa fa-angle-right"></i></a>
+        <a href="../../iOS/Questions.html" class="navigation navigation-next " aria-label="Next page: 面试问题"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
