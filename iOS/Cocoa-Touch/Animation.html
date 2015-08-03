@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Core Animation | </title>
+        <title>Core Animation | 笔试面试知识整理</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.2.0">
@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="2.2.5" data-basepath="../.." data-revision="Sun Aug 02 2015 17:40:37 GMT+0800 (CST)">
+    <div class="book" data-level="2.2.5" data-basepath="../.." data-revision="Mon Aug 03 2015 10:16:27 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -985,7 +985,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../../" ></a>
+        <a href="../../" >笔试面试知识整理</a>
     </h1>
 </div>
 
@@ -1231,6 +1231,26 @@ trans.type = @&quot;push&quot;;
 @end
 </code></pre>
 <h4 id="uidynamicanimator">UIDynamicAnimator</h4>
+<p>UIDynamicAnimator &#x662F; iOS 7 &#x5F15;&#x5165;&#x7684;&#x4E00;&#x4E2A;&#x65B0;&#x7C7B;&#xFF0C;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x51FA;&#x5177;&#x6709;&#x7269;&#x7406;&#x4EFF;&#x771F;&#x6548;&#x679C;&#x7684;&#x52A8;&#x753B;&#xFF0C;&#x5177;&#x4F53;&#x63D0;&#x4F9B;&#x4E86;&#x4E0B;&#x9762;&#x51E0;&#x79CD;&#x7269;&#x7406;&#x4EFF;&#x771F;&#x884C;&#x4E3A;&#xFF1A;</p>
+<ul>
+<li>UIGravityBehavior&#xFF1A;&#x91CD;&#x529B;&#x884C;&#x4E3A;</li>
+<li>UICollisionBehavior&#xFF1A;&#x78B0;&#x649E;&#x884C;&#x4E3A;</li>
+<li>UISnapBehavior&#xFF1A;&#x6355;&#x6349;&#x884C;&#x4E3A;</li>
+<li>UIPushBehavior&#xFF1A;&#x63A8;&#x52A8;&#x884C;&#x4E3A;</li>
+<li>UIAttachmentBehavior&#xFF1A;&#x9644;&#x7740;&#x884C;&#x4E3A;</li>
+<li>UIDynamicItemBehavior&#xFF1A;&#x52A8;&#x529B;&#x5143;&#x7D20;&#x884C;&#x4E3A;</li>
+</ul>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF08;&#x6765;&#x81EA;<a href="http://www.teehanlax.com/blog/introduction-to-uikit-dynamics/" target="_blank">&#x8FD9;&#x91CC;</a>]</p>
+<pre><code class="lang-objective-c">self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+
+UIGravityBehavior* gravityBehavior = [[UIGravityBehavior alloc] initWithItems:@[self.myView]];
+[self.animator addBehavior:gravityBehavior];
+
+UICollisionBehavior* collisionBehavior = [[UICollisionBehavior alloc] initWithItems:@[self.myView]];
+collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
+[self.animator addBehavior:collisionBehavior];
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x548C;&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x5199;&#x7684;&#x52A8;&#x753B;&#x4EE3;&#x7801;&#x6709;&#x5F88;&#x5927;&#x4E0D;&#x540C;&#xFF0C;&#x5728;&#x8FD9;&#x91CC; behavior &#x662F;&#x7528;&#x4E8E;&#x63A7;&#x5236; View &#x884C;&#x4E3A;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x505A;&#x7684;&#x64CD;&#x4F5C;&#x662F;&#x628A;&#x5404;&#x79CD;&#x4E0D;&#x540C;&#x7684; behavior &#x52A0;&#x5230; animator &#x4E2D;&#x3002;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#x4E86; View &#x56E0;&#x4E3A;&#x201C;&#x91CD;&#x529B;&#x201D;&#x539F;&#x56E0;&#x201C;&#x6389;&#x5230;&#x201D;&#x5730;&#x4E0A;&#xFF0C;&#x843D;&#x5730;&#x7684;&#x540C;&#x65F6;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x78B0;&#x649E;&#x6548;&#x679C;&#x3002;</p>
 <h4 id="caemitterlayer">CAEmitterLayer</h4>
 
                     
