@@ -1,3 +1,6 @@
+git add -A
+git commit -am "update"
+git push
 cd source
 gitbook build
 cd _book
