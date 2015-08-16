@@ -56,4 +56,59 @@ Block 可以来自外部作用域的变量，这是Block一个很强大的特性
 __block int anInteger = 42;
 ```
 
-**注意**： 使用 Block 在类中捕获`self`，以及类似的操作很容易造成强引用循环，因此使用 Block 时要格外注意。
+
+### 使用 Block 时的注意事项
+
+在非 ARC 的情况下，对于 block 类型的属性应该使用 `copy` ，因为 block 需要维持其作用域中捕获的变量。在 ARC 中编译器会自动对 block 进行 copy 操作，因此使用 `strong` 或者 `copy` 都可以，没有什么区别，但是苹果仍然建议使用 `copy` 来指明编译器的行为。
+
+block 在捕获外部变量的时候，会保持一个强引用，当在 block 中捕获 `self` 时，由于对象会对 block 进行 `copy`，于是便形成了强引用循环：
+
+```objective-c
+@interface XYZBlockKeeper : NSObject
+@property (copy) void (^block)(void);
+@end
+```
+
+```objective-c
+@implementation XYZBlockKeeper
+- (void)configureBlock {
+    self.block = ^{
+        [self doSomething];    // capturing a strong reference to self
+                               // creates a strong reference cycle
+    };
+}
+...
+@end
+```
+
+为了避免强引用循环，最好捕获一个 `self` 的弱引用：
+
+```objective-c
+- (void)configureBlock {
+    XYZBlockKeeper * __weak weakSelf = self;
+    self.block = ^{
+        [weakSelf doSomething];   // capture the weak reference
+                                  // to avoid the reference cycle
+    }
+}
+```
+
+使用弱引用会带来另一个问题，`weakSelf` 有可能会为 nil，如果多次调用 `weakSelf` 的方法，有可能在 block 执行过程中 `weakSelf` 变为 nil。因此需要在 block 中将 `weakSelf` “强化“
+
+```objective-c
+__weak __typeof__(self) weakSelf = self;
+NSBlockOperation *op = [[[NSBlockOperation alloc] init] autorelease];
+[ op addExecutionBlock:^ {
+    __strong __typeof__(self) strongSelf = weakSelf;
+    [strongSelf doSomething];
+    [strongSelf doMoreThing];
+} ];
+[someOperationQueue addOperation:op];
+```
+
+这样上面的 `doSomething` 和 `doMoreThing` 要么全执行成功，要么全失败，不会出现一个成功一个失败，即执行到中间 `self` 变成 nil 的情况。
+
+#### 参考资料
+
+* https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/WorkingwithBlocks/WorkingwithBlocks.html#//apple_ref/doc/uid/TP40011210-CH8-SW16
+* http://blog.waterworld.com.hk/post/block-weakself-strongself

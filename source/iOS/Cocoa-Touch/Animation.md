@@ -347,3 +347,10 @@ collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
 #### CAEmitterLayer
 
 CAEmitterLayer 是 Core Animation 提供的一个粒子发生器系统，可以用于创建各种粒子动画，例如烟雾，焰火等效果。
+
+CAEmitterLayer 需要调节的参数很多，可以实现的效果也非常炫酷，具体可参考下面几个网址：
+
+* http://enharmonichq.com/tutorial-particle-systems-in-core-animation-with-caemitterlayer/#prettyPhoto/0/
+* https://www.invasivecode.com/weblog/caemitterlayer-and-the-ios-particle-system-lets/?doing_wp_cron=1438657800.4759559631347656250000
+
+[LTMorphingLabel](https://github.com/lexrus/LTMorphingLabel) 这个项目使用 CAEmitterLayer 实现了各种高端炫酷掉渣天的效果，大家想学习的话可以去看看它的代码。
