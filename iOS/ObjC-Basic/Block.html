@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="2.1.2" data-basepath="../.." data-revision="Tue Aug 04 2015 10:58:05 GMT+0800 (CST)">
+    <div class="book" data-level="2.1.2" data-basepath="../.." data-revision="Sun Aug 16 2015 13:56:20 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -1030,7 +1030,48 @@ NSLog(@&quot;The result is %f&quot;, result);
 <p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;Block &#x4E2D;&#x6355;&#x83B7;&#x7684;&#x5230;&#x53D8;&#x91CF;&#x662F;&#x4E0D;&#x80FD;&#x4FEE;&#x6539;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x4FEE;&#x6539;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;<code>__block</code>&#x6765;&#x58F0;&#x660E;&#xFF1A;</p>
 <pre><code class="lang-objective-c">__block int anInteger = 42;
 </code></pre>
-<p><strong>&#x6CE8;&#x610F;</strong>&#xFF1A; &#x4F7F;&#x7528; Block &#x5728;&#x7C7B;&#x4E2D;&#x6355;&#x83B7;<code>self</code>&#xFF0C;&#x4EE5;&#x53CA;&#x7C7B;&#x4F3C;&#x7684;&#x64CD;&#x4F5C;&#x5F88;&#x5BB9;&#x6613;&#x9020;&#x6210;&#x5F3A;&#x5F15;&#x7528;&#x5FAA;&#x73AF;&#xFF0C;&#x56E0;&#x6B64;&#x4F7F;&#x7528; Block &#x65F6;&#x8981;&#x683C;&#x5916;&#x6CE8;&#x610F;&#x3002;</p>
+<h3 id="%E4%BD%BF%E7%94%A8-block-%E6%97%B6%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">&#x4F7F;&#x7528; Block &#x65F6;&#x7684;&#x6CE8;&#x610F;&#x4E8B;&#x9879;</h3>
+<p>&#x5728;&#x975E; ARC &#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5BF9;&#x4E8E; block &#x7C7B;&#x578B;&#x7684;&#x5C5E;&#x6027;&#x5E94;&#x8BE5;&#x4F7F;&#x7528; <code>copy</code> &#xFF0C;&#x56E0;&#x4E3A; block &#x9700;&#x8981;&#x7EF4;&#x6301;&#x5176;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#x6355;&#x83B7;&#x7684;&#x53D8;&#x91CF;&#x3002;&#x5728; ARC &#x4E2D;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x81EA;&#x52A8;&#x5BF9; block &#x8FDB;&#x884C; copy &#x64CD;&#x4F5C;&#xFF0C;&#x56E0;&#x6B64;&#x4F7F;&#x7528; <code>strong</code> &#x6216;&#x8005; <code>copy</code> &#x90FD;&#x53EF;&#x4EE5;&#xFF0C;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF0C;&#x4F46;&#x662F;&#x82F9;&#x679C;&#x4ECD;&#x7136;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528; <code>copy</code> &#x6765;&#x6307;&#x660E;&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x884C;&#x4E3A;&#x3002;</p>
+<p>block &#x5728;&#x6355;&#x83B7;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x4FDD;&#x6301;&#x4E00;&#x4E2A;&#x5F3A;&#x5F15;&#x7528;&#xFF0C;&#x5F53;&#x5728; block &#x4E2D;&#x6355;&#x83B7; <code>self</code> &#x65F6;&#xFF0C;&#x7531;&#x4E8E;&#x5BF9;&#x8C61;&#x4F1A;&#x5BF9; block &#x8FDB;&#x884C; <code>copy</code>&#xFF0C;&#x4E8E;&#x662F;&#x4FBF;&#x5F62;&#x6210;&#x4E86;&#x5F3A;&#x5F15;&#x7528;&#x5FAA;&#x73AF;&#xFF1A;</p>
+<pre><code class="lang-objective-c">@interface XYZBlockKeeper : NSObject
+@property (copy) void (^block)(void);
+@end
+</code></pre>
+<pre><code class="lang-objective-c">@implementation XYZBlockKeeper
+- (void)configureBlock {
+    self.block = ^{
+        [self doSomething];    // capturing a strong reference to self
+                               // creates a strong reference cycle
+    };
+}
+...
+@end
+</code></pre>
+<p>&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x5F3A;&#x5F15;&#x7528;&#x5FAA;&#x73AF;&#xFF0C;&#x6700;&#x597D;&#x6355;&#x83B7;&#x4E00;&#x4E2A; <code>self</code> &#x7684;&#x5F31;&#x5F15;&#x7528;&#xFF1A;</p>
+<pre><code class="lang-objective-c">- (void)configureBlock {
+    XYZBlockKeeper * __weak weakSelf = self;
+    self.block = ^{
+        [weakSelf doSomething];   // capture the weak reference
+                                  // to avoid the reference cycle
+    }
+}
+</code></pre>
+<p>&#x4F7F;&#x7528;&#x5F31;&#x5F15;&#x7528;&#x4F1A;&#x5E26;&#x6765;&#x53E6;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;<code>weakSelf</code> &#x6709;&#x53EF;&#x80FD;&#x4F1A;&#x4E3A; nil&#xFF0C;&#x5982;&#x679C;&#x591A;&#x6B21;&#x8C03;&#x7528; <code>weakSelf</code> &#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6709;&#x53EF;&#x80FD;&#x5728; block &#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D; <code>weakSelf</code> &#x53D8;&#x4E3A; nil&#x3002;&#x56E0;&#x6B64;&#x9700;&#x8981;&#x5728; block &#x4E2D;&#x5C06; <code>weakSelf</code> &#x201C;&#x5F3A;&#x5316;&#x201C;</p>
+<pre><code class="lang-objective-c">__weak __typeof__(self) weakSelf = self;
+NSBlockOperation *op = [[[NSBlockOperation alloc] init] autorelease];
+[ op addExecutionBlock:^ {
+    __strong __typeof__(self) strongSelf = weakSelf;
+    [strongSelf doSomething];
+    [strongSelf doMoreThing];
+} ];
+[someOperationQueue addOperation:op];
+</code></pre>
+<p>&#x8FD9;&#x6837;&#x4E0A;&#x9762;&#x7684; <code>doSomething</code> &#x548C; <code>doMoreThing</code> &#x8981;&#x4E48;&#x5168;&#x6267;&#x884C;&#x6210;&#x529F;&#xFF0C;&#x8981;&#x4E48;&#x5168;&#x5931;&#x8D25;&#xFF0C;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x4E00;&#x4E2A;&#x6210;&#x529F;&#x4E00;&#x4E2A;&#x5931;&#x8D25;&#xFF0C;&#x5373;&#x6267;&#x884C;&#x5230;&#x4E2D;&#x95F4; <code>self</code> &#x53D8;&#x6210; nil &#x7684;&#x60C5;&#x51B5;&#x3002;</p>
+<h4 id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">&#x53C2;&#x8003;&#x8D44;&#x6599;</h4>
+<ul>
+<li><a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/WorkingwithBlocks/WorkingwithBlocks.html#//apple_ref/doc/uid/TP40011210-CH8-SW16" target="_blank">https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/WorkingwithBlocks/WorkingwithBlocks.html#//apple_ref/doc/uid/TP40011210-CH8-SW16</a></li>
+<li><a href="http://blog.waterworld.com.hk/post/block-weakself-strongself" target="_blank">http://blog.waterworld.com.hk/post/block-weakself-strongself</a></li>
+</ul>
 
                     
                     </section>
