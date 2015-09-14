@@ -43,6 +43,7 @@
         * [UIViewController](iOS/Cocoa-Touch/UIViewController.md)
         * [Core Animation](iOS/Cocoa-Touch/Animation.md)
     * [面试问题](iOS/Questions.md)
+    * [更多资料](iOS/More.md)
 
 * [Android 开发](Android/README.md)
     * [Java 基础](Android/Java/README.md)
