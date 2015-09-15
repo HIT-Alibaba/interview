@@ -9,6 +9,7 @@
 * https://github.com/DaiYue/iOS-good-practices-in-Chinese （iOS 最佳实践）
 * https://github.com/tangqiaoboy/iOSBlogCN （iOS 开发博客列表）
 * https://github.com/Aufree/trip-to-iOS （iOS 学习资料整理）
+* https://github.com/huang303513/iOS-Study-Demo
 
 #### 常用的库总结：
 
