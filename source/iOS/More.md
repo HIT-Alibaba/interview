@@ -4,6 +4,7 @@
 * http://objccn.io/
 * http://nshipster.cn 
 * https://github.com/oa414/objc-zen-book-cn
+* https://github.com/nixzhu/dev-blog
 * https://github.com/robovm/apple-ios-samples （苹果官方 Sample 代码集合）
 * https://github.com/leecade/ios-dev-flow （开发流程总结）
 * https://github.com/DaiYue/iOS-good-practices-in-Chinese （iOS 最佳实践）
