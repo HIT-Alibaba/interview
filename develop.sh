@@ -1,7 +1,7 @@
 cd ..
 mkdir interview-gitbook
 cd interview-gitbook
-git init 
+git init
 git remote add origin git@github.com:HIT-Alibaba/interview.git
 git fetch
 git checkout gh-pages
