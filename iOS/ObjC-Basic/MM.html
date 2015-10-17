@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="2.1.4" data-basepath="../.." data-revision="Thu Oct 15 2015 13:22:18 GMT+0900 (中国标准时间)">
+    <div class="book" data-level="2.1.4" data-basepath="../.." data-revision="Sat Oct 17 2015 19:40:47 GMT+0900 (中国标准时间)">
     
 
 <div class="book-summary">
@@ -1104,10 +1104,38 @@ Number* num2 = [num retain];//&#x6B64;&#x65F6;&#x5F15;&#x7528;&#x8BB0;&#x6570;+1
 <li>&#x4F7F;&#x7528;&#x5F31;&#x5F15;&#x7528;(weak)</li>
 <li>&#x5F53;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x5B8C;&#x6210;&#x5DE5;&#x4F5C;&#x540E;&#xFF0C;&#x5C06;&#x5176;&#x7F6E;&#x4E3A;nil</li>
 </ul>
+<h3 id="autorelease-pool">Autorelease Pool</h3>
+<p>Autorelase Pool &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x53EF;&#x4EE5;&#x5141;&#x8BB8;&#x4F60;&#x5411;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x5EF6;&#x8FDF;&#x53D1;&#x9001;<code>release</code>&#x6D88;&#x606F;&#x7684;&#x673A;&#x5236;&#x3002;&#x5F53;&#x4F60;&#x60F3;&#x653E;&#x5F03;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;&#x6743;&#xFF0C;&#x540C;&#x65F6;&#x53C8;&#x4E0D;&#x5E0C;&#x671B;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x7ACB;&#x5373;&#x88AB;&#x91CA;&#x653E;&#x6389;&#xFF08;&#x4F8B;&#x5982;&#x5728;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x4E2D;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x65F6;&#xFF09;&#xFF0C;Autorelease Pool &#x7684;&#x4F5C;&#x7528;&#x5C31;&#x663E;&#x73B0;&#x51FA;&#x6765;&#x4E86;&#x3002;</p>
+<p>&#x6240;&#x8C13;&#x7684;&#x5EF6;&#x8FDF;&#x53D1;&#x9001;<code>release</code>&#x6D88;&#x606F;&#x6307;&#x7684;&#x662F;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x628A;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x6807;&#x8BB0;&#x4E3A;<code>autorelease</code>&#x65F6;:</p>
+<pre><code class="lang-objective-c">NSString* str = [[[NSString alloc] initWithString:@&quot;hello&quot;] autorelease];
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x7684; retainCount &#x4F1A;+1&#xFF0C;&#x4F46;&#x662F;&#x5E76;&#x4E0D;&#x4F1A;&#x53D1;&#x751F; release&#x3002;&#x5F53;&#x8FD9;&#x6BB5;&#x8BED;&#x53E5;&#x6240;&#x5904;&#x7684; autoreleasepool &#x8FDB;&#x884C; drain &#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x6240;&#x6709;&#x6807;&#x8BB0;&#x4E86; <code>autorelease</code> &#x7684;&#x5BF9;&#x8C61;&#x7684; retainCount &#x4F1A;&#x88AB; -1&#x3002;&#x5373; <code>release</code> &#x6D88;&#x606F;&#x7684;&#x53D1;&#x9001;&#x88AB;&#x5EF6;&#x8FDF;&#x5230; pool &#x91CA;&#x653E;&#x7684;&#x65F6;&#x5019;&#x4E86;&#x3002;</p>
+<p>&#x5728; ARC &#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x82F9;&#x679C;&#x5F15;&#x5165;&#x4E86; <code>@autoreleasepool</code> &#x8BED;&#x6CD5;&#xFF0C;&#x4E0D;&#x518D;&#x9700;&#x8981;&#x624B;&#x52A8;&#x8C03;&#x7528; <code>autorelease</code> &#x548C; <code>drain</code> &#x7B49;&#x65B9;&#x6CD5;&#x3002;</p>
+<h4 id="autorelease-pool-%E7%9A%84%E7%94%A8%E5%A4%84">Autorelease Pool &#x7684;&#x7528;&#x5904;</h4>
+<p>&#x5728; ARC &#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x624B;&#x52A8;&#x8C03;&#x7528; autorelease &#x6709;&#x5173;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x751A;&#x81F3;&#x53EF;&#x4EE5;&#x5B8C;&#x5168;&#x4E0D;&#x77E5;&#x9053; autorelease &#x7684;&#x5B58;&#x5728;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x6B63;&#x786E;&#x7BA1;&#x7406;&#x597D;&#x5185;&#x5B58;&#x3002;&#x56E0;&#x4E3A; Cocoa Touch &#x7684; Runloop &#x4E2D;&#xFF0C;&#x6BCF;&#x4E2A; runloop circle &#x4E2D;&#x7CFB;&#x7EDF;&#x90FD;&#x81EA;&#x52A8;&#x52A0;&#x5165;&#x4E86; Autorelease Pool &#x7684;&#x521B;&#x5EFA;&#x548C;&#x91CA;&#x653E;&#x3002;</p>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x548C;&#x9500;&#x6BC1;&#x5927;&#x91CF;&#x7684;&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;&#x4F7F;&#x7528;&#x624B;&#x52A8;&#x521B;&#x5EFA;&#x7684; autoreleasepool &#x53EF;&#x4EE5;&#x6709;&#x6548;&#x7684;&#x907F;&#x514D;&#x5185;&#x5B58;&#x5CF0;&#x503C;&#x7684;&#x51FA;&#x73B0;&#x3002;&#x56E0;&#x4E3A;&#x5982;&#x679C;&#x4E0D;&#x624B;&#x52A8;&#x521B;&#x5EFA;&#x7684;&#x8BDD;&#xFF0C;&#x5916;&#x5C42;&#x7CFB;&#x7EDF;&#x521B;&#x5EFA;&#x7684; pool &#x4F1A;&#x5728;&#x6574;&#x4E2A; runloop circle &#x7ED3;&#x675F;&#x4E4B;&#x540E;&#x624D;&#x8FDB;&#x884C; drain&#xFF0C;&#x624B;&#x52A8;&#x521B;&#x5EFA;&#x7684;&#x8BDD;&#xFF0C;&#x4F1A;&#x5728; block &#x7ED3;&#x675F;&#x4E4B;&#x540E;&#x5C31;&#x8FDB;&#x884C; drain &#x64CD;&#x4F5C;&#x3002;&#x8BE6;&#x60C5;&#x8BF7;&#x53C2;&#x8003;<a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmAutoreleasePools.html#//apple_ref/doc/uid/20000047-CJBFBEDI" target="_blank">&#x82F9;&#x679C;&#x5B98;&#x65B9;&#x6587;&#x6863;</a>&#x3002;&#x4E00;&#x4E2A;&#x666E;&#x904D;&#x88AB;&#x4F7F;&#x7528;&#x7684;&#x4F8B;&#x5B50;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-objective-c">for (int i = 0; i &lt; 100000000; i++)
+{
+    @autoreleasepool
+    {
+        NSString* string = @&quot;ab c&quot;;
+        NSArray* array = [string componentsSeparatedByString:string];
+    }
+}
+</code></pre>
+<p>&#x5982;&#x679C;&#x4E0D;&#x4F7F;&#x7528; autoreleasepool &#xFF0C;&#x9700;&#x8981;&#x5728;&#x5FAA;&#x73AF;&#x7ED3;&#x675F;&#x4E4B;&#x540E;&#x91CA;&#x653E; 100000000 &#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5982;&#x679C;
+&#x4F7F;&#x7528;&#x7684;&#x8BDD;&#xFF0C;&#x5219;&#x4F1A;&#x5728;&#x6BCF;&#x6B21;&#x5FAA;&#x73AF;&#x7ED3;&#x675F;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x8FDB;&#x884C; release &#x64CD;&#x4F5C;&#x3002;</p>
+<h4 id="autorelease-pool-%E8%BF%9B%E8%A1%8C-drain-%E7%9A%84%E6%97%B6%E6%9C%BA">Autorelease Pool &#x8FDB;&#x884C; Drain &#x7684;&#x65F6;&#x673A;</h4>
+<p>&#x5982;&#x4E0A;&#x9762;&#x6240;&#x8BF4;&#xFF0C;&#x7CFB;&#x7EDF;&#x5728; runloop &#x4E2D;&#x521B;&#x5EFA;&#x7684; autoreleaspool &#x4F1A;&#x5728; runloop &#x4E00;&#x4E2A; event &#x7ED3;&#x675F;&#x65F6;&#x8FDB;&#x884C;&#x91CA;&#x653E;&#x64CD;&#x4F5C;&#x3002;&#x6211;&#x4EEC;&#x624B;&#x52A8;&#x521B;&#x5EFA;&#x7684; autoreleasepool &#x4F1A;&#x5728; block &#x6267;&#x884C;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#x8FDB;&#x884C; drain &#x64CD;&#x4F5C;&#x3002;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF1A;</p>
+<ul>
+<li>&#x5F53; block &#x4EE5;&#x5F02;&#x5E38;&#xFF08;exception&#xFF09;&#x7ED3;&#x675F;&#x65F6;&#xFF0C;pool &#x4E0D;&#x4F1A;&#x88AB; drain</li>
+<li>Pool &#x7684; drain &#x64CD;&#x4F5C;&#x4F1A;&#x628A;&#x6240;&#x6709;&#x6807;&#x8BB0;&#x4E3A; autorelease &#x7684;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x51CF;&#x4E00;&#xFF0C;&#x4F46;&#x662F;&#x5E76;&#x4E0D;&#x610F;&#x5473;&#x7740;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x4E00;&#x5B9A;&#x4F1A;&#x88AB;&#x91CA;&#x653E;&#x5230;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728; autorelease pool &#x4E2D;&#x624B;&#x52A8; retain &#x5BF9;&#x8C61;&#xFF0C;&#x4EE5;&#x5EF6;&#x957F;&#x5B83;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x3002;</li>
+</ul>
 <h3 id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
 <ul>
 <li><a href="http://blog.csdn.net/fightingbull/article/details/8098133" target="_blank">Objective-C&#x5185;&#x5B58;&#x7BA1;&#x7406;MRC&#x4E0E;ARC</a></li>
 <li><a href="http://www.oschina.net/news/42288/10-objective-c-interview" target="_blank">10&#x4E2A;Objective-C&#x57FA;&#x7840;&#x9762;&#x8BD5;&#x9898;&#xFF0C;iOS&#x9762;&#x8BD5;&#x5FC5;&#x5907;</a></li>
+<li><a href="http://blog.sunnyxx.com/2014/10/15/behind-autorelease/" target="_blank">&#x9ED1;&#x5E55;&#x80CC;&#x540E;&#x7684; Autorelease</a></li>
 </ul>
 
                     
