@@ -1,4 +1,4 @@
-**推荐首先阅读 [内存管理](basic/arch/Memory-Management.md) ** 
+**推荐首先阅读 [内存管理](../../basic/arch/Memory-Management.md) ** 
 
 ### Objective-C中的内存分配
 
@@ -135,9 +135,37 @@ for (int i = 0; i < 100000000; i++)
 * 当 block 以异常（exception）结束时，pool 不会被 drain
 * Pool 的 drain 操作会把所有标记为 autorelease 的对象的引用计数减一，但是并不意味着这个对象一定会被释放到，我们可以在 autorelease pool 中手动 retain 对象，以延长它的生命周期。
 
+#### main.m 中 autorelease pool 的解释
+
+大家都知道在 iOS 程序的 main.m 文件中有类似这样的语句：
+
+```objective-c
+int main(int argc, char * argv[]) {
+    @autoreleasepool {
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+    }
+}
+```
+
+在面试中问到有关 autorelease pool 有关的知识也多半会问一下，这里的 pool 有什么作用，能不能去掉之类。在这里我们分析一下。
+
+根据[苹果官方文档](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIKitFunctionReference/index.html#//apple_ref/c/func/UIApplicationMain)， UIApplicationMain 函数是整个 app 的入口，用来创建 application 对象（单例）和 application delegate。尽管这个函数有返回值，但是实际上却永远不会返回，当按下 Home 键时，app 只是被切换到了后台状态。
+
+同时参考苹果关于 Lifecycle 的[官方文档](https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/TheAppLifeCycle/TheAppLifeCycle.html)，UIApplication 自己会创建一个 main run loop，我们大致可以得到下面的结论：
+
+1. main.m 中的 UIApplicationMain 永远不会返回，只有在系统 kill 掉整个 app 时，系统会把应用占用的内存全部释放出来。
+2. 因为(1)， UIApplicationMain 永远不会返回，这里的 autorelease pool 也就永远不会进入到释放那个阶段
+3. 在 (2) 的基础上，假设有些变量真的进入了 main.m 里面这个 pool（没有被更内层的 pool 捕获），那么这些变量实际上就是被泄露的。这个 autorelease pool 等于是把这种泄露情况给隐藏起来了。
+4. UIApplication 自己会创建 main run loop，在 Cocoa 的 runloop 中实际上也是自动包含 autorelease pool 的，因此 main.m 当中的 pool 可以认为是**没有**必要的。
+
+在基于 AppKit 框架的 Mac OS 开发中， main.m 当中就是不存在 autorelease pool 的，也进一步验证了我们得到的结论。不过因为我们看不到更底层的代码，加上苹果的文档中不建议修改 main.m ，所以我们也没有理由就直接把它删掉。
+
+
 ### 参考资料
 
 * [Objective-C内存管理MRC与ARC](http://blog.csdn.net/fightingbull/article/details/8098133)
 * [10个Objective-C基础面试题，iOS面试必备](http://www.oschina.net/news/42288/10-objective-c-interview)
 * [黑幕背后的 Autorelease](http://blog.sunnyxx.com/2014/10/15/behind-autorelease/)
 * https://stackoverflow.com/questions/29350634/ios-autoreleasepool-in-main-and-arc-alloc-release
+* https://stackoverflow.com/questions/6588211/why-do-the-ios-main-m-templates-include-a-return-statement-and-an-autorelease-po
+* https://stackoverflow.com/questions/2702548/if-the-uiapplicationmain-never-returns-then-when-does-the-autorelease-pool-get
