@@ -133,7 +133,7 @@ for (int i = 0; i < 100000000; i++)
 如上面所说，系统在 runloop 中创建的 autoreleaspool 会在 runloop 一个 event 结束时进行释放操作。我们手动创建的 autoreleasepool 会在 block 执行完成之后进行 drain 操作。需要注意的是：
 
 * 当 block 以异常（exception）结束时，pool 不会被 drain
-* Pool 的 drain 操作会把所有标记为 autorelease 的对象的引用计数减一，但是并不意味着这个对象一定会被释放到，我们可以在 autorelease pool 中手动 retain 对象，以延长它的生命周期。
+* Pool 的 drain 操作会把所有标记为 autorelease 的对象的引用计数减一，但是并不意味着这个对象一定会被释放掉，我们可以在 autorelease pool 中手动 retain 对象，以延长它的生命周期（在 MRC 中）。
 
 #### main.m 中 Autorelease Pool 的解释
 
@@ -290,7 +290,7 @@ self.property = a;
 
 >ARC performs no extra mandatory work on the caller side, although it may elect to do something to shorten the lifetime of the returned value.
 
-这个和我们之前在 MRC 中做的不是特别一样，ARC 会把对象的生命周期延长，确保调用者能拿到并且使用这个返回值。但是并不一定会使用 autorelease，写的是在 worst case 的情况下才会使用。调用者不能假设返回值真的就在 autorelease pool 中。从性能的角度，这样做也是正常的。如果我们能够知道一个对象的生命周期最长应该有多长，也就没有必要使用 autorelease 了，直接 release 就可以。如果很多对象都使用 autorelease 的话，也会导致整个 pool 在 drain 的时候性能下降。
+这个和我们之前在 MRC 中做的不是完全一样。ARC 会把对象的生命周期延长，确保调用者能拿到并且使用这个返回值，但是并不一定会使用 autorelease，文档写的是在 worst case 的情况下才可能会使用，因此调用者不能假设返回值真的就在 autorelease pool 中。从性能的角度，这种做法也是可以理解的。如果我们能够知道一个对象的生命周期最长应该有多长，也就没有必要使用 autorelease 了，直接使用 release 就可以。如果很多对象都使用 autorelease 的话，也会导致整个 pool 在 drain 的时候性能下降。
 
 
 
