@@ -56,6 +56,8 @@ Block 可以来自外部作用域的变量，这是Block一个很强大的特性
 __block int anInteger = 42;
 ```
 
+对于 id 类型的变量，在 MRC 情况下，使用 `__block id x` 不会 retain 变量，而在 ARC 情况下则会对变量进行 retain（即和其他捕获的变量相同）。如果不想在 block 中进行 retain 可以使用
+`__unsafe_unretained __block id x`，不过这样可能会导致野指针出现。更好的办法是使用 `__weak`，或者把使用 `__block` 修饰的变量设为 nil，以打破引用循环。
 
 ### 使用 Block 时的注意事项
 
@@ -112,3 +114,4 @@ NSBlockOperation *op = [[[NSBlockOperation alloc] init] autorelease];
 
 * https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/WorkingwithBlocks/WorkingwithBlocks.html#//apple_ref/doc/uid/TP40011210-CH8-SW16
 * http://blog.waterworld.com.hk/post/block-weakself-strongself
+* https://stackoverflow.com/questions/17384599/why-are-block-variables-not-retained-in-non-arc-environments
