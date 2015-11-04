@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Git | 笔试面试知识整理</title>
+        <title>并发编程 | 笔试面试知识整理</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.4.3">
@@ -29,10 +29,10 @@
         
     
     
-    <link rel="next" href="../../basic/scm/SVN.html" />
+    <link rel="next" href="../../iOS/Cocoa-Touch/Design.html" />
     
     
-    <link rel="prev" href="../../basic/scm/index.html" />
+    <link rel="prev" href="../../iOS/Cocoa-Touch/Network.html" />
     
 
         
@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="1.7.1" data-basepath="../.." data-revision="Wed Nov 04 2015 09:07:18 GMT+0800 (中国标准时间)">
+    <div class="book" data-level="2.2.7" data-basepath="../.." data-revision="Wed Nov 04 2015 09:07:18 GMT+0800 (中国标准时间)">
     
 
 <div class="book-summary">
@@ -555,7 +555,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.7.1" data-path="basic/scm/Git.html">
+        <li class="chapter " data-level="1.7.1" data-path="basic/scm/Git.html">
             
                 
                     <a href="../../basic/scm/Git.html">
@@ -798,7 +798,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.7" data-path="iOS/Cocoa-Touch/Multithreading.html">
+        <li class="chapter active" data-level="2.2.7" data-path="iOS/Cocoa-Touch/Multithreading.html">
             
                 
                     <a href="../../iOS/Cocoa-Touch/Multithreading.html">
@@ -1157,10 +1157,13 @@
                 
                     <section class="normal" id="section-">
                     
-                        <ul>
-<li><a href="https://progit.org/" target="_blank">https://progit.org/</a></li>
-<li><a href="http://think-like-a-git.net/" target="_blank">http://think-like-a-git.net/</a></li>
-</ul>
+                        <p>iOS &#x4E2D;&#x7684;&#x591A;&#x7EBF;&#x7A0B;&#xFF0C;&#x662F; Cocoa &#x6846;&#x67B6;&#x4E0B;&#x7684;&#x591A;&#x7EBF;&#x7A0B;&#xFF0C;&#x901A;&#x8FC7; Cocoa &#x7684;&#x5C01;&#x88C5;&#xFF0C;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x66F4;&#x4E3A;&#x65B9;&#x4FBF;&#x7684;&#x4F7F;&#x7528;&#x7EBF;&#x7A0B;&#x3002;Cocoa &#x4E2D;&#x5C01;&#x88C5;&#x4E86; NSThread, NSOperation, GCD &#x4E09;&#x79CD;&#x591A;&#x7EBF;&#x7A0B;&#x7F16;&#x7A0B;&#x65B9;&#x5F0F;&#xFF0C;&#x4ED6;&#x4EEC;&#x5404;&#x6709;&#x4F18;&#x7F3A;&#x70B9;&#x3002;&#x62BD;&#x8C61;&#x5C42;&#x6B21;&#x662F;&#x4ECE;&#x4F4E;&#x5230;&#x9AD8;&#x7684;&#xFF0C;&#x62BD;&#x8C61;&#x5EA6;&#x8D8A;&#x9AD8;&#x7684;&#x4F7F;&#x7528;&#x8D8A;&#x7B80;&#x5355;&#x3002;</p>
+<h3 id="nsthread">NSThread</h3>
+<p>NSThread &#x662F;&#x4E00;&#x4E2A;&#x63A7;&#x5236;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x901A;&#x8FC7;&#x5B83;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x7684;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5E76;&#x63A7;&#x5236;&#x5B83;&#x3002;NSThread &#x7684;&#x7EBF;&#x7A0B;&#x4E4B;&#x95F4;&#x7684;&#x5E76;&#x53D1;&#x63A7;&#x5236;&#xFF0C;&#x662F;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x6765;&#x63A7;&#x5236;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; NSCondition &#x5B9E;&#x73B0;&#x3002;&#x5B83;&#x7684;&#x7F3A;&#x70B9;&#x662F;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x7EF4;&#x62A4;&#x7EBF;&#x7A0B;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x548C;&#x7EBF;&#x7A0B;&#x7684;&#x540C;&#x6B65;&#x548C;&#x4E92;&#x65A5;&#x7B49;&#xFF0C;&#x4F18;&#x70B9;&#x662F;&#x8F7B;&#x91CF;&#xFF0C;&#x7075;&#x6D3B;&#x3002;</p>
+<h3 id="nsoperation">NSOperation</h3>
+<p>NSOperation &#x662F;&#x4E00;&#x4E2A;&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x5B83;&#x5C01;&#x88C5;&#x4E86;&#x7EBF;&#x7A0B;&#x7684;&#x7EC6;&#x8282;&#x5B9E;&#x73B0;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x7BA1;&#x7406;&#x7EBF;&#x7A0B;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x548C;&#x7EBF;&#x7A0B;&#x7684;&#x540C;&#x6B65;&#x548C;&#x4E92;&#x65A5;&#x7B49;&#x3002;&#x53EA;&#x662F;&#x9700;&#x8981;&#x5173;&#x6CE8;&#x81EA;&#x5DF1;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x5904;&#x7406;&#xFF0C;&#x9700;&#x8981;&#x548C; NSOperationQueue &#x4E00;&#x8D77;&#x4F7F;&#x7528;&#x3002;</p>
+<h3 id="gcd">GCD</h3>
+<p>GCD(Grand Central Dispatch) &#x662F; Apple &#x5F00;&#x53D1;&#x7684;&#x4E00;&#x4E2A;&#x591A;&#x6838;&#x7F16;&#x7A0B;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x3002;&#x5728; iOS4.0 &#x5F00;&#x59CB;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x4F7F;&#x7528;&#x3002;GCD &#x662F;&#x4E00;&#x4E2A;&#x66FF;&#x4EE3;&#x8BF8;&#x5982; NSThread, NSOperationQueue, NSInvocationOperation &#x7B49;&#x6280;&#x672F;&#x7684;&#x5F88;&#x9AD8;&#x6548;&#x548C;&#x5F3A;&#x5927;&#x7684;&#x6280;&#x672F;&#x3002;</p>
 
                     
                     </section>
@@ -1171,10 +1174,10 @@
         </div>
 
         
-        <a href="../../basic/scm/index.html" class="navigation navigation-prev " aria-label="Previous page: 版本控制"><i class="fa fa-angle-left"></i></a>
+        <a href="../../iOS/Cocoa-Touch/Network.html" class="navigation navigation-prev " aria-label="Previous page: 网络编程"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../basic/scm/SVN.html" class="navigation navigation-next " aria-label="Next page: SVN"><i class="fa fa-angle-right"></i></a>
+        <a href="../../iOS/Cocoa-Touch/Design.html" class="navigation navigation-next " aria-label="Next page: 设计模式"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
