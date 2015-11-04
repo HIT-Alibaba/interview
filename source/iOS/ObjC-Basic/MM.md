@@ -1,6 +1,6 @@
 **推荐首先阅读 [内存管理](../../basic/arch/Memory-Management.md) ** 
 
-### Objective-C中的内存分配
+## Objective-C 中的内存分配
 
 在 Objective-C 中，对象通常是使用 `alloc` 方法在堆上创建的。 `[NSObject alloc]` 方法会在对堆上分配一块内存，按照`NSObject`的内部结构填充这块儿内存区域。
 
@@ -8,15 +8,15 @@
 
 ## MRC 与 ARC
 
-Objective-C中提供了两种内存管理机制：MRC（MannulReference Counting）和ARC(Automatic Reference Counting)，分别提供对内存的手动和自动管理，来满足不同的需求。现在苹果推荐是用 ARC 来进行内存管理。
+Objective-C中提供了两种内存管理机制：MRC（MannulReference Counting）和 ARC(Automatic Reference Counting)，分别提供对内存的手动和自动管理，来满足不同的需求。现在苹果推荐是用 ARC 来进行内存管理。
 
 ### MRC 
 
-在MRC的内存管理模式下，与对变量的管理相关的方法有：retain,release和autorelease。retain和release方法操作的是引用记数，当引用记数为零时，便自动释放内存。并且可以用NSAutoreleasePool对象，对加入自动释放池（autorelease调用）的变量进行管理，当drain时回收内存。
+在MRC的内存管理模式下，与对变量的管理相关的方法有：retain, release 和 autorelease。retain 和 release 方法操作的是引用记数，当引用记数为零时，便自动释放内存。并且可以用 NSAutoreleasePool 对象，对加入自动释放池（autorelease 调用）的变量进行管理，当 drain 时回收内存。
 
-1. retain，该方法的作用是将内存数据的所有权附给另一指针变量，引用数加1，即retainCount+= 1;
-2. release，该方法是释放指针变量对内存数据的所有权，引用数减1，即retainCount-= 1;
-3. autorelease，该方法是将该对象内存的管理放到autoreleasepool中。
+1. retain，该方法的作用是将内存数据的所有权附给另一指针变量，引用数加1，即 retainCount+= 1;
+2. release，该方法是释放指针变量对内存数据的所有权，引用数减1，即 retainCount-= 1;
+3. autorelease，该方法是将该对象内存的管理放到 autoreleasepool 中。
 
 示例代码:
 
@@ -26,14 +26,14 @@ Number* num = [[Number alloc] init];
 Number* num2 = [num retain];//此时引用记数+1，现为2
 
 [num2 release]; //num2 释放对内存数据的所有权 引用记数-1,现为1;
-[num release];//num释放对内存数据的所有权 引用记数-1,现为0;
+[num release];//num 释放对内存数据的所有权 引用记数-1,现为0;
 [num add:1 and 2];//bug，此时内存已释放。
 
-//autoreleasepool 的使用 在MRC管理模式下，我们摒弃以前的用法，NSAutoreleasePool对象的使用，新手段为@autoreleasepool
+//autoreleasepool 的使用 在MRC管理模式下，我们摒弃以前的用法，NSAutoreleasePool对象的使用，新手段为 @autoreleasepool
 
 @autoreleasepool {
     Number* num = [[Number alloc] init];
-    [num autorelease];//由autoreleasepool来管理其内存的释放
+    [num autorelease];//由 autoreleasepool 来管理其内存的释放
 } 
 
 ```
@@ -73,13 +73,13 @@ __strong Number* num = [[Number alloc] init];
 @property (assign/retain/strong/weak/unsafe_unretained/copy) Number* num
 ```
 
-`assign`表明 setter 仅仅是一个简单的赋值操作，通常用于基本的数值类型，例如`CGFloat`和`NSInteger`。
+`assign `表明 setter 仅仅是一个简单的赋值操作，通常用于基本的数值类型，例如`CGFloat`和`NSInteger`。
 
-`strong`表明属性定义一个拥有者关系。当给属性设定一个新值的时候，首先这个值进行 `retain` ，旧值进行 `release` ，然后进行赋值操作。
+`strong` 表明属性定义一个拥有者关系。当给属性设定一个新值的时候，首先这个值进行 `retain` ，旧值进行 `release` ，然后进行赋值操作。
 
-`weak`表明属性定义了一个非拥有者关系。当给属性设定一个新值的时候，这个值不会进行 `retain`，旧值也不会进行 `release`， 而是进行类似 `assign` 的操作。不过当属性指向的对象被销毁时，该属性会被置为nil。
+`weak` 表明属性定义了一个非拥有者关系。当给属性设定一个新值的时候，这个值不会进行 `retain`，旧值也不会进行 `release`， 而是进行类似 `assign` 的操作。不过当属性指向的对象被销毁时，该属性会被置为nil。
 
-`unsafe_unretained`的语义和 `assign` 类似，不过是用于对象类型的，表示一个非拥有(unretained)的，同时也不会在对象被销毁时置为nil的(unsafe)关系。
+`unsafe_unretained` 的语义和 `assign` 类似，不过是用于对象类型的，表示一个非拥有(unretained)的，同时也不会在对象被销毁时置为nil的(unsafe)关系。
 
 `copy` 类似于 `strong`，不过在赋值时进行 `copy` 操作而不是 `retain` 操作。通常在需要保留某个不可变对象（NSString最常见），并且防止它被意外改变时使用。
 
@@ -164,9 +164,9 @@ int main(int argc, char * argv[]) {
 
 如果一个函数的返回值是指向一个对象的指针，那么这个对象肯定不能在函数返回之前进行 release，这样调用者在调用这个函数时得到的就是野指针了，在函数返回之后也不能立刻就 release，因为我们不知道调用者是不是 retain 了这个对象，如果我们直接 release 了，可能导致后面在使用这个对象时它已经成为 nil 了。
 
-为了解决这个纠结的问题， Objective-C 中对对象指针的返回值进行了区分，一种叫做 retained return value，另一种叫做 unretained return value。前者表示调用者拥有这个返回值，后者表示调用者不拥有这个返回值，按照“谁拥有谁释放”的原则，对于前者调用者是要负责释放的，对于后者就不需要了。
+为了解决这个纠结的问题， Objective-C 中对对象指针的返回值进行了区分，一种叫做 *retained return value*，另一种叫做 *unretained return value*。前者表示调用者拥有这个返回值，后者表示调用者不拥有这个返回值，按照“谁拥有谁释放”的原则，对于前者调用者是要负责释放的，对于后者就不需要了。
 
-按照苹果的命名 convention，以 `alloc`, `copy`, `init`, `mutableCopy` 和 `new` 这些方法打头的方法，返回的都是 retained return value，而其他的则是 unretained return value，例如 `[NSString stringWithFormat:]`。我们在编写代码时也应该遵守这个 convention。
+按照苹果的命名 convention，以 `alloc`, `copy`, `init`, `mutableCopy` 和 `new` 这些方法打头的方法，返回的都是 retained return value，例如 `[[NSString alloc] initWithFormat:]`，而其他的则是 unretained return value，例如 `[NSString stringWithFormat:]`。我们在编写代码时也应该遵守这个 convention。
 
 我们分别在 MRC 和 ARC 情况下，分析一下两种返回值类型的区别。
 
