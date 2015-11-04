@@ -86,7 +86,7 @@ static int m;
 extern int m;
 ```
 
-那么后面的 m 实际上就是前面的 m 。如果反过来：
+这种情况，后面的 m 实际上就是前面的 m 。如果反过来：
 
 ```c
 extern int m;

@@ -33,7 +33,7 @@ Number* num2 = [num retain];//此时引用记数+1，现为2
 
 @autoreleasepool {
     Number* num = [[Number alloc] init];
-    [numautorelease];//由autoreleasepool来管理其内存的释放
+    [num autorelease];//由autoreleasepool来管理其内存的释放
 } 
 
 ```
@@ -135,7 +135,7 @@ for (int i = 0; i < 100000000; i++)
 * 当 block 以异常（exception）结束时，pool 不会被 drain
 * Pool 的 drain 操作会把所有标记为 autorelease 的对象的引用计数减一，但是并不意味着这个对象一定会被释放到，我们可以在 autorelease pool 中手动 retain 对象，以延长它的生命周期。
 
-#### main.m 中 autorelease pool 的解释
+#### main.m 中 Autorelease Pool 的解释
 
 大家都知道在 iOS 程序的 main.m 文件中有类似这样的语句：
 
@@ -160,6 +160,139 @@ int main(int argc, char * argv[]) {
 
 在基于 AppKit 框架的 Mac OS 开发中， main.m 当中就是不存在 autorelease pool 的，也进一步验证了我们得到的结论。不过因为我们看不到更底层的代码，加上苹果的文档中不建议修改 main.m ，所以我们也没有理由就直接把它删掉。
 
+#### Autorelease Pool 与函数返回值
+
+如果一个函数的返回值是指向一个对象的指针，那么这个对象肯定不能在函数返回之前进行 release，这样调用者在调用这个函数时得到的就是野指针了，在函数返回之后也不能立刻就 release，因为我们不知道调用者是不是 retain 了这个对象，如果我们直接 release 了，可能导致后面在使用这个对象时它已经成为 nil 了。
+
+为了解决这个纠结的问题， Objective-C 中对对象指针的返回值进行了区分，一种叫做 retained return value，另一种叫做 unretained return value。前者表示调用者拥有这个返回值，后者表示调用者不拥有这个返回值，按照“谁拥有谁释放”的原则，对于前者调用者是要负责释放的，对于后者就不需要了。
+
+按照苹果的命名 convention，以 `alloc`, `copy`, `init`, `mutableCopy` 和 `new` 这些方法打头的方法，返回的都是 retained return value，而其他的则是 unretained return value，例如 `[NSString stringWithFormat:]`。我们在编写代码时也应该遵守这个 convention。
+
+我们分别在 MRC 和 ARC 情况下，分析一下两种返回值类型的区别。
+
+##### MRC
+
+在 MRC 中我们需要关注这两种函数返回类型的区别，否则可能会导致内存泄露。
+
+*对于 retained return value，需要负责释放*
+
+假设我们有一个 property 定义如下：
+
+```objective-c
+@property (nonatomic, retain) NSObject *property;
+```
+
+在对其赋值的时候，我们应该使用：
+
+```objective-c
+self.property = [[[NSObject alloc] init] autorelease];
+```
+
+然后在 dealloc 方法中加入：
+
+```objective-c
+[_property release];
+_property = nil;
+```
+
+这样内存的情况大体是这样的：
+
+1. init 把 retain count 增加到 1
+2. 赋值给 self.property ，把 retain count 增加到 2
+3. 当 runloop circle 结束时，autorelease pool 执行 drain，把 retain count 减为 1
+4. 当整个对象执行 dealloc 时， release 把 retain count 减为 0，对象被释放
+
+可以看到没有内存泄露发生。
+
+如果我们只是使用：
+
+```objective-c
+self.property = [[NSObject alloc] init];
+```
+
+这一条语句会导致 retain count 增加到 2，而我们少执行了一次 release，就会导致 retain count 不能被减为 0 。
+
+另外，我们也可以使用临时变量：
+
+```objective-c
+NSObject * a = [[NSObject alloc] init];
+self.property = a;
+[a release];
+```
+
+这种情况，因为对 a 执行了一次 release，所有不会出现上面那种 retain count 不能减为 0 的情况。
+
+**注意**：现在大家基本都是 ARC 写的比较多，会忽略这一点，但是根据上面的内容，我们看到在 MRC 中直接对 self.proprety 赋值和先赋给临时变量，再赋值给 self.property，确实是有区别的！我在面试中就被问到这一点了。
+
+我们在编写自己的代码时，也应该遵守上面的原则，同样是使用 autorelease：
+
+```objective-c
+// 注意函数名的区别
++ (MyCustomClass *) myCustomClass
+{
+    return [[[MyCustomClass alloc] init] autorelease]; // 需要 autorelease
+}
+- (MyCustomClass *) initWithName:(NSString *) name
+{
+	return [[MyCustomClass alloc] init]; // 不需要 autorelease
+}
+```
+
+*对于 unretained return value，不需要负责释放*
+
+当我们调用非 alloc，init 系的方法来初始化对象时（通常是工厂方法），我们不需要负责变量的释放，可以当成普通的临时变量来使用：
+
+```objective-c
+NSString *name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+self.name = name
+// 不需要执行 [name release]
+```
+
+##### ARC
+
+在 ARC 中我们完全不需要考虑这两种返回值类型的区别，ARC 会自动加入必要的代码，因此我们可以放心大胆地写：
+
+```objective-c
+self.property = [[NSObject alloc] init];
+self.name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+```
+
+以及在自己写的函数中：
+
+```objective-c
++ (MyCustomClass *) myCustomClass
+{
+    return [[MyCustomClass alloc] init]; // 不用 autorelease
+}
+```
+
+这些写法都是 OK 的，也不会出现内存问题。
+
+为了进一步理解 ARC 是如何做到这一点的，我们可以参考 Clang 的[文档](http://clang.llvm.org/docs/AutomaticReferenceCounting.html#unretained-return-values)。
+
+对于 retained return value， Clang 是这样做的：
+
+>When returning from such a function or method, ARC retains the value at the point of evaluation of the return statement, before leaving all local scopes.
+
+>When receiving a return result from such a function or method, ARC releases the value at the end of the full-expression it is contained within, subject to the usual optimizations for local values.
+
+可以看到基本上 ARC 就是帮我们在代码块结束的时候进行了 release：
+
+```objective-c
+NSObject * a = [[NSObject alloc] init];
+self.property = a;
+//[a release]; 我们不需要写这一句，因为 ARC 会帮我们把这一句加上
+```
+
+对于 unretained return value：
+
+>When returning from such a function or method, ARC retains the value at the point of evaluation of the return statement, then leaves all local scopes, and then balances out the retain while ensuring that the value lives across the call boundary. In the worst case, this may involve an autorelease, but callers must not assume that the value is actually in the autorelease pool.
+
+>ARC performs no extra mandatory work on the caller side, although it may elect to do something to shorten the lifetime of the returned value.
+
+这个和我们之前在 MRC 中做的不是特别一样，ARC 会把对象的生命周期延长，确保调用者能拿到并且使用这个返回值。但是并不一定会使用 autorelease，写的是在 worst case 的情况下才会使用。调用者不能假设返回值真的就在 autorelease pool 中。从性能的角度，这样做也是正常的。如果我们能够知道一个对象的生命周期最长应该有多长，也就没有必要使用 autorelease 了，直接 release 就可以。如果很多对象都使用 autorelease 的话，也会导致整个 pool 在 drain 的时候性能下降。
+
+
 
 ### 参考资料
 
@@ -169,3 +302,6 @@ int main(int argc, char * argv[]) {
 * https://stackoverflow.com/questions/29350634/ios-autoreleasepool-in-main-and-arc-alloc-release
 * https://stackoverflow.com/questions/6588211/why-do-the-ios-main-m-templates-include-a-return-statement-and-an-autorelease-po
 * https://stackoverflow.com/questions/2702548/if-the-uiapplicationmain-never-returns-then-when-does-the-autorelease-pool-get
+* https://stackoverflow.com/questions/6055274/use-autorelease-when-setting-a-retain-property-using-dot-syntax
+* https://stackoverflow.com/questions/17601274/arc-and-autorelease
+* https://stackoverflow.com/questions/8292060/arc-equivalent-of-autorelease
