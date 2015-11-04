@@ -31,6 +31,8 @@
         * [编译器架构](basic/compiler/Compiler-Arch.md)
     * [设计模式](basic/design/README.md)
         * [面向对象基础](basic/design/OO-Basic.md)
+        * [四人帮设计模式](basic/design/GOP.md)
+        * [MVC 与 MVVM](basic/design/MVC.md)
     * [版本控制](basic/scm/README.md)
     	* [Git](basic/scm/Git.md)
     	* [SVN](basic/scm/SVN.md)
@@ -46,6 +48,9 @@
         * [UIView](iOS/Cocoa-Touch/UIView-Basic.md)
         * [UIViewController](iOS/Cocoa-Touch/UIViewController.md)
         * [Core Animation](iOS/Cocoa-Touch/Animation.md)
+        * [网络编程](iOS/Cocoa-Touch/Network.md)
+        * [并发编程](iOS/Cocoa-Touch/Multithreading.md)
+        * [设计模式](iOS/Cocoa-Touch/Design.md)
     * [面试问题](iOS/Questions.md)
     * [更多资料](iOS/More.md)
 
