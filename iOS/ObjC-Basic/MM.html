@@ -40,7 +40,7 @@
     <body>
         
         
-    <div class="book" data-level="2.1.4" data-basepath="../.." data-revision="Wed Nov 04 2015 06:39:43 GMT+0800 (中国标准时间)">
+    <div class="book" data-level="2.1.4" data-basepath="../.." data-revision="Wed Nov 04 2015 08:22:22 GMT+0800 (中国标准时间)">
     
 
 <div class="book-summary">
@@ -1108,7 +1108,7 @@ Number* num2 = [num retain];//&#x6B64;&#x65F6;&#x5F15;&#x7528;&#x8BB0;&#x6570;+1
 
 @autoreleasepool {
     Number* num = [[Number alloc] init];
-    [numautorelease];//&#x7531;autoreleasepool&#x6765;&#x7BA1;&#x7406;&#x5176;&#x5185;&#x5B58;&#x7684;&#x91CA;&#x653E;
+    [num autorelease];//&#x7531;autoreleasepool&#x6765;&#x7BA1;&#x7406;&#x5176;&#x5185;&#x5B58;&#x7684;&#x91CA;&#x653E;
 }
 </code></pre>
 <h3 id="arc">ARC</h3>
@@ -1172,7 +1172,7 @@ Number* num2 = [num retain];//&#x6B64;&#x65F6;&#x5F15;&#x7528;&#x8BB0;&#x6570;+1
 <li>&#x5F53; block &#x4EE5;&#x5F02;&#x5E38;&#xFF08;exception&#xFF09;&#x7ED3;&#x675F;&#x65F6;&#xFF0C;pool &#x4E0D;&#x4F1A;&#x88AB; drain</li>
 <li>Pool &#x7684; drain &#x64CD;&#x4F5C;&#x4F1A;&#x628A;&#x6240;&#x6709;&#x6807;&#x8BB0;&#x4E3A; autorelease &#x7684;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x51CF;&#x4E00;&#xFF0C;&#x4F46;&#x662F;&#x5E76;&#x4E0D;&#x610F;&#x5473;&#x7740;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x4E00;&#x5B9A;&#x4F1A;&#x88AB;&#x91CA;&#x653E;&#x5230;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728; autorelease pool &#x4E2D;&#x624B;&#x52A8; retain &#x5BF9;&#x8C61;&#xFF0C;&#x4EE5;&#x5EF6;&#x957F;&#x5B83;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x3002;</li>
 </ul>
-<h4 id="main-m-%E4%B8%AD-autorelease-pool-%E7%9A%84%E8%A7%A3%E9%87%8A">main.m &#x4E2D; autorelease pool &#x7684;&#x89E3;&#x91CA;</h4>
+<h4 id="main-m-%E4%B8%AD-autorelease-pool-%E7%9A%84%E8%A7%A3%E9%87%8A">main.m &#x4E2D; Autorelease Pool &#x7684;&#x89E3;&#x91CA;</h4>
 <p>&#x5927;&#x5BB6;&#x90FD;&#x77E5;&#x9053;&#x5728; iOS &#x7A0B;&#x5E8F;&#x7684; main.m &#x6587;&#x4EF6;&#x4E2D;&#x6709;&#x7C7B;&#x4F3C;&#x8FD9;&#x6837;&#x7684;&#x8BED;&#x53E5;&#xFF1A;</p>
 <pre><code class="lang-objective-c">int main(int argc, char * argv[]) {
     @autoreleasepool {
@@ -1190,6 +1190,89 @@ Number* num2 = [num retain];//&#x6B64;&#x65F6;&#x5F15;&#x7528;&#x8BB0;&#x6570;+1
 <li>UIApplication &#x81EA;&#x5DF1;&#x4F1A;&#x521B;&#x5EFA; main run loop&#xFF0C;&#x5728; Cocoa &#x7684; runloop &#x4E2D;&#x5B9E;&#x9645;&#x4E0A;&#x4E5F;&#x662F;&#x81EA;&#x52A8;&#x5305;&#x542B; autorelease pool &#x7684;&#xFF0C;&#x56E0;&#x6B64; main.m &#x5F53;&#x4E2D;&#x7684; pool &#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x662F;<strong>&#x6CA1;&#x6709;</strong>&#x5FC5;&#x8981;&#x7684;&#x3002;</li>
 </ol>
 <p>&#x5728;&#x57FA;&#x4E8E; AppKit &#x6846;&#x67B6;&#x7684; Mac OS &#x5F00;&#x53D1;&#x4E2D;&#xFF0C; main.m &#x5F53;&#x4E2D;&#x5C31;&#x662F;&#x4E0D;&#x5B58;&#x5728; autorelease pool &#x7684;&#xFF0C;&#x4E5F;&#x8FDB;&#x4E00;&#x6B65;&#x9A8C;&#x8BC1;&#x4E86;&#x6211;&#x4EEC;&#x5F97;&#x5230;&#x7684;&#x7ED3;&#x8BBA;&#x3002;&#x4E0D;&#x8FC7;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x770B;&#x4E0D;&#x5230;&#x66F4;&#x5E95;&#x5C42;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x52A0;&#x4E0A;&#x82F9;&#x679C;&#x7684;&#x6587;&#x6863;&#x4E2D;&#x4E0D;&#x5EFA;&#x8BAE;&#x4FEE;&#x6539; main.m &#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x4E5F;&#x6CA1;&#x6709;&#x7406;&#x7531;&#x5C31;&#x76F4;&#x63A5;&#x628A;&#x5B83;&#x5220;&#x6389;&#x3002;</p>
+<h4 id="autorelease-pool-%E4%B8%8E%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC">Autorelease Pool &#x4E0E;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x503C;</h4>
+<p>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x662F;&#x6307;&#x5411;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x80AF;&#x5B9A;&#x4E0D;&#x80FD;&#x5728;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x4E4B;&#x524D;&#x8FDB;&#x884C; release&#xFF0C;&#x8FD9;&#x6837;&#x8C03;&#x7528;&#x8005;&#x5728;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x65F6;&#x5F97;&#x5230;&#x7684;&#x5C31;&#x662F;&#x91CE;&#x6307;&#x9488;&#x4E86;&#xFF0C;&#x5728;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x4E4B;&#x540E;&#x4E5F;&#x4E0D;&#x80FD;&#x7ACB;&#x523B;&#x5C31; release&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x4E0D;&#x77E5;&#x9053;&#x8C03;&#x7528;&#x8005;&#x662F;&#x4E0D;&#x662F; retain &#x4E86;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x76F4;&#x63A5; release &#x4E86;&#xFF0C;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x540E;&#x9762;&#x5728;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x65F6;&#x5B83;&#x5DF2;&#x7ECF;&#x6210;&#x4E3A; nil &#x4E86;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x7EA0;&#x7ED3;&#x7684;&#x95EE;&#x9898;&#xFF0C; Objective-C &#x4E2D;&#x5BF9;&#x5BF9;&#x8C61;&#x6307;&#x9488;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x8FDB;&#x884C;&#x4E86;&#x533A;&#x5206;&#xFF0C;&#x4E00;&#x79CD;&#x53EB;&#x505A; retained return value&#xFF0C;&#x53E6;&#x4E00;&#x79CD;&#x53EB;&#x505A; unretained return value&#x3002;&#x524D;&#x8005;&#x8868;&#x793A;&#x8C03;&#x7528;&#x8005;&#x62E5;&#x6709;&#x8FD9;&#x4E2A;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x540E;&#x8005;&#x8868;&#x793A;&#x8C03;&#x7528;&#x8005;&#x4E0D;&#x62E5;&#x6709;&#x8FD9;&#x4E2A;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x6309;&#x7167;&#x201C;&#x8C01;&#x62E5;&#x6709;&#x8C01;&#x91CA;&#x653E;&#x201D;&#x7684;&#x539F;&#x5219;&#xFF0C;&#x5BF9;&#x4E8E;&#x524D;&#x8005;&#x8C03;&#x7528;&#x8005;&#x662F;&#x8981;&#x8D1F;&#x8D23;&#x91CA;&#x653E;&#x7684;&#xFF0C;&#x5BF9;&#x4E8E;&#x540E;&#x8005;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x4E86;&#x3002;</p>
+<p>&#x6309;&#x7167;&#x82F9;&#x679C;&#x7684;&#x547D;&#x540D; convention&#xFF0C;&#x4EE5; <code>alloc</code>, <code>copy</code>, <code>init</code>, <code>mutableCopy</code> &#x548C; <code>new</code> &#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x6253;&#x5934;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x90FD;&#x662F; retained return value&#xFF0C;&#x800C;&#x5176;&#x4ED6;&#x7684;&#x5219;&#x662F; unretained return value&#xFF0C;&#x4F8B;&#x5982; <code>[NSString stringWithFormat:]</code>&#x3002;&#x6211;&#x4EEC;&#x5728;&#x7F16;&#x5199;&#x4EE3;&#x7801;&#x65F6;&#x4E5F;&#x5E94;&#x8BE5;&#x9075;&#x5B88;&#x8FD9;&#x4E2A; convention&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x5206;&#x522B;&#x5728; MRC &#x548C; ARC &#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5206;&#x6790;&#x4E00;&#x4E0B;&#x4E24;&#x79CD;&#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B;&#x7684;&#x533A;&#x522B;&#x3002;</p>
+<h5 id="mrc">MRC</h5>
+<p>&#x5728; MRC &#x4E2D;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5173;&#x6CE8;&#x8FD9;&#x4E24;&#x79CD;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x7684;&#x533A;&#x522B;&#xFF0C;&#x5426;&#x5219;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#x3002;</p>
+<p><em>&#x5BF9;&#x4E8E; retained return value&#xFF0C;&#x9700;&#x8981;&#x8D1F;&#x8D23;&#x91CA;&#x653E;</em></p>
+<p>&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x6709;&#x4E00;&#x4E2A; property &#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-objective-c">@property (nonatomic, retain) NSObject *property;
+</code></pre>
+<p>&#x5728;&#x5BF9;&#x5176;&#x8D4B;&#x503C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;&#xFF1A;</p>
+<pre><code class="lang-objective-c">self.property = [[[NSObject alloc] init] autorelease];
+</code></pre>
+<p>&#x7136;&#x540E;&#x5728; dealloc &#x65B9;&#x6CD5;&#x4E2D;&#x52A0;&#x5165;&#xFF1A;</p>
+<pre><code class="lang-objective-c">[_property release];
+_property = nil;
+</code></pre>
+<p>&#x8FD9;&#x6837;&#x5185;&#x5B58;&#x7684;&#x60C5;&#x51B5;&#x5927;&#x4F53;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
+<ol>
+<li>init &#x628A; retain count &#x589E;&#x52A0;&#x5230; 1</li>
+<li>&#x8D4B;&#x503C;&#x7ED9; self.property &#xFF0C;&#x628A; retain count &#x589E;&#x52A0;&#x5230; 2</li>
+<li>&#x5F53; runloop circle &#x7ED3;&#x675F;&#x65F6;&#xFF0C;autorelease pool &#x6267;&#x884C; drain&#xFF0C;&#x628A; retain count &#x51CF;&#x4E3A; 1</li>
+<li>&#x5F53;&#x6574;&#x4E2A;&#x5BF9;&#x8C61;&#x6267;&#x884C; dealloc &#x65F6;&#xFF0C; release &#x628A; retain count &#x51CF;&#x4E3A; 0&#xFF0C;&#x5BF9;&#x8C61;&#x88AB;&#x91CA;&#x653E;</li>
+</ol>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6CA1;&#x6709;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#x53D1;&#x751F;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x53EA;&#x662F;&#x4F7F;&#x7528;&#xFF1A;</p>
+<pre><code class="lang-objective-c">self.property = [[NSObject alloc] init];
+</code></pre>
+<p>&#x8FD9;&#x4E00;&#x6761;&#x8BED;&#x53E5;&#x4F1A;&#x5BFC;&#x81F4; retain count &#x589E;&#x52A0;&#x5230; 2&#xFF0C;&#x800C;&#x6211;&#x4EEC;&#x5C11;&#x6267;&#x884C;&#x4E86;&#x4E00;&#x6B21; release&#xFF0C;&#x5C31;&#x4F1A;&#x5BFC;&#x81F4; retain count &#x4E0D;&#x80FD;&#x88AB;&#x51CF;&#x4E3A; 0 &#x3002;</p>
+<p>&#x53E6;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E34;&#x65F6;&#x53D8;&#x91CF;&#xFF1A;</p>
+<pre><code class="lang-objective-c">NSObject * a = [[NSObject alloc] init];
+self.property = a;
+[a release];
+</code></pre>
+<p>&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x56E0;&#x4E3A;&#x5BF9; a &#x6267;&#x884C;&#x4E86;&#x4E00;&#x6B21; release&#xFF0C;&#x6240;&#x6709;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x4E0A;&#x9762;&#x90A3;&#x79CD; retain count &#x4E0D;&#x80FD;&#x51CF;&#x4E3A; 0 &#x7684;&#x60C5;&#x51B5;&#x3002;</p>
+<p><strong>&#x6CE8;&#x610F;</strong>&#xFF1A;&#x73B0;&#x5728;&#x5927;&#x5BB6;&#x57FA;&#x672C;&#x90FD;&#x662F; ARC &#x5199;&#x7684;&#x6BD4;&#x8F83;&#x591A;&#xFF0C;&#x4F1A;&#x5FFD;&#x7565;&#x8FD9;&#x4E00;&#x70B9;&#xFF0C;&#x4F46;&#x662F;&#x6839;&#x636E;&#x4E0A;&#x9762;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x5728; MRC &#x4E2D;&#x76F4;&#x63A5;&#x5BF9; self.proprety &#x8D4B;&#x503C;&#x548C;&#x5148;&#x8D4B;&#x7ED9;&#x4E34;&#x65F6;&#x53D8;&#x91CF;&#xFF0C;&#x518D;&#x8D4B;&#x503C;&#x7ED9; self.property&#xFF0C;&#x786E;&#x5B9E;&#x662F;&#x6709;&#x533A;&#x522B;&#x7684;&#xFF01;&#x6211;&#x5728;&#x9762;&#x8BD5;&#x4E2D;&#x5C31;&#x88AB;&#x95EE;&#x5230;&#x8FD9;&#x4E00;&#x70B9;&#x4E86;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x5728;&#x7F16;&#x5199;&#x81EA;&#x5DF1;&#x7684;&#x4EE3;&#x7801;&#x65F6;&#xFF0C;&#x4E5F;&#x5E94;&#x8BE5;&#x9075;&#x5B88;&#x4E0A;&#x9762;&#x7684;&#x539F;&#x5219;&#xFF0C;&#x540C;&#x6837;&#x662F;&#x4F7F;&#x7528; autorelease&#xFF1A;</p>
+<pre><code class="lang-objective-c">// &#x6CE8;&#x610F;&#x51FD;&#x6570;&#x540D;&#x7684;&#x533A;&#x522B;
++ (MyCustomClass *) myCustomClass
+{
+    return [[[MyCustomClass alloc] init] autorelease]; // &#x9700;&#x8981; autorelease
+}
+- (MyCustomClass *) initWithName:(NSString *) name
+{
+    return [[MyCustomClass alloc] init]; // &#x4E0D;&#x9700;&#x8981; autorelease
+}
+</code></pre>
+<p><em>&#x5BF9;&#x4E8E; unretained return value&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x8D1F;&#x8D23;&#x91CA;&#x653E;</em></p>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x8C03;&#x7528;&#x975E; alloc&#xFF0C;init &#x7CFB;&#x7684;&#x65B9;&#x6CD5;&#x6765;&#x521D;&#x59CB;&#x5316;&#x5BF9;&#x8C61;&#x65F6;&#xFF08;&#x901A;&#x5E38;&#x662F;&#x5DE5;&#x5382;&#x65B9;&#x6CD5;&#xFF09;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x9700;&#x8981;&#x8D1F;&#x8D23;&#x53D8;&#x91CF;&#x7684;&#x91CA;&#x653E;&#xFF0C;&#x53EF;&#x4EE5;&#x5F53;&#x6210;&#x666E;&#x901A;&#x7684;&#x4E34;&#x65F6;&#x53D8;&#x91CF;&#x6765;&#x4F7F;&#x7528;&#xFF1A;</p>
+<pre><code class="lang-objective-c">NSString *name = [NSString stringWithFormat:@&quot;%@ %@&quot;, firstName, lastName];
+self.name = name
+// &#x4E0D;&#x9700;&#x8981;&#x6267;&#x884C; [name release]
+</code></pre>
+<h5 id="arc">ARC</h5>
+<p>&#x5728; ARC &#x4E2D;&#x6211;&#x4EEC;&#x5B8C;&#x5168;&#x4E0D;&#x9700;&#x8981;&#x8003;&#x8651;&#x8FD9;&#x4E24;&#x79CD;&#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B;&#x7684;&#x533A;&#x522B;&#xFF0C;ARC &#x4F1A;&#x81EA;&#x52A8;&#x52A0;&#x5165;&#x5FC5;&#x8981;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x653E;&#x5FC3;&#x5927;&#x80C6;&#x5730;&#x5199;&#xFF1A;</p>
+<pre><code class="lang-objective-c">self.property = [[NSObject alloc] init];
+self.name = [NSString stringWithFormat:@&quot;%@ %@&quot;, firstName, lastName];
+</code></pre>
+<p>&#x4EE5;&#x53CA;&#x5728;&#x81EA;&#x5DF1;&#x5199;&#x7684;&#x51FD;&#x6570;&#x4E2D;&#xFF1A;</p>
+<pre><code class="lang-objective-c">+ (MyCustomClass *) myCustomClass
+{
+    return [[MyCustomClass alloc] init]; // &#x4E0D;&#x7528; autorelease
+}
+</code></pre>
+<p>&#x8FD9;&#x4E9B;&#x5199;&#x6CD5;&#x90FD;&#x662F; OK &#x7684;&#xFF0C;&#x4E5F;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x5185;&#x5B58;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x8FDB;&#x4E00;&#x6B65;&#x7406;&#x89E3; ARC &#x662F;&#x5982;&#x4F55;&#x505A;&#x5230;&#x8FD9;&#x4E00;&#x70B9;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x53C2;&#x8003; Clang &#x7684;<a href="http://clang.llvm.org/docs/AutomaticReferenceCounting.html#unretained-return-values" target="_blank">&#x6587;&#x6863;</a>&#x3002;</p>
+<p>&#x5BF9;&#x4E8E; retained return value&#xFF0C; Clang &#x662F;&#x8FD9;&#x6837;&#x505A;&#x7684;&#xFF1A;</p>
+<blockquote>
+<p>When returning from such a function or method, ARC retains the value at the point of evaluation of the return statement, before leaving all local scopes.</p>
+<p>When receiving a return result from such a function or method, ARC releases the value at the end of the full-expression it is contained within, subject to the usual optimizations for local values.</p>
+</blockquote>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x57FA;&#x672C;&#x4E0A; ARC &#x5C31;&#x662F;&#x5E2E;&#x6211;&#x4EEC;&#x5728;&#x4EE3;&#x7801;&#x5757;&#x7ED3;&#x675F;&#x7684;&#x65F6;&#x5019;&#x8FDB;&#x884C;&#x4E86; release&#xFF1A;</p>
+<pre><code class="lang-objective-c">NSObject * a = [[NSObject alloc] init];
+self.property = a;
+//[a release]; &#x6211;&#x4EEC;&#x4E0D;&#x9700;&#x8981;&#x5199;&#x8FD9;&#x4E00;&#x53E5;&#xFF0C;&#x56E0;&#x4E3A; ARC &#x4F1A;&#x5E2E;&#x6211;&#x4EEC;&#x628A;&#x8FD9;&#x4E00;&#x53E5;&#x52A0;&#x4E0A;
+</code></pre>
+<p>&#x5BF9;&#x4E8E; unretained return value&#xFF1A;</p>
+<blockquote>
+<p>When returning from such a function or method, ARC retains the value at the point of evaluation of the return statement, then leaves all local scopes, and then balances out the retain while ensuring that the value lives across the call boundary. In the worst case, this may involve an autorelease, but callers must not assume that the value is actually in the autorelease pool.</p>
+<p>ARC performs no extra mandatory work on the caller side, although it may elect to do something to shorten the lifetime of the returned value.</p>
+</blockquote>
+<p>&#x8FD9;&#x4E2A;&#x548C;&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x5728; MRC &#x4E2D;&#x505A;&#x7684;&#x4E0D;&#x662F;&#x7279;&#x522B;&#x4E00;&#x6837;&#xFF0C;ARC &#x4F1A;&#x628A;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x5EF6;&#x957F;&#xFF0C;&#x786E;&#x4FDD;&#x8C03;&#x7528;&#x8005;&#x80FD;&#x62FF;&#x5230;&#x5E76;&#x4E14;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x8FD4;&#x56DE;&#x503C;&#x3002;&#x4F46;&#x662F;&#x5E76;&#x4E0D;&#x4E00;&#x5B9A;&#x4F1A;&#x4F7F;&#x7528; autorelease&#xFF0C;&#x5199;&#x7684;&#x662F;&#x5728; worst case &#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x624D;&#x4F1A;&#x4F7F;&#x7528;&#x3002;&#x8C03;&#x7528;&#x8005;&#x4E0D;&#x80FD;&#x5047;&#x8BBE;&#x8FD4;&#x56DE;&#x503C;&#x771F;&#x7684;&#x5C31;&#x5728; autorelease pool &#x4E2D;&#x3002;&#x4ECE;&#x6027;&#x80FD;&#x7684;&#x89D2;&#x5EA6;&#xFF0C;&#x8FD9;&#x6837;&#x505A;&#x4E5F;&#x662F;&#x6B63;&#x5E38;&#x7684;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x80FD;&#x591F;&#x77E5;&#x9053;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x6700;&#x957F;&#x5E94;&#x8BE5;&#x6709;&#x591A;&#x957F;&#xFF0C;&#x4E5F;&#x5C31;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x4F7F;&#x7528; autorelease &#x4E86;&#xFF0C;&#x76F4;&#x63A5; release &#x5C31;&#x53EF;&#x4EE5;&#x3002;&#x5982;&#x679C;&#x5F88;&#x591A;&#x5BF9;&#x8C61;&#x90FD;&#x4F7F;&#x7528; autorelease &#x7684;&#x8BDD;&#xFF0C;&#x4E5F;&#x4F1A;&#x5BFC;&#x81F4;&#x6574;&#x4E2A; pool &#x5728; drain &#x7684;&#x65F6;&#x5019;&#x6027;&#x80FD;&#x4E0B;&#x964D;&#x3002;</p>
 <h3 id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
 <ul>
 <li><a href="http://blog.csdn.net/fightingbull/article/details/8098133" target="_blank">Objective-C&#x5185;&#x5B58;&#x7BA1;&#x7406;MRC&#x4E0E;ARC</a></li>
@@ -1198,6 +1281,9 @@ Number* num2 = [num retain];//&#x6B64;&#x65F6;&#x5F15;&#x7528;&#x8BB0;&#x6570;+1
 <li><a href="https://stackoverflow.com/questions/29350634/ios-autoreleasepool-in-main-and-arc-alloc-release" target="_blank">https://stackoverflow.com/questions/29350634/ios-autoreleasepool-in-main-and-arc-alloc-release</a></li>
 <li><a href="https://stackoverflow.com/questions/6588211/why-do-the-ios-main-m-templates-include-a-return-statement-and-an-autorelease-po" target="_blank">https://stackoverflow.com/questions/6588211/why-do-the-ios-main-m-templates-include-a-return-statement-and-an-autorelease-po</a></li>
 <li><a href="https://stackoverflow.com/questions/2702548/if-the-uiapplicationmain-never-returns-then-when-does-the-autorelease-pool-get" target="_blank">https://stackoverflow.com/questions/2702548/if-the-uiapplicationmain-never-returns-then-when-does-the-autorelease-pool-get</a></li>
+<li><a href="https://stackoverflow.com/questions/6055274/use-autorelease-when-setting-a-retain-property-using-dot-syntax" target="_blank">https://stackoverflow.com/questions/6055274/use-autorelease-when-setting-a-retain-property-using-dot-syntax</a></li>
+<li><a href="https://stackoverflow.com/questions/17601274/arc-and-autorelease" target="_blank">https://stackoverflow.com/questions/17601274/arc-and-autorelease</a></li>
+<li><a href="https://stackoverflow.com/questions/8292060/arc-equivalent-of-autorelease" target="_blank">https://stackoverflow.com/questions/8292060/arc-equivalent-of-autorelease</a></li>
 </ul>
 
                     
