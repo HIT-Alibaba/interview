@@ -217,6 +217,31 @@ Extension 可以认为是一种匿名的 Category， Extension 与 Category 有�
 @end 
 ``` 
 
+Extension 很常见的用法，是用来给类添加**私有**的变量和方法，用于在类的内部使用。例如在 interface 中定义为 `readonly` 类型的属性，在实现中添加 extension，将其重新定义为 `readwrite`，这样我们在类的内部就可以直接修改它的值，然而外部依然不能调用 `setter` 方法来修改。示例代码如下，来自苹果官方[文档](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html#//apple_ref/doc/uid/TP40011210-CH6-SW3)
+
+XYZPerson.h
+
+```objective-c
+@interface XYZPerson : NSObject
+...
+@property (readonly) NSString *uniqueIdentifier;
+
+@end
+```
+
+XYZPerson.m
+
+```objective-c
+@interface XYZPerson ()
+@property (readwrite) NSString *uniqueIdentifier;
+@end
+
+@implementation XYZPerson
+...
+@end
+```
+
+
 ## 类的导入
 
 导入类可以使用 `#include` , `#import` 和 `@class` 三种方法，其区别如下：
