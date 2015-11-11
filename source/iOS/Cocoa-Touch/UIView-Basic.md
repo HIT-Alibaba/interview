@@ -62,7 +62,7 @@ UIView 是按需绘制的，当整个视图或者视图的一部分由于布局�
 * 视图的 bounds 大小改变#
 * 用户界面旋转，通常会导致根视图控制器的大小改变
 * 视图的 layer 层的 Core Animation sublayers 发生改变
-* 程序调用视图的`setNeedsLayout`或`layoutIfNeeded`方法 
+* 程序调用视图的`setNeedsLayout`或`layoutIfNeeded`方法
 * 程序调用视图 layer 的`setNeedsLayout`方法
 
 #### Autoresizing
@@ -90,6 +90,23 @@ Constraint 是另一种用于自动布局的方法。本质上，Constraint 就�
 其中方程两边不一定是等于关系，也可以是大于等于之类的关系。
 
 Constraint 比 AutoResizing 更加灵活和强大，可以实现复杂的子视图布局。
+
+#### 自定义 layout
+
+UIView 当中提供了一个 `layoutSubviews` 函数，UIView 的子类可以重载这个函数，以实现更加复杂和精细的子 View 布局。
+
+苹果文档专门强调了，应该只在上面提到的 Autoresizing 和 Constraint 机制不能实现所需要的效果时，才使用 `layoutSubviews`。而且，layoutSubviews 方法只能被系统触发调用，程序员不能手动直接调用该方法。
+
+那么 layoutSubviews 方法具体调用的时机有哪些呢？在 stackoverflow 的[这个答案](http://stackoverflow.com/questions/728372/when-is-layoutsubviews-called)里有所讨论，具体有下面几种情况：
+
+1. addSubview 会导致被 add 的 view 调用 layoutSubviews, 同时 add 的 target view 以及它所有的子 view 都会被调用。
+2. setFrame 当新的 frame 和 旧的不同时（即 view 的大小改变时）会调用 layoutSubviews
+3. 滚动一个 UIScollView 会导致这个 scrollView 以及它的父 View 调用 layoutSubviews
+4. 旋转设备会导致当前所响应的 ViewController 的主 View 调用 layoutSubviews
+5. 改变 View 的 size 会导致父 View 调用 layoutSubviews
+6. removeFromSuperview 也会导致父 View 调用 layoutSubviews
+
+重载 layoutSubviews 可以让我们实现更复杂的布局效果，[这篇博客](http://bachiscoding.com/blog/2014/12/15/when-will-layoutsubviews-be-invoked/)里以[RDVTabBarController](https://github.com/robbdimitrov/RDVTabBarController)为例进行了简单介绍。
 
 ## 事件处理
 

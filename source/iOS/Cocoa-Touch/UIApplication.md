@@ -4,6 +4,8 @@ UIApplication 的核心作用是提供了 iOS 程序运行期间的控制和协�
 
 UIApplication 的一个主要工作是处理用户事件，它会起一个队列，把所有用户事件都放入队列，逐个处理，在处理的时候，它会发送当前事件 到一个合适的处理事件的目标控件。此外，UIApplication 实例还维护一个在本应用中打开的 window 列表（UIWindow 实例），这样它就 可以接触应用中的任何一个 UIView 对象。UIApplication 实例会被赋予一个代理对象，以处理应用程序的生命周期事件（比如程序启动和关闭）、系统事件（比如来电、记事项警告）等等。
 
+## UIApplicaion 生命周期
+
 一个 UIApplication 可以有如下几种状态：
 
 * `Not running（未运行）`程序没启动
@@ -45,6 +47,8 @@ UIApplication 的一个主要工作是处理用户事件，它会起一个队列
 8. `(void)applicationDidFinishLaunching:(UIApplication*)application`
 
     说明：当程序载入后执行
+
+## UIApplication Background Task
 
 参考资料：
 
