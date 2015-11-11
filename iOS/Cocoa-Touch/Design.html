@@ -8,7 +8,7 @@
         <title>设计模式 | 笔试面试知识整理</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 2.4.3">
+        <meta name="generator" content="GitBook 2.5.2">
         
         
         <meta name="HandheldFriendly" content="true"/>
@@ -22,6 +22,14 @@
     
         
         <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
         
     
     
@@ -40,13 +48,10 @@
     <body>
         
         
-    <div class="book" data-level="2.2.8" data-basepath="../.." data-revision="Wed Nov 04 2015 15:28:40 GMT+0800 (中国标准时间)">
+    <div class="book" data-level="2.2.8" data-chapter-title="设计模式" data-filepath="iOS/Cocoa-Touch/Design.md" data-basepath="../.." data-revision="Wed Nov 11 2015 11:12:31 GMT+0800 (CST)">
     
 
 <div class="book-summary">
-    <div class="book-search" role="search">
-        <input type="text" placeholder="Type to search" class="form-control" />
-    </div>
     <nav role="navigation">
         <ul class="summary">
             
@@ -1069,80 +1074,7 @@
         <div class="body-inner">
             <div class="book-header" role="navigation">
     <!-- Actions Left -->
-    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
-    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
     
-    <div id="font-settings-wrapper" class="dropdown pull-left">
-        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
-        </a>
-        <div class="dropdown-menu font-settings">
-    <div class="dropdown-caret">
-        <span class="caret-outer"></span>
-        <span class="caret-inner"></span>
-    </div>
-
-    <div class="buttons">
-        <button type="button" id="reduce-font-size" class="button size-2">A</button>
-        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
-    </div>
-
-    <div class="buttons font-family-list">
-        <button type="button" data-font="0" class="button">Serif</button>
-        <button type="button" data-font="1" class="button">Sans</button>
-    </div>
-
-    <div class="buttons color-theme-list">
-        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
-        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
-        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
-    </div>
-</div>
-
-    </div>
-
-    <!-- Actions Right -->
-    
-    <div class="dropdown pull-right">
-        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
-        </a>
-        <div class="dropdown-menu font-settings dropdown-left">
-            <div class="dropdown-caret">
-                <span class="caret-outer"></span>
-                <span class="caret-inner"></span>
-            </div>
-            <div class="buttons">
-                <button type="button" data-sharing="twitter" class="button">
-                    Share on Twitter
-                </button>
-                <button type="button" data-sharing="google-plus" class="button">
-                    Share on Google
-                </button>
-                <button type="button" data-sharing="facebook" class="button">
-                    Share on Facebook
-                </button>
-                <button type="button" data-sharing="weibo" class="button">
-                    Share on Weibo
-                </button>
-                <button type="button" data-sharing="instapaper" class="button">
-                    Share on Instapaper
-                </button>
-            </div>
-        </div>
-    </div>
-    
-
-    
-    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
-    
-    
-    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-    
-    
-    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
-    
-    
-    
-
 
     <!-- Title -->
     <h1>
@@ -1157,7 +1089,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h2 id="%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%EF%BC%88singleton%EF%BC%89">&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#xFF08;Singleton&#xFF09;</h2>
+                        <h2 id="&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#xFF08;singleton&#xFF09;">&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#xFF08;Singleton&#xFF09;</h2>
 <p>&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x662F;&#x4E00;&#x79CD;&#x5E38;&#x89C1;&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;&#x5728; Cocoa &#x5F00;&#x53D1;&#x4E2D;&#x4E5F;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x3002;</p>
 <p>&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code class="lang-objective-c">/* Singleton.h */ 
@@ -1179,7 +1111,7 @@ static Singleton *instance = nil;
 }
 </code></pre>
 <p>Cocoa &#x5E93;&#x672C;&#x8EAB;&#x5728;&#x4E00;&#x4E9B;&#x5730;&#x65B9;&#x4E5F;&#x4F7F;&#x7528;&#x4E86;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#xFF0C;&#x4F8B;&#x5982;<code>[NSNotificationCenter defaultCenter]</code>&#xFF0C;<code>[UIColor redColor]</code>&#x7B49;&#x3002;</p>
-<h2 id="%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%EF%BC%88factory%EF%BC%89">&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#xFF08;Factory&#xFF09;</h2>
+<h2 id="&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#xFF08;factory&#xFF09;">&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#xFF08;Factory&#xFF09;</h2>
 <p>&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#x662F;&#x53E6;&#x4E00;&#x79CD;&#x5E38;&#x89C1;&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;&#x672C;&#x8D28;&#x4E0A;&#x662F;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x6765;&#x7B80;&#x5316;&#x7C7B;&#x7684;&#x9009;&#x62E9;&#x548C;&#x521D;&#x59CB;&#x5316;&#x8FC7;&#x7A0B;&#x3002;</p>
 <p>&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x7F51;&#x4E0A;&#x5230;&#x5904;&#x90FD;&#x662F;&#x7684;&#x7B80;&#x5355;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
 <pre><code class="lang-objective-c">//
@@ -1244,7 +1176,7 @@ oper.numberA = 10;
 oper.numberB = 20;
 NSLog(@&quot;%f&quot;, oper.getResult);
 </code></pre>
-<h2 id="%E5%A7%94%E6%89%98%E6%A8%A1%E5%BC%8F%EF%BC%88delegate%EF%BC%89">&#x59D4;&#x6258;&#x6A21;&#x5F0F;&#xFF08;Delegate&#xFF09;</h2>
+<h2 id="&#x59D4;&#x6258;&#x6A21;&#x5F0F;&#xFF08;delegate&#xFF09;">&#x59D4;&#x6258;&#x6A21;&#x5F0F;&#xFF08;Delegate&#xFF09;</h2>
 <p>&#x59D4;&#x6258;&#x6A21;&#x5F0F;&#x662F; Cocoa &#x4E2D;&#x5341;&#x5206;&#x5E38;&#x89C1;&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;&#x5728; Cocoa &#x5E93;&#x4E2D;&#x88AB;&#x5927;&#x91CF;&#x7684;&#x4F7F;&#x7528;&#x3002;&#x5728; Objective-C &#x4E2D;&#xFF0C;&#x59D4;&#x6258;&#x6A21;&#x5F0F;&#x901A;&#x5E38;&#x4F7F;&#x7528;&#x534F;&#x8BAE;&#xFF08;protocol&#xFF09;&#x6765;&#x5B9E;&#x73B0;&#x3002;</p>
 <p>&#x59D4;&#x6258;&#x6A21;&#x5F0F;&#x7684;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
 <pre><code class="lang-objective-c">@protocol PrintDelegate <NSObject>
@@ -1278,7 +1210,7 @@ int main(int argc, const char * argv[]) {
 }
 </PrintDelegate></PrintDelegate></NSObject></code></pre>
 <p>&#x8FD9;&#x91CC;&#x5BF9;&#x8C61;a&#x7684; delegate &#x8BBE;&#x7F6E;&#x4E3A;&#x81EA;&#x5DF1;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x5B9E;&#x73B0;&#x4E86; <code>PrintDelegate</code> &#x534F;&#x8BAE;&#x7684;&#x5BF9;&#x8C61;&#x3002;</p>
-<h2 id="%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%EF%BC%88observer%EF%BC%89">&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#xFF08;Observer&#xFF09;</h2>
+<h2 id="&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#xFF08;observer&#xFF09;">&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#xFF08;Observer&#xFF09;</h2>
 <p>Cocoa &#x4E2D;&#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x79CD;&#x7528;&#x4E8E;&#x5B9E;&#x73B0;&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#x7684;&#x529E;&#x6CD5;&#xFF0C;&#x4E00;&#x76F4;&#x662F;&#x4F7F;&#x7528;<code>NSNotification</code>&#xFF0C;&#x53E6;&#x4E00;&#x79CD;&#x662F;<code>KVO(Key Value Observing)</code>&#x3002;</p>
 <h3 id="nsnotification">NSNotification</h3>
 <p><code>NSNotification</code> &#x57FA;&#x4E8E; Cocoa &#x81EA;&#x5DF1;&#x7684;&#x6D88;&#x606F;&#x4E2D;&#x5FC3;&#x7EC4;&#x4EF6; <code>NSNotificationCenter</code> &#x5B9E;&#x73B0;&#x3002;</p>
@@ -1294,7 +1226,7 @@ int main(int argc, const char * argv[]) {
                                     object:nil
                                   userInfo:nil];
 </code></pre>
-<h3 id="kvo-key-value-observing">KVO(Key Value Observing)</h3>
+<h3 id="kvokey-value-observing">KVO(Key Value Observing)</h3>
 <p>KVO&#x7684;&#x5B9E;&#x73B0;&#x4F9D;&#x8D56;&#x4E8E; Objective-C &#x672C;&#x8EAB;&#x5F3A;&#x5927;&#x7684; KVC(Key Value Coding) &#x7279;&#x6027;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x5BF9;&#x4E8E;&#x67D0;&#x4E2A;&#x5C5E;&#x6027;&#x53D8;&#x5316;&#x7684;&#x52A8;&#x6001;&#x76D1;&#x6D4B;&#x3002;</p>
 <p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code class="lang-objective-c">// Book&#x7C7B;
@@ -1350,7 +1282,7 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 </code></pre>
-<h3 id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
+<h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
 <ul>
 <li><a href="http://arthurchen.blog.51cto.com/2483760/642536/" target="_blank">Objective-C&#x4E2D;&#x7684;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;</a></li>
 <li><a href="http://blog.sina.com.cn/s/blog_58af95150101m362.html" target="_blank">iPhone&#x5F00;&#x53D1;&#x7B14;&#x8BB0;&#x2014;&#x2014;&#x7B80;&#x5355;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;</a></li>
@@ -1380,9 +1312,25 @@ int main(int argc, const char * argv[]) {
         
 <script src="../../gitbook/app.js"></script>
 
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    var config = {"highlight":{},"search":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
     gitbook.start(config);
 });
 </script>

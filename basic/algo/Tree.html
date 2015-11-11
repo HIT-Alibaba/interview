@@ -8,7 +8,7 @@
         <title>树 | 笔试面试知识整理</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 2.4.3">
+        <meta name="generator" content="GitBook 2.5.2">
         
         
         <meta name="HandheldFriendly" content="true"/>
@@ -22,6 +22,14 @@
     
         
         <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
         
     
     
@@ -40,13 +48,10 @@
     <body>
         
         
-    <div class="book" data-level="1.2.2" data-basepath="../.." data-revision="Wed Nov 04 2015 15:28:40 GMT+0800 (中国标准时间)">
+    <div class="book" data-level="1.2.2" data-chapter-title="树" data-filepath="basic/algo/Tree.md" data-basepath="../.." data-revision="Wed Nov 11 2015 11:12:31 GMT+0800 (CST)">
     
 
 <div class="book-summary">
-    <div class="book-search" role="search">
-        <input type="text" placeholder="Type to search" class="form-control" />
-    </div>
     <nav role="navigation">
         <ul class="summary">
             
@@ -1069,80 +1074,7 @@
         <div class="body-inner">
             <div class="book-header" role="navigation">
     <!-- Actions Left -->
-    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
-    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
     
-    <div id="font-settings-wrapper" class="dropdown pull-left">
-        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
-        </a>
-        <div class="dropdown-menu font-settings">
-    <div class="dropdown-caret">
-        <span class="caret-outer"></span>
-        <span class="caret-inner"></span>
-    </div>
-
-    <div class="buttons">
-        <button type="button" id="reduce-font-size" class="button size-2">A</button>
-        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
-    </div>
-
-    <div class="buttons font-family-list">
-        <button type="button" data-font="0" class="button">Serif</button>
-        <button type="button" data-font="1" class="button">Sans</button>
-    </div>
-
-    <div class="buttons color-theme-list">
-        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
-        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
-        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
-    </div>
-</div>
-
-    </div>
-
-    <!-- Actions Right -->
-    
-    <div class="dropdown pull-right">
-        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
-        </a>
-        <div class="dropdown-menu font-settings dropdown-left">
-            <div class="dropdown-caret">
-                <span class="caret-outer"></span>
-                <span class="caret-inner"></span>
-            </div>
-            <div class="buttons">
-                <button type="button" data-sharing="twitter" class="button">
-                    Share on Twitter
-                </button>
-                <button type="button" data-sharing="google-plus" class="button">
-                    Share on Google
-                </button>
-                <button type="button" data-sharing="facebook" class="button">
-                    Share on Facebook
-                </button>
-                <button type="button" data-sharing="weibo" class="button">
-                    Share on Weibo
-                </button>
-                <button type="button" data-sharing="instapaper" class="button">
-                    Share on Instapaper
-                </button>
-            </div>
-        </div>
-    </div>
-    
-
-    
-    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
-    
-    
-    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-    
-    
-    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
-    
-    
-    
-
 
     <!-- Title -->
     <h1>
@@ -1157,7 +1089,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h2 id="%E4%BA%8C%E5%8F%89%E6%A0%91">&#x4E8C;&#x53C9;&#x6811;</h2>
+                        <h2 id="&#x4E8C;&#x53C9;&#x6811;">&#x4E8C;&#x53C9;&#x6811;</h2>
 <p><strong>&#x4E8C;&#x53C9;&#x6811;</strong>&#xFF1A;&#x4E8C;&#x53C9;&#x6811;&#x662F;&#x6709;&#x9650;&#x4E2A;&#x7ED3;&#x70B9;&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x8FD9;&#x4E2A;&#x96C6;&#x5408;&#x6216;&#x8005;&#x662F;&#x7A7A;&#x96C6;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x7531;&#x4E00;&#x4E2A;&#x6839;&#x7ED3;&#x70B9;&#x548C;&#x4E24;&#x682A;&#x4E92;&#x4E0D;&#x76F8;&#x4EA4;&#x7684;&#x4E8C;&#x53C9;&#x6811;&#x7EC4;&#x6210;&#xFF0C;&#x5176;&#x4E2D;&#x4E00;&#x682A;&#x53EB;&#x6839;&#x7684;&#x505A;&#x5DE6;&#x5B50;&#x6811;&#xFF0C;&#x53E6;&#x4E00;&#x68F5;&#x53EB;&#x505A;&#x6839;&#x7684;&#x53F3;&#x5B50;&#x6811;&#x3002;</p>
 <p><strong>&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x6027;&#x8D28;</strong>&#xFF1A;</p>
 <ul>
@@ -1174,14 +1106,14 @@
 <ul>
 <li>&#x4EC5;&#x6709;&#x524D;&#x5E8F;&#x548C;&#x540E;&#x5E8F;&#x904D;&#x5386;&#xFF0C;&#x4E0D;&#x80FD;&#x786E;&#x5B9A;&#x4E00;&#x4E2A;&#x4E8C;&#x53C9;&#x6811;&#xFF0C;&#x5FC5;&#x987B;&#x6709;&#x4E2D;&#x5E8F;&#x904D;&#x5386;&#x7684;&#x7ED3;&#x679C;</li>
 </ul>
-<h2 id="%E5%A0%86">&#x5806;</h2>
+<h2 id="&#x5806;">&#x5806;</h2>
 <p>&#x5982;&#x679C;&#x4E00;&#x68F5;&#x5B8C;&#x5168;&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x975E;&#x7EC8;&#x7AEF;&#x7ED3;&#x70B9;&#x7684;&#x5143;&#x7D20;&#x90FD;&#x4E0D;&#x5C0F;&#x4E8E;&#x5176;&#x5DE6;&#x513F;&#x5B50;&#x7ED3;&#x70B9;&#x548C;&#x53F3;&#x513F;&#x5B50;&#x7ED3;&#x70B9;&#xFF08;&#x5982;&#x679C;&#x6709;&#x7684;&#x8BDD;&#xFF09;
 &#x7684;&#x5143;&#x7D20;&#xFF0C;&#x5219;&#x79F0;&#x6B64;&#x5B8C;&#x5168;&#x4E8C;&#x53C9;&#x6811;&#x4E3A;&#x6700;&#x5927;&#x5806;&#x3002;</p>
 <p>&#x540C;&#x6837;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x68F5;&#x5B8C;&#x5168;&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x975E;&#x7EC8;&#x7AEF;&#x7ED3;&#x70B9;&#x7684;&#x5143;&#x7D20;&#x90FD;&#x4E0D;&#x5927;&#x4E8E;&#x5176;&#x5DE6;&#x513F;&#x5B50;&#x7ED3;&#x70B9;&#x548C;&#x53F3;&#x513F;&#x5B50;&#x7ED3;&#x70B9;&#xFF08;&#x5982;&#x679C;
 &#x6709;&#x7684;&#x8BDD;&#xFF09;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x5219;&#x79F0;&#x6B64;&#x5B8C;&#x5168;&#x4E8C;&#x53C9;&#x6811;&#x4E3A;&#x6700;&#x5C0F;&#x5806;&#x3002;</p>
 <p><strong>&#x6700;&#x5927;&#x5806;&#x7684;&#x6839;&#x7ED3;&#x70B9;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x5728;&#x6574;&#x4E2A;&#x5806;&#x4E2D;&#x662F;&#x6700;&#x5927;&#x7684;&#xFF1B;</strong></p>
 <p><strong>&#x6700;&#x5C0F;&#x5806;&#x7684;&#x6839;&#x7ED3;&#x70B9;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x5728;&#x6574;&#x4E2A;&#x5806;&#x4E2D;&#x662F;&#x6700;&#x5C0F;&#x7684;&#x3002;</strong></p>
-<h2 id="%E5%93%88%E5%BC%97%E6%9B%BC%E6%A0%91">&#x54C8;&#x5F17;&#x66FC;&#x6811;</h2>
+<h2 id="&#x54C8;&#x5F17;&#x66FC;&#x6811;">&#x54C8;&#x5F17;&#x66FC;&#x6811;</h2>
 <ul>
 <li><p>&#x5B9A;&#x4E49;&#xFF1A;&#x7ED9;&#x5B9A;n&#x4E2A;&#x6743;&#x503C;&#x4F5C;&#x4E3A;n&#x7684;&#x53F6;&#x5B50;&#x7ED3;&#x70B9;&#xFF0C;&#x6784;&#x9020;&#x4E00;&#x68F5;&#x4E8C;&#x53C9;&#x6811;&#xFF0C;&#x82E5;&#x5E26;&#x6743;&#x8DEF;&#x5F84;&#x957F;&#x5EA6;&#x8FBE;&#x5230;&#x6700;&#x5C0F;&#xFF0C;&#x79F0;&#x8FD9;&#x6837;&#x7684;&#x4E8C;&#x53C9;&#x6811;&#x4E3A;&#x6700;&#x4F18;&#x4E8C;&#x53C9;&#x6811;&#xFF0C;&#x4E5F;&#x79F0;&#x4E3A;&#x54C8;&#x592B;&#x66FC;&#x6811;(Huffman tree)&#x3002;</p>
 </li>
@@ -1195,7 +1127,7 @@
 </ol>
 </li>
 </ul>
-<h2 id="%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91">&#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;</h2>
+<h2 id="&#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;">&#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;</h2>
 <p>&#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;&#xFF08;Binary Sort Tree&#xFF09;&#x53C8;&#x79F0;&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;&#xFF08;Binary Search Tree&#xFF09;&#xFF0C;&#x4EA6;&#x79F0;&#x4E8C;&#x53C9;&#x641C;&#x7D22;&#x6811;&#x3002;</p>
 <p>&#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;&#x6216;&#x8005;&#x662F;&#x4E00;&#x68F5;&#x7A7A;&#x6811;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x5177;&#x6709;&#x4E0B;&#x5217;&#x6027;&#x8D28;&#x7684;&#x4E8C;&#x53C9;&#x6811;&#xFF1A;</p>
 <ol>
@@ -1205,14 +1137,14 @@
 <li>&#x6CA1;&#x6709;&#x952E;&#x503C;&#x76F8;&#x7B49;&#x7684;&#x8282;&#x70B9;</li>
 </ol>
 <p>&#x4E8C;&#x5206;&#x67E5;&#x627E;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x662F;O(log(n))&#xFF0C;&#x6700;&#x574F;&#x60C5;&#x51B5;&#x4E0B;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x662F;O(n)&#xFF08;&#x76F8;&#x5F53;&#x4E8E;&#x987A;&#x5E8F;&#x67E5;&#x627E;&#xFF09;</p>
-<h2 id="%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91">&#x5E73;&#x8861;&#x4E8C;&#x53C9;&#x6811;</h2>
+<h2 id="&#x5E73;&#x8861;&#x4E8C;&#x53C9;&#x6811;">&#x5E73;&#x8861;&#x4E8C;&#x53C9;&#x6811;</h2>
 <p>&#x5E73;&#x8861;&#x4E8C;&#x53C9;&#x6811;&#xFF08;balanced  binary  tree&#xFF09;,&#x53C8;&#x79F0; AVL &#x6811;&#x3002;&#x5B83;&#x6216;&#x8005;&#x662F;&#x4E00;&#x68F5;&#x7A7A;&#x6811;,&#x6216;&#x8005;&#x662F;&#x5177;&#x6709;&#x5982;&#x4E0B;&#x6027;&#x8D28;&#x7684;&#x4E8C;&#x53C9;&#x6811;&#xFF1A;</p>
 <ol>
 <li>&#x5B83;&#x7684;&#x5DE6;&#x5B50;&#x6811;&#x548C;&#x53F3;&#x5B50;&#x6811;&#x90FD;&#x662F;&#x5E73;&#x8861;&#x4E8C;&#x53C9;&#x6811;&#xFF0C;</li>
 <li>&#x5DE6;&#x5B50;&#x6811;&#x548C;&#x53F3;&#x5B50;&#x6811;&#x7684;&#x6DF1;&#x5EA6;&#x4E4B;&#x5DEE;&#x7684;&#x7EDD;&#x5BF9;&#x503C;&#x4E0D;&#x8D85;&#x8FC7;1&#x3002;</li>
 </ol>
 <p>&#x5E73;&#x8861;&#x4E8C;&#x53C9;&#x6811;&#x662F;&#x5BF9;&#x4E8C;&#x53C9;&#x641C;&#x7D22;&#x6811;(&#x53C8;&#x79F0;&#x4E3A;&#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;)&#x7684;&#x4E00;&#x79CD;&#x6539;&#x8FDB;&#x3002;&#x4E8C;&#x53C9;&#x641C;&#x7D22;&#x6811;&#x6709;&#x4E00;&#x4E2A;&#x7F3A;&#x70B9;&#x5C31;&#x662F;&#xFF0C;&#x6811;&#x7684;&#x7ED3;&#x6784;&#x662F;&#x65E0;&#x6CD5;&#x9884;&#x6599;&#x7684;&#xFF0C;&#x968F;&#x610F;&#x6027;&#x5F88;&#x5927;&#xFF0C;&#x5B83;&#x53EA;&#x4E0E;&#x8282;&#x70B9;&#x7684;&#x503C;&#x548C;&#x63D2;&#x5165;&#x7684;&#x987A;&#x5E8F;&#x6709;&#x5173;&#x7CFB;&#xFF0C;&#x5F80;&#x5F80;&#x5F97;&#x5230;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x4E0D;&#x5E73;&#x8861;&#x7684;&#x4E8C;&#x53C9;&#x6811;&#x3002;&#x5728;&#x6700;&#x574F;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x53EF;&#x80FD;&#x5F97;&#x5230;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x5355;&#x652F;&#x4E8C;&#x53C9;&#x6811;&#xFF0C;&#x5176;&#x9AD8;&#x5EA6;&#x548C;&#x8282;&#x70B9;&#x6570;&#x76F8;&#x540C;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x4E00;&#x4E2A;&#x5355;&#x94FE;&#x8868;&#xFF0C;&#x5BF9;&#x5176;&#x6B63;&#x5E38;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x6709;O(log(n))&#x53D8;&#x6210;&#x4E86;O(n)&#xFF0C;&#x4ECE;&#x800C;&#x4E27;&#x5931;&#x4E86;&#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;&#x7684;&#x4E00;&#x4E9B;&#x5E94;&#x8BE5;&#x6709;&#x7684;&#x4F18;&#x70B9;&#x3002;</p>
-<h2 id="b-%E6%A0%91">B-&#x6811;</h2>
+<h2 id="b&#x6811;">B-&#x6811;</h2>
 <p><strong>B-&#x6811;</strong>&#xFF1A;B-&#x6811;&#x662F;&#x4E00;&#x79CD;&#x975E;&#x4E8C;&#x53C9;&#x7684;&#x67E5;&#x627E;&#x6811;&#xFF0C; &#x9664;&#x4E86;&#x8981;&#x6EE1;&#x8DB3;&#x67E5;&#x627E;&#x6811;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x8FD8;&#x8981;&#x6EE1;&#x8DB3;&#x4EE5;&#x4E0B;&#x7ED3;&#x6784;&#x7279;&#x6027;&#xFF1A;</p>
 <p>&#x4E00;&#x68F5; m &#x9636;&#x7684;B-&#x6811;&#xFF1A;</p>
 <ol>
@@ -1221,11 +1153,11 @@
 <li>&#x6240;&#x6709;&#x7684;&#x53F6;&#x5B50;&#x7ED3;&#x70B9;&#x90FD;&#x5728;&#x76F8;&#x540C;&#x7684;&#x6DF1;&#x5EA6;&#x3002;   </li>
 </ol>
 <p>B-&#x6811;&#x7684;&#x5E73;&#x5747;&#x6DF1;&#x5EA6;&#x4E3A;logm/2(N)&#x3002;&#x6267;&#x884C;&#x67E5;&#x627E;&#x7684;&#x5E73;&#x5747;&#x65F6;&#x95F4;&#x4E3A;O(logm)&#xFF1B;</p>
-<h2 id="trie-%E6%A0%91">Trie &#x6811;</h2>
+<h2 id="trie-&#x6811;">Trie &#x6811;</h2>
 <p>Trie &#x6811;&#xFF0C;&#x53C8;&#x79F0;&#x524D;&#x7F00;&#x6811;&#xFF0C;&#x5B57;&#x5178;&#x6811;&#xFF0C; &#x662F;&#x4E00;&#x79CD;&#x6709;&#x5E8F;&#x6811;&#xFF0C;&#x7528;&#x4E8E;&#x4FDD;&#x5B58;&#x5173;&#x8054;&#x6570;&#x7EC4;&#xFF0C;&#x5176;&#x4E2D;&#x7684;&#x952E;&#x901A;&#x5E38;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x3002;&#x4E0E;&#x4E8C;&#x53C9;&#x67E5;&#x627E;&#x6811;&#x4E0D;&#x540C;&#xFF0C;&#x952E;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x4FDD;&#x5B58;&#x5728;&#x8282;&#x70B9;&#x4E2D;&#xFF0C;&#x800C;&#x662F;&#x7531;&#x8282;&#x70B9;&#x5728;&#x6811;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#x51B3;&#x5B9A;&#x3002;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x6240;&#x6709;&#x5B50;&#x5B59;&#x90FD;&#x6709;&#x76F8;&#x540C;&#x7684;&#x524D;&#x7F00;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8FD9;&#x4E2A;&#x8282;&#x70B9;&#x5BF9;&#x5E94;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x800C;&#x6839;&#x8282;&#x70B9;&#x5BF9;&#x5E94;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;&#x3002;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E0D;&#x662F;&#x6240;&#x6709;&#x7684;&#x8282;&#x70B9;&#x90FD;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x503C;&#xFF0C;&#x53EA;&#x6709;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x548C;&#x90E8;&#x5206;&#x5185;&#x90E8;&#x8282;&#x70B9;&#x6240;&#x5BF9;&#x5E94;&#x7684;&#x952E;&#x624D;&#x6709;&#x76F8;&#x5173;&#x7684;&#x503C;&#x3002;</p>
 <p>Trie &#x6811;&#x67E5;&#x8BE2;&#x548C;&#x63D2;&#x5165;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x90FD;&#x662F; O(n)&#xFF0C;&#x662F;&#x4E00;&#x79CD;&#x4EE5;&#x7A7A;&#x95F4;&#x6362;&#x65F6;&#x95F4;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x5F53;&#x8282;&#x70B9;&#x6811;&#x8F83;&#x591A;&#x7684;&#x65F6;&#x5019;&#xFF0C;Trie &#x6811;&#x5360;&#x7528;&#x7684;&#x5185;&#x5B58;&#x4F1A;&#x5F88;&#x5927;&#x3002;</p>
 <p>Trie &#x6811;&#x5E38;&#x7528;&#x4E8E;&#x641C;&#x7D22;&#x63D0;&#x793A;&#x3002;&#x5982;&#x5F53;&#x8F93;&#x5165;&#x4E00;&#x4E2A;&#x7F51;&#x5740;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x52A8;&#x641C;&#x7D22;&#x51FA;&#x53EF;&#x80FD;&#x7684;&#x9009;&#x62E9;&#x3002;&#x5F53;&#x6CA1;&#x6709;&#x5B8C;&#x5168;&#x5339;&#x914D;&#x7684;&#x641C;&#x7D22;&#x7ED3;&#x679C;&#xFF0C;&#x53EF;&#x4EE5;&#x8FD4;&#x56DE;&#x524D;&#x7F00;&#x6700;&#x76F8;&#x4F3C;&#x7684;&#x53EF;&#x80FD;&#x3002;</p>
-<h3 id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
+<h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
 <ul>
 <li><a href="http://baike.baidu.com/view/127820.htm" target="_blank">&#x767E;&#x5EA6;&#x767E;&#x79D1;&#xFF1A;&#x54C8;&#x5F17;&#x66FC;&#x6811;</a></li>
 <li><a href="http://baike.baidu.com/view/647462.htm" target="_blank">&#x767E;&#x5EA6;&#x767E;&#x79D1;&#xFF1A;&#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;</a></li>
@@ -1256,9 +1188,25 @@
         
 <script src="../../gitbook/app.js"></script>
 
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    var config = {"highlight":{},"search":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
     gitbook.start(config);
 });
 </script>

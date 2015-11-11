@@ -8,7 +8,7 @@
         <title>磁盘与文件 | 笔试面试知识整理</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 2.4.3">
+        <meta name="generator" content="GitBook 2.5.2">
         
         
         <meta name="HandheldFriendly" content="true"/>
@@ -22,6 +22,14 @@
     
         
         <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
         
     
     
@@ -40,13 +48,10 @@
     <body>
         
         
-    <div class="book" data-level="1.3.5" data-basepath="../.." data-revision="Wed Nov 04 2015 15:28:40 GMT+0800 (中国标准时间)">
+    <div class="book" data-level="1.3.5" data-chapter-title="磁盘与文件" data-filepath="basic/arch/Disk-And-File.md" data-basepath="../.." data-revision="Wed Nov 11 2015 11:12:31 GMT+0800 (CST)">
     
 
 <div class="book-summary">
-    <div class="book-search" role="search">
-        <input type="text" placeholder="Type to search" class="form-control" />
-    </div>
     <nav role="navigation">
         <ul class="summary">
             
@@ -1069,80 +1074,7 @@
         <div class="body-inner">
             <div class="book-header" role="navigation">
     <!-- Actions Left -->
-    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
-    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
     
-    <div id="font-settings-wrapper" class="dropdown pull-left">
-        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
-        </a>
-        <div class="dropdown-menu font-settings">
-    <div class="dropdown-caret">
-        <span class="caret-outer"></span>
-        <span class="caret-inner"></span>
-    </div>
-
-    <div class="buttons">
-        <button type="button" id="reduce-font-size" class="button size-2">A</button>
-        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
-    </div>
-
-    <div class="buttons font-family-list">
-        <button type="button" data-font="0" class="button">Serif</button>
-        <button type="button" data-font="1" class="button">Sans</button>
-    </div>
-
-    <div class="buttons color-theme-list">
-        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
-        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
-        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
-    </div>
-</div>
-
-    </div>
-
-    <!-- Actions Right -->
-    
-    <div class="dropdown pull-right">
-        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
-        </a>
-        <div class="dropdown-menu font-settings dropdown-left">
-            <div class="dropdown-caret">
-                <span class="caret-outer"></span>
-                <span class="caret-inner"></span>
-            </div>
-            <div class="buttons">
-                <button type="button" data-sharing="twitter" class="button">
-                    Share on Twitter
-                </button>
-                <button type="button" data-sharing="google-plus" class="button">
-                    Share on Google
-                </button>
-                <button type="button" data-sharing="facebook" class="button">
-                    Share on Facebook
-                </button>
-                <button type="button" data-sharing="weibo" class="button">
-                    Share on Weibo
-                </button>
-                <button type="button" data-sharing="instapaper" class="button">
-                    Share on Instapaper
-                </button>
-            </div>
-        </div>
-    </div>
-    
-
-    
-    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
-    
-    
-    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-    
-    
-    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
-    
-    
-    
-
 
     <!-- Title -->
     <h1>
@@ -1157,10 +1089,10 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h2 id="%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6">&#x78C1;&#x76D8;&#x8C03;&#x5EA6;</h2>
+                        <h2 id="&#x78C1;&#x76D8;&#x8C03;&#x5EA6;">&#x78C1;&#x76D8;&#x8C03;&#x5EA6;</h2>
 <p>&#x78C1;&#x76D8;&#x8BBF;&#x95EE;&#x5EF6;&#x8FDF; = &#x961F;&#x5217;&#x65F6;&#x95F4; + &#x63A7;&#x5236;&#x5668;&#x65F6;&#x95F4; + &#x5BFB;&#x9053;&#x65F6;&#x95F4; + &#x65CB;&#x8F6C;&#x65F6;&#x95F4; + &#x4F20;&#x8F93;&#x65F6;&#x95F4;</p>
 <p>&#x78C1;&#x76D8;&#x8C03;&#x5EA6;&#x7684;&#x76EE;&#x7684;&#x662F;&#x51CF;&#x5C0F;&#x5EF6;&#x8FDF;&#xFF0C;&#x5176;&#x4E2D;&#x524D;&#x4E24;&#x9879;&#x53EF;&#x4EE5;&#x5FFD;&#x7565;&#xFF0C;&#x5BFB;&#x9053;&#x65F6;&#x95F4;&#x662F;&#x4E3B;&#x8981;&#x77DB;&#x76FE;&#x3002;</p>
-<h3 id="%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95">&#x78C1;&#x76D8;&#x8C03;&#x5EA6;&#x7B97;&#x6CD5;</h3>
+<h3 id="&#x78C1;&#x76D8;&#x8C03;&#x5EA6;&#x7B97;&#x6CD5;">&#x78C1;&#x76D8;&#x8C03;&#x5EA6;&#x7B97;&#x6CD5;</h3>
 <ul>
 <li><p>FCFS</p>
 <p>&#x5148;&#x8FDB;&#x5148;&#x51FA;&#x7684;&#x8C03;&#x5EA6;&#x7B56;&#x7565;&#xFF0C;&#x8FD9;&#x4E2A;&#x7B56;&#x7565;&#x5177;&#x6709;&#x516C;&#x5E73;&#x7684;&#x4F18;&#x70B9;&#xFF0C;&#x56E0;&#x4E3A;&#x6BCF;&#x4E2A;&#x8BF7;&#x6C42;&#x90FD;&#x4F1A;&#x5F97;&#x5230;&#x5904;&#x7406;&#xFF0C;&#x5E76;&#x4E14;&#x662F;&#x6309;&#x7167;&#x63A5;&#x6536;&#x5230;&#x7684;&#x987A;&#x5E8F;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;</p>
@@ -1184,13 +1116,13 @@
 <p>&#x91C6;&#x7528;SCAN&#x7B97;&#x6CD5;&#x548C;C-SCAN&#x7B97;&#x6CD5;&#x65F6;&#x78C1;&#x5934;&#x603B;&#x662F;&#x4E25;&#x683C;&#x5730;&#x9075;&#x5FAA;&#x4ECE;&#x76D8;&#x9762;&#x7684;&#x4E00;&#x7AEF;&#x5230;&#x53E6;&#x4E00;&#x7AEF;&#xFF0C;&#x663E;&#x7136;&#xFF0C;&#x5728;&#x5B9E;&#x9645;&#x4F7F;&#x7528;&#x65F6;&#x8FD8;&#x53EF;&#x4EE5;&#x6539;&#x8FDB;&#xFF0C;&#x5373;&#x78C1;&#x5934;&#x79FB;&#x52A8;&#x53EA;&#x9700;&#x8981;&#x5230;&#x8FBE;&#x6700;&#x8FDC;&#x7AEF;&#x7684;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#x5373;&#x53EF;&#x8FD4;&#x56DE;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x5230;&#x8FBE;&#x78C1;&#x76D8;&#x7AEF;&#x70B9;&#x3002;&#x8FD9;&#x79CD;&#x5F62;&#x5F0F;&#x7684;SCAN&#x7B97;&#x6CD5;&#x548C;C-SCAN&#x7B97;&#x6CD5;&#x79F0;&#x4E3A;LOOK&#x548C;C-LOOK&#x8C03;&#x5EA6;&#x3002;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x5728;&#x671D;&#x4E00;&#x4E2A;&#x7ED9;&#x5B9A;&#x65B9;&#x5411;&#x79FB;&#x52A8;&#x524D;&#x4F1A;&#x67E5;&#x770B;&#x662F;&#x5426;&#x6709;&#x8BF7;&#x6C42;&#x3002;</p>
 </li>
 </ul>
-<h2 id="%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F">&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</h2>
-<h3 id="%E5%88%86%E5%8C%BA%E8%A1%A8">&#x5206;&#x533A;&#x8868;</h3>
+<h2 id="&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;">&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</h2>
+<h3 id="&#x5206;&#x533A;&#x8868;">&#x5206;&#x533A;&#x8868;</h3>
 <ul>
 <li>MBR&#xFF1A;&#x652F;&#x6301;&#x6700;&#x5927;&#x5377;&#x4E3A;2 TB&#xFF08;Terabytes&#xFF09;&#x5E76;&#x4E14;&#x6BCF;&#x4E2A;&#x78C1;&#x76D8;&#x6700;&#x591A;&#x6709;4&#x4E2A;&#x4E3B;&#x5206;&#x533A;&#xFF08;&#x6216;3&#x4E2A;&#x4E3B;&#x5206;&#x533A;&#xFF0C;1&#x4E2A;&#x6269;&#x5C55;&#x5206;&#x533A;&#x548C;&#x65E0;&#x9650;&#x5236;&#x7684;&#x903B;&#x8F91;&#x9A71;&#x52A8;&#x5668;&#xFF09;</li>
 <li>GPT&#xFF1A;&#x652F;&#x6301;&#x6700;&#x5927;&#x5377;&#x4E3A;18EB&#xFF08;Exabytes&#xFF09;&#x5E76;&#x4E14;&#x6BCF;&#x78C1;&#x76D8;&#x7684;&#x5206;&#x533A;&#x6570;&#x6CA1;&#x6709;&#x4E0A;&#x9650;&#xFF0C;&#x53EA;&#x53D7;&#x5230;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x9650;&#x5236;&#xFF08;&#x7531;&#x4E8E;&#x5206;&#x533A;&#x8868;&#x672C;&#x8EAB;&#x9700;&#x8981;&#x5360;&#x7528;&#x4E00;&#x5B9A;&#x7A7A;&#x95F4;&#xFF0C;&#x6700;&#x521D;&#x89C4;&#x5212;&#x786C;&#x76D8;&#x5206;&#x533A;&#x65F6;&#xFF0C;&#x7559;&#x7ED9;&#x5206;&#x533A;&#x8868;&#x7684;&#x7A7A;&#x95F4;&#x51B3;&#x5B9A;&#x4E86;&#x6700;&#x591A;&#x53EF;&#x4EE5;&#x6709;&#x591A;&#x5C11;&#x4E2A;&#x5206;&#x533A;&#xFF0C;IA-64&#x7248;Windows&#x9650;&#x5236;&#x6700;&#x591A;&#x6709;128&#x4E2A;&#x5206;&#x533A;&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;EFI&#x6807;&#x51C6;&#x89C4;&#x5B9A;&#x7684;&#x5206;&#x533A;&#x8868;&#x7684;&#x6700;&#x5C0F;&#x5C3A;&#x5BF8;&#x3002;&#x53E6;&#x5916;&#xFF0C;GPT&#x5206;&#x533A;&#x78C1;&#x76D8;&#x6709;&#x5907;&#x4EFD;&#x5206;&#x533A;&#x8868;&#x6765;&#x63D0;&#x9AD8;&#x5206;&#x533A;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x7684;&#x5B8C;&#x6574;&#x6027;&#x3002;</li>
 </ul>
-<h3 id="raid-%E6%8A%80%E6%9C%AF">RAID &#x6280;&#x672F;</h3>
+<h3 id="raid-&#x6280;&#x672F;">RAID &#x6280;&#x672F;</h3>
 <p>&#x78C1;&#x76D8;&#x9635;&#x5217;&#xFF08;Redundant Arrays of Independent Disks&#xFF0C;RAID&#xFF09;&#xFF0C;&#x72EC;&#x7ACB;&#x5197;&#x4F59;&#x78C1;&#x76D8;&#x9635;&#x5217;&#x4E4B;&#x3002;&#x539F;&#x7406;&#x662F;&#x5229;&#x7528;&#x6570;&#x7EC4;&#x65B9;&#x5F0F;&#x6765;&#x4F5C;&#x78C1;&#x76D8;&#x7EC4;&#xFF0C;&#x914D;&#x5408;&#x6570;&#x636E;&#x5206;&#x6563;&#x6392;&#x5217;&#x7684;&#x8BBE;&#x8BA1;&#xFF0C;&#x63D0;&#x5347;&#x6570;&#x636E;&#x7684;&#x5B89;&#x5168;&#x6027;&#x3002;</p>
 <ul>
 <li><p>RAID 0</p>
@@ -1234,13 +1166,13 @@
 <p>RAID 10 &#x81F3;&#x5C11;&#x9700;&#x8981;4&#x5757;&#x786C;&#x76D8;&#xFF0C;&#x4E14;&#x786C;&#x76D8;&#x6570;&#x91CF;&#x5FC5;&#x987B;&#x4E3A;&#x5076;&#x6570;&#x3002;</p>
 </li>
 </ul>
-<h3 id="%E5%B8%B8%E8%A7%81%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F">&#x5E38;&#x89C1;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</h3>
+<h3 id="&#x5E38;&#x89C1;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;">&#x5E38;&#x89C1;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</h3>
 <ul>
 <li>Windows: FAT, FAT16, FAT32, NTFS</li>
 <li>Linux: ext2/3/4, btrfs, ZFS</li>
 <li>Mac OS X: HFS+</li>
 </ul>
-<h3 id="linux%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90">Linux&#x6587;&#x4EF6;&#x6743;&#x9650;</h3>
+<h3 id="linux&#x6587;&#x4EF6;&#x6743;&#x9650;">Linux&#x6587;&#x4EF6;&#x6743;&#x9650;</h3>
 <p>Linux&#x6587;&#x4EF6;&#x91C7;&#x7528;10&#x4E2A;&#x6807;&#x5FD7;&#x4F4D;&#x6765;&#x8868;&#x793A;&#x6587;&#x4EF6;&#x6743;&#x9650;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
 <pre><code>-rw-r--r--  1 skyline  staff    20B  1 27 10:34 1.txt
 drwxr-xr-x   5 skyline  staff   170B 12 23 19:01 ABTableViewCell
@@ -1278,7 +1210,7 @@ drwxr-xr-x   5 skyline  staff   170B 12 23 19:01 ABTableViewCell
 </ul>
 <p>&#x9ED8;&#x8BA4;&#x7684;&#x6743;&#x9650;&#x53EF;&#x7528;umask&#x547D;&#x4EE4;&#x4FEE;&#x6539;&#xFF0C;&#x7528;&#x6CD5;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x53EA;&#x9700;&#x6267;&#x884C;umask 777&#x547D;&#x4EE4;&#xFF0C;&#x4FBF;&#x4EE3;&#x8868;&#x5C4F;&#x853D;&#x6240;&#x6709;&#x7684;&#x6743;&#x9650;&#xFF0C;&#x56E0;&#x800C;&#x4E4B;&#x540E;&#x5EFA;&#x7ACB;&#x7684;&#x6587;&#x4EF6;&#x6216;&#x76EE;&#x5F55;&#xFF0C;&#x5176;&#x6743;&#x9650;&#x90FD;&#x53D8;&#x6210;000&#xFF0C;</p>
 <p>&#x4F9D;&#x6B21;&#x7C7B;&#x63A8;&#x3002;&#x901A;&#x5E38;root&#x5E10;&#x53F7;&#x642D;&#x914D;umask&#x547D;&#x4EE4;&#x7684;&#x6570;&#x503C;&#x4E3A;022&#x3001;027&#x548C; 077&#xFF0C;&#x666E;&#x901A;&#x7528;&#x6237;&#x5219;&#x662F;&#x91C7;&#x7528;002&#xFF0C;&#x8FD9;&#x6837;&#x6240;&#x4EA7;&#x751F;&#x7684;&#x6743;&#x9650;&#x4F9D;&#x6B21;&#x4E3A;755&#x3001;750&#x3001;700&#x3001;775&#x3002;</p>
-<h4 id="chmod%E5%91%BD%E4%BB%A4">chmod&#x547D;&#x4EE4;</h4>
+<h4 id="chmod&#x547D;&#x4EE4;">chmod&#x547D;&#x4EE4;</h4>
 <p>chmod&#x547D;&#x4EE4;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF0C;&#x7528;&#x4E8E;&#x6539;&#x53D8;&#x6587;&#x4EF6;&#x6216;&#x76EE;&#x5F55;&#x7684;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x3002;&#x7528;&#x6237;&#x7528;&#x5B83;&#x63A7;&#x5236;&#x6587;&#x4EF6;&#x6216;&#x76EE;&#x5F55;&#x7684;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x3002;</p>
 <p>&#x8BE5;&#x547D;&#x4EE4;&#x6709;&#x4E24;&#x79CD;&#x7528;&#x6CD5;&#x3002;&#x4E00;&#x79CD;&#x662F;&#x5305;&#x542B;&#x5B57;&#x6BCD;&#x548C;&#x64CD;&#x4F5C;&#x7B26;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x6587;&#x5B57;&#x8BBE;&#x5B9A;&#x6CD5;&#xFF1B;&#x53E6;&#x4E00;&#x79CD;&#x662F;&#x5305;&#x542B;&#x6570;&#x5B57;&#x7684;&#x6570;&#x5B57;&#x8BBE;&#x5B9A;&#x6CD5;&#x3002;</p>
 <ol>
@@ -1327,18 +1259,18 @@ drwxr-xr-x   5 skyline  staff   170B 12 23 19:01 ABTableViewCell
 <p>&#x4F8B;&#xFF1A; $ chmod 644 mm.txt</p>
 </li>
 </ol>
-<h4 id="chgrp%E5%91%BD%E4%BB%A4">chgrp&#x547D;&#x4EE4;</h4>
+<h4 id="chgrp&#x547D;&#x4EE4;">chgrp&#x547D;&#x4EE4;</h4>
 <p>&#x529F;&#x80FD;&#xFF1A;&#x6539;&#x53D8;&#x6587;&#x4EF6;&#x6216;&#x76EE;&#x5F55;&#x6240;&#x5C5E;&#x7684;&#x7EC4;&#x3002;</p>
 <p>&#x8BED;&#x6CD5;&#xFF1A;chgrp &#xFF3B;&#x9009;&#x9879;&#xFF3D; group filename</p>
 <p>&#x4F8B;&#xFF1A;$ chgrp - R book /opt/local /book</p>
 <p>&#x6539;&#x53D8;/opt/local /book/&#x53CA;&#x5176;&#x5B50;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x7684;&#x5C5E;&#x7EC4;&#x4E3A;book&#x3002;</p>
-<h4 id="chown%E5%91%BD%E4%BB%A4">chown&#x547D;&#x4EE4;</h4>
+<h4 id="chown&#x547D;&#x4EE4;">chown&#x547D;&#x4EE4;</h4>
 <p>&#x529F;&#x80FD;&#xFF1A;&#x66F4;&#x6539;&#x67D0;&#x4E2A;&#x6587;&#x4EF6;&#x6216;&#x76EE;&#x5F55;&#x7684;&#x5C5E;&#x4E3B;&#x548C;&#x5C5E;&#x7EC4;&#x3002;&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x4E5F;&#x5F88;&#x5E38;&#x7528;&#x3002;&#x4F8B;&#x5982;root&#x7528;&#x6237;&#x628A;&#x81EA;&#x5DF1;&#x7684;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x62F7;&#x8D1D;&#x7ED9;&#x7528;&#x6237;xu&#xFF0C;&#x4E3A;&#x4E86;&#x8BA9;&#x7528;&#x6237;xu&#x80FD;&#x591F;&#x5B58;&#x53D6;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;root&#x7528;&#x6237;&#x5E94;&#x8BE5;&#x628A;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x7684;&#x5C5E;&#x4E3B;&#x8BBE;&#x4E3A;xu&#xFF0C;&#x5426;&#x5219;&#xFF0C;&#x7528;&#x6237;xu&#x65E0;&#x6CD5;&#x5B58;&#x53D6;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x3002;</p>
 <p>&#x8BED;&#x6CD5;&#xFF1A;chown &#xFF3B;&#x9009;&#x9879;&#xFF3D; &#x7528;&#x6237;&#x6216;&#x7EC4; &#x6587;&#x4EF6;</p>
 <p>&#x8BF4;&#x660E;&#xFF1A;chown&#x5C06;&#x6307;&#x5B9A;&#x6587;&#x4EF6;&#x7684;&#x62E5;&#x6709;&#x8005;&#x6539;&#x4E3A;&#x6307;&#x5B9A;&#x7684;&#x7528;&#x6237;&#x6216;&#x7EC4;&#x3002;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x662F;&#x7528;&#x6237;&#x540D;&#x6216;&#x7528;&#x6237;ID&#x3002;&#x7EC4;&#x53EF;&#x4EE5;&#x662F;&#x7EC4;&#x540D;&#x6216;&#x7EC4;ID&#x3002;&#x6587;&#x4EF6;&#x662F;&#x4EE5;&#x7A7A;&#x683C;&#x5206;&#x5F00;&#x7684;&#x8981;&#x6539;&#x53D8;&#x6743;&#x9650;&#x7684;&#x6587;&#x4EF6;&#x5217;&#x8868;&#xFF0C;&#x652F;&#x6301;&#x901A;&#x914D;&#x7B26;&#x3002;</p>
 <p>&#x4F8B;&#xFF1A;&#x628A;&#x6587;&#x4EF6;shiyan.c&#x7684;&#x6240;&#x6709;&#x8005;&#x6539;&#x4E3A;wang&#x3002;</p>
 <pre><code>chown wang shiyan.c
-</code></pre><h3 id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
+</code></pre><h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
 <ul>
 <li><a href="http://www.educity.cn/windows/621734.html" target="_blank">&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x78C1;&#x76D8;&#x8C03;&#x5EA6;&#x7B97;&#x6CD5;</a></li>
 <li><a href="http://baike.baidu.com/view/63423.htm" target="_blank">&#x767E;&#x5EA6;&#x767E;&#x79D1;&#xFF1A;&#x78C1;&#x76D8;&#x9635;&#x5217;</a></li>
@@ -1367,9 +1299,25 @@ drwxr-xr-x   5 skyline  staff   170B 12 23 19:01 ABTableViewCell
         
 <script src="../../gitbook/app.js"></script>
 
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    var config = {"highlight":{},"search":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
     gitbook.start(config);
 });
 </script>

@@ -8,7 +8,7 @@
         <title>Objective-C 内存管理 | 笔试面试知识整理</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 2.4.3">
+        <meta name="generator" content="GitBook 2.5.2">
         
         
         <meta name="HandheldFriendly" content="true"/>
@@ -22,6 +22,14 @@
     
         
         <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
         
     
     
@@ -40,13 +48,10 @@
     <body>
         
         
-    <div class="book" data-level="2.1.4" data-basepath="../.." data-revision="Wed Nov 04 2015 15:28:40 GMT+0800 (中国标准时间)">
+    <div class="book" data-level="2.1.4" data-chapter-title="Objective-C 内存管理" data-filepath="iOS/ObjC-Basic/MM.md" data-basepath="../.." data-revision="Wed Nov 11 2015 11:12:31 GMT+0800 (CST)">
     
 
 <div class="book-summary">
-    <div class="book-search" role="search">
-        <input type="text" placeholder="Type to search" class="form-control" />
-    </div>
     <nav role="navigation">
         <ul class="summary">
             
@@ -1069,80 +1074,7 @@
         <div class="body-inner">
             <div class="book-header" role="navigation">
     <!-- Actions Left -->
-    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
-    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
     
-    <div id="font-settings-wrapper" class="dropdown pull-left">
-        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
-        </a>
-        <div class="dropdown-menu font-settings">
-    <div class="dropdown-caret">
-        <span class="caret-outer"></span>
-        <span class="caret-inner"></span>
-    </div>
-
-    <div class="buttons">
-        <button type="button" id="reduce-font-size" class="button size-2">A</button>
-        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
-    </div>
-
-    <div class="buttons font-family-list">
-        <button type="button" data-font="0" class="button">Serif</button>
-        <button type="button" data-font="1" class="button">Sans</button>
-    </div>
-
-    <div class="buttons color-theme-list">
-        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
-        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
-        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
-    </div>
-</div>
-
-    </div>
-
-    <!-- Actions Right -->
-    
-    <div class="dropdown pull-right">
-        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
-        </a>
-        <div class="dropdown-menu font-settings dropdown-left">
-            <div class="dropdown-caret">
-                <span class="caret-outer"></span>
-                <span class="caret-inner"></span>
-            </div>
-            <div class="buttons">
-                <button type="button" data-sharing="twitter" class="button">
-                    Share on Twitter
-                </button>
-                <button type="button" data-sharing="google-plus" class="button">
-                    Share on Google
-                </button>
-                <button type="button" data-sharing="facebook" class="button">
-                    Share on Facebook
-                </button>
-                <button type="button" data-sharing="weibo" class="button">
-                    Share on Weibo
-                </button>
-                <button type="button" data-sharing="instapaper" class="button">
-                    Share on Instapaper
-                </button>
-            </div>
-        </div>
-    </div>
-    
-
-    
-    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
-    
-    
-    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-    
-    
-    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
-    
-    
-    
-
 
     <!-- Title -->
     <h1>
@@ -1158,10 +1090,10 @@
                     <section class="normal" id="section-">
                     
                         <p><strong>&#x63A8;&#x8350;&#x9996;&#x5148;&#x9605;&#x8BFB; <a href="../../basic/arch/Memory-Management.html">&#x5185;&#x5B58;&#x7BA1;&#x7406;</a> </strong> </p>
-<h2 id="objective-c-%E4%B8%AD%E7%9A%84%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D">Objective-C &#x4E2D;&#x7684;&#x5185;&#x5B58;&#x5206;&#x914D;</h2>
+<h2 id="objectivec-&#x4E2D;&#x7684;&#x5185;&#x5B58;&#x5206;&#x914D;">Objective-C &#x4E2D;&#x7684;&#x5185;&#x5B58;&#x5206;&#x914D;</h2>
 <p>&#x5728; Objective-C &#x4E2D;&#xFF0C;&#x5BF9;&#x8C61;&#x901A;&#x5E38;&#x662F;&#x4F7F;&#x7528; <code>alloc</code> &#x65B9;&#x6CD5;&#x5728;&#x5806;&#x4E0A;&#x521B;&#x5EFA;&#x7684;&#x3002; <code>[NSObject alloc]</code> &#x65B9;&#x6CD5;&#x4F1A;&#x5728;&#x5BF9;&#x5806;&#x4E0A;&#x5206;&#x914D;&#x4E00;&#x5757;&#x5185;&#x5B58;&#xFF0C;&#x6309;&#x7167;<code>NSObject</code>&#x7684;&#x5185;&#x90E8;&#x7ED3;&#x6784;&#x586B;&#x5145;&#x8FD9;&#x5757;&#x513F;&#x5185;&#x5B58;&#x533A;&#x57DF;&#x3002;</p>
 <p>&#x4E00;&#x65E6;&#x5BF9;&#x8C61;&#x521B;&#x5EFA;&#x5B8C;&#x6210;&#xFF0C;&#x5C31;&#x4E0D;&#x53EF;&#x80FD;&#x518D;&#x79FB;&#x52A8;&#x5B83;&#x4E86;&#x3002;&#x56E0;&#x4E3A;&#x5F88;&#x53EF;&#x80FD;&#x6709;&#x5F88;&#x591A;&#x6307;&#x9488;&#x90FD;&#x6307;&#x5411;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x4E9B;&#x6307;&#x9488;&#x5E76;&#x6CA1;&#x6709;&#x88AB;&#x8FFD;&#x8E2A;&#x3002;&#x56E0;&#x6B64;&#x6CA1;&#x6709;&#x529E;&#x6CD5;&#x5728;&#x79FB;&#x52A8;&#x5BF9;&#x8C61;&#x7684;&#x4F4D;&#x7F6E;&#x4E4B;&#x540E;&#x66F4;&#x65B0;&#x5168;&#x90E8;&#x7684;&#x8FD9;&#x4E9B;&#x6307;&#x9488;&#x3002;</p>
-<h2 id="mrc-%E4%B8%8E-arc">MRC &#x4E0E; ARC</h2>
+<h2 id="mrc-&#x4E0E;-arc">MRC &#x4E0E; ARC</h2>
 <p>Objective-C&#x4E2D;&#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x79CD;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF1A;MRC&#xFF08;MannulReference Counting&#xFF09;&#x548C; ARC(Automatic Reference Counting)&#xFF0C;&#x5206;&#x522B;&#x63D0;&#x4F9B;&#x5BF9;&#x5185;&#x5B58;&#x7684;&#x624B;&#x52A8;&#x548C;&#x81EA;&#x52A8;&#x7BA1;&#x7406;&#xFF0C;&#x6765;&#x6EE1;&#x8DB3;&#x4E0D;&#x540C;&#x7684;&#x9700;&#x6C42;&#x3002;&#x73B0;&#x5728;&#x82F9;&#x679C;&#x63A8;&#x8350;&#x662F;&#x7528; ARC &#x6765;&#x8FDB;&#x884C;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x3002;</p>
 <h3 id="mrc">MRC</h3>
 <p>&#x5728;MRC&#x7684;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x4E0E;&#x5BF9;&#x53D8;&#x91CF;&#x7684;&#x7BA1;&#x7406;&#x76F8;&#x5173;&#x7684;&#x65B9;&#x6CD5;&#x6709;&#xFF1A;retain, release &#x548C; autorelease&#x3002;retain &#x548C; release &#x65B9;&#x6CD5;&#x64CD;&#x4F5C;&#x7684;&#x662F;&#x5F15;&#x7528;&#x8BB0;&#x6570;&#xFF0C;&#x5F53;&#x5F15;&#x7528;&#x8BB0;&#x6570;&#x4E3A;&#x96F6;&#x65F6;&#xFF0C;&#x4FBF;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x5185;&#x5B58;&#x3002;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x7528; NSAutoreleasePool &#x5BF9;&#x8C61;&#xFF0C;&#x5BF9;&#x52A0;&#x5165;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#xFF08;autorelease &#x8C03;&#x7528;&#xFF09;&#x7684;&#x53D8;&#x91CF;&#x8FDB;&#x884C;&#x7BA1;&#x7406;&#xFF0C;&#x5F53; drain &#x65F6;&#x56DE;&#x6536;&#x5185;&#x5B58;&#x3002;</p>
@@ -1188,7 +1120,7 @@ Number* num2 = [num retain];//&#x6B64;&#x65F6;&#x5F15;&#x7528;&#x8BB0;&#x6570;+1
 </code></pre>
 <h3 id="arc">ARC</h3>
 <p>ARC &#x662F;&#x82F9;&#x679C;&#x5F15;&#x5165;&#x7684;&#x4E00;&#x79CD;&#x81EA;&#x52A8;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x76D1;&#x89C6;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x5B58;&#x5468;&#x671F;&#xFF0C;&#x5E76;&#x5728;&#x7F16;&#x8BD1;&#x65F6;&#x671F;&#x81EA;&#x52A8;&#x5728;&#x5DF2;&#x6709;&#x4EE3;&#x7801;&#x4E2D;&#x63D2;&#x5165;&#x5408;&#x9002;&#x7684;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x4EE3;&#x7801;&#x3002;</p>
-<h4 id="%E5%8F%98%E9%87%8F%E6%A0%87%E8%AF%86%E7%AC%A6">&#x53D8;&#x91CF;&#x6807;&#x8BC6;&#x7B26;</h4>
+<h4 id="&#x53D8;&#x91CF;&#x6807;&#x8BC6;&#x7B26;">&#x53D8;&#x91CF;&#x6807;&#x8BC6;&#x7B26;</h4>
 <p>&#x5728;ARC&#x4E2D;&#x4E0E;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x6709;&#x5173;&#x7684;&#x53D8;&#x91CF;&#x6807;&#x8BC6;&#x7B26;&#xFF0C;&#x6709;&#x4E0B;&#x9762;&#x51E0;&#x79CD;&#xFF1A;</p>
 <ul>
 <li><code>__strong</code></li>
@@ -1203,7 +1135,7 @@ Number* num2 = [num retain];//&#x6B64;&#x65F6;&#x5F15;&#x7528;&#x8BB0;&#x6570;+1
 <p>&#x53D8;&#x91CF;&#x6807;&#x8BC6;&#x7B26;&#x7684;&#x7528;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code class="lang-objective-c">__strong Number* num = [[Number alloc] init];
 </code></pre>
-<h4 id="%E5%B1%9E%E6%80%A7%E6%A0%87%E8%AF%86%E7%AC%A6">&#x5C5E;&#x6027;&#x6807;&#x8BC6;&#x7B26;</h4>
+<h4 id="&#x5C5E;&#x6027;&#x6807;&#x8BC6;&#x7B26;">&#x5C5E;&#x6027;&#x6807;&#x8BC6;&#x7B26;</h4>
 <p>&#x7C7B;&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x4E5F;&#x53EF;&#x4EE5;&#x52A0;&#x4E0A;&#x6807;&#x5FD7;&#x7B26;&#xFF1A;</p>
 <pre><code class="lang-objective-c">@property (assign/retain/strong/weak/unsafe_unretained/copy) Number* num
 </code></pre>
@@ -1212,7 +1144,7 @@ Number* num2 = [num retain];//&#x6B64;&#x65F6;&#x5F15;&#x7528;&#x8BB0;&#x6570;+1
 <p><code>weak</code> &#x8868;&#x660E;&#x5C5E;&#x6027;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x975E;&#x62E5;&#x6709;&#x8005;&#x5173;&#x7CFB;&#x3002;&#x5F53;&#x7ED9;&#x5C5E;&#x6027;&#x8BBE;&#x5B9A;&#x4E00;&#x4E2A;&#x65B0;&#x503C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8FD9;&#x4E2A;&#x503C;&#x4E0D;&#x4F1A;&#x8FDB;&#x884C; <code>retain</code>&#xFF0C;&#x65E7;&#x503C;&#x4E5F;&#x4E0D;&#x4F1A;&#x8FDB;&#x884C; <code>release</code>&#xFF0C; &#x800C;&#x662F;&#x8FDB;&#x884C;&#x7C7B;&#x4F3C; <code>assign</code> &#x7684;&#x64CD;&#x4F5C;&#x3002;&#x4E0D;&#x8FC7;&#x5F53;&#x5C5E;&#x6027;&#x6307;&#x5411;&#x7684;&#x5BF9;&#x8C61;&#x88AB;&#x9500;&#x6BC1;&#x65F6;&#xFF0C;&#x8BE5;&#x5C5E;&#x6027;&#x4F1A;&#x88AB;&#x7F6E;&#x4E3A;nil&#x3002;</p>
 <p><code>unsafe_unretained</code> &#x7684;&#x8BED;&#x4E49;&#x548C; <code>assign</code> &#x7C7B;&#x4F3C;&#xFF0C;&#x4E0D;&#x8FC7;&#x662F;&#x7528;&#x4E8E;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#x7684;&#xFF0C;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x975E;&#x62E5;&#x6709;(unretained)&#x7684;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x4E0D;&#x4F1A;&#x5728;&#x5BF9;&#x8C61;&#x88AB;&#x9500;&#x6BC1;&#x65F6;&#x7F6E;&#x4E3A;nil&#x7684;(unsafe)&#x5173;&#x7CFB;&#x3002;</p>
 <p><code>copy</code> &#x7C7B;&#x4F3C;&#x4E8E; <code>strong</code>&#xFF0C;&#x4E0D;&#x8FC7;&#x5728;&#x8D4B;&#x503C;&#x65F6;&#x8FDB;&#x884C; <code>copy</code> &#x64CD;&#x4F5C;&#x800C;&#x4E0D;&#x662F; <code>retain</code> &#x64CD;&#x4F5C;&#x3002;&#x901A;&#x5E38;&#x5728;&#x9700;&#x8981;&#x4FDD;&#x7559;&#x67D0;&#x4E2A;&#x4E0D;&#x53EF;&#x53D8;&#x5BF9;&#x8C61;&#xFF08;NSString&#x6700;&#x5E38;&#x89C1;&#xFF09;&#xFF0C;&#x5E76;&#x4E14;&#x9632;&#x6B62;&#x5B83;&#x88AB;&#x610F;&#x5916;&#x6539;&#x53D8;&#x65F6;&#x4F7F;&#x7528;&#x3002;</p>
-<h3 id="%E5%BC%95%E7%94%A8%E5%BE%AA%E7%8E%AF">&#x5F15;&#x7528;&#x5FAA;&#x73AF;</h3>
+<h3 id="&#x5F15;&#x7528;&#x5FAA;&#x73AF;">&#x5F15;&#x7528;&#x5FAA;&#x73AF;</h3>
 <p>&#x5F53;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x4E92;&#x76F8;&#x6301;&#x6709;&#x5BF9;&#x65B9;&#x7684;&#x5F3A;&#x5F15;&#x7528;&#xFF0C;&#x5E76;&#x4E14;&#x8FD9;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x90FD;&#x4E0D;&#x662F;0&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4FBF;&#x9020;&#x6210;&#x4E86;&#x5F15;&#x7528;&#x5FAA;&#x73AF;&#x3002;</p>
 <p>&#x8981;&#x60F3;&#x7834;&#x9664;&#x5F15;&#x7528;&#x5FAA;&#x73AF;&#xFF0C;&#x53EF;&#x4EE5;&#x4ECE;&#x4EE5;&#x4E0B;&#x51E0;&#x70B9;&#x5165;&#x624B;&#xFF1A;</p>
 <ul>
@@ -1227,7 +1159,7 @@ Number* num2 = [num retain];//&#x6B64;&#x65F6;&#x5F15;&#x7528;&#x8BB0;&#x6570;+1
 </code></pre>
 <p>&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x7684; retainCount &#x4F1A;+1&#xFF0C;&#x4F46;&#x662F;&#x5E76;&#x4E0D;&#x4F1A;&#x53D1;&#x751F; release&#x3002;&#x5F53;&#x8FD9;&#x6BB5;&#x8BED;&#x53E5;&#x6240;&#x5904;&#x7684; autoreleasepool &#x8FDB;&#x884C; drain &#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x6240;&#x6709;&#x6807;&#x8BB0;&#x4E86; <code>autorelease</code> &#x7684;&#x5BF9;&#x8C61;&#x7684; retainCount &#x4F1A;&#x88AB; -1&#x3002;&#x5373; <code>release</code> &#x6D88;&#x606F;&#x7684;&#x53D1;&#x9001;&#x88AB;&#x5EF6;&#x8FDF;&#x5230; pool &#x91CA;&#x653E;&#x7684;&#x65F6;&#x5019;&#x4E86;&#x3002;</p>
 <p>&#x5728; ARC &#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x82F9;&#x679C;&#x5F15;&#x5165;&#x4E86; <code>@autoreleasepool</code> &#x8BED;&#x6CD5;&#xFF0C;&#x4E0D;&#x518D;&#x9700;&#x8981;&#x624B;&#x52A8;&#x8C03;&#x7528; <code>autorelease</code> &#x548C; <code>drain</code> &#x7B49;&#x65B9;&#x6CD5;&#x3002;</p>
-<h4 id="autorelease-pool-%E7%9A%84%E7%94%A8%E5%A4%84">Autorelease Pool &#x7684;&#x7528;&#x5904;</h4>
+<h4 id="autorelease-pool-&#x7684;&#x7528;&#x5904;">Autorelease Pool &#x7684;&#x7528;&#x5904;</h4>
 <p>&#x5728; ARC &#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x624B;&#x52A8;&#x8C03;&#x7528; autorelease &#x6709;&#x5173;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x751A;&#x81F3;&#x53EF;&#x4EE5;&#x5B8C;&#x5168;&#x4E0D;&#x77E5;&#x9053; autorelease &#x7684;&#x5B58;&#x5728;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x6B63;&#x786E;&#x7BA1;&#x7406;&#x597D;&#x5185;&#x5B58;&#x3002;&#x56E0;&#x4E3A; Cocoa Touch &#x7684; Runloop &#x4E2D;&#xFF0C;&#x6BCF;&#x4E2A; runloop circle &#x4E2D;&#x7CFB;&#x7EDF;&#x90FD;&#x81EA;&#x52A8;&#x52A0;&#x5165;&#x4E86; Autorelease Pool &#x7684;&#x521B;&#x5EFA;&#x548C;&#x91CA;&#x653E;&#x3002;</p>
 <p>&#x5F53;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x548C;&#x9500;&#x6BC1;&#x5927;&#x91CF;&#x7684;&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;&#x4F7F;&#x7528;&#x624B;&#x52A8;&#x521B;&#x5EFA;&#x7684; autoreleasepool &#x53EF;&#x4EE5;&#x6709;&#x6548;&#x7684;&#x907F;&#x514D;&#x5185;&#x5B58;&#x5CF0;&#x503C;&#x7684;&#x51FA;&#x73B0;&#x3002;&#x56E0;&#x4E3A;&#x5982;&#x679C;&#x4E0D;&#x624B;&#x52A8;&#x521B;&#x5EFA;&#x7684;&#x8BDD;&#xFF0C;&#x5916;&#x5C42;&#x7CFB;&#x7EDF;&#x521B;&#x5EFA;&#x7684; pool &#x4F1A;&#x5728;&#x6574;&#x4E2A; runloop circle &#x7ED3;&#x675F;&#x4E4B;&#x540E;&#x624D;&#x8FDB;&#x884C; drain&#xFF0C;&#x624B;&#x52A8;&#x521B;&#x5EFA;&#x7684;&#x8BDD;&#xFF0C;&#x4F1A;&#x5728; block &#x7ED3;&#x675F;&#x4E4B;&#x540E;&#x5C31;&#x8FDB;&#x884C; drain &#x64CD;&#x4F5C;&#x3002;&#x8BE6;&#x60C5;&#x8BF7;&#x53C2;&#x8003;<a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmAutoreleasePools.html#//apple_ref/doc/uid/20000047-CJBFBEDI" target="_blank">&#x82F9;&#x679C;&#x5B98;&#x65B9;&#x6587;&#x6863;</a>&#x3002;&#x4E00;&#x4E2A;&#x666E;&#x904D;&#x88AB;&#x4F7F;&#x7528;&#x7684;&#x4F8B;&#x5B50;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code class="lang-objective-c">for (int i = 0; i &lt; 100000000; i++)
@@ -1241,13 +1173,13 @@ Number* num2 = [num retain];//&#x6B64;&#x65F6;&#x5F15;&#x7528;&#x8BB0;&#x6570;+1
 </code></pre>
 <p>&#x5982;&#x679C;&#x4E0D;&#x4F7F;&#x7528; autoreleasepool &#xFF0C;&#x9700;&#x8981;&#x5728;&#x5FAA;&#x73AF;&#x7ED3;&#x675F;&#x4E4B;&#x540E;&#x91CA;&#x653E; 100000000 &#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5982;&#x679C;
 &#x4F7F;&#x7528;&#x7684;&#x8BDD;&#xFF0C;&#x5219;&#x4F1A;&#x5728;&#x6BCF;&#x6B21;&#x5FAA;&#x73AF;&#x7ED3;&#x675F;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x8FDB;&#x884C; release &#x64CD;&#x4F5C;&#x3002;</p>
-<h4 id="autorelease-pool-%E8%BF%9B%E8%A1%8C-drain-%E7%9A%84%E6%97%B6%E6%9C%BA">Autorelease Pool &#x8FDB;&#x884C; Drain &#x7684;&#x65F6;&#x673A;</h4>
+<h4 id="autorelease-pool-&#x8FDB;&#x884C;-drain-&#x7684;&#x65F6;&#x673A;">Autorelease Pool &#x8FDB;&#x884C; Drain &#x7684;&#x65F6;&#x673A;</h4>
 <p>&#x5982;&#x4E0A;&#x9762;&#x6240;&#x8BF4;&#xFF0C;&#x7CFB;&#x7EDF;&#x5728; runloop &#x4E2D;&#x521B;&#x5EFA;&#x7684; autoreleaspool &#x4F1A;&#x5728; runloop &#x4E00;&#x4E2A; event &#x7ED3;&#x675F;&#x65F6;&#x8FDB;&#x884C;&#x91CA;&#x653E;&#x64CD;&#x4F5C;&#x3002;&#x6211;&#x4EEC;&#x624B;&#x52A8;&#x521B;&#x5EFA;&#x7684; autoreleasepool &#x4F1A;&#x5728; block &#x6267;&#x884C;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#x8FDB;&#x884C; drain &#x64CD;&#x4F5C;&#x3002;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF1A;</p>
 <ul>
 <li>&#x5F53; block &#x4EE5;&#x5F02;&#x5E38;&#xFF08;exception&#xFF09;&#x7ED3;&#x675F;&#x65F6;&#xFF0C;pool &#x4E0D;&#x4F1A;&#x88AB; drain</li>
 <li>Pool &#x7684; drain &#x64CD;&#x4F5C;&#x4F1A;&#x628A;&#x6240;&#x6709;&#x6807;&#x8BB0;&#x4E3A; autorelease &#x7684;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x51CF;&#x4E00;&#xFF0C;&#x4F46;&#x662F;&#x5E76;&#x4E0D;&#x610F;&#x5473;&#x7740;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x4E00;&#x5B9A;&#x4F1A;&#x88AB;&#x91CA;&#x653E;&#x6389;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728; autorelease pool &#x4E2D;&#x624B;&#x52A8; retain &#x5BF9;&#x8C61;&#xFF0C;&#x4EE5;&#x5EF6;&#x957F;&#x5B83;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF08;&#x5728; MRC &#x4E2D;&#xFF09;&#x3002;</li>
 </ul>
-<h4 id="main-m-%E4%B8%AD-autorelease-pool-%E7%9A%84%E8%A7%A3%E9%87%8A">main.m &#x4E2D; Autorelease Pool &#x7684;&#x89E3;&#x91CA;</h4>
+<h4 id="mainm-&#x4E2D;-autorelease-pool-&#x7684;&#x89E3;&#x91CA;">main.m &#x4E2D; Autorelease Pool &#x7684;&#x89E3;&#x91CA;</h4>
 <p>&#x5927;&#x5BB6;&#x90FD;&#x77E5;&#x9053;&#x5728; iOS &#x7A0B;&#x5E8F;&#x7684; main.m &#x6587;&#x4EF6;&#x4E2D;&#x6709;&#x7C7B;&#x4F3C;&#x8FD9;&#x6837;&#x7684;&#x8BED;&#x53E5;&#xFF1A;</p>
 <pre><code class="lang-objective-c">int main(int argc, char * argv[]) {
     @autoreleasepool {
@@ -1265,7 +1197,7 @@ Number* num2 = [num retain];//&#x6B64;&#x65F6;&#x5F15;&#x7528;&#x8BB0;&#x6570;+1
 <li>UIApplication &#x81EA;&#x5DF1;&#x4F1A;&#x521B;&#x5EFA; main run loop&#xFF0C;&#x5728; Cocoa &#x7684; runloop &#x4E2D;&#x5B9E;&#x9645;&#x4E0A;&#x4E5F;&#x662F;&#x81EA;&#x52A8;&#x5305;&#x542B; autorelease pool &#x7684;&#xFF0C;&#x56E0;&#x6B64; main.m &#x5F53;&#x4E2D;&#x7684; pool &#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x662F;<strong>&#x6CA1;&#x6709;</strong>&#x5FC5;&#x8981;&#x7684;&#x3002;</li>
 </ol>
 <p>&#x5728;&#x57FA;&#x4E8E; AppKit &#x6846;&#x67B6;&#x7684; Mac OS &#x5F00;&#x53D1;&#x4E2D;&#xFF0C; main.m &#x5F53;&#x4E2D;&#x5C31;&#x662F;&#x4E0D;&#x5B58;&#x5728; autorelease pool &#x7684;&#xFF0C;&#x4E5F;&#x8FDB;&#x4E00;&#x6B65;&#x9A8C;&#x8BC1;&#x4E86;&#x6211;&#x4EEC;&#x5F97;&#x5230;&#x7684;&#x7ED3;&#x8BBA;&#x3002;&#x4E0D;&#x8FC7;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x770B;&#x4E0D;&#x5230;&#x66F4;&#x5E95;&#x5C42;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x52A0;&#x4E0A;&#x82F9;&#x679C;&#x7684;&#x6587;&#x6863;&#x4E2D;&#x4E0D;&#x5EFA;&#x8BAE;&#x4FEE;&#x6539; main.m &#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x4E5F;&#x6CA1;&#x6709;&#x7406;&#x7531;&#x5C31;&#x76F4;&#x63A5;&#x628A;&#x5B83;&#x5220;&#x6389;&#x3002;</p>
-<h4 id="autorelease-pool-%E4%B8%8E%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC">Autorelease Pool &#x4E0E;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x503C;</h4>
+<h4 id="autorelease-pool-&#x4E0E;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x503C;">Autorelease Pool &#x4E0E;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x503C;</h4>
 <p>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x662F;&#x6307;&#x5411;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x80AF;&#x5B9A;&#x4E0D;&#x80FD;&#x5728;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x4E4B;&#x524D;&#x8FDB;&#x884C; release&#xFF0C;&#x8FD9;&#x6837;&#x8C03;&#x7528;&#x8005;&#x5728;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x65F6;&#x5F97;&#x5230;&#x7684;&#x5C31;&#x662F;&#x91CE;&#x6307;&#x9488;&#x4E86;&#xFF0C;&#x5728;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x4E4B;&#x540E;&#x4E5F;&#x4E0D;&#x80FD;&#x7ACB;&#x523B;&#x5C31; release&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x4E0D;&#x77E5;&#x9053;&#x8C03;&#x7528;&#x8005;&#x662F;&#x4E0D;&#x662F; retain &#x4E86;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x76F4;&#x63A5; release &#x4E86;&#xFF0C;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x540E;&#x9762;&#x5728;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x65F6;&#x5B83;&#x5DF2;&#x7ECF;&#x6210;&#x4E3A; nil &#x4E86;&#x3002;</p>
 <p>&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x7EA0;&#x7ED3;&#x7684;&#x95EE;&#x9898;&#xFF0C; Objective-C &#x4E2D;&#x5BF9;&#x5BF9;&#x8C61;&#x6307;&#x9488;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x8FDB;&#x884C;&#x4E86;&#x533A;&#x5206;&#xFF0C;&#x4E00;&#x79CD;&#x53EB;&#x505A; <em>retained return value</em>&#xFF0C;&#x53E6;&#x4E00;&#x79CD;&#x53EB;&#x505A; <em>unretained return value</em>&#x3002;&#x524D;&#x8005;&#x8868;&#x793A;&#x8C03;&#x7528;&#x8005;&#x62E5;&#x6709;&#x8FD9;&#x4E2A;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x540E;&#x8005;&#x8868;&#x793A;&#x8C03;&#x7528;&#x8005;&#x4E0D;&#x62E5;&#x6709;&#x8FD9;&#x4E2A;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x6309;&#x7167;&#x201C;&#x8C01;&#x62E5;&#x6709;&#x8C01;&#x91CA;&#x653E;&#x201D;&#x7684;&#x539F;&#x5219;&#xFF0C;&#x5BF9;&#x4E8E;&#x524D;&#x8005;&#x8C03;&#x7528;&#x8005;&#x662F;&#x8981;&#x8D1F;&#x8D23;&#x91CA;&#x653E;&#x7684;&#xFF0C;&#x5BF9;&#x4E8E;&#x540E;&#x8005;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x4E86;&#x3002;</p>
 <p>&#x6309;&#x7167;&#x82F9;&#x679C;&#x7684;&#x547D;&#x540D; convention&#xFF0C;&#x4EE5; <code>alloc</code>, <code>copy</code>, <code>init</code>, <code>mutableCopy</code> &#x548C; <code>new</code> &#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x6253;&#x5934;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x90FD;&#x662F; retained return value&#xFF0C;&#x4F8B;&#x5982; <code>[[NSString alloc] initWithFormat:]</code>&#xFF0C;&#x800C;&#x5176;&#x4ED6;&#x7684;&#x5219;&#x662F; unretained return value&#xFF0C;&#x4F8B;&#x5982; <code>[NSString stringWithFormat:]</code>&#x3002;&#x6211;&#x4EEC;&#x5728;&#x7F16;&#x5199;&#x4EE3;&#x7801;&#x65F6;&#x4E5F;&#x5E94;&#x8BE5;&#x9075;&#x5B88;&#x8FD9;&#x4E2A; convention&#x3002;</p>
@@ -1348,7 +1280,7 @@ self.property = a;
 <p>ARC performs no extra mandatory work on the caller side, although it may elect to do something to shorten the lifetime of the returned value.</p>
 </blockquote>
 <p>&#x8FD9;&#x4E2A;&#x548C;&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x5728; MRC &#x4E2D;&#x505A;&#x7684;&#x4E0D;&#x662F;&#x5B8C;&#x5168;&#x4E00;&#x6837;&#x3002;ARC &#x4F1A;&#x628A;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x5EF6;&#x957F;&#xFF0C;&#x786E;&#x4FDD;&#x8C03;&#x7528;&#x8005;&#x80FD;&#x62FF;&#x5230;&#x5E76;&#x4E14;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x4F46;&#x662F;&#x5E76;&#x4E0D;&#x4E00;&#x5B9A;&#x4F1A;&#x4F7F;&#x7528; autorelease&#xFF0C;&#x6587;&#x6863;&#x5199;&#x7684;&#x662F;&#x5728; worst case &#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x624D;&#x53EF;&#x80FD;&#x4F1A;&#x4F7F;&#x7528;&#xFF0C;&#x56E0;&#x6B64;&#x8C03;&#x7528;&#x8005;&#x4E0D;&#x80FD;&#x5047;&#x8BBE;&#x8FD4;&#x56DE;&#x503C;&#x771F;&#x7684;&#x5C31;&#x5728; autorelease pool &#x4E2D;&#x3002;&#x4ECE;&#x6027;&#x80FD;&#x7684;&#x89D2;&#x5EA6;&#xFF0C;&#x8FD9;&#x79CD;&#x505A;&#x6CD5;&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x7684;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x80FD;&#x591F;&#x77E5;&#x9053;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x6700;&#x957F;&#x5E94;&#x8BE5;&#x6709;&#x591A;&#x957F;&#xFF0C;&#x4E5F;&#x5C31;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x4F7F;&#x7528; autorelease &#x4E86;&#xFF0C;&#x76F4;&#x63A5;&#x4F7F;&#x7528; release &#x5C31;&#x53EF;&#x4EE5;&#x3002;&#x5982;&#x679C;&#x5F88;&#x591A;&#x5BF9;&#x8C61;&#x90FD;&#x4F7F;&#x7528; autorelease &#x7684;&#x8BDD;&#xFF0C;&#x4E5F;&#x4F1A;&#x5BFC;&#x81F4;&#x6574;&#x4E2A; pool &#x5728; drain &#x7684;&#x65F6;&#x5019;&#x6027;&#x80FD;&#x4E0B;&#x964D;&#x3002;</p>
-<h3 id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
+<h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
 <ul>
 <li><a href="http://blog.csdn.net/fightingbull/article/details/8098133" target="_blank">Objective-C&#x5185;&#x5B58;&#x7BA1;&#x7406;MRC&#x4E0E;ARC</a></li>
 <li><a href="http://www.oschina.net/news/42288/10-objective-c-interview" target="_blank">10&#x4E2A;Objective-C&#x57FA;&#x7840;&#x9762;&#x8BD5;&#x9898;&#xFF0C;iOS&#x9762;&#x8BD5;&#x5FC5;&#x5907;</a></li>
@@ -1381,9 +1313,25 @@ self.property = a;
         
 <script src="../../gitbook/app.js"></script>
 
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    var config = {"highlight":{},"search":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
     gitbook.start(config);
 });
 </script>

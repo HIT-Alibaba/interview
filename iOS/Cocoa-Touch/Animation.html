@@ -8,7 +8,7 @@
         <title>Core Animation | 笔试面试知识整理</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 2.4.3">
+        <meta name="generator" content="GitBook 2.5.2">
         
         
         <meta name="HandheldFriendly" content="true"/>
@@ -22,6 +22,14 @@
     
         
         <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
         
     
     
@@ -40,13 +48,10 @@
     <body>
         
         
-    <div class="book" data-level="2.2.5" data-basepath="../.." data-revision="Wed Nov 04 2015 15:28:40 GMT+0800 (中国标准时间)">
+    <div class="book" data-level="2.2.5" data-chapter-title="Core Animation" data-filepath="iOS/Cocoa-Touch/Animation.md" data-basepath="../.." data-revision="Wed Nov 11 2015 11:12:31 GMT+0800 (CST)">
     
 
 <div class="book-summary">
-    <div class="book-search" role="search">
-        <input type="text" placeholder="Type to search" class="form-control" />
-    </div>
     <nav role="navigation">
         <ul class="summary">
             
@@ -1069,80 +1074,7 @@
         <div class="body-inner">
             <div class="book-header" role="navigation">
     <!-- Actions Left -->
-    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
-    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
     
-    <div id="font-settings-wrapper" class="dropdown pull-left">
-        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
-        </a>
-        <div class="dropdown-menu font-settings">
-    <div class="dropdown-caret">
-        <span class="caret-outer"></span>
-        <span class="caret-inner"></span>
-    </div>
-
-    <div class="buttons">
-        <button type="button" id="reduce-font-size" class="button size-2">A</button>
-        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
-    </div>
-
-    <div class="buttons font-family-list">
-        <button type="button" data-font="0" class="button">Serif</button>
-        <button type="button" data-font="1" class="button">Sans</button>
-    </div>
-
-    <div class="buttons color-theme-list">
-        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
-        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
-        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
-    </div>
-</div>
-
-    </div>
-
-    <!-- Actions Right -->
-    
-    <div class="dropdown pull-right">
-        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
-        </a>
-        <div class="dropdown-menu font-settings dropdown-left">
-            <div class="dropdown-caret">
-                <span class="caret-outer"></span>
-                <span class="caret-inner"></span>
-            </div>
-            <div class="buttons">
-                <button type="button" data-sharing="twitter" class="button">
-                    Share on Twitter
-                </button>
-                <button type="button" data-sharing="google-plus" class="button">
-                    Share on Google
-                </button>
-                <button type="button" data-sharing="facebook" class="button">
-                    Share on Facebook
-                </button>
-                <button type="button" data-sharing="weibo" class="button">
-                    Share on Weibo
-                </button>
-                <button type="button" data-sharing="instapaper" class="button">
-                    Share on Instapaper
-                </button>
-            </div>
-        </div>
-    </div>
-    
-
-    
-    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
-    
-    
-    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-    
-    
-    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
-    
-    
-    
-
 
     <!-- Title -->
     <h1>
@@ -1160,7 +1092,7 @@
                         <h2 id="core-animation">Core Animation</h2>
 <p><strong>&#x6CE8;</strong>&#xFF1A;&#x793A;&#x4F8B;&#x4E2D;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x7684;&#x5B8C;&#x6574;&#x7248;&#x53EF;&#x4EE5;&#x5728;<a href="https://github.com/yixiangboy/IOSAnimationDemo" target="_blank">&#x8FD9;&#x91CC;</a>&#x627E;&#x5230;&#x3002;</p>
 <h3 id="uiview-animation">UIView Animation</h3>
-<h4 id="%E7%AE%80%E5%8D%95%E5%8A%A8%E7%94%BB">&#x7B80;&#x5355;&#x52A8;&#x753B;</h4>
+<h4 id="&#x7B80;&#x5355;&#x52A8;&#x753B;">&#x7B80;&#x5355;&#x52A8;&#x753B;</h4>
 <p>&#x5BF9;&#x4E8E; UIView &#x4E0A;&#x7B80;&#x5355;&#x7684;&#x52A8;&#x753B;&#xFF0C;iOS &#x63D0;&#x4F9B;&#x4E86;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x51FD;&#x6570;&#xFF1A;</p>
 <pre><code>+ animateWithDuration:animations:
 </code></pre><p>&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x52A8;&#x753B;&#x7684;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x4E00;&#x4E2A; block&#xFF0C;&#x5728; <code>animations</code> block &#x4E2D;&#x5BF9; UIView &#x7684;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x8C03;&#x6574;&#xFF0C;&#x8BBE;&#x7F6E; UIView &#x52A8;&#x753B;&#x7ED3;&#x675F;&#x540E;&#x6700;&#x7EC8;&#x7684;&#x6548;&#x679C;&#xFF0C;iOS &#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x8865;&#x5145;&#x4E2D;&#x95F4;&#x5E27;&#xFF0C;&#x5F62;&#x6210;&#x52A8;&#x753B;&#x3002;</p>
@@ -1198,7 +1130,7 @@
     myView.transform = CGAffineTransformMakeScale(0.5, 0.5);
 }];
 </code></pre>
-<h4 id="%E8%B0%83%E8%8A%82%E5%8F%82%E6%95%B0">&#x8C03;&#x8282;&#x53C2;&#x6570;</h4>
+<h4 id="&#x8C03;&#x8282;&#x53C2;&#x6570;">&#x8C03;&#x8282;&#x53C2;&#x6570;</h4>
 <p>&#x5B8C;&#x6574;&#x7248;&#x7684; animate &#x51FD;&#x6570;&#x5176;&#x5B9E;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
 <pre><code>+ animateWithDuration:delay:options:animations:completion:
 </code></pre><p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>delay</code> &#x53C2;&#x6570;&#x8C03;&#x8282;&#x8BA9;&#x52A8;&#x753B;&#x5EF6;&#x8FDF;&#x4EA7;&#x751F;&#xFF0C;&#x540C;&#x65F6;&#x8FD8;&#x4E00;&#x4E2A; <code>options</code> &#x9009;&#x9879;&#x53EF;&#x4EE5;&#x8C03;&#x8282;&#x52A8;&#x753B;&#x8FDB;&#x884C;&#x7684;&#x65B9;&#x5F0F;&#x3002;&#x53EF;&#x7528;&#x7684; <code>options</code> &#x53EF;&#x5206;&#x4E3A;&#x4E24;&#x7C7B;&#xFF1A;</p>
@@ -1208,7 +1140,7 @@
 <p>&#x52A8;&#x753B;&#x7684;&#x8FDB;&#x884C;&#x901F;&#x5EA6;&#x53EF;&#x4EE5;&#x7528;&#x901F;&#x5EA6;&#x66F2;&#x7EBF;&#x6765;&#x8868;&#x793A;&#xFF08;&#x53C2;&#x8003;<a href="http://zhuanlan.zhihu.com/cheerfox/20031427#!" target="_blank">&#x8FD9;&#x91CC;</a>&#xFF09;&#xFF0C;&#x63D0;&#x4F9B;&#x7684;&#x9009;&#x9879;&#x4F8B;&#x5982; <code>UIViewAnimationOptionCurveEaseIn</code> &#x662F;&#x5148;&#x6162;&#x540E;&#x5FEB;&#xFF0C;<code>UIViewAnimationOptionCurveEaseOut</code> &#x662F;&#x5148;&#x5FEB;&#x540E;&#x6162;&#x3002;</p>
 <p>&#x4E0D;&#x540C;&#x7684;&#x9009;&#x9879;&#x76F4;&#x63A5;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x201C;&#x4E0E;&#x201D;&#x64CD;&#x4F5C;&#x8FDB;&#x884C;&#x5408;&#x5E76;&#xFF0C;&#x540C;&#x65F6;&#x4F7F;&#x7528;&#xFF0C;&#x4F8B;&#x5982;:</p>
 <pre><code>UIViewAnimationOptionRepeat | UIViewAnimationOptionAllowUserInteraction
-</code></pre><h4 id="%E5%85%B3%E9%94%AE%E5%B8%A7%E5%8A%A8%E7%94%BB">&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;</h4>
+</code></pre><h4 id="&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;">&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;</h4>
 <p>&#x4E0A;&#x9762;&#x4ECB;&#x7ECD;&#x7684;&#x52A8;&#x753B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x80FD;&#x63A7;&#x5236;&#x5F00;&#x59CB;&#x548C;&#x7ED3;&#x675F;&#x65F6;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x7136;&#x540E;&#x7531;&#x7CFB;&#x7EDF;&#x8865;&#x5168;&#x4E2D;&#x95F4;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x6709;&#x4E9B;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x8BBE;&#x5B9A;&#x82E5;&#x5E72;&#x5173;&#x952E;&#x5E27;&#xFF0C;&#x5B9E;&#x73B0;&#x66F4;&#x590D;&#x6742;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x5C31;&#x9700;&#x8981;&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;&#x7684;&#x652F;&#x6301;&#x4E86;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x793A;&#x4F8B;&#xFF1A;</p>
 <pre><code class="lang-objective-c">[UIView animateKeyframesWithDuration:2.0 delay:0.0 options:UIViewKeyframeAnimationOptionRepeat | UIViewKeyframeAnimationOptionAutoreverse animations:^{
     [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.5 animations:^{
@@ -1223,7 +1155,7 @@
 } completion:nil];
 </code></pre>
 <p>&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x6DFB;&#x52A0;&#x4E86;&#x4E09;&#x4E2A;&#x5173;&#x952E;&#x5E27;&#xFF0C;&#x5728;&#x5916;&#x9762;&#x7684; <code>animateKeyframesWithDuration</code> &#x4E2D;&#x6211;&#x4EEC;&#x8BBE;&#x7F6E;&#x4E86;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x4E3A; 2.0 &#x79D2;&#xFF0C;&#x8FD9;&#x662F;&#x771F;&#x5B9E;&#x610F;&#x4E49;&#x4E0A;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x91CC;&#x9762;&#x7684; <code>startTime</code> &#x548C; <code>relativeDuration</code> &#x90FD;&#x662F;&#x76F8;&#x5BF9;&#x65F6;&#x95F4;&#x3002;&#x4EE5;&#x7B2C;&#x4E00;&#x4E2A;&#x4E3A;&#x4F8B;&#xFF0C;<code>startTime</code> &#x4E3A; 0.0&#xFF0C;<code>relativeTime</code> &#x4E3A; 0.5&#xFF0C;&#x8FD9;&#x4E2A;&#x52A8;&#x753B;&#x4F1A;&#x76F4;&#x63A5;&#x5F00;&#x59CB;&#xFF0C;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x4E3A; 2.0 X 0.5 = 1.0 &#x79D2;&#xFF0C;&#x4E0B;&#x9762;&#x7B2C;&#x4E8C;&#x4E2A;&#x7684;&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#x662F; 0.5&#xFF0C;&#x6B63;&#x597D;&#x627F;&#x63A5;&#x4E0A;&#x4E00;&#x4E2A;&#x7ED3;&#x675F;&#xFF0C;&#x7B2C;&#x4E09;&#x4E2A;&#x540C;&#x7406;&#xFF0C;&#x8FD9;&#x6837;&#x4E09;&#x4E2A;&#x52A8;&#x753B;&#x5C31;&#x53D8;&#x6210;&#x8FDE;&#x7EED;&#x7684;&#x52A8;&#x753B;&#x4E86;&#x3002;</p>
-<h4 id="view-%E7%9A%84%E8%BD%AC%E6%8D%A2">View &#x7684;&#x8F6C;&#x6362;</h4>
+<h4 id="view-&#x7684;&#x8F6C;&#x6362;">View &#x7684;&#x8F6C;&#x6362;</h4>
 <p>iOS &#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x7528;&#x4E8E;&#x8FDB;&#x884C;&#x4E24;&#x4E2A; View &#x4E4B;&#x95F4;&#x901A;&#x8FC7;&#x52A8;&#x753B;&#x6362;&#x573A;&#xFF1A;</p>
 <pre><code>+ transitionWithView:duration:options:animations:completion:
 + transitionFromView:toView:duration:options:completion:
@@ -1232,7 +1164,7 @@
 <h3 id="calayer-animation">CALayer Animation</h3>
 <p>UIView &#x7684;&#x52A8;&#x753B;&#x7B80;&#x5355;&#x6613;&#x7528;&#xFF0C;&#x4F46;&#x662F;&#x80FD;&#x5B9E;&#x73B0;&#x7684;&#x6548;&#x679C;&#x76F8;&#x5BF9;&#x6709;&#x9650;&#xFF0C;&#x4E0A;&#x9762;&#x4ECB;&#x7ECD;&#x7684; UIView &#x7684;&#x51E0;&#x79CD;&#x52A8;&#x753B;&#x65B9;&#x5F0F;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x5BF9;&#x5E95;&#x5C42; CALayer &#x52A8;&#x753B;&#x7684;&#x4E00;&#x79CD;&#x5C01;&#x88C5;&#x3002;&#x76F4;&#x63A5;&#x4F7F;&#x7528; CALayer &#x5C42;&#x7684;&#x52A8;&#x753B;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x66F4;&#x591A;&#x9AD8;&#x7EA7;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;&#x3002;</p>
 <p><strong>&#x6CE8;&#x610F;</strong>&#xFF1A;&#x4F7F;&#x7528; CALayer &#x52A8;&#x753B;&#x4E4B;&#x524D;&#xFF0C;&#x9996;&#x5148;&#x9700;&#x8981;&#x5F15;&#x5165; QuartzCore.framework&#x3002;</p>
-<h4 id="%E5%9F%BA%E6%9C%AC%E5%8A%A8%E7%94%BB%EF%BC%88cabasicanimation%EF%BC%89">&#x57FA;&#x672C;&#x52A8;&#x753B;&#xFF08;CABasicAnimation&#xFF09;</h4>
+<h4 id="&#x57FA;&#x672C;&#x52A8;&#x753B;&#xFF08;cabasicanimation&#xFF09;">&#x57FA;&#x672C;&#x52A8;&#x753B;&#xFF08;CABasicAnimation&#xFF09;</h4>
 <p>CABasicAnimation &#x7528;&#x4E8E;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; CALayer &#x4E0A;&#x7684;&#x57FA;&#x672C;&#x52A8;&#x753B;&#x6548;&#x679C;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
 <pre><code class="lang-objective-c">CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@&quot;position.x&quot;];
 animation.toValue = @200;
@@ -1249,7 +1181,7 @@ animation.fillMode = kCAFillModeRemoved;
 position.y = frame.origin.y + 0.5 * bounds.size.height&#xFF1B;
 </code></pre>
 <p>&#x5173;&#x4E8E; <code>anchorPoint</code> &#x548C; <code>position</code> &#x5C5E;&#x6027;&#x7684;&#x4EE5;&#x53CA;&#x5177;&#x4F53;&#x8BA1;&#x7B97;&#x7684;&#x539F;&#x7406;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="http://wonderffee.github.io/blog/2013/10/13/understand-anchorpoint-and-position/" target="_blank">&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;</a>&#x3002;</p>
-<h5 id="%E5%B1%9E%E6%80%A7">&#x5C5E;&#x6027;</h5>
+<h5 id="&#x5C5E;&#x6027;">&#x5C5E;&#x6027;</h5>
 <p>CABasicAnimation &#x7684;&#x5C5E;&#x6027;&#x6709;&#x4E0B;&#x9762;&#x51E0;&#x4E2A;&#xFF1A;</p>
 <ul>
 <li>beginTime</li>
@@ -1287,9 +1219,9 @@ position.y = frame.origin.y + 0.5 * bounds.size.height&#xFF1B;
 <li>kCAMediaTimingFunctionDefault &#x9ED8;&#x8BA4;&#xFF0C;&#x4E5F;&#x5C5E;&#x4E8E;&#x4E2D;&#x95F4;&#x6BD4;&#x8F83;&#x5FEB;</li>
 </ul>
 <p>&#x6B64;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; [CAMediaTimingFunction functionWithControlPoints] &#x65B9;&#x6CD5;&#x6765;&#x81EA;&#x5B9A;&#x4E49;&#x8FD0;&#x52A8;&#x66F2;&#x7EBF;&#xFF0C;<a href="http://netcetera.org/camtf-playground.html" target="_blank">&#x8FD9;&#x4E2A;&#x7F51;&#x7AD9;</a>&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x5C06;&#x53C2;&#x6570;&#x8C03;&#x8282;&#x53EF;&#x89C6;&#x5316;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x5173;&#x4E8E;&#x52A8;&#x753B;&#x65F6;&#x95F4;&#x7CFB;&#x7EDF;&#x7684;&#x5177;&#x4F53;&#x4ECB;&#x7ECD;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="http://geeklu.com/2012/09/animation-in-ios/" target="_blank">&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;</a>&#x3002;</p>
-<h4 id="%E5%85%B3%E9%94%AE%E5%B8%A7%E5%8A%A8%E7%94%BB%EF%BC%88cakeyframeanimation%EF%BC%89">&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;&#xFF08;CAKeyframeAnimation&#xFF09;</h4>
+<h4 id="&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;&#xFF08;cakeyframeanimation&#xFF09;">&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;&#xFF08;CAKeyframeAnimation&#xFF09;</h4>
 <p>&#x540C; UIView &#x4E2D;&#x7684;&#x7C7B;&#x4F3C;&#xFF0C;CALayer &#x5C42;&#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;&#x7684;&#x652F;&#x6301;&#xFF0C;CAKeyFrameAnimation &#x548C; CABasicAnimation &#x90FD;&#x7EE7;&#x627F;&#x81EA; CAPropertyAnimation&#xFF0C;&#x56E0;&#x6B64;&#x5B83;&#x6709;&#x5177;&#x6709;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x90A3;&#x4E9B;&#x5C5E;&#x6027;&#xFF0C;&#x6B64;&#x5916;&#xFF0C;CAKeyFrameAnimation &#x8FD8;&#x6709;&#x7279;&#x6709;&#x7684;&#x51E0;&#x4E2A;&#x5C5E;&#x6027;&#x3002;</p>
-<h5 id="values-%E5%92%8C-keytimes">values &#x548C; keyTimes</h5>
+<h5 id="values-&#x548C;-keytimes">values &#x548C; keyTimes</h5>
 <p>&#x4F7F;&#x7528; <code>values</code> &#x548C; <code>keyTimes</code> &#x53EF;&#x4EE5;&#x5171;&#x540C;&#x786E;&#x5B9A;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x7684;&#x82E5;&#x5E72;&#x5173;&#x952E;&#x5E27;&#xFF0C;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code class="lang-objective-c">CAKeyframeAnimation *anima = [CAKeyframeAnimation animationWithKeyPath:@&quot;transform.rotation&quot;];//&#x5728;&#x8FD9;&#x91CC;@&quot;transform.rotation&quot;==@&quot;transform.rotation.z&quot;
 NSValue *value1 = [NSNumber numberWithFloat:-M_PI/180*4];
@@ -1310,7 +1242,7 @@ anima.path = path.CGPath;
 anima.duration = 2.0f;
 [_demoView.layer addAnimation:anima forKey:@&quot;pathAnimation&quot;];
 </code></pre>
-<h4 id="%E7%BB%84%E5%8A%A8%E7%94%BB%EF%BC%88caanimationgroup">&#x7EC4;&#x52A8;&#x753B;&#xFF08;CAAnimationGroup)</h4>
+<h4 id="&#x7EC4;&#x52A8;&#x753B;&#xFF08;caanimationgroup">&#x7EC4;&#x52A8;&#x753B;&#xFF08;CAAnimationGroup)</h4>
 <p>&#x7EC4;&#x52A8;&#x753B;&#x53EF;&#x4EE5;&#x5C06;&#x4E00;&#x7EC4;&#x52A8;&#x753B;&#x7EC4;&#x5408;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x6240;&#x6709;&#x52A8;&#x753B;&#x5BF9;&#x8C61;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x8FD0;&#x884C;&#xFF0C;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code class="lang-objective-c">CAAnimationGroup *group = [[CAAnimationGroup alloc] init];
 CABasicAnimation *animationOne = [CABasicAnimation animationWithKeyPath:@&quot;transform.scale&quot;];
@@ -1326,7 +1258,7 @@ animationTwo.duration = 1.0;
 [self.myView.layer addAnimation:group forKey:nil];
 </code></pre>
 <p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x4E00;&#x4E2A; group &#x7EC4;&#x5185;&#x7684;&#x67D0;&#x4E2A;&#x52A8;&#x753B;&#x7684;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#xFF08;duration&#xFF09;&#xFF0C;&#x5982;&#x679C;&#x8D85;&#x8FC7;&#x4E86;&#x6574;&#x4E2A;&#x7EC4;&#x7684;&#x52A8;&#x753B;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#xFF0C;&#x90A3;&#x4E48;&#x591A;&#x51FA;&#x7684;&#x52A8;&#x753B;&#x65F6;&#x95F4;&#x5C06;&#x4E0D;&#x4F1A;&#x88AB;&#x5C55;&#x793A;&#x3002;&#x4F8B;&#x5982;&#x4E00;&#x4E2A; group  &#x7684;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x662F; 5s&#xFF0C;&#x800C;&#x7EC4;&#x5185;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x4E3A; 10s &#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A; 10s &#x7684;&#x52A8;&#x753B;&#x53EA;&#x4F1A;&#x5C55;&#x793A;&#x524D; 5s &#x3002;</p>
-<h4 id="%E5%88%87%E6%8D%A2%E5%8A%A8%E7%94%BB%EF%BC%88catransition%EF%BC%89">&#x5207;&#x6362;&#x52A8;&#x753B;&#xFF08;CATransition&#xFF09;</h4>
+<h4 id="&#x5207;&#x6362;&#x52A8;&#x753B;&#xFF08;catransition&#xFF09;">&#x5207;&#x6362;&#x52A8;&#x753B;&#xFF08;CATransition&#xFF09;</h4>
 <p>CATransition &#x53EF;&#x4EE5;&#x7528;&#x4E8E; View &#x6216; ViewController &#x76F4;&#x63A5;&#x7684;&#x6362;&#x573A;&#x52A8;&#x753B;&#xFF1A;</p>
 <pre><code class="lang-objective-c">self.myView.backgroundColor = [UIColor blueColor];
 CATransition *trans = [CATransition animation];
@@ -1339,7 +1271,7 @@ trans.type = @&quot;push&quot;;
 // self.myView.backgroundColor = [UIColor blueColor];
 </code></pre>
 <p>&#x4E3A;&#x4EC0;&#x4E48;&#x6539;&#x53D8;&#x989C;&#x8272;&#x653E;&#x5728;&#x524D;&#x540E;&#x90FD;&#x53EF;&#x4EE5;&#x5462;&#xFF1F;&#x5177;&#x4F53;&#x7684;&#x89E3;&#x91CA;&#x53EF;&#x4EE5;&#x53C2;&#x8003; SO &#x4E0A;&#x7684;<a href="http://stackoverflow.com/questions/2233692/how-does-catransition-work" target="_blank">&#x8FD9;&#x4E2A;&#x56DE;&#x7B54;</a>&#x3002;&#x7B80;&#x5355;&#x6765;&#x8BF4;&#x5C31;&#x662F;&#x52A8;&#x753B;&#x548C;&#x7ED8;&#x5236;&#x4E4B;&#x95F4;&#x5E76;&#x4E0D;&#x51B2;&#x7A81;&#x3002;</p>
-<h3 id="%E6%9B%B4%E9%AB%98%E7%BA%A7%E7%9A%84%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C">&#x66F4;&#x9AD8;&#x7EA7;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;</h3>
+<h3 id="&#x66F4;&#x9AD8;&#x7EA7;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;">&#x66F4;&#x9AD8;&#x7EA7;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;</h3>
 <h4 id="cadisplaylink">CADisplayLink</h4>
 <p>CADisplayLink &#x662F;&#x4E00;&#x4E2A;&#x8BA1;&#x65F6;&#x5668;&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x5468;&#x671F;&#x6027;&#x7684;&#x8C03;&#x7528;&#x67D0;&#x4E2A; selecor &#x65B9;&#x6CD5;&#x3002;&#x76F8;&#x6BD4; NSTimer &#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x4EE5;&#x548C;&#x5C4F;&#x5E55;&#x5237;&#x65B0;&#x7387;&#x540C;&#x6B65;&#x7684;&#x9891;&#x7387;&#xFF08;&#x6BCF;&#x79D2;60&#x6B21;&#xFF09;&#x6765;&#x8C03;&#x7528;&#x7ED8;&#x5236;&#x51FD;&#x6570;&#xFF0C;&#x5B9E;&#x73B0;&#x754C;&#x9762;&#x8FDE;&#x7EED;&#x7684;&#x4E0D;&#x505C;&#x91CD;&#x7ED8;&#xFF0C;&#x4ECE;&#x800C;&#x5B9E;&#x73B0;&#x52A8;&#x753B;&#x6548;&#x679C;&#x3002;</p>
 <p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF08;&#x4FEE;&#x6539;&#x81EA;<a href="http://www.cocoachina.com/ios/20150320/11382.html" target="_blank">&#x8FD9;&#x91CC;</a>)&#xFF1A;</p>
@@ -1442,9 +1374,25 @@ collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
         
 <script src="../../gitbook/app.js"></script>
 
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    var config = {"highlight":{},"search":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
     gitbook.start(config);
 });
 </script>

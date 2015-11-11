@@ -8,7 +8,7 @@
         <title>排序 | 笔试面试知识整理</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 2.4.3">
+        <meta name="generator" content="GitBook 2.5.2">
         
         
         <meta name="HandheldFriendly" content="true"/>
@@ -22,6 +22,14 @@
     
         
         <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
         
     
     
@@ -40,13 +48,10 @@
     <body>
         
         
-    <div class="book" data-level="1.2.4" data-basepath="../.." data-revision="Wed Nov 04 2015 15:28:40 GMT+0800 (中国标准时间)">
+    <div class="book" data-level="1.2.4" data-chapter-title="排序" data-filepath="basic/algo/Sorting.md" data-basepath="../.." data-revision="Wed Nov 11 2015 11:12:31 GMT+0800 (CST)">
     
 
 <div class="book-summary">
-    <div class="book-search" role="search">
-        <input type="text" placeholder="Type to search" class="form-control" />
-    </div>
     <nav role="navigation">
         <ul class="summary">
             
@@ -1069,80 +1074,7 @@
         <div class="body-inner">
             <div class="book-header" role="navigation">
     <!-- Actions Left -->
-    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
-    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
     
-    <div id="font-settings-wrapper" class="dropdown pull-left">
-        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
-        </a>
-        <div class="dropdown-menu font-settings">
-    <div class="dropdown-caret">
-        <span class="caret-outer"></span>
-        <span class="caret-inner"></span>
-    </div>
-
-    <div class="buttons">
-        <button type="button" id="reduce-font-size" class="button size-2">A</button>
-        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
-    </div>
-
-    <div class="buttons font-family-list">
-        <button type="button" data-font="0" class="button">Serif</button>
-        <button type="button" data-font="1" class="button">Sans</button>
-    </div>
-
-    <div class="buttons color-theme-list">
-        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
-        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
-        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
-    </div>
-</div>
-
-    </div>
-
-    <!-- Actions Right -->
-    
-    <div class="dropdown pull-right">
-        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
-        </a>
-        <div class="dropdown-menu font-settings dropdown-left">
-            <div class="dropdown-caret">
-                <span class="caret-outer"></span>
-                <span class="caret-inner"></span>
-            </div>
-            <div class="buttons">
-                <button type="button" data-sharing="twitter" class="button">
-                    Share on Twitter
-                </button>
-                <button type="button" data-sharing="google-plus" class="button">
-                    Share on Google
-                </button>
-                <button type="button" data-sharing="facebook" class="button">
-                    Share on Facebook
-                </button>
-                <button type="button" data-sharing="weibo" class="button">
-                    Share on Weibo
-                </button>
-                <button type="button" data-sharing="instapaper" class="button">
-                    Share on Instapaper
-                </button>
-            </div>
-        </div>
-    </div>
-    
-
-    
-    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
-    
-    
-    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-    
-    
-    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
-    
-    
-    
-
 
     <!-- Title -->
     <h1>
@@ -1157,13 +1089,13 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h2 id="%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%9A%84%E8%AF%84%E4%BB%B7">&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#x7684;&#x8BC4;&#x4EF7;</h2>
-<h4 id="%E7%A8%B3%E5%AE%9A%E6%80%A7">&#x7A33;&#x5B9A;&#x6027;</h4>
+                        <h2 id="&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#x7684;&#x8BC4;&#x4EF7;">&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#x7684;&#x8BC4;&#x4EF7;</h2>
+<h4 id="&#x7A33;&#x5B9A;&#x6027;">&#x7A33;&#x5B9A;&#x6027;</h4>
 <p>&#x7A33;&#x5B9A;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#x4F1A;&#x4F9D;&#x7167;&#x76F8;&#x7B49;&#x7684;&#x5173;&#x952E;&#xFF08;&#x6362;&#x8A00;&#x4E4B;&#x5C31;&#x662F;&#x503C;&#xFF09;&#x7EF4;&#x6301;&#x7EAA;&#x5F55;&#x7684;&#x76F8;&#x5BF9;&#x6B21;&#x5E8F;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#x662F;&#x7A33;&#x5B9A;&#x7684;&#xFF0C;&#x5C31;&#x662F;&#x5F53;&#x6709;&#x4E24;&#x4E2A;&#x6709;&#x76F8;&#x7B49;&#x5173;&#x952E;&#x7684;&#x7EAA;&#x5F55;R&#x548C;S&#xFF0C;&#x4E14;&#x5728;&#x539F;&#x672C;&#x7684;&#x4E32;&#x884C;&#x4E2D;R&#x51FA;&#x73B0;&#x5728;S&#x4E4B;&#x524D;&#xFF0C;&#x5728;&#x6392;&#x5E8F;&#x8FC7;&#x7684;&#x4E32;&#x884C;&#x4E2D;R&#x4E5F;&#x5C06;&#x4F1A;&#x662F;&#x5728;S&#x4E4B;&#x524D;&#x3002;</p>
-<h4 id="%E8%AE%A1%E7%AE%97%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%88%E6%9C%80%E5%B7%AE%E3%80%81%E5%B9%B3%E5%9D%87%E3%80%81%E5%92%8C%E6%9C%80%E5%A5%BD%E8%A1%A8%E7%8E%B0%EF%BC%89">&#x8BA1;&#x7B97;&#x590D;&#x6742;&#x5EA6;&#xFF08;&#x6700;&#x5DEE;&#x3001;&#x5E73;&#x5747;&#x3001;&#x548C;&#x6700;&#x597D;&#x8868;&#x73B0;&#xFF09;</h4>
+<h4 id="&#x8BA1;&#x7B97;&#x590D;&#x6742;&#x5EA6;&#xFF08;&#x6700;&#x5DEE;&#x3001;&#x5E73;&#x5747;&#x3001;&#x548C;&#x6700;&#x597D;&#x8868;&#x73B0;&#xFF09;">&#x8BA1;&#x7B97;&#x590D;&#x6742;&#x5EA6;&#xFF08;&#x6700;&#x5DEE;&#x3001;&#x5E73;&#x5747;&#x3001;&#x548C;&#x6700;&#x597D;&#x8868;&#x73B0;&#xFF09;</h4>
 <p>&#x4F9D;&#x636E;&#x4E32;&#x884C;&#xFF08;list&#xFF09;&#x7684;&#x5927;&#x5C0F;&#xFF08;n&#xFF09;&#xFF0C;&#x4E00;&#x822C;&#x800C;&#x8A00;&#xFF0C;&#x597D;&#x7684;&#x8868;&#x73B0;&#x662F;O(nlogn)&#xFF0C;&#x4E14;&#x574F;&#x7684;&#x884C;&#x4E3A;&#x662F;O(n2)&#x3002;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x6392;&#x5E8F;&#x7406;&#x60F3;&#x7684;&#x8868;&#x73B0;&#x662F;O(n)&#x3002;&#x4EC5;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x62BD;&#x8C61;&#x5173;&#x952E;&#x6BD4;&#x8F83;&#x8FD0;&#x7B97;&#x7684;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#x603B;&#x5E73;&#x5747;&#x4E0A;&#x603B;&#x662F;&#x81F3;&#x5C11;&#x9700;&#x8981;O(nlogn)&#x3002;</p>
-<h2 id="%E5%B8%B8%E8%A7%81%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95">&#x5E38;&#x89C1;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;</h2>
-<h4 id="%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F%EF%BC%9A">&#x7A33;&#x5B9A;&#x6392;&#x5E8F;&#xFF1A;</h4>
+<h2 id="&#x5E38;&#x89C1;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;">&#x5E38;&#x89C1;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;</h2>
+<h4 id="&#x7A33;&#x5B9A;&#x6392;&#x5E8F;&#xFF1A;">&#x7A33;&#x5B9A;&#x6392;&#x5E8F;&#xFF1A;</h4>
 <ul>
 <li>&#x5192;&#x6CE1;&#x6392;&#x5E8F;&#xFF08;Bubble Sort&#xFF09; &#x2014; O(n&#xB2;)</li>
 <li>&#x63D2;&#x5165;&#x6392;&#x5E8F;&#xFF08;Insertion Sort&#xFF09;&#x2014; O(n&#xB2;)</li>
@@ -1173,14 +1105,14 @@
 <li>&#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;&#x6392;&#x5E8F; &#xFF08;Binary tree sort&#xFF09; &#x2014; O(n log n) &#x671F;&#x671B;&#x65F6;&#x95F4;; O(n&#xB2;)&#x6700;&#x574F;&#x65F6;&#x95F4;; &#x9700;&#x8981; O(n) &#x989D;&#x5916;&#x7A7A;&#x95F4;</li>
 <li>&#x57FA;&#x6570;&#x6392;&#x5E8F;&#xFF08;Radix sort&#xFF09;&#x2014; O(n&#xB7;k); &#x9700;&#x8981; O(n) &#x989D;&#x5916;&#x7A7A;&#x95F4;</li>
 </ul>
-<h4 id="%E4%B8%8D%E7%A8%B3%E5%AE%9A%E6%8E%92%E5%BA%8F">&#x4E0D;&#x7A33;&#x5B9A;&#x6392;&#x5E8F;</h4>
+<h4 id="&#x4E0D;&#x7A33;&#x5B9A;&#x6392;&#x5E8F;">&#x4E0D;&#x7A33;&#x5B9A;&#x6392;&#x5E8F;</h4>
 <ul>
 <li>&#x9009;&#x62E9;&#x6392;&#x5E8F;&#xFF08;Selection Sort&#xFF09;&#x2014; O(n&#xB2;)</li>
 <li>&#x5E0C;&#x5C14;&#x6392;&#x5E8F;&#xFF08;Shell Sort&#xFF09;&#x2014; O(nlogn)</li>
 <li>&#x5806;&#x6392;&#x5E8F;&#xFF08;Heapsort&#xFF09;&#x2014; O(nlogn)</li>
 <li>&#x5FEB;&#x901F;&#x6392;&#x5E8F;&#xFF08;Quicksort&#xFF09;&#x2014; O(nlogn) &#x671F;&#x671B;&#x65F6;&#x95F4;, O(n2) &#x6700;&#x574F;&#x60C5;&#x51B5;; &#x5BF9;&#x4E8E;&#x5927;&#x7684;&#x3001;&#x4E71;&#x6570;&#x4E32;&#x884C;&#x4E00;&#x822C;&#x76F8;&#x4FE1;&#x662F;&#x6700;&#x5FEB;&#x7684;&#x5DF2;&#x77E5;&#x6392;&#x5E8F;</li>
 </ul>
-<h3 id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
+<h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
 <ol>
 <li><a href="http://blog.sina.com.cn/s/blog_4080505a0101iewt.html" target="_blank">&#x5404;&#x79CD;&#x57FA;&#x672C;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#x7684;&#x603B;&#x7ED3;</a></li>
 <li><a href="http://blog.csdn.net/whuslei/article/details/6442755" target="_blank">&#x5E38;&#x7528;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#x5C0F;&#x7ED3;</a></li>
@@ -1207,9 +1139,25 @@
         
 <script src="../../gitbook/app.js"></script>
 
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    var config = {"highlight":{},"search":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
     gitbook.start(config);
 });
 </script>

@@ -8,7 +8,7 @@
         <title>类与对象 | 笔试面试知识整理</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 2.4.3">
+        <meta name="generator" content="GitBook 2.5.2">
         
         
         <meta name="HandheldFriendly" content="true"/>
@@ -22,6 +22,14 @@
     
         
         <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
         
     
     
@@ -40,13 +48,10 @@
     <body>
         
         
-    <div class="book" data-level="2.1.1" data-basepath="../.." data-revision="Wed Nov 04 2015 15:28:40 GMT+0800 (中国标准时间)">
+    <div class="book" data-level="2.1.1" data-chapter-title="类与对象" data-filepath="iOS/ObjC-Basic/Class.md" data-basepath="../.." data-revision="Wed Nov 11 2015 11:12:31 GMT+0800 (CST)">
     
 
 <div class="book-summary">
-    <div class="book-search" role="search">
-        <input type="text" placeholder="Type to search" class="form-control" />
-    </div>
     <nav role="navigation">
         <ul class="summary">
             
@@ -1069,80 +1074,7 @@
         <div class="body-inner">
             <div class="book-header" role="navigation">
     <!-- Actions Left -->
-    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
-    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
     
-    <div id="font-settings-wrapper" class="dropdown pull-left">
-        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
-        </a>
-        <div class="dropdown-menu font-settings">
-    <div class="dropdown-caret">
-        <span class="caret-outer"></span>
-        <span class="caret-inner"></span>
-    </div>
-
-    <div class="buttons">
-        <button type="button" id="reduce-font-size" class="button size-2">A</button>
-        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
-    </div>
-
-    <div class="buttons font-family-list">
-        <button type="button" data-font="0" class="button">Serif</button>
-        <button type="button" data-font="1" class="button">Sans</button>
-    </div>
-
-    <div class="buttons color-theme-list">
-        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
-        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
-        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
-    </div>
-</div>
-
-    </div>
-
-    <!-- Actions Right -->
-    
-    <div class="dropdown pull-right">
-        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
-        </a>
-        <div class="dropdown-menu font-settings dropdown-left">
-            <div class="dropdown-caret">
-                <span class="caret-outer"></span>
-                <span class="caret-inner"></span>
-            </div>
-            <div class="buttons">
-                <button type="button" data-sharing="twitter" class="button">
-                    Share on Twitter
-                </button>
-                <button type="button" data-sharing="google-plus" class="button">
-                    Share on Google
-                </button>
-                <button type="button" data-sharing="facebook" class="button">
-                    Share on Facebook
-                </button>
-                <button type="button" data-sharing="weibo" class="button">
-                    Share on Weibo
-                </button>
-                <button type="button" data-sharing="instapaper" class="button">
-                    Share on Instapaper
-                </button>
-            </div>
-        </div>
-    </div>
-    
-
-    
-    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
-    
-    
-    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-    
-    
-    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
-    
-    
-    
-
 
     <!-- Title -->
     <h1>
@@ -1157,7 +1089,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h2 id="%E7%B1%BB%E6%96%B9%E6%B3%95">&#x7C7B;&#x65B9;&#x6CD5;</h2>
+                        <h2 id="&#x7C7B;&#x65B9;&#x6CD5;">&#x7C7B;&#x65B9;&#x6CD5;</h2>
 <p>OC&#x4E2D;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x53EA;&#x6709;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x548C;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x4E24;&#x79CD;&#xFF1A;</p>
 <pre><code class="lang-objective-c">@interface Controller : NSObject { NSString *something; }
 
@@ -1223,8 +1155,8 @@
 <li>Extension &#x58F0;&#x660E;&#x7684;&#x65B9;&#x6CD5;&#x5FC5;&#x987B;&#x5728;&#x7C7B;&#x7684;&#x4E3B; @implementation &#x533A;&#x95F4;&#x5185;&#x5B9E;&#x73B0;&#xFF0C;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x4F7F;&#x7528;&#x6709;&#x540D; Category &#x5E26;&#x6765;&#x7684;&#x591A;&#x4E2A;&#x4E0D;&#x5FC5;&#x8981;&#x7684; implementation &#x6BB5;&#x3002;</li>
 <li>&#x5982;&#x679C; Extension &#x4E2D;&#x58F0;&#x660E;&#x7684;&#x65B9;&#x6CD5;&#x6CA1;&#x6709;&#x5B9E;&#x73B0;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x7ED9;&#x51FA; Warning&#xFF0C;&#x4F7F;&#x7528; Category &#x5219;&#x4E0D;&#x4F1A;&#x3002;</li>
 </ol>
-<h2 id="%E7%B1%BB%E5%8F%98%E9%87%8F">&#x7C7B;&#x53D8;&#x91CF;</h2>
-<p>&#x82F9;&#x679C;&#x63A8;&#x8350;&#x5728;OC&#x4E2D;&#x4F7F;&#x7528; @property &#x6765;&#x5B9E;&#x73B0;&#x6210;&#x5458;&#x53D8;&#x91CF;&#xFF1A;</p>
+<h2 id="&#x7C7B;&#x53D8;&#x91CF;">&#x7C7B;&#x53D8;&#x91CF;</h2>
+<p>&#x82F9;&#x679C;&#x63A8;&#x8350;&#x5728;&#x73B0;&#x4EE3; Objective-C &#x4E2D;&#x4F7F;&#x7528; @property &#x6765;&#x5B9E;&#x73B0;&#x6210;&#x5458;&#x53D8;&#x91CF;&#xFF1A;</p>
 <pre><code class="lang-objective-c">@interface AClass : NSObject
 
 @property (nonatomic, copy) NSString *name;
@@ -1269,7 +1201,7 @@
 <li>nonatomic &#x548C; atomic &#xFF0C;&#x51B3;&#x5B9A;&#x7F16;&#x8BD1;&#x5668;&#x751F;&#x6210;&#x7684;setter getter&#x662F;&#x5426;&#x662F;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#x3002; atomic &#x8868;&#x793A;&#x4F7F;&#x7528;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x4E0A;&#x4FDD;&#x8BC1;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#xFF0C;&#x4E00;&#x822C;&#x4F7F;&#x7528;nonatomic&#xFF0C;nonatomic&#x7F16;&#x8BD1;&#x51FA;&#x7684;&#x4EE3;&#x7801;&#x66F4;&#x5FEB;</li>
 </ul>
 <p>&#x9ED8;&#x8BA4;&#x7684; @property &#x662F; readwrite&#xFF0C;assign&#xFF0C;atomic</p>
-<h2 id="%E7%B1%BB%E7%9A%84%E6%89%A9%E5%B1%95%E2%80%94%E2%80%94protocol-category-%E5%92%8C-extension">&#x7C7B;&#x7684;&#x6269;&#x5C55;&#x2014;&#x2014;Protocol, Category &#x548C; Extension</h2>
+<h2 id="&#x7C7B;&#x7684;&#x6269;&#x5C55;&#x2014;&#x2014;protocol-category-&#x548C;-extension">&#x7C7B;&#x7684;&#x6269;&#x5C55;&#x2014;&#x2014;Protocol, Category &#x548C; Extension</h2>
 <h3 id="protocol">Protocol</h3>
 <p>OC&#x662F;&#x5355;&#x7EE7;&#x627F;&#x7684;&#xFF0C;OC&#x4E2D;&#x7684;&#x7C7B;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x591A;&#x4E2A; protocol &#x6765;&#x5B9E;&#x73B0;&#x7C7B;&#x4F3C; C++ &#x4E2D;&#x591A;&#x91CD;&#x7EE7;&#x627F;&#x7684;&#x6548;&#x679C;&#x3002;</p>
 <p>Protocol &#x7C7B;&#x4F3C; Java &#x4E2D;&#x7684; interface&#xFF0C;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;@required @optional &#x6807;&#x6CE8;&#xFF0C;&#x4EE5;&#x8868;&#x793A;&#x8BE5;&#x65B9;&#x6CD5;&#x662F;&#x5426;&#x662F;&#x5BA2;&#x6237;&#x7C7B;&#x5FC5;&#x987B;&#x8981;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#x3002; &#x4E00;&#x4E2A; protocol &#x53EF;&#x4EE5;&#x7EE7;&#x627F;&#x5176;&#x4ED6;&#x7684; protocol &#x3002;</p>
@@ -1306,6 +1238,11 @@
 }
 @end
 </code></pre>
+<p>&#x5728;&#x4F7F;&#x7528; Category &#x65F6;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x4E00;&#x70B9;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x591A;&#x4E2A;&#x547D;&#x540D; Category &#x5747;&#x5B9E;&#x73B0;&#x4E86;&#x540C;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF08;&#x5373;&#x51FA;&#x73B0;&#x4E86;&#x547D;&#x540D;&#x51B2;&#x7A81;&#xFF09;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x5177;&#x4F53;&#x54EA;&#x4E2A;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x662F;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#x3002;&#x56E0;&#x6B64;&#x5728;&#x7ED9;&#x5DF2;&#x6709;&#x7684;&#x7C7B;&#xFF08;&#x7279;&#x522B;&#x662F; Cocoa &#x7C7B;&#xFF09;&#x6DFB;&#x52A0; Category &#x65F6;&#xFF0C;&#x63A8;&#x8350;&#x7684;&#x51FD;&#x6570;&#x547D;&#x540D;&#x65B9;&#x6CD5;&#x662F;&#x52A0;&#x4E0A;&#x524D;&#x7F00;&#xFF1A;</p>
+<pre><code class="lang-objective-c">@interface NSSortDescriptor (XYZAdditions)
++ (id)xyz_sortDescriptorWithKey:(NSString *)key ascending:(BOOL)ascending;
+@end
+</code></pre>
 <h3 id="extension">Extension</h3>
 <p>Extension &#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x79CD;&#x533F;&#x540D;&#x7684; Category&#xFF0C; Extension &#x4E0E; Category &#x6709;&#x5982;&#x4E0B;&#x51E0;&#x70B9;&#x663E;&#x8457;&#x7684;&#x533A;&#x522B;&#xFF1A;</p>
 <ol>
@@ -1335,7 +1272,24 @@
 }  
 @end
 </code></pre>
-<h2 id="%E7%B1%BB%E7%9A%84%E5%AF%BC%E5%85%A5">&#x7C7B;&#x7684;&#x5BFC;&#x5165;</h2>
+<p>Extension &#x5F88;&#x5E38;&#x89C1;&#x7684;&#x7528;&#x6CD5;&#xFF0C;&#x662F;&#x7528;&#x6765;&#x7ED9;&#x7C7B;&#x6DFB;&#x52A0;<strong>&#x79C1;&#x6709;</strong>&#x7684;&#x53D8;&#x91CF;&#x548C;&#x65B9;&#x6CD5;&#xFF0C;&#x7528;&#x4E8E;&#x5728;&#x7C7B;&#x7684;&#x5185;&#x90E8;&#x4F7F;&#x7528;&#x3002;&#x4F8B;&#x5982;&#x5728; interface &#x4E2D;&#x5B9A;&#x4E49;&#x4E3A; <code>readonly</code> &#x7C7B;&#x578B;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x5728;&#x5B9E;&#x73B0;&#x4E2D;&#x6DFB;&#x52A0; extension&#xFF0C;&#x5C06;&#x5176;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;&#x4E3A; <code>readwrite</code>&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5728;&#x7C7B;&#x7684;&#x5185;&#x90E8;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4FEE;&#x6539;&#x5B83;&#x7684;&#x503C;&#xFF0C;&#x7136;&#x800C;&#x5916;&#x90E8;&#x4F9D;&#x7136;&#x4E0D;&#x80FD;&#x8C03;&#x7528; <code>setter</code> &#x65B9;&#x6CD5;&#x6765;&#x4FEE;&#x6539;&#x3002;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF0C;&#x6765;&#x81EA;&#x82F9;&#x679C;&#x5B98;&#x65B9;<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html#//apple_ref/doc/uid/TP40011210-CH6-SW3" target="_blank">&#x6587;&#x6863;</a></p>
+<p>XYZPerson.h</p>
+<pre><code class="lang-objective-c">@interface XYZPerson : NSObject
+...
+@property (readonly) NSString *uniqueIdentifier;
+
+@end
+</code></pre>
+<p>XYZPerson.m</p>
+<pre><code class="lang-objective-c">@interface XYZPerson ()
+@property (readwrite) NSString *uniqueIdentifier;
+@end
+
+@implementation XYZPerson
+...
+@end
+</code></pre>
+<h2 id="&#x7C7B;&#x7684;&#x5BFC;&#x5165;">&#x7C7B;&#x7684;&#x5BFC;&#x5165;</h2>
 <p>&#x5BFC;&#x5165;&#x7C7B;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>#include</code> , <code>#import</code> &#x548C; <code>@class</code> &#x4E09;&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x533A;&#x522B;&#x5982;&#x4E0B;&#xFF1A;</p>
 <ul>
 <li><code>#import</code>&#x662F;Objective-C&#x5BFC;&#x5165;&#x5934;&#x6587;&#x4EF6;&#x7684;&#x5173;&#x952E;&#x5B57;&#xFF0C;<code>#include</code>&#x662F;C/C++&#x5BFC;&#x5165;&#x5934;&#x6587;&#x4EF6;&#x7684;&#x5173;&#x952E;&#x5B57;</li>
@@ -1343,15 +1297,15 @@
 <li><code>@class</code>&#x544A;&#x8BC9;&#x7F16;&#x8BD1;&#x5668;&#x9700;&#x8981;&#x77E5;&#x9053;&#x67D0;&#x4E2A;&#x7C7B;&#x7684;&#x58F0;&#x660E;&#xFF0C;&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x5934;&#x6587;&#x4EF6;&#x7684;&#x76F8;&#x4E92;&#x5305;&#x542B;&#x95EE;&#x9898;&#xFF1B;</li>
 </ul>
 <p><code>@class</code>&#x662F;&#x653E;&#x5728;interface&#x4E2D;&#x7684;&#xFF0C;&#x53EA;&#x662F;&#x5728;&#x5F15;&#x7528;&#x4E00;&#x4E2A;&#x7C7B;&#xFF0C;&#x5C06;&#x8FD9;&#x4E2A;&#x88AB;&#x5F15;&#x7528;&#x7C7B;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x4F7F;&#x7528;&#x3002;&#x5728;&#x5B9E;&#x73B0;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x5F15;&#x7528;&#x5230;&#x88AB;&#x5F15;&#x7528;&#x7C7B;&#x7684;&#x5B9E;&#x4F53;&#x53D8;&#x91CF;&#x6216;&#x8005;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x4F7F;&#x7528;<code>#import</code>&#x65B9;&#x5F0F;&#x5F15;&#x5165;&#x88AB;&#x5F15;&#x7528;&#x7C7B;&#x3002;</p>
-<h2 id="%E7%B1%BB%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96">&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x5316;</h2>
+<h2 id="&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x5316;">&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x5316;</h2>
 <p>Objective-C &#x662F;&#x5EFA;&#x7ACB;&#x5728; Runtime &#x57FA;&#x7840;&#x4E0A;&#x7684;&#x8BED;&#x8A00;&#xFF0C;&#x7C7B;&#x4E5F;&#x4E0D;&#x4F8B;&#x5916;&#x3002;OC &#x4E2D;&#x7C7B;&#x662F;&#x521D;&#x59CB;&#x5316;&#x4E5F;&#x662F;&#x52A8;&#x6001;&#x7684;&#x3002;&#x5728; OC &#x4E2D;&#x7EDD;&#x5927;&#x90E8;&#x5206;&#x7C7B;&#x90FD;&#x7EE7;&#x627F;&#x81EA; <code>NSObject</code>&#xFF0C;&#x5B83;&#x6709;&#x4E24;&#x4E2A;&#x975E;&#x5E38;&#x7279;&#x6B8A;&#x7684;&#x7C7B;&#x65B9;&#x6CD5; <code>load</code> &#x548C; <code>initilize</code>&#xFF0C;&#x7528;&#x4E8E;&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x5316;</p>
-<h4 id="-load">+load</h4>
+<h4 id="load">+load</h4>
 <p>+load &#x65B9;&#x6CD5;&#x662F;&#x5F53;&#x7C7B;&#x6216;&#x5206;&#x7C7B;&#x88AB;&#x6DFB;&#x52A0;&#x5230; Objective-C runtime &#x65F6;&#x88AB;&#x8C03;&#x7528;&#x7684;&#xFF0C;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x5728;&#x7C7B;&#x52A0;&#x8F7D;&#x7684;&#x65F6;&#x5019;&#x6267;&#x884C;&#x4E00;&#x4E9B;&#x7C7B;&#x76F8;&#x5173;&#x7684;&#x884C;&#x4E3A;&#x3002;&#x5B50;&#x7C7B;&#x7684; +load &#x65B9;&#x6CD5;&#x4F1A;&#x5728;&#x5B83;&#x7684;&#x6240;&#x6709;&#x7236;&#x7C7B;&#x7684; +load &#x65B9;&#x6CD5;&#x4E4B;&#x540E;&#x6267;&#x884C;&#xFF0C;&#x800C;&#x5206;&#x7C7B;&#x7684; +load &#x65B9;&#x6CD5;&#x4F1A;&#x5728;&#x5B83;&#x7684;&#x4E3B;&#x7C7B;&#x7684; +load &#x65B9;&#x6CD5;&#x4E4B;&#x540E;&#x6267;&#x884C;&#x3002;&#x4F46;&#x662F;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x4E4B;&#x95F4;&#x7684; +load &#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x662F;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#x3002;</p>
 <p>load &#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x88AB;&#x7C7B;&#x81EA;&#x52A8;&#x7EE7;&#x627F;, &#x6BCF;&#x4E00;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684; load &#x65B9;&#x6CD5;&#x90FD;&#x4E0D;&#x9700;&#x8981;&#x50CF; viewDidLoad &#x65B9;&#x6CD5;&#x4E00;&#x6837;&#x8C03;&#x7528;&#x7236;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x5B50;&#x7C7B;&#x3001;&#x7236;&#x7C7B;&#x548C;&#x5206;&#x7C7B;&#x4E2D;&#x7684; +load &#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x662F;&#x88AB;&#x533A;&#x522B;&#x5BF9;&#x5F85;&#x7684;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5982;&#x679C;&#x5B50;&#x7C7B;&#x6CA1;&#x6709;&#x5B9E;&#x73B0; +load &#x65B9;&#x6CD5;&#xFF0C;&#x90A3;&#x4E48;&#x5F53;&#x5B83;&#x88AB;&#x52A0;&#x8F7D;&#x65F6; runtime &#x662F;&#x4E0D;&#x4F1A;&#x53BB;&#x8C03;&#x7528;&#x7236;&#x7C7B;&#x7684; +load &#x65B9;&#x6CD5;&#x7684;&#x3002;&#x540C;&#x7406;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A;&#x7C7B;&#x548C;&#x5B83;&#x7684;&#x5206;&#x7C7B;&#x90FD;&#x5B9E;&#x73B0;&#x4E86; +load &#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x90FD;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x5E38;&#x5E38;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x8FD9;&#x4E2A;&#x7279;&#x6027;&#x505A;&#x4E00;&#x4E9B;&#x201C;&#x90AA;&#x6076;&#x201D;&#x7684;&#x4E8B;&#x60C5;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#x65B9;&#x6CD5;&#x6DF7;&#x6DC6;&#xFF08;Method Swizzling&#xFF09;&#x3002;</p>
-<h4 id="-initialize">+initialize</h4>
+<h4 id="initialize">+initialize</h4>
 <p>+initialize &#x65B9;&#x6CD5;&#x662F;&#x5728;&#x7C7B;&#x6216;&#x5B83;&#x7684;&#x5B50;&#x7C7B;&#x6536;&#x5230;&#x7B2C;&#x4E00;&#x6761;&#x6D88;&#x606F;&#x4E4B;&#x524D;&#x88AB;&#x8C03;&#x7528;&#x7684;&#xFF0C;&#x8FD9;&#x91CC;&#x6240;&#x6307;&#x7684;&#x6D88;&#x606F;&#x5305;&#x62EC;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x548C;&#x7C7B;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4; +initialize &#x65B9;&#x6CD5;&#x662F;&#x4EE5;&#x61D2;&#x52A0;&#x8F7D;&#x7684;&#x65B9;&#x5F0F;&#x88AB;&#x8C03;&#x7528;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x7A0B;&#x5E8F;&#x4E00;&#x76F4;&#x6CA1;&#x6709;&#x7ED9;&#x67D0;&#x4E2A;&#x7C7B;&#x6216;&#x5B83;&#x7684;&#x5B50;&#x7C7B;&#x53D1;&#x9001;&#x6D88;&#x606F;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x7C7B;&#x7684; +initialize &#x65B9;&#x6CD5;&#x662F;&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x7684;&#x3002;</p>
 <p>+initialize &#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x4E0E;&#x666E;&#x901A;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x8D70;&#x7684;&#x90FD;&#x662F;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x7684;&#x6D41;&#x7A0B;&#x3002;&#x6362;&#x8A00;&#x4E4B;&#xFF0C;&#x5982;&#x679C;&#x5B50;&#x7C7B;&#x6CA1;&#x6709;&#x5B9E;&#x73B0; +initialize &#x65B9;&#x6CD5;&#xFF0C;&#x90A3;&#x4E48;&#x7EE7;&#x627F;&#x81EA;&#x7236;&#x7C7B;&#x7684;&#x5B9E;&#x73B0;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF1B;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x5206;&#x7C7B;&#x5B9E;&#x73B0;&#x4E86; +initialize &#x65B9;&#x6CD5;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x5BF9;&#x8FD9;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684;&#x5B9E;&#x73B0;&#x9020;&#x6210;&#x8986;&#x76D6;&#x3002;</p>
-<h3 id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
+<h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
 <ul>
 <li><a href="http://blog.csdn.net/xunyn/article/details/8302787" target="_blank">iOS&#x5F00;&#x53D1;&#x57FA;&#x7840;&#x9762;&#x8BD5;&#x9898;&#x7CFB;&#x5217;</a></li>
 <li><a href="http://www.oschina.net/news/42288/10-objective-c-interview" target="_blank">10&#x4E2A;Objective-C&#x57FA;&#x7840;&#x9762;&#x8BD5;&#x9898;&#xFF0C;iOS&#x9762;&#x8BD5;&#x5FC5;&#x5907;</a></li>
@@ -1383,9 +1337,25 @@
         
 <script src="../../gitbook/app.js"></script>
 
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    var config = {"highlight":{},"search":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
     gitbook.start(config);
 });
 </script>

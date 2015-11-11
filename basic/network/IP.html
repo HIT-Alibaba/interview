@@ -8,7 +8,7 @@
         <title>IP 协议 | 笔试面试知识整理</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 2.4.3">
+        <meta name="generator" content="GitBook 2.5.2">
         
         
         <meta name="HandheldFriendly" content="true"/>
@@ -22,6 +22,14 @@
     
         
         <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
         
     
     
@@ -40,13 +48,10 @@
     <body>
         
         
-    <div class="book" data-level="1.1.3" data-basepath="../.." data-revision="Wed Nov 04 2015 15:28:40 GMT+0800 (中国标准时间)">
+    <div class="book" data-level="1.1.3" data-chapter-title="IP 协议" data-filepath="basic/network/IP.md" data-basepath="../.." data-revision="Wed Nov 11 2015 11:12:31 GMT+0800 (CST)">
     
 
 <div class="book-summary">
-    <div class="book-search" role="search">
-        <input type="text" placeholder="Type to search" class="form-control" />
-    </div>
     <nav role="navigation">
         <ul class="summary">
             
@@ -1069,80 +1074,7 @@
         <div class="body-inner">
             <div class="book-header" role="navigation">
     <!-- Actions Left -->
-    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
-    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
     
-    <div id="font-settings-wrapper" class="dropdown pull-left">
-        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
-        </a>
-        <div class="dropdown-menu font-settings">
-    <div class="dropdown-caret">
-        <span class="caret-outer"></span>
-        <span class="caret-inner"></span>
-    </div>
-
-    <div class="buttons">
-        <button type="button" id="reduce-font-size" class="button size-2">A</button>
-        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
-    </div>
-
-    <div class="buttons font-family-list">
-        <button type="button" data-font="0" class="button">Serif</button>
-        <button type="button" data-font="1" class="button">Sans</button>
-    </div>
-
-    <div class="buttons color-theme-list">
-        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
-        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
-        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
-    </div>
-</div>
-
-    </div>
-
-    <!-- Actions Right -->
-    
-    <div class="dropdown pull-right">
-        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
-        </a>
-        <div class="dropdown-menu font-settings dropdown-left">
-            <div class="dropdown-caret">
-                <span class="caret-outer"></span>
-                <span class="caret-inner"></span>
-            </div>
-            <div class="buttons">
-                <button type="button" data-sharing="twitter" class="button">
-                    Share on Twitter
-                </button>
-                <button type="button" data-sharing="google-plus" class="button">
-                    Share on Google
-                </button>
-                <button type="button" data-sharing="facebook" class="button">
-                    Share on Facebook
-                </button>
-                <button type="button" data-sharing="weibo" class="button">
-                    Share on Weibo
-                </button>
-                <button type="button" data-sharing="instapaper" class="button">
-                    Share on Instapaper
-                </button>
-            </div>
-        </div>
-    </div>
-    
-
-    
-    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
-    
-    
-    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-    
-    
-    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
-    
-    
-    
-
 
     <!-- Title -->
     <h1>
@@ -1157,12 +1089,12 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h2 id="ip-%E5%9C%B0%E5%9D%80%E7%9A%84%E5%88%86%E7%B1%BB">IP &#x5730;&#x5740;&#x7684;&#x5206;&#x7C7B;</h2>
-<h3 id="a%E7%B1%BB%E5%9C%B0%E5%9D%80">A&#x7C7B;&#x5730;&#x5740;</h3>
-<h3 id="b%E7%B1%BB%E5%9C%B0%E5%9D%80">B&#x7C7B;&#x5730;&#x5740;</h3>
-<h3 id="c%E7%B1%BB%E5%9C%B0%E5%9D%80">C&#x7C7B;&#x5730;&#x5740;</h3>
-<h3 id="d-%E7%B1%BB%E5%9C%B0%E5%9D%80">D &#x7C7B;&#x5730;&#x5740;</h3>
-<h2 id="%E5%B9%BF%E6%92%AD%E4%B8%8E%E5%A4%9A%E6%92%AD">&#x5E7F;&#x64AD;&#x4E0E;&#x591A;&#x64AD;</h2>
+                        <h2 id="ip-&#x5730;&#x5740;&#x7684;&#x5206;&#x7C7B;">IP &#x5730;&#x5740;&#x7684;&#x5206;&#x7C7B;</h2>
+<h3 id="a&#x7C7B;&#x5730;&#x5740;">A&#x7C7B;&#x5730;&#x5740;</h3>
+<h3 id="b&#x7C7B;&#x5730;&#x5740;">B&#x7C7B;&#x5730;&#x5740;</h3>
+<h3 id="c&#x7C7B;&#x5730;&#x5740;">C&#x7C7B;&#x5730;&#x5740;</h3>
+<h3 id="d-&#x7C7B;&#x5730;&#x5740;">D &#x7C7B;&#x5730;&#x5740;</h3>
+<h2 id="&#x5E7F;&#x64AD;&#x4E0E;&#x591A;&#x64AD;">&#x5E7F;&#x64AD;&#x4E0E;&#x591A;&#x64AD;</h2>
 <p>&#x5E7F;&#x64AD;&#x548C;&#x591A;&#x64AD;&#x4EC5;&#x7528;&#x4E8E;UDP&#xFF08;TCP&#x662F;&#x9762;&#x5411;&#x8FDE;&#x63A5;&#x7684;&#xFF09;&#x3002;</p>
 <ul>
 <li><p>&#x5E7F;&#x64AD;</p>
@@ -1238,7 +1170,7 @@
 <li><p>BGP&#x6613;&#x4E8E;&#x6269;&#x5C55;&#xFF0C;&#x80FD;&#x591F;&#x9002;&#x5E94;&#x7F51;&#x7EDC;&#x65B0;&#x7684;&#x53D1;&#x5C55;</p>
 </li>
 </ul>
-<h3 id="%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
+<h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
 <ul>
 <li><a href="http://www.cnblogs.com/Torres_fans/archive/2011/03/21/1990377.html" target="_blank">&#x591A;&#x64AD;&#x4E0E;&#x5E7F;&#x64AD;</a></li>
 <li><a href="http://blog.sina.com.cn/s/blog_ac9fdc0b0101pw7w.html" target="_blank">TCP_IP&#xFF1A;&#x5E7F;&#x64AD;&#x548C;&#x591A;&#x64AD;</a></li>
@@ -1265,9 +1197,25 @@
         
 <script src="../../gitbook/app.js"></script>
 
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    var config = {"highlight":{},"search":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
     gitbook.start(config);
 });
 </script>
