@@ -48,7 +48,11 @@ UIApplication 的一个主要工作是处理用户事件，它会起一个队列
 
     说明：当程序载入后执行
 
-## UIApplication Background Task
+下面是一个用于展示整个 App 生命周期的示意图：
+
+![UIApplication-Lifecycle](http://i.stack.imgur.com/c2d1D.jpg)
+
+### UIApplication Background Task
 
 参考资料：
 
