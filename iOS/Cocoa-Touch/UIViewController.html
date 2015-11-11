@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="2.2.4" data-chapter-title="UIViewController" data-filepath="iOS/Cocoa-Touch/UIViewController.md" data-basepath="../.." data-revision="Wed Nov 11 2015 11:12:31 GMT+0800 (CST)">
+    <div class="book" data-level="2.2.4" data-chapter-title="UIViewController" data-filepath="iOS/Cocoa-Touch/UIViewController.md" data-basepath="../.." data-revision="Wed Nov 11 2015 15:56:24 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -1091,6 +1091,18 @@
                     
                         <p>UIViewController&#xFF08;&#x89C6;&#x56FE;&#x63A7;&#x5236;&#x5668;&#xFF09;&#xFF0C;&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;&#x662F; MVC &#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x4E2D;&#x7684;&#x63A7;&#x5236;&#x5668;&#x90E8;&#x5206;&#x3002;UIViewController &#x5728; UIKit &#x4E2D;&#x4E3B;&#x8981;&#x529F;&#x80FD;&#x662F;&#x7528;&#x4E8E;&#x63A7;&#x5236;&#x753B;&#x9762;&#x7684;&#x5207;&#x6362;&#xFF0C;&#x5176;&#x4E2D;&#x7684; <code>view</code> &#x5C5E;&#x6027;&#xFF08;UIView &#x7C7B;&#x578B;&#xFF09;&#x7BA1;&#x7406;&#x6574;&#x4E2A;&#x753B;&#x9762;&#x7684;&#x5916;&#x89C2;&#x3002;</p>
 <h2 id="uiviewcontroller-&#x751F;&#x547D;&#x5468;&#x671F;">UIViewController &#x751F;&#x547D;&#x5468;&#x671F;</h2>
+<p>ViewController &#x751F;&#x547D;&#x5468;&#x671F;&#x7684;&#x7B2C;&#x4E00;&#x6B65;&#x662F;&#x521D;&#x59CB;&#x5316;&#x3002;&#x4E0D;&#x8FC7;&#x5177;&#x4F53;&#x8C03;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#x8FD8;&#x6709;&#x6240;&#x4E0D;&#x540C;&#x3002;&#x5982;&#x679C;&#x4F7F;&#x7528; StoryBoard &#x6765;&#x521B;&#x5EFA; ViewController&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x9700;&#x8981;&#x663E;&#x5F0F;&#x5730;&#x53BB;&#x521D;&#x59CB;&#x5316;&#xFF0C;Storyboard &#x4F1A;&#x81EA;&#x52A8;&#x4F7F;&#x7528; <code>initWithCoder:</code> &#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x4F7F;&#x7528; StoryBoard&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>init:</code> &#x51FD;&#x6570;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#xFF0C;<code>init:</code> &#x51FD;&#x6570;&#x5728;&#x5B9E;&#x73B0;&#x8FC7;&#x7A0B;&#x4E2D;&#x8FD8;&#x4F1A;&#x8C03;&#x7528; <code>initWithNibName:bundle:</code>&#x3002; &#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x5C3D;&#x91CF;&#x907F;&#x514D;&#x5728; VC &#x5916;&#x90E8;&#x8C03;&#x7528; <code>initWithNibName:bundle:</code>&#xFF0C;&#x800C;&#x662F;&#x628A;&#x5B83;&#x653E;&#x5728; VC &#x7684;&#x5185;&#x90E8;&#xFF08;&#x53C2;&#x8003;<a href="https://stackoverflow.com/questions/2224077/when-should-i-initialize-a-view-controller-using-initwithnibname" target="_blank">&#x8FD9;&#x91CC;</a>&#xFF09;&#x3002;</p>
+<p>&#x521D;&#x59CB;&#x5316;&#x5B8C;&#x6210;&#x540E;&#xFF0C;VC &#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4F1A;&#x7ECF;&#x8FC7;&#x4E0B;&#x9762;&#x51E0;&#x4E2A;&#x51FD;&#x6570;&#xFF1A;</p>
+<ul>
+<li>(void)loadView</li>
+<li>(void)viewDidLoad</li>
+<li>(void)viewWillAppear</li>
+<li>(void)viewWillLayoutSubviews</li>
+<li>(void)viewDidLayoutSubviews</li>
+<li>(void)viewDidAppear</li>
+<li>(void)viewWillDisappear</li>
+<li>(void)viewDidDisappear</li>
+</ul>
 <p>&#x5047;&#x8BBE;&#x73B0;&#x5728;&#x6709;&#x4E00;&#x4E2A; AViewController(&#x7B80;&#x79F0; Avc) &#x548C; BViewController (&#x7B80;&#x79F0; Bvc)&#xFF0C;&#x901A;&#x8FC7; navigationController &#x7684; push &#x5B9E;&#x73B0; Avc &#x5230; Bvc &#x7684;&#x8DF3;&#x8F6C;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x5404;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x6267;&#x884C;&#x6267;&#x884C;&#x987A;&#x5E8F;&#xFF1A;</p>
 <pre><code>1. A viewDidLoad  
 2. A viewWillAppear  
@@ -1106,8 +1118,13 @@
 3. B viewDidDisappear  
 4. A viewDidAppear  
 </code></pre><p>&#x53EF;&#x89C1; viewDidLoad &#x53EA;&#x4F1A;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#xFF0C;&#x518D;&#x7B2C;&#x4E8C;&#x6B21;&#x8DF3;&#x56DE; Avc &#x7684;&#x65F6;&#x5019;&#xFF0C;AViewController &#x4ECD;&#x7136;&#x5B58;&#x5728;&#x4E8E;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x4E5F;&#x5C31;&#x4E0D;&#x9700;&#x8981; load &#x4E86;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#x4E0A;&#x9762;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#x90FD;&#x6CA1;&#x6709;&#x63D0;&#x5230;&#x6709;&#x5173; ViewController &#x9500;&#x6BC1;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x5728; iOS 4 &amp; 5 &#x4E2D; ViewController &#x4E2D;&#x6709;&#x4E00;&#x4E2A; <code>viewDidUnload</code> &#x65B9;&#x6CD5;&#x3002;&#x5F53;&#x5185;&#x5B58;&#x4E0D;&#x8DB3;&#xFF0C;&#x5E94;&#x7528;&#x6536;&#x5230; Memory warning &#x65F6;&#xFF0C;&#x7CFB;&#x7EDF;&#x4F1A;&#x81EA;&#x52A8;&#x8C03;&#x7528;&#x5F53;&#x524D;&#x6CA1;&#x5728;&#x754C;&#x9762;&#x4E0A;&#x7684; ViewController &#x7684; viewDidUnload &#x65B9;&#x6CD5;&#x3002; &#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8FD9;&#x4E9B;&#x672A;&#x663E;&#x793A;&#x5728;&#x754C;&#x9762;&#x4E0A;&#x7684; ViewController &#x662F; UINavigationController Push &#x6808;&#x4E2D;&#x672A;&#x5728;&#x6808;&#x9876;&#x7684; ViewController&#xFF0C;&#x4EE5;&#x53CA; UITabBarViewController &#x4E2D;&#x672A;&#x663E;&#x793A;&#x7684;&#x5B50; ViewController&#x3002;&#x8FD9;&#x4E9B; View Controller &#x90FD;&#x4F1A;&#x5728; Memory Warning &#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#x65F6;&#xFF0C;&#x88AB;&#x7CFB;&#x7EDF;&#x81EA;&#x52A8;&#x8C03;&#x7528; viewDidUnload &#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x4ECE; iOS 6 &#x5F00;&#x59CB;&#xFF0C;viewDidUnload &#x65B9;&#x6CD5;&#x88AB;&#x5E9F;&#x5F03;&#x6389;&#x4E86;&#xFF0C;&#x5E94;&#x7528;&#x53D7;&#x5230; memory warning &#x65F6;&#x4E5F;&#x4E0D;&#x4F1A;&#x518D;&#x8C03;&#x7528; viewDidUnload &#x65B9;&#x6CD5;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x91CD;&#x8F7D; <code>- (void)didReceiveMemoryWarning</code> &#x548C; <code>-(void)dealloc</code> &#x6765;&#x8FDB;&#x884C;&#x6E05;&#x7406;&#x5DE5;&#x4F5C;&#x3002;</p>
 <h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
-<p>1.<a href="blog.csdn.net/fanjunxi1990/article/details/16940271">UIViewController&#x751F;&#x547D;&#x5468;&#x671F;&#x65B9;&#x6CD5;&#x6267;&#x884C;&#x987A;&#x5E8F;</a></p>
+<ol>
+<li><a href="blog.csdn.net/fanjunxi1990/article/details/16940271">UIViewController&#x751F;&#x547D;&#x5468;&#x671F;&#x65B9;&#x6CD5;&#x6267;&#x884C;&#x987A;&#x5E8F;</a></li>
+<li><a href="http://blog.devtang.com/blog/2013/05/18/goodbye-viewdidunload/" target="_blank">http://blog.devtang.com/blog/2013/05/18/goodbye-viewdidunload/</a></li>
+</ol>
 
                     
                     </section>

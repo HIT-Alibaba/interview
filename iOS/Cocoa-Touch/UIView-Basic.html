@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="2.2.3" data-chapter-title="UIView" data-filepath="iOS/Cocoa-Touch/UIView-Basic.md" data-basepath="../.." data-revision="Wed Nov 11 2015 11:12:31 GMT+0800 (CST)">
+    <div class="book" data-level="2.2.3" data-chapter-title="UIView" data-filepath="iOS/Cocoa-Touch/UIView-Basic.md" data-basepath="../.." data-revision="Wed Nov 11 2015 15:56:24 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -1138,7 +1138,7 @@
 <li>&#x89C6;&#x56FE;&#x7684; bounds &#x5927;&#x5C0F;&#x6539;&#x53D8;#</li>
 <li>&#x7528;&#x6237;&#x754C;&#x9762;&#x65CB;&#x8F6C;&#xFF0C;&#x901A;&#x5E38;&#x4F1A;&#x5BFC;&#x81F4;&#x6839;&#x89C6;&#x56FE;&#x63A7;&#x5236;&#x5668;&#x7684;&#x5927;&#x5C0F;&#x6539;&#x53D8;</li>
 <li>&#x89C6;&#x56FE;&#x7684; layer &#x5C42;&#x7684; Core Animation sublayers &#x53D1;&#x751F;&#x6539;&#x53D8;</li>
-<li>&#x7A0B;&#x5E8F;&#x8C03;&#x7528;&#x89C6;&#x56FE;&#x7684;<code>setNeedsLayout</code>&#x6216;<code>layoutIfNeeded</code>&#x65B9;&#x6CD5; </li>
+<li>&#x7A0B;&#x5E8F;&#x8C03;&#x7528;&#x89C6;&#x56FE;&#x7684;<code>setNeedsLayout</code>&#x6216;<code>layoutIfNeeded</code>&#x65B9;&#x6CD5;</li>
 <li>&#x7A0B;&#x5E8F;&#x8C03;&#x7528;&#x89C6;&#x56FE; layer &#x7684;<code>setNeedsLayout</code>&#x65B9;&#x6CD5;</li>
 </ul>
 <h4 id="autoresizing">Autoresizing</h4>
@@ -1159,6 +1159,19 @@
 <pre><code>attribute1 == multiplier &#xD7; attribute2 + constant
 </code></pre><p>&#x5176;&#x4E2D;&#x65B9;&#x7A0B;&#x4E24;&#x8FB9;&#x4E0D;&#x4E00;&#x5B9A;&#x662F;&#x7B49;&#x4E8E;&#x5173;&#x7CFB;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;&#x4E4B;&#x7C7B;&#x7684;&#x5173;&#x7CFB;&#x3002;</p>
 <p>Constraint &#x6BD4; AutoResizing &#x66F4;&#x52A0;&#x7075;&#x6D3B;&#x548C;&#x5F3A;&#x5927;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x590D;&#x6742;&#x7684;&#x5B50;&#x89C6;&#x56FE;&#x5E03;&#x5C40;&#x3002;</p>
+<h4 id="&#x81EA;&#x5B9A;&#x4E49;-layout">&#x81EA;&#x5B9A;&#x4E49; layout</h4>
+<p>UIView &#x5F53;&#x4E2D;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A; <code>layoutSubviews</code> &#x51FD;&#x6570;&#xFF0C;UIView &#x7684;&#x5B50;&#x7C7B;&#x53EF;&#x4EE5;&#x91CD;&#x8F7D;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x4EE5;&#x5B9E;&#x73B0;&#x66F4;&#x52A0;&#x590D;&#x6742;&#x548C;&#x7CBE;&#x7EC6;&#x7684;&#x5B50; View &#x5E03;&#x5C40;&#x3002;</p>
+<p>&#x82F9;&#x679C;&#x6587;&#x6863;&#x4E13;&#x95E8;&#x5F3A;&#x8C03;&#x4E86;&#xFF0C;&#x5E94;&#x8BE5;&#x53EA;&#x5728;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684; Autoresizing &#x548C; Constraint &#x673A;&#x5236;&#x4E0D;&#x80FD;&#x5B9E;&#x73B0;&#x6240;&#x9700;&#x8981;&#x7684;&#x6548;&#x679C;&#x65F6;&#xFF0C;&#x624D;&#x4F7F;&#x7528; <code>layoutSubviews</code>&#x3002;&#x800C;&#x4E14;&#xFF0C;layoutSubviews &#x65B9;&#x6CD5;&#x53EA;&#x80FD;&#x88AB;&#x7CFB;&#x7EDF;&#x89E6;&#x53D1;&#x8C03;&#x7528;&#xFF0C;&#x7A0B;&#x5E8F;&#x5458;&#x4E0D;&#x80FD;&#x624B;&#x52A8;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x90A3;&#x4E48; layoutSubviews &#x65B9;&#x6CD5;&#x5177;&#x4F53;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x673A;&#x6709;&#x54EA;&#x4E9B;&#x5462;&#xFF1F;&#x5728; stackoverflow &#x7684;<a href="http://stackoverflow.com/questions/728372/when-is-layoutsubviews-called" target="_blank">&#x8FD9;&#x4E2A;&#x7B54;&#x6848;</a>&#x91CC;&#x6709;&#x6240;&#x8BA8;&#x8BBA;&#xFF0C;&#x5177;&#x4F53;&#x6709;&#x4E0B;&#x9762;&#x51E0;&#x79CD;&#x60C5;&#x51B5;&#xFF1A;</p>
+<ol>
+<li>addSubview &#x4F1A;&#x5BFC;&#x81F4;&#x88AB; add &#x7684; view &#x8C03;&#x7528; layoutSubviews, &#x540C;&#x65F6; add &#x7684; target view &#x4EE5;&#x53CA;&#x5B83;&#x6240;&#x6709;&#x7684;&#x5B50; view &#x90FD;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;</li>
+<li>setFrame &#x5F53;&#x65B0;&#x7684; frame &#x548C; &#x65E7;&#x7684;&#x4E0D;&#x540C;&#x65F6;&#xFF08;&#x5373; view &#x7684;&#x5927;&#x5C0F;&#x6539;&#x53D8;&#x65F6;&#xFF09;&#x4F1A;&#x8C03;&#x7528; layoutSubviews</li>
+<li>&#x6EDA;&#x52A8;&#x4E00;&#x4E2A; UIScollView &#x4F1A;&#x5BFC;&#x81F4;&#x8FD9;&#x4E2A; scrollView &#x4EE5;&#x53CA;&#x5B83;&#x7684;&#x7236; View &#x8C03;&#x7528; layoutSubviews</li>
+<li>&#x65CB;&#x8F6C;&#x8BBE;&#x5907;&#x4F1A;&#x5BFC;&#x81F4;&#x5F53;&#x524D;&#x6240;&#x54CD;&#x5E94;&#x7684; ViewController &#x7684;&#x4E3B; View &#x8C03;&#x7528; layoutSubviews</li>
+<li>&#x6539;&#x53D8; View &#x7684; size &#x4F1A;&#x5BFC;&#x81F4;&#x7236; View &#x8C03;&#x7528; layoutSubviews</li>
+<li>removeFromSuperview &#x4E5F;&#x4F1A;&#x5BFC;&#x81F4;&#x7236; View &#x8C03;&#x7528; layoutSubviews</li>
+</ol>
+<p>&#x91CD;&#x8F7D; layoutSubviews &#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x5B9E;&#x73B0;&#x66F4;&#x590D;&#x6742;&#x7684;&#x5E03;&#x5C40;&#x6548;&#x679C;&#xFF0C;<a href="http://bachiscoding.com/blog/2014/12/15/when-will-layoutsubviews-be-invoked/" target="_blank">&#x8FD9;&#x7BC7;&#x535A;&#x5BA2;</a>&#x91CC;&#x4EE5;<a href="https://github.com/robbdimitrov/RDVTabBarController" target="_blank">RDVTabBarController</a>&#x4E3A;&#x4F8B;&#x8FDB;&#x884C;&#x4E86;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#x3002;</p>
 <h2 id="&#x4E8B;&#x4EF6;&#x5904;&#x7406;">&#x4E8B;&#x4EF6;&#x5904;&#x7406;</h2>
 <p>UIView &#x662F; UIResponder &#x7684;&#x5B50;&#x7C7B;&#xFF0C;&#x53EF;&#x4EE5;&#x54CD;&#x5E94;&#x89E6;&#x63A7;&#x4E8B;&#x4EF6;&#x3002;</p>
 <p>&#x901A;&#x5E38;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>addGestureRecognizer:</code>&#x6DFB;&#x52A0;&#x624B;&#x52BF;&#x8BC6;&#x522B;&#x5668;&#x6765;&#x54CD;&#x5E94;&#x89E6;&#x63A7;&#x4E8B;&#x4EF6;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x624B;&#x52A8;&#x5904;&#x7406;&#xFF0C;&#x5219;&#x6309;&#x9700;&#x8981;&#x91CD;&#x8F7D; UIView &#x4E2D;&#x7684;&#x4E0B;&#x9762;&#x56DB;&#x4E2A;&#x51FD;&#x6570;&#xFF1A;</p>

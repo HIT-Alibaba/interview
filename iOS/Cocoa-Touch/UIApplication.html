@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="2.2.2" data-chapter-title="UIApplication" data-filepath="iOS/Cocoa-Touch/UIApplication.md" data-basepath="../.." data-revision="Wed Nov 11 2015 11:12:31 GMT+0800 (CST)">
+    <div class="book" data-level="2.2.2" data-chapter-title="UIApplication" data-filepath="iOS/Cocoa-Touch/UIApplication.md" data-basepath="../.." data-revision="Wed Nov 11 2015 15:56:24 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -1092,6 +1092,7 @@
                         <p>UIApplication &#x7684;&#x6838;&#x5FC3;&#x4F5C;&#x7528;&#x662F;&#x63D0;&#x4F9B;&#x4E86; iOS &#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x671F;&#x95F4;&#x7684;&#x63A7;&#x5236;&#x548C;&#x534F;&#x4F5C;&#x5DE5;&#x4F5C;&#x3002;</p>
 <p>&#x6BCF;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#x5728;&#x8FD0;&#x884C;&#x671F;&#x5FC5;&#x987B;&#x6709;&#x4E14;&#x4EC5;&#x6709;&#x4E00;&#x4E2A; UIApplication&#xFF08;&#x6216;&#x5219;&#x5176;&#x5B50;&#x7C7B;&#xFF09;&#x7684;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002;&#x5728;&#x7A0B;&#x5E8F;&#x5F00;&#x59CB;&#x8FD0;&#x884C;&#x7684;&#x65F6;&#x5019;&#xFF0C;UIApplicationMain &#x51FD;&#x6570;&#x662F;&#x7A0B;&#x5E8F;&#x8FDB;&#x5165;&#x70B9;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x505A;&#x4E86;&#x5F88;&#x591A;&#x5DE5;&#x4F5C;&#xFF0C;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x7684;&#x5DE5;&#x4F5C;&#x5C31;&#x662F;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; UIApplication &#x7684;&#x5355;&#x4F8B;&#x5B9E;&#x4F8B;&#x3002;&#x5728;&#x4F60;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#x4F60;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x7528; [UIApplication sharedApplication] &#x6765;&#x5F97;&#x5230;&#x8FD9;&#x4E2A;&#x5355;&#x4F8B;&#x5B9E;&#x4F8B;&#x7684;&#x6307;&#x9488;&#x3002;</p>
 <p>UIApplication &#x7684;&#x4E00;&#x4E2A;&#x4E3B;&#x8981;&#x5DE5;&#x4F5C;&#x662F;&#x5904;&#x7406;&#x7528;&#x6237;&#x4E8B;&#x4EF6;&#xFF0C;&#x5B83;&#x4F1A;&#x8D77;&#x4E00;&#x4E2A;&#x961F;&#x5217;&#xFF0C;&#x628A;&#x6240;&#x6709;&#x7528;&#x6237;&#x4E8B;&#x4EF6;&#x90FD;&#x653E;&#x5165;&#x961F;&#x5217;&#xFF0C;&#x9010;&#x4E2A;&#x5904;&#x7406;&#xFF0C;&#x5728;&#x5904;&#x7406;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5B83;&#x4F1A;&#x53D1;&#x9001;&#x5F53;&#x524D;&#x4E8B;&#x4EF6; &#x5230;&#x4E00;&#x4E2A;&#x5408;&#x9002;&#x7684;&#x5904;&#x7406;&#x4E8B;&#x4EF6;&#x7684;&#x76EE;&#x6807;&#x63A7;&#x4EF6;&#x3002;&#x6B64;&#x5916;&#xFF0C;UIApplication &#x5B9E;&#x4F8B;&#x8FD8;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x5728;&#x672C;&#x5E94;&#x7528;&#x4E2D;&#x6253;&#x5F00;&#x7684; window &#x5217;&#x8868;&#xFF08;UIWindow &#x5B9E;&#x4F8B;&#xFF09;&#xFF0C;&#x8FD9;&#x6837;&#x5B83;&#x5C31; &#x53EF;&#x4EE5;&#x63A5;&#x89E6;&#x5E94;&#x7528;&#x4E2D;&#x7684;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A; UIView &#x5BF9;&#x8C61;&#x3002;UIApplication &#x5B9E;&#x4F8B;&#x4F1A;&#x88AB;&#x8D4B;&#x4E88;&#x4E00;&#x4E2A;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#xFF0C;&#x4EE5;&#x5904;&#x7406;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E8B;&#x4EF6;&#xFF08;&#x6BD4;&#x5982;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x548C;&#x5173;&#x95ED;&#xFF09;&#x3001;&#x7CFB;&#x7EDF;&#x4E8B;&#x4EF6;&#xFF08;&#x6BD4;&#x5982;&#x6765;&#x7535;&#x3001;&#x8BB0;&#x4E8B;&#x9879;&#x8B66;&#x544A;&#xFF09;&#x7B49;&#x7B49;&#x3002;</p>
+<h2 id="uiapplicaion-&#x751F;&#x547D;&#x5468;&#x671F;">UIApplicaion &#x751F;&#x547D;&#x5468;&#x671F;</h2>
 <p>&#x4E00;&#x4E2A; UIApplication &#x53EF;&#x4EE5;&#x6709;&#x5982;&#x4E0B;&#x51E0;&#x79CD;&#x72B6;&#x6001;&#xFF1A;</p>
 <ul>
 <li><code>Not running&#xFF08;&#x672A;&#x8FD0;&#x884C;&#xFF09;</code>&#x7A0B;&#x5E8F;&#x6CA1;&#x542F;&#x52A8;</li>
@@ -1127,6 +1128,7 @@
 <p> &#x8BF4;&#x660E;&#xFF1A;&#x5F53;&#x7A0B;&#x5E8F;&#x8F7D;&#x5165;&#x540E;&#x6267;&#x884C;</p>
 </li>
 </ol>
+<h2 id="uiapplication-background-task">UIApplication Background Task</h2>
 <p>&#x53C2;&#x8003;&#x8D44;&#x6599;&#xFF1A;</p>
 <ul>
 <li><a href="http://www.cocoachina.com/ios/20121023/4958.html" target="_blank">UIApplication &#x6DF1;&#x5165;&#x5B66;&#x4E60;</a></li>
