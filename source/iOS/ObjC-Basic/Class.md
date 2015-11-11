@@ -78,9 +78,10 @@ OC中的方法只要声明在@interface里，就可以认为都是公有的。�
 1. Extension 声明的方法必须在类的主 @implementation 区间内实现，可以避免使用有名 Category 带来的多个不必要的 implementation 段。
 2. 如果 Extension 中声明的方法没有实现，编译器会给出 Warning，使用 Category 则不会。
 
+
 ## 类变量
 
-苹果推荐在OC中使用 @property 来实现成员变量：
+苹果推荐在现代 Objective-C 中使用 @property 来实现成员变量：
 
 ```objective-c
 @interface AClass : NSObject
@@ -183,6 +184,15 @@ Category 常见的使用方法如下：
 }
 @end 
 ```
+
+在使用 Category 时需要注意的一点是，如果有多个命名 Category 均实现了同一个方法（即出现了命名冲突），那么这些方法在运行时只有一个会被调用，具体哪个会被调用是不确定的。因此在给已有的类（特别是 Cocoa 类）添加 Category 时，推荐的函数命名方法是加上前缀：
+
+```objective-c
+@interface NSSortDescriptor (XYZAdditions)
++ (id)xyz_sortDescriptorWithKey:(NSString *)key ascending:(BOOL)ascending;
+@end
+```
+
 
 ### Extension
 
