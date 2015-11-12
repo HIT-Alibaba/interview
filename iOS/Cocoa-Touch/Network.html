@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="2.2.6" data-chapter-title="网络编程" data-filepath="iOS/Cocoa-Touch/Network.md" data-basepath="../.." data-revision="Thu Nov 12 2015 20:33:36 GMT+0800 (CST)">
+    <div class="book" data-level="2.2.6" data-chapter-title="网络编程" data-filepath="iOS/Cocoa-Touch/Network.md" data-basepath="../.." data-revision="Thu Nov 12 2015 20:35:41 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -1132,7 +1132,7 @@
 
         NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self]; // &#x6CA1;&#x6709;&#x8BBE;&#x7F6E; startImmediately &#x4E3A; NO&#xFF0C;&#x4F1A;&#x7ACB;&#x5373;&#x5F00;&#x59CB;
         //[connection start]; &#x8FD9;&#x4E00;&#x53E5;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x5199;&#xFF0C;&#x5199;&#x4E86;&#x4E5F;&#x4E00;&#x6837;&#x4E0D;&#x80FD; work&#x3002;
-    });
+});
 </code></pre>
 <p>&#x56E0;&#x4E3A; dispatch_async &#x5F00;&#x51FA;&#x7684;&#x7EBF;&#x7A0B;&#x4E2D;&#xFF0C;&#x9ED8;&#x8BA4; runloop &#x6CA1;&#x6709;&#x6267;&#x884C;&#xFF0C;&#x56E0;&#x6B64;&#x7EBF;&#x7A0B;&#x4F1A;&#x7ACB;&#x5373;&#x7ED3;&#x675F;&#xFF0C;&#x6765;&#x4E0D;&#x53CA;&#x8C03;&#x7528;&#x56DE;&#x8C03;&#x65B9;&#x6CD5;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x4EE3;&#x7801;&#x8BA9; runloop &#x8DD1;&#x8D77;&#x6765;&#xFF1A;</p>
 <pre><code class="lang-objective-c">dispatch_async(connectionQueue, ^{
@@ -1161,30 +1161,25 @@
 <p>&#x9664;&#x4E86; GCD &#x4E4B;&#x5916;&#x5C31;&#x6CA1;&#x6709;&#x522B;&#x7684;&#x529E;&#x6CD5;&#x4E86;&#x5417;&#xFF1F;&#x5E78;&#x597D;&#xFF0C;&#x82F9;&#x679C;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x4E0B;&#x9762;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#xFF1A;</p>
 <h5 id="scheduleinrunloopformode">scheduleInRunLoop:forMode:</h5>
 <p>&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x6307;&#x5B9A; NSURLConnection &#x8DD1;&#x5728;&#x67D0;&#x4E2A; runloop&#xFF1A;</p>
-<p>``objective-c
-NSRunLoop* runLoop = [NSRunLoop currentRunLoop];
+<pre><code class="lang-objective-c">NSRunLoop* runLoop = [NSRunLoop currentRunLoop];
 [runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode]; // &#x6DFB;&#x52A0; inputSource&#xFF0C;&#x8BA9; runloop &#x4FDD;&#x6301; alive
 [self.connection scheduleInRunLoop:runLoop
-                           forMode:NSDefaultRunLoopMode];<br>[self.connection start];
-[runLoop run];</p>
-<pre><code>
-&#x8FD9;&#x6837;&#xFF0C;&#x6211;&#x4EEC;&#x628A;&#x5B83;&#x52A0;&#x5230;&#x4EFB;&#x610F;&#x7684;&#x6709; Runloop &#x7684;&#x7EBF;&#x7A0B;&#x4E2D;&#xFF08;&#x5176;&#x5B9E; Cocoa &#x7684;&#x7EBF;&#x7A0B;&#x90FD;&#x662F;&#x81EA;&#x5E26; runloop &#x7684;&#xFF0C;&#x4E0D;&#x8FC7;&#x6CA1;&#x6709;&#x6253;&#x5F00;&#xFF09;&#x90FD;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#x4E86;&#xFF0C;&#x52A0;&#x5230; NSOperationQueue &#x4E2D;&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x7684;&#x3002;
-
-&#x77E5;&#x540D;&#x7684;&#x5F00;&#x6E90;&#x7F51;&#x7EDC;&#x5E93; AFNetworking &#x5C31;&#x662F;&#x8FD9;&#x4E48;&#x505A;&#x7684;&#xFF0C;&#x4EE3;&#x7801;&#x53C2;&#x8003;[&#x8FD9;&#x91CC;](https://github.com/AFNetworking/AFNetworking/blob/master/AFNetworking/AFURLConnectionOperation.m#L157)&#x3002;
-
-&#x6CE8;&#x610F;&#x4E00;&#x70B9;&#xFF0C;&#x8FD9;&#x6837;&#x505A;&#x7684;&#x8BDD;&#xFF0C; NSURLConnection &#x4EFB;&#x52A1;&#x6240;&#x5728;&#x7684;&#x7EBF;&#x7A0B;&#x662F;&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x9000;&#x51FA;&#x7684;&#xFF0C;&#x4E3A;&#x4E86;&#x8BA9;&#x5B83;&#x6B63;&#x786E;&#x9000;&#x51FA;&#xFF0C;&#x540E;&#x9762;&#x4F1A;&#x63D0;&#x5230;&#x5177;&#x4F53;&#x7684;&#x505A;&#x6CD5;&#x3002;
-
-##### setDelegateQueue:
-
-&#x66F4;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x76F4;&#x63A5;&#x4F7F;&#x7528; NSOperationQueue &#x6765;&#x7BA1;&#x7406;&#x6211;&#x4EEC;&#x7684; Connection&#xFF1A;
-
-```objective-c
-NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:aURLRequest
+                           forMode:NSDefaultRunLoopMode];   
+[self.connection start];
+[runLoop run];
+</code></pre>
+<p>&#x8FD9;&#x6837;&#xFF0C;&#x6211;&#x4EEC;&#x628A;&#x5B83;&#x52A0;&#x5230;&#x4EFB;&#x610F;&#x7684;&#x6709; Runloop &#x7684;&#x7EBF;&#x7A0B;&#x4E2D;&#xFF08;&#x5176;&#x5B9E; Cocoa &#x7684;&#x7EBF;&#x7A0B;&#x90FD;&#x662F;&#x81EA;&#x5E26; runloop &#x7684;&#xFF0C;&#x4E0D;&#x8FC7;&#x6CA1;&#x6709;&#x6253;&#x5F00;&#xFF09;&#x90FD;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#x4E86;&#xFF0C;&#x52A0;&#x5230; NSOperationQueue &#x4E2D;&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x7684;&#x3002;</p>
+<p>&#x77E5;&#x540D;&#x7684;&#x5F00;&#x6E90;&#x7F51;&#x7EDC;&#x5E93; AFNetworking &#x5C31;&#x662F;&#x8FD9;&#x4E48;&#x505A;&#x7684;&#xFF0C;&#x4EE3;&#x7801;&#x53C2;&#x8003;<a href="https://github.com/AFNetworking/AFNetworking/blob/master/AFNetworking/AFURLConnectionOperation.m#L157" target="_blank">&#x8FD9;&#x91CC;</a>&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#x4E00;&#x70B9;&#xFF0C;&#x8FD9;&#x6837;&#x505A;&#x7684;&#x8BDD;&#xFF0C; NSURLConnection &#x4EFB;&#x52A1;&#x6240;&#x5728;&#x7684;&#x7EBF;&#x7A0B;&#x662F;&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x9000;&#x51FA;&#x7684;&#xFF0C;&#x4E3A;&#x4E86;&#x8BA9;&#x5B83;&#x6B63;&#x786E;&#x9000;&#x51FA;&#xFF0C;&#x540E;&#x9762;&#x4F1A;&#x63D0;&#x5230;&#x5177;&#x4F53;&#x7684;&#x505A;&#x6CD5;&#x3002;</p>
+<h5 id="setdelegatequeue">setDelegateQueue:</h5>
+<p>&#x66F4;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x76F4;&#x63A5;&#x4F7F;&#x7528; NSOperationQueue &#x6765;&#x7BA1;&#x7406;&#x6211;&#x4EEC;&#x7684; Connection&#xFF1A;</p>
+<pre><code class="lang-objective-c">NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:aURLRequest
                                                               delegate:self
                                                       startImmediately:NO];
 [connection setDelegateQueue:[[NSOperationQueue alloc] init]];
 [connection start];
-</code></pre><p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x4E0D;&#x9700;&#x8981;&#x592A;&#x591A;&#x81EA;&#x5B9A;&#x4E49;&#x529F;&#x80FD;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E5F;&#x5B8C;&#x5168;&#x591F;&#x7528;&#x4E86;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x914D;&#x7F6E; runloop&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x62C5;&#x5FC3;&#x7EBF;&#x7A0B;&#x4E0D;&#x4F1A;&#x6B63;&#x5E38;&#x9000;&#x51FA;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x4E13;&#x6CE8;&#x4E8E;&#x4E1A;&#x52A1;&#x4EE3;&#x7801;&#x7684;&#x7F16;&#x5199;&#x3002;</p>
+</code></pre>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x4E0D;&#x9700;&#x8981;&#x592A;&#x591A;&#x81EA;&#x5B9A;&#x4E49;&#x529F;&#x80FD;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E5F;&#x5B8C;&#x5168;&#x591F;&#x7528;&#x4E86;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x914D;&#x7F6E; runloop&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x62C5;&#x5FC3;&#x7EBF;&#x7A0B;&#x4E0D;&#x4F1A;&#x6B63;&#x5E38;&#x9000;&#x51FA;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x4E13;&#x6CE8;&#x4E8E;&#x4E1A;&#x52A1;&#x4EE3;&#x7801;&#x7684;&#x7F16;&#x5199;&#x3002;</p>
 <p>&#x6CE8;&#x610F;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x53EA;&#x80FD;&#x53D6;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#xFF0C;&#x5982;&#x679C;&#x540C;&#x65F6;&#x7528;&#x4E86;&#x4E24;&#x4E2A;&#x4F1A;&#x62A5;&#x9519;&#x3002;</p>
 <h4 id="&#x4F18;&#x96C5;&#x5730;&#x9000;&#x51FA;">&#x4F18;&#x96C5;&#x5730;&#x9000;&#x51FA;</h4>
 <p>&#x5728;&#x4E0A;&#x9762;&#x7684;&#x5185;&#x5BB9;&#x4E2D;&#x6211;&#x4EEC;&#x63A2;&#x8BA8;&#x4E86;&#x5982;&#x4F55;&#x8BA9; NSURLConnection &#x4FDD;&#x6301;&#x8FD0;&#x884C;&#x800C;&#x4E0D;&#x63D0;&#x524D;&#x9000;&#x51FA;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x89E3;&#x51B3;&#x4E00;&#x4E0B;&#x5982;&#x4F55;&#x8BA9; NSURLConnection &#x6240;&#x5728;&#x7684;&#x7EBF;&#x7A0B;&#x6B63;&#x786E;&#x7684;&#x9000;&#x51FA;&#x3002;</p>
@@ -1201,36 +1196,37 @@ NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:aURLReque
 </code></pre>
 <p>&#x4E0D;&#x8FC7;&#x8FD9;&#x6837;&#x4F7F;&#x7528; CF &#x7CFB;&#x51FD;&#x6570;&#x7684;&#x4EE3;&#x7801;&#x591A;&#x5C11;&#x663E;&#x5F97;&#x6709;&#x4E9B;&#x9ED1;&#x79D1;&#x6280;&#x3002;&#x4F7F;&#x7528; NSOperationQueue &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6709;&#x66F4;&#x52A0;&#x6F02;&#x4EAE;&#x7684;&#x505A;&#x6CD5;&#x3002;</p>
 <p>NSOperationQueue &#x901A;&#x8FC7;&#x76D1;&#x6D4B; <code>isExecuting</code>, <code>isCancelled</code> &#x548C; <code>isFinished</code> &#x6765;&#x63A7;&#x5236;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x76D1;&#x6D4B;&#x884C;&#x4E3A;&#x662F;&#x901A;&#x8FC7; KVO &#x6765;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x624B;&#x52A8;&#x8C03;&#x7528; KVO &#x6765;&#x901A;&#x77E5; NSOperationQueue&#xFF0C;&#x544A;&#x8BC9;&#x5B83;&#x201C;&#x6211;&#x4EEC;&#x7684;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x4E86;&#xFF0C;&#x53EF;&#x4EE5;&#x628A;&#x7EBF;&#x7A0B;&#x5173;&#x6389;&#x4E86;&#x201D;&#xFF1A;</p>
-<p>```objective-c</p>
-<ul>
-<li><p>(void)finish
+<pre><code class="lang-objective-c">- (void)finish
 {
-  NSLog(@&quot;operation for &lt;%@&gt; finished. &quot;</p>
-<pre><code>    @&quot;status code: %d, error: %@, data size: %u&quot;,
-    _url, _statusCode, _error, [_data length]);
-</code></pre><p>  [_connection release];
-  _connection = nil;</p>
-<p>  [self willChangeValueForKey:@&quot;isExecuting&quot;];
-  [self willChangeValueForKey:@&quot;isFinished&quot;];</p>
-<p>  _isExecuting = NO;
-  _isFinished = YES;</p>
-<p>  [self didChangeValueForKey:@&quot;isExecuting&quot;];
-  [self didChangeValueForKey:@&quot;isFinished&quot;];
-}</p>
-</li>
-<li><p>(void)connectionDidFinishLoading:(NSURLConnection *)connection
+    NSLog(@&quot;operation for <%@> finished. &quot;
+          @&quot;status code: %d, error: %@, data size: %u&quot;,
+          _url, _statusCode, _error, [_data length]);
+
+    [_connection release];
+    _connection = nil;
+
+    [self willChangeValueForKey:@&quot;isExecuting&quot;];
+    [self willChangeValueForKey:@&quot;isFinished&quot;];
+
+    _isExecuting = NO;
+    _isFinished = YES;
+
+    [self didChangeValueForKey:@&quot;isExecuting&quot;];
+    [self didChangeValueForKey:@&quot;isFinished&quot;];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-  [self finish];
-}</p>
-</li>
-<li><p>(void)connection:(NSURLConnection <em>)connection
-didFailWithError:(NSError </em>)error
+    [self finish];
+}
+
+- (void)connection:(NSURLConnection *)connection
+  didFailWithError:(NSError *)error
 {
-  _error = [error copy];
-  [self finish];
-}</p>
-</li>
-</ul>
+    _error = [error copy];
+    [self finish];
+}
+</%@></code></pre>
 <h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
 <ul>
 <li><a href="http://blog.csdn.net/kesalin/article/details/8798039" target="_blank">[&#x6DF1;&#x5165;&#x6D45;&#x51FA;Cocoa]iOS&#x7F51;&#x7EDC;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;</a></li>
