@@ -88,7 +88,8 @@ iOS 系统检测到手指触摸 (Touch) 操作时会将其打包成一个 UIEven
 }
 ```
 
-可以
+可以看到和上面的示例代码的差距，主要就在于取消了 `pointInside` 函数的检测，让我们可以捕获到当前 Frame 范围以外的子 View 的触控事件。
+
 ### 参考资料
 
 1. [CocoaTouch 事件处理流程](http://www.cnblogs.com/snake-hand/p/3178070.html)
