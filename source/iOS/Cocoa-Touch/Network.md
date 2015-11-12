@@ -68,7 +68,7 @@ dispatch_async(connectionQueue, ^{
 
         NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self]; // 没有设置 startImmediately 为 NO，会立即开始
         //[connection start]; 这一句没有必要写，写了也一样不能 work。
-    }); 
+}); 
 ```
 
 因为 dispatch_async 开出的线程中，默认 runloop 没有执行，因此线程会立即结束，来不及调用回调方法。我们可以添加代码让 runloop 跑起来：
@@ -112,7 +112,7 @@ dispatch_async(connectionQueue, ^{
 
 这个函数可以让我们指定 NSURLConnection 跑在某个 runloop：
 
-``objective-c
+```objective-c
 NSRunLoop* runLoop = [NSRunLoop currentRunLoop];
 [runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode]; // 添加 inputSource，让 runloop 保持 alive
 [self.connection scheduleInRunLoop:runLoop
@@ -197,6 +197,7 @@ NSOperationQueue 通过监测 `isExecuting`, `isCancelled` 和 `isFinished` 来�
     _error = [error copy];
     [self finish];
 }
+```
 
 ### 参考资料
 
