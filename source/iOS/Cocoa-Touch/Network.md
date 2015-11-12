@@ -68,7 +68,7 @@ dispatch_async(connectionQueue, ^{
 
         NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self]; // 没有设置 startImmediately 为 NO，会立即开始
         //[connection start]; 这一句没有必要写，写了也一样不能 work。
-}); 
+});
 ```
 
 因为 dispatch_async 开出的线程中，默认 runloop 没有执行，因此线程会立即结束，来不及调用回调方法。我们可以添加代码让 runloop 跑起来：
@@ -80,7 +80,7 @@ dispatch_async(connectionQueue, ^{
 
         NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
         [[NSRunLoop currentRunLoop] run];
-    }); 
+});
 ```
 
 这样回调函数才能够被调用，但是这样又带来一个问题，这个线程中 runloop 会一直跑着，导致这个线程也一直不结束，为了让线程在完成任务时正确结束掉，我们可以这样做：
