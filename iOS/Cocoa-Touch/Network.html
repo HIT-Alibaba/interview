@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="2.2.6" data-chapter-title="网络编程" data-filepath="iOS/Cocoa-Touch/Network.md" data-basepath="../.." data-revision="Thu Nov 12 2015 20:35:41 GMT+0800 (CST)">
+    <div class="book" data-level="2.2.6" data-chapter-title="网络编程" data-filepath="iOS/Cocoa-Touch/Network.md" data-basepath="../.." data-revision="Thu Nov 12 2015 20:37:35 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -1141,7 +1141,7 @@
 
         NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
         [[NSRunLoop currentRunLoop] run];
-    });
+});
 </code></pre>
 <p>&#x8FD9;&#x6837;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x624D;&#x80FD;&#x591F;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x6837;&#x53C8;&#x5E26;&#x6765;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x8FD9;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E2D; runloop &#x4F1A;&#x4E00;&#x76F4;&#x8DD1;&#x7740;&#xFF0C;&#x5BFC;&#x81F4;&#x8FD9;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E5F;&#x4E00;&#x76F4;&#x4E0D;&#x7ED3;&#x675F;&#xFF0C;&#x4E3A;&#x4E86;&#x8BA9;&#x7EBF;&#x7A0B;&#x5728;&#x5B8C;&#x6210;&#x4EFB;&#x52A1;&#x65F6;&#x6B63;&#x786E;&#x7ED3;&#x675F;&#x6389;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x505A;&#xFF1A;</p>
 <pre><code class="lang-objective-c">dispatch_async(connectionQueue, ^{
