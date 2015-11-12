@@ -88,6 +88,7 @@ iOS 系统检测到手指触摸 (Touch) 操作时会将其打包成一个 UIEven
 }
 ```
 
+可以
 ### 参考资料
 
 1. [CocoaTouch 事件处理流程](http://www.cnblogs.com/snake-hand/p/3178070.html)
