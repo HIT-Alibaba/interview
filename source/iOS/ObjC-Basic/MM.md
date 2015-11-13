@@ -8,7 +8,7 @@
 
 ## MRC 与 ARC
 
-Objective-C中提供了两种内存管理机制：MRC（MannulReference Counting）和 ARC(Automatic Reference Counting)，分别提供对内存的手动和自动管理，来满足不同的需求。现在苹果推荐是用 ARC 来进行内存管理。
+Objective-C中提供了两种内存管理机制：MRC（MannulReference Counting）和 ARC(Automatic Reference Counting)，分别提供对内存的手动和自动管理，来满足不同的需求。现在苹果推荐使用 ARC 来进行内存管理。
 
 ### MRC 
 
@@ -158,7 +158,7 @@ int main(int argc, char * argv[]) {
 3. 在 (2) 的基础上，假设有些变量真的进入了 main.m 里面这个 pool（没有被更内层的 pool 捕获），那么这些变量实际上就是被泄露的。这个 autorelease pool 等于是把这种泄露情况给隐藏起来了。
 4. UIApplication 自己会创建 main run loop，在 Cocoa 的 runloop 中实际上也是自动包含 autorelease pool 的，因此 main.m 当中的 pool 可以认为是**没有**必要的。
 
-在基于 AppKit 框架的 Mac OS 开发中， main.m 当中就是不存在 autorelease pool 的，也进一步验证了我们得到的结论。不过因为我们看不到更底层的代码，加上苹果的文档中不建议修改 main.m ，所以我们也没有理由就直接把它删掉。
+在基于 AppKit 框架的 Mac OS 开发中， main.m 当中就是不存在 autorelease pool 的，也进一步验证了我们得到的结论。不过因为我们看不到更底层的代码，加上苹果的文档中不建议修改 main.m ，所以我们也没有理由就直接把它删掉（亲测，删掉之后不影响 App 运行，用 Instruments 也看不到泄露）。
 
 #### Autorelease Pool 与函数返回值
 
@@ -292,7 +292,80 @@ self.property = a;
 
 这个和我们之前在 MRC 中做的不是完全一样。ARC 会把对象的生命周期延长，确保调用者能拿到并且使用这个返回值，但是并不一定会使用 autorelease，文档写的是在 worst case 的情况下才可能会使用，因此调用者不能假设返回值真的就在 autorelease pool 中。从性能的角度，这种做法也是可以理解的。如果我们能够知道一个对象的生命周期最长应该有多长，也就没有必要使用 autorelease 了，直接使用 release 就可以。如果很多对象都使用 autorelease 的话，也会导致整个 pool 在 drain 的时候性能下降。
 
+##### ARC 下是否还有必要在 dealloc 中把属性置为 nil？
 
+为了解决这个问题，首先让我们理清楚属性是个什么存在。属性(property) 实际上就是一种语法糖，每个属性背后都有实例变量(Ivar)做支持，编译器会帮我们自动生成有关的 setter 和 getter，对于下面的 property：
+
+```objective-c
+@interface Counter : NSObject
+@property (nonatomic, retain) NSNumber *count;
+@end;
+```
+
+生成的 getter 和 setter 类似下面这样：
+
+```objective-c
+- (NSNumber *)count {
+    return _count;
+}
+- (void)setCount:(NSNumber *)newCount {
+    [newCount retain];
+    [_count release];
+    // Make the new assignment.
+    _count = newCount;
+}
+```
+
+Property 这部分对于 MRC 和 ARC 都是适用的。
+
+有了这部分基础，我们再来理解一下把属性置为 nil 这个步骤。首先要明确一点，在 MRC 下，我们并不是真的把属性置为 nil，而是把 Ivar 置为 nil。
+
+```objective-c
+[_property release];
+_property = nil;
+```
+
+如果用 self.property 的话还会调用 setter，里面可能存在某些不应该在 dealloc 时运行的代码。
+
+对于 ARC 来说，系统会自动在 dealloc 的时候把所有的 Ivar 都执行 release，因此我们也就没有必要在 dealloc 中写有关 release 的代码了。
+
+##### 在 ARC 下把变量置为 nil 有什么效果？什么情况下需要把变量置为 nil？
+
+在上面有关 property 的内容基础上，我们知道用:
+
+```objective-c
+self.property = nil
+```
+
+实际上就是手动执行了一次 release。而对于临时变量来说：
+
+```
+NSObject *object = [[NSObject alloc] init];
+object = nil;
+```
+
+置为 nil 这一句其实没什么用（除了让 object 在下面的代码里不能再使用之外），因为上面我们讨论过 ，ARC 下的临时变量是受到 Autorelease Pool 的管理的，会自动释放。
+
+因为 ARC 下我们不能再使用 release 函数，把变量置为 nil 就成为了一种释放变量的方法。真正需要我们把变量置为 nil 的，通常就是在使用 block 时，用于破除循环引用：
+
+```objective-c
+MyViewController * __block myController = [[MyViewController alloc] init…];
+// ...
+myController.completionHandler =  ^(NSInteger result) {
+    [myController dismissViewControllerAnimated:YES completion:nil];
+    myController = nil;
+};
+```
+
+在 [YTKNetwork](https://github.com/yuantiku/YTKNetwork) 这个项目中，也可以看到类似的代码：
+
+```objective-c
+- (void)clearCompletionBlock {
+    // nil out to break the retain cycle.
+    self.successCompletionBlock = nil;
+    self.failureCompletionBlock = nil;
+}
+```
 
 ### 参考资料
 
@@ -305,3 +378,4 @@ self.property = a;
 * https://stackoverflow.com/questions/6055274/use-autorelease-when-setting-a-retain-property-using-dot-syntax
 * https://stackoverflow.com/questions/17601274/arc-and-autorelease
 * https://stackoverflow.com/questions/8292060/arc-equivalent-of-autorelease
+* https://stackoverflow.com/questions/7906804/do-i-set-properties-to-nil-in-dealloc-when-using-arc

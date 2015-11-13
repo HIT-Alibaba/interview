@@ -199,6 +199,8 @@ NSOperationQueue 通过监测 `isExecuting`, `isCancelled` 和 `isFinished` 来�
 }
 ```
 
+苹果官方文档中也是使用了类似的办法，可以参考[这里](https://developer.apple.com/library/ios/documentation/General/Conceptual/ConcurrencyProgrammingGuide/OperationObjects/OperationObjects.html#//apple_ref/doc/uid/TP40008091-CH101-SW1)。
+
 ### 参考资料
 
 * [[深入浅出Cocoa]iOS网络编程系列](http://blog.csdn.net/kesalin/article/details/8798039)

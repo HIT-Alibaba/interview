@@ -57,7 +57,27 @@ __block int anInteger = 42;
 ```
 
 对于 id 类型的变量，在 MRC 情况下，使用 `__block id x` 不会 retain 变量，而在 ARC 情况下则会对变量进行 retain（即和其他捕获的变量相同）。如果不想在 block 中进行 retain 可以使用
-`__unsafe_unretained __block id x`，不过这样可能会导致野指针出现。更好的办法是使用 `__weak`，或者把使用 `__block` 修饰的变量设为 nil，以打破引用循环。
+`__unsafe_unretained __block id x`，不过这样可能会导致野指针出现。更好的办法是使用 `__weak` 的临时变量：
+
+```objective-c
+MyViewController *myController = [[MyViewController alloc] init…];
+// ...
+MyViewController * __weak weakMyViewController = myController;
+myController.completionHandler =  ^(NSInteger result) {
+    [weakMyViewController dismissViewControllerAnimated:YES completion:nil];
+};
+```
+
+或者把使用 `__block` 修饰的变量设为 nil，以打破引用循环：
+
+```objective-c
+MyViewController * __block myController = [[MyViewController alloc] init…];
+// ...
+myController.completionHandler =  ^(NSInteger result) {
+    [myController dismissViewControllerAnimated:YES completion:nil];
+    myController = nil;
+};
+```
 
 ### 使用 Block 时的注意事项
 
