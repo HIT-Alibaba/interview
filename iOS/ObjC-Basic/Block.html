@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="2.1.2" data-chapter-title="Block 编程" data-filepath="iOS/ObjC-Basic/Block.md" data-basepath="../.." data-revision="Fri Nov 13 2015 17:04:59 GMT+0800 (CST)">
+    <div class="book" data-level="2.1.2" data-chapter-title="Block 编程" data-filepath="iOS/ObjC-Basic/Block.md" data-basepath="../.." data-revision="Fri Nov 13 2015 18:31:31 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -1125,7 +1125,22 @@ NSLog(@&quot;The result is %f&quot;, result);
 <pre><code class="lang-objective-c">__block int anInteger = 42;
 </code></pre>
 <p>&#x5BF9;&#x4E8E; id &#x7C7B;&#x578B;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x5728; MRC &#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4F7F;&#x7528; <code>__block id x</code> &#x4E0D;&#x4F1A; retain &#x53D8;&#x91CF;&#xFF0C;&#x800C;&#x5728; ARC &#x60C5;&#x51B5;&#x4E0B;&#x5219;&#x4F1A;&#x5BF9;&#x53D8;&#x91CF;&#x8FDB;&#x884C; retain&#xFF08;&#x5373;&#x548C;&#x5176;&#x4ED6;&#x6355;&#x83B7;&#x7684;&#x53D8;&#x91CF;&#x76F8;&#x540C;&#xFF09;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x60F3;&#x5728; block &#x4E2D;&#x8FDB;&#x884C; retain &#x53EF;&#x4EE5;&#x4F7F;&#x7528;
-<code>__unsafe_unretained __block id x</code>&#xFF0C;&#x4E0D;&#x8FC7;&#x8FD9;&#x6837;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x91CE;&#x6307;&#x9488;&#x51FA;&#x73B0;&#x3002;&#x66F4;&#x597D;&#x7684;&#x529E;&#x6CD5;&#x662F;&#x4F7F;&#x7528; <code>__weak</code>&#xFF0C;&#x6216;&#x8005;&#x628A;&#x4F7F;&#x7528; <code>__block</code> &#x4FEE;&#x9970;&#x7684;&#x53D8;&#x91CF;&#x8BBE;&#x4E3A; nil&#xFF0C;&#x4EE5;&#x6253;&#x7834;&#x5F15;&#x7528;&#x5FAA;&#x73AF;&#x3002;</p>
+<code>__unsafe_unretained __block id x</code>&#xFF0C;&#x4E0D;&#x8FC7;&#x8FD9;&#x6837;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x91CE;&#x6307;&#x9488;&#x51FA;&#x73B0;&#x3002;&#x66F4;&#x597D;&#x7684;&#x529E;&#x6CD5;&#x662F;&#x4F7F;&#x7528; <code>__weak</code> &#x7684;&#x4E34;&#x65F6;&#x53D8;&#x91CF;&#xFF1A;</p>
+<pre><code class="lang-objective-c">MyViewController *myController = [[MyViewController alloc] init&#x2026;];
+// ...
+MyViewController * __weak weakMyViewController = myController;
+myController.completionHandler =  ^(NSInteger result) {
+    [weakMyViewController dismissViewControllerAnimated:YES completion:nil];
+};
+</code></pre>
+<p>&#x6216;&#x8005;&#x628A;&#x4F7F;&#x7528; <code>__block</code> &#x4FEE;&#x9970;&#x7684;&#x53D8;&#x91CF;&#x8BBE;&#x4E3A; nil&#xFF0C;&#x4EE5;&#x6253;&#x7834;&#x5F15;&#x7528;&#x5FAA;&#x73AF;&#xFF1A;</p>
+<pre><code class="lang-objective-c">MyViewController * __block myController = [[MyViewController alloc] init&#x2026;];
+// ...
+myController.completionHandler =  ^(NSInteger result) {
+    [myController dismissViewControllerAnimated:YES completion:nil];
+    myController = nil;
+};
+</code></pre>
 <h3 id="&#x4F7F;&#x7528;-block-&#x65F6;&#x7684;&#x6CE8;&#x610F;&#x4E8B;&#x9879;">&#x4F7F;&#x7528; Block &#x65F6;&#x7684;&#x6CE8;&#x610F;&#x4E8B;&#x9879;</h3>
 <p>&#x5728;&#x975E; ARC &#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5BF9;&#x4E8E; block &#x7C7B;&#x578B;&#x7684;&#x5C5E;&#x6027;&#x5E94;&#x8BE5;&#x4F7F;&#x7528; <code>copy</code> &#xFF0C;&#x56E0;&#x4E3A; block &#x9700;&#x8981;&#x7EF4;&#x6301;&#x5176;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#x6355;&#x83B7;&#x7684;&#x53D8;&#x91CF;&#x3002;&#x5728; ARC &#x4E2D;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x81EA;&#x52A8;&#x5BF9; block &#x8FDB;&#x884C; copy &#x64CD;&#x4F5C;&#xFF0C;&#x56E0;&#x6B64;&#x4F7F;&#x7528; <code>strong</code> &#x6216;&#x8005; <code>copy</code> &#x90FD;&#x53EF;&#x4EE5;&#xFF0C;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF0C;&#x4F46;&#x662F;&#x82F9;&#x679C;&#x4ECD;&#x7136;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528; <code>copy</code> &#x6765;&#x6307;&#x660E;&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x884C;&#x4E3A;&#x3002;</p>
 <p>block &#x5728;&#x6355;&#x83B7;&#x5916;&#x90E8;&#x53D8;&#x91CF;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x4FDD;&#x6301;&#x4E00;&#x4E2A;&#x5F3A;&#x5F15;&#x7528;&#xFF0C;&#x5F53;&#x5728; block &#x4E2D;&#x6355;&#x83B7; <code>self</code> &#x65F6;&#xFF0C;&#x7531;&#x4E8E;&#x5BF9;&#x8C61;&#x4F1A;&#x5BF9; block &#x8FDB;&#x884C; <code>copy</code>&#xFF0C;&#x4E8E;&#x662F;&#x4FBF;&#x5F62;&#x6210;&#x4E86;&#x5F3A;&#x5F15;&#x7528;&#x5FAA;&#x73AF;&#xFF1A;</p>
