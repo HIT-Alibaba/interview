@@ -160,8 +160,11 @@ printf("两个 block 都已经执行完毕\n");
     
     死锁的原因是，dispatch_sync 会做两个工作，一个是阻塞掉当前线程，另一个是把任务添加到 queue 中，等待任务执行完毕。像上面这样，主线程被阻塞掉了，任务不能被执行，然后导致 dispatch_sync 永远不能等待到任务执行完毕，就不能释放主线程的阻塞，于是就产生了死锁。
     
-* 如果在任务 block 中创建了大量对象，可以考虑在 block 中添加 autorelease pool。尽管每个 queue 自身都会有 autorelease pool 来管理内存，但是 pool 进行 drain 的具体时间是没办法确定的。如果程序对于内存占用比较敏感，可以自己创建 autorelease pool 来进行内存管理
+* 如果在任务 block 中创建了大量对象，可以考虑在 block 中添加 autorelease pool。尽管每个 queue 自身都会有 autorelease pool 来管理内存，但是 pool 进行 drain 的具体时间是没办法确定的。如果应用对于内存占用比较敏感，可以自己创建 autorelease pool 来进行内存管理。
     
+    
+## NSOperation 和 NSOperationQueue
+
  #### 参考资料
  
  * http://www.raywenderlich.com/19788/how-to-use-nsoperations-and-nsoperationqueues

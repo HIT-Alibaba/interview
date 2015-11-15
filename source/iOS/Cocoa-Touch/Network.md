@@ -164,7 +164,7 @@ NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:aURLReque
 
 不过这样使用 CF 系函数的代码多少显得有些黑科技。使用 NSOperationQueue 我们可以有更加漂亮的做法。
 
-NSOperationQueue 通过监测 `isExecuting`, `isCancelled` 和 `isFinished` 来控制线程的执行，具体的监测行为是通过 KVO 来实现的，因此我们可以手动调用 KVO 来通知 NSOperationQueue，告诉它“我们的任务执行完毕了，可以把线程关掉了”：
+我们知道 NSOperationQueue 通过监测 `isExecuting`, `isCancelled` 和 `isFinished` 来控制 NSOperation 的执行，具体的监测行为是通过 KVO 来实现的，因此我们可以手动调用 KVO 来通知 NSOperationQueue，告诉它“我们的任务执行完毕了，可以让任务退出了”：
 
 ```objective-c
 - (void)finish
@@ -172,9 +172,6 @@ NSOperationQueue 通过监测 `isExecuting`, `isCancelled` 和 `isFinished` 来�
     NSLog(@"operation for <%@> finished. "
           @"status code: %d, error: %@, data size: %u",
           _url, _statusCode, _error, [_data length]);
-
-    [_connection release];
-    _connection = nil;
 
     [self willChangeValueForKey:@"isExecuting"];
     [self willChangeValueForKey:@"isFinished"];
