@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="2.2.7" data-chapter-title="并发编程" data-filepath="iOS/Cocoa-Touch/Multithreading.md" data-basepath="../.." data-revision="Sun Nov 15 2015 10:25:41 GMT+0800 (CST)">
+    <div class="book" data-level="2.2.7" data-chapter-title="并发编程" data-filepath="iOS/Cocoa-Touch/Multithreading.md" data-basepath="../.." data-revision="Sun Nov 15 2015 10:37:54 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -1175,7 +1175,7 @@
 </code></pre>
 <p> &#x5F53;&#x51FA;&#x73B0;&#x517C;&#x5BB9;&#x6027;&#x95EE;&#x9898;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9700;&#x8981;&#x6839;&#x636E;&#x60C5;&#x51B5;&#x6765;&#x4FEE;&#x6539;&#x4EE3;&#x7801;&#x6216;&#x8005;&#x6539;&#x53D8; target &#x7684; iOS &#x7248;&#x672C;&#x3002;</p>
 <h3 id="&#x6267;&#x884C;&#x4EFB;&#x52A1;">&#x6267;&#x884C;&#x4EFB;&#x52A1;</h3>
-<p> &#x6298;&#x817E;&#x4E86;&#x534A;&#x5929; queue&#xFF0C;&#x73B0;&#x5728;&#x7EC8;&#x4E8E;&#x5230;&#x4E86;&#x8BA9; queue &#x771F;&#x6B63;&#x53BB;&#x6267;&#x884C;&#x4EFB;&#x52A1;&#x7684;&#x9636;&#x6BB5;&#x4E86;&#x3002;&#x7ED9; queue &#x6DFB;&#x52A0;&#x4EFB;&#x52A1;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x540C;&#x6B65;&#x548C;&#x5F02;&#x6B65;&#x3002;&#x540C;&#x6B65;&#x65B9;&#x5F0F;&#x4F1A;&#x963B;&#x585E;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x5F02;&#x6B65;&#x65B9;&#x5F0F;&#x4E0D;&#x4F1A;&#x963B;&#x585E;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#xFF1A;</p>
+<p> &#x6298;&#x817E;&#x4E86;&#x534A;&#x5929; queue&#xFF0C;&#x73B0;&#x5728;&#x7EC8;&#x4E8E;&#x5230;&#x4E86;&#x8BA9; queue &#x771F;&#x6B63;&#x53BB;&#x6267;&#x884C;&#x4EFB;&#x52A1;&#x7684;&#x9636;&#x6BB5;&#x4E86;&#x3002;&#x7ED9; queue &#x6DFB;&#x52A0;&#x4EFB;&#x52A1;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x540C;&#x6B65;&#x548C;&#x5F02;&#x6B65;&#x3002;&#x540C;&#x6B65;&#x65B9;&#x5F0F;&#x4F1A;&#x963B;&#x585E;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x7B49;&#x5F85;&#x6DFB;&#x52A0;&#x7684;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x4E4B;&#x540E;&#xFF0C;&#x624D;&#x7EE7;&#x7EED;&#x5411;&#x4E0B;&#x6267;&#x884C;&#x3002;&#x5F02;&#x6B65;&#x65B9;&#x5F0F;&#x4E0D;&#x4F1A;&#x963B;&#x585E;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#x3002;</p>
 <pre><code class="lang-objective-c">dispatch_queue_t myCustomQueue;
 myCustomQueue = dispatch_queue_create(&quot;com.example.MyCustomQueue&quot;, NULL);
 
@@ -1192,10 +1192,32 @@ dispatch_sync(myCustomQueue, ^{
 });
 printf(&quot;&#x4E24;&#x4E2A; block &#x90FD;&#x5DF2;&#x7ECF;&#x6267;&#x884C;&#x5B8C;&#x6BD5;\n&quot;);
 </code></pre>
+<h4 id="&#x6CE8;&#x610F;&#x4E8B;&#x9879;">&#x6CE8;&#x610F;&#x4E8B;&#x9879;</h4>
+<ul>
+<li>&#x540C;&#x6B65;&#x548C;&#x5F02;&#x6B65;&#x6DFB;&#x52A0;&#xFF0C;&#x4E0E;&#x961F;&#x5217;&#x662F;&#x4E32;&#x884C;&#x961F;&#x5217;&#x548C;&#x5E76;&#x884C;&#x961F;&#x5217;&#x6CA1;&#x6709;&#x5173;&#x7CFB;&#x3002;&#x53EF;&#x4EE5;&#x540C;&#x6B65;&#x5730;&#x7ED9;&#x5E76;&#x884C;&#x961F;&#x5217;&#x6DFB;&#x52A0;&#x4EFB;&#x52A1;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5F02;&#x6B65;&#x5730;&#x7ED9;&#x4E32;&#x884C;&#x961F;&#x5217;&#x6DFB;&#x52A0;&#x4EFB;&#x52A1;&#x3002;&#x540C;&#x6B65;&#x548C;&#x5F02;&#x6B65;&#x6DFB;&#x52A0;&#x53EA;&#x5F71;&#x54CD;&#x662F;&#x4E0D;&#x662F;&#x963B;&#x585E;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#xFF0C;&#x548C;&#x4EFB;&#x52A1;&#x7684;&#x4E32;&#x884C;&#x6216;&#x5E76;&#x884C;&#x6267;&#x884C;&#x6CA1;&#x6709;&#x5173;&#x7CFB;</li>
+<li><p>&#x4E0D;&#x8981;&#x4F7F;&#x7528; dispatch_sync &#x7ED9;&#x5F53;&#x524D;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684; queue &#x6DFB;&#x52A0;&#x4EFB;&#x52A1;&#xFF01;&#x8FD9;&#x6837;&#x4F1A;&#x5BFC;&#x81F4;&#x6B7B;&#x9501;&#xFF0C;&#x50CF;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#xFF1A;</p>
+<pre><code class="lang-objective-c"> - (void)viewDidLoad
+ {
+     [super viewDidLoad];
+     NSLog(@&quot;1&quot;);
+     dispatch_sync(dispatch_get_main_queue(), ^{
+         NSLog(@&quot;2&quot;);
+     });
+     NSLog(@&quot;3&quot;);
+ }
+</code></pre>
+<p> &#x8FD9;&#x6837;&#x53EA;&#x6709; 1 &#x4F1A;&#x88AB;&#x8F93;&#x51FA;&#xFF0C;&#x4E4B;&#x540E;&#x7A0B;&#x5E8F;&#x5C31;&#x88AB;&#x6B7B;&#x9501;&#x6389;&#x4E86;&#x3002;</p>
+<p> &#x6B7B;&#x9501;&#x7684;&#x539F;&#x56E0;&#x662F;&#xFF0C;dispatch_sync &#x4F1A;&#x505A;&#x4E24;&#x4E2A;&#x5DE5;&#x4F5C;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;&#x963B;&#x585E;&#x6389;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x662F;&#x628A;&#x4EFB;&#x52A1;&#x6DFB;&#x52A0;&#x5230; queue &#x4E2D;&#xFF0C;&#x7B49;&#x5F85;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x3002;&#x50CF;&#x4E0A;&#x9762;&#x8FD9;&#x6837;&#xFF0C;&#x4E3B;&#x7EBF;&#x7A0B;&#x88AB;&#x963B;&#x585E;&#x6389;&#x4E86;&#xFF0C;&#x4EFB;&#x52A1;&#x4E0D;&#x80FD;&#x88AB;&#x6267;&#x884C;&#xFF0C;&#x7136;&#x540E;&#x5BFC;&#x81F4; dispatch_sync &#x6C38;&#x8FDC;&#x4E0D;&#x80FD;&#x7B49;&#x5F85;&#x5230;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#xFF0C;&#x5C31;&#x4E0D;&#x80FD;&#x91CA;&#x653E;&#x4E3B;&#x7EBF;&#x7A0B;&#x7684;&#x963B;&#x585E;&#xFF0C;&#x4E8E;&#x662F;&#x5C31;&#x4EA7;&#x751F;&#x4E86;&#x6B7B;&#x9501;&#x3002;</p>
+</li>
+</ul>
+<ul>
+<li><p>&#x5982;&#x679C;&#x5728;&#x4EFB;&#x52A1; block &#x4E2D;&#x521B;&#x5EFA;&#x4E86;&#x5927;&#x91CF;&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x5728; block &#x4E2D;&#x6DFB;&#x52A0; autorelease pool&#x3002;&#x5C3D;&#x7BA1;&#x6BCF;&#x4E2A; queue &#x81EA;&#x8EAB;&#x90FD;&#x4F1A;&#x6709; autorelease pool &#x6765;&#x7BA1;&#x7406;&#x5185;&#x5B58;&#xFF0C;&#x4F46;&#x662F; pool &#x8FDB;&#x884C; drain &#x7684;&#x5177;&#x4F53;&#x65F6;&#x95F4;&#x662F;&#x6CA1;&#x529E;&#x6CD5;&#x786E;&#x5B9A;&#x7684;&#x3002;&#x5982;&#x679C;&#x7A0B;&#x5E8F;&#x5BF9;&#x4E8E;&#x5185;&#x5B58;&#x5360;&#x7528;&#x6BD4;&#x8F83;&#x654F;&#x611F;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x521B;&#x5EFA; autorelease pool &#x6765;&#x8FDB;&#x884C;&#x5185;&#x5B58;&#x7BA1;&#x7406;</p>
 <h4 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h4>
 <ul>
 <li><a href="http://www.raywenderlich.com/19788/how-to-use-nsoperations-and-nsoperationqueues" target="_blank">http://www.raywenderlich.com/19788/how-to-use-nsoperations-and-nsoperationqueues</a></li>
 <li><a href="http://www.humancode.us/2014/08/14/target-queues.html" target="_blank">http://www.humancode.us/2014/08/14/target-queues.html</a></li>
+</ul>
+</li>
 </ul>
 
                     
