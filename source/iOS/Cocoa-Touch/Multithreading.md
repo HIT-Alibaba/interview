@@ -118,7 +118,7 @@ GCD 这么受大家欢迎，它具体好用在哪里呢？GCD 主要的功劳在
  
  ### 执行任务
  
- 折腾了半天 queue，现在终于到了让 queue 真正去执行任务的阶段了。给 queue 添加任务有两种方式，同步和异步。同步方式会阻塞当前线程的执行，异步方式不会阻塞当前线程的执行：
+ 折腾了半天 queue，现在终于到了让 queue 真正去执行任务的阶段了。给 queue 添加任务有两种方式，同步和异步。同步方式会阻塞当前线程的执行，等待添加的任务执行完毕之后，才继续向下执行。异步方式不会阻塞当前线程的执行。
  
  ```objective-c
 dispatch_queue_t myCustomQueue;
@@ -139,6 +139,29 @@ printf("两个 block 都已经执行完毕\n");
 
  ```
  
+ #### 注意事项
+ 
+ * 同步和异步添加，与队列是串行队列和并行队列没有关系。可以同步地给并行队列添加任务，也可以异步地给串行队列添加任务。同步和异步添加只影响是不是阻塞当前线程，和任务的串行或并行执行没有关系
+ * 不要使用 dispatch_sync 给当前正在运行的 queue 添加任务！这样会导致死锁，像下面这样：
+ 
+    ```objective-c
+    - (void)viewDidLoad
+    {
+        [super viewDidLoad];
+        NSLog(@"1");
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            NSLog(@"2");
+        });
+        NSLog(@"3");
+    }
+    ```
+    
+    这样只有 1 会被输出，之后程序就被死锁掉了。
+    
+    死锁的原因是，dispatch_sync 会做两个工作，一个是阻塞掉当前线程，另一个是把任务添加到 queue 中，等待任务执行完毕。像上面这样，主线程被阻塞掉了，任务不能被执行，然后导致 dispatch_sync 永远不能等待到任务执行完毕，就不能释放主线程的阻塞，于是就产生了死锁。
+    
+* 如果在任务 block 中创建了大量对象，可以考虑在 block 中添加 autorelease pool。尽管每个 queue 自身都会有 autorelease pool 来管理内存，但是 pool 进行 drain 的具体时间是没办法确定的。如果程序对于内存占用比较敏感，可以自己创建 autorelease pool 来进行内存管理
+    
  #### 参考资料
  
  * http://www.raywenderlich.com/19788/how-to-use-nsoperations-and-nsoperationqueues
