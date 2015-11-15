@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="2.2.7" data-chapter-title="并发编程" data-filepath="iOS/Cocoa-Touch/Multithreading.md" data-basepath="../.." data-revision="Fri Nov 13 2015 18:31:31 GMT+0800 (CST)">
+    <div class="book" data-level="2.2.7" data-chapter-title="并发编程" data-filepath="iOS/Cocoa-Touch/Multithreading.md" data-basepath="../.." data-revision="Sun Nov 15 2015 10:25:41 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -1131,8 +1131,72 @@
 </li>
 <li><p>Main Dispatch Queue&#xFF08;&#x4E3B;&#x961F;&#x5217;&#xFF09;
  &#x4E3B;&#x961F;&#x5217;&#x662F;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x53EF;&#x89C1;&#x7684;<strong>&#x4E32;&#x884C;</strong>&#x961F;&#x5217;&#xFF0C;&#x5176;&#x4E2D;&#x7684;&#x4EFB;&#x52A1;&#x4F1A;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#x884C;&#x3002;&#x4E3B;&#x961F;&#x5217;&#x901A;&#x8FC7;&#x4E0E;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684; runloop &#x4EA4;&#x4E92;&#xFF0C;&#x628A;&#x4EFB;&#x52A1;&#x5B89;&#x63D2;&#x5230; runloop &#x5F53;&#x4E2D;&#x6267;&#x884C;&#x3002;&#x56E0;&#x4E3A;&#x4E3B;&#x961F;&#x5217;&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#xFF0C;&#x5176;&#x4E2D;&#x7684;&#x4EFB;&#x52A1;&#x786E;&#x5B9A;&#x4F1A;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#x884C;&#xFF0C;&#x901A;&#x5E38;&#x4E3B;&#x961F;&#x5217;&#x4F1A;&#x88AB;&#x7528;&#x4F5C;&#x540C;&#x6B65;&#x7684;&#x4F5C;&#x7528;&#x3002;</p>
+<h3 id="&#x83B7;&#x53D6;&#x961F;&#x5217;">&#x83B7;&#x53D6;&#x961F;&#x5217;</h3>
 </li>
 </ol>
+<p>&#x6309;&#x7167;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x4E09;&#x79CD;&#x961F;&#x5217;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x4E09;&#x79CD;&#x83B7;&#x53D6;&#x961F;&#x5217;&#x7684;&#x65B9;&#x5F0F;&#xFF1A;</p>
+<ol>
+<li><p>&#x4E32;&#x884C;&#x961F;&#x5217;
+ &#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x5E76;&#x4E0D;&#x63D0;&#x4F9B;&#x4E32;&#x884C;&#x961F;&#x5217;&#xFF0C;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x624B;&#x52A8;&#x521B;&#x5EFA;&#xFF1A;</p>
+<pre><code class="lang-objective-c"> dispatch_queue_t queue;
+ queue = dispatch_queue_create(&quot;com.example.MyQueue&quot;, NULL); // OS X 10.7 &#x548C; iOS 4.3 &#x4E4B;&#x524D;
+ queue = dispatch_queue_create(&quot;com.example.MyQueue&quot;,  DISPATCH_QUEUE_SERIAL); // &#x4E4B;&#x540E;
+</code></pre>
+</li>
+<li><p>&#x5E76;&#x884C;&#x961F;&#x5217;
+ &#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x63D0;&#x4F9B;&#x4E86;&#x56DB;&#x4E2A;&#x5168;&#x5C40;&#x53EF;&#x7528;&#x7684;&#x5E76;&#x884C;&#x961F;&#x5217;&#xFF0C;&#x5176;&#x4F18;&#x5148;&#x7EA7;&#x4E0D;&#x540C;&#xFF0C;&#x5206;&#x522B;&#x4E3A; DISPATCH_QUEUE_PRIORITY_HIGH&#xFF0C;DISPATCH_QUEUE_PRIORITY_DEFAULT&#xFF0C; DISPATCH_QUEUE_PRIORITY_LOW&#xFF0C; DISPATCH_QUEUE_PRIORITY_BACKGROUND &#xFF0C;&#x4F18;&#x5148;&#x7EA7;&#x4F9D;&#x6B21;&#x964D;&#x4F4E;&#x3002;&#x4F18;&#x5148;&#x7EA7;&#x8D8A;&#x9AD8;&#x7684;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x4EFB;&#x52A1;&#x4F1A;&#x66F4;&#x65E9;&#x6267;&#x884C;&#xFF1A;</p>
+<pre><code class="lang-objective-c"> dispatch_queue_t aQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+</code></pre>
+<p> &#x5F53;&#x7136;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x81EA;&#x5DF1;&#x7684;&#x5E76;&#x884C;&#x961F;&#x5217;&#xFF1A;</p>
+<pre><code class="lang-objective-c"> queue = dispatch_queue_create(&quot;com.example.MyQueue&quot;, DISPATCH_QUEUE_CONCURRENT);
+</code></pre>
+<p> &#x4E0D;&#x8FC7;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x7684; Default &#x4F18;&#x5148;&#x7EA7;&#x7684; queue &#x5C31;&#x8DB3;&#x591F;&#x4E86;&#x3002;</p>
+</li>
+<li><p>&#x4E3B;&#x961F;&#x5217;
+ &#x4E3B;&#x961F;&#x5217;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>dispatch_get_main_queue()</code> &#x83B7;&#x53D6;&#xFF1A;</p>
+<pre><code class="lang-objective-c">  dispatch_async(dispatch_get_main_queue(), ^{
+         // Update the UI
+         [imageVIew setImage:image];
+     });
+</code></pre>
+<h4 id="&#x81EA;&#x5DF1;&#x521B;&#x5EFA;&#x7684;&#x961F;&#x5217;&#x4E0E;&#x7CFB;&#x7EDF;&#x961F;&#x5217;&#x6709;&#x4EC0;&#x4E48;&#x4E0D;&#x540C;&#xFF1F;">&#x81EA;&#x5DF1;&#x521B;&#x5EFA;&#x7684;&#x961F;&#x5217;&#x4E0E;&#x7CFB;&#x7EDF;&#x961F;&#x5217;&#x6709;&#x4EC0;&#x4E48;&#x4E0D;&#x540C;&#xFF1F;</h4>
+</li>
+</ol>
+<p>&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x521B;&#x5EFA;&#x7684;&#x961F;&#x5217;&#xFF0C;&#x6700;&#x7EC8;&#x4F1A;&#x628A;&#x4EFB;&#x52A1;&#x5206;&#x914D;&#x5230;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x7684;&#x4E3B;&#x961F;&#x5217;&#x548C;&#x56DB;&#x4E2A;&#x5168;&#x5C40;&#x7684;&#x4E32;&#x884C;&#x961F;&#x5217;&#x4E0A;&#xFF0C;&#x8FD9;&#x79CD;&#x64CD;&#x4F5C;&#x53EB;&#x505A; Target queues&#x3002;&#x5177;&#x4F53;&#x6765;&#x8BF4;&#xFF0C;&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x7684;&#x4E32;&#x884C;&#x961F;&#x5217;&#x7684; target queue &#x5C31;&#x662F;&#x7CFB;&#x7EDF;&#x7684;&#x4E3B;&#x961F;&#x5217;&#xFF0C;&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x7684;&#x5E76;&#x884C;&#x961F;&#x5217;&#x7684; target queue &#x9ED8;&#x8BA4;&#x662F;&#x7CFB;&#x7EDF; default &#x4F18;&#x5148;&#x7EA7;&#x7684;&#x5168;&#x5C40;&#x4E32;&#x884C;&#x961F;&#x5217;&#x3002;&#x6240;&#x6709;&#x653E;&#x5728;&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x7684;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x6700;&#x7EC8;&#x90FD;&#x4F1A;&#x5230; target queue &#x4E2D;&#x5B8C;&#x6210;&#x771F;&#x6B63;&#x7684;&#x6267;&#x884C;&#x3002;</p>
+<p>&#x90A3;&#x5C82;&#x4E0D;&#x662F;&#x81EA;&#x5DF1;&#x521B;&#x5EFA;&#x961F;&#x5217;&#x5C31;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x610F;&#x4E49;&#x4E86;&#xFF1F;&#x5176;&#x5B9E;&#x4E0D;&#x662F;&#x7684;&#x3002;&#x901A;&#x8FC7;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x521B;&#x5EFA;&#x7684;&#x961F;&#x5217;&#xFF0C;&#x4EE5;&#x53CA; dispatch_set_target_queue &#x548C; barrier &#x7B49;&#x64CD;&#x4F5C;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#x7684;&#x4EFB;&#x52A1;&#x4E4B;&#x95F4;&#x7684;&#x540C;&#x6B65;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="http://blog.csdn.net/growinggiant/article/details/41077221" target="_blank">&#x8FD9;&#x91CC;</a> &#x548C; <a href="http://www.humancode.us/2014/08/14/target-queues.html" target="_blank">&#x8FD9;&#x91CC;</a>&#x3002;</p>
+<p>&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5BF9;&#x4E8E;&#x4E32;&#x884C;&#x961F;&#x5217;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x81EA;&#x5DF1;&#x521B;&#x5EFA;&#xFF0C;&#x5BF9;&#x4E8E;&#x5E76;&#x884C;&#x961F;&#x5217;&#xFF0C;&#x5C31;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x7684; Default &#x4F18;&#x5148;&#x7EA7;&#x7684; queue&#x3002;</p>
+<h4 id="&#x521B;&#x5EFA;&#x7684;-queue-&#x9700;&#x8981;&#x91CA;&#x653E;&#x5417;&#xFF1F;">&#x521B;&#x5EFA;&#x7684; Queue &#x9700;&#x8981;&#x91CA;&#x653E;&#x5417;&#xFF1F;</h4>
+<p> &#x5728; iOS6 &#x4E4B;&#x524D;&#xFF0C;&#x4F7F;&#x7528; <code>dispatch_queue_create</code> &#x521B;&#x5EFA;&#x7684; queue &#x9700;&#x8981;&#x4F7F;&#x7528; <code>dispatch_retain</code> &#x548C; <code>dispatch_release</code> &#x8FDB;&#x884C;&#x7BA1;&#x7406;&#xFF0C;&#x5728; iOS 6 &#x7CFB;&#x7EDF;&#x628A; dispatch queue &#x4E5F;&#x7EB3;&#x5165;&#x4E86; ARC &#x7BA1;&#x7406;&#x7684;&#x8303;&#x56F4;&#xFF0C;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x8FDB;&#x884C;&#x624B;&#x52A8;&#x7BA1;&#x7406;&#x4E86;&#x3002;&#x4F7F;&#x7528;&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x4F1A;&#x5BFC;&#x81F4;&#x62A5;&#x9519;&#x3002;</p>
+<p> iOS6 &#x4E0A;&#x8FD9;&#x4E2A;&#x6539;&#x53D8;&#xFF0C;&#x628A; dispatch queue &#x4ECE;&#x539F;&#x6765;&#x7684;&#x975E; OC &#x5BF9;&#x8C61;&#xFF08;&#x539F;&#x751F; C &#x6307;&#x9488;&#xFF09;&#xFF0C;&#x53D8;&#x6210;&#x4E86; OC &#x5BF9;&#x8C61;&#xFF0C;&#x4E5F;&#x5E26;&#x6765;&#x4E86;&#x4EE3;&#x7801;&#x4E0A;&#x7684;&#x4E00;&#x4E9B;&#x517C;&#x5BB9;&#x6027;&#x95EE;&#x9898;&#x3002;&#x5728; iOS5 &#x4E0A;&#x9700;&#x8981;&#x4F7F;&#x7528; assign &#x6765;&#x4FEE;&#x9970; queue &#x5BF9;&#x8C61;&#xFF1A;</p>
+<pre><code class="lang-objective-c"> @property (nonatomic, assign) dispatch_queue_t queue;
+</code></pre>
+<p> &#x5230; iOS6 &#x4E0A;&#x5C31;&#x9700;&#x8981;&#x4F7F;&#x7528; strong &#x6216;&#x8005; weak &#x6765;&#x4FEE;&#x9970;&#xFF1A;</p>
+<pre><code class="lang-objective-c"> @property (nonatomic, strong) dispatch_queue_t queue;
+</code></pre>
+<p> &#x5F53;&#x51FA;&#x73B0;&#x517C;&#x5BB9;&#x6027;&#x95EE;&#x9898;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9700;&#x8981;&#x6839;&#x636E;&#x60C5;&#x51B5;&#x6765;&#x4FEE;&#x6539;&#x4EE3;&#x7801;&#x6216;&#x8005;&#x6539;&#x53D8; target &#x7684; iOS &#x7248;&#x672C;&#x3002;</p>
+<h3 id="&#x6267;&#x884C;&#x4EFB;&#x52A1;">&#x6267;&#x884C;&#x4EFB;&#x52A1;</h3>
+<p> &#x6298;&#x817E;&#x4E86;&#x534A;&#x5929; queue&#xFF0C;&#x73B0;&#x5728;&#x7EC8;&#x4E8E;&#x5230;&#x4E86;&#x8BA9; queue &#x771F;&#x6B63;&#x53BB;&#x6267;&#x884C;&#x4EFB;&#x52A1;&#x7684;&#x9636;&#x6BB5;&#x4E86;&#x3002;&#x7ED9; queue &#x6DFB;&#x52A0;&#x4EFB;&#x52A1;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x540C;&#x6B65;&#x548C;&#x5F02;&#x6B65;&#x3002;&#x540C;&#x6B65;&#x65B9;&#x5F0F;&#x4F1A;&#x963B;&#x585E;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x5F02;&#x6B65;&#x65B9;&#x5F0F;&#x4E0D;&#x4F1A;&#x963B;&#x585E;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#xFF1A;</p>
+<pre><code class="lang-objective-c">dispatch_queue_t myCustomQueue;
+myCustomQueue = dispatch_queue_create(&quot;com.example.MyCustomQueue&quot;, NULL);
+
+// &#x5F02;&#x6B65;&#x6DFB;&#x52A0;
+dispatch_async(myCustomQueue, ^{
+    printf(&quot;&#x505A;&#x4E00;&#x4E9B;&#x5DE5;&#x4F5C;\n&quot;);
+});
+
+printf(&quot;&#x7B2C;&#x4E00;&#x4E2A; block &#x53EF;&#x80FD;&#x8FD8;&#x6CA1;&#x6709;&#x6267;&#x884C;\n&quot;);
+
+// &#x540C;&#x6B65;&#x6DFB;&#x52A0;
+dispatch_sync(myCustomQueue, ^{
+    printf(&quot;&#x505A;&#x53E6;&#x5916;&#x4E00;&#x4E9B;&#x5DE5;&#x4F5C;\n&quot;);
+});
+printf(&quot;&#x4E24;&#x4E2A; block &#x90FD;&#x5DF2;&#x7ECF;&#x6267;&#x884C;&#x5B8C;&#x6BD5;\n&quot;);
+</code></pre>
+<h4 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h4>
+<ul>
+<li><a href="http://www.raywenderlich.com/19788/how-to-use-nsoperations-and-nsoperationqueues" target="_blank">http://www.raywenderlich.com/19788/how-to-use-nsoperations-and-nsoperationqueues</a></li>
+<li><a href="http://www.humancode.us/2014/08/14/target-queues.html" target="_blank">http://www.humancode.us/2014/08/14/target-queues.html</a></li>
+</ul>
 
                     
                     </section>
