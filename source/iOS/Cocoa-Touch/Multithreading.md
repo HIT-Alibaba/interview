@@ -52,4 +52,94 @@ GCD 这么受大家欢迎，它具体好用在哪里呢？GCD 主要的功劳在
 3. Main Dispatch Queue（主队列）
     主队列是一个全局可见的**串行**队列，其中的任务会在主线程中执行。主队列通过与应用程序的 runloop 交互，把任务安插到 runloop 当中执行。因为主队列比较特殊，其中的任务确定会在主线程中执行，通常主队列会被用作同步的作用。
     
+ ### 获取队列
     
+按照上面提到的三种队列，我们有对应的三种获取队列的方式：
+
+1. 串行队列
+    系统默认并不提供串行队列，需要我们手动创建：
+    
+    ```objective-c
+    dispatch_queue_t queue;
+    queue = dispatch_queue_create("com.example.MyQueue", NULL); // OS X 10.7 和 iOS 4.3 之前
+    queue = dispatch_queue_create("com.example.MyQueue",  DISPATCH_QUEUE_SERIAL); // 之后
+    ```
+    
+2. 并行队列
+    系统默认提供了四个全局可用的并行队列，其优先级不同，分别为 DISPATCH_QUEUE_PRIORITY_HIGH，DISPATCH_QUEUE_PRIORITY_DEFAULT， DISPATCH_QUEUE_PRIORITY_LOW， DISPATCH_QUEUE_PRIORITY_BACKGROUND ，优先级依次降低。优先级越高的队列中的任务会更早执行：
+    
+    ```objective-c
+    dispatch_queue_t aQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    ```
+    
+    当然我们也可以创建自己的并行队列：
+    
+    ```objective-c
+    queue = dispatch_queue_create("com.example.MyQueue", DISPATCH_QUEUE_CONCURRENT);
+    ```
+    
+    不过一般情况下我们使用系统提供的 Default 优先级的 queue 就足够了。
+     
+3. 主队列
+    主队列可以通过 `dispatch_get_main_queue()` 获取：
+
+    ```objective-c
+     dispatch_async(dispatch_get_main_queue(), ^{
+            // Update the UI
+            [imageVIew setImage:image];
+        });
+    ```
+
+ #### 自己创建的队列与系统队列有什么不同？
+
+事实上，我们自己创建的队列，最终会把任务分配到系统提供的主队列和四个全局的串行队列上，这种操作叫做 Target queues。具体来说，我们创建的串行队列的 target queue 就是系统的主队列，我们创建的并行队列的 target queue 默认是系统 default 优先级的全局串行队列。所有放在我们创建的队列中的任务，最终都会到 target queue 中完成真正的执行。
+
+那岂不是自己创建队列就没有什么意义了？其实不是的。通过我们自己创建的队列，以及 dispatch_set_target_queue 和 barrier 等操作，可以实现比较复杂的任务之间的同步，可以参考[这里](http://blog.csdn.net/growinggiant/article/details/41077221) 和 [这里](http://www.humancode.us/2014/08/14/target-queues.html)。
+
+通常情况下，对于串行队列，我们应该自己创建，对于并行队列，就直接使用系统提供的 Default 优先级的 queue。
+ 
+ #### 创建的 Queue 需要释放吗？
+ 
+ 在 iOS6 之前，使用 `dispatch_queue_create` 创建的 queue 需要使用 `dispatch_retain` 和 `dispatch_release` 进行管理，在 iOS 6 系统把 dispatch queue 也纳入了 ARC 管理的范围，就不需要我们进行手动管理了。使用这两个函数会导致报错。
+ 
+ iOS6 上这个改变，把 dispatch queue 从原来的非 OC 对象（原生 C 指针），变成了 OC 对象，也带来了代码上的一些兼容性问题。在 iOS5 上需要使用 assign 来修饰 queue 对象：
+ 
+ ```objective-c
+ @property (nonatomic, assign) dispatch_queue_t queue;
+ ```
+ 
+ 到 iOS6 上就需要使用 strong 或者 weak 来修饰：
+ 
+ ```objective-c
+ @property (nonatomic, strong) dispatch_queue_t queue;
+ ```
+ 
+ 当出现兼容性问题的时候，需要根据情况来修改代码或者改变 target 的 iOS 版本。
+ 
+ ### 执行任务
+ 
+ 折腾了半天 queue，现在终于到了让 queue 真正去执行任务的阶段了。给 queue 添加任务有两种方式，同步和异步。同步方式会阻塞当前线程的执行，异步方式不会阻塞当前线程的执行：
+ 
+ ```objective-c
+dispatch_queue_t myCustomQueue;
+myCustomQueue = dispatch_queue_create("com.example.MyCustomQueue", NULL);
+ 
+// 异步添加
+dispatch_async(myCustomQueue, ^{
+    printf("做一些工作\n");
+});
+ 
+printf("第一个 block 可能还没有执行\n");
+
+// 同步添加
+dispatch_sync(myCustomQueue, ^{
+    printf("做另外一些工作\n");
+});
+printf("两个 block 都已经执行完毕\n");
+
+ ```
+ 
+ #### 参考资料
+ 
+ * http://www.raywenderlich.com/19788/how-to-use-nsoperations-and-nsoperationqueues
+ * http://www.humancode.us/2014/08/14/target-queues.html
