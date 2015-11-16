@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="2.2.6" data-chapter-title="网络编程" data-filepath="iOS/Cocoa-Touch/Network.md" data-basepath="../.." data-revision="Mon Nov 16 2015 10:02:16 GMT+0800 (CST)">
+    <div class="book" data-level="2.2.6" data-chapter-title="网络编程" data-filepath="iOS/Cocoa-Touch/Network.md" data-basepath="../.." data-revision="Mon Nov 16 2015 17:39:09 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -1123,9 +1123,14 @@
 </code></pre>
 <p>&#x8FD9;&#x4E2A;&#x5F02;&#x6B65;&#x8BF7;&#x6C42;&#x662F;&#x975E;&#x963B;&#x585E;&#x7684;&#xFF0C;&#x5F02;&#x6B65;&#x6267;&#x884C;&#x540E;&#x628A;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x4E0E;&#x7ED3;&#x679C;&#x901A;&#x8FC7; delegate &#x51FD;&#x6570;&#x56DE;&#x8C03;&#x56DE;&#x6765;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; cancel &#x4E2D;&#x9014;&#x53D6;&#x6D88;&#x3002;</p>
 <h3 id="&#x5C06;&#x8BF7;&#x6C42;&#x653E;&#x5230;&#x540E;&#x53F0;&#x7EBF;&#x7A0B;">&#x5C06;&#x8BF7;&#x6C42;&#x653E;&#x5230;&#x540E;&#x53F0;&#x7EBF;&#x7A0B;</h3>
-<p>&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684; NSURLConnection &#x7684;&#x5F02;&#x6B65;&#x65B9;&#x6CD5;&#x5B9E;&#x9645;&#x4E0A;&#x8FD8;&#x662F;&#x8DD1;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x5F53;&#x4E2D;&#xFF0C;&#x5C3D;&#x7BA1;&#x5728;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#x8FC7;&#x7A0B;&#x4E2D;&#x4E0D;&#x4F1A;&#x5BF9;&#x4E3B;&#x7EBF;&#x7A0B;&#x9020;&#x6210;&#x963B;&#x585E;&#xFF0C;&#x4F46;&#x662F; delegate &#x7684;&#x56DE;&#x8C03;&#x65B9;&#x6CD5;&#x8FD8;&#x662F;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#x884C;&#x7684;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5728;&#x56DE;&#x8C03;&#x65B9;&#x6CD5;&#x4E2D;&#xFF08;&#x7279;&#x522B;&#x662F; completion &#x56DE;&#x8C03;&#xFF09;&#x4E2D;&#x8FDB;&#x884C;&#x4E86;&#x5927;&#x91CF;&#x7684;&#x8017;&#x65F6;&#x64CD;&#x4F5C;&#xFF0C;&#x4ECD;&#x7136;&#x4F1A;&#x9020;&#x6210;&#x4E3B;&#x7EBF;&#x7A0B;&#x7684;&#x963B;&#x585E;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BA9;&#x6574;&#x4E2A; NSURLConnection &#x90FD;&#x5728;&#x540E;&#x53F0;&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#x884C;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x9020;&#x6210;&#x4E3B;&#x7EBF;&#x7A0B;&#x7684;&#x963B;&#x585E;&#x3002;</p>
+<p>&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684; NSURLConnection &#x7684;&#x5F02;&#x6B65;&#x65B9;&#x6CD5;&#x5B9E;&#x9645;&#x4E0A;&#x8FD8;&#x662F;&#x8DD1;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x5F53;&#x4E2D;&#xFF0C;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#x884C;&#x7F51;&#x7EDC;&#x64CD;&#x4F5C;&#x4F1A;&#x5E26;&#x6765;&#x4E24;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;</p>
+<ol>
+<li>&#x5C3D;&#x7BA1;&#x5728;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#x8FC7;&#x7A0B;&#x4E2D;&#x4E0D;&#x4F1A;&#x5BF9;&#x4E3B;&#x7EBF;&#x7A0B;&#x9020;&#x6210;&#x963B;&#x585E;&#xFF0C;&#x4F46;&#x662F; delegate &#x7684;&#x56DE;&#x8C03;&#x65B9;&#x6CD5;&#x8FD8;&#x662F;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#x884C;&#x7684;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5728;&#x56DE;&#x8C03;&#x65B9;&#x6CD5;&#x4E2D;&#xFF08;&#x7279;&#x522B;&#x662F; completion &#x56DE;&#x8C03;&#xFF09;&#x4E2D;&#x8FDB;&#x884C;&#x4E86;&#x5927;&#x91CF;&#x7684;&#x8017;&#x65F6;&#x64CD;&#x4F5C;&#xFF0C;&#x4ECD;&#x7136;&#x4F1A;&#x9020;&#x6210;&#x4E3B;&#x7EBF;&#x7A0B;&#x7684;&#x963B;&#x585E;&#x3002;</li>
+<li>NSURLConnection &#x9ED8;&#x8BA4;&#x4F1A;&#x8DD1;&#x5728;&#x5F53;&#x524D;&#x7684; runloop &#x4E2D;&#xFF0C;&#x5E76;&#x4E14;&#x8DD1;&#x5728; Default Mode&#xFF0C;&#x5F53;&#x7528;&#x6237;&#x6267;&#x884C;&#x6EDA;&#x52A8;&#x7684; UI &#x64CD;&#x4F5C;&#x65F6;&#x4F1A;&#x53D1;&#x751F; runloop mode &#x7684;&#x5207;&#x6362;&#xFF0C;&#x4E5F;&#x5C31;&#x5BFC;&#x81F4;&#x4E86; NSURLConnection &#x4E0D;&#x80FD;&#x53CA;&#x65F6;&#x6267;&#x884C;&#x548C;&#x5B8C;&#x6210;&#x56DE;&#x8C03;&#x3002;</li>
+</ol>
+<p>&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BA9;&#x6574;&#x4E2A; NSURLConnection &#x90FD;&#x5728;&#x540E;&#x53F0;&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#x884C;&#x3002;</p>
 <h4 id="&#x600E;&#x4E48;&#x505A;&#xFF1F;">&#x600E;&#x4E48;&#x505A;&#xFF1F;</h4>
-<p>&#x7B80;&#x5355;&#x5730;&#x628A;<code>start</code>&#x51FD;&#x6570;&#x653E;&#x5230;&#x540E;&#x53F0;&#x662F;&#x4E0D;&#x884C;&#x7684;&#x3002;&#x50CF;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#xFF1A;</p>
+<p>&#x7B80;&#x5355;&#x5730;&#x628A;<code>start</code>&#x51FD;&#x6570;&#x653E;&#x5230;&#x540E;&#x53F0;&#x7684; queue &#x4E2D;&#x662F;&#x4E0D;&#x884C;&#x7684;&#xFF0C;&#x50CF;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#xFF1A;</p>
 <pre><code class="lang-objective-c">dispatch_async(connectionQueue, ^{
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         [request setURL:[NSURL URLWithString:[NSString stringWithFormat:someURL]]];
@@ -1143,13 +1148,15 @@
         [[NSRunLoop currentRunLoop] run];
 });
 </code></pre>
-<p>&#x8FD9;&#x6837;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x624D;&#x80FD;&#x591F;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x6837;&#x53C8;&#x5E26;&#x6765;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x8FD9;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E2D; runloop &#x4F1A;&#x4E00;&#x76F4;&#x8DD1;&#x7740;&#xFF0C;&#x5BFC;&#x81F4;&#x8FD9;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E5F;&#x4E00;&#x76F4;&#x4E0D;&#x7ED3;&#x675F;&#xFF0C;&#x4E3A;&#x4E86;&#x8BA9;&#x7EBF;&#x7A0B;&#x5728;&#x5B8C;&#x6210;&#x4EFB;&#x52A1;&#x65F6;&#x6B63;&#x786E;&#x7ED3;&#x675F;&#x6389;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x505A;&#xFF1A;</p>
+<p>&#x8FD9;&#x6837;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x624D;&#x80FD;&#x591F;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x6837;&#x53C8;&#x5E26;&#x6765;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x8FD9;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E2D; runloop &#x4F1A;&#x4E00;&#x76F4;&#x8DD1;&#x7740;&#xFF0C;&#x5BFC;&#x81F4;&#x8FD9;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E5F;&#x4E00;&#x76F4;&#x4E0D;&#x7ED3;&#x675F;&#xFF0C;&#x4E3A;&#x4E86;&#x8BA9;&#x6240;&#x5728;&#x7EBF;&#x7A0B;&#x5728;&#x5B8C;&#x6210;&#x4EFB;&#x52A1;&#x65F6;&#x6B63;&#x786E;&#x91CA;&#x653E;&#x6389;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x505A;&#xFF1A;</p>
 <pre><code class="lang-objective-c">dispatch_async(connectionQueue, ^{
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         [request setURL:[NSURL URLWithString:[NSString stringWithFormat:someURL]]];
 
         NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+        while(!self.finished) {
+            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+        }
     });
 </code></pre>
 <p>&#x7136;&#x540E;&#x5728; finish &#x56DE;&#x8C03;&#x4E2D;&#x6267;&#x884C;&#xFF1A; </p>
@@ -1157,7 +1164,7 @@
     self.finish = YES;
 }
 </code></pre>
-<p>&#x8FD9;&#x6837;&#x7684;&#x5B9E;&#x73B0;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x6709;&#x4E9B; dirty &#x7684;&#xFF0C;&#x56E0;&#x4E3A; &#x5F00;&#x51FA;&#x7684;&#x7EBF;&#x7A0B;&#x4E0D;&#x53D7;&#x6211;&#x4EEC;&#x7684;&#x63A7;&#x5236;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x6CA1;&#x529E;&#x6CD5;&#x5B9E;&#x73B0;&#x4EFB;&#x52A1;&#x7684;&#x6682;&#x505C;&#xFF0C;&#x7EC8;&#x6B62;&#x7B49;&#x64CD;&#x4F5C;&#x3002;&#x7EFC;&#x5408;&#x4E0A;&#x9762;&#x7684;&#x8BA8;&#x8BBA;&#xFF0C;&#x770B;&#x8D77;&#x6765; GCD &#x5E76;&#x4E0D;&#x9002;&#x5408;&#x548C; NSURLConnection &#x4E00;&#x8D77;&#x5DE5;&#x4F5C;&#x3002;</p>
+<p>&#x8FD9;&#x6837;&#x7684;&#x5B9E;&#x73B0;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x6709;&#x4E9B; dirty &#x7684;&#xFF0C;&#x5F15;&#x5165;&#x4E86;&#x4E00;&#x4E2A;&#x6B7B;&#x5FAA;&#x73AF;&#x6765;&#x5224;&#x65AD;&#x662F;&#x5426;&#x5E94;&#x8BE5;&#x7EC8;&#x6B62; loop&#x3002;&#x770B;&#x8D77;&#x6765; GCD &#x5E76;&#x4E0D;&#x9002;&#x5408;&#x548C; NSURLConnection &#x4E00;&#x8D77;&#x5DE5;&#x4F5C;&#x3002;</p>
 <p>&#x9664;&#x4E86; GCD &#x4E4B;&#x5916;&#x5C31;&#x6CA1;&#x6709;&#x522B;&#x7684;&#x529E;&#x6CD5;&#x4E86;&#x5417;&#xFF1F;&#x5E78;&#x597D;&#xFF0C;&#x82F9;&#x679C;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x4E0B;&#x9762;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#xFF1A;</p>
 <h5 id="scheduleinrunloopformode">scheduleInRunLoop:forMode:</h5>
 <p>&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x6307;&#x5B9A; NSURLConnection &#x8DD1;&#x5728;&#x67D0;&#x4E2A; runloop&#xFF1A;</p>
@@ -1170,20 +1177,7 @@
 </code></pre>
 <p>&#x8FD9;&#x6837;&#xFF0C;&#x6211;&#x4EEC;&#x628A;&#x5B83;&#x52A0;&#x5230;&#x4EFB;&#x610F;&#x7684;&#x6709; Runloop &#x7684;&#x7EBF;&#x7A0B;&#x4E2D;&#xFF08;&#x5176;&#x5B9E; Cocoa &#x7684;&#x7EBF;&#x7A0B;&#x90FD;&#x662F;&#x81EA;&#x5E26; runloop &#x7684;&#xFF0C;&#x4E0D;&#x8FC7;&#x6CA1;&#x6709;&#x6253;&#x5F00;&#xFF09;&#x90FD;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#x4E86;&#xFF0C;&#x52A0;&#x5230; NSOperationQueue &#x4E2D;&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x7684;&#x3002;</p>
 <p>&#x77E5;&#x540D;&#x7684;&#x5F00;&#x6E90;&#x7F51;&#x7EDC;&#x5E93; AFNetworking &#x5C31;&#x662F;&#x8FD9;&#x4E48;&#x505A;&#x7684;&#xFF0C;&#x4EE3;&#x7801;&#x53C2;&#x8003;<a href="https://github.com/AFNetworking/AFNetworking/blob/master/AFNetworking/AFURLConnectionOperation.m#L157" target="_blank">&#x8FD9;&#x91CC;</a>&#x3002;</p>
-<p>&#x6CE8;&#x610F;&#x4E00;&#x70B9;&#xFF0C;&#x8FD9;&#x6837;&#x505A;&#x7684;&#x8BDD;&#xFF0C; NSURLConnection &#x4EFB;&#x52A1;&#x6240;&#x5728;&#x7684;&#x7EBF;&#x7A0B;&#x662F;&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x9000;&#x51FA;&#x7684;&#xFF0C;&#x4E3A;&#x4E86;&#x8BA9;&#x5B83;&#x6B63;&#x786E;&#x9000;&#x51FA;&#xFF0C;&#x540E;&#x9762;&#x4F1A;&#x63D0;&#x5230;&#x5177;&#x4F53;&#x7684;&#x505A;&#x6CD5;&#x3002;</p>
-<h5 id="setdelegatequeue">setDelegateQueue:</h5>
-<p>&#x66F4;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x76F4;&#x63A5;&#x4F7F;&#x7528; NSOperationQueue &#x6765;&#x7BA1;&#x7406;&#x6211;&#x4EEC;&#x7684; Connection&#xFF1A;</p>
-<pre><code class="lang-objective-c">NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:aURLRequest
-                                                              delegate:self
-                                                      startImmediately:NO];
-[connection setDelegateQueue:[[NSOperationQueue alloc] init]];
-[connection start];
-</code></pre>
-<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x4E0D;&#x9700;&#x8981;&#x592A;&#x591A;&#x81EA;&#x5B9A;&#x4E49;&#x529F;&#x80FD;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E5F;&#x5B8C;&#x5168;&#x591F;&#x7528;&#x4E86;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x914D;&#x7F6E; runloop&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x62C5;&#x5FC3;&#x7EBF;&#x7A0B;&#x4E0D;&#x4F1A;&#x6B63;&#x5E38;&#x9000;&#x51FA;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x4E13;&#x6CE8;&#x4E8E;&#x4E1A;&#x52A1;&#x4EE3;&#x7801;&#x7684;&#x7F16;&#x5199;&#x3002;</p>
-<p>&#x6CE8;&#x610F;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x53EA;&#x80FD;&#x53D6;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#xFF0C;&#x5982;&#x679C;&#x540C;&#x65F6;&#x7528;&#x4E86;&#x4E24;&#x4E2A;&#x4F1A;&#x62A5;&#x9519;&#x3002;</p>
-<h4 id="&#x4F18;&#x96C5;&#x5730;&#x9000;&#x51FA;">&#x4F18;&#x96C5;&#x5730;&#x9000;&#x51FA;</h4>
-<p>&#x5728;&#x4E0A;&#x9762;&#x7684;&#x5185;&#x5BB9;&#x4E2D;&#x6211;&#x4EEC;&#x63A2;&#x8BA8;&#x4E86;&#x5982;&#x4F55;&#x8BA9; NSURLConnection &#x4FDD;&#x6301;&#x8FD0;&#x884C;&#x800C;&#x4E0D;&#x63D0;&#x524D;&#x9000;&#x51FA;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x89E3;&#x51B3;&#x4E00;&#x4E0B;&#x5982;&#x4F55;&#x8BA9; NSURLConnection &#x6240;&#x5728;&#x7684;&#x7EBF;&#x7A0B;&#x6B63;&#x786E;&#x7684;&#x9000;&#x51FA;&#x3002;</p>
-<p>&#x5F53;&#x6211;&#x4EEC;&#x4F7F;&#x7528; <code>scheduleInRunLoop:forMode:</code> &#x65F6;&#xFF0C;&#x6240;&#x5728;&#x7684;&#x7EBF;&#x7A0B;&#x4F1A;&#x4E00;&#x76F4;&#x6267;&#x884C;&#xFF0C;&#x60F3;&#x8BA9;&#x5B83;&#x9000;&#x51FA;&#x7684;&#x8BDD;&#xFF0C;&#x6700;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x5728;&#x56DE;&#x8C03;&#x4E2D;&#x628A; Runloop &#x53D6;&#x6D88;&#x6389;&#xFF1A;</p>
+<p>&#x6CE8;&#x610F;&#x4E00;&#x70B9;&#xFF0C;&#x8FD9;&#x6837;&#x505A;&#x7684;&#x8BDD;&#xFF0C; NSURLConnection &#x4EFB;&#x52A1;&#x6240;&#x5728;&#x7684;&#x7EBF;&#x7A0B;&#x662F;&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x9000;&#x51FA;&#x7684;&#xFF0C;&#x4E3A;&#x4E86;&#x8BA9;&#x5B83;&#x6B63;&#x786E;&#x9000;&#x51FA;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x8BF7;&#x6C42;&#x5B8C;&#x6210;&#x65F6;&#x7ED3;&#x675F;&#x6389; runloop&#xFF1A;</p>
 <pre><code class="lang-objective-c">- (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     CFRunLoopStop(CFRunLoopGetCurrent());
@@ -1194,38 +1188,16 @@
     CFRunLoopStop(CFRunLoopGetCurrent());
 }
 </code></pre>
-<h2 id="&#x4E0B;&#x9762;&#x7684;&#x5185;&#x5BB9;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x8BF7;&#x4E0D;&#x8981;&#x518D;&#x5F80;&#x4E0B;&#x770B;&#x4E86;&#xFF01;&#xFF01;&#xFF01;&#xFF01;">&#x4E0B;&#x9762;&#x7684;&#x5185;&#x5BB9;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x8BF7;&#x4E0D;&#x8981;&#x518D;&#x5F80;&#x4E0B;&#x770B;&#x4E86;&#xFF01;&#xFF01;&#xFF01;&#xFF01;</h2>
-<p>&#x4E0D;&#x8FC7;&#x8FD9;&#x6837;&#x4F7F;&#x7528; CF &#x7CFB;&#x51FD;&#x6570;&#x7684;&#x4EE3;&#x7801;&#x591A;&#x5C11;&#x663E;&#x5F97;&#x6709;&#x4E9B;&#x9ED1;&#x79D1;&#x6280;&#x3002;&#x4F7F;&#x7528; NSOperationQueue &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6709;&#x66F4;&#x52A0;&#x6F02;&#x4EAE;&#x7684;&#x505A;&#x6CD5;&#x3002;</p>
-<p>&#x6211;&#x4EEC;&#x77E5;&#x9053; NSOperationQueue &#x901A;&#x8FC7;&#x76D1;&#x6D4B; <code>isExecuting</code>, <code>isCancelled</code> &#x548C; <code>isFinished</code> &#x6765;&#x63A7;&#x5236; NSOperation &#x7684;&#x6267;&#x884C;&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x76D1;&#x6D4B;&#x884C;&#x4E3A;&#x662F;&#x901A;&#x8FC7; KVO &#x6765;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x624B;&#x52A8;&#x8C03;&#x7528; KVO &#x6765;&#x901A;&#x77E5; NSOperationQueue&#xFF0C;&#x544A;&#x8BC9;&#x5B83;&#x201C;&#x6211;&#x4EEC;&#x7684;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x4E86;&#xFF0C;&#x53EF;&#x4EE5;&#x8BA9;&#x4EFB;&#x52A1;&#x9000;&#x51FA;&#x4E86;&#x201D;&#xFF1A;</p>
-<pre><code class="lang-objective-c">- (void)finish
-{
-    NSLog(@&quot;operation for <%@> finished. &quot;
-          @&quot;status code: %d, error: %@, data size: %u&quot;,
-          _url, _statusCode, _error, [_data length]);
-
-    [self willChangeValueForKey:@&quot;isExecuting&quot;];
-    [self willChangeValueForKey:@&quot;isFinished&quot;];
-
-    _isExecuting = NO;
-    _isFinished = YES;
-
-    [self didChangeValueForKey:@&quot;isExecuting&quot;];
-    [self didChangeValueForKey:@&quot;isFinished&quot;];
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    [self finish];
-}
-
-- (void)connection:(NSURLConnection *)connection
-  didFailWithError:(NSError *)error
-{
-    _error = [error copy];
-    [self finish];
-}
-</%@></code></pre>
-<p>&#x82F9;&#x679C;&#x5B98;&#x65B9;&#x6587;&#x6863;&#x4E2D;&#x4E5F;&#x662F;&#x4F7F;&#x7528;&#x4E86;&#x7C7B;&#x4F3C;&#x7684;&#x529E;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ConcurrencyProgrammingGuide/OperationObjects/OperationObjects.html#//apple_ref/doc/uid/TP40008091-CH101-SW1" target="_blank">&#x8FD9;&#x91CC;</a>&#x3002;</p>
+<h5 id="setdelegatequeue">setDelegateQueue:</h5>
+<p>&#x66F4;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x76F4;&#x63A5;&#x4F7F;&#x7528; NSOperationQueue &#x6765;&#x7BA1;&#x7406;&#x6211;&#x4EEC;&#x7684; Connection&#xFF1A;</p>
+<pre><code class="lang-objective-c">NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:aURLRequest
+                                                              delegate:self
+                                                      startImmediately:NO];
+[connection setDelegateQueue:[[NSOperationQueue alloc] init]];
+[connection start];
+</code></pre>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x4E0D;&#x9700;&#x8981;&#x592A;&#x591A;&#x81EA;&#x5B9A;&#x4E49;&#x529F;&#x80FD;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E5F;&#x5B8C;&#x5168;&#x591F;&#x7528;&#x4E86;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x914D;&#x7F6E; runloop&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x62C5;&#x5FC3;&#x7EBF;&#x7A0B;&#x4E0D;&#x4F1A;&#x6B63;&#x5E38;&#x9000;&#x51FA;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x4E13;&#x6CE8;&#x4E8E;&#x4E1A;&#x52A1;&#x4EE3;&#x7801;&#x7684;&#x7F16;&#x5199;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x53EA;&#x80FD;&#x53D6;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#xFF0C;&#x5982;&#x679C;&#x540C;&#x65F6;&#x7528;&#x4E86;&#x4E24;&#x4E2A;&#x4F1A;&#x62A5;&#x9519;&#x3002;</p>
 <h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
 <ul>
 <li><a href="http://blog.csdn.net/kesalin/article/details/8798039" target="_blank">[&#x6DF1;&#x5165;&#x6D45;&#x51FA;Cocoa]iOS&#x7F51;&#x7EDC;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;</a></li>
