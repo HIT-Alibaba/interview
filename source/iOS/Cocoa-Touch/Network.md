@@ -54,11 +54,16 @@ CoreFoundation 中提供了一个类 NSURLConnection ，用于处理用户的网
 
 ### 将请求放到后台线程
 
-上面提到的 NSURLConnection 的异步方法实际上还是跑在主线程当中，尽管在网络连接过程中不会对主线程造成阻塞，但是 delegate 的回调方法还是在主线程中执行的。如果我们在回调方法中（特别是 completion 回调）中进行了大量的耗时操作，仍然会造成主线程的阻塞。我们可以让整个 NSURLConnection 都在后台线程中执行，这样就可以避免造成主线程的阻塞。
+上面提到的 NSURLConnection 的异步方法实际上还是跑在主线程当中，在主线程中执行网络操作会带来两个问题：
+
+1. 尽管在网络连接过程中不会对主线程造成阻塞，但是 delegate 的回调方法还是在主线程中执行的。如果我们在回调方法中（特别是 completion 回调）中进行了大量的耗时操作，仍然会造成主线程的阻塞。
+2. NSURLConnection 默认会跑在当前的 runloop 中，并且跑在 Default Mode，当用户执行滚动的 UI 操作时会发生 runloop mode 的切换，也就导致了 NSURLConnection 不能及时执行和完成回调。
+
+为了解决这些问题，我们可以让整个 NSURLConnection 都在后台线程中执行。
 
 #### 怎么做？
 
-简单地把`start`函数放到后台是不行的。像下面这样：
+简单地把`start`函数放到后台的 queue 中是不行的，像下面这样：
 
 
 ```objective-c
@@ -83,7 +88,7 @@ dispatch_async(connectionQueue, ^{
 });
 ```
 
-这样回调函数才能够被调用，但是这样又带来一个问题，这个线程中 runloop 会一直跑着，导致这个线程也一直不结束，为了让线程在完成任务时正确结束掉，我们可以这样做：
+这样回调函数才能够被调用，但是这样又带来一个问题，这个线程中 runloop 会一直跑着，导致这个线程也一直不结束，为了让所在线程在完成任务时正确释放掉，我们可以这样做：
 
 ```objective-c
 dispatch_async(connectionQueue, ^{
@@ -91,7 +96,9 @@ dispatch_async(connectionQueue, ^{
         [request setURL:[NSURL URLWithString:[NSString stringWithFormat:someURL]]];
 
         NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+        while(!self.finished) {
+            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+        }
     }); 
 ```
 
@@ -104,7 +111,7 @@ dispatch_async(connectionQueue, ^{
 }
 ```
 
-这样的实现实际上是有些 dirty 的，因为 开出的线程不受我们的控制，因此我们没办法实现任务的暂停，终止等操作。综合上面的讨论，看起来 GCD 并不适合和 NSURLConnection 一起工作。
+这样的实现实际上是有些 dirty 的，引入了一个死循环来判断是否应该终止 loop。看起来 GCD 并不适合和 NSURLConnection 一起工作。
 
 除了 GCD 之外就没有别的办法了吗？幸好，苹果还提供了下面两种方法：
 
@@ -125,7 +132,19 @@ NSRunLoop* runLoop = [NSRunLoop currentRunLoop];
 
 知名的开源网络库 AFNetworking 就是这么做的，代码参考[这里](https://github.com/AFNetworking/AFNetworking/blob/master/AFNetworking/AFURLConnectionOperation.m#L157)。
 
-注意一点，这样做的话， NSURLConnection 任务所在的线程是永远不会退出的，为了让它正确退出，后面会提到具体的做法。
+注意一点，这样做的话， NSURLConnection 任务所在的线程是永远不会退出的，为了让它正确退出，可以在请求完成时结束掉 runloop：
+
+```objective-c
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    CFRunLoopStop(CFRunLoopGetCurrent());
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    CFRunLoopStop(CFRunLoopGetCurrent());
+}
+```
 
 ##### setDelegateQueue:
 
@@ -141,64 +160,8 @@ NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:aURLReque
 
 如果我们不需要太多自定义功能，这个函数也完全够用了，不需要配置 runloop，不需要担心线程不会正常退出的问题，可以让我们专注于业务代码的编写。
 
-
 注意上面提到的这两个函数只能取其中一个，如果同时用了两个会报错。
 
-#### 优雅地退出
-
-在上面的内容中我们探讨了如何让 NSURLConnection 保持运行而不提前退出，现在我们解决一下如何让 NSURLConnection 所在的线程正确的退出。
-
-当我们使用 `scheduleInRunLoop:forMode:` 时，所在的线程会一直执行，想让它退出的话，最简单的方法是在回调中把 Runloop 取消掉：
-
-```objective-c
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    CFRunLoopStop(CFRunLoopGetCurrent());
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-{
-    CFRunLoopStop(CFRunLoopGetCurrent());
-}
-```
-
-## 下面的内容有问题，请不要再往下看了！！！！
-
-不过这样使用 CF 系函数的代码多少显得有些黑科技。使用 NSOperationQueue 我们可以有更加漂亮的做法。
-
-我们知道 NSOperationQueue 通过监测 `isExecuting`, `isCancelled` 和 `isFinished` 来控制 NSOperation 的执行，具体的监测行为是通过 KVO 来实现的，因此我们可以手动调用 KVO 来通知 NSOperationQueue，告诉它“我们的任务执行完毕了，可以让任务退出了”：
-
-```objective-c
-- (void)finish
-{
-    NSLog(@"operation for <%@> finished. "
-          @"status code: %d, error: %@, data size: %u",
-          _url, _statusCode, _error, [_data length]);
-
-    [self willChangeValueForKey:@"isExecuting"];
-    [self willChangeValueForKey:@"isFinished"];
-
-    _isExecuting = NO;
-    _isFinished = YES;
-
-    [self didChangeValueForKey:@"isExecuting"];
-    [self didChangeValueForKey:@"isFinished"];
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    [self finish];
-}
-
-- (void)connection:(NSURLConnection *)connection
-  didFailWithError:(NSError *)error
-{
-    _error = [error copy];
-    [self finish];
-}
-```
-
-苹果官方文档中也是使用了类似的办法，可以参考[这里](https://developer.apple.com/library/ios/documentation/General/Conceptual/ConcurrencyProgrammingGuide/OperationObjects/OperationObjects.html#//apple_ref/doc/uid/TP40008091-CH101-SW1)。
 
 ### 参考资料
 
