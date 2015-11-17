@@ -114,7 +114,7 @@ GCD 这么受大家欢迎，它具体好用在哪里呢？GCD 主要的功劳在
  @property (nonatomic, strong) dispatch_queue_t queue;
  ```
  
- 当出现兼容性问题的时候，需要根据情况来修改代码或者改变 target 的 iOS 版本。
+ 当出现兼容性问题的时候，需要根据情况来修改代码，或者改变所 target 的 iOS 版本。
  
  ### 执行任务
  
@@ -123,7 +123,7 @@ GCD 这么受大家欢迎，它具体好用在哪里呢？GCD 主要的功劳在
  ```objective-c
 dispatch_queue_t myCustomQueue;
 myCustomQueue = dispatch_queue_create("com.example.MyCustomQueue", NULL);
- 
+
 // 异步添加
 dispatch_async(myCustomQueue, ^{
     printf("做一些工作\n");
@@ -165,7 +165,183 @@ printf("两个 block 都已经执行完毕\n");
 
 ## NSOperation 和 NSOperationQueue
 
+虽然标题这么写，但是实际上 NSOperation 和 NSOperationQueue 并不一定要一起使用。NSOperation 本身是可以单独使用的，不过单独使用的话并不能体现出 NSOperation 的强大之处（从下面的部分你就能看出单独用 NSOperation 真的是做不了什么事情），通常还是使用 NSOperationQueue 来执行 NSOperation。
+
+NSOperation 是一个抽象类，我们需要继承它并且实现我们的子类。
+
+### 并发和非并发
+
+首先看一下不使用 OperationQueue 的情况。
+
+默认情况下 NSOperation 是非并发的，当我们像下面这样定义一个 operation:
+
+```objective-c
+@implementation MyOperation
+
+-(void)main {
+    NSLog(@"MyOperation Main Function");
+}
+
+@end
+```
+
+然后启动它： 
+
+```objective-c
+#import "MyOperation.h"
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+        MyOperation *op = [[MyOperation alloc] init];
+        [op start];
+        NSLog(@"Main Function");
+    }
+    return 0;
+}
+```
+
+可以看到运行结果是：
+
+    MyOperation Main Function
+    Main Function
+    
+即整个 Operation 就是在当前的线程中以阻塞的形式执行的，当 operation 的 main 函数执行完毕之后，程序的控制权返回到主的 main 函数中。这样看来 operation 跟普通的一个函数调用就没有什么区别了。
+ 
+对于并发的 Operation，要实现还是有点麻烦的，我们需要重载 start，isAsynchronous，isExecuting，isFinished 四个函数，同时还最好在 start 和 main 的实现中支持 cancel 操作。为什么要这么麻烦呢？因为对于一个并发的 Operation，调用者知道它什么时候开始，却不能知道它什么时候结束。在 NSOperation 的体系下，是通过 KVO 监测 isExecuting 和 isFinished 这几个变量，来监测 Operation 的完成状态的。出于兼容性的考虑（参考[这里](https://stackoverflow.com/questions/3573236/why-does-nsoperation-disable-automatic-key-value-observing)，我们还必须手动触发 KVO 通知。下面是一个示例：
+
+```objective-c
+#import "MyOperation.h"
+
+@interface MyOperation()
+
+@property (atomic, assign) BOOL _executing;
+@property (atomic, assign) BOOL _finished;
+@end
+
+@implementation MyOperation
+
+- (void)start;
+{
+    if ([self isCancelled])
+    {
+        // Move the operation to the finished state if it is canceled.
+        [self willChangeValueForKey:@"isFinished"];
+        self._finished = YES;
+        [self didChangeValueForKey:@"isFinished"];
+        return;
+    }
+    
+    // If the operation is not canceled, begin executing the task.
+    [self willChangeValueForKey:@"isExecuting"];
+    [NSThread detachNewThreadSelector:@selector(main) toTarget:self withObject:nil];
+    self._executing = YES;
+    [self didChangeValueForKey:@"isExecuting"];
+    
+}
+
+- (void)main;
+{
+    if ([self isCancelled]) {
+        return;
+    }
+    sleep(10);
+    NSLog(@"MyOperation Main Function");
+    [self completeOperation];
+}
+
+- (BOOL)isAsynchronous;
+{
+    return YES;
+}
+
+- (BOOL)isExecuting {
+    return self._executing;
+}
+
+- (BOOL)isFinished {
+    return self._finished;
+}
+
+- (void)completeOperation {
+    [self willChangeValueForKey:@"isFinished"];
+    [self willChangeValueForKey:@"isExecuting"];
+    
+    self._executing = NO;
+    self._finished = YES;
+    
+    [self didChangeValueForKey:@"isExecuting"];
+    [self didChangeValueForKey:@"isFinished"];
+}
+@end
+```
+
+可以看到所谓的“并发”，跟上面的非并发并没有什么本质的不同，完全在于我们的 start 函数是如何实现的。这里我们的 start 函数中把任务直接扔给了另外的线程，也就不会阻塞当前线程了。
+
+废了这么大劲，我们如何执行这个 Operation 呢？如果再像上面一样使用 `[op start]` 直接执行的话，你会发现还没等到 Operation 返回我们的整个程序就已经结束掉了。因为我们的主程序并不会等到 operatoin 返回。想要等到 operation 返回，我们还需要手动地去监视 operation 的变量，然后等待它返回。。。
+
+看到这里你就明白为什么单独使用 NSOperation 发挥不了太大的作用了，因为 NSOperation 本身确实是没有做什么工作，大部分东西还是要我们自己来控制。
+
+这时候就需要 NSOperationQueue 登场了。
+
+### 在 NSOperationQueue 中运行
+
+NSOperationQueue 是一个专门用于执行 NSOperation 的队列。在 OS X 10.6 之后，把一个 NSOperation 放到 NSOperationQueue 中，queue 会忽略 isAsynchronous 变量，总是会把 operation 放到后台线程中执行。这样不管 operation 是不是异步的，queue 的执行都是不会造成主线程的阻塞的。使用 Queue 可以很方便地进行并发操作，并且帮我们完成大部分的监视 operation 是否完成的操作。接着用上面的 MyOperation 做例子，使用 NSOperationQueue 之后，我们就可以这样写：
+
+```objective-c
+MyOperation *op = [[MyOperation alloc] init];
+NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+
+[queue addOperation:op];    // add 完 operation 就立即启动了
+[queue waitUntilAllOperationsAreFinished]; // 阻塞当前线程，直到所有的 operation 全都完成
+NSLog(@"Main Function");
+```
+
+像这样，我们可以添加各个各样的 operation 到 queue 中，只要这些 operation 都正确地重载了 isExecuting 和 isFinished，就可以正确地被并发执行。
+
+除此之外，NSOperationQueue 还有几个很强大的特性。
+
+#### Dependency
+
+NSOperation 可以通过 addDependency 来依赖于其他的 operation 完成，如果有很多复杂的 operation，我们可以形成它们之间的依赖关系图，来实现复杂的同步操作：
+
+```objective-c
+[updateUIOperation addDependency: workerOperation];
+```
+
+#### Cancellation
+
+当 NSOperation 支持了 cancel 操作时，NSOperationQueue 可以使用 cancelAllOperatoins 来对所有的 operation 执行 cancel 操作。不过 cancel 的效果还是取决于 NSOperation 中代码是怎么写的。
+
+#### maxConcurrentOperationCount
+
+默认的最大并发 operation 数量是由系统当前的运行情况决定的([来源](https://stackoverflow.com/questions/14995801/default-value-of-maxconcurrentoperationcount-for-nsoperationqueue))，我们也可以强制指定一个固定的并发数量。
+
+#### Queue 的优先级
+
+NSOperation 可以使用 queuePriority 属性设置优先级，具体的优先级有下面几种：
+
+```objective-c
+typedef enum : NSInteger {
+   NSOperationQueuePriorityVeryLow = -8,
+   NSOperationQueuePriorityLow = -4,
+   NSOperationQueuePriorityNormal = 0,
+   NSOperationQueuePriorityHigh = 4,
+   NSOperationQueuePriorityVeryHigh = 8
+} NSOperationQueuePriority;
+```
+
+在 Queue 中优先级较高的会先执行。
+
+## GCD 与 NSOperation 的对比
+
+这是面试中经常会问到的一点，这两个都很常用，也都很强大。对比它们可以从下面几个角度来说：
+
+* 首先要明确一点，NSOperationQueue 是基于 GCD 的更高层的封装，从 OS X 10.10 开始可以通过设置 `underlyingQueue` 来把 operation 放到已有的 dispatch queue 中。
+* 从易用性角度，GCD 由于采用 C 风格的 API，在调用上比使用面向对象风格的 NSOperation 要简单一些。
+* 从对任务的控制性来说，NSOperation 显著得好于 GCD，和 GCD 相比支持了 Cancel 操作，支持任务之间的依赖关系，支持同一个队列中任务的优先级设置，同时还可以通过 KVO 来监控任务的执行情况。这些通过 GCD 也可以实现，不过需要很多代码，使用 NSOperation 显得方便了很多。
+
  #### 参考资料
  
  * http://www.raywenderlich.com/19788/how-to-use-nsoperations-and-nsoperationqueues
  * http://www.humancode.us/2014/08/14/target-queues.html
+ * http://www.dribin.org/dave/blog/archives/2009/05/05/concurrent_operations/
