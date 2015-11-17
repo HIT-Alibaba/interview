@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="2.2.6" data-chapter-title="网络编程" data-filepath="iOS/Cocoa-Touch/Network.md" data-basepath="../.." data-revision="Mon Nov 16 2015 17:41:46 GMT+0800 (CST)">
+    <div class="book" data-level="2.2.6" data-chapter-title="网络编程" data-filepath="iOS/Cocoa-Touch/Network.md" data-basepath="../.." data-revision="Tue Nov 17 2015 18:36:14 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -692,6 +692,21 @@
             
         </li>
     
+        <li class="chapter " data-level="2.1.5" data-path="iOS/ObjC-Basic/Runloop.html">
+            
+                
+                    <a href="../../iOS/ObjC-Basic/Runloop.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.5.</b>
+                        
+                        Runloop
+                    </a>
+            
+            
+        </li>
+    
 
             </ul>
             
@@ -782,7 +797,7 @@
                         
                             <b>2.2.5.</b>
                         
-                        Core Animation
+                        动画
                     </a>
             
             
@@ -818,14 +833,29 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.8" data-path="iOS/Cocoa-Touch/Design.html">
+        <li class="chapter " data-level="2.2.8" data-path="iOS/Cocoa-Touch/File-System.html">
+            
+                
+                    <a href="../../iOS/Cocoa-Touch/File-System.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.8.</b>
+                        
+                        文件系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.9" data-path="iOS/Cocoa-Touch/Design.html">
             
                 
                     <a href="../../iOS/Cocoa-Touch/Design.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>2.2.8.</b>
+                            <b>2.2.9.</b>
                         
                         设计模式
                     </a>
@@ -1089,15 +1119,15 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h2 id="ios-&#x7F51;&#x7EDC;&#x7F16;&#x7A0B;">iOS &#x7F51;&#x7EDC;&#x7F16;&#x7A0B;</h2>
-<h3 id="cocoa-&#x7F51;&#x7EDC;&#x7F16;&#x7A0B;">Cocoa &#x7F51;&#x7EDC;&#x7F16;&#x7A0B;</h3>
+                        <h1 id="cocoa-&#x7F51;&#x7EDC;&#x7F16;&#x7A0B;">Cocoa &#x7F51;&#x7EDC;&#x7F16;&#x7A0B;</h1>
 <p>Cocoa &#x4E2D;&#x7F51;&#x7EDC;&#x7F16;&#x7A0B;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#x5206;&#x4E3A;&#x4E09;&#x5C42;&#xFF0C;&#x81EA;&#x4E0A;&#x800C;&#x4E0B;&#x5206;&#x522B;&#x662F;&#xFF1A;</p>
 <ul>
 <li>Cocoa &#x5C42;&#xFF1A;NSURL&#xFF0C;Bonjour&#xFF0C;Game Kit&#xFF0C;WebKit</li>
 <li>Core Foundation &#x5C42;&#xFF1A;&#x57FA;&#x4E8E; C &#x7684; CFNetwork &#x548C; CFNetServices</li>
 <li>OS &#x5C42;:&#x57FA;&#x4E8E; C &#x7684; BSD socket</li>
 </ul>
-<p>&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;&#x5904;&#x4E8E; Cocoa &#x5C42;&#x7684;&#x57FA;&#x4E8E; NSURL &#x7684;&#x4E00;&#x7CFB;&#x5217;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;&#x5904;&#x4E8E; Cocoa &#x5C42;&#x7684;&#x57FA;&#x4E8E; NSURL &#x7684;&#x4E00;&#x7CFB;&#x5217;&#x65B9;&#x6CD5;&#x3002;&#x5728; iOS7 &#x4E4B;&#x524D;&#xFF0C;&#x4E3B;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x7F51;&#x7EDC;&#x7F16;&#x7A0B; API &#x662F; NSURLConnection &#x4E00;&#x65CF;&#x7684;&#x7C7B;&#xFF0C;&#x5728; iOS7 &#x4E4B;&#x540E;&#x82F9;&#x679C;&#x5F15;&#x5165;&#x4E86; NSURLSession &#x65CF;&#x7684;&#x7C7B;&#xFF0C;&#x7528;&#x4E8E;&#x66FF;&#x4EE3; NSURLConnection&#x3002;</p>
+<h2 id="nsurlconnection">NSURLConnection</h2>
 <p>CoreFoundation &#x4E2D;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x7C7B; NSURLConnection &#xFF0C;&#x7528;&#x4E8E;&#x5904;&#x7406;&#x7528;&#x6237;&#x7684;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#xFF0C;NSURLConnection &#x57FA;&#x672C;&#x53EF;&#x4EE5;&#x6EE1;&#x8DB3;&#x6211;&#x4EEC;&#x5927;&#x591A;&#x6570;&#x7684;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x64CD;&#x4F5C;&#x3002;</p>
 <h4 id="&#x540C;&#x6B65;&#x8BF7;&#x6C42;&#xFF0C;&#x4F7F;&#x7528;-sendasynchronousrequest-&#x65B9;&#x6CD5;">&#x540C;&#x6B65;&#x8BF7;&#x6C42;&#xFF0C;&#x4F7F;&#x7528; sendAsynchronousRequest &#x65B9;&#x6CD5;</h4>
 <pre><code class="lang-objective-c">+ (NSData *)sendSynchronousRequest:(NSURLRequest *)request
@@ -1220,7 +1250,7 @@
         </div>
 
         
-        <a href="../../iOS/Cocoa-Touch/Animation.html" class="navigation navigation-prev " aria-label="Previous page: Core Animation"><i class="fa fa-angle-left"></i></a>
+        <a href="../../iOS/Cocoa-Touch/Animation.html" class="navigation navigation-prev " aria-label="Previous page: 动画"><i class="fa fa-angle-left"></i></a>
         
         
         <a href="../../iOS/Cocoa-Touch/Multithreading.html" class="navigation navigation-next " aria-label="Next page: 并发编程"><i class="fa fa-angle-right"></i></a>
