@@ -53,6 +53,7 @@
         * [并发编程](iOS/Cocoa-Touch/Multithreading.md)
         * [文件系统](iOS/Cocoa-Touch/File-System.md)
         * [设计模式](iOS/Cocoa-Touch/Design.md)
+        * [性能](iOS/Cocoa-Touch/Performance.md)
     * [面试问题](iOS/Questions.md)
     * [更多资料](iOS/More.md)
 
