@@ -108,7 +108,7 @@ GCD 这么受大家欢迎，它具体好用在哪里呢？GCD 主要的功劳在
  @property (nonatomic, assign) dispatch_queue_t queue;
  ```
  
- 到 iOS6 上就需要使用 strong 或者 weak 来修饰：
+ 到 iOS6 以上就需要使用 strong 或者 weak 来修饰，不然会报错：
  
  ```objective-c
  @property (nonatomic, strong) dispatch_queue_t queue;
@@ -161,6 +161,12 @@ printf("两个 block 都已经执行完毕\n");
     死锁的原因是，dispatch_sync 会做两个工作，一个是阻塞掉当前线程，另一个是把任务添加到 queue 中，等待任务执行完毕。像上面这样，主线程被阻塞掉了，任务不能被执行，然后导致 dispatch_sync 永远不能等待到任务执行完毕，就不能释放主线程的阻塞，于是就产生了死锁。
     
 * 如果在任务 block 中创建了大量对象，可以考虑在 block 中添加 autorelease pool。尽管每个 queue 自身都会有 autorelease pool 来管理内存，但是 pool 进行 drain 的具体时间是没办法确定的。如果应用对于内存占用比较敏感，可以自己创建 autorelease pool 来进行内存管理。
+
+#### 关于线程安全
+
+* Dispatch Queue 本身是线程安全的，换句话说，你可以从系统的任何一个线程给 queue 添加任务，不需要考虑加锁和同步问题
+* 避免在任务中使用锁，如果使用锁的话可能会阻碍 queue 中其他 task 的运行
+* 不建议获取 dispatch_queue 底层所使用的 thread 的有关信息，也不建议在 queue 中再使用 pthread 系函数
 
 
 ## NSOperation 和 NSOperationQueue
@@ -275,11 +281,11 @@ int main(int argc, const char * argv[]) {
 @end
 ```
 
-可以看到所谓的“并发”，跟上面的非并发并没有什么本质的不同，完全在于我们的 start 函数是如何实现的。这里我们的 start 函数中把任务直接扔给了另外的线程，也就不会阻塞当前线程了。
+可以看到所谓的“并发”，跟上面的非并发并没有什么本质的不同，完全取决于我们的 start 函数是如何实现的。这里我们的 start 函数中把任务直接扔给了另外的线程，也就不会阻塞当前线程了。
 
 废了这么大劲，我们如何执行这个 Operation 呢？如果再像上面一样使用 `[op start]` 直接执行的话，你会发现还没等到 Operation 返回我们的整个程序就已经结束掉了。因为我们的主程序并不会等到 operatoin 返回。想要等到 operation 返回，我们还需要手动地去监视 operation 的变量，然后等待它返回。。。
 
-看到这里你就明白为什么单独使用 NSOperation 发挥不了太大的作用了，因为 NSOperation 本身确实是没有做什么工作，大部分东西还是要我们自己来控制。
+看到这里你就明白为什么单独使用 NSOperation 发挥不了太大的作用了，因为 NSOperation 本身确实是没有做什么工作，大部分东西还是要靠我们自己来控制。
 
 这时候就需要 NSOperationQueue 登场了。
 
