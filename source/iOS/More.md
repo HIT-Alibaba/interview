@@ -16,6 +16,7 @@
 
 #### 常用的库总结：
 
+* http://github.ibireme.com/github/list/ios/
 * https://github.com/Tim9Liu9/TimLiu-iOS
 * https://github.com/vsouza/awesome-ios
 * https://github.com/cjwirth/awesome-ios-ui
