@@ -12,7 +12,7 @@ Cocoa 中网络编程层次结构分为三层，自上而下分别是：
 
 ## NSURLConnection
 
-CoreFoundation 中提供了一个类 NSURLConnection ，用于处理用户的网络请求，NSURLConnection 基本可以满足我们大多数的网络请求操作。
+CoreFoundation 中提供了一个类 NSURLConnection ，用于处理用户的网络请求，NSURLConnection 基本可以满足我们大多数的网络请求操作。NSURLConnection 本身并不能单独使用，需要与一族网络通信有关的类进行协同工作。
 
 #### 同步请求，使用 sendAsynchronousRequest 方法
 
@@ -163,6 +163,7 @@ NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:aURLReque
 
 注意上面提到的这两个函数只能取其中一个，如果同时用了两个会报错。
 
+## NSURLSession
 
 ### 参考资料
 
