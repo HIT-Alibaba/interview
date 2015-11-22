@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="2.2.6" data-chapter-title="网络编程" data-filepath="iOS/Cocoa-Touch/Network.md" data-basepath="../.." data-revision="Fri Nov 20 2015 18:43:14 GMT+0800 (CST)">
+    <div class="book" data-level="2.2.6" data-chapter-title="网络编程" data-filepath="iOS/Cocoa-Touch/Network.md" data-basepath="../.." data-revision="Sun Nov 22 2015 21:32:30 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -1143,7 +1143,7 @@
 </ul>
 <p>&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;&#x5904;&#x4E8E; Cocoa &#x5C42;&#x7684;&#x57FA;&#x4E8E; NSURL &#x7684;&#x4E00;&#x7CFB;&#x5217;&#x65B9;&#x6CD5;&#x3002;&#x5728; iOS7 &#x4E4B;&#x524D;&#xFF0C;&#x4E3B;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x7F51;&#x7EDC;&#x7F16;&#x7A0B; API &#x662F; NSURLConnection &#x4E00;&#x65CF;&#x7684;&#x7C7B;&#xFF0C;&#x5728; iOS7 &#x4E4B;&#x540E;&#x82F9;&#x679C;&#x5F15;&#x5165;&#x4E86; NSURLSession &#x65CF;&#x7684;&#x7C7B;&#xFF0C;&#x7528;&#x4E8E;&#x66FF;&#x4EE3; NSURLConnection&#x3002;</p>
 <h2 id="nsurlconnection">NSURLConnection</h2>
-<p>CoreFoundation &#x4E2D;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x7C7B; NSURLConnection &#xFF0C;&#x7528;&#x4E8E;&#x5904;&#x7406;&#x7528;&#x6237;&#x7684;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#xFF0C;NSURLConnection &#x57FA;&#x672C;&#x53EF;&#x4EE5;&#x6EE1;&#x8DB3;&#x6211;&#x4EEC;&#x5927;&#x591A;&#x6570;&#x7684;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>CoreFoundation &#x4E2D;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x7C7B; NSURLConnection &#xFF0C;&#x7528;&#x4E8E;&#x5904;&#x7406;&#x7528;&#x6237;&#x7684;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#xFF0C;NSURLConnection &#x57FA;&#x672C;&#x53EF;&#x4EE5;&#x6EE1;&#x8DB3;&#x6211;&#x4EEC;&#x5927;&#x591A;&#x6570;&#x7684;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x64CD;&#x4F5C;&#x3002;NSURLConnection &#x672C;&#x8EAB;&#x5E76;&#x4E0D;&#x80FD;&#x5355;&#x72EC;&#x4F7F;&#x7528;&#xFF0C;&#x9700;&#x8981;&#x4E0E;&#x4E00;&#x65CF;&#x7F51;&#x7EDC;&#x901A;&#x4FE1;&#x6709;&#x5173;&#x7684;&#x7C7B;&#x8FDB;&#x884C;&#x534F;&#x540C;&#x5DE5;&#x4F5C;&#x3002;</p>
 <h4 id="&#x540C;&#x6B65;&#x8BF7;&#x6C42;&#xFF0C;&#x4F7F;&#x7528;-sendasynchronousrequest-&#x65B9;&#x6CD5;">&#x540C;&#x6B65;&#x8BF7;&#x6C42;&#xFF0C;&#x4F7F;&#x7528; sendAsynchronousRequest &#x65B9;&#x6CD5;</h4>
 <pre><code class="lang-objective-c">+ (NSData *)sendSynchronousRequest:(NSURLRequest *)request
                  returningResponse:(NSURLResponse **)response
@@ -1243,6 +1243,7 @@
 </code></pre>
 <p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x4E0D;&#x9700;&#x8981;&#x592A;&#x591A;&#x81EA;&#x5B9A;&#x4E49;&#x529F;&#x80FD;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E5F;&#x5B8C;&#x5168;&#x591F;&#x7528;&#x4E86;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x914D;&#x7F6E; runloop&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x62C5;&#x5FC3;&#x7EBF;&#x7A0B;&#x4E0D;&#x4F1A;&#x6B63;&#x5E38;&#x9000;&#x51FA;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x4E13;&#x6CE8;&#x4E8E;&#x4E1A;&#x52A1;&#x4EE3;&#x7801;&#x7684;&#x7F16;&#x5199;&#x3002;</p>
 <p>&#x6CE8;&#x610F;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x53EA;&#x80FD;&#x53D6;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#xFF0C;&#x5982;&#x679C;&#x540C;&#x65F6;&#x7528;&#x4E86;&#x4E24;&#x4E2A;&#x4F1A;&#x62A5;&#x9519;&#x3002;</p>
+<h2 id="nsurlsession">NSURLSession</h2>
 <h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
 <ul>
 <li><a href="http://blog.csdn.net/kesalin/article/details/8798039" target="_blank">[&#x6DF1;&#x5165;&#x6D45;&#x51FA;Cocoa]iOS&#x7F51;&#x7EDC;&#x7F16;&#x7A0B;&#x7CFB;&#x5217;</a></li>
