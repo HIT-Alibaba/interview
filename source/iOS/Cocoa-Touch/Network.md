@@ -12,7 +12,9 @@ Cocoa 中网络编程层次结构分为三层，自上而下分别是：
 
 ## NSURLConnection
 
-CoreFoundation 中提供了一个类 NSURLConnection ，用于处理用户的网络请求，NSURLConnection 基本可以满足我们大多数的网络请求操作。NSURLConnection 本身并不能单独使用，需要与一族网络通信有关的类进行协同工作。
+CoreFoundation 中提供了一个类 NSURLConnection ，用于处理用户的网络请求，NSURLConnection 基本可以满足我们大多数的网络请求操作。NSURLConnection 本身并不能单独使用，需要与一族网络通信有关的类进行协同工作，包括 NSURLRequest, NSURLResponse，NSURLCache 等等。
+
+### 基本的请求操作
 
 #### 同步请求，使用 sendAsynchronousRequest 方法
 
@@ -42,7 +44,7 @@ CoreFoundation 中提供了一个类 NSURLConnection ，用于处理用户的网
 - (id)initWithRequest:(NSURLRequest *)request delegate:(id)delegate;
 ```
 
-然后根据需要在delegate类里面实现下列代理函数，获取异步请求的返回的数据与结果
+然后根据需要在 delegate 类(NSURLConnectionDataDelegate协议)里面实现下列代理函数，获取异步请求的返回的数据与结果
 
 ```objective-c
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
@@ -147,6 +149,8 @@ NSRunLoop* runLoop = [NSRunLoop currentRunLoop];
 }
 ```
 
+AFNetworking 中负责响应回调的线程，就是通过 Runloop 来保持永不退出的，一直在后台负责响应回调。
+
 ##### setDelegateQueue:
 
 更简单的方法是直接使用这个函数，直接使用 NSOperationQueue 来管理我们的 Connection：
@@ -163,8 +167,11 @@ NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:aURLReque
 
 注意上面提到的这两个函数只能取其中一个，如果同时用了两个会报错。
 
+
 ## NSURLSession
 
+ http://objccn.io/issue-5-4/
+ 
 ### 参考资料
 
 * [[深入浅出Cocoa]iOS网络编程系列](http://blog.csdn.net/kesalin/article/details/8798039)
