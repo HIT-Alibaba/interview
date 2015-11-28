@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="2.1.5" data-chapter-title="Runloop" data-filepath="iOS/ObjC-Basic/Runloop.md" data-basepath="../.." data-revision="Wed Nov 25 2015 09:50:40 GMT+0800 (CST)">
+    <div class="book" data-level="2.1.5" data-chapter-title="Runloop" data-filepath="iOS/ObjC-Basic/Runloop.md" data-basepath="../.." data-revision="Sat Nov 28 2015 17:15:22 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -1134,7 +1134,46 @@
                 
                     <section class="normal" id="section-">
                     
-                        
+                        <h1 id="runloop">Runloop</h1>
+<p>Runloop &#x662F;&#x548C;&#x7EBF;&#x7A0B;&#x7D27;&#x5BC6;&#x76F8;&#x5173;&#x7684;&#x4E00;&#x4E2A;&#x57FA;&#x7840;&#x7EC4;&#x4EF6;&#xFF0C;&#x662F;&#x5F88;&#x591A;&#x7EBF;&#x7A0B;&#x6709;&#x5173;&#x529F;&#x80FD;&#x7684;&#x5E55;&#x540E;&#x529F;&#x81E3;&#x3002;&#x5C3D;&#x7BA1;&#x5728;&#x5E73;&#x5E38;&#x4F7F;&#x7528;&#x4E2D;&#x51E0;&#x4E4E;&#x4E0D;&#x592A;&#x4F1A;&#x76F4;&#x63A5;&#x7528;&#x5230;&#xFF0C;&#x7406;&#x89E3; Runloop &#x6709;&#x5229;&#x4E8E;&#x6211;&#x4EEC;&#x66F4;&#x52A0;&#x6DF1;&#x5165;&#x5730;&#x7406;&#x89E3; iOS &#x7684;&#x591A;&#x7EBF;&#x7A0B;&#x6A21;&#x578B;&#x3002;</p>
+<h2 id="runloop-&#x57FA;&#x672C;&#x6982;&#x5FF5;">Runloop &#x57FA;&#x672C;&#x6982;&#x5FF5;</h2>
+<p>Runloop &#x662F;&#x4EC0;&#x4E48;&#xFF1F;Runloop &#x8FD8;&#x662F;&#x6BD4;&#x8F83;&#x987E;&#x540D;&#x601D;&#x4E49;&#x7684;&#x4E00;&#x4E2A;&#x4E1C;&#x897F;&#xFF0C;&#x8BF4;&#x767D;&#x4E86;&#x5C31;&#x662F;&#x4E00;&#x79CD;&#x5FAA;&#x73AF;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x5B83;&#x8FD9;&#x79CD;&#x5FAA;&#x73AF;&#x6BD4;&#x8F83;&#x9AD8;&#x7EA7;&#x3002;&#x4E00;&#x822C;&#x7684; while &#x5FAA;&#x73AF;&#x4F1A;&#x5BFC;&#x81F4; CPU &#x8FDB;&#x5165;&#x5FD9;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#xFF0C;&#x800C; Runloop &#x5219;&#x662F;&#x4E00;&#x79CD;&#x201C;&#x95F2;&#x201D;&#x7B49;&#x5F85;&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x53EF;&#x4EE5;&#x7C7B;&#x6BD4; Linux &#x4E0B;&#x7684; epoll&#x3002;&#x5F53;&#x6CA1;&#x6709;&#x4E8B;&#x4EF6;&#x65F6;&#xFF0C;Runloop &#x4F1A;&#x8FDB;&#x5165;&#x4F11;&#x7720;&#x72B6;&#x6001;&#xFF0C;&#x6709;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#x65F6;&#xFF0C; Runloop &#x4F1A;&#x53BB;&#x627E;&#x5BF9;&#x5E94;&#x7684; Handler &#x5904;&#x7406;&#x4E8B;&#x4EF6;&#x3002;Runloop &#x53EF;&#x4EE5;&#x8BA9;&#x7EBF;&#x7A0B;&#x5728;&#x9700;&#x8981;&#x505A;&#x4E8B;&#x7684;&#x65F6;&#x5019;&#x5FD9;&#x8D77;&#x6765;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x7684;&#x8BDD;&#x5C31;&#x8BA9;&#x7EBF;&#x7A0B;&#x4F11;&#x7720;&#x3002;</p>
+<p>&#x76D7;&#x4E00;&#x5F20;&#x82F9;&#x679C;&#x5B98;&#x65B9;&#x6587;&#x6863;&#x7684;&#x56FE;&#xFF0C;&#x4E5F;&#x662F;&#x51E0;&#x4E4E;&#x6BCF;&#x4E2A;&#x8BB2; Runloop &#x7684;&#x6587;&#x7AE0;&#x90FD;&#x4F1A;&#x5F15;&#x7528;&#x7684;&#x56FE;&#xFF0C;&#x5927;&#x4F53;&#x8BF4;&#x660E;&#x4E86; Runloop &#x7684;&#x5DE5;&#x4F5C;&#x6A21;&#x5F0F;&#xFF1A;</p>
+<p><img src="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Multithreading/Art/runloop.jpg" alt="Runloop"></p>
+<p>&#x56FE;&#x4E2D;&#x5C55;&#x73B0;&#x4E86; Runloop &#x5728;&#x7EBF;&#x7A0B;&#x4E2D;&#x7684;&#x4F5C;&#x7528;&#xFF1A;&#x4ECE; input source &#x548C; timer source &#x63A5;&#x53D7;&#x4E8B;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x7EBF;&#x7A0B;&#x4E2D;&#x5904;&#x7406;&#x4E8B;&#x4EF6;&#x3002;</p>
+<h3 id="runloop-&#x4E0E;&#x7EBF;&#x7A0B;">Runloop &#x4E0E;&#x7EBF;&#x7A0B;</h3>
+<p>Runloop &#x548C;&#x7EBF;&#x7A0B;&#x662F;&#x7ED1;&#x5B9A;&#x5728;&#x4E00;&#x8D77;&#x7684;&#x3002;&#x6BCF;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF08;&#x5305;&#x62EC;&#x4E3B;&#x7EBF;&#x7A0B;&#xFF09;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x5BF9;&#x5E94;&#x7684; Runloop &#x5BF9;&#x8C61;&#x3002;&#x6211;&#x4EEC;&#x5E76;&#x4E0D;&#x80FD;&#x81EA;&#x5DF1;&#x521B;&#x5EFA; Runloop &#x5BF9;&#x8C61;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x5230;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x7684; Runloop &#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x4E3B;&#x7EBF;&#x7A0B;&#x7684; Runloop &#x4F1A;&#x5728;&#x5E94;&#x7528;&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#x5B8C;&#x6210;&#x542F;&#x52A8;&#xFF0C;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x7684; Runloop &#x9ED8;&#x8BA4;&#x5E76;&#x4E0D;&#x4F1A;&#x542F;&#x52A8;&#xFF0C;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x624B;&#x52A8;&#x542F;&#x52A8;&#x3002;</p>
+<h3 id="input-source-&#x548C;-timer-source">Input Source &#x548C; Timer Source</h3>
+<p>&#x8FD9;&#x4E24;&#x4E2A;&#x90FD;&#x662F; Runloop &#x4E8B;&#x4EF6;&#x7684;&#x6765;&#x6E90;&#xFF0C;&#x5176;&#x4E2D; Input Source &#x53C8;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x4E09;&#x7C7B;</p>
+<ul>
+<li>Port-Based Sources&#xFF0C;&#x7CFB;&#x7EDF;&#x5E95;&#x5C42;&#x7684; Port &#x4E8B;&#x4EF6;&#xFF0C;&#x4F8B;&#x5982;  CFSocketRef &#xFF0C;&#x5728;&#x5E94;&#x7528;&#x5C42;&#x57FA;&#x672C;&#x7528;&#x4E0D;&#x5230;</li>
+<li>Custom Input Sources&#xFF0C;&#x7528;&#x6237;&#x624B;&#x52A8;&#x521B;&#x5EFA;&#x7684; Source</li>
+<li>Cocoa Perform Selector Sources&#xFF0C; Cocoa &#x63D0;&#x4F9B;&#x7684; performSelector &#x7CFB;&#x5217;&#x65B9;&#x6CD5;&#xFF0C;&#x4E5F;&#x662F;&#x4E00;&#x79CD;&#x4E8B;&#x4EF6;&#x6E90;</li>
+</ul>
+<p>Timer Source &#x987E;&#x540D;&#x601D;&#x4E49;&#x5C31;&#x662F;&#x6307;&#x5B9A;&#x65F6;&#x5668;&#x4E8B;&#x4EF6;&#x4E86;&#x3002;</p>
+<h3 id="runloop-observer">Runloop Observer</h3>
+<p>Runloop &#x901A;&#x8FC7;&#x76D1;&#x63A7; Source &#x6765;&#x51B3;&#x5B9A;&#x6709;&#x6CA1;&#x6709;&#x4EFB;&#x52A1;&#x8981;&#x505A;&#xFF0C;&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x7528; Runloop Observer &#x6765;&#x76D1;&#x63A7; Runloop &#x672C;&#x8EAB;&#x7684;&#x72B6;&#x6001;&#x3002; Runloop Observer &#x53EF;&#x4EE5;&#x76D1;&#x63A7;&#x4E0B;&#x9762;&#x7684; runloop &#x4E8B;&#x4EF6;&#xFF1A;</p>
+<ul>
+<li>The entrance to the run loop.</li>
+<li>When the run loop is about to process a timer.</li>
+<li>When the run loop is about to process an input source.</li>
+<li>When the run loop is about to go to sleep.</li>
+<li>When the run loop has woken up, but before it has processed the event that woke it up.</li>
+<li>The exit from the run loop.</li>
+</ul>
+<h3 id="runloop-mode">Runloop Mode</h3>
+<p>&#x5728;&#x76D1;&#x89C6;&#x4E0E;&#x88AB;&#x76D1;&#x89C6;&#x4E2D;&#xFF0C;Runloop &#x8981;&#x5904;&#x7406;&#x7684;&#x4E8B;&#x60C5;&#x8FD8;&#x633A;&#x590D;&#x6742;&#x7684;&#x3002;&#x4E3A;&#x4E86;&#x8BA9; Runloop &#x80FD;&#x4E13;&#x5FC3;&#x5904;&#x7406;&#x81EA;&#x5DF1;&#x5173;&#x5FC3;&#x7684;&#x90A3;&#x90E8;&#x5206;&#x4E8B;&#x60C5;&#xFF0C;&#x5F15;&#x5165;&#x4E86; Runloop Mode &#x6982;&#x5FF5;&#x3002;</p>
+<p><img src="http://cc.cocimg.com/api/uploads/20150528/1432798883604537.png" alt="Runloop Mode"></p>
+<p>&#x5982;&#x56FE;&#x6240;&#x793A;&#xFF0C;Runloop Mode &#x5B9E;&#x9645;&#x4E0A;&#x662F; Source&#xFF0C;Timer &#x548C; Observer &#x7684;&#x96C6;&#x5408;&#xFF0C;&#x4E0D;&#x540C;&#x7684; Mode &#x628A;&#x4E0D;&#x540C;&#x7EC4;&#x7684; Source&#xFF0C;Timer &#x548C; Observer &#x9694;&#x7EDD;&#x5F00;&#x6765;&#x3002;Runloop &#x5728;&#x67D0;&#x4E2A;&#x65F6;&#x523B;&#x53EA;&#x80FD;&#x8DD1;&#x5728;&#x4E00;&#x4E2A; Mode &#x4E0B;&#xFF0C;&#x5904;&#x7406;&#x8FD9;&#x4E00;&#x4E2A; Mode &#x5F53;&#x4E2D;&#x7684; Source&#xFF0C;Timer &#x548C; Observer&#x3002;</p>
+<h4 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h4>
+<ul>
+<li><a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Multithreading/RunLoopManagement/RunLoopManagement.html#//apple_ref/doc/uid/10000057i-CH16-SW1" target="_blank">https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Multithreading/RunLoopManagement/RunLoopManagement.html#//apple_ref/doc/uid/10000057i-CH16-SW1</a></li>
+<li><a href="http://www.cocoachina.com/ios/20150601/11970.html" target="_blank">http://www.cocoachina.com/ios/20150601/11970.html</a></li>
+<li><a href="http://www.cocoachina.com/ios/20111111/3487.html" target="_blank">http://www.cocoachina.com/ios/20111111/3487.html</a></li>
+<li><a href="http://mobile.51cto.com/iphone-386596.htm" target="_blank">http://mobile.51cto.com/iphone-386596.htm</a></li>
+</ul>
+
                     
                     </section>
                 
