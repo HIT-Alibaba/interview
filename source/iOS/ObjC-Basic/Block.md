@@ -128,7 +128,7 @@ NSBlockOperation *op = [[[NSBlockOperation alloc] init] autorelease];
 [someOperationQueue addOperation:op];
 ```
 
-这样上面的 `doSomething` 和 `doMoreThing` 要么全执行成功，要么全失败，不会出现一个成功一个失败，即执行到中间 `self` 变成 nil 的情况。
+`__strong` 这一句在执行的时候，如果 WeakSelf 还没有变成 nil，那么就会 retain self，让 self 在 block 执行期间不会变为 nil。这样上面的 `doSomething` 和 `doMoreThing` 要么全执行成功，要么全失败，不会出现一个成功一个失败，即执行到中间 `self` 变成 nil 的情况。
 
 #### 参考资料
 
