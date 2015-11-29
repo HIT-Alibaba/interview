@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="2.1.2" data-chapter-title="Block 编程" data-filepath="iOS/ObjC-Basic/Block.md" data-basepath="../.." data-revision="Sat Nov 28 2015 20:02:01 GMT+0800 (CST)">
+    <div class="book" data-level="2.1.2" data-chapter-title="Block 编程" data-filepath="iOS/ObjC-Basic/Block.md" data-basepath="../.." data-revision="Sun Nov 29 2015 16:21:19 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -1222,7 +1222,7 @@ NSBlockOperation *op = [[[NSBlockOperation alloc] init] autorelease];
 } ];
 [someOperationQueue addOperation:op];
 </code></pre>
-<p>&#x8FD9;&#x6837;&#x4E0A;&#x9762;&#x7684; <code>doSomething</code> &#x548C; <code>doMoreThing</code> &#x8981;&#x4E48;&#x5168;&#x6267;&#x884C;&#x6210;&#x529F;&#xFF0C;&#x8981;&#x4E48;&#x5168;&#x5931;&#x8D25;&#xFF0C;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x4E00;&#x4E2A;&#x6210;&#x529F;&#x4E00;&#x4E2A;&#x5931;&#x8D25;&#xFF0C;&#x5373;&#x6267;&#x884C;&#x5230;&#x4E2D;&#x95F4; <code>self</code> &#x53D8;&#x6210; nil &#x7684;&#x60C5;&#x51B5;&#x3002;</p>
+<p><code>__strong</code> &#x8FD9;&#x4E00;&#x53E5;&#x5728;&#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5982;&#x679C; WeakSelf &#x8FD8;&#x6CA1;&#x6709;&#x53D8;&#x6210; nil&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A; retain self&#xFF0C;&#x8BA9; self &#x5728; block &#x6267;&#x884C;&#x671F;&#x95F4;&#x4E0D;&#x4F1A;&#x53D8;&#x4E3A; nil&#x3002;&#x8FD9;&#x6837;&#x4E0A;&#x9762;&#x7684; <code>doSomething</code> &#x548C; <code>doMoreThing</code> &#x8981;&#x4E48;&#x5168;&#x6267;&#x884C;&#x6210;&#x529F;&#xFF0C;&#x8981;&#x4E48;&#x5168;&#x5931;&#x8D25;&#xFF0C;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x4E00;&#x4E2A;&#x6210;&#x529F;&#x4E00;&#x4E2A;&#x5931;&#x8D25;&#xFF0C;&#x5373;&#x6267;&#x884C;&#x5230;&#x4E2D;&#x95F4; <code>self</code> &#x53D8;&#x6210; nil &#x7684;&#x60C5;&#x51B5;&#x3002;</p>
 <h4 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h4>
 <ul>
 <li><a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/WorkingwithBlocks/WorkingwithBlocks.html#//apple_ref/doc/uid/TP40011210-CH8-SW16" target="_blank">https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/WorkingwithBlocks/WorkingwithBlocks.html#//apple_ref/doc/uid/TP40011210-CH8-SW16</a></li>
