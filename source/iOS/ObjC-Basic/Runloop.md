@@ -63,6 +63,7 @@ iOS 中公开暴露出来的只有 NSDefaultRunLoopMode 和 NSRunLoopCommonModes
 
 * https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Multithreading/RunLoopManagement/RunLoopManagement.html#//apple_ref/doc/uid/10000057i-CH16-SW1
 * http://chun.tips/blog/2014/10/20/zou-jin-run-loopde-shi-jie-%5B%3F%5D-:shi-yao-shi-run-loop%3F/
+* http://www.hrchen.com/2013/07/tricky-runloop-on-ios/
 * http://www.cocoachina.com/ios/20150601/11970.html
 * http://www.cocoachina.com/ios/20111111/3487.html
 * http://mobile.51cto.com/iphone-386596.htm
