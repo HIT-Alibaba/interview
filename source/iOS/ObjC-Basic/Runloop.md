@@ -49,6 +49,16 @@ Runloop 通过监控 Source 来决定有没有任务要做，除此之外，我�
 
 如图所示，Runloop Mode 实际上是 Source，Timer 和 Observer 的集合，不同的 Mode 把不同组的 Source，Timer 和 Observer 隔绝开来。Runloop 在某个时刻只能跑在一个 Mode 下，处理这一个 Mode 当中的 Source，Timer 和 Observer。
 
+苹果文档中提到的 Mode 有五个，分别是：
+
+* NSDefaultRunLoopMode
+* NSConnectionReplyMode
+* NSModalPanelRunLoopMode
+* NSEventTrackingRunLoopMode
+* NSRunLoopCommonModes
+
+iOS 中公开暴露出来的只有 NSDefaultRunLoopMode 和 NSRunLoopCommonModes。 NSRunLoopCommonModes 实际上是一个 Mode 的集合，默认包括 NSDefaultRunLoopMode 和 NSEventTrackingRunLoopMode。
+
 #### 参考资料
 
 * https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Multithreading/RunLoopManagement/RunLoopManagement.html#//apple_ref/doc/uid/10000057i-CH16-SW1
