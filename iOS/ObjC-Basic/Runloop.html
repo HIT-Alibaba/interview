@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="2.1.5" data-chapter-title="Runloop" data-filepath="iOS/ObjC-Basic/Runloop.md" data-basepath="../.." data-revision="Sun Nov 29 2015 16:21:19 GMT+0800 (CST)">
+    <div class="book" data-level="2.1.5" data-chapter-title="Runloop" data-filepath="iOS/ObjC-Basic/Runloop.md" data-basepath="../.." data-revision="Mon Nov 30 2015 15:02:31 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -1166,6 +1166,15 @@
 <p>&#x5728;&#x76D1;&#x89C6;&#x4E0E;&#x88AB;&#x76D1;&#x89C6;&#x4E2D;&#xFF0C;Runloop &#x8981;&#x5904;&#x7406;&#x7684;&#x4E8B;&#x60C5;&#x8FD8;&#x633A;&#x590D;&#x6742;&#x7684;&#x3002;&#x4E3A;&#x4E86;&#x8BA9; Runloop &#x80FD;&#x4E13;&#x5FC3;&#x5904;&#x7406;&#x81EA;&#x5DF1;&#x5173;&#x5FC3;&#x7684;&#x90A3;&#x90E8;&#x5206;&#x4E8B;&#x60C5;&#xFF0C;&#x5F15;&#x5165;&#x4E86; Runloop Mode &#x6982;&#x5FF5;&#x3002;</p>
 <p><img src="http://cc.cocimg.com/api/uploads/20150528/1432798883604537.png" alt="Runloop Mode"></p>
 <p>&#x5982;&#x56FE;&#x6240;&#x793A;&#xFF0C;Runloop Mode &#x5B9E;&#x9645;&#x4E0A;&#x662F; Source&#xFF0C;Timer &#x548C; Observer &#x7684;&#x96C6;&#x5408;&#xFF0C;&#x4E0D;&#x540C;&#x7684; Mode &#x628A;&#x4E0D;&#x540C;&#x7EC4;&#x7684; Source&#xFF0C;Timer &#x548C; Observer &#x9694;&#x7EDD;&#x5F00;&#x6765;&#x3002;Runloop &#x5728;&#x67D0;&#x4E2A;&#x65F6;&#x523B;&#x53EA;&#x80FD;&#x8DD1;&#x5728;&#x4E00;&#x4E2A; Mode &#x4E0B;&#xFF0C;&#x5904;&#x7406;&#x8FD9;&#x4E00;&#x4E2A; Mode &#x5F53;&#x4E2D;&#x7684; Source&#xFF0C;Timer &#x548C; Observer&#x3002;</p>
+<p>&#x82F9;&#x679C;&#x6587;&#x6863;&#x4E2D;&#x63D0;&#x5230;&#x7684; Mode &#x6709;&#x4E94;&#x4E2A;&#xFF0C;&#x5206;&#x522B;&#x662F;&#xFF1A;</p>
+<ul>
+<li>NSDefaultRunLoopMode</li>
+<li>NSConnectionReplyMode</li>
+<li>NSModalPanelRunLoopMode</li>
+<li>NSEventTrackingRunLoopMode</li>
+<li>NSRunLoopCommonModes</li>
+</ul>
+<p>iOS &#x4E2D;&#x516C;&#x5F00;&#x66B4;&#x9732;&#x51FA;&#x6765;&#x7684;&#x53EA;&#x6709; NSDefaultRunLoopMode &#x548C; NSRunLoopCommonModes&#x3002; NSRunLoopCommonModes &#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x4E00;&#x4E2A; Mode &#x7684;&#x96C6;&#x5408;&#xFF0C;&#x9ED8;&#x8BA4;&#x5305;&#x62EC; NSDefaultRunLoopMode &#x548C; NSEventTrackingRunLoopMode&#x3002;</p>
 <h4 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h4>
 <ul>
 <li><a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Multithreading/RunLoopManagement/RunLoopManagement.html#//apple_ref/doc/uid/10000057i-CH16-SW1" target="_blank">https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Multithreading/RunLoopManagement/RunLoopManagement.html#//apple_ref/doc/uid/10000057i-CH16-SW1</a></li>
