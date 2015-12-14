@@ -13,7 +13,7 @@
 
 * 首先请安装 [Gitbook](https://github.com/GitbookIO/gitbook) 并参考其文档进行编辑
 * 添加或修改内容之后，可以进入`source`目录并执行 `gitbook serve`，然后在浏览器中即时预览结果
-* 随时欢迎 issue 和 PR
+* 随时欢迎 issue 和 PR。只需要更改 master 分支的内容，我会去更新 gh-pages。
  
 ### 贡献者：
 
