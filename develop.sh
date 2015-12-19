@@ -1,3 +1,4 @@
+#!/bin/sh
 cd ..
 mkdir interview-gitbook
 cd interview-gitbook

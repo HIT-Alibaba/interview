@@ -20,4 +20,5 @@
 * [skyline75489](https://github.com/skyline75489)
 * [winlandiano](https://github.com/winlandiano)
 * [dodola](https://github.com/dodola)
+* [AveryLiu](https://github.com/AveryLiu)
 
