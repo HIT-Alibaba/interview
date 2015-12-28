@@ -2,7 +2,7 @@
 
 OC中类的方法只有实例方法和静态方法两种：
 
-```objective-c
+```objectivec
 @interface Controller : NSObject { NSString *something; }
 
 + (void)thisIsAStaticMethod; // 静态方法
@@ -18,7 +18,7 @@ OC 中的方法只要声明在 @interface里，就可以认为都是公有的。
 
 可以使用 Category 来实现私有方法：
 
-```objective-c
+```objectivec
 // AClass.h
 @interface AClass : NSObject
 
@@ -48,7 +48,7 @@ OC 中的方法只要声明在 @interface里，就可以认为都是公有的。
 
 也可以使用 Extension 来实现私有方法：
 
-```objective-c
+```objectivec
 // AClass.h 与上面相同
 
 // AClass.m 
@@ -83,7 +83,7 @@ OC 中的方法只要声明在 @interface里，就可以认为都是公有的。
 
 苹果推荐在现代 Objective-C 中使用 @property 来实现成员变量：
 
-```objective-c
+```objectivec
 @interface AClass : NSObject
 
 @property (nonatomic, copy) NSString *name;
@@ -95,7 +95,7 @@ OC 中的方法只要声明在 @interface里，就可以认为都是公有的。
 
 @property可以看做是一种语法糖，在 MRC 下，使用 @property 可以看成实现了下面的代码：
 
-```objective-c
+```objectivec
 // AClass.h
 @interface AClass : NSObject{
 @public
@@ -139,7 +139,7 @@ OC 中的方法只要声明在 @interface里，就可以认为都是公有的。
 
 @property 背后使用 synthesize 来生成 getter 和 setter，对于现代 OC 来说，编译器默认会进行自动 synthesize，把 ivar 和属性绑定起来：
 
-```objective-c
+```objectivec
 @synthesize propertyName = _propertyName
 ```
 
@@ -161,7 +161,7 @@ OC是单继承的，OC中的类可以实现多个 protocol 来实现类似 C++ �
 
 Protocol 类似 Java 中的 interface，定义了一个方法列表，这个方法列表中的方法可以使用@required @optional 标注，以表示该方法是否是客户类必须要实现的方法。 一个 protocol 可以继承其他的 protocol 。
 
-```objective-c
+```objectivec
 @protocol TestProtocol<NSObject> // NSObject也是一个 Protocol，这里即继承 NSObject 里的方法
 -(void)Print;               
 @end
@@ -180,7 +180,7 @@ Category 是一种很灵活的扩展原有类的机制，使用 Category 不需�
 
 Category 常见的使用方法如下：
 
-```objective-c
+```objectivec
 // SomeClass.h
 @interface SomeClass : NSObject{
 }
@@ -205,7 +205,7 @@ Category 常见的使用方法如下：
 
 在使用 Category 时需要注意的一点是，如果有多个命名 Category 均实现了同一个方法（即出现了命名冲突），那么这些方法在运行时只有一个会被调用，具体哪个会被调用是不确定的。因此在给已有的类（特别是 Cocoa 类）添加 Category 时，推荐的函数命名方法是加上前缀：
 
-```objective-c
+```objectivec
 @interface NSSortDescriptor (XYZAdditions)
 + (id)xyz_sortDescriptorWithKey:(NSString *)key ascending:(BOOL)ascending;
 @end
@@ -222,7 +222,7 @@ Extension 可以认为是一种匿名的 Category， Extension 与 Category 有�
 
 下面是一个 Extension 的例子：
 
-```objective-c
+```objectivec
 @interface MyClass : NSObject  
 - (float)value;  
 @end  
@@ -249,7 +249,7 @@ Extension 很常见的用法，是用来给类添加 **私有** 的变量和方�
 
 XYZPerson.h
 
-```objective-c
+```objectivec
 @interface XYZPerson : NSObject
 ...
 @property (readonly) NSString *uniqueIdentifier;
@@ -259,7 +259,7 @@ XYZPerson.h
 
 XYZPerson.m
 
-```objective-c
+```objectivec
 @interface XYZPerson ()
 @property (readwrite) NSString *uniqueIdentifier;
 @end

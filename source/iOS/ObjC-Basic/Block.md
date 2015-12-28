@@ -4,24 +4,29 @@
 
 Block 可以认为是一种匿名函数，使用如下语法声明一个 Block 类型：
 
-    return_type (^block_name)(parameters)
-
+```objectivec
+return_type (^block_name)(parameters)
+```
 
 例如：
 
-    double (^multiplyTwoValues)(double, double);
+```objectivec
+double (^multiplyTwoValues)(double, double);
+```
 
 Block 字面值的写法如下：
 
-    ^ (double firstValue, double secondValue) {
-        return firstValue * secondValue;
-    }
+```objectivec
+^ (double firstValue, double secondValue) {
+    return firstValue * secondValue;
+}
+```
 
 上面的写法省略了返回值的类型，也可以显式地指出返回值类型。
 
 声明并且定义完一个Block之后，便可以像使用函数一样使用它：
 
-```objective-c
+```objectivec
 double (^multiplyTwoValues)(double, double) =
                           ^(double firstValue, double secondValue) {
                               return firstValue * secondValue;
@@ -39,7 +44,7 @@ NSLog(@"The result is %f", result);
 
 Block 可以来自外部作用域的变量，这是Block一个很强大的特性。
 
-```objective-c
+```objectivec
 - (void)testMethod {
     int anInteger = 42;
     void (^testBlock)(void) = ^{
@@ -52,14 +57,14 @@ Block 可以来自外部作用域的变量，这是Block一个很强大的特性
 
 默认情况下，Block 中捕获的到变量是不能修改的，如果想修改，需要使用`__block`来声明：
 
-```objective-c
+```objectivec
 __block int anInteger = 42;
 ```
 
 对于 id 类型的变量，在 MRC 情况下，使用 `__block id x` 不会 retain 变量，而在 ARC 情况下则会对变量进行 retain（即和其他捕获的变量相同）。如果不想在 block 中进行 retain 可以使用
 `__unsafe_unretained __block id x`，不过这样可能会导致野指针出现。更好的办法是使用 `__weak` 的临时变量：
 
-```objective-c
+```objectivec
 MyViewController *myController = [[MyViewController alloc] init…];
 // ...
 MyViewController * __weak weakMyViewController = myController;
@@ -70,7 +75,7 @@ myController.completionHandler =  ^(NSInteger result) {
 
 或者把使用 `__block` 修饰的变量设为 nil，以打破引用循环：
 
-```objective-c
+```objectivec
 MyViewController * __block myController = [[MyViewController alloc] init…];
 // ...
 myController.completionHandler =  ^(NSInteger result) {
@@ -85,13 +90,13 @@ myController.completionHandler =  ^(NSInteger result) {
 
 block 在捕获外部变量的时候，会保持一个强引用，当在 block 中捕获 `self` 时，由于对象会对 block 进行 `copy`，于是便形成了强引用循环：
 
-```objective-c
+```objectivec
 @interface XYZBlockKeeper : NSObject
 @property (copy) void (^block)(void);
 @end
 ```
 
-```objective-c
+```objectivec
 @implementation XYZBlockKeeper
 - (void)configureBlock {
     self.block = ^{
@@ -105,7 +110,7 @@ block 在捕获外部变量的时候，会保持一个强引用，当在 block �
 
 为了避免强引用循环，最好捕获一个 `self` 的弱引用：
 
-```objective-c
+```objectivec
 - (void)configureBlock {
     XYZBlockKeeper * __weak weakSelf = self;
     self.block = ^{
@@ -117,7 +122,7 @@ block 在捕获外部变量的时候，会保持一个强引用，当在 block �
 
 使用弱引用会带来另一个问题，`weakSelf` 有可能会为 nil，如果多次调用 `weakSelf` 的方法，有可能在 block 执行过程中 `weakSelf` 变为 nil。因此需要在 block 中将 `weakSelf` “强化“
 
-```objective-c
+```objectivec
 __weak __typeof__(self) weakSelf = self;
 NSBlockOperation *op = [[[NSBlockOperation alloc] init] autorelease];
 [ op addExecutionBlock:^ {

@@ -61,7 +61,7 @@ GCD 这么受大家欢迎，它具体好用在哪里呢？GCD 主要的功劳在
 1. 串行队列
     系统默认并不提供串行队列，需要我们手动创建：
     
-    ```objective-c
+    ```objectivec
     dispatch_queue_t queue;
     queue = dispatch_queue_create("com.example.MyQueue", NULL); // OS X 10.7 和 iOS 4.3 之前
     queue = dispatch_queue_create("com.example.MyQueue",  DISPATCH_QUEUE_SERIAL); // 之后
@@ -70,13 +70,13 @@ GCD 这么受大家欢迎，它具体好用在哪里呢？GCD 主要的功劳在
 2. 并行队列
     系统默认提供了四个全局可用的并行队列，其优先级不同，分别为 DISPATCH_QUEUE_PRIORITY_HIGH，DISPATCH_QUEUE_PRIORITY_DEFAULT， DISPATCH_QUEUE_PRIORITY_LOW， DISPATCH_QUEUE_PRIORITY_BACKGROUND ，优先级依次降低。优先级越高的队列中的任务会更早执行：
     
-    ```objective-c
+    ```objectivec```
     dispatch_queue_t aQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     ```
     
     当然我们也可以创建自己的并行队列：
     
-    ```objective-c
+    ```objectivec
     queue = dispatch_queue_create("com.example.MyQueue", DISPATCH_QUEUE_CONCURRENT);
     ```
     
@@ -85,7 +85,7 @@ GCD 这么受大家欢迎，它具体好用在哪里呢？GCD 主要的功劳在
 3. 主队列
     主队列可以通过 `dispatch_get_main_queue()` 获取：
 
-    ```objective-c
+    ```objectivec
      dispatch_async(dispatch_get_main_queue(), ^{
             // Update the UI
             [imageVIew setImage:image];
@@ -106,13 +106,13 @@ GCD 这么受大家欢迎，它具体好用在哪里呢？GCD 主要的功劳在
  
  iOS6 上这个改变，把 dispatch queue 从原来的非 OC 对象（原生 C 指针），变成了 OC 对象，也带来了代码上的一些兼容性问题。在 iOS5 上需要使用 assign 来修饰 queue 对象：
  
- ```objective-c
+ ```objectivec
  @property (nonatomic, assign) dispatch_queue_t queue;
  ```
  
  到 iOS6 以上就需要使用 strong 或者 weak 来修饰，不然会报错：
  
- ```objective-c
+ ```objectivec
  @property (nonatomic, strong) dispatch_queue_t queue;
  ```
  
@@ -122,7 +122,7 @@ GCD 这么受大家欢迎，它具体好用在哪里呢？GCD 主要的功劳在
  
  折腾了半天 queue，现在终于到了让 queue 真正去执行任务的阶段了。给 queue 添加任务有两种方式，同步和异步。同步方式会阻塞当前线程的执行，等待添加的任务执行完毕之后，才继续向下执行。异步方式不会阻塞当前线程的执行。
  
- ```objective-c
+ ```objectivec
 dispatch_queue_t myCustomQueue;
 myCustomQueue = dispatch_queue_create("com.example.MyCustomQueue", NULL);
 
@@ -146,7 +146,7 @@ printf("两个 block 都已经执行完毕\n");
  * 同步和异步添加，与队列是串行队列和并行队列没有关系。可以同步地给并行队列添加任务，也可以异步地给串行队列添加任务。同步和异步添加只影响是不是阻塞当前线程，和任务的串行或并行执行没有关系
  * 不要使用 dispatch_sync 给当前正在运行的 queue 添加任务！这样会导致死锁，像下面这样：
  
-    ```objective-c
+    ```objectivec
     - (void)viewDidLoad
     {
         [super viewDidLoad];
@@ -183,7 +183,7 @@ NSOperation 是一个抽象类，我们需要继承它并且实现我们的子�
 
 默认情况下 NSOperation 是非并发的，当我们像下面这样定义一个 operation:
 
-```objective-c
+```objectivec
 @implementation MyOperation
 
 -(void)main {
@@ -195,7 +195,7 @@ NSOperation 是一个抽象类，我们需要继承它并且实现我们的子�
 
 然后启动它： 
 
-```objective-c
+```objectivec
 #import "MyOperation.h"
 
 int main(int argc, const char * argv[]) {
@@ -217,7 +217,7 @@ int main(int argc, const char * argv[]) {
  
 对于并发的 Operation，要实现还是有点麻烦的，我们需要重载 start，isAsynchronous，isExecuting，isFinished 四个函数，同时还最好在 start 和 main 的实现中支持 cancel 操作。为什么要这么麻烦呢？因为对于一个并发的 Operation，调用者知道它什么时候开始，却不能知道它什么时候结束。在 NSOperation 的体系下，是通过 KVO 监测 isExecuting 和 isFinished 这几个变量，来监测 Operation 的完成状态的。出于兼容性的考虑（参考[这里](https://stackoverflow.com/questions/3573236/why-does-nsoperation-disable-automatic-key-value-observing)，我们还必须手动触发 KVO 通知。下面是一个示例：
 
-```objective-c
+```objectivec
 #import "MyOperation.h"
 
 @interface MyOperation()
@@ -295,7 +295,7 @@ int main(int argc, const char * argv[]) {
 
 NSOperationQueue 是一个专门用于执行 NSOperation 的队列。在 OS X 10.6 之后，把一个 NSOperation 放到 NSOperationQueue 中，queue 会忽略 isAsynchronous 变量，总是会把 operation 放到后台线程中执行。这样不管 operation 是不是异步的，queue 的执行都是不会造成主线程的阻塞的。使用 Queue 可以很方便地进行并发操作，并且帮我们完成大部分的监视 operation 是否完成的操作。接着用上面的 MyOperation 做例子，使用 NSOperationQueue 之后，我们就可以这样写：
 
-```objective-c
+```objectivec
 MyOperation *op = [[MyOperation alloc] init];
 NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 
@@ -312,7 +312,7 @@ NSLog(@"Main Function");
 
 NSOperation 可以通过 addDependency 来依赖于其他的 operation 完成，如果有很多复杂的 operation，我们可以形成它们之间的依赖关系图，来实现复杂的同步操作：
 
-```objective-c
+```objectivec
 [updateUIOperation addDependency: workerOperation];
 ```
 
@@ -328,7 +328,7 @@ NSOperation 可以通过 addDependency 来依赖于其他的 operation 完成，
 
 NSOperation 可以使用 queuePriority 属性设置优先级，具体的优先级有下面几种：
 
-```objective-c
+```objectivec
 typedef enum : NSInteger {
    NSOperationQueuePriorityVeryLow = -8,
    NSOperationQueuePriorityLow = -4,

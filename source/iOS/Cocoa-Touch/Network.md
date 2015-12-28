@@ -18,7 +18,7 @@ CoreFoundation 中提供了一个类 NSURLConnection ，用于处理用户的网
 
 #### 同步请求，使用 sendAsynchronousRequest 方法
 
-```objective-c
+```objectivec
 + (NSData *)sendSynchronousRequest:(NSURLRequest *)request
                  returningResponse:(NSURLResponse **)response
                              error:(NSError **)error;
@@ -29,7 +29,7 @@ CoreFoundation 中提供了一个类 NSURLConnection ，用于处理用户的网
 
 #### 异步请求，使用 sendAsynchronousRequest
 
-```objective-c
+```objectivec
 + (void)sendAsynchronousRequest:(NSURLRequest*) request
                           queue:(NSOperationQueue*) queue
               completionHandler:(void (^)(NSURLResponse* response, NSData* data, NSError* connectionError)) handler;
@@ -40,13 +40,13 @@ CoreFoundation 中提供了一个类 NSURLConnection ，用于处理用户的网
 
 首先初始化请求：
 
-```objective-c
+```objectivec
 - (id)initWithRequest:(NSURLRequest *)request delegate:(id)delegate;
 ```
 
 然后根据需要在 delegate 类(NSURLConnectionDataDelegate协议)里面实现下列代理函数，获取异步请求的返回的数据与结果
 
-```objective-c
+```objectivec
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
@@ -69,7 +69,7 @@ CoreFoundation 中提供了一个类 NSURLConnection ，用于处理用户的网
 简单地把`start`函数放到后台的 queue 中是不行的，像下面这样：
 
 
-```objective-c
+```objectivec
 dispatch_async(connectionQueue, ^{
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         [request setURL:[NSURL URLWithString:[NSString stringWithFormat:someURL]]];
@@ -81,7 +81,7 @@ dispatch_async(connectionQueue, ^{
 
 因为 dispatch_async 开出的线程中，默认 runloop 没有执行，因此线程会立即结束，来不及调用回调方法。我们可以添加代码让 runloop 跑起来：
 
-```objective-c
+```objectivec
 dispatch_async(connectionQueue, ^{
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         [request setURL:[NSURL URLWithString:[NSString stringWithFormat:someURL]]];
@@ -93,7 +93,7 @@ dispatch_async(connectionQueue, ^{
 
 这样回调函数才能够被调用，但是这样又带来一个问题，这个线程中 runloop 会一直跑着，导致这个线程也一直不结束，为了让所在线程在完成任务时正确释放掉，我们可以这样做：
 
-```objective-c
+```objectivec
 dispatch_async(connectionQueue, ^{
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         [request setURL:[NSURL URLWithString:[NSString stringWithFormat:someURL]]];
@@ -108,7 +108,7 @@ dispatch_async(connectionQueue, ^{
 然后在 finish 回调中执行： 
 
 
-```objective-c
+```objectivec
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     self.finish = YES;
 }
@@ -122,7 +122,7 @@ dispatch_async(connectionQueue, ^{
 
 这个函数可以让我们指定 NSURLConnection 跑在某个 runloop：
 
-```objective-c
+```objectivec
 NSRunLoop* runLoop = [NSRunLoop currentRunLoop];
 [runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode]; // 添加 inputSource，让 runloop 保持 alive
 [self.connection scheduleInRunLoop:runLoop
@@ -137,7 +137,7 @@ NSRunLoop* runLoop = [NSRunLoop currentRunLoop];
 
 注意一点，这样做的话， NSURLConnection 任务所在的线程是永远不会退出的，为了让它正确退出，可以在请求完成时结束掉 runloop：
 
-```objective-c
+```objectivec
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     CFRunLoopStop(CFRunLoopGetCurrent());
@@ -155,7 +155,7 @@ AFNetworking 中负责响应回调的线程，就是通过 Runloop 来保持永�
 
 更简单的方法是直接使用这个函数，直接使用 NSOperationQueue 来管理我们的 Connection：
 
-```objective-c
+```objectivec
 NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:aURLRequest
                                                               delegate:self
                                                       startImmediately:NO];
@@ -182,4 +182,4 @@ NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:aURLReque
 * https://stackoverflow.com/questions/1728631/asynchronous-request-to-the-server-from-background-thread
 * https://stackoverflow.com/questions/1363787/is-it-safe-to-call-cfrunloopstop-from-another-thread
 * http://www.dribin.org/dave/blog/archives/2009/05/05/concurrent_operations/
-* http://nshipster.com/nsoperation/
+* http://nshipster.com/nsoperation/```objectivec

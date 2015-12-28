@@ -24,7 +24,7 @@
 
 这些属性大都是 View 的基本属性，下面是一个例子，这个例子中的动画会同时改变 View 的 `frame`，`backgroundColor` 和 `alpha` ：
 
-```objective-c
+```objectivec
 [UIView animateWithDuration:2.0 animations:^{
     myView.frame = CGRectMake(50, 200, 200, 200);
     myView.backgroundColor = [UIColor blueColor];
@@ -46,7 +46,7 @@ iOS 提供了下面的函数可以创建简单的 2D 变换：
 
 例如下面的代码会将 View 缩小至原来的 1/4 大小：
 
-```objective-c
+```objectivec
 [UIView animateWithDuration:2.0 animations:^{
     myView.transform = CGAffineTransformMakeScale(0.5, 0.5);
 }];
@@ -77,7 +77,7 @@ iOS 提供了下面的函数可以创建简单的 2D 变换：
 上面介绍的动画中，我们只能控制开始和结束时的效果，然后由系统补全中间的过程，有些时候我们需要自己设定若干关键帧，实现更复杂的动画效果，这时候就需要关键帧动画的支持了。下面是一个示例：
 
 
-```objective-c
+```objectivec
 [UIView animateKeyframesWithDuration:2.0 delay:0.0 options:UIViewKeyframeAnimationOptionRepeat | UIViewKeyframeAnimationOptionAutoreverse animations:^{
     [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.5 animations:^{
         self.myView.frame = CGRectMake(10, 50, 100, 100);
@@ -114,7 +114,7 @@ UIView 的动画简单易用，但是能实现的效果相对有限，上面介�
 
 CABasicAnimation 用于创建一个 CALayer 上的基本动画效果，下面是一个例子：
 
-```objective-c
+```objectivec
 CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.x"];
 animation.toValue = @200;
 animation.duration = 0.8;
@@ -130,7 +130,7 @@ animation.fillMode = kCAFillModeRemoved;
 
 需要注意的一点是，上面我们使用了 `position` 属性， layer 的这个 `position` 属性和 View 的 `frame` 以及 `bounds` 属性都不相同，而是和 Layer 的 `anchorPoint` 有关，可以由下面的公式计算得到：
 
-```objective-c
+```objectivec
 position.x = frame.origin.x + 0.5 * bounds.size.width；  
 position.y = frame.origin.y + 0.5 * bounds.size.height； 
 ```
@@ -194,7 +194,7 @@ animation.toValue = [NSNumber numberWithInt:200];
 
 使用 `values` 和 `keyTimes` 可以共同确定一个动画的若干关键帧，示例代码如下：
 
-```objective-c
+```objectivec
 CAKeyframeAnimation *anima = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation"];//在这里@"transform.rotation"==@"transform.rotation.z"
 NSValue *value1 = [NSNumber numberWithFloat:-M_PI/180*4];
 NSValue *value2 = [NSNumber numberWithFloat:M_PI/180*4];
@@ -212,7 +212,7 @@ anima.repeatCount = MAXFLOAT;
 
 使用 path 属性可以设置一个动画的运动路径，注意 path 只对 CALayer 的 anchorPoint 和position 属性起作用，另外如果你设置了 path ，那么 values 将被忽略。
 
-```objective-c
+```objectivec
 CAKeyframeAnimation *anima = [CAKeyframeAnimation animationWithKeyPath:@"position"];
 UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(SCREEN_WIDTH/2-100, SCREEN_HEIGHT/2-100, 200, 200)];
 anima.path = path.CGPath;
@@ -224,7 +224,7 @@ anima.duration = 2.0f;
 
 组动画可以将一组动画组合在一起，所有动画对象可以同时运行，示例代码如下：
 
-```objective-c
+```objectivec
 CAAnimationGroup *group = [[CAAnimationGroup alloc] init];
 CABasicAnimation *animationOne = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     
@@ -245,7 +245,7 @@ animationTwo.duration = 1.0;
 
 CATransition 可以用于 View 或 ViewController 直接的换场动画：
 
-```objective-c
+```objectivec
 self.myView.backgroundColor = [UIColor blueColor];
 CATransition *trans = [CATransition animation];
 trans.duration = 1.0;
@@ -267,7 +267,7 @@ CADisplayLink 是一个计时器对象，可以周期性的调用某个 selecor 
 
 示例代码（修改自[这里](http://www.cocoachina.com/ios/20150320/11382.html))：
 
-```objective-c
+```objectivec
 #import "BlockView.h"
 
 @implementation BlockView
@@ -331,7 +331,7 @@ UIDynamicAnimator 是 iOS 7 引入的一个新类，可以创建出具有物理�
 
 示例代码如下（来自[这里](http://www.teehanlax.com/blog/introduction-to-uikit-dynamics/))
 
-```objective-c
+```objectivec
 self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
     
 UIGravityBehavior* gravityBehavior = [[UIGravityBehavior alloc] initWithItems:@[self.myView]];

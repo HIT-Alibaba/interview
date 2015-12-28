@@ -4,7 +4,7 @@
 
 一个简单的单例模式示例代码如下：
 
-```objective-c
+```objectivec
 /* Singleton.h */ 
 #import "Foundation/Foundation.h"
 @interface Singleton : NSObject 
@@ -32,7 +32,7 @@ Cocoa 库本身在一些地方也使用了单例模式，例如`[NSNotificationC
 
 下面是一个网上到处都是的简单工厂模式的例子：
 
-```objective-c
+```objectivec
 //
 //  OperationFactory.m
 //  FactoryPattern
@@ -79,7 +79,7 @@ Cocoa 库本身在一些地方也使用了单例模式，例如`[NSNotificationC
 
 由于 Objective-C 本身的动态特性，还可以用反射来改写：
 
-```objective-c
+```objectivec
 @implementation OperationFactory
 + (Operation *) createOperat:(NSString *)operate{
     Operation *oper = nil;
@@ -95,7 +95,7 @@ Cocoa 库本身在一些地方也使用了单例模式，例如`[NSNotificationC
 
 使用时，可以传入类名，来获取对应类的对象：
 
-```objective-c
+```objectivec
 Operation *oper = [OperationFactory createOperat: @"OperationAdd"];
 oper.numberA = 10;
 oper.numberB = 20;
@@ -108,7 +108,7 @@ NSLog(@"%f", oper.getResult);
 
 委托模式的示例代码：
 
-```objective-c
+```objectivec
 @protocol PrintDelegate <NSObject>
 - (void)print;
 @end
@@ -152,7 +152,7 @@ Cocoa 中提供了两种用于实现观察者模式的办法，一直是使用`N
 
 观察者需要统一在消息中心注册，说明自己要观察哪些值的变化。观察者通过类似下面的函数来进行注册：
 
-```objective-c
+```objectivec
 [[NSNotificationCenter defaultCenter] addObserver:self
 				         selector:@selector(printName:)
 				             name: @"messageName"
@@ -163,7 +163,7 @@ Cocoa 中提供了两种用于实现观察者模式的办法，一直是使用`N
 
 消息发送者使用类似下面的函数发送消息：
 
-```objective-c
+```objectivec
 [[NSNotificationCenter defaultCenter] postNotificationName:@"messageName"
 				                    object:nil
 				                  userInfo:nil];
@@ -175,7 +175,7 @@ KVO的实现依赖于 Objective-C 本身强大的 KVC(Key Value Coding) 特性�
 
 示例代码如下：
 
-```objective-c
+```objectivec
 // Book类
 @interface Book : NSObject
 

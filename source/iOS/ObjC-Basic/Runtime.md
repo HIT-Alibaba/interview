@@ -16,7 +16,7 @@
 
 self与_cmd是两个编译器会自动添加的隐藏参数，self是一个指向接收对象的指针，_cmd为方法选择器。这个函数的实现为汇编版本，苹果开源的项目中共有6种对不同平台的汇编实现，本节选取其在x86_64实现的文件objc-msg-x86_64.s
 
-```
+```asm
 #objc-msg-x86_64.s#
 	ENTRY	_objc_msgSend
 	// ...
@@ -34,7 +34,7 @@ LCacheMiss:
 
 可以看到其调用了`GetIsaFast`，由于self是id类型，而id的原型为`struct objc_object *id;`，所以需要通过id的isa指针获取其所属的类对象，之后调用`CacheLookup`在获取到的类中根据传入的_cmd查找对应方法实现的IMP指针。这两个函数的实现均在同一个文件下，因为暂时我还不了解cache的机制，所以这部分先不深入讨论。CacheLookup函数在命中后会直接调用相应的IMP方法，这就完成了方法的调用。如果cache落空，则跳转至LCacheMiss标签，调用MethodTableLookup方法，这个方法将IMP的值存在r11寄存器里，之后`jmp *%r11`从IMP开始执行，完成方法调用。MethodTableLookup函数实现如下，
 
-```
+```asm
 .macro MethodTableLookup
 	MESSENGER_END_SLOW
 	SaveRegisters
@@ -51,7 +51,7 @@ LCacheMiss:
 
 可以看到其实际上将receiver（即self)， selector(即_cmd)，class(即self->isa)传递给了_class_lookupMethodAndLoadCache3这个函数，查看该函数的实现后，欢迎重新回到C语言的世界。
 
-```
+```objectivec
 #objc-class-old.mm#
 IMP _class_lookupMethodAndLoadCache3(id obj, SEL sel, Class cls)
 {        
@@ -62,7 +62,7 @@ IMP _class_lookupMethodAndLoadCache3(id obj, SEL sel, Class cls)
 
 这个函数进一步调用了`lookUpImpOrForward`，并把cache标签置为NO，意味着忽略第一次不加锁的cache查找。这个函数的返回值要么是对应方法的IMP指针，要么是一个__objc_msgForward_impcache汇编方法的入口，后者对应着消息转发机制，即如果在该对象及其继承链上方的的对象都找不到选择器_cmd的响应方法的话，就调用消息转发函数尝试将该消息转发给其他对象。下面是lookUpImpOrForward的实现，由于代码过长，注释将写在代码之中。
 
-```
+```objectivec
 #objc-class-old.mm#
 IMP lookUpImpOrForward(Class cls, SEL sel, id inst, 
                        bool initialize, bool cache, bool resolver)
