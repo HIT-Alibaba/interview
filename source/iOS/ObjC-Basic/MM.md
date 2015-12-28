@@ -20,7 +20,7 @@ Objective-C中提供了两种内存管理机制：MRC（MannulReference Counting
 
 示例代码:
 
-```objective-c
+```objectivec
 //假设Number为预定义的类
 Number* num = [[Number alloc] init];
 Number* num2 = [num retain];//此时引用记数+1，现为2
@@ -69,7 +69,7 @@ __strong Number* num = [[Number alloc] init];
 
 类中的属性也可以加上标志符：
 
-```objective-c
+```objectivec
 @property (assign/retain/strong/weak/unsafe_unretained/copy) Number* num
 ```
 
@@ -100,7 +100,7 @@ Autorelase Pool 提供了一种可以允许你向一个对象延迟发送`releas
 
 所谓的延迟发送`release`消息指的是，当我们把一个对象标记为`autorelease`时:
 
-```objective-c
+```objectivec
 NSString* str = [[[NSString alloc] initWithString:@"hello"] autorelease];
 ```
 
@@ -114,7 +114,7 @@ NSString* str = [[[NSString alloc] initWithString:@"hello"] autorelease];
 
 当我们需要创建和销毁大量的对象时，使用手动创建的 autoreleasepool 可以有效的避免内存峰值的出现。因为如果不手动创建的话，外层系统创建的 pool 会在整个 runloop circle 结束之后才进行 drain，手动创建的话，会在 block 结束之后就进行 drain 操作。详情请参考[苹果官方文档](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmAutoreleasePools.html#//apple_ref/doc/uid/20000047-CJBFBEDI)。一个普遍被使用的例子如下：
 
-```objective-c
+```objectivec
 for (int i = 0; i < 100000000; i++)
 {
     @autoreleasepool
@@ -139,7 +139,7 @@ for (int i = 0; i < 100000000; i++)
 
 大家都知道在 iOS 程序的 main.m 文件中有类似这样的语句：
 
-```objective-c
+```objectivec
 int main(int argc, char * argv[]) {
     @autoreleasepool {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
@@ -178,19 +178,19 @@ int main(int argc, char * argv[]) {
 
 假设我们有一个 property 定义如下：
 
-```objective-c
+```objectivec
 @property (nonatomic, retain) NSObject *property;
 ```
 
 在对其赋值的时候，我们应该使用：
 
-```objective-c
+```objectivec
 self.property = [[[NSObject alloc] init] autorelease];
 ```
 
 然后在 dealloc 方法中加入：
 
-```objective-c
+```objectivec
 [_property release];
 _property = nil;
 ```
@@ -206,7 +206,7 @@ _property = nil;
 
 如果我们只是使用：
 
-```objective-c
+```objectivec
 self.property = [[NSObject alloc] init];
 ```
 
@@ -214,7 +214,7 @@ self.property = [[NSObject alloc] init];
 
 另外，我们也可以使用临时变量：
 
-```objective-c
+```objectivec
 NSObject * a = [[NSObject alloc] init];
 self.property = a;
 [a release];
@@ -226,7 +226,7 @@ self.property = a;
 
 我们在编写自己的代码时，也应该遵守上面的原则，同样是使用 autorelease：
 
-```objective-c
+```objectivec
 // 注意函数名的区别
 + (MyCustomClass *) myCustomClass
 {
@@ -242,7 +242,7 @@ self.property = a;
 
 当我们调用非 alloc，init 系的方法来初始化对象时（通常是工厂方法），我们不需要负责变量的释放，可以当成普通的临时变量来使用：
 
-```objective-c
+```objectivec
 NSString *name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
 self.name = name
 // 不需要执行 [name release]
@@ -259,7 +259,7 @@ self.name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
 
 以及在自己写的函数中：
 
-```objective-c
+```objectivec
 + (MyCustomClass *) myCustomClass
 {
     return [[MyCustomClass alloc] init]; // 不用 autorelease
@@ -278,7 +278,7 @@ self.name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
 
 可以看到基本上 ARC 就是帮我们在代码块结束的时候进行了 release：
 
-```objective-c
+```objectivec
 NSObject * a = [[NSObject alloc] init];
 self.property = a;
 //[a release]; 我们不需要写这一句，因为 ARC 会帮我们把这一句加上
@@ -296,7 +296,7 @@ self.property = a;
 
 为了解决这个问题，首先让我们理清楚属性是个什么存在。属性(property) 实际上就是一种语法糖，每个属性背后都有实例变量(Ivar)做支持，编译器会帮我们自动生成有关的 setter 和 getter，对于下面的 property：
 
-```objective-c
+```objectivec
 @interface Counter : NSObject
 @property (nonatomic, retain) NSNumber *count;
 @end;
@@ -304,7 +304,7 @@ self.property = a;
 
 生成的 getter 和 setter 类似下面这样：
 
-```objective-c
+```objectivec
 - (NSNumber *)count {
     return _count;
 }
@@ -320,7 +320,7 @@ Property 这部分对于 MRC 和 ARC 都是适用的。
 
 有了这部分基础，我们再来理解一下把属性置为 nil 这个步骤。首先要明确一点，在 MRC 下，我们并不是真的把属性置为 nil，而是把 Ivar 置为 nil。
 
-```objective-c
+```objectivec
 [_property release];
 _property = nil;
 ```
@@ -333,7 +333,7 @@ _property = nil;
 
 在上面有关 property 的内容基础上，我们知道用:
 
-```objective-c
+```objectivec
 self.property = nil
 ```
 
@@ -348,7 +348,7 @@ object = nil;
 
 因为 ARC 下我们不能再使用 release 函数，把变量置为 nil 就成为了一种释放变量的方法。真正需要我们把变量置为 nil 的，通常就是在使用 block 时，用于破除循环引用：
 
-```objective-c
+```objectivec
 MyViewController * __block myController = [[MyViewController alloc] init…];
 // ...
 myController.completionHandler =  ^(NSInteger result) {
@@ -359,7 +359,7 @@ myController.completionHandler =  ^(NSInteger result) {
 
 在 [YTKNetwork](https://github.com/yuantiku/YTKNetwork) 这个项目中，也可以看到类似的代码：
 
-```objective-c
+```objectivec
 - (void)clearCompletionBlock {
     // nil out to break the retain cycle.
     self.successCompletionBlock = nil;
