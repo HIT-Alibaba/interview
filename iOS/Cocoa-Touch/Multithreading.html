@@ -53,7 +53,7 @@
         data-chapter-title="并发编程"
         data-filepath="iOS/Cocoa-Touch/Multithreading.md"
         data-basepath="../.."
-        data-revision="Mon Dec 28 2015 19:12:51 GMT+0800 (CST)"
+        data-revision="Mon Dec 28 2015 19:22:23 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1190,24 +1190,24 @@
 <ol>
 <li><p>&#x4E32;&#x884C;&#x961F;&#x5217;
  &#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x5E76;&#x4E0D;&#x63D0;&#x4F9B;&#x4E32;&#x884C;&#x961F;&#x5217;&#xFF0C;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x624B;&#x52A8;&#x521B;&#x5EFA;&#xFF1A;</p>
-<pre><code class="lang-objective-c"> dispatch_queue_t queue;
- queue = dispatch_queue_create(&quot;com.example.MyQueue&quot;, NULL); // OS X 10.7 &#x548C; iOS 4.3 &#x4E4B;&#x524D;
- queue = dispatch_queue_create(&quot;com.example.MyQueue&quot;,  DISPATCH_QUEUE_SERIAL); // &#x4E4B;&#x540E;
+<pre><code class="lang-objectivec"> <span class="hljs-built_in">dispatch_queue_t</span> queue;
+ queue = dispatch_queue_create(<span class="hljs-string">&quot;com.example.MyQueue&quot;</span>, <span class="hljs-literal">NULL</span>); <span class="hljs-comment">// OS X 10.7 &#x548C; iOS 4.3 &#x4E4B;&#x524D;</span>
+ queue = dispatch_queue_create(<span class="hljs-string">&quot;com.example.MyQueue&quot;</span>,  DISPATCH_QUEUE_SERIAL); <span class="hljs-comment">// &#x4E4B;&#x540E;</span>
 </code></pre>
 </li>
 <li><p>&#x5E76;&#x884C;&#x961F;&#x5217;
  &#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x63D0;&#x4F9B;&#x4E86;&#x56DB;&#x4E2A;&#x5168;&#x5C40;&#x53EF;&#x7528;&#x7684;&#x5E76;&#x884C;&#x961F;&#x5217;&#xFF0C;&#x5176;&#x4F18;&#x5148;&#x7EA7;&#x4E0D;&#x540C;&#xFF0C;&#x5206;&#x522B;&#x4E3A; DISPATCH_QUEUE_PRIORITY_HIGH&#xFF0C;DISPATCH_QUEUE_PRIORITY_DEFAULT&#xFF0C; DISPATCH_QUEUE_PRIORITY_LOW&#xFF0C; DISPATCH_QUEUE_PRIORITY_BACKGROUND &#xFF0C;&#x4F18;&#x5148;&#x7EA7;&#x4F9D;&#x6B21;&#x964D;&#x4F4E;&#x3002;&#x4F18;&#x5148;&#x7EA7;&#x8D8A;&#x9AD8;&#x7684;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x4EFB;&#x52A1;&#x4F1A;&#x66F4;&#x65E9;&#x6267;&#x884C;&#xFF1A;</p>
-<pre><code class="lang-objective-c"> dispatch_queue_t aQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+<pre><code class="lang-objectivec```"> dispatch_queue_t aQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 </code></pre>
 <p> &#x5F53;&#x7136;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x81EA;&#x5DF1;&#x7684;&#x5E76;&#x884C;&#x961F;&#x5217;&#xFF1A;</p>
-<pre><code class="lang-objective-c"> queue = dispatch_queue_create(&quot;com.example.MyQueue&quot;, DISPATCH_QUEUE_CONCURRENT);
+<pre><code class="lang-objectivec"> queue = dispatch_queue_create(<span class="hljs-string">&quot;com.example.MyQueue&quot;</span>, DISPATCH_QUEUE_CONCURRENT);
 </code></pre>
 <p> &#x4E0D;&#x8FC7;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x7684; Default &#x4F18;&#x5148;&#x7EA7;&#x7684; queue &#x5C31;&#x8DB3;&#x591F;&#x4E86;&#x3002;</p>
 </li>
 <li><p>&#x4E3B;&#x961F;&#x5217;
  &#x4E3B;&#x961F;&#x5217;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>dispatch_get_main_queue()</code> &#x83B7;&#x53D6;&#xFF1A;</p>
-<pre><code class="lang-objective-c">  dispatch_async(dispatch_get_main_queue(), ^{
-         // Update the UI
+<pre><code class="lang-objectivec">  <span class="hljs-built_in">dispatch_async</span>(dispatch_get_main_queue(), ^{
+         <span class="hljs-comment">// Update the UI</span>
          [imageVIew setImage:image];
      });
 </code></pre>
@@ -1220,42 +1220,42 @@
 <h4 id="&#x521B;&#x5EFA;&#x7684;-queue-&#x9700;&#x8981;&#x91CA;&#x653E;&#x5417;&#xFF1F;">&#x521B;&#x5EFA;&#x7684; Queue &#x9700;&#x8981;&#x91CA;&#x653E;&#x5417;&#xFF1F;</h4>
 <p> &#x5728; iOS6 &#x4E4B;&#x524D;&#xFF0C;&#x4F7F;&#x7528; <code>dispatch_queue_create</code> &#x521B;&#x5EFA;&#x7684; queue &#x9700;&#x8981;&#x4F7F;&#x7528; <code>dispatch_retain</code> &#x548C; <code>dispatch_release</code> &#x8FDB;&#x884C;&#x7BA1;&#x7406;&#xFF0C;&#x5728; iOS 6 &#x7CFB;&#x7EDF;&#x628A; dispatch queue &#x4E5F;&#x7EB3;&#x5165;&#x4E86; ARC &#x7BA1;&#x7406;&#x7684;&#x8303;&#x56F4;&#xFF0C;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x8FDB;&#x884C;&#x624B;&#x52A8;&#x7BA1;&#x7406;&#x4E86;&#x3002;&#x4F7F;&#x7528;&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x4F1A;&#x5BFC;&#x81F4;&#x62A5;&#x9519;&#x3002;</p>
 <p> iOS6 &#x4E0A;&#x8FD9;&#x4E2A;&#x6539;&#x53D8;&#xFF0C;&#x628A; dispatch queue &#x4ECE;&#x539F;&#x6765;&#x7684;&#x975E; OC &#x5BF9;&#x8C61;&#xFF08;&#x539F;&#x751F; C &#x6307;&#x9488;&#xFF09;&#xFF0C;&#x53D8;&#x6210;&#x4E86; OC &#x5BF9;&#x8C61;&#xFF0C;&#x4E5F;&#x5E26;&#x6765;&#x4E86;&#x4EE3;&#x7801;&#x4E0A;&#x7684;&#x4E00;&#x4E9B;&#x517C;&#x5BB9;&#x6027;&#x95EE;&#x9898;&#x3002;&#x5728; iOS5 &#x4E0A;&#x9700;&#x8981;&#x4F7F;&#x7528; assign &#x6765;&#x4FEE;&#x9970; queue &#x5BF9;&#x8C61;&#xFF1A;</p>
-<pre><code class="lang-objective-c"> @property (nonatomic, assign) dispatch_queue_t queue;
+<pre><code class="lang-objectivec"> <span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">assign</span>) <span class="hljs-built_in">dispatch_queue_t</span> queue;
 </code></pre>
 <p> &#x5230; iOS6 &#x4EE5;&#x4E0A;&#x5C31;&#x9700;&#x8981;&#x4F7F;&#x7528; strong &#x6216;&#x8005; weak &#x6765;&#x4FEE;&#x9970;&#xFF0C;&#x4E0D;&#x7136;&#x4F1A;&#x62A5;&#x9519;&#xFF1A;</p>
-<pre><code class="lang-objective-c"> @property (nonatomic, strong) dispatch_queue_t queue;
+<pre><code class="lang-objectivec"> <span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">dispatch_queue_t</span> queue;
 </code></pre>
 <p> &#x5F53;&#x51FA;&#x73B0;&#x517C;&#x5BB9;&#x6027;&#x95EE;&#x9898;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9700;&#x8981;&#x6839;&#x636E;&#x60C5;&#x51B5;&#x6765;&#x4FEE;&#x6539;&#x4EE3;&#x7801;&#xFF0C;&#x6216;&#x8005;&#x6539;&#x53D8;&#x6240; target &#x7684; iOS &#x7248;&#x672C;&#x3002;</p>
 <h3 id="&#x6267;&#x884C;&#x4EFB;&#x52A1;">&#x6267;&#x884C;&#x4EFB;&#x52A1;</h3>
 <p> &#x6298;&#x817E;&#x4E86;&#x534A;&#x5929; queue&#xFF0C;&#x73B0;&#x5728;&#x7EC8;&#x4E8E;&#x5230;&#x4E86;&#x8BA9; queue &#x771F;&#x6B63;&#x53BB;&#x6267;&#x884C;&#x4EFB;&#x52A1;&#x7684;&#x9636;&#x6BB5;&#x4E86;&#x3002;&#x7ED9; queue &#x6DFB;&#x52A0;&#x4EFB;&#x52A1;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x540C;&#x6B65;&#x548C;&#x5F02;&#x6B65;&#x3002;&#x540C;&#x6B65;&#x65B9;&#x5F0F;&#x4F1A;&#x963B;&#x585E;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x7B49;&#x5F85;&#x6DFB;&#x52A0;&#x7684;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x4E4B;&#x540E;&#xFF0C;&#x624D;&#x7EE7;&#x7EED;&#x5411;&#x4E0B;&#x6267;&#x884C;&#x3002;&#x5F02;&#x6B65;&#x65B9;&#x5F0F;&#x4E0D;&#x4F1A;&#x963B;&#x585E;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#x3002;</p>
-<pre><code class="lang-objective-c">dispatch_queue_t myCustomQueue;
-myCustomQueue = dispatch_queue_create(&quot;com.example.MyCustomQueue&quot;, NULL);
+<pre><code class="lang-objectivec"><span class="hljs-built_in">dispatch_queue_t</span> myCustomQueue;
+myCustomQueue = dispatch_queue_create(<span class="hljs-string">&quot;com.example.MyCustomQueue&quot;</span>, <span class="hljs-literal">NULL</span>);
 
-// &#x5F02;&#x6B65;&#x6DFB;&#x52A0;
-dispatch_async(myCustomQueue, ^{
-    printf(&quot;&#x505A;&#x4E00;&#x4E9B;&#x5DE5;&#x4F5C;\n&quot;);
+<span class="hljs-comment">// &#x5F02;&#x6B65;&#x6DFB;&#x52A0;</span>
+<span class="hljs-built_in">dispatch_async</span>(myCustomQueue, ^{
+    printf(<span class="hljs-string">&quot;&#x505A;&#x4E00;&#x4E9B;&#x5DE5;&#x4F5C;\n&quot;</span>);
 });
 
-printf(&quot;&#x7B2C;&#x4E00;&#x4E2A; block &#x53EF;&#x80FD;&#x8FD8;&#x6CA1;&#x6709;&#x6267;&#x884C;\n&quot;);
+printf(<span class="hljs-string">&quot;&#x7B2C;&#x4E00;&#x4E2A; block &#x53EF;&#x80FD;&#x8FD8;&#x6CA1;&#x6709;&#x6267;&#x884C;\n&quot;</span>);
 
-// &#x540C;&#x6B65;&#x6DFB;&#x52A0;
-dispatch_sync(myCustomQueue, ^{
-    printf(&quot;&#x505A;&#x53E6;&#x5916;&#x4E00;&#x4E9B;&#x5DE5;&#x4F5C;\n&quot;);
+<span class="hljs-comment">// &#x540C;&#x6B65;&#x6DFB;&#x52A0;</span>
+<span class="hljs-built_in">dispatch_sync</span>(myCustomQueue, ^{
+    printf(<span class="hljs-string">&quot;&#x505A;&#x53E6;&#x5916;&#x4E00;&#x4E9B;&#x5DE5;&#x4F5C;\n&quot;</span>);
 });
-printf(&quot;&#x4E24;&#x4E2A; block &#x90FD;&#x5DF2;&#x7ECF;&#x6267;&#x884C;&#x5B8C;&#x6BD5;\n&quot;);
+printf(<span class="hljs-string">&quot;&#x4E24;&#x4E2A; block &#x90FD;&#x5DF2;&#x7ECF;&#x6267;&#x884C;&#x5B8C;&#x6BD5;\n&quot;</span>);
 </code></pre>
 <h4 id="&#x6CE8;&#x610F;&#x4E8B;&#x9879;">&#x6CE8;&#x610F;&#x4E8B;&#x9879;</h4>
 <ul>
 <li>&#x540C;&#x6B65;&#x548C;&#x5F02;&#x6B65;&#x6DFB;&#x52A0;&#xFF0C;&#x4E0E;&#x961F;&#x5217;&#x662F;&#x4E32;&#x884C;&#x961F;&#x5217;&#x548C;&#x5E76;&#x884C;&#x961F;&#x5217;&#x6CA1;&#x6709;&#x5173;&#x7CFB;&#x3002;&#x53EF;&#x4EE5;&#x540C;&#x6B65;&#x5730;&#x7ED9;&#x5E76;&#x884C;&#x961F;&#x5217;&#x6DFB;&#x52A0;&#x4EFB;&#x52A1;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5F02;&#x6B65;&#x5730;&#x7ED9;&#x4E32;&#x884C;&#x961F;&#x5217;&#x6DFB;&#x52A0;&#x4EFB;&#x52A1;&#x3002;&#x540C;&#x6B65;&#x548C;&#x5F02;&#x6B65;&#x6DFB;&#x52A0;&#x53EA;&#x5F71;&#x54CD;&#x662F;&#x4E0D;&#x662F;&#x963B;&#x585E;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#xFF0C;&#x548C;&#x4EFB;&#x52A1;&#x7684;&#x4E32;&#x884C;&#x6216;&#x5E76;&#x884C;&#x6267;&#x884C;&#x6CA1;&#x6709;&#x5173;&#x7CFB;</li>
 <li><p>&#x4E0D;&#x8981;&#x4F7F;&#x7528; dispatch_sync &#x7ED9;&#x5F53;&#x524D;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684; queue &#x6DFB;&#x52A0;&#x4EFB;&#x52A1;&#xFF01;&#x8FD9;&#x6837;&#x4F1A;&#x5BFC;&#x81F4;&#x6B7B;&#x9501;&#xFF0C;&#x50CF;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#xFF1A;</p>
-<pre><code class="lang-objective-c"> - (void)viewDidLoad
+<pre><code class="lang-objectivec"> - (<span class="hljs-keyword">void</span>)viewDidLoad
  {
-     [super viewDidLoad];
-     NSLog(@&quot;1&quot;);
-     dispatch_sync(dispatch_get_main_queue(), ^{
-         NSLog(@&quot;2&quot;);
+     [<span class="hljs-keyword">super</span> viewDidLoad];
+     <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;1&quot;</span>);
+     <span class="hljs-built_in">dispatch_sync</span>(dispatch_get_main_queue(), ^{
+         <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;2&quot;</span>);
      });
-     NSLog(@&quot;3&quot;);
+     <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;3&quot;</span>);
  }
 </code></pre>
 <p> &#x8FD9;&#x6837;&#x53EA;&#x6709; 1 &#x4F1A;&#x88AB;&#x8F93;&#x51FA;&#xFF0C;&#x4E4B;&#x540E;&#x7A0B;&#x5E8F;&#x5C31;&#x88AB;&#x6B7B;&#x9501;&#x6389;&#x4E86;&#x3002;</p>
@@ -1277,24 +1277,24 @@ printf(&quot;&#x4E24;&#x4E2A; block &#x90FD;&#x5DF2;&#x7ECF;&#x6267;&#x884C;&#x5
 <h3 id="&#x5E76;&#x53D1;&#x548C;&#x975E;&#x5E76;&#x53D1;">&#x5E76;&#x53D1;&#x548C;&#x975E;&#x5E76;&#x53D1;</h3>
 <p>&#x9996;&#x5148;&#x770B;&#x4E00;&#x4E0B;&#x4E0D;&#x4F7F;&#x7528; OperationQueue &#x7684;&#x60C5;&#x51B5;&#x3002;</p>
 <p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B; NSOperation &#x662F;&#x975E;&#x5E76;&#x53D1;&#x7684;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x50CF;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A; operation:</p>
-<pre><code class="lang-objective-c">@implementation MyOperation
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">MyOperation</span></span>
 
--(void)main {
-    NSLog(@&quot;MyOperation Main Function&quot;);
+-(<span class="hljs-keyword">void</span>)main {
+    <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;MyOperation Main Function&quot;</span>);
 }
 
-@end
+<span class="hljs-keyword">@end</span>
 </code></pre>
 <p>&#x7136;&#x540E;&#x542F;&#x52A8;&#x5B83;&#xFF1A; </p>
-<pre><code class="lang-objective-c">#import &quot;MyOperation.h&quot;
+<pre><code class="lang-objectivec"><span class="hljs-preprocessor">#import <span class="hljs-title">&quot;MyOperation.h&quot;</span></span>
 
-int main(int argc, const char * argv[]) {
-    @autoreleasepool {
+<span class="hljs-keyword">int</span> main(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[]) {
+    <span class="hljs-keyword">@autoreleasepool</span> {
         MyOperation *op = [[MyOperation alloc] init];
         [op start];
-        NSLog(@&quot;Main Function&quot;);
+        <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;Main Function&quot;</span>);
     }
-    return 0;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }
 </code></pre>
 <p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x662F;&#xFF1A;</p>
@@ -1302,69 +1302,69 @@ int main(int argc, const char * argv[]) {
 Main Function
 </code></pre><p>&#x5373;&#x6574;&#x4E2A; Operation &#x5C31;&#x662F;&#x5728;&#x5F53;&#x524D;&#x7684;&#x7EBF;&#x7A0B;&#x4E2D;&#x4EE5;&#x963B;&#x585E;&#x7684;&#x5F62;&#x5F0F;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x5F53; operation &#x7684; main &#x51FD;&#x6570;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x4E4B;&#x540E;&#xFF0C;&#x7A0B;&#x5E8F;&#x7684;&#x63A7;&#x5236;&#x6743;&#x8FD4;&#x56DE;&#x5230;&#x4E3B;&#x7684; main &#x51FD;&#x6570;&#x4E2D;&#x3002;&#x8FD9;&#x6837;&#x770B;&#x6765; operation &#x8DDF;&#x666E;&#x901A;&#x7684;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x5C31;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#x4E86;&#x3002;</p>
 <p>&#x5BF9;&#x4E8E;&#x5E76;&#x53D1;&#x7684; Operation&#xFF0C;&#x8981;&#x5B9E;&#x73B0;&#x8FD8;&#x662F;&#x6709;&#x70B9;&#x9EBB;&#x70E6;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x91CD;&#x8F7D; start&#xFF0C;isAsynchronous&#xFF0C;isExecuting&#xFF0C;isFinished &#x56DB;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x540C;&#x65F6;&#x8FD8;&#x6700;&#x597D;&#x5728; start &#x548C; main &#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#x652F;&#x6301; cancel &#x64CD;&#x4F5C;&#x3002;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x8FD9;&#x4E48;&#x9EBB;&#x70E6;&#x5462;&#xFF1F;&#x56E0;&#x4E3A;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x5E76;&#x53D1;&#x7684; Operation&#xFF0C;&#x8C03;&#x7528;&#x8005;&#x77E5;&#x9053;&#x5B83;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x5F00;&#x59CB;&#xFF0C;&#x5374;&#x4E0D;&#x80FD;&#x77E5;&#x9053;&#x5B83;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x7ED3;&#x675F;&#x3002;&#x5728; NSOperation &#x7684;&#x4F53;&#x7CFB;&#x4E0B;&#xFF0C;&#x662F;&#x901A;&#x8FC7; KVO &#x76D1;&#x6D4B; isExecuting &#x548C; isFinished &#x8FD9;&#x51E0;&#x4E2A;&#x53D8;&#x91CF;&#xFF0C;&#x6765;&#x76D1;&#x6D4B; Operation &#x7684;&#x5B8C;&#x6210;&#x72B6;&#x6001;&#x7684;&#x3002;&#x51FA;&#x4E8E;&#x517C;&#x5BB9;&#x6027;&#x7684;&#x8003;&#x8651;&#xFF08;&#x53C2;&#x8003;<a href="https://stackoverflow.com/questions/3573236/why-does-nsoperation-disable-automatic-key-value-observing" target="_blank">&#x8FD9;&#x91CC;</a>&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x5FC5;&#x987B;&#x624B;&#x52A8;&#x89E6;&#x53D1; KVO &#x901A;&#x77E5;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x793A;&#x4F8B;&#xFF1A;</p>
-<pre><code class="lang-objective-c">#import &quot;MyOperation.h&quot;
+<pre><code class="lang-objectivec"><span class="hljs-preprocessor">#import <span class="hljs-title">&quot;MyOperation.h&quot;</span></span>
 
-@interface MyOperation()
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">MyOperation</span>()</span>
 
-@property (atomic, assign) BOOL _executing;
-@property (atomic, assign) BOOL _finished;
-@end
+<span class="hljs-keyword">@property</span> (atomic, <span class="hljs-keyword">assign</span>) <span class="hljs-built_in">BOOL</span> _executing;
+<span class="hljs-keyword">@property</span> (atomic, <span class="hljs-keyword">assign</span>) <span class="hljs-built_in">BOOL</span> _finished;
+<span class="hljs-keyword">@end</span>
 
-@implementation MyOperation
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">MyOperation</span></span>
 
-- (void)start;
+- (<span class="hljs-keyword">void</span>)start;
 {
-    if ([self isCancelled])
+    <span class="hljs-keyword">if</span> ([<span class="hljs-keyword">self</span> isCancelled])
     {
-        // Move the operation to the finished state if it is canceled.
-        [self willChangeValueForKey:@&quot;isFinished&quot;];
-        self._finished = YES;
-        [self didChangeValueForKey:@&quot;isFinished&quot;];
-        return;
+        <span class="hljs-comment">// Move the operation to the finished state if it is canceled.</span>
+        [<span class="hljs-keyword">self</span> willChangeValueForKey:<span class="hljs-string">@&quot;isFinished&quot;</span>];
+        <span class="hljs-keyword">self</span><span class="hljs-variable">._finished</span> = <span class="hljs-literal">YES</span>;
+        [<span class="hljs-keyword">self</span> didChangeValueForKey:<span class="hljs-string">@&quot;isFinished&quot;</span>];
+        <span class="hljs-keyword">return</span>;
     }
 
-    // If the operation is not canceled, begin executing the task.
-    [self willChangeValueForKey:@&quot;isExecuting&quot;];
-    [NSThread detachNewThreadSelector:@selector(main) toTarget:self withObject:nil];
-    self._executing = YES;
-    [self didChangeValueForKey:@&quot;isExecuting&quot;];
+    <span class="hljs-comment">// If the operation is not canceled, begin executing the task.</span>
+    [<span class="hljs-keyword">self</span> willChangeValueForKey:<span class="hljs-string">@&quot;isExecuting&quot;</span>];
+    [<span class="hljs-built_in">NSThread</span> detachNewThreadSelector:<span class="hljs-keyword">@selector</span>(main) toTarget:<span class="hljs-keyword">self</span> withObject:<span class="hljs-literal">nil</span>];
+    <span class="hljs-keyword">self</span><span class="hljs-variable">._executing</span> = <span class="hljs-literal">YES</span>;
+    [<span class="hljs-keyword">self</span> didChangeValueForKey:<span class="hljs-string">@&quot;isExecuting&quot;</span>];
 
 }
 
-- (void)main;
+- (<span class="hljs-keyword">void</span>)main;
 {
-    if ([self isCancelled]) {
-        return;
+    <span class="hljs-keyword">if</span> ([<span class="hljs-keyword">self</span> isCancelled]) {
+        <span class="hljs-keyword">return</span>;
     }
-    sleep(10);
-    NSLog(@&quot;MyOperation Main Function&quot;);
-    [self completeOperation];
+    sleep(<span class="hljs-number">10</span>);
+    <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;MyOperation Main Function&quot;</span>);
+    [<span class="hljs-keyword">self</span> completeOperation];
 }
 
-- (BOOL)isAsynchronous;
+- (<span class="hljs-built_in">BOOL</span>)isAsynchronous;
 {
-    return YES;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">YES</span>;
 }
 
-- (BOOL)isExecuting {
-    return self._executing;
+- (<span class="hljs-built_in">BOOL</span>)isExecuting {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span><span class="hljs-variable">._executing</span>;
 }
 
-- (BOOL)isFinished {
-    return self._finished;
+- (<span class="hljs-built_in">BOOL</span>)isFinished {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span><span class="hljs-variable">._finished</span>;
 }
 
-- (void)completeOperation {
-    [self willChangeValueForKey:@&quot;isFinished&quot;];
-    [self willChangeValueForKey:@&quot;isExecuting&quot;];
+- (<span class="hljs-keyword">void</span>)completeOperation {
+    [<span class="hljs-keyword">self</span> willChangeValueForKey:<span class="hljs-string">@&quot;isFinished&quot;</span>];
+    [<span class="hljs-keyword">self</span> willChangeValueForKey:<span class="hljs-string">@&quot;isExecuting&quot;</span>];
 
-    self._executing = NO;
-    self._finished = YES;
+    <span class="hljs-keyword">self</span><span class="hljs-variable">._executing</span> = <span class="hljs-literal">NO</span>;
+    <span class="hljs-keyword">self</span><span class="hljs-variable">._finished</span> = <span class="hljs-literal">YES</span>;
 
-    [self didChangeValueForKey:@&quot;isExecuting&quot;];
-    [self didChangeValueForKey:@&quot;isFinished&quot;];
+    [<span class="hljs-keyword">self</span> didChangeValueForKey:<span class="hljs-string">@&quot;isExecuting&quot;</span>];
+    [<span class="hljs-keyword">self</span> didChangeValueForKey:<span class="hljs-string">@&quot;isFinished&quot;</span>];
 }
-@end
+<span class="hljs-keyword">@end</span>
 </code></pre>
 <p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6240;&#x8C13;&#x7684;&#x201C;&#x5E76;&#x53D1;&#x201D;&#xFF0C;&#x8DDF;&#x4E0A;&#x9762;&#x7684;&#x975E;&#x5E76;&#x53D1;&#x5E76;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x672C;&#x8D28;&#x7684;&#x4E0D;&#x540C;&#xFF0C;&#x5B8C;&#x5168;&#x53D6;&#x51B3;&#x4E8E;&#x6211;&#x4EEC;&#x7684; start &#x51FD;&#x6570;&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7684;&#x3002;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x7684; start &#x51FD;&#x6570;&#x4E2D;&#x628A;&#x4EFB;&#x52A1;&#x76F4;&#x63A5;&#x6254;&#x7ED9;&#x4E86;&#x53E6;&#x5916;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x4E5F;&#x5C31;&#x4E0D;&#x4F1A;&#x963B;&#x585E;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x4E86;&#x3002;</p>
 <p>&#x5E9F;&#x4E86;&#x8FD9;&#x4E48;&#x5927;&#x52B2;&#xFF0C;&#x6211;&#x4EEC;&#x5982;&#x4F55;&#x6267;&#x884C;&#x8FD9;&#x4E2A; Operation &#x5462;&#xFF1F;&#x5982;&#x679C;&#x518D;&#x50CF;&#x4E0A;&#x9762;&#x4E00;&#x6837;&#x4F7F;&#x7528; <code>[op start]</code> &#x76F4;&#x63A5;&#x6267;&#x884C;&#x7684;&#x8BDD;&#xFF0C;&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#x8FD8;&#x6CA1;&#x7B49;&#x5230; Operation &#x8FD4;&#x56DE;&#x6211;&#x4EEC;&#x7684;&#x6574;&#x4E2A;&#x7A0B;&#x5E8F;&#x5C31;&#x5DF2;&#x7ECF;&#x7ED3;&#x675F;&#x6389;&#x4E86;&#x3002;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x7684;&#x4E3B;&#x7A0B;&#x5E8F;&#x5E76;&#x4E0D;&#x4F1A;&#x7B49;&#x5230; operatoin &#x8FD4;&#x56DE;&#x3002;&#x60F3;&#x8981;&#x7B49;&#x5230; operation &#x8FD4;&#x56DE;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x9700;&#x8981;&#x624B;&#x52A8;&#x5730;&#x53BB;&#x76D1;&#x89C6; operation &#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x7136;&#x540E;&#x7B49;&#x5F85;&#x5B83;&#x8FD4;&#x56DE;&#x3002;&#x3002;&#x3002;</p>
@@ -1372,18 +1372,18 @@ Main Function
 <p>&#x8FD9;&#x65F6;&#x5019;&#x5C31;&#x9700;&#x8981; NSOperationQueue &#x767B;&#x573A;&#x4E86;&#x3002;</p>
 <h3 id="&#x5728;-nsoperationqueue-&#x4E2D;&#x8FD0;&#x884C;">&#x5728; NSOperationQueue &#x4E2D;&#x8FD0;&#x884C;</h3>
 <p>NSOperationQueue &#x662F;&#x4E00;&#x4E2A;&#x4E13;&#x95E8;&#x7528;&#x4E8E;&#x6267;&#x884C; NSOperation &#x7684;&#x961F;&#x5217;&#x3002;&#x5728; OS X 10.6 &#x4E4B;&#x540E;&#xFF0C;&#x628A;&#x4E00;&#x4E2A; NSOperation &#x653E;&#x5230; NSOperationQueue &#x4E2D;&#xFF0C;queue &#x4F1A;&#x5FFD;&#x7565; isAsynchronous &#x53D8;&#x91CF;&#xFF0C;&#x603B;&#x662F;&#x4F1A;&#x628A; operation &#x653E;&#x5230;&#x540E;&#x53F0;&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#x884C;&#x3002;&#x8FD9;&#x6837;&#x4E0D;&#x7BA1; operation &#x662F;&#x4E0D;&#x662F;&#x5F02;&#x6B65;&#x7684;&#xFF0C;queue &#x7684;&#x6267;&#x884C;&#x90FD;&#x662F;&#x4E0D;&#x4F1A;&#x9020;&#x6210;&#x4E3B;&#x7EBF;&#x7A0B;&#x7684;&#x963B;&#x585E;&#x7684;&#x3002;&#x4F7F;&#x7528; Queue &#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x5730;&#x8FDB;&#x884C;&#x5E76;&#x53D1;&#x64CD;&#x4F5C;&#xFF0C;&#x5E76;&#x4E14;&#x5E2E;&#x6211;&#x4EEC;&#x5B8C;&#x6210;&#x5927;&#x90E8;&#x5206;&#x7684;&#x76D1;&#x89C6; operation &#x662F;&#x5426;&#x5B8C;&#x6210;&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x63A5;&#x7740;&#x7528;&#x4E0A;&#x9762;&#x7684; MyOperation &#x505A;&#x4F8B;&#x5B50;&#xFF0C;&#x4F7F;&#x7528; NSOperationQueue &#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x5199;&#xFF1A;</p>
-<pre><code class="lang-objective-c">MyOperation *op = [[MyOperation alloc] init];
-NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+<pre><code class="lang-objectivec">MyOperation *op = [[MyOperation alloc] init];
+<span class="hljs-built_in">NSOperationQueue</span> *queue = [[<span class="hljs-built_in">NSOperationQueue</span> alloc] init];
 
-[queue addOperation:op];    // add &#x5B8C; operation &#x5C31;&#x7ACB;&#x5373;&#x542F;&#x52A8;&#x4E86;
-[queue waitUntilAllOperationsAreFinished]; // &#x963B;&#x585E;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#xFF0C;&#x76F4;&#x5230;&#x6240;&#x6709;&#x7684; operation &#x5168;&#x90FD;&#x5B8C;&#x6210;
-NSLog(@&quot;Main Function&quot;);
+[queue addOperation:op];    <span class="hljs-comment">// add &#x5B8C; operation &#x5C31;&#x7ACB;&#x5373;&#x542F;&#x52A8;&#x4E86;</span>
+[queue waitUntilAllOperationsAreFinished]; <span class="hljs-comment">// &#x963B;&#x585E;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#xFF0C;&#x76F4;&#x5230;&#x6240;&#x6709;&#x7684; operation &#x5168;&#x90FD;&#x5B8C;&#x6210;</span>
+<span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;Main Function&quot;</span>);
 </code></pre>
 <p>&#x50CF;&#x8FD9;&#x6837;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x5404;&#x4E2A;&#x5404;&#x6837;&#x7684; operation &#x5230; queue &#x4E2D;&#xFF0C;&#x53EA;&#x8981;&#x8FD9;&#x4E9B; operation &#x90FD;&#x6B63;&#x786E;&#x5730;&#x91CD;&#x8F7D;&#x4E86; isExecuting &#x548C; isFinished&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x6B63;&#x786E;&#x5730;&#x88AB;&#x5E76;&#x53D1;&#x6267;&#x884C;&#x3002;</p>
 <p>&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;NSOperationQueue &#x8FD8;&#x6709;&#x51E0;&#x4E2A;&#x5F88;&#x5F3A;&#x5927;&#x7684;&#x7279;&#x6027;&#x3002;</p>
 <h4 id="dependency">Dependency</h4>
 <p>NSOperation &#x53EF;&#x4EE5;&#x901A;&#x8FC7; addDependency &#x6765;&#x4F9D;&#x8D56;&#x4E8E;&#x5176;&#x4ED6;&#x7684; operation &#x5B8C;&#x6210;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x5F88;&#x591A;&#x590D;&#x6742;&#x7684; operation&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F62;&#x6210;&#x5B83;&#x4EEC;&#x4E4B;&#x95F4;&#x7684;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x56FE;&#xFF0C;&#x6765;&#x5B9E;&#x73B0;&#x590D;&#x6742;&#x7684;&#x540C;&#x6B65;&#x64CD;&#x4F5C;&#xFF1A;</p>
-<pre><code class="lang-objective-c">[updateUIOperation addDependency: workerOperation];
+<pre><code class="lang-objectivec">[update<span class="hljs-built_in">UIOperation</span> addDependency: workerOperation];
 </code></pre>
 <h4 id="cancellation">Cancellation</h4>
 <p>&#x5F53; NSOperation &#x652F;&#x6301;&#x4E86; cancel &#x64CD;&#x4F5C;&#x65F6;&#xFF0C;NSOperationQueue &#x53EF;&#x4EE5;&#x4F7F;&#x7528; cancelAllOperatoins &#x6765;&#x5BF9;&#x6240;&#x6709;&#x7684; operation &#x6267;&#x884C; cancel &#x64CD;&#x4F5C;&#x3002;&#x4E0D;&#x8FC7; cancel &#x7684;&#x6548;&#x679C;&#x8FD8;&#x662F;&#x53D6;&#x51B3;&#x4E8E; NSOperation &#x4E2D;&#x4EE3;&#x7801;&#x662F;&#x600E;&#x4E48;&#x5199;&#x7684;&#x3002;</p>
@@ -1391,13 +1391,13 @@ NSLog(@&quot;Main Function&quot;);
 <p>&#x9ED8;&#x8BA4;&#x7684;&#x6700;&#x5927;&#x5E76;&#x53D1; operation &#x6570;&#x91CF;&#x662F;&#x7531;&#x7CFB;&#x7EDF;&#x5F53;&#x524D;&#x7684;&#x8FD0;&#x884C;&#x60C5;&#x51B5;&#x51B3;&#x5B9A;&#x7684;(<a href="https://stackoverflow.com/questions/14995801/default-value-of-maxconcurrentoperationcount-for-nsoperationqueue" target="_blank">&#x6765;&#x6E90;</a>)&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x5F3A;&#x5236;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;&#x7684;&#x5E76;&#x53D1;&#x6570;&#x91CF;&#x3002;</p>
 <h4 id="queue-&#x7684;&#x4F18;&#x5148;&#x7EA7;">Queue &#x7684;&#x4F18;&#x5148;&#x7EA7;</h4>
 <p>NSOperation &#x53EF;&#x4EE5;&#x4F7F;&#x7528; queuePriority &#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x4F18;&#x5148;&#x7EA7;&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x6709;&#x4E0B;&#x9762;&#x51E0;&#x79CD;&#xFF1A;</p>
-<pre><code class="lang-objective-c">typedef enum : NSInteger {
-   NSOperationQueuePriorityVeryLow = -8,
-   NSOperationQueuePriorityLow = -4,
-   NSOperationQueuePriorityNormal = 0,
-   NSOperationQueuePriorityHigh = 4,
-   NSOperationQueuePriorityVeryHigh = 8
-} NSOperationQueuePriority;
+<pre><code class="lang-objectivec"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">enum</span> : <span class="hljs-built_in">NSInteger</span> {
+   <span class="hljs-built_in">NSOperationQueuePriorityVeryLow</span> = -<span class="hljs-number">8</span>,
+   <span class="hljs-built_in">NSOperationQueuePriorityLow</span> = -<span class="hljs-number">4</span>,
+   <span class="hljs-built_in">NSOperationQueuePriorityNormal</span> = <span class="hljs-number">0</span>,
+   <span class="hljs-built_in">NSOperationQueuePriorityHigh</span> = <span class="hljs-number">4</span>,
+   <span class="hljs-built_in">NSOperationQueuePriorityVeryHigh</span> = <span class="hljs-number">8</span>
+} <span class="hljs-built_in">NSOperationQueuePriority</span>;
 </code></pre>
 <p>&#x5728; Queue &#x4E2D;&#x4F18;&#x5148;&#x7EA7;&#x8F83;&#x9AD8;&#x7684;&#x4F1A;&#x5148;&#x6267;&#x884C;&#x3002;</p>
 <h2 id="gcd-&#x4E0E;-nsoperation-&#x7684;&#x5BF9;&#x6BD4;">GCD &#x4E0E; NSOperation &#x7684;&#x5BF9;&#x6BD4;</h2>

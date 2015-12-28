@@ -53,7 +53,7 @@
         data-chapter-title="动画"
         data-filepath="iOS/Cocoa-Touch/Animation.md"
         data-basepath="../.."
-        data-revision="Mon Dec 28 2015 19:12:51 GMT+0800 (CST)"
+        data-revision="Mon Dec 28 2015 19:22:23 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1158,10 +1158,10 @@
 <li>contentStretch</li>
 </ul>
 <p>&#x8FD9;&#x4E9B;&#x5C5E;&#x6027;&#x5927;&#x90FD;&#x662F; View &#x7684;&#x57FA;&#x672C;&#x5C5E;&#x6027;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#x7684;&#x52A8;&#x753B;&#x4F1A;&#x540C;&#x65F6;&#x6539;&#x53D8; View &#x7684; <code>frame</code>&#xFF0C;<code>backgroundColor</code> &#x548C; <code>alpha</code> &#xFF1A;</p>
-<pre><code class="lang-objective-c">[UIView animateWithDuration:2.0 animations:^{
-    myView.frame = CGRectMake(50, 200, 200, 200);
-    myView.backgroundColor = [UIColor blueColor];
-    myView.alpha = 0.7;
+<pre><code class="lang-objectivec">[<span class="hljs-built_in">UIView</span> animateWithDuration:<span class="hljs-number">2.0</span> animations:^{
+    myView<span class="hljs-variable">.frame</span> = <span class="hljs-built_in">CGRectMake</span>(<span class="hljs-number">50</span>, <span class="hljs-number">200</span>, <span class="hljs-number">200</span>, <span class="hljs-number">200</span>);
+    myView<span class="hljs-variable">.backgroundColor</span> = [<span class="hljs-built_in">UIColor</span> blueColor];
+    myView<span class="hljs-variable">.alpha</span> = <span class="hljs-number">0.7</span>;
 }];
 </code></pre>
 <p>&#x5176;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#x7684; <code>transform</code> &#x5C5E;&#x6027;&#xFF0C;&#x5B83;&#x7684;&#x7C7B;&#x578B;&#x662F; <code>CGAffineTransform</code>&#xFF0C;&#x5373; 2D &#x4EFF;&#x5C04;&#x53D8;&#x6362;&#xFF0C;&#x8FD9;&#x662F;&#x4E2A;&#x6570;&#x5B66;&#x4E2D;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x7528;&#x4E00;&#x4E2A;&#x4E09;&#x7EF4;&#x77E9;&#x9635;&#x6765;&#x8868;&#x8FF0; 2D &#x56FE;&#x5F62;&#x7684;&#x77E2;&#x91CF;&#x53D8;&#x6362;&#x3002;&#x7528; <code>transform</code> &#x5C5E;&#x6027;&#x5BF9; View &#x8FDB;&#x884C;&#xFF1A;</p>
@@ -1177,8 +1177,8 @@
 <li><code>CGAffineTransformMakeTranslation</code></li>
 </ul>
 <p>&#x4F8B;&#x5982;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4F1A;&#x5C06; View &#x7F29;&#x5C0F;&#x81F3;&#x539F;&#x6765;&#x7684; 1/4 &#x5927;&#x5C0F;&#xFF1A;</p>
-<pre><code class="lang-objective-c">[UIView animateWithDuration:2.0 animations:^{
-    myView.transform = CGAffineTransformMakeScale(0.5, 0.5);
+<pre><code class="lang-objectivec">[<span class="hljs-built_in">UIView</span> animateWithDuration:<span class="hljs-number">2.0</span> animations:^{
+    myView<span class="hljs-variable">.transform</span> = <span class="hljs-built_in">CGAffineTransformMakeScale</span>(<span class="hljs-number">0.5</span>, <span class="hljs-number">0.5</span>);
 }];
 </code></pre>
 <h4 id="&#x8C03;&#x8282;&#x53C2;&#x6570;">&#x8C03;&#x8282;&#x53C2;&#x6570;</h4>
@@ -1193,17 +1193,17 @@
 <pre><code>UIViewAnimationOptionRepeat | UIViewAnimationOptionAllowUserInteraction
 </code></pre><h4 id="&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;">&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;</h4>
 <p>&#x4E0A;&#x9762;&#x4ECB;&#x7ECD;&#x7684;&#x52A8;&#x753B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x80FD;&#x63A7;&#x5236;&#x5F00;&#x59CB;&#x548C;&#x7ED3;&#x675F;&#x65F6;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x7136;&#x540E;&#x7531;&#x7CFB;&#x7EDF;&#x8865;&#x5168;&#x4E2D;&#x95F4;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x6709;&#x4E9B;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x8BBE;&#x5B9A;&#x82E5;&#x5E72;&#x5173;&#x952E;&#x5E27;&#xFF0C;&#x5B9E;&#x73B0;&#x66F4;&#x590D;&#x6742;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x5C31;&#x9700;&#x8981;&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;&#x7684;&#x652F;&#x6301;&#x4E86;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x793A;&#x4F8B;&#xFF1A;</p>
-<pre><code class="lang-objective-c">[UIView animateKeyframesWithDuration:2.0 delay:0.0 options:UIViewKeyframeAnimationOptionRepeat | UIViewKeyframeAnimationOptionAutoreverse animations:^{
-    [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.5 animations:^{
-        self.myView.frame = CGRectMake(10, 50, 100, 100);
+<pre><code class="lang-objectivec">[<span class="hljs-built_in">UIView</span> animateKeyframesWithDuration:<span class="hljs-number">2.0</span> delay:<span class="hljs-number">0.0</span> options:<span class="hljs-built_in">UIViewKeyframeAnimationOptionRepeat</span> | <span class="hljs-built_in">UIViewKeyframeAnimationOptionAutoreverse</span> animations:^{
+    [<span class="hljs-built_in">UIView</span> addKeyframeWithRelativeStartTime:<span class="hljs-number">0.0</span> relativeDuration:<span class="hljs-number">0.5</span> animations:^{
+        <span class="hljs-keyword">self</span><span class="hljs-variable">.myView</span><span class="hljs-variable">.frame</span> = <span class="hljs-built_in">CGRectMake</span>(<span class="hljs-number">10</span>, <span class="hljs-number">50</span>, <span class="hljs-number">100</span>, <span class="hljs-number">100</span>);
     }];
-    [UIView addKeyframeWithRelativeStartTime: 0.5 relativeDuration:0.3 animations:^{
-        self.myView.frame = CGRectMake(20, 100, 100, 100);
+    [<span class="hljs-built_in">UIView</span> addKeyframeWithRelativeStartTime: <span class="hljs-number">0.5</span> relativeDuration:<span class="hljs-number">0.3</span> animations:^{
+        <span class="hljs-keyword">self</span><span class="hljs-variable">.myView</span><span class="hljs-variable">.frame</span> = <span class="hljs-built_in">CGRectMake</span>(<span class="hljs-number">20</span>, <span class="hljs-number">100</span>, <span class="hljs-number">100</span>, <span class="hljs-number">100</span>);
     }];
-    [UIView addKeyframeWithRelativeStartTime:0.8 relativeDuration:0.2 animations:^{
-        self.myView.transform = CGAffineTransformMakeScale(0.5, 0.5);
+    [<span class="hljs-built_in">UIView</span> addKeyframeWithRelativeStartTime:<span class="hljs-number">0.8</span> relativeDuration:<span class="hljs-number">0.2</span> animations:^{
+        <span class="hljs-keyword">self</span><span class="hljs-variable">.myView</span><span class="hljs-variable">.transform</span> = <span class="hljs-built_in">CGAffineTransformMakeScale</span>(<span class="hljs-number">0.5</span>, <span class="hljs-number">0.5</span>);
     }];
-} completion:nil];
+} completion:<span class="hljs-literal">nil</span>];
 </code></pre>
 <p>&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x6DFB;&#x52A0;&#x4E86;&#x4E09;&#x4E2A;&#x5173;&#x952E;&#x5E27;&#xFF0C;&#x5728;&#x5916;&#x9762;&#x7684; <code>animateKeyframesWithDuration</code> &#x4E2D;&#x6211;&#x4EEC;&#x8BBE;&#x7F6E;&#x4E86;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x4E3A; 2.0 &#x79D2;&#xFF0C;&#x8FD9;&#x662F;&#x771F;&#x5B9E;&#x610F;&#x4E49;&#x4E0A;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x91CC;&#x9762;&#x7684; <code>startTime</code> &#x548C; <code>relativeDuration</code> &#x90FD;&#x662F;&#x76F8;&#x5BF9;&#x65F6;&#x95F4;&#x3002;&#x4EE5;&#x7B2C;&#x4E00;&#x4E2A;&#x4E3A;&#x4F8B;&#xFF0C;<code>startTime</code> &#x4E3A; 0.0&#xFF0C;<code>relativeTime</code> &#x4E3A; 0.5&#xFF0C;&#x8FD9;&#x4E2A;&#x52A8;&#x753B;&#x4F1A;&#x76F4;&#x63A5;&#x5F00;&#x59CB;&#xFF0C;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x4E3A; 2.0 X 0.5 = 1.0 &#x79D2;&#xFF0C;&#x4E0B;&#x9762;&#x7B2C;&#x4E8C;&#x4E2A;&#x7684;&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#x662F; 0.5&#xFF0C;&#x6B63;&#x597D;&#x627F;&#x63A5;&#x4E0A;&#x4E00;&#x4E2A;&#x7ED3;&#x675F;&#xFF0C;&#x7B2C;&#x4E09;&#x4E2A;&#x540C;&#x7406;&#xFF0C;&#x8FD9;&#x6837;&#x4E09;&#x4E2A;&#x52A8;&#x753B;&#x5C31;&#x53D8;&#x6210;&#x8FDE;&#x7EED;&#x7684;&#x52A8;&#x753B;&#x4E86;&#x3002;</p>
 <h4 id="view-&#x7684;&#x8F6C;&#x6362;">View &#x7684;&#x8F6C;&#x6362;</h4>
@@ -1217,19 +1217,19 @@
 <p><strong>&#x6CE8;&#x610F;</strong>&#xFF1A;&#x4F7F;&#x7528; CALayer &#x52A8;&#x753B;&#x4E4B;&#x524D;&#xFF0C;&#x9996;&#x5148;&#x9700;&#x8981;&#x5F15;&#x5165; QuartzCore.framework&#x3002;</p>
 <h4 id="&#x57FA;&#x672C;&#x52A8;&#x753B;&#xFF08;cabasicanimation&#xFF09;">&#x57FA;&#x672C;&#x52A8;&#x753B;&#xFF08;CABasicAnimation&#xFF09;</h4>
 <p>CABasicAnimation &#x7528;&#x4E8E;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; CALayer &#x4E0A;&#x7684;&#x57FA;&#x672C;&#x52A8;&#x753B;&#x6548;&#x679C;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
-<pre><code class="lang-objective-c">CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@&quot;position.x&quot;];
-animation.toValue = @200;
-animation.duration = 0.8;
-animation.repeatCount = 5;
-animation.beginTime = CACurrentMediaTime() + 0.5;
-animation.fillMode = kCAFillModeRemoved;
-[self.myView.layer addAnimation:animation forKey:nil];
+<pre><code class="lang-objectivec"><span class="hljs-built_in">CABasicAnimation</span> *animation = [<span class="hljs-built_in">CABasicAnimation</span> animationWithKeyPath:<span class="hljs-string">@&quot;position.x&quot;</span>];
+animation<span class="hljs-variable">.toValue</span> = @<span class="hljs-number">200</span>;
+animation<span class="hljs-variable">.duration</span> = <span class="hljs-number">0.8</span>;
+animation<span class="hljs-variable">.repeatCount</span> = <span class="hljs-number">5</span>;
+animation<span class="hljs-variable">.beginTime</span> = <span class="hljs-built_in">CACurrentMediaTime</span>() + <span class="hljs-number">0.5</span>;
+animation<span class="hljs-variable">.fillMode</span> = k<span class="hljs-built_in">CAFillModeRemoved</span>;
+[<span class="hljs-keyword">self</span><span class="hljs-variable">.myView</span><span class="hljs-variable">.layer</span> addAnimation:animation forKey:<span class="hljs-literal">nil</span>];
 </code></pre>
 <h5 id="keypath">KeyPath</h5>
 <p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x4E86; <code>animationWithKeyPath</code> &#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x6765;&#x6539;&#x53D8; layer &#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;&#x6709;&#x5F88;&#x591A;&#xFF0C;&#x5177;&#x4F53;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/AnimatableProperties/AnimatableProperties.html" target="_blank">&#x8FD9;&#x91CC;</a>&#x548C;<a href="http://www.cnblogs.com/pengyingh/articles/2379631.html" target="_blank">&#x8FD9;&#x91CC;</a>&#x3002;&#x5176;&#x4E2D;&#x5F88;&#x591A;&#x5C5E;&#x6027;&#x5728;&#x524D;&#x9762;&#x4ECB;&#x7ECD;&#x7684; UIView &#x52A8;&#x753B;&#x90E8;&#x5206;&#x6211;&#x4EEC;&#x4E5F;&#x770B;&#x5230;&#x8FC7;&#xFF0C;&#x8FDB;&#x4E00;&#x6B65;&#x9A8C;&#x8BC1;&#x4E86; UIView &#x7684;&#x52A8;&#x753B;&#x65B9;&#x6CD5;&#x662F;&#x5BF9;&#x5E95;&#x5C42; CALayer &#x7684;&#x4E00;&#x79CD;&#x5C01;&#x88C5;&#x3002;</p>
 <p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x4E00;&#x70B9;&#x662F;&#xFF0C;&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x4E86; <code>position</code> &#x5C5E;&#x6027;&#xFF0C; layer &#x7684;&#x8FD9;&#x4E2A; <code>position</code> &#x5C5E;&#x6027;&#x548C; View &#x7684; <code>frame</code> &#x4EE5;&#x53CA; <code>bounds</code> &#x5C5E;&#x6027;&#x90FD;&#x4E0D;&#x76F8;&#x540C;&#xFF0C;&#x800C;&#x662F;&#x548C; Layer &#x7684; <code>anchorPoint</code> &#x6709;&#x5173;&#xFF0C;&#x53EF;&#x4EE5;&#x7531;&#x4E0B;&#x9762;&#x7684;&#x516C;&#x5F0F;&#x8BA1;&#x7B97;&#x5F97;&#x5230;&#xFF1A;</p>
-<pre><code class="lang-objective-c">position.x = frame.origin.x + 0.5 * bounds.size.width&#xFF1B;  
-position.y = frame.origin.y + 0.5 * bounds.size.height&#xFF1B;
+<pre><code class="lang-objectivec">position<span class="hljs-variable">.x</span> = frame<span class="hljs-variable">.origin</span><span class="hljs-variable">.x</span> + <span class="hljs-number">0.5</span> * bounds<span class="hljs-variable">.size</span><span class="hljs-variable">.width</span>&#xFF1B;  
+position<span class="hljs-variable">.y</span> = frame<span class="hljs-variable">.origin</span><span class="hljs-variable">.y</span> + <span class="hljs-number">0.5</span> * bounds<span class="hljs-variable">.size</span><span class="hljs-variable">.height</span>&#xFF1B;
 </code></pre>
 <p>&#x5173;&#x4E8E; <code>anchorPoint</code> &#x548C; <code>position</code> &#x5C5E;&#x6027;&#x7684;&#x4EE5;&#x53CA;&#x5177;&#x4F53;&#x8BA1;&#x7B97;&#x7684;&#x539F;&#x7406;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="http://wonderffee.github.io/blog/2013/10/13/understand-anchorpoint-and-position/" target="_blank">&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;</a>&#x3002;</p>
 <h5 id="&#x5C5E;&#x6027;">&#x5C5E;&#x6027;</h5>
@@ -1274,106 +1274,106 @@ position.y = frame.origin.y + 0.5 * bounds.size.height&#xFF1B;
 <p>&#x540C; UIView &#x4E2D;&#x7684;&#x7C7B;&#x4F3C;&#xFF0C;CALayer &#x5C42;&#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;&#x7684;&#x652F;&#x6301;&#xFF0C;CAKeyFrameAnimation &#x548C; CABasicAnimation &#x90FD;&#x7EE7;&#x627F;&#x81EA; CAPropertyAnimation&#xFF0C;&#x56E0;&#x6B64;&#x5B83;&#x6709;&#x5177;&#x6709;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x90A3;&#x4E9B;&#x5C5E;&#x6027;&#xFF0C;&#x6B64;&#x5916;&#xFF0C;CAKeyFrameAnimation &#x8FD8;&#x6709;&#x7279;&#x6709;&#x7684;&#x51E0;&#x4E2A;&#x5C5E;&#x6027;&#x3002;</p>
 <h5 id="values-&#x548C;-keytimes">values &#x548C; keyTimes</h5>
 <p>&#x4F7F;&#x7528; <code>values</code> &#x548C; <code>keyTimes</code> &#x53EF;&#x4EE5;&#x5171;&#x540C;&#x786E;&#x5B9A;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x7684;&#x82E5;&#x5E72;&#x5173;&#x952E;&#x5E27;&#xFF0C;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code class="lang-objective-c">CAKeyframeAnimation *anima = [CAKeyframeAnimation animationWithKeyPath:@&quot;transform.rotation&quot;];//&#x5728;&#x8FD9;&#x91CC;@&quot;transform.rotation&quot;==@&quot;transform.rotation.z&quot;
-NSValue *value1 = [NSNumber numberWithFloat:-M_PI/180*4];
-NSValue *value2 = [NSNumber numberWithFloat:M_PI/180*4];
-NSValue *value3 = [NSNumber numberWithFloat:-M_PI/180*4];
-anima.values = @[value1,value2,value3];
-// anima.keyTimes = @[@0.0, @0.5, @1.0];
-anima.repeatCount = MAXFLOAT;
+<pre><code class="lang-objectivec"><span class="hljs-built_in">CAKeyframeAnimation</span> *anima = [<span class="hljs-built_in">CAKeyframeAnimation</span> animationWithKeyPath:<span class="hljs-string">@&quot;transform.rotation&quot;</span>];<span class="hljs-comment">//&#x5728;&#x8FD9;&#x91CC;@&quot;transform.rotation&quot;==@&quot;transform.rotation.z&quot;</span>
+<span class="hljs-built_in">NSValue</span> *value1 = [<span class="hljs-built_in">NSNumber</span> numberWithFloat:-M_PI/<span class="hljs-number">180</span>*<span class="hljs-number">4</span>];
+<span class="hljs-built_in">NSValue</span> *value2 = [<span class="hljs-built_in">NSNumber</span> numberWithFloat:M_PI/<span class="hljs-number">180</span>*<span class="hljs-number">4</span>];
+<span class="hljs-built_in">NSValue</span> *value3 = [<span class="hljs-built_in">NSNumber</span> numberWithFloat:-M_PI/<span class="hljs-number">180</span>*<span class="hljs-number">4</span>];
+anima<span class="hljs-variable">.values</span> = @[value1,value2,value3];
+<span class="hljs-comment">// anima.keyTimes = @[@0.0, @0.5, @1.0];</span>
+anima<span class="hljs-variable">.repeatCount</span> = MAXFLOAT;
 
-[_demoView.layer addAnimation:anima forKey:@&quot;shakeAnimation&quot;];
+[_demoView<span class="hljs-variable">.layer</span> addAnimation:anima forKey:<span class="hljs-string">@&quot;shakeAnimation&quot;</span>];
 </code></pre>
 <p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x52A8;&#x753B;&#x5171;&#x6709;&#x4E09;&#x4E2A;&#x5173;&#x952E;&#x5E27;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x6307;&#x5B9A; <code>keyTimes</code> &#x5219;&#x5404;&#x4E2A;&#x5173;&#x952E;&#x5E27;&#x4F1A;&#x5E73;&#x5206;&#x6574;&#x4E2A;&#x52A8;&#x753B;&#x7684;&#x65F6;&#x95F4;(duration)&#x3002;</p>
 <h5 id="path">path</h5>
 <p>&#x4F7F;&#x7528; path &#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x7684;&#x8FD0;&#x52A8;&#x8DEF;&#x5F84;&#xFF0C;&#x6CE8;&#x610F; path &#x53EA;&#x5BF9; CALayer &#x7684; anchorPoint &#x548C;position &#x5C5E;&#x6027;&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x53E6;&#x5916;&#x5982;&#x679C;&#x4F60;&#x8BBE;&#x7F6E;&#x4E86; path &#xFF0C;&#x90A3;&#x4E48; values &#x5C06;&#x88AB;&#x5FFD;&#x7565;&#x3002;</p>
-<pre><code class="lang-objective-c">CAKeyframeAnimation *anima = [CAKeyframeAnimation animationWithKeyPath:@&quot;position&quot;];
-UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(SCREEN_WIDTH/2-100, SCREEN_HEIGHT/2-100, 200, 200)];
-anima.path = path.CGPath;
-anima.duration = 2.0f;
-[_demoView.layer addAnimation:anima forKey:@&quot;pathAnimation&quot;];
+<pre><code class="lang-objectivec"><span class="hljs-built_in">CAKeyframeAnimation</span> *anima = [<span class="hljs-built_in">CAKeyframeAnimation</span> animationWithKeyPath:<span class="hljs-string">@&quot;position&quot;</span>];
+<span class="hljs-built_in">UIBezierPath</span> *path = [<span class="hljs-built_in">UIBezierPath</span> bezierPathWithOvalInRect:<span class="hljs-built_in">CGRectMake</span>(SCREEN_WIDTH/<span class="hljs-number">2</span>-<span class="hljs-number">100</span>, SCREEN_HEIGHT/<span class="hljs-number">2</span>-<span class="hljs-number">100</span>, <span class="hljs-number">200</span>, <span class="hljs-number">200</span>)];
+anima<span class="hljs-variable">.path</span> = path<span class="hljs-variable">.CGPath</span>;
+anima<span class="hljs-variable">.duration</span> = <span class="hljs-number">2.0</span>f;
+[_demoView<span class="hljs-variable">.layer</span> addAnimation:anima forKey:<span class="hljs-string">@&quot;pathAnimation&quot;</span>];
 </code></pre>
 <h4 id="&#x7EC4;&#x52A8;&#x753B;&#xFF08;caanimationgroup">&#x7EC4;&#x52A8;&#x753B;&#xFF08;CAAnimationGroup)</h4>
 <p>&#x7EC4;&#x52A8;&#x753B;&#x53EF;&#x4EE5;&#x5C06;&#x4E00;&#x7EC4;&#x52A8;&#x753B;&#x7EC4;&#x5408;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x6240;&#x6709;&#x52A8;&#x753B;&#x5BF9;&#x8C61;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x8FD0;&#x884C;&#xFF0C;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code class="lang-objective-c">CAAnimationGroup *group = [[CAAnimationGroup alloc] init];
-CABasicAnimation *animationOne = [CABasicAnimation animationWithKeyPath:@&quot;transform.scale&quot;];
+<pre><code class="lang-objectivec"><span class="hljs-built_in">CAAnimationGroup</span> *group = [[<span class="hljs-built_in">CAAnimationGroup</span> alloc] init];
+<span class="hljs-built_in">CABasicAnimation</span> *animationOne = [<span class="hljs-built_in">CABasicAnimation</span> animationWithKeyPath:<span class="hljs-string">@&quot;transform.scale&quot;</span>];
 
-animationOne.toValue = @2.0;
-animationOne.duration = 1.0;
+animationOne<span class="hljs-variable">.toValue</span> = @<span class="hljs-number">2.0</span>;
+animationOne<span class="hljs-variable">.duration</span> = <span class="hljs-number">1.0</span>;
 
-CABasicAnimation *animationTwo = [CABasicAnimation animationWithKeyPath:@&quot;position.x&quot;];
-animationTwo.toValue = @400;
-animationTwo.duration = 1.0;
+<span class="hljs-built_in">CABasicAnimation</span> *animationTwo = [<span class="hljs-built_in">CABasicAnimation</span> animationWithKeyPath:<span class="hljs-string">@&quot;position.x&quot;</span>];
+animationTwo<span class="hljs-variable">.toValue</span> = @<span class="hljs-number">400</span>;
+animationTwo<span class="hljs-variable">.duration</span> = <span class="hljs-number">1.0</span>;
 
 [group setAnimations:@[animationOne, animationTwo]];
-[self.myView.layer addAnimation:group forKey:nil];
+[<span class="hljs-keyword">self</span><span class="hljs-variable">.myView</span><span class="hljs-variable">.layer</span> addAnimation:group forKey:<span class="hljs-literal">nil</span>];
 </code></pre>
 <p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x4E00;&#x4E2A; group &#x7EC4;&#x5185;&#x7684;&#x67D0;&#x4E2A;&#x52A8;&#x753B;&#x7684;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#xFF08;duration&#xFF09;&#xFF0C;&#x5982;&#x679C;&#x8D85;&#x8FC7;&#x4E86;&#x6574;&#x4E2A;&#x7EC4;&#x7684;&#x52A8;&#x753B;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#xFF0C;&#x90A3;&#x4E48;&#x591A;&#x51FA;&#x7684;&#x52A8;&#x753B;&#x65F6;&#x95F4;&#x5C06;&#x4E0D;&#x4F1A;&#x88AB;&#x5C55;&#x793A;&#x3002;&#x4F8B;&#x5982;&#x4E00;&#x4E2A; group  &#x7684;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x662F; 5s&#xFF0C;&#x800C;&#x7EC4;&#x5185;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x4E3A; 10s &#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A; 10s &#x7684;&#x52A8;&#x753B;&#x53EA;&#x4F1A;&#x5C55;&#x793A;&#x524D; 5s &#x3002;</p>
 <h4 id="&#x5207;&#x6362;&#x52A8;&#x753B;&#xFF08;catransition&#xFF09;">&#x5207;&#x6362;&#x52A8;&#x753B;&#xFF08;CATransition&#xFF09;</h4>
 <p>CATransition &#x53EF;&#x4EE5;&#x7528;&#x4E8E; View &#x6216; ViewController &#x76F4;&#x63A5;&#x7684;&#x6362;&#x573A;&#x52A8;&#x753B;&#xFF1A;</p>
-<pre><code class="lang-objective-c">self.myView.backgroundColor = [UIColor blueColor];
-CATransition *trans = [CATransition animation];
-trans.duration = 1.0;
-trans.type = @&quot;push&quot;;
+<pre><code class="lang-objectivec"><span class="hljs-keyword">self</span><span class="hljs-variable">.myView</span><span class="hljs-variable">.backgroundColor</span> = [<span class="hljs-built_in">UIColor</span> blueColor];
+<span class="hljs-built_in">CATransition</span> *trans = [<span class="hljs-built_in">CATransition</span> animation];
+trans<span class="hljs-variable">.duration</span> = <span class="hljs-number">1.0</span>;
+trans<span class="hljs-variable">.type</span> = <span class="hljs-string">@&quot;push&quot;</span>;
 
-[self.myView.layer addAnimation:trans forKey:nil];
+[<span class="hljs-keyword">self</span><span class="hljs-variable">.myView</span><span class="hljs-variable">.layer</span> addAnimation:trans forKey:<span class="hljs-literal">nil</span>];
 
-// &#x8FD9;&#x53E5;&#x653E;&#x5728;&#x4E0B;&#x9762;&#x4E5F;&#x53EF;&#x4EE5;
-// self.myView.backgroundColor = [UIColor blueColor];
+<span class="hljs-comment">// &#x8FD9;&#x53E5;&#x653E;&#x5728;&#x4E0B;&#x9762;&#x4E5F;&#x53EF;&#x4EE5;</span>
+<span class="hljs-comment">// self.myView.backgroundColor = [UIColor blueColor];</span>
 </code></pre>
 <p>&#x4E3A;&#x4EC0;&#x4E48;&#x6539;&#x53D8;&#x989C;&#x8272;&#x653E;&#x5728;&#x524D;&#x540E;&#x90FD;&#x53EF;&#x4EE5;&#x5462;&#xFF1F;&#x5177;&#x4F53;&#x7684;&#x89E3;&#x91CA;&#x53EF;&#x4EE5;&#x53C2;&#x8003; SO &#x4E0A;&#x7684;<a href="http://stackoverflow.com/questions/2233692/how-does-catransition-work" target="_blank">&#x8FD9;&#x4E2A;&#x56DE;&#x7B54;</a>&#x3002;&#x7B80;&#x5355;&#x6765;&#x8BF4;&#x5C31;&#x662F;&#x52A8;&#x753B;&#x548C;&#x7ED8;&#x5236;&#x4E4B;&#x95F4;&#x5E76;&#x4E0D;&#x51B2;&#x7A81;&#x3002;</p>
 <h3 id="&#x66F4;&#x9AD8;&#x7EA7;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;">&#x66F4;&#x9AD8;&#x7EA7;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;</h3>
 <h4 id="cadisplaylink">CADisplayLink</h4>
 <p>CADisplayLink &#x662F;&#x4E00;&#x4E2A;&#x8BA1;&#x65F6;&#x5668;&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x5468;&#x671F;&#x6027;&#x7684;&#x8C03;&#x7528;&#x67D0;&#x4E2A; selecor &#x65B9;&#x6CD5;&#x3002;&#x76F8;&#x6BD4; NSTimer &#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x4EE5;&#x548C;&#x5C4F;&#x5E55;&#x5237;&#x65B0;&#x7387;&#x540C;&#x6B65;&#x7684;&#x9891;&#x7387;&#xFF08;&#x6BCF;&#x79D2;60&#x6B21;&#xFF09;&#x6765;&#x8C03;&#x7528;&#x7ED8;&#x5236;&#x51FD;&#x6570;&#xFF0C;&#x5B9E;&#x73B0;&#x754C;&#x9762;&#x8FDE;&#x7EED;&#x7684;&#x4E0D;&#x505C;&#x91CD;&#x7ED8;&#xFF0C;&#x4ECE;&#x800C;&#x5B9E;&#x73B0;&#x52A8;&#x753B;&#x6548;&#x679C;&#x3002;</p>
 <p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF08;&#x4FEE;&#x6539;&#x81EA;<a href="http://www.cocoachina.com/ios/20150320/11382.html" target="_blank">&#x8FD9;&#x91CC;</a>)&#xFF1A;</p>
-<pre><code class="lang-objective-c">#import &quot;BlockView.h&quot;
+<pre><code class="lang-objectivec"><span class="hljs-preprocessor">#import <span class="hljs-title">&quot;BlockView.h&quot;</span></span>
 
-@implementation BlockView
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">BlockView</span></span>
 
-- (void)startAnimationFrom:(CGFloat)from To:(CGFloat)to
+- (<span class="hljs-keyword">void</span>)startAnimationFrom:(<span class="hljs-built_in">CGFloat</span>)from To:(<span class="hljs-built_in">CGFloat</span>)to
 {
-    self.from = from;
-    self.to = to;
-    if (self.displayLink == nil) {
-        self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(tick:)];
-        [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop]
-                               forMode:NSDefaultRunLoopMode];
+    <span class="hljs-keyword">self</span><span class="hljs-variable">.from</span> = from;
+    <span class="hljs-keyword">self</span><span class="hljs-variable">.to</span> = to;
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">self</span><span class="hljs-variable">.displayLink</span> == <span class="hljs-literal">nil</span>) {
+        <span class="hljs-keyword">self</span><span class="hljs-variable">.displayLink</span> = [<span class="hljs-built_in">CADisplayLink</span> displayLinkWithTarget:<span class="hljs-keyword">self</span> selector:<span class="hljs-keyword">@selector</span>(tick:)];
+        [<span class="hljs-keyword">self</span><span class="hljs-variable">.displayLink</span> addToRunLoop:[<span class="hljs-built_in">NSRunLoop</span> currentRunLoop]
+                               forMode:<span class="hljs-built_in">NSDefaultRunLoopMode</span>];
     }
 }
 
-// &#x91CD;&#x590D;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4EE5;&#x91CD;&#x7ED8;&#x6574;&#x4E2A; View
-- (void)tick:(CADisplayLink *)displayLink
+<span class="hljs-comment">// &#x91CD;&#x590D;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4EE5;&#x91CD;&#x7ED8;&#x6574;&#x4E2A; View</span>
+- (<span class="hljs-keyword">void</span>)tick:(<span class="hljs-built_in">CADisplayLink</span> *)displayLink
 {
-    [self setNeedsDisplay];
+    [<span class="hljs-keyword">self</span> setNeedsDisplay];
 }
 
-- (void)endAnimation
+- (<span class="hljs-keyword">void</span>)endAnimation
 {
-    [self.displayLink invalidate];
-    self.displayLink = nil;
+    [<span class="hljs-keyword">self</span><span class="hljs-variable">.displayLink</span> invalidate];
+    <span class="hljs-keyword">self</span><span class="hljs-variable">.displayLink</span> = <span class="hljs-literal">nil</span>;
 }
 
-- (void)drawRect:(CGRect)rect
+- (<span class="hljs-keyword">void</span>)drawRect:(<span class="hljs-built_in">CGRect</span>)rect
 {
-    CALayer *layer = self.layer.presentationLayer;
-    CGFloat progress = 1 - (layer.position.y - self.to) / (self.from - self.to);
-    CGFloat height = CGRectGetHeight(rect);
-    CGFloat deltaHeight = height / 2 * (0.5 - fabs(progress - 0.5));
-    CGPoint topLeft = CGPointMake(0, deltaHeight);
-    CGPoint topRight = CGPointMake(CGRectGetWidth(rect), deltaHeight);
-    CGPoint bottomLeft = CGPointMake(0, height);
-    CGPoint bottomRight = CGPointMake(CGRectGetWidth(rect), height);
-    UIBezierPath* path = [UIBezierPath bezierPath];
-    [[UIColor blueColor] setFill];
+    <span class="hljs-built_in">CALayer</span> *layer = <span class="hljs-keyword">self</span><span class="hljs-variable">.layer</span><span class="hljs-variable">.presentationLayer</span>;
+    <span class="hljs-built_in">CGFloat</span> progress = <span class="hljs-number">1</span> - (layer<span class="hljs-variable">.position</span><span class="hljs-variable">.y</span> - <span class="hljs-keyword">self</span><span class="hljs-variable">.to</span>) / (<span class="hljs-keyword">self</span><span class="hljs-variable">.from</span> - <span class="hljs-keyword">self</span><span class="hljs-variable">.to</span>);
+    <span class="hljs-built_in">CGFloat</span> height = <span class="hljs-built_in">CGRectGetHeight</span>(rect);
+    <span class="hljs-built_in">CGFloat</span> deltaHeight = height / <span class="hljs-number">2</span> * (<span class="hljs-number">0.5</span> - fabs(progress - <span class="hljs-number">0.5</span>));
+    <span class="hljs-built_in">CGPoint</span> topLeft = <span class="hljs-built_in">CGPointMake</span>(<span class="hljs-number">0</span>, deltaHeight);
+    <span class="hljs-built_in">CGPoint</span> topRight = <span class="hljs-built_in">CGPointMake</span>(<span class="hljs-built_in">CGRectGetWidth</span>(rect), deltaHeight);
+    <span class="hljs-built_in">CGPoint</span> bottomLeft = <span class="hljs-built_in">CGPointMake</span>(<span class="hljs-number">0</span>, height);
+    <span class="hljs-built_in">CGPoint</span> bottomRight = <span class="hljs-built_in">CGPointMake</span>(<span class="hljs-built_in">CGRectGetWidth</span>(rect), height);
+    <span class="hljs-built_in">UIBezierPath</span>* path = [<span class="hljs-built_in">UIBezierPath</span> bezierPath];
+    [[<span class="hljs-built_in">UIColor</span> blueColor] setFill];
     [path moveToPoint:topLeft];
-    [path addQuadCurveToPoint:topRight controlPoint:CGPointMake(CGRectGetMidX(rect), 0)];
+    [path addQuadCurveToPoint:topRight controlPoint:<span class="hljs-built_in">CGPointMake</span>(<span class="hljs-built_in">CGRectGetMidX</span>(rect), <span class="hljs-number">0</span>)];
     [path addLineToPoint:bottomRight];
-    [path addQuadCurveToPoint:bottomLeft controlPoint:CGPointMake(CGRectGetMidX(rect), height - deltaHeight)];
+    [path addQuadCurveToPoint:bottomLeft controlPoint:<span class="hljs-built_in">CGPointMake</span>(<span class="hljs-built_in">CGRectGetMidX</span>(rect), height - deltaHeight)];
     [path closePath];
     [path fill];
 }
 
-@end
+<span class="hljs-keyword">@end</span>
 </code></pre>
 <h4 id="uidynamicanimator">UIDynamicAnimator</h4>
 <p>UIDynamicAnimator &#x662F; iOS 7 &#x5F15;&#x5165;&#x7684;&#x4E00;&#x4E2A;&#x65B0;&#x7C7B;&#xFF0C;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x51FA;&#x5177;&#x6709;&#x7269;&#x7406;&#x4EFF;&#x771F;&#x6548;&#x679C;&#x7684;&#x52A8;&#x753B;&#xFF0C;&#x5177;&#x4F53;&#x63D0;&#x4F9B;&#x4E86;&#x4E0B;&#x9762;&#x51E0;&#x79CD;&#x7269;&#x7406;&#x4EFF;&#x771F;&#x884C;&#x4E3A;&#xFF1A;</p>
@@ -1386,14 +1386,14 @@ trans.type = @&quot;push&quot;;
 <li>UIDynamicItemBehavior&#xFF1A;&#x52A8;&#x529B;&#x5143;&#x7D20;&#x884C;&#x4E3A;</li>
 </ul>
 <p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF08;&#x6765;&#x81EA;<a href="http://www.teehanlax.com/blog/introduction-to-uikit-dynamics/" target="_blank">&#x8FD9;&#x91CC;</a>)</p>
-<pre><code class="lang-objective-c">self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+<pre><code class="lang-objectivec"><span class="hljs-keyword">self</span><span class="hljs-variable">.animator</span> = [[<span class="hljs-built_in">UIDynamicAnimator</span> alloc] initWithReferenceView:<span class="hljs-keyword">self</span><span class="hljs-variable">.view</span>];
 
-UIGravityBehavior* gravityBehavior = [[UIGravityBehavior alloc] initWithItems:@[self.myView]];
-[self.animator addBehavior:gravityBehavior];
+<span class="hljs-built_in">UIGravityBehavior</span>* gravityBehavior = [[<span class="hljs-built_in">UIGravityBehavior</span> alloc] initWithItems:@[<span class="hljs-keyword">self</span><span class="hljs-variable">.myView</span>]];
+[<span class="hljs-keyword">self</span><span class="hljs-variable">.animator</span> addBehavior:gravityBehavior];
 
-UICollisionBehavior* collisionBehavior = [[UICollisionBehavior alloc] initWithItems:@[self.myView]];
-collisionBehavior.translatesReferenceBoundsIntoBoundary = YES;
-[self.animator addBehavior:collisionBehavior];
+<span class="hljs-built_in">UICollisionBehavior</span>* collisionBehavior = [[<span class="hljs-built_in">UICollisionBehavior</span> alloc] initWithItems:@[<span class="hljs-keyword">self</span><span class="hljs-variable">.myView</span>]];
+collisionBehavior<span class="hljs-variable">.translatesReferenceBoundsIntoBoundary</span> = <span class="hljs-literal">YES</span>;
+[<span class="hljs-keyword">self</span><span class="hljs-variable">.animator</span> addBehavior:collisionBehavior];
 </code></pre>
 <p>&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x548C;&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x5199;&#x7684;&#x52A8;&#x753B;&#x4EE3;&#x7801;&#x6709;&#x5F88;&#x5927;&#x4E0D;&#x540C;&#xFF0C;&#x5728;&#x8FD9;&#x91CC; behavior &#x662F;&#x7528;&#x4E8E;&#x63A7;&#x5236; View &#x884C;&#x4E3A;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x505A;&#x7684;&#x64CD;&#x4F5C;&#x662F;&#x628A;&#x5404;&#x79CD;&#x4E0D;&#x540C;&#x7684; behavior &#x52A0;&#x5230; animator &#x4E2D;&#x3002;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#x4E86; View &#x56E0;&#x4E3A;&#x201C;&#x91CD;&#x529B;&#x201D;&#x539F;&#x56E0;&#x201C;&#x6389;&#x5230;&#x201D;&#x5730;&#x4E0A;&#xFF0C;&#x843D;&#x5730;&#x7684;&#x540C;&#x65F6;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x78B0;&#x649E;&#x6548;&#x679C;&#x3002;</p>
 <h4 id="caemitterlayer">CAEmitterLayer</h4>

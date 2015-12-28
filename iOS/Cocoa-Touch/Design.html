@@ -53,7 +53,7 @@
         data-chapter-title="设计模式"
         data-filepath="iOS/Cocoa-Touch/Design.md"
         data-basepath="../.."
-        data-revision="Mon Dec 28 2015 19:12:51 GMT+0800 (CST)"
+        data-revision="Mon Dec 28 2015 19:22:23 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1143,194 +1143,194 @@
                         <h2 id="&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#xFF08;singleton&#xFF09;">&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#xFF08;Singleton&#xFF09;</h2>
 <p>&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x662F;&#x4E00;&#x79CD;&#x5E38;&#x89C1;&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;&#x5728; Cocoa &#x5F00;&#x53D1;&#x4E2D;&#x4E5F;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x3002;</p>
 <p>&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code class="lang-objective-c">/* Singleton.h */ 
-#import &quot;Foundation/Foundation.h&quot;
-@interface Singleton : NSObject 
+<pre><code class="lang-objectivec"><span class="hljs-comment">/* Singleton.h */</span> 
+<span class="hljs-preprocessor">#import <span class="hljs-title">&quot;Foundation/Foundation.h&quot;</span></span>
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">Singleton</span> : <span class="hljs-title">NSObject</span> </span>
 + (Singleton *)shardInstance; 
-@end 
+<span class="hljs-keyword">@end</span> 
 
-/* Singleton.m */ 
-#import &quot;Singleton.h&quot; 
-static Singleton *instance = nil; 
+<span class="hljs-comment">/* Singleton.m */</span> 
+<span class="hljs-preprocessor">#import <span class="hljs-title">&quot;Singleton.h&quot;</span> </span>
+<span class="hljs-keyword">static</span> Singleton *instance = <span class="hljs-literal">nil</span>; 
 
-@implementation Singleton 
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">Singleton</span> </span>
 + (Singleton *)sharedInstance { 
-    if (!instance) { 
-        instance = [[super allocWithZone:NULL] init]; 
+    <span class="hljs-keyword">if</span> (!instance) { 
+        instance = [[<span class="hljs-keyword">super</span> allocWithZone:<span class="hljs-literal">NULL</span>] init]; 
     } 
-    return instance; 
+    <span class="hljs-keyword">return</span> instance; 
 }
 </code></pre>
 <p>Cocoa &#x5E93;&#x672C;&#x8EAB;&#x5728;&#x4E00;&#x4E9B;&#x5730;&#x65B9;&#x4E5F;&#x4F7F;&#x7528;&#x4E86;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#xFF0C;&#x4F8B;&#x5982;<code>[NSNotificationCenter defaultCenter]</code>&#xFF0C;<code>[UIColor redColor]</code>&#x7B49;&#x3002;</p>
 <h2 id="&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#xFF08;factory&#xFF09;">&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#xFF08;Factory&#xFF09;</h2>
 <p>&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#x662F;&#x53E6;&#x4E00;&#x79CD;&#x5E38;&#x89C1;&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;&#x672C;&#x8D28;&#x4E0A;&#x662F;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x6765;&#x7B80;&#x5316;&#x7C7B;&#x7684;&#x9009;&#x62E9;&#x548C;&#x521D;&#x59CB;&#x5316;&#x8FC7;&#x7A0B;&#x3002;</p>
 <p>&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x7F51;&#x4E0A;&#x5230;&#x5904;&#x90FD;&#x662F;&#x7684;&#x7B80;&#x5355;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
-<pre><code class="lang-objective-c">//
-//  OperationFactory.m
-//  FactoryPattern
+<pre><code class="lang-objectivec"><span class="hljs-comment">//</span>
+<span class="hljs-comment">//  OperationFactory.m</span>
+<span class="hljs-comment">//  FactoryPattern</span>
 
-#import &quot;OperationFactory.h&quot;
-#import &quot;Operation.h&quot;
-#import &quot;OperationAdd.h&quot;
-#import &quot;OperationSub.h&quot;
-#import &quot;OperationMul.h&quot;
-#import &quot;OperationDiv.h&quot;
+<span class="hljs-preprocessor">#import <span class="hljs-title">&quot;OperationFactory.h&quot;</span></span>
+<span class="hljs-preprocessor">#import <span class="hljs-title">&quot;Operation.h&quot;</span></span>
+<span class="hljs-preprocessor">#import <span class="hljs-title">&quot;OperationAdd.h&quot;</span></span>
+<span class="hljs-preprocessor">#import <span class="hljs-title">&quot;OperationSub.h&quot;</span></span>
+<span class="hljs-preprocessor">#import <span class="hljs-title">&quot;OperationMul.h&quot;</span></span>
+<span class="hljs-preprocessor">#import <span class="hljs-title">&quot;OperationDiv.h&quot;</span></span>
 
-@implementation OperationFactory
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">OperationFactory</span></span>
 
-+ (Operation *) createOperat:(char)operate{
-    Operation *oper = nil;
-    switch (operate) {
-        case &apos;+&apos;:
++ (Operation *) createOperat:(<span class="hljs-keyword">char</span>)operate{
+    Operation *oper = <span class="hljs-literal">nil</span>;
+    <span class="hljs-keyword">switch</span> (operate) {
+        <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;+&apos;</span>:
         {
             oper = [[OperationAdd alloc] init];
-            break;
+            <span class="hljs-keyword">break</span>;
         }
-        case &apos;-&apos;:
+        <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;-&apos;</span>:
         {
             oper = [[OperationSub alloc] init];
-            break;
+            <span class="hljs-keyword">break</span>;
         }
-        case &apos;*&apos;:
+        <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;*&apos;</span>:
         {
             oper = [[OperationMul alloc] init];
-            break;
+            <span class="hljs-keyword">break</span>;
         }
-        case &apos;/&apos;:
+        <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;/&apos;</span>:
         {
             oper = [[OperationDiv alloc] init];
-            break;
+            <span class="hljs-keyword">break</span>;
         }
-        default:
-            break;
+        <span class="hljs-keyword">default</span>:
+            <span class="hljs-keyword">break</span>;
     }
-    return oper;
+    <span class="hljs-keyword">return</span> oper;
 }
-@end
+<span class="hljs-keyword">@end</span>
 </code></pre>
 <p>&#x7531;&#x4E8E; Objective-C &#x672C;&#x8EAB;&#x7684;&#x52A8;&#x6001;&#x7279;&#x6027;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x7528;&#x53CD;&#x5C04;&#x6765;&#x6539;&#x5199;&#xFF1A;</p>
-<pre><code class="lang-objective-c">@implementation OperationFactory
-+ (Operation *) createOperat:(NSString *)operate{
-    Operation *oper = nil;
-    Class class = NSClassFromString(operate);
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">OperationFactory</span></span>
++ (Operation *) createOperat:(<span class="hljs-built_in">NSString</span> *)operate{
+    Operation *oper = <span class="hljs-literal">nil</span>;
+    Class class = <span class="hljs-built_in">NSClassFromString</span>(operate);
     oper = [(Operation *)[class alloc] init];
-    if ([oper respondsToSelector:@selector(getResult)]) {
+    <span class="hljs-keyword">if</span> ([oper respondsToSelector:<span class="hljs-keyword">@selector</span>(getResult)]) {
         [oper getResult];
     }
-    return oper;
+    <span class="hljs-keyword">return</span> oper;
 }
-@end
+<span class="hljs-keyword">@end</span>
 </code></pre>
 <p>&#x4F7F;&#x7528;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x4F20;&#x5165;&#x7C7B;&#x540D;&#xFF0C;&#x6765;&#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;&#xFF1A;</p>
-<pre><code class="lang-objective-c">Operation *oper = [OperationFactory createOperat: @&quot;OperationAdd&quot;];
-oper.numberA = 10;
-oper.numberB = 20;
-NSLog(@&quot;%f&quot;, oper.getResult);
+<pre><code class="lang-objectivec">Operation *oper = [OperationFactory createOperat: <span class="hljs-string">@&quot;OperationAdd&quot;</span>];
+oper<span class="hljs-variable">.numberA</span> = <span class="hljs-number">10</span>;
+oper<span class="hljs-variable">.numberB</span> = <span class="hljs-number">20</span>;
+<span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;%f&quot;</span>, oper<span class="hljs-variable">.getResult</span>);
 </code></pre>
 <h2 id="&#x59D4;&#x6258;&#x6A21;&#x5F0F;&#xFF08;delegate&#xFF09;">&#x59D4;&#x6258;&#x6A21;&#x5F0F;&#xFF08;Delegate&#xFF09;</h2>
 <p>&#x59D4;&#x6258;&#x6A21;&#x5F0F;&#x662F; Cocoa &#x4E2D;&#x5341;&#x5206;&#x5E38;&#x89C1;&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;&#x5728; Cocoa &#x5E93;&#x4E2D;&#x88AB;&#x5927;&#x91CF;&#x7684;&#x4F7F;&#x7528;&#x3002;&#x5728; Objective-C &#x4E2D;&#xFF0C;&#x59D4;&#x6258;&#x6A21;&#x5F0F;&#x901A;&#x5E38;&#x4F7F;&#x7528;&#x534F;&#x8BAE;&#xFF08;protocol&#xFF09;&#x6765;&#x5B9E;&#x73B0;&#x3002;</p>
 <p>&#x59D4;&#x6258;&#x6A21;&#x5F0F;&#x7684;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF1A;</p>
-<pre><code class="lang-objective-c">@protocol PrintDelegate <NSObject>
-- (void)print;
-@end
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@protocol</span> <span class="hljs-title">PrintDelegate</span> &lt;<span class="hljs-title">NSObject</span>&gt;</span>
+- (<span class="hljs-keyword">void</span>)print;
+<span class="hljs-keyword">@end</span>
 
 
-@interface AClass : NSObject<PrintDelegate>
-@property id<PrintDelegate> delegate;
-@end
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">AClass</span> : <span class="hljs-title">NSObject</span>&lt;<span class="hljs-title">PrintDelegate</span>&gt;</span>
+<span class="hljs-keyword">@property</span> <span class="hljs-keyword">id</span>&lt;PrintDelegate&gt; delegate;
+<span class="hljs-keyword">@end</span>
 
-@implementation AClass
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">AClass</span></span>
 
--(void)sayHello {
-    [self.delegate print];
+-(<span class="hljs-keyword">void</span>)sayHello {
+    [<span class="hljs-keyword">self</span><span class="hljs-variable">.delegate</span> print];
 }
 
--(void)print {
-    NSLog(@&quot;Do Print&quot;);
+-(<span class="hljs-keyword">void</span>)print {
+    <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;Do Print&quot;</span>);
 }
-@end
+<span class="hljs-keyword">@end</span>
 
-// &#x4F7F;&#x7528; AClass
-int main(int argc, const char * argv[]) {
-    @autoreleasepool {
+<span class="hljs-comment">// &#x4F7F;&#x7528; AClass</span>
+<span class="hljs-keyword">int</span> main(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[]) {
+    <span class="hljs-keyword">@autoreleasepool</span> {
         AClass * a = [AClass new];
-        a.delegate = a;
+        a<span class="hljs-variable">.delegate</span> = a;
         [a sayHello];
     }
-    return 0;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }
-</PrintDelegate></PrintDelegate></NSObject></code></pre>
+</code></pre>
 <p>&#x8FD9;&#x91CC;&#x5BF9;&#x8C61;a&#x7684; delegate &#x8BBE;&#x7F6E;&#x4E3A;&#x81EA;&#x5DF1;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x5B9E;&#x73B0;&#x4E86; <code>PrintDelegate</code> &#x534F;&#x8BAE;&#x7684;&#x5BF9;&#x8C61;&#x3002;</p>
 <h2 id="&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#xFF08;observer&#xFF09;">&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#xFF08;Observer&#xFF09;</h2>
 <p>Cocoa &#x4E2D;&#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x79CD;&#x7528;&#x4E8E;&#x5B9E;&#x73B0;&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#x7684;&#x529E;&#x6CD5;&#xFF0C;&#x4E00;&#x76F4;&#x662F;&#x4F7F;&#x7528;<code>NSNotification</code>&#xFF0C;&#x53E6;&#x4E00;&#x79CD;&#x662F;<code>KVO(Key Value Observing)</code>&#x3002;</p>
 <h3 id="nsnotification">NSNotification</h3>
 <p><code>NSNotification</code> &#x57FA;&#x4E8E; Cocoa &#x81EA;&#x5DF1;&#x7684;&#x6D88;&#x606F;&#x4E2D;&#x5FC3;&#x7EC4;&#x4EF6; <code>NSNotificationCenter</code> &#x5B9E;&#x73B0;&#x3002;</p>
 <p>&#x89C2;&#x5BDF;&#x8005;&#x9700;&#x8981;&#x7EDF;&#x4E00;&#x5728;&#x6D88;&#x606F;&#x4E2D;&#x5FC3;&#x6CE8;&#x518C;&#xFF0C;&#x8BF4;&#x660E;&#x81EA;&#x5DF1;&#x8981;&#x89C2;&#x5BDF;&#x54EA;&#x4E9B;&#x503C;&#x7684;&#x53D8;&#x5316;&#x3002;&#x89C2;&#x5BDF;&#x8005;&#x901A;&#x8FC7;&#x7C7B;&#x4F3C;&#x4E0B;&#x9762;&#x7684;&#x51FD;&#x6570;&#x6765;&#x8FDB;&#x884C;&#x6CE8;&#x518C;&#xFF1A;</p>
-<pre><code class="lang-objective-c">[[NSNotificationCenter defaultCenter] addObserver:self
-                         selector:@selector(printName:)
-                             name: @&quot;messageName&quot;
-                           object:nil];
+<pre><code class="lang-objectivec">[[<span class="hljs-built_in">NSNotificationCenter</span> defaultCenter] addObserver:<span class="hljs-keyword">self</span>
+                         selector:<span class="hljs-keyword">@selector</span>(printName:)
+                             name: <span class="hljs-string">@&quot;messageName&quot;</span>
+                           object:<span class="hljs-literal">nil</span>];
 </code></pre>
 <p>&#x4E0A;&#x9762;&#x7684;&#x51FD;&#x6570;&#x8868;&#x660E;&#x628A;&#x81EA;&#x8EAB;&#x6CE8;&#x518C;&#x6210; &quot;messageName&quot; &#x6D88;&#x606F;&#x7684;&#x89C2;&#x5BDF;&#x8005;&#xFF0C;&#x5F53;&#x6709;&#x6D88;&#x606F;&#x65F6;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;&#x81EA;&#x5DF1;&#x7684; <code>printName</code> &#x65B9;&#x6CD5;&#x3002;</p>
 <p>&#x6D88;&#x606F;&#x53D1;&#x9001;&#x8005;&#x4F7F;&#x7528;&#x7C7B;&#x4F3C;&#x4E0B;&#x9762;&#x7684;&#x51FD;&#x6570;&#x53D1;&#x9001;&#x6D88;&#x606F;&#xFF1A;</p>
-<pre><code class="lang-objective-c">[[NSNotificationCenter defaultCenter] postNotificationName:@&quot;messageName&quot;
-                                    object:nil
-                                  userInfo:nil];
+<pre><code class="lang-objectivec">[[<span class="hljs-built_in">NSNotificationCenter</span> defaultCenter] postNotificationName:<span class="hljs-string">@&quot;messageName&quot;</span>
+                                    object:<span class="hljs-literal">nil</span>
+                                  userInfo:<span class="hljs-literal">nil</span>];
 </code></pre>
 <h3 id="kvokey-value-observing">KVO(Key Value Observing)</h3>
 <p>KVO&#x7684;&#x5B9E;&#x73B0;&#x4F9D;&#x8D56;&#x4E8E; Objective-C &#x672C;&#x8EAB;&#x5F3A;&#x5927;&#x7684; KVC(Key Value Coding) &#x7279;&#x6027;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x5BF9;&#x4E8E;&#x67D0;&#x4E2A;&#x5C5E;&#x6027;&#x53D8;&#x5316;&#x7684;&#x52A8;&#x6001;&#x76D1;&#x6D4B;&#x3002;</p>
 <p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code class="lang-objective-c">// Book&#x7C7B;
-@interface Book : NSObject
+<pre><code class="lang-objectivec"><span class="hljs-comment">// Book&#x7C7B;</span>
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">Book</span> : <span class="hljs-title">NSObject</span></span>
 
-@property NSString *name;
-@property CGFloat price;
+<span class="hljs-keyword">@property</span> <span class="hljs-built_in">NSString</span> *name;
+<span class="hljs-keyword">@property</span> <span class="hljs-built_in">CGFloat</span> price;
 
-@end
+<span class="hljs-keyword">@end</span>
 
-// AClass&#x7C7B;
-@class Book;
-@interface AClass : NSObject
+<span class="hljs-comment">// AClass&#x7C7B;</span>
+<span class="hljs-class"><span class="hljs-keyword">@class</span> <span class="hljs-title">Book</span>;</span>
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">AClass</span> : <span class="hljs-title">NSObject</span></span>
 
-@property (strong) Book *book;
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">strong</span>) Book *book;
 
-@end
+<span class="hljs-keyword">@end</span>
 
-@implementation AClass
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">AClass</span></span>
 
-- (id)init:(Book *)theBook {
-    if(self = [super init]){
-        self.book = theBook;
-        [self.book addObserver:self forKeyPath:@&quot;price&quot; options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+- (<span class="hljs-keyword">id</span>)init:(Book *)theBook {
+    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">self</span> = [<span class="hljs-keyword">super</span> init]){
+        <span class="hljs-keyword">self</span><span class="hljs-variable">.book</span> = theBook;
+        [<span class="hljs-keyword">self</span><span class="hljs-variable">.book</span> addObserver:<span class="hljs-keyword">self</span> forKeyPath:<span class="hljs-string">@&quot;price&quot;</span> options:<span class="hljs-built_in">NSKeyValueObservingOptionOld</span>|<span class="hljs-built_in">NSKeyValueObservingOptionNew</span> context:<span class="hljs-literal">nil</span>];
     }
-    return self;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>;
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context{
-    if([keyPath isEqual:@&quot;price&quot;]){
-        NSLog(@&quot;------price is changed------&quot;);
-        NSLog(@&quot;old price is %@&quot;,[change objectForKey:@&quot;old&quot;]);
-        NSLog(@&quot;new price is %@&quot;,[change objectForKey:@&quot;new&quot;]);
+- (<span class="hljs-keyword">void</span>)observeValueForKeyPath:(<span class="hljs-built_in">NSString</span> *)keyPath
+                      ofObject:(<span class="hljs-keyword">id</span>)object
+                        change:(<span class="hljs-built_in">NSDictionary</span> *)change
+                       context:(<span class="hljs-keyword">void</span> *)context{
+    <span class="hljs-keyword">if</span>([keyPath isEqual:<span class="hljs-string">@&quot;price&quot;</span>]){
+        <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;------price is changed------&quot;</span>);
+        <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;old price is %@&quot;</span>,[change objectForKey:<span class="hljs-string">@&quot;old&quot;</span>]);
+        <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;new price is %@&quot;</span>,[change objectForKey:<span class="hljs-string">@&quot;new&quot;</span>]);
     }
 }
 
-- (void)dealloc{
-    [self.book removeObserver:self forKeyPath:@&quot;price&quot;];
+- (<span class="hljs-keyword">void</span>)dealloc{
+    [<span class="hljs-keyword">self</span><span class="hljs-variable">.book</span> removeObserver:<span class="hljs-keyword">self</span> forKeyPath:<span class="hljs-string">@&quot;price&quot;</span>];
 }
-@end
+<span class="hljs-keyword">@end</span>
 
-// &#x4F7F;&#x7528; KVO
-int main(int argc, const char * argv[]) {
-    @autoreleasepool {
+<span class="hljs-comment">// &#x4F7F;&#x7528; KVO</span>
+<span class="hljs-keyword">int</span> main(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[]) {
+    <span class="hljs-keyword">@autoreleasepool</span> {
         Book *aBook = [Book new];
-        aBook.price = 10.9;
+        aBook<span class="hljs-variable">.price</span> = <span class="hljs-number">10.9</span>;
         AClass * a = [[AClass alloc] init:aBook];
-        aBook.price = 11; // &#x8F93;&#x51FA; price is changed
+        aBook<span class="hljs-variable">.price</span> = <span class="hljs-number">11</span>; <span class="hljs-comment">// &#x8F93;&#x51FA; price is changed</span>
     }
-    return 0;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 }
 </code></pre>
 <h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>

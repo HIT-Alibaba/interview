@@ -6,13 +6,13 @@ Objective-C 是 C 语言的超集，所有的方法在底层都是简单朴素�
 
 像对象发送一个消息的代码类似于这个：
 
-```objective-c
+```objectivec
 id returnValue = [someObject messageName:parameter];
 ```
 
 最终这个代码会变成类似下面这个C方法：
 
-```objective-c
+```objectivec
 id returnValue = objc_msgSend(someObject, @selector(messageName:), parameter);
 ```
 
@@ -26,7 +26,7 @@ id returnValue = objc_msgSend(someObject, @selector(messageName:), parameter);
 
 当一个对象接受到它不能理解的消息时，第一个被调用的方法是一个类方法：
 
-```objective-c
+```objectivec
 + (BOOL)resolveInstanceMethod:(SEL)selector;
 ```
 
@@ -37,7 +37,7 @@ id returnValue = objc_msgSend(someObject, @selector(messageName:), parameter);
 
 第二次尝试是询问接受这个消息的类，有没有一个替代接受者可以处理这个未知消息，对应的函数是：
 
-```objective-c
+```objectivec
 - (id)forwardingTargetForSelector:(SEL)selector;
 ```
 
@@ -49,7 +49,7 @@ id returnValue = objc_msgSend(someObject, @selector(messageName:), parameter);
 
 用于传递消息的方法是：
 
-```objective-c
+```objectivec
 - (void)forwardInvocation:(NSInvocation *)invocation;
 ```
 
@@ -61,25 +61,25 @@ id returnValue = objc_msgSend(someObject, @selector(messageName:), parameter);
 
 类的方法列表包含了一系列的 selector 名字和对应的实现之间的映射，用于指导动态消息系统去哪里找某个消息对应的实现。这些对应的实现存储为一种叫做`IMP`的函数指针，其原型如下：
 
-```objective-c
+```objectivec
 id (*IMP)(id, SEL, ...)
 ```
 
 要想得到某个 selector 对应的实现，可以使用下面的函数：
 
-```objective-c
+```objectivec
 Method class_getInstanceMethod(Class aClass, SEL aSelector)
 ```
 
 想添加一个实现，可以使用下面的函数：
 
-```objective-c
+```objectivec
 BOOL class_addMethod(Class class, SEL originalSelector, Method m1, const char* encoding)
 ```
 
 要想交换两个实现，可以使用：
 
-```objective-c
+```objectivec
 void method_exchangeImplementations(Method m1, Method m2)
 ```
 

@@ -53,7 +53,7 @@
         data-chapter-title="Objective-C Runtime"
         data-filepath="iOS/ObjC-Basic/Runtime.md"
         data-basepath="../.."
-        data-revision="Mon Dec 28 2015 19:12:51 GMT+0800 (CST)"
+        data-revision="Mon Dec 28 2015 19:22:23 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1152,7 +1152,7 @@
 <p>&#x9996;&#x5148;&#x8FD9;&#x884C;&#x4EE3;&#x7801;&#x4F1A;&#x88AB;&#x6539;&#x5199;&#x6210;<code>objc_msgSend(self, _cmd);</code>&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;runtime&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5176;&#x539F;&#x578B;&#x4E3A;&#xFF1A;</p>
 <p><code>id objc_msgSend(id self, SEL op, ...)</code></p>
 <p>self&#x4E0E;_cmd&#x662F;&#x4E24;&#x4E2A;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x81EA;&#x52A8;&#x6DFB;&#x52A0;&#x7684;&#x9690;&#x85CF;&#x53C2;&#x6570;&#xFF0C;self&#x662F;&#x4E00;&#x4E2A;&#x6307;&#x5411;&#x63A5;&#x6536;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x9488;&#xFF0C;_cmd&#x4E3A;&#x65B9;&#x6CD5;&#x9009;&#x62E9;&#x5668;&#x3002;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x73B0;&#x4E3A;&#x6C47;&#x7F16;&#x7248;&#x672C;&#xFF0C;&#x82F9;&#x679C;&#x5F00;&#x6E90;&#x7684;&#x9879;&#x76EE;&#x4E2D;&#x5171;&#x6709;6&#x79CD;&#x5BF9;&#x4E0D;&#x540C;&#x5E73;&#x53F0;&#x7684;&#x6C47;&#x7F16;&#x5B9E;&#x73B0;&#xFF0C;&#x672C;&#x8282;&#x9009;&#x53D6;&#x5176;&#x5728;x86_64&#x5B9E;&#x73B0;&#x7684;&#x6587;&#x4EF6;objc-msg-x86_64.s</p>
-<pre><code>#objc-msg-x86_64.s#
+<pre><code class="lang-asm">#objc-msg-x86_64.s#
     ENTRY    _objc_msgSend
     // ...
     GetIsaFast NORMAL        // r11 = self-&gt;isa
@@ -1165,8 +1165,9 @@ LCacheMiss:
     cmp    %r11, %r11        // set eq (nonstret) for forwarding
     jmp    *%r11            // goto *imp
     END_ENTRY    _objc_msgSend
-</code></pre><p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5176;&#x8C03;&#x7528;&#x4E86;<code>GetIsaFast</code>&#xFF0C;&#x7531;&#x4E8E;self&#x662F;id&#x7C7B;&#x578B;&#xFF0C;&#x800C;id&#x7684;&#x539F;&#x578B;&#x4E3A;<code>struct objc_object *id;</code>&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x901A;&#x8FC7;id&#x7684;isa&#x6307;&#x9488;&#x83B7;&#x53D6;&#x5176;&#x6240;&#x5C5E;&#x7684;&#x7C7B;&#x5BF9;&#x8C61;&#xFF0C;&#x4E4B;&#x540E;&#x8C03;&#x7528;<code>CacheLookup</code>&#x5728;&#x83B7;&#x53D6;&#x5230;&#x7684;&#x7C7B;&#x4E2D;&#x6839;&#x636E;&#x4F20;&#x5165;&#x7684;_cmd&#x67E5;&#x627E;&#x5BF9;&#x5E94;&#x65B9;&#x6CD5;&#x5B9E;&#x73B0;&#x7684;IMP&#x6307;&#x9488;&#x3002;&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x73B0;&#x5747;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x4E0B;&#xFF0C;&#x56E0;&#x4E3A;&#x6682;&#x65F6;&#x6211;&#x8FD8;&#x4E0D;&#x4E86;&#x89E3;cache&#x7684;&#x673A;&#x5236;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x90E8;&#x5206;&#x5148;&#x4E0D;&#x6DF1;&#x5165;&#x8BA8;&#x8BBA;&#x3002;CacheLookup&#x51FD;&#x6570;&#x5728;&#x547D;&#x4E2D;&#x540E;&#x4F1A;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x76F8;&#x5E94;&#x7684;IMP&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x5C31;&#x5B8C;&#x6210;&#x4E86;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x3002;&#x5982;&#x679C;cache&#x843D;&#x7A7A;&#xFF0C;&#x5219;&#x8DF3;&#x8F6C;&#x81F3;LCacheMiss&#x6807;&#x7B7E;&#xFF0C;&#x8C03;&#x7528;MethodTableLookup&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5C06;IMP&#x7684;&#x503C;&#x5B58;&#x5728;r11&#x5BC4;&#x5B58;&#x5668;&#x91CC;&#xFF0C;&#x4E4B;&#x540E;<code>jmp *%r11</code>&#x4ECE;IMP&#x5F00;&#x59CB;&#x6267;&#x884C;&#xFF0C;&#x5B8C;&#x6210;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x3002;MethodTableLookup&#x51FD;&#x6570;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF0C;</p>
-<pre><code>.macro MethodTableLookup
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5176;&#x8C03;&#x7528;&#x4E86;<code>GetIsaFast</code>&#xFF0C;&#x7531;&#x4E8E;self&#x662F;id&#x7C7B;&#x578B;&#xFF0C;&#x800C;id&#x7684;&#x539F;&#x578B;&#x4E3A;<code>struct objc_object *id;</code>&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x901A;&#x8FC7;id&#x7684;isa&#x6307;&#x9488;&#x83B7;&#x53D6;&#x5176;&#x6240;&#x5C5E;&#x7684;&#x7C7B;&#x5BF9;&#x8C61;&#xFF0C;&#x4E4B;&#x540E;&#x8C03;&#x7528;<code>CacheLookup</code>&#x5728;&#x83B7;&#x53D6;&#x5230;&#x7684;&#x7C7B;&#x4E2D;&#x6839;&#x636E;&#x4F20;&#x5165;&#x7684;_cmd&#x67E5;&#x627E;&#x5BF9;&#x5E94;&#x65B9;&#x6CD5;&#x5B9E;&#x73B0;&#x7684;IMP&#x6307;&#x9488;&#x3002;&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x73B0;&#x5747;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x4E0B;&#xFF0C;&#x56E0;&#x4E3A;&#x6682;&#x65F6;&#x6211;&#x8FD8;&#x4E0D;&#x4E86;&#x89E3;cache&#x7684;&#x673A;&#x5236;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x90E8;&#x5206;&#x5148;&#x4E0D;&#x6DF1;&#x5165;&#x8BA8;&#x8BBA;&#x3002;CacheLookup&#x51FD;&#x6570;&#x5728;&#x547D;&#x4E2D;&#x540E;&#x4F1A;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x76F8;&#x5E94;&#x7684;IMP&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x5C31;&#x5B8C;&#x6210;&#x4E86;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x3002;&#x5982;&#x679C;cache&#x843D;&#x7A7A;&#xFF0C;&#x5219;&#x8DF3;&#x8F6C;&#x81F3;LCacheMiss&#x6807;&#x7B7E;&#xFF0C;&#x8C03;&#x7528;MethodTableLookup&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5C06;IMP&#x7684;&#x503C;&#x5B58;&#x5728;r11&#x5BC4;&#x5B58;&#x5668;&#x91CC;&#xFF0C;&#x4E4B;&#x540E;<code>jmp *%r11</code>&#x4ECE;IMP&#x5F00;&#x59CB;&#x6267;&#x884C;&#xFF0C;&#x5B8C;&#x6210;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x3002;MethodTableLookup&#x51FD;&#x6570;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF0C;</p>
+<pre><code class="lang-asm">.macro MethodTableLookup
     MESSENGER_END_SLOW
     SaveRegisters
     // _class_lookupMethodAndLoadCache3(receiver, selector, class)
@@ -1178,123 +1179,126 @@ LCacheMiss:
     movq    %rax, %r11
     RestoreRegisters
 .endmacro
-</code></pre><p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5176;&#x5B9E;&#x9645;&#x4E0A;&#x5C06;receiver&#xFF08;&#x5373;self)&#xFF0C; selector(&#x5373;_cmd)&#xFF0C;class(&#x5373;self-&gt;isa)&#x4F20;&#x9012;&#x7ED9;&#x4E86;_class_lookupMethodAndLoadCache3&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x67E5;&#x770B;&#x8BE5;&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x73B0;&#x540E;&#xFF0C;&#x6B22;&#x8FCE;&#x91CD;&#x65B0;&#x56DE;&#x5230;C&#x8BED;&#x8A00;&#x7684;&#x4E16;&#x754C;&#x3002;</p>
-<pre><code>#objc-class-old.mm#
-IMP _class_lookupMethodAndLoadCache3(id obj, SEL sel, Class cls)
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5176;&#x5B9E;&#x9645;&#x4E0A;&#x5C06;receiver&#xFF08;&#x5373;self)&#xFF0C; selector(&#x5373;_cmd)&#xFF0C;class(&#x5373;self-&gt;isa)&#x4F20;&#x9012;&#x7ED9;&#x4E86;_class_lookupMethodAndLoadCache3&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x67E5;&#x770B;&#x8BE5;&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x73B0;&#x540E;&#xFF0C;&#x6B22;&#x8FCE;&#x91CD;&#x65B0;&#x56DE;&#x5230;C&#x8BED;&#x8A00;&#x7684;&#x4E16;&#x754C;&#x3002;</p>
+<pre><code class="lang-objectivec"><span class="hljs-preprocessor">#objc-class-old.mm#</span>
+IMP _class_lookupMethodAndLoadCache3(<span class="hljs-keyword">id</span> obj, SEL sel, Class cls)
 {        
-    return lookUpImpOrForward(cls, sel, obj, 
-                              YES/*initialize*/, NO/*cache*/, YES/*resolver*/);
+    <span class="hljs-keyword">return</span> lookUpImpOrForward(cls, sel, obj, 
+                              <span class="hljs-literal">YES</span><span class="hljs-comment">/*initialize*/</span>, <span class="hljs-literal">NO</span><span class="hljs-comment">/*cache*/</span>, <span class="hljs-literal">YES</span><span class="hljs-comment">/*resolver*/</span>);
 }
-</code></pre><p>&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x8FDB;&#x4E00;&#x6B65;&#x8C03;&#x7528;&#x4E86;<code>lookUpImpOrForward</code>&#xFF0C;&#x5E76;&#x628A;cache&#x6807;&#x7B7E;&#x7F6E;&#x4E3A;NO&#xFF0C;&#x610F;&#x5473;&#x7740;&#x5FFD;&#x7565;&#x7B2C;&#x4E00;&#x6B21;&#x4E0D;&#x52A0;&#x9501;&#x7684;cache&#x67E5;&#x627E;&#x3002;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x8981;&#x4E48;&#x662F;&#x5BF9;&#x5E94;&#x65B9;&#x6CD5;&#x7684;IMP&#x6307;&#x9488;&#xFF0C;&#x8981;&#x4E48;&#x662F;&#x4E00;&#x4E2A;__objc_msgForward_impcache&#x6C47;&#x7F16;&#x65B9;&#x6CD5;&#x7684;&#x5165;&#x53E3;&#xFF0C;&#x540E;&#x8005;&#x5BF9;&#x5E94;&#x7740;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x673A;&#x5236;&#xFF0C;&#x5373;&#x5982;&#x679C;&#x5728;&#x8BE5;&#x5BF9;&#x8C61;&#x53CA;&#x5176;&#x7EE7;&#x627F;&#x94FE;&#x4E0A;&#x65B9;&#x7684;&#x7684;&#x5BF9;&#x8C61;&#x90FD;&#x627E;&#x4E0D;&#x5230;&#x9009;&#x62E9;&#x5668;_cmd&#x7684;&#x54CD;&#x5E94;&#x65B9;&#x6CD5;&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x8C03;&#x7528;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x51FD;&#x6570;&#x5C1D;&#x8BD5;&#x5C06;&#x8BE5;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x7ED9;&#x5176;&#x4ED6;&#x5BF9;&#x8C61;&#x3002;&#x4E0B;&#x9762;&#x662F;lookUpImpOrForward&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x7531;&#x4E8E;&#x4EE3;&#x7801;&#x8FC7;&#x957F;&#xFF0C;&#x6CE8;&#x91CA;&#x5C06;&#x5199;&#x5728;&#x4EE3;&#x7801;&#x4E4B;&#x4E2D;&#x3002;</p>
-<pre><code>#objc-class-old.mm#
-IMP lookUpImpOrForward(Class cls, SEL sel, id inst, 
-                       bool initialize, bool cache, bool resolver)
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x8FDB;&#x4E00;&#x6B65;&#x8C03;&#x7528;&#x4E86;<code>lookUpImpOrForward</code>&#xFF0C;&#x5E76;&#x628A;cache&#x6807;&#x7B7E;&#x7F6E;&#x4E3A;NO&#xFF0C;&#x610F;&#x5473;&#x7740;&#x5FFD;&#x7565;&#x7B2C;&#x4E00;&#x6B21;&#x4E0D;&#x52A0;&#x9501;&#x7684;cache&#x67E5;&#x627E;&#x3002;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x8981;&#x4E48;&#x662F;&#x5BF9;&#x5E94;&#x65B9;&#x6CD5;&#x7684;IMP&#x6307;&#x9488;&#xFF0C;&#x8981;&#x4E48;&#x662F;&#x4E00;&#x4E2A;__objc_msgForward_impcache&#x6C47;&#x7F16;&#x65B9;&#x6CD5;&#x7684;&#x5165;&#x53E3;&#xFF0C;&#x540E;&#x8005;&#x5BF9;&#x5E94;&#x7740;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x673A;&#x5236;&#xFF0C;&#x5373;&#x5982;&#x679C;&#x5728;&#x8BE5;&#x5BF9;&#x8C61;&#x53CA;&#x5176;&#x7EE7;&#x627F;&#x94FE;&#x4E0A;&#x65B9;&#x7684;&#x7684;&#x5BF9;&#x8C61;&#x90FD;&#x627E;&#x4E0D;&#x5230;&#x9009;&#x62E9;&#x5668;_cmd&#x7684;&#x54CD;&#x5E94;&#x65B9;&#x6CD5;&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x8C03;&#x7528;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x51FD;&#x6570;&#x5C1D;&#x8BD5;&#x5C06;&#x8BE5;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x7ED9;&#x5176;&#x4ED6;&#x5BF9;&#x8C61;&#x3002;&#x4E0B;&#x9762;&#x662F;lookUpImpOrForward&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x7531;&#x4E8E;&#x4EE3;&#x7801;&#x8FC7;&#x957F;&#xFF0C;&#x6CE8;&#x91CA;&#x5C06;&#x5199;&#x5728;&#x4EE3;&#x7801;&#x4E4B;&#x4E2D;&#x3002;</p>
+<pre><code class="lang-objectivec"><span class="hljs-preprocessor">#objc-class-old.mm#</span>
+IMP lookUpImpOrForward(Class cls, SEL sel, <span class="hljs-keyword">id</span> inst, 
+                       <span class="hljs-keyword">bool</span> initialize, <span class="hljs-keyword">bool</span> cache, <span class="hljs-keyword">bool</span> resolver)
 {
-    Class curClass;                   // &#x5F53;&#x524D;&#x7C7B;&#x5BF9;&#x8C61;
-    IMP methodPC = nil;               // &#x7528;&#x4E8E;&#x4FDD;&#x5B58;&#x6700;&#x7EC8;&#x67E5;&#x627E;&#x5230;&#x7684;&#x51FD;&#x6570;&#x6307;&#x9488;&#x5E76;&#x8FD4;&#x56DE;
-    Method meth;                      // &#x5B9A;&#x4E49;&#x4E86;&#x65B9;&#x6CD5;&#x7684;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x53EF;&#x901A;&#x8FC7;meth-&gt;imp&#x83B7;&#x53D6;&#x51FD;&#x6570;&#x6307;&#x9488;
-    bool triedResolver = NO;          // &#x65B9;&#x6CD5;&#x89E3;&#x6790;&#x7684;&#x6807;&#x5FD7;&#x53D8;&#x91CF;
+    Class curClass;                   <span class="hljs-comment">// &#x5F53;&#x524D;&#x7C7B;&#x5BF9;&#x8C61;</span>
+    IMP methodPC = <span class="hljs-literal">nil</span>;               <span class="hljs-comment">// &#x7528;&#x4E8E;&#x4FDD;&#x5B58;&#x6700;&#x7EC8;&#x67E5;&#x627E;&#x5230;&#x7684;&#x51FD;&#x6570;&#x6307;&#x9488;&#x5E76;&#x8FD4;&#x56DE;</span>
+    Method meth;                      <span class="hljs-comment">// &#x5B9A;&#x4E49;&#x4E86;&#x65B9;&#x6CD5;&#x7684;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x53EF;&#x901A;&#x8FC7;meth-&gt;imp&#x83B7;&#x53D6;&#x51FD;&#x6570;&#x6307;&#x9488;</span>
+    <span class="hljs-keyword">bool</span> triedResolver = <span class="hljs-literal">NO</span>;          <span class="hljs-comment">// &#x65B9;&#x6CD5;&#x89E3;&#x6790;&#x7684;&#x6807;&#x5FD7;&#x53D8;&#x91CF;</span>
 
-    methodListLock.assertUnlocked();
-    // &#x4E0D;&#x52A0;&#x9501;&#x5730;&#x67E5;&#x627E;cache&#xFF0C;&#x7531;&#x4E8E;&#x4E4B;&#x524D;cache&#x843D;&#x7A7A;&#xFF0C;&#x6240;&#x4EE5;&#x80AF;&#x5B9A;&#x627E;&#x4E0D;&#x5230;&#xFF0C;&#x5C31;&#x5FFD;&#x7565;
-    // Optimistic cache lookup                
-    if (cache) {
+    methodListLock<span class="hljs-variable">.assertUnlocked</span>();
+    <span class="hljs-comment">// &#x4E0D;&#x52A0;&#x9501;&#x5730;&#x67E5;&#x627E;cache&#xFF0C;&#x7531;&#x4E8E;&#x4E4B;&#x524D;cache&#x843D;&#x7A7A;&#xFF0C;&#x6240;&#x4EE5;&#x80AF;&#x5B9A;&#x627E;&#x4E0D;&#x5230;&#xFF0C;&#x5C31;&#x5FFD;&#x7565;</span>
+    <span class="hljs-comment">// Optimistic cache lookup                </span>
+    <span class="hljs-keyword">if</span> (cache) {
         methodPC = _cache_getImp(cls, sel);
-        if (methodPC) return methodPC;    
+        <span class="hljs-keyword">if</span> (methodPC) <span class="hljs-keyword">return</span> methodPC;    
     }
-    // Check for freed class
-    if (cls == _class_getFreedObjectClass())
-        return (IMP) _freedHandler;
-    // &#x786E;&#x4FDD;&#x8BE5;&#x7C7B;&#x5DF2;&#x88AB;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5C31;&#x8C03;&#x7528;&#x7C7B;&#x65B9;&#x6CD5;+initialize&#xFF0C;&#x8FD9;&#x91CC;&#x4E5F;&#x8BF4;&#x660E;&#x4E86;&#x4E3A;&#x4EC0;&#x4E48;OC&#x7684;&#x7C7B;&#x4F1A;&#x5728;
-    // &#x7B2C;&#x4E00;&#x6B21;&#x63A5;&#x6536;&#x6D88;&#x606F;&#x540E;&#x8C03;&#x7528;+initialize&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x76F8;&#x53CD;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x8981;&#x4EE3;&#x7801;&#x5728;&#x7C7B;&#x6CE8;&#x518C;runtime&#x7684;
-    // &#x65F6;&#x5019;&#x5C31;&#x8FD0;&#x884C;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x4EE3;&#x7801;&#x5199;&#x5728;+load&#x65B9;&#x6CD5;&#x91CC;
-    // Check for +initialize
-    if (initialize  &amp;&amp;  !cls-&gt;isInitialized()) {
+    <span class="hljs-comment">// Check for freed class</span>
+    <span class="hljs-keyword">if</span> (cls == _class_getFreedObjectClass())
+        <span class="hljs-keyword">return</span> (IMP) _freedHandler;
+    <span class="hljs-comment">// &#x786E;&#x4FDD;&#x8BE5;&#x7C7B;&#x5DF2;&#x88AB;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5C31;&#x8C03;&#x7528;&#x7C7B;&#x65B9;&#x6CD5;+initialize&#xFF0C;&#x8FD9;&#x91CC;&#x4E5F;&#x8BF4;&#x660E;&#x4E86;&#x4E3A;&#x4EC0;&#x4E48;OC&#x7684;&#x7C7B;&#x4F1A;&#x5728;</span>
+    <span class="hljs-comment">// &#x7B2C;&#x4E00;&#x6B21;&#x63A5;&#x6536;&#x6D88;&#x606F;&#x540E;&#x8C03;&#x7528;+initialize&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x76F8;&#x53CD;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x8981;&#x4EE3;&#x7801;&#x5728;&#x7C7B;&#x6CE8;&#x518C;runtime&#x7684;</span>
+    <span class="hljs-comment">// &#x65F6;&#x5019;&#x5C31;&#x8FD0;&#x884C;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x4EE3;&#x7801;&#x5199;&#x5728;+load&#x65B9;&#x6CD5;&#x91CC;</span>
+    <span class="hljs-comment">// Check for +initialize</span>
+    <span class="hljs-keyword">if</span> (initialize  &amp;&amp;  !cls-&gt;isInitialized()) {
         _class_initialize (_class_getNonMetaClass(cls, inst));
-        // If sel == initialize, _class_initialize will send +initialize and 
-        // then the messenger will send +initialize again after this 
-        // procedure finishes. Of course, if this is not being called 
-        // from the messenger then it won&apos;t happen. 2778172
+        <span class="hljs-comment">// If sel == initialize, _class_initialize will send +initialize and </span>
+        <span class="hljs-comment">// then the messenger will send +initialize again after this </span>
+        <span class="hljs-comment">// procedure finishes. Of course, if this is not being called </span>
+        <span class="hljs-comment">// from the messenger then it won&apos;t happen. 2778172</span>
     }
-    // The lock is held to make method-lookup + cache-fill atomic 
-    // with respect to method addition. Otherwise, a category could 
-    // be added but ignored indefinitely because the cache was re-filled 
-    // with the old value after the cache flush on behalf of the category.
-    // &#x4E0A;&#x8FF0;&#x82F1;&#x6587;&#x5DF2;&#x8FF0;&#xFF1A;&#x5BF9;&#x6D88;&#x606F;&#x67E5;&#x627E;&#x548C;&#x586B;&#x5145;cache&#x52A0;&#x9501;&#xFF0C;&#x7531;&#x4E8E;&#x586B;&#x5145;cache&#x662F;&#x5199;&#x64CD;&#x4F5C;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x5BF9;&#x5176;
-    // &#x52A0;&#x9501;&#x4EE5;&#x514D;&#x52A0;&#x5165;&#x4E86;category&#x4E4B;&#x540E;&#x7684;cache&#x88AB;&#x65E7;&#x7684;cache&#x51B2;&#x6389;&#xFF0C;&#x5BFC;&#x81F4;category&#x5931;&#x6548;&#x3002;
+    <span class="hljs-comment">// The lock is held to make method-lookup + cache-fill atomic </span>
+    <span class="hljs-comment">// with respect to method addition. Otherwise, a category could </span>
+    <span class="hljs-comment">// be added but ignored indefinitely because the cache was re-filled </span>
+    <span class="hljs-comment">// with the old value after the cache flush on behalf of the category.</span>
+    <span class="hljs-comment">// &#x4E0A;&#x8FF0;&#x82F1;&#x6587;&#x5DF2;&#x8FF0;&#xFF1A;&#x5BF9;&#x6D88;&#x606F;&#x67E5;&#x627E;&#x548C;&#x586B;&#x5145;cache&#x52A0;&#x9501;&#xFF0C;&#x7531;&#x4E8E;&#x586B;&#x5145;cache&#x662F;&#x5199;&#x64CD;&#x4F5C;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x5BF9;&#x5176;</span>
+    <span class="hljs-comment">// &#x52A0;&#x9501;&#x4EE5;&#x514D;&#x52A0;&#x5165;&#x4E86;category&#x4E4B;&#x540E;&#x7684;cache&#x88AB;&#x65E7;&#x7684;cache&#x51B2;&#x6389;&#xFF0C;&#x5BFC;&#x81F4;category&#x5931;&#x6548;&#x3002;</span>
 
-    // &#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x5982;&#x679C;cache&#x6CA1;&#x6709;&#x547D;&#x4E2D;&#xFF0C;&#x4F46;&#x5728;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x4E2D;&#x627E;&#x5230;&#x4E86;&#x5BF9;&#x5E94;&#x7684;IMP&#xFF0C;&#x51FD;&#x6570;&#x4E5F;&#x662F;&#x4F1A;&#x8FDB;&#x884C;cache
-    // &#x5199;&#x5165;&#x64CD;&#x4F5C;&#x3002;
+    <span class="hljs-comment">// &#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x5982;&#x679C;cache&#x6CA1;&#x6709;&#x547D;&#x4E2D;&#xFF0C;&#x4F46;&#x5728;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x4E2D;&#x627E;&#x5230;&#x4E86;&#x5BF9;&#x5E94;&#x7684;IMP&#xFF0C;&#x51FD;&#x6570;&#x4E5F;&#x662F;&#x4F1A;&#x8FDB;&#x884C;cache</span>
+    <span class="hljs-comment">// &#x5199;&#x5165;&#x64CD;&#x4F5C;&#x3002;</span>
  retry:
-    methodListLock.lock();
-    // &#x5728;&#x5F00;&#x542F;GC&#x9009;&#x9879;&#x540E;&#x5FFD;&#x7565;retain, release&#x7B49;&#x65B9;&#x6CD5;(&#x731C;&#x6D4B;GC &#x662F; Garbage Collection)
-    // &#x8FD9;&#x4E5F;&#x4F53;&#x73B0;&#x4E86;OC&#x7684;&#x7075;&#x6D3B;&#x6027;&#xFF0C;runtime&#x5B8C;&#x5168;&#x6709;&#x6743;&#x529B;&#x5FFD;&#x7565;&#x4E00;&#x4E9B;&#x65B9;&#x6CD5;
-    if (ignoreSelector(sel)) {
+    methodListLock<span class="hljs-variable">.lock</span>();
+    <span class="hljs-comment">// &#x5728;&#x5F00;&#x542F;GC&#x9009;&#x9879;&#x540E;&#x5FFD;&#x7565;retain, release&#x7B49;&#x65B9;&#x6CD5;(&#x731C;&#x6D4B;GC &#x662F; Garbage Collection)</span>
+    <span class="hljs-comment">// &#x8FD9;&#x4E5F;&#x4F53;&#x73B0;&#x4E86;OC&#x7684;&#x7075;&#x6D3B;&#x6027;&#xFF0C;runtime&#x5B8C;&#x5168;&#x6709;&#x6743;&#x529B;&#x5FFD;&#x7565;&#x4E00;&#x4E9B;&#x65B9;&#x6CD5;</span>
+    <span class="hljs-keyword">if</span> (ignoreSelector(sel)) {
         methodPC = _cache_addIgnoredEntry(cls, sel);
-        goto done;
+        <span class="hljs-keyword">goto</span> done;
     }
-    // &#x5728;&#x52A0;&#x9501;&#x7684;&#x72B6;&#x6001;&#x4E0B;&#x518D;&#x67E5;&#x627E;&#x4E00;&#x6B21;cache&#xFF0C;&#x5982;&#x679C;&#x547D;&#x4E2D;&#x5C31;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;IMP&#x6307;&#x9488;
-    // &#x4E2A;&#x4EBA;&#x8BA4;&#x4E3A;&#x518D;&#x6B21;&#x5728;&#x52A0;&#x9501;&#x72B6;&#x6001;&#x4E0B;&#x67E5;&#x627E;&#x662F;&#x56E0;&#x4E3A;&#x5728;&#x4E0E;&#x4E0A;&#x6B21;&#x67E5;&#x627E;&#x7684;&#x95F4;&#x9699;&#x4E2D;&#x53EF;&#x80FD;
-    // &#x6709;&#x5176;&#x4ED6;&#x7C7B;&#x586B;&#x5145;&#x4E86;&#x8FD9;&#x4E2A;cache
+    <span class="hljs-comment">// &#x5728;&#x52A0;&#x9501;&#x7684;&#x72B6;&#x6001;&#x4E0B;&#x518D;&#x67E5;&#x627E;&#x4E00;&#x6B21;cache&#xFF0C;&#x5982;&#x679C;&#x547D;&#x4E2D;&#x5C31;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;IMP&#x6307;&#x9488;</span>
+    <span class="hljs-comment">// &#x4E2A;&#x4EBA;&#x8BA4;&#x4E3A;&#x518D;&#x6B21;&#x5728;&#x52A0;&#x9501;&#x72B6;&#x6001;&#x4E0B;&#x67E5;&#x627E;&#x662F;&#x56E0;&#x4E3A;&#x5728;&#x4E0E;&#x4E0A;&#x6B21;&#x67E5;&#x627E;&#x7684;&#x95F4;&#x9699;&#x4E2D;&#x53EF;&#x80FD;</span>
+    <span class="hljs-comment">// &#x6709;&#x5176;&#x4ED6;&#x7C7B;&#x586B;&#x5145;&#x4E86;&#x8FD9;&#x4E2A;cache</span>
     methodPC = _cache_getImp(cls, sel);
-    if (methodPC) goto done;
+    <span class="hljs-keyword">if</span> (methodPC) <span class="hljs-keyword">goto</span> done;
 
-    // &#x5982;&#x679C;&#x8FD8;&#x662F;&#x6CA1;&#x6709;&#x547D;&#x4E2D;&#x7684;&#x8BDD;&#x5C31;&#x67E5;&#x627E;&#x8BE5;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868;
+    <span class="hljs-comment">// &#x5982;&#x679C;&#x8FD8;&#x662F;&#x6CA1;&#x6709;&#x547D;&#x4E2D;&#x7684;&#x8BDD;&#x5C31;&#x67E5;&#x627E;&#x8BE5;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868;</span>
     meth = _class_getMethodNoSuper_nolock(cls, sel);
-    if (meth) {
-        // &#x547D;&#x4E2D;&#xFF0C;&#x586B;&#x5145;cache&#xFF0C;&#x8FD4;&#x56DE;IMP&#x6307;&#x9488;
+    <span class="hljs-keyword">if</span> (meth) {
+        <span class="hljs-comment">// &#x547D;&#x4E2D;&#xFF0C;&#x586B;&#x5145;cache&#xFF0C;&#x8FD4;&#x56DE;IMP&#x6307;&#x9488;</span>
         log_and_fill_cache(cls, cls, meth, sel);
         methodPC = method_getImplementation(meth);
-        goto done;
+        <span class="hljs-keyword">goto</span> done;
     }
 
-    // &#x6CA1;&#x6709;&#x547D;&#x4E2D;&#xFF0C;&#x6CBF;&#x7740;class&#x7684;&#x7EE7;&#x627F;&#x94FE;&#x5411;&#x4E0A;&#x67E5;&#x627E;&#xFF0C;&#x6700;&#x540E;&#x627E;&#x5230;&#x7684;&#x662F;NSObject(NSProxy&#x9664;&#x5916;)
-    // &#x800C;NSObject&#x7684;superclass&#x4E3A;nil
+    <span class="hljs-comment">// &#x6CA1;&#x6709;&#x547D;&#x4E2D;&#xFF0C;&#x6CBF;&#x7740;class&#x7684;&#x7EE7;&#x627F;&#x94FE;&#x5411;&#x4E0A;&#x67E5;&#x627E;&#xFF0C;&#x6700;&#x540E;&#x627E;&#x5230;&#x7684;&#x662F;NSObject(NSProxy&#x9664;&#x5916;)</span>
+    <span class="hljs-comment">// &#x800C;NSObject&#x7684;superclass&#x4E3A;nil</span>
     curClass = cls;
-    while ((curClass = curClass-&gt;superclass)) {
-        // &#x5C1D;&#x8BD5;&#x4ECE;&#x8D85;&#x7C7B;&#x7684;cache&#x4E2D;&#x52A0;&#x8F7D;
+    <span class="hljs-keyword">while</span> ((curClass = curClass-&gt;superclass)) {
+        <span class="hljs-comment">// &#x5C1D;&#x8BD5;&#x4ECE;&#x8D85;&#x7C7B;&#x7684;cache&#x4E2D;&#x52A0;&#x8F7D;</span>
         meth = _cache_getMethod(curClass, sel, _objc_msgForward_impcache);
-        if (meth) {
-            // &#x5982;&#x679C;&#x4E0D;&#x662F;forward
-            if (meth != (Method)1) {
-                // &#x5728;&#x8D85;&#x7C7B;&#x4E2D;&#x627E;&#x5230;IMP&#xFF0C;&#x5728;&#x5F53;&#x524D;&#x7C7B;&#x4E2D;&#x8FDB;&#x884C;cache
+        <span class="hljs-keyword">if</span> (meth) {
+            <span class="hljs-comment">// &#x5982;&#x679C;&#x4E0D;&#x662F;forward</span>
+            <span class="hljs-keyword">if</span> (meth != (Method)<span class="hljs-number">1</span>) {
+                <span class="hljs-comment">// &#x5728;&#x8D85;&#x7C7B;&#x4E2D;&#x627E;&#x5230;IMP&#xFF0C;&#x5728;&#x5F53;&#x524D;&#x7C7B;&#x4E2D;&#x8FDB;&#x884C;cache</span>
                 log_and_fill_cache(cls, curClass, meth, sel);
                 methodPC = method_getImplementation(meth);
-                goto done;
+                <span class="hljs-keyword">goto</span> done;
             }
-            else {
-            // &#x627E;&#x5230;forward&#xFF0C;&#x8DF3;&#x51FA;&#x5FAA;&#x73AF;
-                // Found a forward:: entry in a superclass.
-                // Stop searching, but don&apos;t cache yet; call method 
-                // resolver for this class first.
-                break;
+            <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">// &#x627E;&#x5230;forward&#xFF0C;&#x8DF3;&#x51FA;&#x5FAA;&#x73AF;</span>
+                <span class="hljs-comment">// Found a forward:: entry in a superclass.</span>
+                <span class="hljs-comment">// Stop searching, but don&apos;t cache yet; call method </span>
+                <span class="hljs-comment">// resolver for this class first.</span>
+                <span class="hljs-keyword">break</span>;
             }
         }
-        // &#x8D85;&#x7C7B;cache&#x6CA1;&#x6709;&#x547D;&#x4E2D;&#xFF0C;&#x4ECE;&#x8D85;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x5BFB;&#x627E;
+        <span class="hljs-comment">// &#x8D85;&#x7C7B;cache&#x6CA1;&#x6709;&#x547D;&#x4E2D;&#xFF0C;&#x4ECE;&#x8D85;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x5BFB;&#x627E;</span>
         meth = _class_getMethodNoSuper_nolock(curClass, sel);
-        if (meth) {
+        <span class="hljs-keyword">if</span> (meth) {
             log_and_fill_cache(cls, curClass, meth, sel);
             methodPC = method_getImplementation(meth);
-            goto done;
+            <span class="hljs-keyword">goto</span> done;
         }
     }
-    // &#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x89E3;&#x6790;&#x5E76;&#x518D;&#x5C1D;&#x8BD5;&#x4E00;&#x6B21;
-    if (resolver  &amp;&amp;  !triedResolver) {
-        methodListLock.unlock();
+    <span class="hljs-comment">// &#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x89E3;&#x6790;&#x5E76;&#x518D;&#x5C1D;&#x8BD5;&#x4E00;&#x6B21;</span>
+    <span class="hljs-keyword">if</span> (resolver  &amp;&amp;  !triedResolver) {
+        methodListLock<span class="hljs-variable">.unlock</span>();
         _class_resolveMethod(cls, sel, inst);
-        triedResolver = YES;
-        goto retry;
+        triedResolver = <span class="hljs-literal">YES</span>;
+        <span class="hljs-keyword">goto</span> retry;
     }
-    // &#x6CA1;&#x6709;&#x627E;&#x5230;IMP&#x6307;&#x9488;&#xFF0C;&#x65B9;&#x6CD5;&#x89E3;&#x6790;&#x4E5F;&#x6CA1;&#x6709;&#x7528;&#xFF0C;&#x4F7F;&#x7528;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#xFF0C;&#x5E76;&#x5C06;&#x5176;&#x586B;&#x5145;&#x5165;cache
+    <span class="hljs-comment">// &#x6CA1;&#x6709;&#x627E;&#x5230;IMP&#x6307;&#x9488;&#xFF0C;&#x65B9;&#x6CD5;&#x89E3;&#x6790;&#x4E5F;&#x6CA1;&#x6709;&#x7528;&#xFF0C;&#x4F7F;&#x7528;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#xFF0C;&#x5E76;&#x5C06;&#x5176;&#x586B;&#x5145;&#x5165;cache</span>
     _cache_addForwardEntry(cls, sel);
     methodPC = _objc_msgForward_impcache;
  done:
-    methodListLock.unlock();
-    // paranoia: look for ignored selectors with non-ignored implementations
+    methodListLock<span class="hljs-variable">.unlock</span>();
+    <span class="hljs-comment">// paranoia: look for ignored selectors with non-ignored implementations</span>
     assert(!(ignoreSelector(sel)  &amp;&amp;  methodPC != (IMP)&amp;_objc_ignored_method));
-    return methodPC;
+    <span class="hljs-keyword">return</span> methodPC;
 }
-</code></pre><p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6BCF;&#x4E00;&#x4E2A;&#x7C7B;&#x90FD;&#x7EF4;&#x62A4;&#x4E86;&#x4E00;&#x4E2A;cache&#xFF0C;&#x5728;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x8C03;&#x7528;runtime&#x7684;objc_msgSend&#x51FD;&#x6570;&#x540E;&#xFF0C;runtime&#x5728;&#x63A5;&#x6536;&#x8005;&#x6240;&#x5C5E;&#x7684;&#x7C7B;&#x7684;cache&#x4E2D;&#x67E5;&#x627E;&#x4E0E;_cmd&#x6240;&#x5BF9;&#x5E94;&#x7684;IMP&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x547D;&#x4E2D;&#x5C31;&#x5BFB;&#x627E;&#x5F53;&#x524D;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#xFF0C;&#x518D;&#x627E;&#x4E0D;&#x5230;&#x5C31;&#x8DF3;&#x5165;while&#x5FAA;&#x73AF;&#x5BFB;&#x627E;&#x8D85;&#x7C7B;&#x7684;cache&#x548C;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#xFF0C;&#x5982;&#x679C;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x90FD;&#x5931;&#x6548;&#xFF0C;&#x5C31;&#x8C03;&#x7528;<code>_class_resolveMethod</code>&#x67E5;&#x627E;&#x6B63;&#x5728;&#x63D2;&#x5165;&#x8FD9;&#x4E2A;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4E4B;&#x540E;&#x518D;&#x91CD;&#x65B0;&#x5C1D;&#x8BD5;&#x6574;&#x4E00;&#x4E2A;&#x6D41;&#x7A0B;&#xFF0C;&#x5982;&#x679C;&#x6700;&#x540E;&#x8FD8;&#x662F;&#x6CA1;&#x80FD;&#x627E;&#x5230;&#x4E00;&#x4E2A;&#x5BF9;&#x5E94;&#x7684;IMP&#xFF0C;&#x5219;&#x8C03;&#x7528;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x673A;&#x5236;&#x3002;</p>
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6BCF;&#x4E00;&#x4E2A;&#x7C7B;&#x90FD;&#x7EF4;&#x62A4;&#x4E86;&#x4E00;&#x4E2A;cache&#xFF0C;&#x5728;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x8C03;&#x7528;runtime&#x7684;objc_msgSend&#x51FD;&#x6570;&#x540E;&#xFF0C;runtime&#x5728;&#x63A5;&#x6536;&#x8005;&#x6240;&#x5C5E;&#x7684;&#x7C7B;&#x7684;cache&#x4E2D;&#x67E5;&#x627E;&#x4E0E;_cmd&#x6240;&#x5BF9;&#x5E94;&#x7684;IMP&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x547D;&#x4E2D;&#x5C31;&#x5BFB;&#x627E;&#x5F53;&#x524D;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#xFF0C;&#x518D;&#x627E;&#x4E0D;&#x5230;&#x5C31;&#x8DF3;&#x5165;while&#x5FAA;&#x73AF;&#x5BFB;&#x627E;&#x8D85;&#x7C7B;&#x7684;cache&#x548C;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#xFF0C;&#x5982;&#x679C;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x90FD;&#x5931;&#x6548;&#xFF0C;&#x5C31;&#x8C03;&#x7528;<code>_class_resolveMethod</code>&#x67E5;&#x627E;&#x6B63;&#x5728;&#x63D2;&#x5165;&#x8FD9;&#x4E2A;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4E4B;&#x540E;&#x518D;&#x91CD;&#x65B0;&#x5C1D;&#x8BD5;&#x6574;&#x4E00;&#x4E2A;&#x6D41;&#x7A0B;&#xFF0C;&#x5982;&#x679C;&#x6700;&#x540E;&#x8FD8;&#x662F;&#x6CA1;&#x80FD;&#x627E;&#x5230;&#x4E00;&#x4E2A;&#x5BF9;&#x5E94;&#x7684;IMP&#xFF0C;&#x5219;&#x8C03;&#x7528;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x673A;&#x5236;&#x3002;</p>
 <h4 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h4>
 <ul>
 <li><a href="http://yulingtianxia.com/blog/2014/11/05/objective-c-runtime/" target="_blank">http://yulingtianxia.com/blog/2014/11/05/objective-c-runtime/</a></li>

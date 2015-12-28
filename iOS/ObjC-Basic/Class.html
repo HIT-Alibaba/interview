@@ -53,7 +53,7 @@
         data-chapter-title="类与对象"
         data-filepath="iOS/ObjC-Basic/Class.md"
         data-basepath="../.."
-        data-revision="Mon Dec 28 2015 19:12:51 GMT+0800 (CST)"
+        data-revision="Mon Dec 28 2015 19:22:23 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1142,63 +1142,63 @@
                     
                         <h2 id="&#x7C7B;&#x65B9;&#x6CD5;">&#x7C7B;&#x65B9;&#x6CD5;</h2>
 <p>OC&#x4E2D;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x53EA;&#x6709;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x548C;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x4E24;&#x79CD;&#xFF1A;</p>
-<pre><code class="lang-objective-c">@interface Controller : NSObject { NSString *something; }
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">Controller</span> : <span class="hljs-title">NSObject</span> </span>{ <span class="hljs-built_in">NSString</span> *something; }
 
-+ (void)thisIsAStaticMethod; // &#x9759;&#x6001;&#x65B9;&#x6CD5;
++ (<span class="hljs-keyword">void</span>)thisIsAStaticMethod; <span class="hljs-comment">// &#x9759;&#x6001;&#x65B9;&#x6CD5;</span>
 
-&#x2013; (void)thisIsAnInstanceMethod; // &#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;
+&#x2013; (<span class="hljs-keyword">void</span>)thisIsAnInstanceMethod; <span class="hljs-comment">// &#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;</span>
 
-@end
+<span class="hljs-keyword">@end</span>
 </code></pre>
 <p>OC &#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x53EA;&#x8981;&#x58F0;&#x660E;&#x5728; @interface&#x91CC;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x90FD;&#x662F;&#x516C;&#x6709;&#x7684;&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;OC &#x6CA1;&#x6709;&#x50CF; Java&#xFF0C;C++ &#x4E2D;&#x7684;&#x90A3;&#x79CD;&#x7EDD;&#x5BF9;&#x7684;&#x79C1;&#x6709;&#x53CA;&#x4FDD;&#x62A4;&#x6210;&#x5458;&#x65B9;&#x6CD5;&#xFF0C;&#x4EC5;&#x4EC5;&#x53EF;&#x4EE5;&#x5BF9;&#x8C03;&#x7528;&#x8005;&#x9690;&#x85CF;&#x67D0;&#x4E9B;&#x65B9;&#x6CD5;&#x3002;</p>
 <p>&#x58F0;&#x660E;&#x548C;&#x5B9E;&#x73B0;&#x90FD;&#x5199;&#x5728; @implementation &#x91CC;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x7C7B;&#x7684;&#x5916;&#x90E8;&#x662F;&#x770B;&#x4E0D;&#x5230;&#x7684;&#x3002;</p>
 <p>&#x53EF;&#x4EE5;&#x4F7F;&#x7528; Category &#x6765;&#x5B9E;&#x73B0;&#x79C1;&#x6709;&#x65B9;&#x6CD5;&#xFF1A;</p>
-<pre><code class="lang-objective-c">// AClass.h
-@interface AClass : NSObject
+<pre><code class="lang-objectivec"><span class="hljs-comment">// AClass.h</span>
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">AClass</span> : <span class="hljs-title">NSObject</span></span>
 
--(void)sayHello;
+-(<span class="hljs-keyword">void</span>)sayHello;
 
-@end
+<span class="hljs-keyword">@end</span>
 
-// AClass.m
-@interface AClass(private)
+<span class="hljs-comment">// AClass.m</span>
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">AClass</span>(<span class="hljs-title">private</span>)</span>
 
--(void)privateSayHello;
+-(<span class="hljs-keyword">void</span>)privateSayHello;
 
-@end
+<span class="hljs-keyword">@end</span>
 
-@implementation AClass
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">AClass</span></span>
 
--(void)sayHello {
-    [self privateSayHello];
+-(<span class="hljs-keyword">void</span>)sayHello {
+    [<span class="hljs-keyword">self</span> privateSayHello];
 }
 
--(void)privateSayHello {
-    NSLog(@&quot;Private Hello&quot;);
+-(<span class="hljs-keyword">void</span>)privateSayHello {
+    <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;Private Hello&quot;</span>);
 }
 </code></pre>
 <p>&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x8BD5;&#x56FE;&#x8C03;&#x7528;<code>privateSayHello</code>&#x4F1A;&#x5F15;&#x8D77;&#x7F16;&#x8BD1;&#x9519;&#x8BEF;&#x3002;</p>
 <p>&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; Extension &#x6765;&#x5B9E;&#x73B0;&#x79C1;&#x6709;&#x65B9;&#x6CD5;&#xFF1A;</p>
-<pre><code class="lang-objective-c">// AClass.h &#x4E0E;&#x4E0A;&#x9762;&#x76F8;&#x540C;
+<pre><code class="lang-objectivec"><span class="hljs-comment">// AClass.h &#x4E0E;&#x4E0A;&#x9762;&#x76F8;&#x540C;</span>
 
-// AClass.m 
-@interface AClass()
+<span class="hljs-comment">// AClass.m </span>
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">AClass</span>()</span>
 
--(void)privateSayHello;
+-(<span class="hljs-keyword">void</span>)privateSayHello;
 
-@end
+<span class="hljs-keyword">@end</span>
 
-@implementation AClass
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">AClass</span></span>
 
--(void)sayHello {
-    [self privateSayHello];
+-(<span class="hljs-keyword">void</span>)sayHello {
+    [<span class="hljs-keyword">self</span> privateSayHello];
 }
 
--(void)privateSayHello {
-    NSLog(@&quot;Private Hello&quot;);
+-(<span class="hljs-keyword">void</span>)privateSayHello {
+    <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;Private Hello&quot;</span>);
 }
 
-@end
+<span class="hljs-keyword">@end</span>
 </code></pre>
 <p>&#x4E0E;&#x4F7F;&#x7528; Category &#x7C7B;&#x4F3C;&#xFF0C;&#x7531;&#x4E8E;&#x58F0;&#x660E;&#x9690;&#x85CF;&#x5728; .m &#x4E2D;&#xFF0C;&#x8C03;&#x7528;&#x8005;&#x65E0;&#x6CD5;&#x770B;&#x5230;&#x5176;&#x58F0;&#x660E;&#xFF0C;&#x4E5F;&#x5C31;&#x65E0;&#x6CD5;&#x8C03;&#x7528;<code>privateSayHello</code>&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x5728;ARC&#x4E0B;&#x4F1A;&#x5F15;&#x53D1;&#x7F16;&#x8BD1;&#x9519;&#x8BEF;&#x3002;</p>
 <p>&#x548C;&#x4F7F;&#x7528; Category &#x76F8;&#x6BD4;&#xFF0C;&#x4F7F;&#x7528; Extension &#x6709;&#x4EE5;&#x4E0B;&#x4E24;&#x4E2A;&#x597D;&#x5904;&#xFF1A;</p>
@@ -1208,38 +1208,38 @@
 </ol>
 <h2 id="&#x7C7B;&#x53D8;&#x91CF;">&#x7C7B;&#x53D8;&#x91CF;</h2>
 <p>&#x82F9;&#x679C;&#x63A8;&#x8350;&#x5728;&#x73B0;&#x4EE3; Objective-C &#x4E2D;&#x4F7F;&#x7528; @property &#x6765;&#x5B9E;&#x73B0;&#x6210;&#x5458;&#x53D8;&#x91CF;&#xFF1A;</p>
-<pre><code class="lang-objective-c">@interface AClass : NSObject
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">AClass</span> : <span class="hljs-title">NSObject</span></span>
 
-@property (nonatomic, copy) NSString *name;
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">copy</span>) <span class="hljs-built_in">NSString</span> *name;
 
-@end
+<span class="hljs-keyword">@end</span>
 </code></pre>
 <p>&#x4F7F;&#x7528;@property&#x58F0;&#x660E;&#x7684;&#x53D8;&#x91CF;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>&#x5B9E;&#x4F8B;&#x540D;.&#x53D8;&#x91CF;&#x540D;</code>&#x6765;&#x83B7;&#x53D6;&#x548C;&#x4FEE;&#x6539;&#x3002;</p>
 <p>@property&#x53EF;&#x4EE5;&#x770B;&#x505A;&#x662F;&#x4E00;&#x79CD;&#x8BED;&#x6CD5;&#x7CD6;&#xFF0C;&#x5728; MRC &#x4E0B;&#xFF0C;&#x4F7F;&#x7528; @property &#x53EF;&#x4EE5;&#x770B;&#x6210;&#x5B9E;&#x73B0;&#x4E86;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#xFF1A;</p>
-<pre><code class="lang-objective-c">// AClass.h
-@interface AClass : NSObject{
-@public
-    NSString *_name;
+<pre><code class="lang-objectivec"><span class="hljs-comment">// AClass.h</span>
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">AClass</span> : <span class="hljs-title">NSObject</span></span>{
+<span class="hljs-keyword">@public</span>
+    <span class="hljs-built_in">NSString</span> *_name;
 }
 
--(NSString*) name;
--(void) setName:(NSString*)newName;
-@end
+-(<span class="hljs-built_in">NSString</span>*) name;
+-(<span class="hljs-keyword">void</span>) setName:(<span class="hljs-built_in">NSString</span>*)newName;
+<span class="hljs-keyword">@end</span>
 
-// AClass.m
-@implementation AClass
+<span class="hljs-comment">// AClass.m</span>
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">AClass</span></span>
 
--(NSString*) name{
-    return _name;
+-(<span class="hljs-built_in">NSString</span>*) name{
+    <span class="hljs-keyword">return</span> _name;
 }
 
--(void) setName:(NSString *)name{
-    if (_name != name) {
+-(<span class="hljs-keyword">void</span>) setName:(<span class="hljs-built_in">NSString</span> *)name{
+    <span class="hljs-keyword">if</span> (_name != name) {
         [_name release];
-        _name = [name copy];
+        _name = [name <span class="hljs-keyword">copy</span>];
     }
 }
-@end
+<span class="hljs-keyword">@end</span>
 </code></pre>
 <p>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;@property &#x4F1A;&#x81EA;&#x52A8;&#x751F;&#x6210; getter &#x548C; setter&#xFF0C; &#x540C;&#x65F6;&#x8FDB;&#x884C;&#x81EA;&#x52A8;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x3002;</p>
 <p>@property &#x7684;&#x8BF4;&#x660E;&#x53EF;&#x4EE5;&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#xFF1A;</p>
@@ -1254,7 +1254,7 @@
 <p>&#x9ED8;&#x8BA4;&#x7684; @property &#x662F; readwrite&#xFF0C;assign&#xFF0C;atomic&#x3002;</p>
 <h3 id="synthesize-&#x548C;-dynamic">@synthesize &#x548C; @dynamic</h3>
 <p>@property &#x80CC;&#x540E;&#x4F7F;&#x7528; synthesize &#x6765;&#x751F;&#x6210; getter &#x548C; setter&#xFF0C;&#x5BF9;&#x4E8E;&#x73B0;&#x4EE3; OC &#x6765;&#x8BF4;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x9ED8;&#x8BA4;&#x4F1A;&#x8FDB;&#x884C;&#x81EA;&#x52A8; synthesize&#xFF0C;&#x628A; ivar &#x548C;&#x5C5E;&#x6027;&#x7ED1;&#x5B9A;&#x8D77;&#x6765;&#xFF1A;</p>
-<pre><code class="lang-objective-c">@synthesize propertyName = _propertyName
+<pre><code class="lang-objectivec"><span class="hljs-keyword">@synthesize</span> propertyName = _propertyName
 </code></pre>
 <p>&#x4E0D;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x5199;&#x4EFB;&#x4F55;&#x4EE3;&#x7801;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528; getter &#x548C; setter &#x4E86;&#x3002;</p>
 <p>&#x7136;&#x800C;&#x5E76;&#x4E0D;&#x662F;&#x6240;&#x6709;&#x60C5;&#x51B5;&#x4E0B;&#x7F16;&#x8BD1;&#x5668;&#x90FD;&#x4F1A;&#x8FDB;&#x884C;&#x81EA;&#x52A8; synthesize&#xFF0C;&#x5177;&#x4F53;&#x7531;&#x4E0B;&#x9762;&#x51E0;&#x79CD;&#xFF1A;</p>
@@ -1269,43 +1269,43 @@
 <h3 id="protocol">Protocol</h3>
 <p>OC&#x662F;&#x5355;&#x7EE7;&#x627F;&#x7684;&#xFF0C;OC&#x4E2D;&#x7684;&#x7C7B;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x591A;&#x4E2A; protocol &#x6765;&#x5B9E;&#x73B0;&#x7C7B;&#x4F3C; C++ &#x4E2D;&#x591A;&#x91CD;&#x7EE7;&#x627F;&#x7684;&#x6548;&#x679C;&#x3002;</p>
 <p>Protocol &#x7C7B;&#x4F3C; Java &#x4E2D;&#x7684; interface&#xFF0C;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;@required @optional &#x6807;&#x6CE8;&#xFF0C;&#x4EE5;&#x8868;&#x793A;&#x8BE5;&#x65B9;&#x6CD5;&#x662F;&#x5426;&#x662F;&#x5BA2;&#x6237;&#x7C7B;&#x5FC5;&#x987B;&#x8981;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#x3002; &#x4E00;&#x4E2A; protocol &#x53EF;&#x4EE5;&#x7EE7;&#x627F;&#x5176;&#x4ED6;&#x7684; protocol &#x3002;</p>
-<pre><code class="lang-objective-c">@protocol TestProtocol<NSObject> // NSObject&#x4E5F;&#x662F;&#x4E00;&#x4E2A; Protocol&#xFF0C;&#x8FD9;&#x91CC;&#x5373;&#x7EE7;&#x627F; NSObject &#x91CC;&#x7684;&#x65B9;&#x6CD5;
--(void)Print;               
-@end
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@protocol</span> <span class="hljs-title">TestProtocol</span>&lt;<span class="hljs-title">NSObject</span>&gt; // <span class="hljs-title">NSObject</span>&#x4E5F;&#x662F;&#x4E00;&#x4E2A; <span class="hljs-title">Protocol</span>&#xFF0C;&#x8FD9;&#x91CC;&#x5373;&#x7EE7;&#x627F; <span class="hljs-title">NSObject</span> &#x91CC;&#x7684;&#x65B9;&#x6CD5;</span>
+-(<span class="hljs-keyword">void</span>)Print;               
+<span class="hljs-keyword">@end</span>
 
-@interface B : NSObject<TestProtocol>
--(void)Print; // &#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#x662F;@required&#x7684;&#xFF0C;&#x5373;&#x5FC5;&#x987B;&#x5B9E;&#x73B0;
-@end
-</TestProtocol></NSObject></code></pre>
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">B</span> : <span class="hljs-title">NSObject</span>&lt;<span class="hljs-title">TestProtocol</span>&gt;</span>
+-(<span class="hljs-keyword">void</span>)Print; <span class="hljs-comment">// &#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#x662F;@required&#x7684;&#xFF0C;&#x5373;&#x5FC5;&#x987B;&#x5B9E;&#x73B0;</span>
+<span class="hljs-keyword">@end</span>
+</code></pre>
 <p>Delegate&#xFF08;&#x59D4;&#x6258;&#xFF09;&#x662F; Cocoa &#x4E2D;&#x5E38;&#x89C1;&#x7684;&#x4E00;&#x79CD;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;&#x5176;&#x5B9E;&#x73B0;&#x4F9D;&#x8D56;&#x4E8E; protocol &#x8FD9;&#x4E2A;&#x8BED;&#x8A00;&#x7279;&#x6027;&#x3002;</p>
 <h3 id="category">Category</h3>
 <p>Category &#x662F;&#x4E00;&#x79CD;&#x5F88;&#x7075;&#x6D3B;&#x7684;&#x6269;&#x5C55;&#x539F;&#x6709;&#x7C7B;&#x7684;&#x673A;&#x5236;&#xFF0C;&#x4F7F;&#x7528; Category &#x4E0D;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x539F;&#x6709;&#x7C7B;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4E5F;&#x65E0;&#x9700;&#x7EE7;&#x627F;&#x3002;Category&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x6765;&#x5B9E;&#x73B0;&#x7C7B;&#x7684;&#x76F8;&#x5173;&#x65B9;&#x6CD5;&#x7684;&#x6A21;&#x5757;&#x5316;&#xFF0C;&#x628A;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x65B9;&#x6CD5;&#x5206;&#x914D;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x6587;&#x4EF6;&#x4E2D;&#x3002;</p>
 <p>Category &#x5E38;&#x89C1;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code class="lang-objective-c">// SomeClass.h
-@interface SomeClass : NSObject{
+<pre><code class="lang-objectivec"><span class="hljs-comment">// SomeClass.h</span>
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">SomeClass</span> : <span class="hljs-title">NSObject</span></span>{
 }
--(void) print;
-@end 
+-(<span class="hljs-keyword">void</span>) print;
+<span class="hljs-keyword">@end</span> 
 
-// SomeClass+Hello.h
-#import &quot;SomeClass.h&quot;
+<span class="hljs-comment">// SomeClass+Hello.h</span>
+<span class="hljs-preprocessor">#import <span class="hljs-title">&quot;SomeClass.h&quot;</span></span>
 
-@interface SomeClass (Hello)
--(void)hello;
-@end
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">SomeClass</span> (<span class="hljs-title">Hello</span>)</span>
+-(<span class="hljs-keyword">void</span>)hello;
+<span class="hljs-keyword">@end</span>
 
-// &#x5B9E;&#x73B0;
-#import &quot;SomeClass+Hello.h&quot;
+<span class="hljs-comment">// &#x5B9E;&#x73B0;</span>
+<span class="hljs-preprocessor">#import <span class="hljs-title">&quot;SomeClass+Hello.h&quot;</span></span>
 @implementationSomeClass (Hello)
--(void)hello{
-    NSLog (@&quot;name&#xFF1A;%@ &quot;, @&quot;Jacky&quot;);
+-(<span class="hljs-keyword">void</span>)hello{
+    <span class="hljs-built_in">NSLog</span> (<span class="hljs-string">@&quot;name&#xFF1A;%@ &quot;</span>, <span class="hljs-string">@&quot;Jacky&quot;</span>);
 }
-@end
+<span class="hljs-keyword">@end</span>
 </code></pre>
 <p>&#x5728;&#x4F7F;&#x7528; Category &#x65F6;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x4E00;&#x70B9;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x591A;&#x4E2A;&#x547D;&#x540D; Category &#x5747;&#x5B9E;&#x73B0;&#x4E86;&#x540C;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF08;&#x5373;&#x51FA;&#x73B0;&#x4E86;&#x547D;&#x540D;&#x51B2;&#x7A81;&#xFF09;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x5177;&#x4F53;&#x54EA;&#x4E2A;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x662F;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#x3002;&#x56E0;&#x6B64;&#x5728;&#x7ED9;&#x5DF2;&#x6709;&#x7684;&#x7C7B;&#xFF08;&#x7279;&#x522B;&#x662F; Cocoa &#x7C7B;&#xFF09;&#x6DFB;&#x52A0; Category &#x65F6;&#xFF0C;&#x63A8;&#x8350;&#x7684;&#x51FD;&#x6570;&#x547D;&#x540D;&#x65B9;&#x6CD5;&#x662F;&#x52A0;&#x4E0A;&#x524D;&#x7F00;&#xFF1A;</p>
-<pre><code class="lang-objective-c">@interface NSSortDescriptor (XYZAdditions)
-+ (id)xyz_sortDescriptorWithKey:(NSString *)key ascending:(BOOL)ascending;
-@end
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">NSSortDescriptor</span> (<span class="hljs-title">XYZAdditions</span>)</span>
++ (<span class="hljs-keyword">id</span>)xyz_sortDescriptorWithKey:(<span class="hljs-built_in">NSString</span> *)key ascending:(<span class="hljs-built_in">BOOL</span>)ascending;
+<span class="hljs-keyword">@end</span>
 </code></pre>
 <h3 id="extension">Extension</h3>
 <p>Extension &#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x79CD;&#x533F;&#x540D;&#x7684; Category&#xFF0C; Extension &#x4E0E; Category &#x6709;&#x5982;&#x4E0B;&#x51E0;&#x70B9;&#x663E;&#x8457;&#x7684;&#x533A;&#x522B;&#xFF1A;</p>
@@ -1315,43 +1315,43 @@
 <li>Extension &#x91CC;&#x6DFB;&#x52A0;&#x7684;&#x65B9;&#x6CD5;&#x5FC5;&#x987B;&#x8981;&#x6709;&#x5B9E;&#x73B0;</li>
 </ol>
 <p>&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A; Extension &#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
-<pre><code class="lang-objective-c">@interface MyClass : NSObject  
-- (float)value;  
-@end  
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">MyClass</span> : <span class="hljs-title">NSObject</span>  </span>
+- (<span class="hljs-keyword">float</span>)value;  
+<span class="hljs-keyword">@end</span>  
 
-@interface MyClass () { // &#x6CE8;&#x610F;&#x6B64;&#x5904;&#x6269;&#x5C55;&#x7684;&#x5199;&#x6CD5;  
-    float value;  
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">MyClass</span> () </span>{ <span class="hljs-comment">// &#x6CE8;&#x610F;&#x6B64;&#x5904;&#x6269;&#x5C55;&#x7684;&#x5199;&#x6CD5;  </span>
+    <span class="hljs-keyword">float</span> value;  
 }  
-- (void)setValue:(float)newValue;  
-@end  
+- (<span class="hljs-keyword">void</span>)setValue:(<span class="hljs-keyword">float</span>)newValue;  
+<span class="hljs-keyword">@end</span>  
 
-@implementation MyClass  
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">MyClass</span>  </span>
 
-- (float)value {  
-    return value;  
+- (<span class="hljs-keyword">float</span>)value {  
+    <span class="hljs-keyword">return</span> value;  
 }  
 
-- (void)setValue:(float)newValue {  
+- (<span class="hljs-keyword">void</span>)setValue:(<span class="hljs-keyword">float</span>)newValue {  
     value = newValue;  
 }  
-@end
+<span class="hljs-keyword">@end</span>
 </code></pre>
 <p>Extension &#x5F88;&#x5E38;&#x89C1;&#x7684;&#x7528;&#x6CD5;&#xFF0C;&#x662F;&#x7528;&#x6765;&#x7ED9;&#x7C7B;&#x6DFB;&#x52A0; <strong>&#x79C1;&#x6709;</strong> &#x7684;&#x53D8;&#x91CF;&#x548C;&#x65B9;&#x6CD5;&#xFF0C;&#x7528;&#x4E8E;&#x5728;&#x7C7B;&#x7684;&#x5185;&#x90E8;&#x4F7F;&#x7528;&#x3002;&#x4F8B;&#x5982;&#x5728; interface &#x4E2D;&#x5B9A;&#x4E49;&#x4E3A; <code>readonly</code> &#x7C7B;&#x578B;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x5728;&#x5B9E;&#x73B0;&#x4E2D;&#x6DFB;&#x52A0; extension&#xFF0C;&#x5C06;&#x5176;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;&#x4E3A; <code>readwrite</code>&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5728;&#x7C7B;&#x7684;&#x5185;&#x90E8;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4FEE;&#x6539;&#x5B83;&#x7684;&#x503C;&#xFF0C;&#x7136;&#x800C;&#x5916;&#x90E8;&#x4F9D;&#x7136;&#x4E0D;&#x80FD;&#x8C03;&#x7528; <code>setter</code> &#x65B9;&#x6CD5;&#x6765;&#x4FEE;&#x6539;&#x3002;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF0C;&#x6765;&#x81EA;&#x82F9;&#x679C;&#x5B98;&#x65B9;<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html#//apple_ref/doc/uid/TP40011210-CH6-SW3" target="_blank">&#x6587;&#x6863;</a></p>
 <p>XYZPerson.h</p>
-<pre><code class="lang-objective-c">@interface XYZPerson : NSObject
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">XYZPerson</span> : <span class="hljs-title">NSObject</span></span>
 ...
-@property (readonly) NSString *uniqueIdentifier;
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">readonly</span>) <span class="hljs-built_in">NSString</span> *uniqueIdentifier;
 
-@end
+<span class="hljs-keyword">@end</span>
 </code></pre>
 <p>XYZPerson.m</p>
-<pre><code class="lang-objective-c">@interface XYZPerson ()
-@property (readwrite) NSString *uniqueIdentifier;
-@end
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">XYZPerson</span> ()</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">readwrite</span>) <span class="hljs-built_in">NSString</span> *uniqueIdentifier;
+<span class="hljs-keyword">@end</span>
 
-@implementation XYZPerson
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">XYZPerson</span></span>
 ...
-@end
+<span class="hljs-keyword">@end</span>
 </code></pre>
 <h2 id="&#x7C7B;&#x7684;&#x5BFC;&#x5165;">&#x7C7B;&#x7684;&#x5BFC;&#x5165;</h2>
 <p>&#x5BFC;&#x5165;&#x7C7B;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>#include</code> , <code>#import</code> &#x548C; <code>@class</code> &#x4E09;&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x533A;&#x522B;&#x5982;&#x4E0B;&#xFF1A;</p>
