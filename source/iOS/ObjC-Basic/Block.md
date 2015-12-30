@@ -40,6 +40,42 @@ NSLog(@"The result is %f", result);
 
 **注意**：当用于函数参数时，Block 应该放在参数列表的最后一个。
 
+---
+
+
+**Bonus：** 由于 Block 的语法是如此的晦涩难记，以至于出现了 [fuckingblocksyntax](http://fuckingblocksyntax.com/) 这样的网站专门用于记录 block 的语法，翻译并摘录如下：
+
+作为变量:
+
+```objectivec
+returnType (^blockName)(parameterTypes) = ^returnType(parameters) {...};
+```
+
+作为属性:
+
+```objectivec
+@property (nonatomic, copy) returnType (^blockName)(parameterTypes);
+```
+
+作为函数声明中的参数:
+
+```objective-c
+- (void)someMethodThatTakesABlock:(returnType (^)(parameterTypes))blockName;
+```
+
+作为函数调用中的参数:
+
+```objectivec
+[someObject someMethodThatTakesABlock:^returnType (parameters) {...}];
+```
+
+作为 typedef:
+
+```objectivec
+typedef returnType (^TypeName)(parameterTypes);
+TypeName blockName = ^returnType(parameters) {...};
+```
+
 ### Block 可以捕获外部变量
 
 Block 可以来自外部作用域的变量，这是Block一个很强大的特性。
