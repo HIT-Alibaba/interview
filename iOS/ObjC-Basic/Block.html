@@ -53,7 +53,7 @@
         data-chapter-title="Block 编程"
         data-filepath="iOS/ObjC-Basic/Block.md"
         data-basepath="../.."
-        data-revision="Wed Dec 30 2015 12:45:15 GMT+0800 (CST)"
+        data-revision="Wed Dec 30 2015 13:00:00 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1165,6 +1165,24 @@
 </code></pre>
 <p>&#x540C;&#x65F6;&#xFF0C;Block &#x4E5F;&#x662F;&#x4E00;&#x79CD; Objective-C &#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x8D4B;&#x503C;&#xFF0C;&#x5F53;&#x505A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x653E;&#x5165; NSArray &#x548C; NSDictionary &#x4E2D;&#x3002;</p>
 <p><strong>&#x6CE8;&#x610F;</strong>&#xFF1A;&#x5F53;&#x7528;&#x4E8E;&#x51FD;&#x6570;&#x53C2;&#x6570;&#x65F6;&#xFF0C;Block &#x5E94;&#x8BE5;&#x653E;&#x5728;&#x53C2;&#x6570;&#x5217;&#x8868;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x3002;</p>
+<hr>
+<p><strong>Bonus&#xFF1A;</strong> &#x7531;&#x4E8E; Block &#x7684;&#x8BED;&#x6CD5;&#x662F;&#x5982;&#x6B64;&#x7684;&#x6666;&#x6DA9;&#x96BE;&#x8BB0;&#xFF0C;&#x4EE5;&#x81F3;&#x4E8E;&#x51FA;&#x73B0;&#x4E86; <a href="http://fuckingblocksyntax.com/" target="_blank">fuckingblocksyntax</a> &#x8FD9;&#x6837;&#x7684;&#x7F51;&#x7AD9;&#x4E13;&#x95E8;&#x7528;&#x4E8E;&#x8BB0;&#x5F55; block &#x7684;&#x8BED;&#x6CD5;&#xFF0C;&#x7FFB;&#x8BD1;&#x5E76;&#x6458;&#x5F55;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>&#x4F5C;&#x4E3A;&#x53D8;&#x91CF;:</p>
+<pre><code class="lang-objectivec">returnType (^blockName)(parameterTypes) = ^returnType(parameters) {...};
+</code></pre>
+<p>&#x4F5C;&#x4E3A;&#x5C5E;&#x6027;:</p>
+<pre><code class="lang-objectivec"><span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">copy</span>) returnType (^blockName)(parameterTypes);
+</code></pre>
+<p>&#x4F5C;&#x4E3A;&#x51FD;&#x6570;&#x58F0;&#x660E;&#x4E2D;&#x7684;&#x53C2;&#x6570;:</p>
+<pre><code class="lang-objective-c">- (void)someMethodThatTakesABlock:(returnType (^)(parameterTypes))blockName;
+</code></pre>
+<p>&#x4F5C;&#x4E3A;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x4E2D;&#x7684;&#x53C2;&#x6570;:</p>
+<pre><code class="lang-objectivec">[someObject someMethodThatTakesABlock:^returnType (parameters) {...}];
+</code></pre>
+<p>&#x4F5C;&#x4E3A; typedef:</p>
+<pre><code class="lang-objectivec"><span class="hljs-keyword">typedef</span> returnType (^TypeName)(parameterTypes);
+TypeName blockName = ^returnType(parameters) {...};
+</code></pre>
 <h3 id="block-&#x53EF;&#x4EE5;&#x6355;&#x83B7;&#x5916;&#x90E8;&#x53D8;&#x91CF;">Block &#x53EF;&#x4EE5;&#x6355;&#x83B7;&#x5916;&#x90E8;&#x53D8;&#x91CF;</h3>
 <p>Block &#x53EF;&#x4EE5;&#x6765;&#x81EA;&#x5916;&#x90E8;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x8FD9;&#x662F;Block&#x4E00;&#x4E2A;&#x5F88;&#x5F3A;&#x5927;&#x7684;&#x7279;&#x6027;&#x3002;</p>
 <pre><code class="lang-objectivec">- (<span class="hljs-keyword">void</span>)testMethod {
