@@ -252,7 +252,7 @@ self.name = name
 
 在 ARC 中我们完全不需要考虑这两种返回值类型的区别，ARC 会自动加入必要的代码，因此我们可以放心大胆地写：
 
-```objective-c
+```objectivec
 self.property = [[NSObject alloc] init];
 self.name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
 ```
@@ -339,7 +339,7 @@ self.property = nil
 
 实际上就是手动执行了一次 release。而对于临时变量来说：
 
-```
+```objectivec
 NSObject *object = [[NSObject alloc] init];
 object = nil;
 ```
