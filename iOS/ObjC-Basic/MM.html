@@ -53,7 +53,7 @@
         data-chapter-title="Objective-C 内存管理"
         data-filepath="iOS/ObjC-Basic/MM.md"
         data-basepath="../.."
-        data-revision="Wed Dec 30 2015 11:22:23 GMT+0800 (CST)"
+        data-revision="Wed Dec 30 2015 12:45:15 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1304,8 +1304,8 @@ _property = <span class="hljs-literal">nil</span>;
 </code></pre>
 <h5 id="arc">ARC</h5>
 <p>&#x5728; ARC &#x4E2D;&#x6211;&#x4EEC;&#x5B8C;&#x5168;&#x4E0D;&#x9700;&#x8981;&#x8003;&#x8651;&#x8FD9;&#x4E24;&#x79CD;&#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B;&#x7684;&#x533A;&#x522B;&#xFF0C;ARC &#x4F1A;&#x81EA;&#x52A8;&#x52A0;&#x5165;&#x5FC5;&#x8981;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x653E;&#x5FC3;&#x5927;&#x80C6;&#x5730;&#x5199;&#xFF1A;</p>
-<pre><code class="lang-objective-c">self.property = [[NSObject alloc] init];
-self.name = [NSString stringWithFormat:@&quot;%@ %@&quot;, firstName, lastName];
+<pre><code class="lang-objectivec"><span class="hljs-keyword">self</span><span class="hljs-variable">.property</span> = [[<span class="hljs-built_in">NSObject</span> alloc] init];
+<span class="hljs-keyword">self</span><span class="hljs-variable">.name</span> = [<span class="hljs-built_in">NSString</span> stringWithFormat:<span class="hljs-string">@&quot;%@ %@&quot;</span>, firstName, lastName];
 </code></pre>
 <p>&#x4EE5;&#x53CA;&#x5728;&#x81EA;&#x5DF1;&#x5199;&#x7684;&#x51FD;&#x6570;&#x4E2D;&#xFF1A;</p>
 <pre><code class="lang-objectivec">+ (MyCustomClass *) myCustomClass
@@ -1360,9 +1360,10 @@ _property = <span class="hljs-literal">nil</span>;
 <pre><code class="lang-objectivec"><span class="hljs-keyword">self</span><span class="hljs-variable">.property</span> = <span class="hljs-literal">nil</span>
 </code></pre>
 <p>&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x624B;&#x52A8;&#x6267;&#x884C;&#x4E86;&#x4E00;&#x6B21; release&#x3002;&#x800C;&#x5BF9;&#x4E8E;&#x4E34;&#x65F6;&#x53D8;&#x91CF;&#x6765;&#x8BF4;&#xFF1A;</p>
-<pre><code>NSObject *object = [[NSObject alloc] init];
-object = nil;
-</code></pre><p>&#x7F6E;&#x4E3A; nil &#x8FD9;&#x4E00;&#x53E5;&#x5176;&#x5B9E;&#x6CA1;&#x4EC0;&#x4E48;&#x7528;&#xFF08;&#x9664;&#x4E86;&#x8BA9; object &#x5728;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x91CC;&#x4E0D;&#x80FD;&#x518D;&#x4F7F;&#x7528;&#x4E4B;&#x5916;&#xFF09;&#xFF0C;&#x56E0;&#x4E3A;&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x8BA8;&#x8BBA;&#x8FC7; &#xFF0C;ARC &#x4E0B;&#x7684;&#x4E34;&#x65F6;&#x53D8;&#x91CF;&#x662F;&#x53D7;&#x5230; Autorelease Pool &#x7684;&#x7BA1;&#x7406;&#x7684;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x3002;</p>
+<pre><code class="lang-objectivec"><span class="hljs-built_in">NSObject</span> *object = [[<span class="hljs-built_in">NSObject</span> alloc] init];
+object = <span class="hljs-literal">nil</span>;
+</code></pre>
+<p>&#x7F6E;&#x4E3A; nil &#x8FD9;&#x4E00;&#x53E5;&#x5176;&#x5B9E;&#x6CA1;&#x4EC0;&#x4E48;&#x7528;&#xFF08;&#x9664;&#x4E86;&#x8BA9; object &#x5728;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x91CC;&#x4E0D;&#x80FD;&#x518D;&#x4F7F;&#x7528;&#x4E4B;&#x5916;&#xFF09;&#xFF0C;&#x56E0;&#x4E3A;&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x8BA8;&#x8BBA;&#x8FC7; &#xFF0C;ARC &#x4E0B;&#x7684;&#x4E34;&#x65F6;&#x53D8;&#x91CF;&#x662F;&#x53D7;&#x5230; Autorelease Pool &#x7684;&#x7BA1;&#x7406;&#x7684;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x3002;</p>
 <p>&#x56E0;&#x4E3A; ARC &#x4E0B;&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x518D;&#x4F7F;&#x7528; release &#x51FD;&#x6570;&#xFF0C;&#x628A;&#x53D8;&#x91CF;&#x7F6E;&#x4E3A; nil &#x5C31;&#x6210;&#x4E3A;&#x4E86;&#x4E00;&#x79CD;&#x91CA;&#x653E;&#x53D8;&#x91CF;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x771F;&#x6B63;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x628A;&#x53D8;&#x91CF;&#x7F6E;&#x4E3A; nil &#x7684;&#xFF0C;&#x901A;&#x5E38;&#x5C31;&#x662F;&#x5728;&#x4F7F;&#x7528; block &#x65F6;&#xFF0C;&#x7528;&#x4E8E;&#x7834;&#x9664;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#xFF1A;</p>
 <pre><code class="lang-objectivec">MyViewController * __block myController = [[MyViewController alloc] init&#x2026;];
 <span class="hljs-comment">// ...</span>
