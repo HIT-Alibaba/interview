@@ -15,6 +15,12 @@
 * http://www.hrchen.com/2013/05/performance-with-instruments/ (iOS 性能优化）
 * https://github.com/huang303513/iOS-Study-Demo
 
+#### 编码规范
+
+* https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html#//apple_ref/doc/uid/10000146-SW1
+* https://github.com/raywenderlich/objective-c-style-guide
+* https://github.com/github/objective-c-style-guide
+
 #### 常用的库总结：
 
 * http://github.ibireme.com/github/list/ios/
