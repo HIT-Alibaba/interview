@@ -53,7 +53,7 @@
         data-chapter-title="并发编程"
         data-filepath="iOS/Cocoa-Touch/Multithreading.md"
         data-basepath="../.."
-        data-revision="Thu Dec 31 2015 15:55:25 GMT+0800 (CST)"
+        data-revision="Tue Jan 05 2016 14:33:09 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1197,13 +1197,33 @@
 </li>
 <li><p>&#x5E76;&#x884C;&#x961F;&#x5217;
  &#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x63D0;&#x4F9B;&#x4E86;&#x56DB;&#x4E2A;&#x5168;&#x5C40;&#x53EF;&#x7528;&#x7684;&#x5E76;&#x884C;&#x961F;&#x5217;&#xFF0C;&#x5176;&#x4F18;&#x5148;&#x7EA7;&#x4E0D;&#x540C;&#xFF0C;&#x5206;&#x522B;&#x4E3A; DISPATCH_QUEUE_PRIORITY_HIGH&#xFF0C;DISPATCH_QUEUE_PRIORITY_DEFAULT&#xFF0C; DISPATCH_QUEUE_PRIORITY_LOW&#xFF0C; DISPATCH_QUEUE_PRIORITY_BACKGROUND &#xFF0C;&#x4F18;&#x5148;&#x7EA7;&#x4F9D;&#x6B21;&#x964D;&#x4F4E;&#x3002;&#x4F18;&#x5148;&#x7EA7;&#x8D8A;&#x9AD8;&#x7684;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x4EFB;&#x52A1;&#x4F1A;&#x66F4;&#x65E9;&#x6267;&#x884C;&#xFF1A;</p>
-<pre><code class="lang-objectivec```"> dispatch_queue_t aQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+<pre><code class="lang-objectivec"> <span class="hljs-built_in">dispatch_queue_t</span> aQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="hljs-number">0</span>);
 </code></pre>
 <p> &#x5F53;&#x7136;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x81EA;&#x5DF1;&#x7684;&#x5E76;&#x884C;&#x961F;&#x5217;&#xFF1A;</p>
 <pre><code class="lang-objectivec"> queue = dispatch_queue_create(<span class="hljs-string">&quot;com.example.MyQueue&quot;</span>, DISPATCH_QUEUE_CONCURRENT);
 </code></pre>
 <p> &#x4E0D;&#x8FC7;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x7684; Default &#x4F18;&#x5148;&#x7EA7;&#x7684; queue &#x5C31;&#x8DB3;&#x591F;&#x4E86;&#x3002;</p>
 </li>
+</ol>
+<p><strong>&#x66F4;&#x65B0;&#xFF1A;</strong>&#x5728; iOS8+ &#x548C; OS X 10.10+ &#x4E2D;&#x82F9;&#x679C;&#x5F15;&#x5165;&#x4E86;&#x65B0;&#x7684; QOS &#x7C7B;&#x522B;&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x51E0;&#x4E2A;&#x7C7B;&#x522B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li><code>QOS_CLASS_USER_INTERACTIVE</code></li>
+<li><code>QOS_CLASS_USER_INITIATED</code></li>
+<li><code>QOS_CLASS_UTILITY</code></li>
+<li><code>QOS_CLASS_BACKGROUND</code></li>
+</ul>
+<p>&#x73B0;&#x4EE3;&#x7684;&#x7528;&#x6CD5;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code class="lang-swift"><span class="hljs-keyword">let</span> qualityOfServiceClass = <span class="hljs-type">QOS_CLASS_BACKGROUND</span>
+<span class="hljs-keyword">let</span> backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, <span class="hljs-number">0</span>)
+dispatch_async(backgroundQueue, {
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;This is run on the background queue&quot;</span>)
+
+   dispatch_async(dispatch_get_main_queue(), { () -&gt; <span class="hljs-type">Void</span> <span class="hljs-keyword">in</span>
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;This is run on the main queue, after the previous code in outer block&quot;</span>)
+    })
+})
+</code></pre>
+<ol>
 <li><p>&#x4E3B;&#x961F;&#x5217;
  &#x4E3B;&#x961F;&#x5217;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>dispatch_get_main_queue()</code> &#x83B7;&#x53D6;&#xFF1A;</p>
 <pre><code class="lang-objectivec">  <span class="hljs-built_in">dispatch_async</span>(dispatch_get_main_queue(), ^{
