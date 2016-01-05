@@ -70,7 +70,7 @@ GCD 这么受大家欢迎，它具体好用在哪里呢？GCD 主要的功劳在
 2. 并行队列
     系统默认提供了四个全局可用的并行队列，其优先级不同，分别为 DISPATCH_QUEUE_PRIORITY_HIGH，DISPATCH_QUEUE_PRIORITY_DEFAULT， DISPATCH_QUEUE_PRIORITY_LOW， DISPATCH_QUEUE_PRIORITY_BACKGROUND ，优先级依次降低。优先级越高的队列中的任务会更早执行：
     
-    ```objectivec```
+    ```objectivec
     dispatch_queue_t aQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     ```
     
@@ -81,6 +81,27 @@ GCD 这么受大家欢迎，它具体好用在哪里呢？GCD 主要的功劳在
     ```
     
     不过一般情况下我们使用系统提供的 Default 优先级的 queue 就足够了。
+    
+**更新：**在 iOS8+ 和 OS X 10.10+ 中苹果引入了新的 QOS 类别，具体的几个类别如下：
+
+* `QOS_CLASS_USER_INTERACTIVE`
+* `QOS_CLASS_USER_INITIATED`
+* `QOS_CLASS_UTILITY`
+* `QOS_CLASS_BACKGROUND`
+
+现代的用法如下所示：
+
+```swift
+let qualityOfServiceClass = QOS_CLASS_BACKGROUND
+let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
+dispatch_async(backgroundQueue, {
+    print("This is run on the background queue")
+
+   dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        print("This is run on the main queue, after the previous code in outer block")
+    })
+})
+```
      
 3. 主队列
     主队列可以通过 `dispatch_get_main_queue()` 获取：
