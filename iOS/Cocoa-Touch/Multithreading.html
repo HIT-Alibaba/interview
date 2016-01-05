@@ -53,7 +53,7 @@
         data-chapter-title="并发编程"
         data-filepath="iOS/Cocoa-Touch/Multithreading.md"
         data-basepath="../.."
-        data-revision="Tue Jan 05 2016 14:33:09 GMT+0800 (CST)"
+        data-revision="Tue Jan 05 2016 14:37:07 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1203,27 +1203,25 @@
 <pre><code class="lang-objectivec"> queue = dispatch_queue_create(<span class="hljs-string">&quot;com.example.MyQueue&quot;</span>, DISPATCH_QUEUE_CONCURRENT);
 </code></pre>
 <p> &#x4E0D;&#x8FC7;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x7684; Default &#x4F18;&#x5148;&#x7EA7;&#x7684; queue &#x5C31;&#x8DB3;&#x591F;&#x4E86;&#x3002;</p>
-</li>
-</ol>
-<p><strong>&#x66F4;&#x65B0;&#xFF1A;</strong>&#x5728; iOS8+ &#x548C; OS X 10.10+ &#x4E2D;&#x82F9;&#x679C;&#x5F15;&#x5165;&#x4E86;&#x65B0;&#x7684; QOS &#x7C7B;&#x522B;&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x51E0;&#x4E2A;&#x7C7B;&#x522B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p> <strong>&#x66F4;&#x65B0;&#xFF1A;</strong>&#x5728; iOS8+ &#x548C; OS X 10.10+ &#x4E2D;&#x82F9;&#x679C;&#x5F15;&#x5165;&#x4E86;&#x65B0;&#x7684; QOS &#x7C7B;&#x522B;&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x51E0;&#x4E2A;&#x7C7B;&#x522B;&#x5982;&#x4E0B;&#xFF1A;</p>
 <ul>
 <li><code>QOS_CLASS_USER_INTERACTIVE</code></li>
 <li><code>QOS_CLASS_USER_INITIATED</code></li>
 <li><code>QOS_CLASS_UTILITY</code></li>
-<li><code>QOS_CLASS_BACKGROUND</code></li>
-</ul>
-<p>&#x73B0;&#x4EE3;&#x7684;&#x7528;&#x6CD5;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<li><p><code>QOS_CLASS_BACKGROUND</code></p>
+<p>&#x5728;&#x652F;&#x6301;&#x7684;&#x5E73;&#x53F0;&#x4E0A;&#xFF0C;&#x63A8;&#x8350;&#x4F7F;&#x7528;&#x8FD9;&#x51E0;&#x4E2A;&#x7C7B;&#x522B;&#x5BF9;&#x5E94;&#x7684; queue&#xFF0C;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;(Swift)&#xFF1A;</p>
 <pre><code class="lang-swift"><span class="hljs-keyword">let</span> qualityOfServiceClass = <span class="hljs-type">QOS_CLASS_BACKGROUND</span>
 <span class="hljs-keyword">let</span> backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, <span class="hljs-number">0</span>)
 dispatch_async(backgroundQueue, {
-    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;This is run on the background queue&quot;</span>)
-
-   dispatch_async(dispatch_get_main_queue(), { () -&gt; <span class="hljs-type">Void</span> <span class="hljs-keyword">in</span>
-        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;This is run on the main queue, after the previous code in outer block&quot;</span>)
-    })
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;This is run on the background queue&quot;</span>)
+ dispatch_async(dispatch_get_main_queue(), { () -&gt; <span class="hljs-type">Void</span> <span class="hljs-keyword">in</span>
+     <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;This is run on the main queue, after the previous code in outer block&quot;</span>)
+  })
 })
 </code></pre>
-<ol>
+</li>
+</ul>
+</li>
 <li><p>&#x4E3B;&#x961F;&#x5217;
  &#x4E3B;&#x961F;&#x5217;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>dispatch_get_main_queue()</code> &#x83B7;&#x53D6;&#xFF1A;</p>
 <pre><code class="lang-objectivec">  <span class="hljs-built_in">dispatch_async</span>(dispatch_get_main_queue(), ^{
