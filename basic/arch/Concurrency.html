@@ -53,7 +53,7 @@
         data-chapter-title="并发技术"
         data-filepath="basic/arch/Concurrency.md"
         data-basepath="../.."
-        data-revision="Wed Feb 17 2016 17:18:02 GMT+0800 (CST)"
+        data-revision="Sat Feb 20 2016 08:35:45 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1429,7 +1429,7 @@ Consumer()
 <h2 id="&#x534F;&#x7A0B;">&#x534F;&#x7A0B;</h2>
 <p>&#x534F;&#x7A0B;&#xFF0C;&#x53C8;&#x79F0;&#x5FAE;&#x7EBF;&#x7A0B;&#xFF0C;&#x7EA4;&#x7A0B;&#x3002;&#x82F1;&#x6587;&#x540D;Coroutine&#x3002;</p>
 <p>&#x534F;&#x7A0B;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x7528;&#x6237;&#x7EA7;&#x7EBF;&#x7A0B;&#xFF0C;&#x534F;&#x7A0B;&#x548C;&#x7EBF;&#x7A0B;&#x7684;&#x533A;&#x522B;&#x662F;&#xFF1A;&#x7EBF;&#x7A0B;&#x662F;&#x62A2;&#x5360;&#x5F0F;&#x7684;&#x8C03;&#x5EA6;&#xFF0C;&#x800C;&#x534F;&#x7A0B;&#x662F;&#x534F;&#x540C;&#x5F0F;&#x7684;&#x8C03;&#x5EA6;&#xFF0C;&#x534F;&#x7A0B;&#x907F;&#x514D;&#x4E86;&#x65E0;&#x610F;&#x4E49;&#x7684;&#x8C03;&#x5EA6;&#xFF0C;&#x7531;&#x6B64;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;&#x6027;&#x80FD;&#xFF0C;&#x4F46;&#x4E5F;&#x56E0;&#x6B64;&#xFF0C;&#x7A0B;&#x5E8F;&#x5458;&#x5FC5;&#x987B;&#x81EA;&#x5DF1;&#x627F;&#x62C5;&#x8C03;&#x5EA6;&#x7684;&#x8D23;&#x4EFB;&#xFF0C;&#x540C;&#x65F6;&#xFF0C;&#x534F;&#x7A0B;&#x4E5F;&#x5931;&#x53BB;&#x4E86;&#x6807;&#x51C6;&#x7EBF;&#x7A0B;&#x4F7F;&#x7528;&#x591A;CPU&#x7684;&#x80FD;&#x529B;&#x3002;</p>
-<p>&#x4F7F;&#x7528;&#x534F;&#x7A0B;&#x6539;&#x5199;&#x751F;&#x4EA7;&#x8005;-&#x6D88;&#x8D39;&#x8005;&#x95EE;&#x9898;&#xFF1A;</p>
+<p>&#x4F7F;&#x7528;&#x534F;&#x7A0B;(python)&#x6539;&#x5199;&#x751F;&#x4EA7;&#x8005;-&#x6D88;&#x8D39;&#x8005;&#x95EE;&#x9898;&#xFF1A;</p>
 <pre><code>import time
 
 def consumer():
@@ -1443,7 +1443,7 @@ def consumer():
         r = &apos;200 OK&apos;
 
 def produce(c):
-    c.next()
+    next(c)                   #python 3.x&#x4E2D;&#x4F7F;&#x7528;next(c)&#xFF0C;python 2.x&#x4E2D;&#x4F7F;&#x7528;c.next()
     n = 0
     while n &lt; 5:
         n = n + 1
