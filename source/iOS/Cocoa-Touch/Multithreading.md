@@ -235,7 +235,7 @@ int main(int argc, const char * argv[]) {
     
 即整个 Operation 就是在当前的线程中以阻塞的形式执行的，当 operation 的 main 函数执行完毕之后，程序的控制权返回到主的 main 函数中。这样看来 operation 跟普通的一个函数调用就没有什么区别了。
  
-对于并发的 Operation，要实现还是有点麻烦的，我们需要重载 start，isAsynchronous，isExecuting，isFinished 四个函数，同时还最好在 start 和 main 的实现中支持 cancel 操作。为什么要这么麻烦呢？因为对于一个并发的 Operation，调用者知道它什么时候开始，却不能知道它什么时候结束。在 NSOperation 的体系下，是通过 KVO 监测 isExecuting 和 isFinished 这几个变量，来监测 Operation 的完成状态的。出于兼容性的考虑（参考[这里](https://stackoverflow.com/questions/3573236/why-does-nsoperation-disable-automatic-key-value-observing)，我们还必须手动触发 KVO 通知。下面是一个示例：
+对于并发的 Operation，要实现还是有点麻烦的，我们需要重载 start，isAsynchronous，isExecuting，isFinished 四个函数，同时还最好在 start 和 main 的实现中支持 cancel 操作。为什么要这么麻烦呢？因为对于一个并发的 Operation，调用者知道它什么时候开始，却不能知道它什么时候结束。在 NSOperation 的体系下，是通过 KVO 监测 isExecuting 和 isFinished 这几个变量，来监测 Operation 的完成状态的。出于兼容性的考虑（参考[这里](https://stackoverflow.com/questions/3573236/why-does-nsoperation-disable-automatic-key-value-observing)），我们还必须手动触发 KVO 通知。下面是一个示例：
 
 ```objectivec
 #import "MyOperation.h"
