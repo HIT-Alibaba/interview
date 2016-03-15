@@ -18,7 +18,7 @@ HTTP定义了与服务器交互的不同方法，最基本的方法有4种，分
     GET请求报文示例：
     
         GET /books/?sex=man&name=Professional HTTP/1.1
-        Host: www.wrox.com
+        Host: www.example.com
         User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.6)
         Gecko/20050225 Firefox/1.0.1
         Connection: Keep-Alive
@@ -26,7 +26,7 @@ HTTP定义了与服务器交互的不同方法，最基本的方法有4种，分
 2. POST表示可能修改变服务器上的资源的请求。
         
         POST / HTTP/1.1
-        Host: www.wrox.com
+        Host: www.example.com
         User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.6)
         Gecko/20050225 Firefox/1.0.1
         Content-Type: application/x-www-form-urlencoded
@@ -55,10 +55,11 @@ HTTP 响应与 HTTP 请求相似，HTTP响应也由3个部分构成，分别是�
 常见的状态码有如下几种：
 
 * `200 OK` 客户端请求成功
-* `302 Moved Temporarily` 请求重定向
+* `301 Moved Permanently` 请求永久重定向
+* `302 Moved Temporarily` 请求临时重定向
 * `304 Not Modified` 文件未修改，可以直接使用缓存的文件。
 * `400 Bad Request` 由于客户端请求有语法错误，不能被服务器所理解。
-* `401 Unauthonzed` 请求未经授权。这个状态代码必须和WWW-Authenticate报头域一起使用
+* `401 Unauthorized` 请求未经授权。这个状态代码必须和WWW-Authenticate报头域一起使用
 * `403 Forbidden` 服务器收到请求，但是拒绝提供服务。服务器通常会在响应正文中给出不提供服务的原因
 * `404 Not Found` 请求的资源不存在，例如，输入了错误的URL
 * `500 Internal Server Error` 服务器发生不可预期的错误，导致无法完成客户端的请求。
