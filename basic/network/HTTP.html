@@ -53,7 +53,7 @@
         data-chapter-title="HTTP 协议"
         data-filepath="basic/network/HTTP.md"
         data-basepath="../.."
-        data-revision="Sun Mar 13 2016 11:06:27 GMT+0800 (CST)"
+        data-revision="Tue Mar 15 2016 12:43:49 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1154,14 +1154,14 @@
 <p> &#x5E42;&#x7B49;&#x7684;&#x610F;&#x5473;&#x7740;&#x5BF9;&#x540C;&#x4E00;URL&#x7684;&#x591A;&#x4E2A;&#x8BF7;&#x6C42;&#x5E94;&#x8BE5;&#x8FD4;&#x56DE;&#x540C;&#x6837;&#x7684;&#x7ED3;&#x679C;&#x3002;</p>
 <p> GET&#x8BF7;&#x6C42;&#x62A5;&#x6587;&#x793A;&#x4F8B;&#xFF1A;</p>
 <pre><code> GET /books/?sex=man&amp;name=Professional HTTP/1.1
- Host: www.wrox.com
+ Host: www.example.com
  User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.6)
  Gecko/20050225 Firefox/1.0.1
  Connection: Keep-Alive
 </code></pre></li>
 <li><p>POST&#x8868;&#x793A;&#x53EF;&#x80FD;&#x4FEE;&#x6539;&#x53D8;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x7684;&#x8D44;&#x6E90;&#x7684;&#x8BF7;&#x6C42;&#x3002;</p>
 <pre><code> POST / HTTP/1.1
- Host: www.wrox.com
+ Host: www.example.com
  User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.6)
  Gecko/20050225 Firefox/1.0.1
  Content-Type: application/x-www-form-urlencoded
@@ -1189,10 +1189,11 @@
 <p>&#x5E38;&#x89C1;&#x7684;&#x72B6;&#x6001;&#x7801;&#x6709;&#x5982;&#x4E0B;&#x51E0;&#x79CD;&#xFF1A;</p>
 <ul>
 <li><code>200 OK</code> &#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;&#x6210;&#x529F;</li>
-<li><code>302 Moved Temporarily</code> &#x8BF7;&#x6C42;&#x91CD;&#x5B9A;&#x5411;</li>
+<li><code>301 Moved Permanently</code> &#x8BF7;&#x6C42;&#x6C38;&#x4E45;&#x91CD;&#x5B9A;&#x5411;</li>
+<li><code>302 Moved Temporarily</code> &#x8BF7;&#x6C42;&#x4E34;&#x65F6;&#x91CD;&#x5B9A;&#x5411;</li>
 <li><code>304 Not Modified</code> &#x6587;&#x4EF6;&#x672A;&#x4FEE;&#x6539;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x7F13;&#x5B58;&#x7684;&#x6587;&#x4EF6;&#x3002;</li>
 <li><code>400 Bad Request</code> &#x7531;&#x4E8E;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;&#x6709;&#x8BED;&#x6CD5;&#x9519;&#x8BEF;&#xFF0C;&#x4E0D;&#x80FD;&#x88AB;&#x670D;&#x52A1;&#x5668;&#x6240;&#x7406;&#x89E3;&#x3002;</li>
-<li><code>401 Unauthonzed</code> &#x8BF7;&#x6C42;&#x672A;&#x7ECF;&#x6388;&#x6743;&#x3002;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x4EE3;&#x7801;&#x5FC5;&#x987B;&#x548C;WWW-Authenticate&#x62A5;&#x5934;&#x57DF;&#x4E00;&#x8D77;&#x4F7F;&#x7528;</li>
+<li><code>401 Unauthorized</code> &#x8BF7;&#x6C42;&#x672A;&#x7ECF;&#x6388;&#x6743;&#x3002;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x4EE3;&#x7801;&#x5FC5;&#x987B;&#x548C;WWW-Authenticate&#x62A5;&#x5934;&#x57DF;&#x4E00;&#x8D77;&#x4F7F;&#x7528;</li>
 <li><code>403 Forbidden</code> &#x670D;&#x52A1;&#x5668;&#x6536;&#x5230;&#x8BF7;&#x6C42;&#xFF0C;&#x4F46;&#x662F;&#x62D2;&#x7EDD;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#x3002;&#x670D;&#x52A1;&#x5668;&#x901A;&#x5E38;&#x4F1A;&#x5728;&#x54CD;&#x5E94;&#x6B63;&#x6587;&#x4E2D;&#x7ED9;&#x51FA;&#x4E0D;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#x7684;&#x539F;&#x56E0;</li>
 <li><code>404 Not Found</code> &#x8BF7;&#x6C42;&#x7684;&#x8D44;&#x6E90;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x4F8B;&#x5982;&#xFF0C;&#x8F93;&#x5165;&#x4E86;&#x9519;&#x8BEF;&#x7684;URL</li>
 <li><code>500 Internal Server Error</code> &#x670D;&#x52A1;&#x5668;&#x53D1;&#x751F;&#x4E0D;&#x53EF;&#x9884;&#x671F;&#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x5BFC;&#x81F4;&#x65E0;&#x6CD5;&#x5B8C;&#x6210;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8BF7;&#x6C42;&#x3002;</li>
