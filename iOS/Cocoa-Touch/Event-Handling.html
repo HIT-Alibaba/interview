@@ -53,7 +53,7 @@
         data-chapter-title="事件处理"
         data-filepath="iOS/Cocoa-Touch/Event-Handling.md"
         data-basepath="../.."
-        data-revision="Tue Mar 15 2016 12:43:49 GMT+0800 (CST)"
+        data-revision="Wed Mar 16 2016 11:32:30 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1165,26 +1165,26 @@
 <li>&#x5982;&#x6240;&#x6709;&#x5B50;&#x89C6;&#x56FE;&#x90FD;&#x8FD4;&#x56DE;&#x7A7A;&#xFF0C;&#x5219; hitTest:withEvent: &#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x81EA;&#x8EAB; (self)&#x3002;</li>
 </ul>
 <p>&#x4E00;&#x4E2A;&#x793A;&#x4F8B;&#x6027;&#x7684;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code class="lang-objective-c">- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
-    UIView *touchView = self;
-    if ([self pointInside:point withEvent:event] &amp;&amp;
-       (!self.hidden) &amp;&amp;
-       self.userInteractionEnabled &amp;&amp;
-       (self.alpha &gt;= 0.01f)) {
+<pre><code class="lang-objectivec">- (<span class="hljs-built_in">UIView</span> *)hitTest:(<span class="hljs-built_in">CGPoint</span>)point withEvent:(<span class="hljs-built_in">UIEvent</span> *)event{
+    <span class="hljs-built_in">UIView</span> *touchView = <span class="hljs-keyword">self</span>;
+    <span class="hljs-keyword">if</span> ([<span class="hljs-keyword">self</span> pointInside:point withEvent:event] &amp;&amp;
+       (!<span class="hljs-keyword">self</span><span class="hljs-variable">.hidden</span>) &amp;&amp;
+       <span class="hljs-keyword">self</span><span class="hljs-variable">.userInteractionEnabled</span> &amp;&amp;
+       (<span class="hljs-keyword">self</span><span class="hljs-variable">.alpha</span> &gt;= <span class="hljs-number">0.01</span>f)) {
 
-        for (UIView *subView in self.subviews) {
-            [subview convertPoint:point fromView:self];
-            UIView *subTouchView = [subView hitTest:subPoint withEvent:event];
-            if (subTouchView) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-built_in">UIView</span> *subView <span class="hljs-keyword">in</span> <span class="hljs-keyword">self</span><span class="hljs-variable">.subviews</span>) {
+            [subview convertPoint:point fromView:<span class="hljs-keyword">self</span>];
+            <span class="hljs-built_in">UIView</span> *subTouchView = [subView hitTest:subPoint withEvent:event];
+            <span class="hljs-keyword">if</span> (subTouchView) {
                 touchView = subTouchView;
-                break;
+                <span class="hljs-keyword">break</span>;
             }
         }
-    }else{
-        touchView = nil;
+    }<span class="hljs-keyword">else</span>{
+        touchView = <span class="hljs-literal">nil</span>;
     }
 
-    return touchView;
+    <span class="hljs-keyword">return</span> touchView;
 }
 </code></pre>
 <h4 id="&#x8BF4;&#x660E;">&#x8BF4;&#x660E;</h4>
@@ -1194,23 +1194,23 @@
 <li>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x91CD;&#x5199; <code>hitTest:withEvent:</code> &#x6765;&#x8FBE;&#x5230;&#x67D0;&#x4E9B;&#x7279;&#x5B9A;&#x7684;&#x76EE;&#x7684;&#x3002;</li>
 </ol>
 <p><a href="https://github.com/ChenYilong/CYLTabBarController" target="_blank">CYLTabBarController</a>&#x662F;&#x4E00;&#x4E2A;&#x652F;&#x6301;&#x81EA;&#x5B9A;&#x4E49; Tab &#x63A7;&#x4EF6;&#x7684;&#x5F00;&#x6E90;&#x9879;&#x76EE;&#x3002;&#x5728; TabBar &#x5F53;&#x4E2D;&#xFF0C;&#x4E3A;&#x4E86;&#x652F;&#x6301; TabBar &#x6309;&#x94AE;&#x5927;&#x5C0F;&#x8D85;&#x8FC7; TabBar Frame &#x8303;&#x56F4;&#x65F6;&#x4E5F;&#x53EF;&#x4EE5;&#x54CD;&#x5E94;&#xFF0C;&#x5B83;&#x7684;&#x5B9E;&#x73B0;&#x5C31;&#x662F;&#x91CD;&#x8F7D;&#x4E86; hitTest &#x65B9;&#x6CD5;&#xFF1A;</p>
-<pre><code class="lang-objective-c">/*
+<pre><code class="lang-objectivec"><span class="hljs-comment">/*
  *
  Capturing touches on a subview outside the frame of its superview
  *
- */
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+ */</span>
+- (<span class="hljs-built_in">UIView</span> *)hitTest:(<span class="hljs-built_in">CGPoint</span>)point withEvent:(<span class="hljs-built_in">UIEvent</span> *)event
 {
-    if (!self.clipsToBounds &amp;&amp; !self.hidden &amp;&amp; self.alpha &gt; 0) {
-        for (UIView *subview in self.subviews.reverseObjectEnumerator) {
-            CGPoint subPoint = [subview convertPoint:point fromView:self];
-            UIView *result = [subview hitTest:subPoint withEvent:event];
-            if (result != nil) {
-                return result;
+    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">self</span><span class="hljs-variable">.clipsToBounds</span> &amp;&amp; !<span class="hljs-keyword">self</span><span class="hljs-variable">.hidden</span> &amp;&amp; <span class="hljs-keyword">self</span><span class="hljs-variable">.alpha</span> &gt; <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-built_in">UIView</span> *subview <span class="hljs-keyword">in</span> <span class="hljs-keyword">self</span><span class="hljs-variable">.subviews</span><span class="hljs-variable">.reverseObjectEnumerator</span>) {
+            <span class="hljs-built_in">CGPoint</span> subPoint = [subview convertPoint:point fromView:<span class="hljs-keyword">self</span>];
+            <span class="hljs-built_in">UIView</span> *result = [subview hitTest:subPoint withEvent:event];
+            <span class="hljs-keyword">if</span> (result != <span class="hljs-literal">nil</span>) {
+                <span class="hljs-keyword">return</span> result;
             }
         }
     }
-    return nil;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>;
 }
 </code></pre>
 <p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x548C;&#x4E0A;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x7684;&#x5DEE;&#x8DDD;&#xFF0C;&#x4E3B;&#x8981;&#x5C31;&#x5728;&#x4E8E;&#x53D6;&#x6D88;&#x4E86; <code>pointInside</code> &#x51FD;&#x6570;&#x7684;&#x68C0;&#x6D4B;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6355;&#x83B7;&#x5230;&#x5F53;&#x524D; Frame &#x8303;&#x56F4;&#x4EE5;&#x5916;&#x7684;&#x5B50; View &#x7684;&#x89E6;&#x63A7;&#x4E8B;&#x4EF6;&#x3002;</p>
