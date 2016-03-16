@@ -35,7 +35,7 @@ iOS 系统检测到手指触摸 (Touch) 操作时会将其打包成一个 UIEven
 
 一个示例性的代码实现如下：
 
-```objective-c
+```objectivec
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
     UIView *touchView = self;
     if ([self pointInside:point withEvent:event] &&
@@ -67,7 +67,7 @@ iOS 系统检测到手指触摸 (Touch) 操作时会将其打包成一个 UIEven
 
 [CYLTabBarController](https://github.com/ChenYilong/CYLTabBarController)是一个支持自定义 Tab 控件的开源项目。在 TabBar 当中，为了支持 TabBar 按钮大小超过 TabBar Frame 范围时也可以响应，它的实现就是重载了 hitTest 方法：
 
-```objective-c
+```objectivec
 /*
  *
  Capturing touches on a subview outside the frame of its superview

@@ -67,4 +67,5 @@ iOS 中公开暴露出来的只有 NSDefaultRunLoopMode 和 NSRunLoopCommonModes
 * http://www.cocoachina.com/ios/20150601/11970.html
 * http://www.cocoachina.com/ios/20111111/3487.html
 * http://mobile.51cto.com/iphone-386596.htm
+* http://blog.ibireme.com/2015/05/18/runloop/
 
