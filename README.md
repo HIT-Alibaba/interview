@@ -3,7 +3,7 @@
 
 ### 在线阅读
 
-本文档使用 [Gitbook](https://github.com/GitbookIO/gitbook) 制作，[在线阅读地址](http://hit-alibaba.github.io/interview/index.html)
+本文档使用 [Gitbook](https://github.com/GitbookIO/gitbook) 制作，[在线阅读地址](http://hit-alibaba.github.io/interview/index.html)。
 
 所有引用内容版权归原作者所有。
 
