@@ -53,7 +53,7 @@
         data-chapter-title="类与对象"
         data-filepath="iOS/ObjC-Basic/Class.md"
         data-basepath="../.."
-        data-revision="Thu Mar 17 2016 11:32:53 GMT+0800 (CST)"
+        data-revision="Thu Mar 17 2016 12:42:50 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1311,7 +1311,7 @@
 <p>Extension &#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x79CD;&#x533F;&#x540D;&#x7684; Category&#xFF0C; Extension &#x4E0E; Category &#x6709;&#x5982;&#x4E0B;&#x51E0;&#x70B9;&#x663E;&#x8457;&#x7684;&#x533A;&#x522B;&#xFF1A;</p>
 <ol>
 <li>&#x4F7F;&#x7528; Extension &#x5FC5;&#x987B;&#x6709;&#x539F;&#x6709;&#x7C7B;&#x7684;&#x6E90;&#x7801;</li>
-<li>Extension &#x53EF;&#x4EE5;&#x5728;&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#xFF0C;Category &#x4E0D;&#x53EF;&#x4EE5;&#xFF08;&#x6CE8;&#xFF1A;&#x5728; Category &#x4E2D;&#x5B9E;&#x9645;&#x4E0A;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8FD0;&#x884C;&#x65F6;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x53C2;&#x8003;<a href="http://nshipster.com/associated-objects/" target="_blank">&#x8FD9;&#x91CC;</a>&#xFF09;</li>
+<li>Extension &#x53EF;&#x4EE5;&#x5728;&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#xFF0C;Category &#x4E0D;&#x53EF;&#x4EE5;&#xFF08;&#x6CE8;&#xFF1A;&#x5728; Category &#x4E2D;&#x5B9E;&#x9645;&#x4E0A;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8FD0;&#x884C;&#x65F6;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x4E0B;&#x9762;&#x4F1A;&#x8BB2;&#x5230;&#xFF09;</li>
 <li>Extension &#x91CC;&#x6DFB;&#x52A0;&#x7684;&#x65B9;&#x6CD5;&#x5FC5;&#x987B;&#x8981;&#x6709;&#x5B9E;&#x73B0;</li>
 </ol>
 <p>&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A; Extension &#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
@@ -1351,6 +1351,53 @@
 
 <span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">XYZPerson</span></span>
 ...
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<h3 id="&#x5982;&#x4F55;&#x7ED9;&#x5DF2;&#x6709;&#x7684;&#x7C7B;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;">&#x5982;&#x4F55;&#x7ED9;&#x5DF2;&#x6709;&#x7684;&#x7C7B;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;</h3>
+<p>&#x9996;&#x5148;&#x5F3A;&#x8C03;&#x4E00;&#x4E0B;&#x4E0A;&#x9762;&#x4F8B;&#x5B50;&#x4E2D;&#x6240;&#x5C55;&#x793A;&#x7684;&#xFF0C;Extension &#x53EF;&#x4EE5;&#x7ED9;&#x7C7B;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x81EA;&#x52A8;&#x751F;&#x6210; getter&#xFF0C;setter &#x548C; ivar&#x3002; Category &#x5E76;&#x4E0D;&#x652F;&#x6301;&#x8FD9;&#x4E9B;&#x3002;&#x5982;&#x679C;&#x4F7F;&#x7528; Category &#x7684;&#x8BDD;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">XYZPerson</span> (<span class="hljs-title">UDID</span>)</span>
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">readwrite</span>) <span class="hljs-built_in">NSString</span> *uniqueIdentifier;
+<span class="hljs-keyword">@end</span>
+
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">XYZPerson</span> (<span class="hljs-title">UDID</span>)</span>
+...
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<p>&#x5C3D;&#x7BA1;&#x7F16;&#x8BD1;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#xFF0C;&#x4F46;&#x662F;&#x5F53;&#x771F;&#x6B63;&#x4F7F;&#x7528; <code>uniqueIdentifier</code> &#x65F6;&#x76F4;&#x63A5;&#x4F1A;&#x5BFC;&#x81F4;&#x7A0B;&#x5E8F;&#x5D29;&#x6E83;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x624B;&#x52A8;&#x53BB; synthesize &#x5462;&#xFF1F;&#x50CF;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">XYZPerson</span> (<span class="hljs-title">UDID</span>)</span>
+<span class="hljs-keyword">@synthesize</span> uniqueIdentifier;
+...
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<p>&#x7136;&#x800C;&#x8FD9;&#x6837;&#x505A;&#x7684;&#x8BDD;&#xFF0C;&#x4EE3;&#x7801;&#x76F4;&#x63A5;&#x62A5;&#x7F16;&#x8BD1;&#x9519;&#x8BEF;&#x4E86;&#xFF1A;</p>
+<p><code>@synthesize not allowed in a category&apos;s implementation</code></p>
+<p>&#x770B;&#x6765;&#x8FD9;&#x6761;&#x8DEF;&#x662F;&#x5F7B;&#x5E95;&#x8D70;&#x4E0D;&#x901A;&#x4E86;&#x3002;</p>
+<p>&#x4E0D;&#x8FC7;&#x6211;&#x4EEC;&#x8FD8;&#x6709;&#x522B;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x60F3;&#x901A;&#x8FC7; Category &#x6DFB;&#x52A0;&#x5C5E;&#x6027;&#x7684;&#x8BDD;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; Runtime &#x5F53;&#x4E2D;&#x63D0;&#x4F9B;&#x7684; associated object &#x7279;&#x6027;&#x3002;NSHipster &#x7684; <a href="http://nshipster.cn/associated-objects/" target="_blank">&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;</a> &#x5C55;&#x793A;&#x4E86;&#x5177;&#x4F53;&#x7684;&#x505A;&#x6CD5;&#x3002;</p>
+<h3 id="&#x5982;&#x4F55;&#x5728;&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x5168;&#x5C40;&#x53D8;&#x91CF;">&#x5982;&#x4F55;&#x5728;&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x5168;&#x5C40;&#x53D8;&#x91CF;</h3>
+<p>&#x6709;&#x4E9B;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5728;&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x67D0;&#x4E2A;&#x5728;&#x7C7B;&#x4E2D;&#x5168;&#x5C40;&#x53EF;&#x7528;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x6C61;&#x67D3;&#x4F5C;&#x7528;&#x57DF;&#xFF0C;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x597D;&#x7684;&#x505A;&#x6CD5;&#x662F;&#x5728; .m &#x6587;&#x4EF6;&#x4E2D;&#x4F7F;&#x7528; static &#x53D8;&#x91CF;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-keyword">static</span> <span class="hljs-built_in">NSOperationQueue</span> * _personOperationQueue = <span class="hljs-literal">nil</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">XYZPerson</span></span>
+...
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<p>&#x7531;&#x4E8E; static &#x53D8;&#x91CF;&#x5728;&#x7F16;&#x8BD1;&#x671F;&#x5C31;&#x662F;&#x786E;&#x5B9A;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x5BF9;&#x4E8E; NSObject &#x5BF9;&#x8C61;&#x6765;&#x8BF4;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x7684;&#x503C;&#x53EA;&#x80FD;&#x662F; nil&#x3002;&#x5982;&#x4F55;&#x8FDB;&#x884C;&#x7C7B;&#x4F3C; init &#x7684;&#x521D;&#x59CB;&#x5316;&#x5462;&#xFF1F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x91CD;&#x8F7D; initialize &#x65B9;&#x6CD5;&#x6765;&#x505A;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">XYZPerson</span></span>
+- (<span class="hljs-keyword">void</span>)initialize {
+    _personOperationQueue = [[<span class="hljs-built_in">NSOperationQueue</span> alloc] init];
+}
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<p>&#x5982;&#x679C;&#x662F;&#x901A;&#x8FC7; Category &#x5462;&#xFF1F;&#x5F53;&#x7136;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; initilize&#xFF0C;&#x4E0D;&#x8FC7;&#x9664;&#x975E;&#x5FC5;&#x987B;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5E76;&#x4E0D;&#x63A8;&#x8350;&#x5728; Category &#x5F53;&#x4E2D;&#x8FDB;&#x884C;&#x91CD;&#x8F7D;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x4ECB;&#x7ECD;&#x4E00;&#x4E2A;&#x6709;&#x70B9;&#x9ED1;&#x9B54;&#x6CD5;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x9664;&#x4E86; initilize &#x4E4B;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x7279;&#x6027;&#x6765;&#x5B9E;&#x73B0;&#x521D;&#x59CB;&#x5316;&#xFF1A;</p>
+<pre><code class="lang-objectivec">__attribute__((constructor))
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> initialize_Queue() {
+    _personOperationQueue = [[<span class="hljs-built_in">NSOperationQueue</span> alloc] init];
+}
+
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">XYZPerson</span> (<span class="hljs-title">Operation</span>)</span>
+
 <span class="hljs-keyword">@end</span>
 </code></pre>
 <h2 id="&#x7C7B;&#x7684;&#x5BFC;&#x5165;">&#x7C7B;&#x7684;&#x5BFC;&#x5165;</h2>
