@@ -55,7 +55,7 @@ int main()
 
 b.c
 
-```
+```c
 int a;
 
 int compute(void)
