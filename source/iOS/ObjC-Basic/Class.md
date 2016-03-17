@@ -159,7 +159,7 @@ OC 中的方法只要声明在 @interface里，就可以认为都是公有的。
 
 OC是单继承的，OC中的类可以实现多个 protocol 来实现类似 C++ 中多重继承的效果。
 
-Protocol 类似 Java 中的 interface，定义了一个方法列表，这个方法列表中的方法可以使用@required @optional 标注，以表示该方法是否是客户类必须要实现的方法。 一个 protocol 可以继承其他的 protocol 。
+Protocol 类似 Java 中的 interface，定义了一个方法列表，这个方法列表中的方法可以使用 `@required`， `@optional` 标注，以表示该方法是否是客户类必须要实现的方法。 一个 protocol 可以继承其他的 protocol 。
 
 ```objectivec
 @protocol TestProtocol<NSObject> // NSObject也是一个 Protocol，这里即继承 NSObject 里的方法
@@ -173,6 +173,60 @@ Protocol 类似 Java 中的 interface，定义了一个方法列表，这个方�
 ```
 
 Delegate（委托）是 Cocoa 中常见的一种设计模式，其实现依赖于 protocol 这个语言特性。
+
+#### 含有 property 的 Protocol
+
+上面提到过，当 Protocol 中含有 property 时，编译器是不会进行自动 synthesize 的，需要手动处理：
+
+```objectivec
+@class ExampleClass;
+
+@protocol ExampleProtocol
+
+@required
+
+@property (nonatomic, retain) ExampleClass *item;
+
+@end
+```
+
+在实现中要么再次声明 property：
+
+```objectivec
+@interface MyObject : NSObject <ExampleProtocol>
+
+@property (nonatomic, retain) ExampleClass *item;
+
+@end
+```
+
+要么进行手动 synthesize：
+
+```objectivec
+@interface MyObject : NSObject <ExampleProtocol>
+@end
+
+@implementation MyObject
+@synthesize item;
+
+@end
+```
+
+工程自带的 `AppDelegate` 使用了前一种方法，`UIApplicationDelegate` protocol 当中定义了 `window` 属性：
+
+```objectivec
+@property (nonatomic, retain) UIWindow *window NS_AVAILABLE_IOS(5_0);
+```
+
+在 `AppDelegate.h` 中我们可以看到这个：
+
+```objectivec
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (nonatomic, strong) UIWindow *window;
+
+@end
+```
 
 ### Category
 
@@ -269,7 +323,7 @@ Extension 很常见的用法，是用来给类添加**私有**的变量和方法
 @end
 ```
 
-### 如何给已有的类添加属性
+#### 如何给已有的类添加属性
 
 首先强调一下上面例子中所展示的，Extension 可以给类添加属性，编译器会自动生成 getter，setter 和 ivar。 Category 并不支持这些。如果使用 Category 的话，类似下面这样：
 
@@ -302,7 +356,7 @@ Extension 很常见的用法，是用来给类添加**私有**的变量和方法
 
 不过我们还有别的方法，想通过 Category 添加属性的话，可以通过 Runtime 当中提供的 associated object 特性。NSHipster 的 [这篇文章](http://nshipster.cn/associated-objects/) 展示了具体的做法。
 
-### 如何在类中添加全局变量
+#### 如何在类中添加全局变量
 
 有些时候我们需要在类中添加某个在类中全局可用的变量，为了避免污染作用域，一个比较好的做法是在 .m 文件中使用 static 变量：
 
@@ -378,3 +432,4 @@ load 方法不会被类自动继承, 每一个类中的 load 方法都不需要�
 * [深入理解Objective-C中的@class](http://www.cnblogs.com/martin1009/archive/2012/06/24/2560218.html)
 * [Objective-C +load vs +initialize](http://blog.leichunfeng.com/blog/2015/05/02/objective-c-plus-load-vs-plus-initialize/)
 * https://stackoverflow.com/questions/19784454/when-should-i-use-synthesize-explicitly
+* http://www.fantageek.com/blog/2014/07/13/property-in-protocol/
