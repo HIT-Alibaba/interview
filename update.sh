@@ -9,7 +9,7 @@ if which gitbook > /dev/null; then
     cp -R * ../../../interview-gitbook/
     cd ../../../interview-gitbook/
     git add -A
-    git commit -am "update"
+    git commit -am "update `date`"
     git push
 else
     echo "Gitbook not installed."
