@@ -3,7 +3,7 @@
 OC中类的方法只有实例方法和静态方法两种：
 
 ```objectivec
-@interface Controller : NSObject { NSString *something; }
+@interface Controller : NSObject
 
 + (void)thisIsAStaticMethod; // 静态方法
 
@@ -27,7 +27,7 @@ OC 中的方法只要声明在 @interface里，就可以认为都是公有的。
 @end
 
 // AClass.m
-@interface AClass(private)
+@interface AClass (private)
 
 -(void)privateSayHello;
 
@@ -44,7 +44,17 @@ OC 中的方法只要声明在 @interface里，就可以认为都是公有的。
 }
 ```
 
-使用这种方法时，试图调用`privateSayHello`会引起编译错误。
+使用这种方法时，外部就不能直接调用到 `privateSayHello` 方法。
+
+注意在上面的代码里面，当我们想通过 Category 来进行方法隐藏的时候，我们可以把实现放在主 implementation 里。当我们想扩展别的不能获取到源代码的类，或者想把不同 Category 的实现分开，可以新建 `<ClassName>+CategoryName.m` 文件，在里面进行实现：
+
+```objectivec
+#import "SystemClass+CategoryName.h"
+ 
+@implementation SystemClass ( CategoryName )
+// method definitions
+@end
+```
 
 也可以使用 Extension 来实现私有方法：
 
@@ -71,7 +81,7 @@ OC 中的方法只要声明在 @interface里，就可以认为都是公有的。
 @end
 ```
 
-与使用 Category 类似，由于声明隐藏在 .m 中，调用者无法看到其声明，也就无法调用`privateSayHello`这个方法，在ARC下会引发编译错误。
+与使用 Category 类似，由于声明隐藏在 .m 中，调用者无法看到其声明，也就无法调用 `privateSayHello` 这个方法，在ARC下会引发编译错误。
 
 和使用 Category 相比，使用 Extension 有以下两个好处：
 
@@ -272,7 +282,7 @@ Extension 可以认为是一种匿名的 Category， Extension 与 Category 有�
 
 1. 使用 Extension 必须有原有类的源码
 2. Extension 可以在类中添加新的属性和实例变量，Category 不可以（注：在 Category 中实际上可以通过运行时添加新的属性，下面会讲到）
-3. Extension 里添加的方法必须要有实现
+3. Extension 里添加的方法必须要有实现（没有实现编译器会给出警告）
 
 下面是一个 Extension 的例子：
 
