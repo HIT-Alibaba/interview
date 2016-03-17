@@ -53,7 +53,7 @@
         data-chapter-title="类与对象"
         data-filepath="iOS/ObjC-Basic/Class.md"
         data-basepath="../.."
-        data-revision="Wed Mar 16 2016 11:36:20 GMT+0800 (CST)"
+        data-revision="Thu Mar 17 2016 11:32:53 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1336,15 +1336,15 @@
 }  
 <span class="hljs-keyword">@end</span>
 </code></pre>
-<p>Extension &#x5F88;&#x5E38;&#x89C1;&#x7684;&#x7528;&#x6CD5;&#xFF0C;&#x662F;&#x7528;&#x6765;&#x7ED9;&#x7C7B;&#x6DFB;&#x52A0; <strong>&#x79C1;&#x6709;</strong> &#x7684;&#x53D8;&#x91CF;&#x548C;&#x65B9;&#x6CD5;&#xFF0C;&#x7528;&#x4E8E;&#x5728;&#x7C7B;&#x7684;&#x5185;&#x90E8;&#x4F7F;&#x7528;&#x3002;&#x4F8B;&#x5982;&#x5728; interface &#x4E2D;&#x5B9A;&#x4E49;&#x4E3A; <code>readonly</code> &#x7C7B;&#x578B;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x5728;&#x5B9E;&#x73B0;&#x4E2D;&#x6DFB;&#x52A0; extension&#xFF0C;&#x5C06;&#x5176;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;&#x4E3A; <code>readwrite</code>&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5728;&#x7C7B;&#x7684;&#x5185;&#x90E8;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4FEE;&#x6539;&#x5B83;&#x7684;&#x503C;&#xFF0C;&#x7136;&#x800C;&#x5916;&#x90E8;&#x4F9D;&#x7136;&#x4E0D;&#x80FD;&#x8C03;&#x7528; <code>setter</code> &#x65B9;&#x6CD5;&#x6765;&#x4FEE;&#x6539;&#x3002;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF0C;&#x6765;&#x81EA;&#x82F9;&#x679C;&#x5B98;&#x65B9;<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html#//apple_ref/doc/uid/TP40011210-CH6-SW3" target="_blank">&#x6587;&#x6863;</a></p>
-<p>XYZPerson.h</p>
+<p>Extension &#x5F88;&#x5E38;&#x89C1;&#x7684;&#x7528;&#x6CD5;&#xFF0C;&#x662F;&#x7528;&#x6765;&#x7ED9;&#x7C7B;&#x6DFB;&#x52A0;<strong>&#x79C1;&#x6709;</strong>&#x7684;&#x53D8;&#x91CF;&#x548C;&#x65B9;&#x6CD5;&#xFF0C;&#x7528;&#x4E8E;&#x5728;&#x7C7B;&#x7684;&#x5185;&#x90E8;&#x4F7F;&#x7528;&#x3002;&#x4F8B;&#x5982;&#x5728; interface &#x4E2D;&#x5B9A;&#x4E49;&#x4E3A; <code>readonly</code> &#x7C7B;&#x578B;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x5728;&#x5B9E;&#x73B0;&#x4E2D;&#x6DFB;&#x52A0; extension&#xFF0C;&#x5C06;&#x5176;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;&#x4E3A; <code>readwrite</code>&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5728;&#x7C7B;&#x7684;&#x5185;&#x90E8;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4FEE;&#x6539;&#x5B83;&#x7684;&#x503C;&#xFF0C;&#x7136;&#x800C;&#x5916;&#x90E8;&#x4F9D;&#x7136;&#x4E0D;&#x80FD;&#x8C03;&#x7528; <code>setter</code> &#x65B9;&#x6CD5;&#x6765;&#x4FEE;&#x6539;&#x3002;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF08;&#x6765;&#x81EA;&#x82F9;&#x679C;&#x5B98;&#x65B9;<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html#//apple_ref/doc/uid/TP40011210-CH6-SW3" target="_blank">&#x6587;&#x6863;</a>&#xFF09;:</p>
+<p><code>XYZPerson.h</code></p>
 <pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">XYZPerson</span> : <span class="hljs-title">NSObject</span></span>
 ...
 <span class="hljs-keyword">@property</span> (<span class="hljs-keyword">readonly</span>) <span class="hljs-built_in">NSString</span> *uniqueIdentifier;
 
 <span class="hljs-keyword">@end</span>
 </code></pre>
-<p>XYZPerson.m</p>
+<p><code>XYZPerson.m</code></p>
 <pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">XYZPerson</span> ()</span>
 <span class="hljs-keyword">@property</span> (<span class="hljs-keyword">readwrite</span>) <span class="hljs-built_in">NSString</span> *uniqueIdentifier;
 <span class="hljs-keyword">@end</span>
