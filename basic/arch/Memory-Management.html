@@ -53,7 +53,7 @@
         data-chapter-title="内存管理"
         data-filepath="basic/arch/Memory-Management.md"
         data-basepath="../.."
-        data-revision="Thu Mar 17 2016 14:10:36 GMT+0800 (CST)"
+        data-revision="Thu Mar 17 2016 15:36:37 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1178,14 +1178,15 @@
 }
 </code></pre>
 <p>b.c</p>
-<pre><code>int a;
+<pre><code class="lang-c"><span class="hljs-keyword">int</span> a;
 
-int compute(void)
-{
-    a = 0;
-    return a;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">compute</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span>
+</span>{
+    a = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">return</span> a;
 }
-</code></pre><p>&#x5728; Link &#x8FC7;&#x7A0B;&#x4E2D;&#x4F1A;&#x4EA7;&#x751F;&#x91CD;&#x590D;&#x5B9A;&#x4E49;&#x9519;&#x8BEF;&#xFF0C;&#x56E0;&#x4E3A;&#x6709;&#x4E24;&#x4E2A;&#x5168;&#x5C40;&#x7684; <code>a</code> &#x53D8;&#x91CF;&#xFF0C;Linker &#x4E0D;&#x77E5;&#x9053;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;&#x54EA;&#x4E00;&#x4E2A;&#x3002;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x5F15;&#x5165; static&#x3002;</p>
+</code></pre>
+<p>&#x5728; Link &#x8FC7;&#x7A0B;&#x4E2D;&#x4F1A;&#x4EA7;&#x751F;&#x91CD;&#x590D;&#x5B9A;&#x4E49;&#x9519;&#x8BEF;&#xFF0C;&#x56E0;&#x4E3A;&#x6709;&#x4E24;&#x4E2A;&#x5168;&#x5C40;&#x7684; <code>a</code> &#x53D8;&#x91CF;&#xFF0C;Linker &#x4E0D;&#x77E5;&#x9053;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;&#x54EA;&#x4E00;&#x4E2A;&#x3002;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x5F15;&#x5165; static&#x3002;</p>
 <p><code>&#x9759;&#x6001;&#x53D8;&#x91CF;</code>&#xFF1A; &#x6307;&#x4F7F;&#x7528; static &#x5173;&#x952E;&#x5B57;&#x4FEE;&#x9970;&#x7684;&#x53D8;&#x91CF;&#xFF0C;static &#x5173;&#x952E;&#x5B57;&#x5BF9;&#x53D8;&#x91CF;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x8FDB;&#x884C;&#x4E86;&#x9650;&#x5236;&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x9650;&#x5236;&#x5982;&#x4E0B;&#xFF1A;</p>
 <ul>
 <li>&#x5728;&#x51FD;&#x6570;&#x5916;&#x5B9A;&#x4E49;&#xFF1A;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#xFF0C;&#x4F46;&#x662F;&#x53EA;&#x5728;&#x5F53;&#x524D;&#x6587;&#x4EF6;&#x4E2D;&#x53EF;&#x89C1;&#xFF08;&#x53EB;&#x505A; internal linkage&#xFF09;</li>
