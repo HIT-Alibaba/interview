@@ -217,7 +217,7 @@ Category 常见的使用方法如下：
 Extension 可以认为是一种匿名的 Category， Extension 与 Category 有如下几点显著的区别：
 
 1. 使用 Extension 必须有原有类的源码
-2. Extension 可以在类中添加新的属性和实例变量，Category 不可以（注：在 Category 中实际上可以通过运行时添加新的属性，参考[这里](http://nshipster.com/associated-objects/)）
+2. Extension 可以在类中添加新的属性和实例变量，Category 不可以（注：在 Category 中实际上可以通过运行时添加新的属性，下面会讲到）
 3. Extension 里添加的方法必须要有实现
 
 下面是一个 Extension 的例子：
@@ -269,6 +269,76 @@ Extension 很常见的用法，是用来给类添加**私有**的变量和方法
 @end
 ```
 
+### 如何给已有的类添加属性
+
+首先强调一下上面例子中所展示的，Extension 可以给类添加属性，编译器会自动生成 getter，setter 和 ivar。 Category 并不支持这些。如果使用 Category 的话，类似下面这样：
+
+```objectivec
+@interface XYZPerson (UDID)
+@property (readwrite) NSString *uniqueIdentifier;
+@end
+
+@implementation XYZPerson (UDID)
+...
+@end
+```
+
+尽管编译可以通过，但是当真正使用 `uniqueIdentifier` 时直接会导致程序崩溃。
+
+如果我们手动去 synthesize 呢？像下面这样：
+
+```objectivec
+@implementation XYZPerson (UDID)
+@synthesize uniqueIdentifier;
+...
+@end
+```
+
+然而这样做的话，代码直接报编译错误了：
+
+`@synthesize not allowed in a category's implementation`
+
+看来这条路是彻底走不通了。
+
+不过我们还有别的方法，想通过 Category 添加属性的话，可以通过 Runtime 当中提供的 associated object 特性。NSHipster 的 [这篇文章](http://nshipster.cn/associated-objects/) 展示了具体的做法。
+
+### 如何在类中添加全局变量
+
+有些时候我们需要在类中添加某个在类中全局可用的变量，为了避免污染作用域，一个比较好的做法是在 .m 文件中使用 static 变量：
+
+
+```objectivec
+static NSOperationQueue * _personOperationQueue = nil;
+
+@implementation XYZPerson
+...
+@end
+```
+
+由于 static 变量在编译期就是确定的，因此对于 NSObject 对象来说，初始化的值只能是 nil。如何进行类似 init 的初始化呢？可以通过重载 initialize 方法来做：
+
+```objectivec
+@implementation XYZPerson
+- (void)initialize {
+    _personOperationQueue = [[NSOperationQueue alloc] init];
+}
+@end
+```
+
+如果是通过 Category 呢？当然也可以通过 initilize，不过除非必须的情况下，并不推荐在 Category 当中进行重载。
+
+下面介绍一个有点黑魔法的方法，除了 initilize 之外，我们还可以通过编译器的特性来实现初始化：
+
+```objectivec
+__attribute__((constructor))
+static void initialize_Queue() {
+    _personOperationQueue = [[NSOperationQueue alloc] init];
+}
+
+@implementation XYZPerson (Operation)
+
+@end
+```
 
 ## 类的导入
 

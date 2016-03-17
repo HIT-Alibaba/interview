@@ -1,6 +1,6 @@
 #!/bin/sh
 git add -A
-git commit -am "update"
+git commit -am "update `date`"
 git push
 if which gitbook > /dev/null; then
     cd source
