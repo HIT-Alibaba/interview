@@ -53,7 +53,7 @@
         data-chapter-title="类与对象"
         data-filepath="iOS/ObjC-Basic/Class.md"
         data-basepath="../.."
-        data-revision="Thu Mar 17 2016 13:26:38 GMT+0800 (CST)"
+        data-revision="Thu Mar 17 2016 13:43:16 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1142,7 +1142,7 @@
                     
                         <h2 id="&#x7C7B;&#x65B9;&#x6CD5;">&#x7C7B;&#x65B9;&#x6CD5;</h2>
 <p>OC&#x4E2D;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x53EA;&#x6709;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x548C;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x4E24;&#x79CD;&#xFF1A;</p>
-<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">Controller</span> : <span class="hljs-title">NSObject</span> </span>{ <span class="hljs-built_in">NSString</span> *something; }
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">Controller</span> : <span class="hljs-title">NSObject</span></span>
 
 + (<span class="hljs-keyword">void</span>)thisIsAStaticMethod; <span class="hljs-comment">// &#x9759;&#x6001;&#x65B9;&#x6CD5;</span>
 
@@ -1161,7 +1161,7 @@
 <span class="hljs-keyword">@end</span>
 
 <span class="hljs-comment">// AClass.m</span>
-<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">AClass</span>(<span class="hljs-title">private</span>)</span>
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">AClass</span> (<span class="hljs-title">private</span>)</span>
 
 -(<span class="hljs-keyword">void</span>)privateSayHello;
 
@@ -1177,7 +1177,14 @@
     <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;Private Hello&quot;</span>);
 }
 </code></pre>
-<p>&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x8BD5;&#x56FE;&#x8C03;&#x7528;<code>privateSayHello</code>&#x4F1A;&#x5F15;&#x8D77;&#x7F16;&#x8BD1;&#x9519;&#x8BEF;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x5916;&#x90E8;&#x5C31;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x5230; <code>privateSayHello</code> &#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#x5728;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x91CC;&#x9762;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x60F3;&#x901A;&#x8FC7; Category &#x6765;&#x8FDB;&#x884C;&#x65B9;&#x6CD5;&#x9690;&#x85CF;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;&#x5B9E;&#x73B0;&#x653E;&#x5728;&#x4E3B; implementation &#x91CC;&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x60F3;&#x6269;&#x5C55;&#x522B;&#x7684;&#x4E0D;&#x80FD;&#x83B7;&#x53D6;&#x5230;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x7C7B;&#xFF0C;&#x6216;&#x8005;&#x60F3;&#x628A;&#x4E0D;&#x540C; Category &#x7684;&#x5B9E;&#x73B0;&#x5206;&#x5F00;&#xFF0C;&#x53EF;&#x4EE5;&#x65B0;&#x5EFA; <code>&lt;ClassName&gt;+CategoryName.m</code> &#x6587;&#x4EF6;&#xFF0C;&#x5728;&#x91CC;&#x9762;&#x8FDB;&#x884C;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-preprocessor">#import <span class="hljs-title">&quot;SystemClass+CategoryName.h&quot;</span></span>
+
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">SystemClass</span> ( <span class="hljs-title">CategoryName</span> )</span>
+<span class="hljs-comment">// method definitions</span>
+<span class="hljs-keyword">@end</span>
+</code></pre>
 <p>&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; Extension &#x6765;&#x5B9E;&#x73B0;&#x79C1;&#x6709;&#x65B9;&#x6CD5;&#xFF1A;</p>
 <pre><code class="lang-objectivec"><span class="hljs-comment">// AClass.h &#x4E0E;&#x4E0A;&#x9762;&#x76F8;&#x540C;</span>
 
@@ -1200,7 +1207,7 @@
 
 <span class="hljs-keyword">@end</span>
 </code></pre>
-<p>&#x4E0E;&#x4F7F;&#x7528; Category &#x7C7B;&#x4F3C;&#xFF0C;&#x7531;&#x4E8E;&#x58F0;&#x660E;&#x9690;&#x85CF;&#x5728; .m &#x4E2D;&#xFF0C;&#x8C03;&#x7528;&#x8005;&#x65E0;&#x6CD5;&#x770B;&#x5230;&#x5176;&#x58F0;&#x660E;&#xFF0C;&#x4E5F;&#x5C31;&#x65E0;&#x6CD5;&#x8C03;&#x7528;<code>privateSayHello</code>&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x5728;ARC&#x4E0B;&#x4F1A;&#x5F15;&#x53D1;&#x7F16;&#x8BD1;&#x9519;&#x8BEF;&#x3002;</p>
+<p>&#x4E0E;&#x4F7F;&#x7528; Category &#x7C7B;&#x4F3C;&#xFF0C;&#x7531;&#x4E8E;&#x58F0;&#x660E;&#x9690;&#x85CF;&#x5728; .m &#x4E2D;&#xFF0C;&#x8C03;&#x7528;&#x8005;&#x65E0;&#x6CD5;&#x770B;&#x5230;&#x5176;&#x58F0;&#x660E;&#xFF0C;&#x4E5F;&#x5C31;&#x65E0;&#x6CD5;&#x8C03;&#x7528; <code>privateSayHello</code> &#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x5728;ARC&#x4E0B;&#x4F1A;&#x5F15;&#x53D1;&#x7F16;&#x8BD1;&#x9519;&#x8BEF;&#x3002;</p>
 <p>&#x548C;&#x4F7F;&#x7528; Category &#x76F8;&#x6BD4;&#xFF0C;&#x4F7F;&#x7528; Extension &#x6709;&#x4EE5;&#x4E0B;&#x4E24;&#x4E2A;&#x597D;&#x5904;&#xFF1A;</p>
 <ol>
 <li>Extension &#x58F0;&#x660E;&#x7684;&#x65B9;&#x6CD5;&#x5FC5;&#x987B;&#x5728;&#x7C7B;&#x7684;&#x4E3B; @implementation &#x533A;&#x95F4;&#x5185;&#x5B9E;&#x73B0;&#xFF0C;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x4F7F;&#x7528;&#x6709;&#x540D; Category &#x5E26;&#x6765;&#x7684;&#x591A;&#x4E2A;&#x4E0D;&#x5FC5;&#x8981;&#x7684; implementation &#x6BB5;&#x3002;</li>
@@ -1350,7 +1357,7 @@
 <ol>
 <li>&#x4F7F;&#x7528; Extension &#x5FC5;&#x987B;&#x6709;&#x539F;&#x6709;&#x7C7B;&#x7684;&#x6E90;&#x7801;</li>
 <li>Extension &#x53EF;&#x4EE5;&#x5728;&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#xFF0C;Category &#x4E0D;&#x53EF;&#x4EE5;&#xFF08;&#x6CE8;&#xFF1A;&#x5728; Category &#x4E2D;&#x5B9E;&#x9645;&#x4E0A;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8FD0;&#x884C;&#x65F6;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x4E0B;&#x9762;&#x4F1A;&#x8BB2;&#x5230;&#xFF09;</li>
-<li>Extension &#x91CC;&#x6DFB;&#x52A0;&#x7684;&#x65B9;&#x6CD5;&#x5FC5;&#x987B;&#x8981;&#x6709;&#x5B9E;&#x73B0;</li>
+<li>Extension &#x91CC;&#x6DFB;&#x52A0;&#x7684;&#x65B9;&#x6CD5;&#x5FC5;&#x987B;&#x8981;&#x6709;&#x5B9E;&#x73B0;&#xFF08;&#x6CA1;&#x6709;&#x5B9E;&#x73B0;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x7ED9;&#x51FA;&#x8B66;&#x544A;&#xFF09;</li>
 </ol>
 <p>&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A; Extension &#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
 <pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">MyClass</span> : <span class="hljs-title">NSObject</span>  </span>
