@@ -53,7 +53,7 @@
         data-chapter-title="类与对象"
         data-filepath="iOS/ObjC-Basic/Class.md"
         data-basepath="../.."
-        data-revision="Thu Mar 17 2016 12:42:50 GMT+0800 (CST)"
+        data-revision="Thu Mar 17 2016 13:00:14 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1268,7 +1268,7 @@
 <h2 id="&#x7C7B;&#x7684;&#x6269;&#x5C55;&#x2014;&#x2014;protocol-category-&#x548C;-extension">&#x7C7B;&#x7684;&#x6269;&#x5C55;&#x2014;&#x2014;Protocol, Category &#x548C; Extension</h2>
 <h3 id="protocol">Protocol</h3>
 <p>OC&#x662F;&#x5355;&#x7EE7;&#x627F;&#x7684;&#xFF0C;OC&#x4E2D;&#x7684;&#x7C7B;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x591A;&#x4E2A; protocol &#x6765;&#x5B9E;&#x73B0;&#x7C7B;&#x4F3C; C++ &#x4E2D;&#x591A;&#x91CD;&#x7EE7;&#x627F;&#x7684;&#x6548;&#x679C;&#x3002;</p>
-<p>Protocol &#x7C7B;&#x4F3C; Java &#x4E2D;&#x7684; interface&#xFF0C;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;@required @optional &#x6807;&#x6CE8;&#xFF0C;&#x4EE5;&#x8868;&#x793A;&#x8BE5;&#x65B9;&#x6CD5;&#x662F;&#x5426;&#x662F;&#x5BA2;&#x6237;&#x7C7B;&#x5FC5;&#x987B;&#x8981;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#x3002; &#x4E00;&#x4E2A; protocol &#x53EF;&#x4EE5;&#x7EE7;&#x627F;&#x5176;&#x4ED6;&#x7684; protocol &#x3002;</p>
+<p>Protocol &#x7C7B;&#x4F3C; Java &#x4E2D;&#x7684; interface&#xFF0C;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>@required</code>&#xFF0C; <code>@optional</code> &#x6807;&#x6CE8;&#xFF0C;&#x4EE5;&#x8868;&#x793A;&#x8BE5;&#x65B9;&#x6CD5;&#x662F;&#x5426;&#x662F;&#x5BA2;&#x6237;&#x7C7B;&#x5FC5;&#x987B;&#x8981;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#x3002; &#x4E00;&#x4E2A; protocol &#x53EF;&#x4EE5;&#x7EE7;&#x627F;&#x5176;&#x4ED6;&#x7684; protocol &#x3002;</p>
 <pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@protocol</span> <span class="hljs-title">TestProtocol</span>&lt;<span class="hljs-title">NSObject</span>&gt; // <span class="hljs-title">NSObject</span>&#x4E5F;&#x662F;&#x4E00;&#x4E2A; <span class="hljs-title">Protocol</span>&#xFF0C;&#x8FD9;&#x91CC;&#x5373;&#x7EE7;&#x627F; <span class="hljs-title">NSObject</span> &#x91CC;&#x7684;&#x65B9;&#x6CD5;</span>
 -(<span class="hljs-keyword">void</span>)Print;               
 <span class="hljs-keyword">@end</span>
@@ -1278,6 +1278,44 @@
 <span class="hljs-keyword">@end</span>
 </code></pre>
 <p>Delegate&#xFF08;&#x59D4;&#x6258;&#xFF09;&#x662F; Cocoa &#x4E2D;&#x5E38;&#x89C1;&#x7684;&#x4E00;&#x79CD;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;&#x5176;&#x5B9E;&#x73B0;&#x4F9D;&#x8D56;&#x4E8E; protocol &#x8FD9;&#x4E2A;&#x8BED;&#x8A00;&#x7279;&#x6027;&#x3002;</p>
+<h4 id="&#x542B;&#x6709;-property-&#x7684;-protocol">&#x542B;&#x6709; property &#x7684; Protocol</h4>
+<p>&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x8FC7;&#xFF0C;&#x5F53; Protocol &#x4E2D;&#x542B;&#x6709; property &#x65F6;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x662F;&#x4E0D;&#x4F1A;&#x8FDB;&#x884C;&#x81EA;&#x52A8; synthesize &#x7684;&#xFF0C;&#x9700;&#x8981;&#x624B;&#x52A8;&#x5904;&#x7406;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@class</span> <span class="hljs-title">ExampleClass</span>;</span>
+
+<span class="hljs-class"><span class="hljs-keyword">@protocol</span> <span class="hljs-title">ExampleProtocol</span></span>
+
+<span class="hljs-keyword">@required</span>
+
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, retain) ExampleClass *item;
+
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<p>&#x5728;&#x5B9E;&#x73B0;&#x4E2D;&#x8981;&#x4E48;&#x518D;&#x6B21;&#x58F0;&#x660E; property&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">MyObject</span> : <span class="hljs-title">NSObject</span> &lt;<span class="hljs-title">ExampleProtocol</span>&gt;</span>
+
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, retain) ExampleClass *item;
+
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<p>&#x8981;&#x4E48;&#x8FDB;&#x884C;&#x624B;&#x52A8; synthesize&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">MyObject</span> : <span class="hljs-title">NSObject</span> &lt;<span class="hljs-title">ExampleProtocol</span>&gt;</span>
+<span class="hljs-keyword">@end</span>
+
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">MyObject</span></span>
+<span class="hljs-keyword">@synthesize</span> item;
+
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<p>&#x5DE5;&#x7A0B;&#x81EA;&#x5E26;&#x7684; <code>AppDelegate</code> &#x4F7F;&#x7528;&#x4E86;&#x524D;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;<code>UIApplicationDelegate</code> protocol &#x5F53;&#x4E2D;&#x5B9A;&#x4E49;&#x4E86; <code>window</code> &#x5C5E;&#x6027;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, retain) <span class="hljs-built_in">UIWindow</span> *window <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">5</span>_0);
+</code></pre>
+<p>&#x5728; <code>AppDelegate.h</code> &#x4E2D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8FD9;&#x4E2A;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">AppDelegate</span> : <span class="hljs-title">UIResponder</span> &lt;<span class="hljs-title">UIApplicationDelegate</span>&gt;</span>
+
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">UIWindow</span> *window;
+
+<span class="hljs-keyword">@end</span>
+</code></pre>
 <h3 id="category">Category</h3>
 <p>Category &#x662F;&#x4E00;&#x79CD;&#x5F88;&#x7075;&#x6D3B;&#x7684;&#x6269;&#x5C55;&#x539F;&#x6709;&#x7C7B;&#x7684;&#x673A;&#x5236;&#xFF0C;&#x4F7F;&#x7528; Category &#x4E0D;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x539F;&#x6709;&#x7C7B;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4E5F;&#x65E0;&#x9700;&#x7EE7;&#x627F;&#x3002;Category&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x6765;&#x5B9E;&#x73B0;&#x7C7B;&#x7684;&#x76F8;&#x5173;&#x65B9;&#x6CD5;&#x7684;&#x6A21;&#x5757;&#x5316;&#xFF0C;&#x628A;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x65B9;&#x6CD5;&#x5206;&#x914D;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x6587;&#x4EF6;&#x4E2D;&#x3002;</p>
 <p>Category &#x5E38;&#x89C1;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
@@ -1353,7 +1391,7 @@
 ...
 <span class="hljs-keyword">@end</span>
 </code></pre>
-<h3 id="&#x5982;&#x4F55;&#x7ED9;&#x5DF2;&#x6709;&#x7684;&#x7C7B;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;">&#x5982;&#x4F55;&#x7ED9;&#x5DF2;&#x6709;&#x7684;&#x7C7B;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;</h3>
+<h4 id="&#x5982;&#x4F55;&#x7ED9;&#x5DF2;&#x6709;&#x7684;&#x7C7B;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;">&#x5982;&#x4F55;&#x7ED9;&#x5DF2;&#x6709;&#x7684;&#x7C7B;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;</h4>
 <p>&#x9996;&#x5148;&#x5F3A;&#x8C03;&#x4E00;&#x4E0B;&#x4E0A;&#x9762;&#x4F8B;&#x5B50;&#x4E2D;&#x6240;&#x5C55;&#x793A;&#x7684;&#xFF0C;Extension &#x53EF;&#x4EE5;&#x7ED9;&#x7C7B;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x81EA;&#x52A8;&#x751F;&#x6210; getter&#xFF0C;setter &#x548C; ivar&#x3002; Category &#x5E76;&#x4E0D;&#x652F;&#x6301;&#x8FD9;&#x4E9B;&#x3002;&#x5982;&#x679C;&#x4F7F;&#x7528; Category &#x7684;&#x8BDD;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#xFF1A;</p>
 <pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">XYZPerson</span> (<span class="hljs-title">UDID</span>)</span>
 <span class="hljs-keyword">@property</span> (<span class="hljs-keyword">readwrite</span>) <span class="hljs-built_in">NSString</span> *uniqueIdentifier;
@@ -1374,7 +1412,7 @@
 <p><code>@synthesize not allowed in a category&apos;s implementation</code></p>
 <p>&#x770B;&#x6765;&#x8FD9;&#x6761;&#x8DEF;&#x662F;&#x5F7B;&#x5E95;&#x8D70;&#x4E0D;&#x901A;&#x4E86;&#x3002;</p>
 <p>&#x4E0D;&#x8FC7;&#x6211;&#x4EEC;&#x8FD8;&#x6709;&#x522B;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x60F3;&#x901A;&#x8FC7; Category &#x6DFB;&#x52A0;&#x5C5E;&#x6027;&#x7684;&#x8BDD;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; Runtime &#x5F53;&#x4E2D;&#x63D0;&#x4F9B;&#x7684; associated object &#x7279;&#x6027;&#x3002;NSHipster &#x7684; <a href="http://nshipster.cn/associated-objects/" target="_blank">&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;</a> &#x5C55;&#x793A;&#x4E86;&#x5177;&#x4F53;&#x7684;&#x505A;&#x6CD5;&#x3002;</p>
-<h3 id="&#x5982;&#x4F55;&#x5728;&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x5168;&#x5C40;&#x53D8;&#x91CF;">&#x5982;&#x4F55;&#x5728;&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x5168;&#x5C40;&#x53D8;&#x91CF;</h3>
+<h4 id="&#x5982;&#x4F55;&#x5728;&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x5168;&#x5C40;&#x53D8;&#x91CF;">&#x5982;&#x4F55;&#x5728;&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x5168;&#x5C40;&#x53D8;&#x91CF;</h4>
 <p>&#x6709;&#x4E9B;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5728;&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x67D0;&#x4E2A;&#x5728;&#x7C7B;&#x4E2D;&#x5168;&#x5C40;&#x53EF;&#x7528;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x6C61;&#x67D3;&#x4F5C;&#x7528;&#x57DF;&#xFF0C;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x597D;&#x7684;&#x505A;&#x6CD5;&#x662F;&#x5728; .m &#x6587;&#x4EF6;&#x4E2D;&#x4F7F;&#x7528; static &#x53D8;&#x91CF;&#xFF1A;</p>
 <pre><code class="lang-objectivec"><span class="hljs-keyword">static</span> <span class="hljs-built_in">NSOperationQueue</span> * _personOperationQueue = <span class="hljs-literal">nil</span>;
 
@@ -1427,6 +1465,7 @@
 <li><a href="http://www.cnblogs.com/martin1009/archive/2012/06/24/2560218.html" target="_blank">&#x6DF1;&#x5165;&#x7406;&#x89E3;Objective-C&#x4E2D;&#x7684;@class</a></li>
 <li><a href="http://blog.leichunfeng.com/blog/2015/05/02/objective-c-plus-load-vs-plus-initialize/" target="_blank">Objective-C +load vs +initialize</a></li>
 <li><a href="https://stackoverflow.com/questions/19784454/when-should-i-use-synthesize-explicitly" target="_blank">https://stackoverflow.com/questions/19784454/when-should-i-use-synthesize-explicitly</a></li>
+<li><a href="http://www.fantageek.com/blog/2014/07/13/property-in-protocol/" target="_blank">http://www.fantageek.com/blog/2014/07/13/property-in-protocol/</a></li>
 </ul>
 
                     
