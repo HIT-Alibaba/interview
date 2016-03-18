@@ -372,6 +372,7 @@ myController.completionHandler =  ^(NSInteger result) {
 * [Objective-C内存管理MRC与ARC](http://blog.csdn.net/fightingbull/article/details/8098133)
 * [10个Objective-C基础面试题，iOS面试必备](http://www.oschina.net/news/42288/10-objective-c-interview)
 * [黑幕背后的 Autorelease](http://blog.sunnyxx.com/2014/10/15/behind-autorelease/)
+* [Objective-C Autorelease Pool 的实现原理](http://blog.leichunfeng.com/blog/2015/05/31/objective-c-autorelease-pool-implementation-principle/)
 * https://stackoverflow.com/questions/29350634/ios-autoreleasepool-in-main-and-arc-alloc-release
 * https://stackoverflow.com/questions/6588211/why-do-the-ios-main-m-templates-include-a-return-statement-and-an-autorelease-po
 * https://stackoverflow.com/questions/2702548/if-the-uiapplicationmain-never-returns-then-when-does-the-autorelease-pool-get
