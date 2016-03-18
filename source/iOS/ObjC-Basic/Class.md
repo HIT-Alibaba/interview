@@ -200,7 +200,7 @@ Delegate（委托）是 Cocoa 中常见的一种设计模式，其实现依赖�
 @end
 ```
 
-在实现中要么再次声明 property：
+在实现这个 Protocol 的时候，要么再次声明 property：
 
 ```objectivec
 @interface MyObject : NSObject <ExampleProtocol>
@@ -445,6 +445,7 @@ load 方法不会被类自动继承, 每一个类中的 load 方法都不需要�
 * [Objective-C——消息，Category 与 Protocol](http://www.cnblogs.com/chijianqiang/archive/2012/06/22/objc-category-protocol.html)
 * [深入理解Objective-C中的@class](http://www.cnblogs.com/martin1009/archive/2012/06/24/2560218.html)
 * [Objective-C +load vs +initialize](http://blog.leichunfeng.com/blog/2015/05/02/objective-c-plus-load-vs-plus-initialize/)
+* [深入理解Objective-C：Category](http://tech.meituan.com/DiveIntoCategory.html)
 * https://stackoverflow.com/questions/19784454/when-should-i-use-synthesize-explicitly
 * http://www.fantageek.com/blog/2014/07/13/property-in-protocol/
 * http://www.friday.com/bbum/2009/09/06/iniailize-can-be-executed-multiple-times-load-not-so-much/
