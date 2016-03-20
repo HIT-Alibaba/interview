@@ -40,7 +40,7 @@ Number* num2 = [num retain];//此时引用记数+1，现为2
 
 ### ARC 
 
-ARC 是苹果引入的一种自动内存管理机制，会自动监视对象的生存周期，并在编译时期自动在已有代码中插入合适的内存管理代码。
+ARC 是苹果引入的一种自动内存管理机制，会根据引用计数自动监视对象的生存周期，实现方式是在编译时期自动在已有代码中插入合适的内存管理代码以及在 Runtime 做一些优化。
 
 #### 变量标识符
 
@@ -367,6 +367,20 @@ myController.completionHandler =  ^(NSInteger result) {
 }
 ```
 
+#### ARC 在运行时期的优化
+
+ARC 所做的事情并不仅仅局限于在编译期找到合适的位置帮你插入合适的 `release` 等等这样的方法，其在运行时期也做了一些优化，如下是两个优化的例子：
+
+- 1.合并对称的引用计数操作。比如将 +1/-1/+1/-1 直接置为 0.
+
+- 2.巧妙地跳过某些情况下 `autorelease` 机制的调用。
+
+如下用来描述优化 2 的大致的流程：
+
+当方法全部基于 ARC 实现时，在方法 return 的时候，ARC 会调用 `objc_autoreleaseReturnValue()` 以替代 MRC 下的 `autorelease`。在 MRC 下想要 retain 的时候，ARC 会调用 `objc_retainAutoreleasedReturnValue()`。
+
+在调用 `objc_autoreleaseReturnValue()` 时，会在栈上查询 return address 以确定 return value 是否会被直接传给 `objc_retainAutoreleasedReturnValue()`。 如果没传，说明返回值不能直接从提供方发送给接收方，这时就会调用 `autorelease`，反之，如果返回值能顺利的从提供方传送给接收方，那么就会直接跳过 `autorelease` 过程，并且修改  return address 以跳过 `objc_retainAutoreleasedReturnValue()`过程，这样就跳过了整个 `autorelease` 和 `retain`的过程。
+
 ### 参考资料
 
 * [Objective-C内存管理MRC与ARC](http://blog.csdn.net/fightingbull/article/details/8098133)
@@ -380,3 +394,4 @@ myController.completionHandler =  ^(NSInteger result) {
 * https://stackoverflow.com/questions/17601274/arc-and-autorelease
 * https://stackoverflow.com/questions/8292060/arc-equivalent-of-autorelease
 * https://stackoverflow.com/questions/7906804/do-i-set-properties-to-nil-in-dealloc-when-using-arc
+* [ARC中的Trick](http://ijack.pw/2016/03/17/ARC-naive/)
