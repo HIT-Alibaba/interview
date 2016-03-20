@@ -6,37 +6,83 @@
 
 一旦对象创建完成，就不可能再移动它了。因为很可能有很多指针都指向这个对象，这些指针并没有被追踪。因此没有办法在移动对象的位置之后更新全部的这些指针。
 
+
+
 ## MRC 与 ARC
 
 Objective-C中提供了两种内存管理机制：MRC（MannulReference Counting）和 ARC(Automatic Reference Counting)，分别提供对内存的手动和自动管理，来满足不同的需求。现在苹果推荐使用 ARC 来进行内存管理。
 
 ### MRC 
 
-在MRC的内存管理模式下，与对变量的管理相关的方法有：retain, release 和 autorelease。retain 和 release 方法操作的是引用记数，当引用记数为零时，便自动释放内存。并且可以用 NSAutoreleasePool 对象，对加入自动释放池（autorelease 调用）的变量进行管理，当 drain 时回收内存。
+#### 对象操作的四个类别
 
-1. retain，该方法的作用是将内存数据的所有权附给另一指针变量，引用数加1，即 retainCount+= 1;
-2. release，该方法是释放指针变量对内存数据的所有权，引用数减1，即 retainCount-= 1;
-3. autorelease，该方法是将该对象内存的管理放到 autoreleasepool 中。
+| 对象操作 |  OC中对应的方法 | 对应的 retainCount 变化 |
+| -------------------- |:---------------:| :---------------:| 
+| 生成并持有对象 | alloc/new/copy/mutableCopy等 | +1 |
+| 持有对象 | retain | +1 |
+| 释放对象 | release | -1 |
+| 废弃对象 | dealloc | - |
 
-示例代码:
+**注意：**这些对象操作的方法其实并不包括在OC中，而是包含在Cocoa框架下的Foundation框架中。
 
-```objectivec
-//假设Number为预定义的类
-Number* num = [[Number alloc] init];
-Number* num2 = [num retain];//此时引用记数+1，现为2
+#### 四个法则
 
-[num2 release]; //num2 释放对内存数据的所有权 引用记数-1,现为1;
-[num release];//num 释放对内存数据的所有权 引用记数-1,现为0;
-[num add:1 and 2];//bug，此时内存已释放。
+- 自己生成的对象，自己持有。
+- 非自己生成的对象，自己也能持有。
+- 不在需要自己持有的对象的时候，释放。
+- 非自己持有的对象无法释放。
 
-//autoreleasepool 的使用 在MRC管理模式下，我们摒弃以前的用法，NSAutoreleasePool对象的使用，新手段为 @autoreleasepool
-
-@autoreleasepool {
-    Number* num = [[Number alloc] init];
-    [num autorelease];//由 autoreleasepool 来管理其内存的释放
-} 
+如下是四个黄金法则对应的代码示例：
 
 ```
+/*
+ * 自己生成并持有该对象
+ */
+ id obj0 = [[NSObeject alloc] init];
+ id obj1 = [NSObeject new];
+```
+
+```
+/*
+ * 持有非自己生成的对象
+ */
+id obj = [NSArray array]; // 非自己生成的对象，且该对象存在，但自己不持有
+[obj retain]; // 自己持有对象
+```
+
+```
+/*
+ * 不在需要自己持有的对象的时候，释放
+ */
+id obj = [[NSObeject alloc] init]; // 此时持有对象
+[obj release]; // 释放对象
+/*
+ * 指向对象的指针仍就被保留在obj这个变量中
+ * 但对象已经释放，不可访问
+ */
+```
+
+```
+/*
+ * 非自己持有的对象无法释放
+ */
+id obj = [NSArray array]; // 非自己生成的对象，且该对象存在，但自己不持有
+[obj release]; // 此时将运行时crash 或编译器报error
+```
+
+其中 `非自己生成的对象，且该对象存在，但自己不持有` 这个特性是使用`autorelease`来实现的，示例代码如下：
+
+```
+- (id) getAObjNotRetain {
+    id obj = [[NSObject alloc] init]; // 自己持有对象
+    [obj autorelease]; // 取得的对象存在，但自己不持有该对象
+    return obj;
+}
+```
+
+`autorelease` 使得对象在超出生命周期后能正确的被释放(通过调用release方法)。在调用 `release` 后，对象会被立即释放，而调用 `autorelease` 后，对象不会被立即释放，而是注册到 `autoreleasepool` 中，经过一段时间后 `pool`结束，此时调用release方法，对象被释放。
+
+在MRC的内存管理模式下，与对变量的管理相关的方法有：retain, release 和 autorelease。retain 和 release 方法操作的是引用记数，当引用记数为零时，便自动释放内存。并且可以用 NSAutoreleasePool 对象，对加入自动释放池（autorelease 调用）的变量进行管理，当 drain 时回收内存。
 
 ### ARC 
 
@@ -381,6 +427,18 @@ ARC 所做的事情并不仅仅局限于在编译期找到合适的位置帮你�
 
 在调用 `objc_autoreleaseReturnValue()` 时，会在栈上查询 return address 以确定 return value 是否会被直接传给 `objc_retainAutoreleasedReturnValue()`。 如果没传，说明返回值不能直接从提供方发送给接收方，这时就会调用 `autorelease`，反之，如果返回值能顺利的从提供方传送给接收方，那么就会直接跳过 `autorelease` 过程，并且修改  return address 以跳过 `objc_retainAutoreleasedReturnValue()`过程，这样就跳过了整个 `autorelease` 和 `retain`的过程。
 
+### 关于如何写一个检测循环引用的工具
+
+Instrument 为我们提供了 Allocations/Leaks 这样好用的工具用来检测 memory leak 的工具。如下是内存泄露的两种类型：
+
+- Leaked memory: Memory unreferenced by your application that cannot be used again or freed (also detectable by using the Leaks instrument).
+
+- Abandoned memory: Memory still referenced by your application that has no useful purpose.
+
+其中 Leaks 工具主要用来检测 Leaked memory，在 MRC 时代 程序员会经常忘记写 release 方法导致内存泄露，在 ARC 时代这种已经不太常见。(ARC时代 主要的Leaked Memory 来自于底层 C 语言以及 一些由 C 写成的底层库，往往会因为忘记手工 free 而导致 leak )。
+
+Allocations 工具主要用来检测 Abandoned memory. 主要思路是在一个时间切片内检测对象的声明周期以观察内存是否会无限增长。通过 hook 掉 alloc，dealloc，retain，release 等方法，来记录对象的生命周期。
+
 ### 参考资料
 
 * [Objective-C内存管理MRC与ARC](http://blog.csdn.net/fightingbull/article/details/8098133)
@@ -395,3 +453,4 @@ ARC 所做的事情并不仅仅局限于在编译期找到合适的位置帮你�
 * https://stackoverflow.com/questions/8292060/arc-equivalent-of-autorelease
 * https://stackoverflow.com/questions/7906804/do-i-set-properties-to-nil-in-dealloc-when-using-arc
 * [ARC中的Trick](http://ijack.pw/2016/03/17/ARC-naive/)
+* http://wereadteam.github.io/2016/02/22/MLeaksFinder/?from=singlemessage&isappinstalled=0
