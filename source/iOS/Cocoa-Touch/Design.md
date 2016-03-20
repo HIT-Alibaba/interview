@@ -310,3 +310,4 @@ int main(int argc, const char * argv[]) {
 * [Objective-C中Observer模式的实现](http://blog.csdn.net/zshtiger2414/article/details/6409695)
 * [Objective-C KVO编程](http://blog.csdn.net/kindazrael/article/details/7961601)
 * [iOS开发系列——Objective-C开发之KVC，KVO](http://www.cnblogs.com/kenshincui/p/3871178.html)
+* [浅谈iOS设计模式之单例模式](http://ijack.pw/2016/01/19/iOS设计模式之单例模式/)
