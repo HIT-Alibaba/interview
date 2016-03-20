@@ -8,7 +8,7 @@ Runtime 是 Objective-C 区别于 C 语言这样的静态语言的一个非常�
 
 > instance -> class -> method -> SEL -> IMP -> 实现函数
 
-实例对象中存放 isa 指针以及实例变量，有 isa 指针可以找到实力对象所属的类对象 (类也是对象，面向对象中一切都是对象)，类中存放着实例方法列表，在这个方法列表中 SEL 作为 key，IMP 作为 value。 在编译时期，根据方法名字会生成一个唯一的 Int 标识，这个标识就是 SEL。IMP 其实就是函数指针 指向了最终的函数实现。整个 Runtime 的核心就是 objc_msgSend 函数，通过给类发送 SEL 以传递消息，找到匹配的 IMP 在获取最终的实现。如下的这张图描述了对象的内存布局。
+实例对象中存放 isa 指针以及实例变量，有 isa 指针可以找到实例对象所属的类对象 (类也是对象，面向对象中一切都是对象)，类中存放着实例方法列表，在这个方法列表中 SEL 作为 key，IMP 作为 value。 在编译时期，根据方法名字会生成一个唯一的 Int 标识，这个标识就是 SEL。IMP 其实就是函数指针 指向了最终的函数实现。整个 Runtime 的核心就是 objc_msgSend 函数，通过给类发送 SEL 以传递消息，找到匹配的 IMP 在获取最终的实现。如下的这张图描述了对象的内存布局。
 
 ![](https://raw.githubusercontent.com/WiInputMethod/interview/master/img/ios-runtime-class.png)
 
