@@ -97,6 +97,13 @@ __strong Number* num = [[Number alloc] init];
 
 正如警告所说的，对象在赋值之后被立即释放，对应的属性也就成了野指针，运行时跑到属性有关操作会直接崩溃掉。
 
+##### `unsafe_unretained` 的用处
+
+`unsafe_unretained` 差不多是实际使用最少的一个属性标识符了，在使用中它的用处主要有下面几点：
+
+1. 兼容性考虑。iOS4 以及之前还没有引入 `weak`，这种情况想表达弱引用的语义只能使用 `unsafe_unretained`。这种情况现在已经很少见了。
+2. 性能考虑。使用 `weak` 对性能有一些影响，因此对性能要求高的地方可以考虑使用 `unsafe_unretained` 替换 `weak`。一个例子是 [YYModel 的实现](https://github.com/ibireme/YYModel/blob/master/YYModel/NSObject%2BYYModel.m)，为了追求更高的性能，其中大量使用 `unsafe_unretained` 作为变量标识符。
+
 ### 引用循环
 
 当两个对象互相持有对方的强引用，并且这两个对象的引用计数都不是0的时候，便造成了引用循环。
@@ -386,6 +393,7 @@ myController.completionHandler =  ^(NSInteger result) {
 * [10个Objective-C基础面试题，iOS面试必备](http://www.oschina.net/news/42288/10-objective-c-interview)
 * [黑幕背后的 Autorelease](http://blog.sunnyxx.com/2014/10/15/behind-autorelease/)
 * [Objective-C Autorelease Pool 的实现原理](http://blog.leichunfeng.com/blog/2015/05/31/objective-c-autorelease-pool-implementation-principle/)
+* https://stackoverflow.com/questions/9784762/strong-weak-retain-unsafe-unretained-assign
 * https://stackoverflow.com/questions/29350634/ios-autoreleasepool-in-main-and-arc-alloc-release
 * https://stackoverflow.com/questions/6588211/why-do-the-ios-main-m-templates-include-a-return-statement-and-an-autorelease-po
 * https://stackoverflow.com/questions/2702548/if-the-uiapplicationmain-never-returns-then-when-does-the-autorelease-pool-get
