@@ -53,7 +53,7 @@
         data-chapter-title="Objective-C 内存管理"
         data-filepath="iOS/ObjC-Basic/MM.md"
         data-basepath="../.."
-        data-revision="Fri Mar 18 2016 16:37:01 GMT+0800 (CST)"
+        data-revision="Mon Mar 21 2016 13:06:08 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1195,6 +1195,17 @@ Number* num2 = [num retain];<span class="hljs-comment">//&#x6B64;&#x65F6;&#x5F15
 <p><code>weak</code> &#x8868;&#x660E;&#x5C5E;&#x6027;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x975E;&#x62E5;&#x6709;&#x8005;&#x5173;&#x7CFB;&#x3002;&#x5F53;&#x7ED9;&#x5C5E;&#x6027;&#x8BBE;&#x5B9A;&#x4E00;&#x4E2A;&#x65B0;&#x503C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8FD9;&#x4E2A;&#x503C;&#x4E0D;&#x4F1A;&#x8FDB;&#x884C; <code>retain</code>&#xFF0C;&#x65E7;&#x503C;&#x4E5F;&#x4E0D;&#x4F1A;&#x8FDB;&#x884C; <code>release</code>&#xFF0C; &#x800C;&#x662F;&#x8FDB;&#x884C;&#x7C7B;&#x4F3C; <code>assign</code> &#x7684;&#x64CD;&#x4F5C;&#x3002;&#x4E0D;&#x8FC7;&#x5F53;&#x5C5E;&#x6027;&#x6307;&#x5411;&#x7684;&#x5BF9;&#x8C61;&#x88AB;&#x9500;&#x6BC1;&#x65F6;&#xFF0C;&#x8BE5;&#x5C5E;&#x6027;&#x4F1A;&#x88AB;&#x7F6E;&#x4E3A;nil&#x3002;</p>
 <p><code>unsafe_unretained</code> &#x7684;&#x8BED;&#x4E49;&#x548C; <code>assign</code> &#x7C7B;&#x4F3C;&#xFF0C;&#x4E0D;&#x8FC7;&#x662F;&#x7528;&#x4E8E;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#x7684;&#xFF0C;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x975E;&#x62E5;&#x6709;(unretained)&#x7684;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x4E0D;&#x4F1A;&#x5728;&#x5BF9;&#x8C61;&#x88AB;&#x9500;&#x6BC1;&#x65F6;&#x7F6E;&#x4E3A;nil&#x7684;(unsafe)&#x5173;&#x7CFB;&#x3002;</p>
 <p><code>copy</code> &#x7C7B;&#x4F3C;&#x4E8E; <code>strong</code>&#xFF0C;&#x4E0D;&#x8FC7;&#x5728;&#x8D4B;&#x503C;&#x65F6;&#x8FDB;&#x884C; <code>copy</code> &#x64CD;&#x4F5C;&#x800C;&#x4E0D;&#x662F; <code>retain</code> &#x64CD;&#x4F5C;&#x3002;&#x901A;&#x5E38;&#x5728;&#x9700;&#x8981;&#x4FDD;&#x7559;&#x67D0;&#x4E2A;&#x4E0D;&#x53EF;&#x53D8;&#x5BF9;&#x8C61;&#xFF08;NSString&#x6700;&#x5E38;&#x89C1;&#xFF09;&#xFF0C;&#x5E76;&#x4E14;&#x9632;&#x6B62;&#x5B83;&#x88AB;&#x610F;&#x5916;&#x6539;&#x53D8;&#x65F6;&#x4F7F;&#x7528;&#x3002;</p>
+<h5 id="&#x9519;&#x8BEF;&#x4F7F;&#x7528;&#x5C5E;&#x6027;&#x6807;&#x8BC6;&#x7B26;&#x7684;&#x540E;&#x679C;">&#x9519;&#x8BEF;&#x4F7F;&#x7528;&#x5C5E;&#x6027;&#x6807;&#x8BC6;&#x7B26;&#x7684;&#x540E;&#x679C;</h5>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x7ED9;&#x4E00;&#x4E2A;&#x539F;&#x59CB;&#x7C7B;&#x578B;&#x8BBE;&#x7F6E; <code>strong\weak\copy</code> &#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x76F4;&#x63A5;&#x62A5;&#x9519;&#xFF1A;</p>
+<blockquote>
+<p>Property with &apos;retain (or strong)&apos; attribute must be of object type</p>
+</blockquote>
+<p>&#x8BBE;&#x7F6E;&#x4E3A; <code>unsafe_unretained</code> &#x5012;&#x662F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7F16;&#x8BD1;&#xFF0C;&#x53EA;&#x662F;&#x7528;&#x8D77;&#x6765;&#x8DDF; <code>assign</code> &#x4E5F;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#x3002;</p>
+<p>&#x53CD;&#x8FC7;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x7ED9;&#x4E00;&#x4E2A; NSObject &#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x4E3A; assign&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x62A5;&#x8B66;&#xFF1A;</p>
+<blockquote>
+<p>Assigning retained object to unsafe property; object will be released after assignment</p>
+</blockquote>
+<p>&#x6B63;&#x5982;&#x8B66;&#x544A;&#x6240;&#x8BF4;&#x7684;&#xFF0C;&#x5BF9;&#x8C61;&#x5728;&#x8D4B;&#x503C;&#x4E4B;&#x540E;&#x88AB;&#x7ACB;&#x5373;&#x91CA;&#x653E;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x5C5E;&#x6027;&#x4E5F;&#x5C31;&#x6210;&#x4E86;&#x91CE;&#x6307;&#x9488;&#xFF0C;&#x8FD0;&#x884C;&#x65F6;&#x8DD1;&#x5230;&#x5C5E;&#x6027;&#x6709;&#x5173;&#x64CD;&#x4F5C;&#x4F1A;&#x76F4;&#x63A5;&#x5D29;&#x6E83;&#x6389;&#x3002;</p>
 <h3 id="&#x5F15;&#x7528;&#x5FAA;&#x73AF;">&#x5F15;&#x7528;&#x5FAA;&#x73AF;</h3>
 <p>&#x5F53;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x4E92;&#x76F8;&#x6301;&#x6709;&#x5BF9;&#x65B9;&#x7684;&#x5F3A;&#x5F15;&#x7528;&#xFF0C;&#x5E76;&#x4E14;&#x8FD9;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x90FD;&#x4E0D;&#x662F;0&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4FBF;&#x9020;&#x6210;&#x4E86;&#x5F15;&#x7528;&#x5FAA;&#x73AF;&#x3002;</p>
 <p>&#x8981;&#x60F3;&#x7834;&#x9664;&#x5F15;&#x7528;&#x5FAA;&#x73AF;&#xFF0C;&#x53EF;&#x4EE5;&#x4ECE;&#x4EE5;&#x4E0B;&#x51E0;&#x70B9;&#x5165;&#x624B;&#xFF1A;</p>
