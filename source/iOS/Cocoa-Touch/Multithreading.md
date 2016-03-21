@@ -8,7 +8,7 @@ iOS 中的多线程，是 Cocoa 框架下的多线程，通过 Cocoa 的封装�
 * 进程：也是我们通常意义上提到的进程，一个正在执行中的程序实体，可以产生多个线程
 * 任务：一个抽象的概念，用于表示一系列需要完成的工作
 
-Cocoa 中封装了 NSThread, NSOperation, GCD 三种多线程编程方式，他们各有优缺点。抽象层次是从低到高的，抽象度越高的使用越简单。
+Cocoa 中封装了 NSThread, NSOperation, GCD 三种多线程编程方式，他们各有所长。
 
 * NSThread
 
@@ -16,17 +16,16 @@ Cocoa 中封装了 NSThread, NSOperation, GCD 三种多线程编程方式，他�
 
 * NSOperation
 
-    NSOperation 是一个抽象类，它封装了线程的细节实现，不需要自己管理线程的生命周期和线程的同步和互斥等。只是需要关注自己的业务逻辑处理，需要和 NSOperationQueue 一起使用。
+    NSOperation 是一个抽象类，它封装了线程的细节实现，不需要自己管理线程的生命周期和线程的同步和互斥等。只是需要关注自己的业务逻辑处理，需要和 NSOperationQueue 一起使用。使用 NSOperation 时，你可以很方便的设置线程之间的依赖关系。这在略微复杂的业务需求中尤为重要。(在此后的GCD烧脑体操中，你将会深刻体会)
 
 * GCD
 
-    GCD(Grand Central Dispatch) 是 Apple 开发的一个多核编程的解决方法。在 iOS4.0 开始之后才能使用。GCD 是一个可以替代 NSThread 的很高效和强大的技术。
+    GCD(Grand Central Dispatch) 是 Apple 开发的一个多核编程的解决方法。在 iOS4.0 开始之后才能使用。GCD 是一个可以替代 NSThread 的很高效和强大的技术。当实现简单的需求时，GCD 是一个不错的选择。
 
 
 在现代 Objective-C 中，苹果已经不推荐使用 NSThread 来进行并发编程，而是推荐使用 GCD 和 NSOperation，具体的迁移文档参见 [Migrating Away from Threads](https://developer.apple.com/library/ios/documentation/General/Conceptual/ConcurrencyProgrammingGuide/ThreadMigration/ThreadMigration.html)。下面我们对 GCD 和 NSOperation 的用法进行简单介绍。
 
 ## Grand Central Dispatch(GCD)
-
 
 Grand Central Dispatch(GCD) 是苹果在 Mac OS X 10.6 以及 iOS 4.0 开始引入的一个高性能并发编程机制，底层实现的库名叫 libdispatch。由于它确实很好用，libdispatch 已经被移植到了 FreeBSD 上，Linux 上也有 port 过去的 [libdispatch 实现](https://github.com/nickhutchinson/libdispatch)。
 
@@ -164,23 +163,6 @@ printf("两个 block 都已经执行完毕\n");
 #### 注意事项
  
  * 同步和异步添加，与队列是串行队列和并行队列没有关系。可以同步地给并行队列添加任务，也可以异步地给串行队列添加任务。同步和异步添加只影响是不是阻塞当前线程，和任务的串行或并行执行没有关系
- * 不要使用 dispatch_sync 给当前正在运行的 queue 添加任务！这样会导致死锁，像下面这样：
- 
-    ```objectivec
-    - (void)viewDidLoad
-    {
-        [super viewDidLoad];
-        NSLog(@"1");
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            NSLog(@"2");
-        });
-        NSLog(@"3");
-    }
-    ```
-    
-    这样只有 1 会被输出，之后程序就被死锁掉了。
-    
-    死锁的原因是，dispatch_sync 会做两个工作，一个是阻塞掉当前线程，另一个是把任务添加到 queue 中，等待任务执行完毕。像上面这样，主线程被阻塞掉了，任务不能被执行，然后导致 dispatch_sync 永远不能等待到任务执行完毕，就不能释放主线程的阻塞，于是就产生了死锁。
     
 * 如果在任务 block 中创建了大量对象，可以考虑在 block 中添加 autorelease pool。尽管每个 queue 自身都会有 autorelease pool 来管理内存，但是 pool 进行 drain 的具体时间是没办法确定的。如果应用对于内存占用比较敏感，可以自己创建 autorelease pool 来进行内存管理。
 
@@ -190,6 +172,203 @@ printf("两个 block 都已经执行完毕\n");
 * 避免在任务中使用锁，如果使用锁的话可能会阻碍 queue 中其他 task 的运行
 * 不建议获取 dispatch_queue 底层所使用的 thread 的有关信息，也不建议在 queue 中再使用 pthread 系函数
 
+#### GCD烧脑体操
+
+说了 GCD 这么多，不如来几道烧脑体操吧，也借此机会体会一下 GCD。
+
+##### 烧脑体操第一节
+
+这是一个广为流传的例子，代码如下：
+
+```
+NSLog(@"1"); // 任务1
+dispatch_sync(dispatch_get_main_queue(), ^{
+    NSLog(@"2"); // 任务2
+});
+NSLog(@"3"); // 任务3
+```
+
+控制台输出
+
+```
+1
+```
+
+分析：
+
+1. dispatch_sync 表示这是一个同步线程
+2. dispatch_get_main_queue 表示其运行在主线程中的主队列
+3. 任务2是同步线程的任务。
+
+如图所示：
+
+![](https://raw.githubusercontent.com/WiInputMethod/interview/master/img/gcd-deadlock-1.png)
+
+过程描述：
+
+主线程启动以后的加入顺序是：任务1，同步线程，任务三。执行完任务1，就会启动同步线程，然后将任务2加入队列。所以，任务3在任务2的前面。如图中所示的那样，这种情况下 任务2 与 任务 3都在等待彼此完成之后才能执行，这就造成了死锁。
+
+##### 烧脑体操第二节
+
+这个例子由此前的第一节演化而来，代码如下
+
+```
+NSLog(@"1"); // 任务1
+dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+    NSLog(@"2"); // 任务2
+});
+NSLog(@"3"); // 任务3
+```
+
+正如你所期待的那样，这并不会造成死锁，控制台输出如下：
+
+```
+1
+2
+3
+```
+
+如图所示：
+
+![](https://raw.githubusercontent.com/WiInputMethod/interview/master/img/gcd-deadlock-2.png)
+
+分析与过程描述：
+
+首先执行任务1，接下来会遇到一个同步线程，程序会进入等待。等待任务2执行完成以后，才能继续执行任务3。从dispatch_get_global_queue可以看出，任务2被加入到了全局的并行队列中，当并行队列执行完任务2以后，返回到主队列，继续执行任务3。
+
+##### 烧脑体操第三节
+
+这个例子会比此前的两节复杂一些，代码如下：
+
+```
+dispatch_queue_t queue = dispatch_queue_create("com.demo.serialQueue", DISPATCH_QUEUE_SERIAL);
+NSLog(@"1"); // 任务1
+dispatch_async(queue, ^{
+    NSLog(@"2"); // 任务2
+    dispatch_sync(queue, ^{
+        NSLog(@"3"); // 任务3
+    });
+    NSLog(@"4"); // 任务4
+});
+NSLog(@"5"); // 任务5
+```
+
+控制台输出如下：
+
+```
+1
+5
+2
+// 5和2的顺序不一定
+```
+
+
+分析：这里没有使用系统提供的串行或并行队列，而是自己通过dispatch_queue_create函数创建了一个`DISPATCH_QUEUE_SERIAL`的串行队列。
+
+如图所示：
+
+![](https://raw.githubusercontent.com/WiInputMethod/interview/master/img/gcd-deadlock-3.png)
+
+过程描述：
+
+1. 执行任务1
+2. 遇到异步线程，将【任务2、同步线程、任务4】加入串行队列。因为是异步线程，所以在主线程中的任务5不必等待异步线程中的所有任务完成
+3. 因为任务5不必等待，所以2和5的输出顺序不能确定
+4. 任务2执行完以后，遇到同步线程，这时，将任务3加入异步的串行队列
+5. 又因为任务4比任务3早加入串行队列，所以，任务3要等待任务4完成以后，才能执行。但是任务3所在的同步线程会阻塞，所以任务4必须等任务3执行完以后再执行。这就又陷入了无限的等待中，造成死锁。
+
+怎么样，是不是有点蒙逼，那快让我们进入第四小节吧！
+
+##### 烧脑体操第四节
+
+代码如下：
+
+```
+NSLog(@"1"); // 任务1
+dispatch_async(dispatch_get_global_queue(0, 0), ^{
+    NSLog(@"2"); // 任务2
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        NSLog(@"3"); // 任务3
+    });
+    NSLog(@"4"); // 任务4
+});
+NSLog(@"5"); // 任务5
+```
+
+输出结果如下：
+
+```
+1
+2
+5
+3
+4
+// 5和2的顺序不一定
+```
+
+如图所示：
+
+![](https://raw.githubusercontent.com/WiInputMethod/interview/master/img/gcd-deadlock-4.png)
+
+分析与过程描述：
+
+首先，将【任务1、异步线程、任务5】加入Main Queue中，异步线程中的任务是：【任务2、同步线程、任务4】。
+
+所以，先执行任务1，然后将异步线程中的任务加入到Global Queue中，因为异步线程，所以任务5不用等待，结果就是2和5的输出顺序不一定。
+
+然后再看异步线程中的任务执行顺序。任务2执行完以后，遇到同步线程。将同步线程中的任务加入到Main Queue中，这时加入的任务3在任务5的后面。
+
+当任务3执行完以后，没有了阻塞，程序继续执行任务4。
+
+从以上的分析来看，得到的几个结果：1最先执行；2和5顺序不一定；4一定在3后面。
+
+##### 烧脑体操第五节 
+
+什么？之前的你懂看懂了？那第五节估计也难不倒你咯，代码如下：
+
+```
+dispatch_async(dispatch_get_global_queue(0, 0), ^{
+    NSLog(@"1"); // 任务1
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        NSLog(@"2"); // 任务2
+    });
+    NSLog(@"3"); // 任务3
+});
+NSLog(@"4"); // 任务4
+while (1) {
+}
+NSLog(@"5"); // 任务5
+```
+
+输出如下：
+
+```
+1
+4
+// 1和4的顺序不一定
+```
+
+![](https://raw.githubusercontent.com/WiInputMethod/interview/master/img/gcd-deadlock-5.png)
+
+分析与过程描述：
+
+和上面几个案例的分析类似，先来看看都有哪些任务加入了Main Queue：【异步线程、任务4、死循环、任务5】。
+
+在加入到Global Queue异步线程中的任务有：【任务1、同步线程、任务3】。
+
+第一个就是异步线程，任务4不用等待，所以结果任务1和任务4顺序不一定。
+
+任务4完成后，程序进入死循环，Main Queue阻塞。但是加入到Global Queue的异步线程不受影响，继续执行任务1后面的同步线程。
+
+同步线程中，将任务2加入到了主线程，并且，任务3等待任务2完成以后才能执行。这时的主线程，已经被死循环阻塞了。所以任务2无法执行，当然任务3也无法执行，在死循环后的任务5也不会执行。
+
+最终，只能得到1和4顺序不定的结果。
+
+##### 烧脑体操总结
+
+相信对于绝大多数人来说，在烧脑体操第三节开始，是否死锁以及整个的执行流程就变得不是那么显而易见了，没错这五节烧脑体操就意在展示 GCD 的问题：如果想要设置线程间的依赖关系，那就需要嵌套，如果嵌套就会使得非常恶心的事情发生。这应该是 GCD 的一个非常明显的缺陷之一了。
+
+当然，NSOperation 为了我们提供了很方便设置依赖关系的解决方案。
 
 ## NSOperation 和 NSOperationQueue
 
@@ -375,3 +554,5 @@ typedef enum : NSInteger {
  * http://www.raywenderlich.com/19788/how-to-use-nsoperations-and-nsoperationqueues
  * http://www.humancode.us/2014/08/14/target-queues.html
  * http://www.dribin.org/dave/blog/archives/2009/05/05/concurrent_operations/
+ * http://www.jianshu.com/p/0b0d9b1f1f19
+ * http://www.cnblogs.com/tangbinblog/p/4133481.html
