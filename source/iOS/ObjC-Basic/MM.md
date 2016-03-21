@@ -129,6 +129,26 @@ __strong Number* num = [[Number alloc] init];
 
 `copy` 类似于 `strong`，不过在赋值时进行 `copy` 操作而不是 `retain` 操作。通常在需要保留某个不可变对象（NSString最常见），并且防止它被意外改变时使用。
 
+##### 错误使用属性标识符的后果
+
+如果我们给一个原始类型设置 `strong\weak\copy` ，编译器会直接报错：
+
+> Property with 'retain (or strong)' attribute must be of object type
+
+设置为 `unsafe_unretained` 倒是可以通过编译，只是用起来跟 `assign` 也没有什么区别。
+
+反过来，我们给一个 NSObject 属性设置为 assign，编译器会报警：
+
+> Assigning retained object to unsafe property; object will be released after assignment
+
+正如警告所说的，对象在赋值之后被立即释放，对应的属性也就成了野指针，运行时跑到属性有关操作会直接崩溃掉。和设置成 `unsafe_unretained` 是一样的效果（设置成 `weak` 不会崩溃）。
+
+##### `unsafe_unretained` 的用处
+
+`unsafe_unretained` 差不多是实际使用最少的一个标识符了，在使用中它的用处主要有下面几点：
+
+1. 兼容性考虑。iOS4 以及之前还没有引入 `weak`，这种情况想表达弱引用的语义只能使用 `unsafe_unretained`。这种情况现在已经很少见了。
+2. 性能考虑。使用 `weak` 对性能有一些影响，因此对性能要求高的地方可以考虑使用 `unsafe_unretained` 替换 `weak`。一个例子是 [YYModel 的实现](https://github.com/ibireme/YYModel/blob/master/YYModel/NSObject%2BYYModel.m)，为了追求更高的性能，其中大量使用 `unsafe_unretained` 作为变量标识符。
 
 ### 引用循环
 
@@ -445,6 +465,7 @@ Allocations 工具主要用来检测 Abandoned memory. 主要思路是在一个�
 * [10个Objective-C基础面试题，iOS面试必备](http://www.oschina.net/news/42288/10-objective-c-interview)
 * [黑幕背后的 Autorelease](http://blog.sunnyxx.com/2014/10/15/behind-autorelease/)
 * [Objective-C Autorelease Pool 的实现原理](http://blog.leichunfeng.com/blog/2015/05/31/objective-c-autorelease-pool-implementation-principle/)
+* https://stackoverflow.com/questions/9784762/strong-weak-retain-unsafe-unretained-assign
 * https://stackoverflow.com/questions/29350634/ios-autoreleasepool-in-main-and-arc-alloc-release
 * https://stackoverflow.com/questions/6588211/why-do-the-ios-main-m-templates-include-a-return-statement-and-an-autorelease-po
 * https://stackoverflow.com/questions/2702548/if-the-uiapplicationmain-never-returns-then-when-does-the-autorelease-pool-get

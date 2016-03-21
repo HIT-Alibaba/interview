@@ -557,11 +557,10 @@ typedef enum : NSInteger {
 
 * 首先要明确一点，NSOperationQueue 是基于 GCD 的更高层的封装，从 OS X 10.10 开始可以通过设置 `underlyingQueue` 来把 operation 放到已有的 dispatch queue 中。
 * 从易用性角度，GCD 由于采用 C 风格的 API，在调用上比使用面向对象风格的 NSOperation 要简单一些。  
-* 从对任务的控制性来说，NSOperation 显著得好于 GCD，和 GCD 相比可以很方便实现 Cancel 操作，也可以很方便的设置任务之间的依赖关系，以及在同一个队列中任务的优先级设置，同时还可以通过 KVO 来监控任务的执行情况。这些通过 GCD 也可以实现，不过需要很多代码，使用 NSOperation 显得方便了很多。
-* 从第三方库的角度，知名的第三方库如 AFNetworking 和 SDWebImage 背后都是使用 NSOperation，也从另一方面说明对于需要复杂并发控制的需求，NSOperation 是更好的选择。
+* 从对任务的控制性来说，NSOperation 显著得好于 GCD，和 GCD 相比支持了 Cancel 操作，支持任务之间的依赖关系，支持同一个队列中任务的优先级设置，同时还可以通过 KVO 来监控任务的执行情况。这些通过 GCD 也可以实现，不过需要很多代码，使用 NSOperation 显得方便了很多。
+* 从第三方库的角度，知名的第三方库如 AFNetworking 和 SDWebImage 背后都是使用 NSOperation，也从另一方面说明对于需要复杂并发控制的需求，NSOperation 是更好的选择（当然也不是绝对的，例如知名的 [Parse SDK](https://github.com/ParsePlatform/Parse-SDK-iOS-OSX) 就完全没有使用 NSOperation，全部使用 GCD，其中涉及到大量的 GCD 高级用法，[这里](https://github.com/ChenYilong/ParseSourceCodeStudy)有相关解析）。
 
-
- #### 参考资料
+#### 参考资料
  
  * http://www.raywenderlich.com/19788/how-to-use-nsoperations-and-nsoperationqueues
  * http://www.humancode.us/2014/08/14/target-queues.html
