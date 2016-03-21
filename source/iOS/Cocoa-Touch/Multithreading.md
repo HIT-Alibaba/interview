@@ -527,6 +527,8 @@ NSOperation 有如下几种的运行状态：
 
 除 Finish 状态外，其他状态均可转换为 Canceled 状态。
 
+![](https://raw.githubusercontent.com/WiInputMethod/interview/master/img/ios-nsoperation-lifecycle.png)
+
 当 NSOperation 支持了 cancel 操作时，NSOperationQueue 可以使用 cancelAllOperatoins 来对所有的 operation 执行 cancel 操作。不过 cancel 的效果还是取决于 NSOperation 中代码是怎么写的。比如 对于数据库的某些操作线程来说，cancel 可能会意味着 你需要把数据恢复到最原始的状态。
 
 #### maxConcurrentOperationCount
