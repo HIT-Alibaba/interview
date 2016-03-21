@@ -95,11 +95,11 @@ __strong Number* num = [[Number alloc] init];
 
 > Assigning retained object to unsafe property; object will be released after assignment
 
-正如警告所说的，对象在赋值之后被立即释放，对应的属性也就成了野指针，运行时跑到属性有关操作会直接崩溃掉。
+正如警告所说的，对象在赋值之后被立即释放，对应的属性也就成了野指针，运行时跑到属性有关操作会直接崩溃掉。和设置成 `unsafe_unretained` 是一样的效果（设置成 `weak` 不会崩溃）。
 
 ##### `unsafe_unretained` 的用处
 
-`unsafe_unretained` 差不多是实际使用最少的一个属性标识符了，在使用中它的用处主要有下面几点：
+`unsafe_unretained` 差不多是实际使用最少的一个标识符了，在使用中它的用处主要有下面几点：
 
 1. 兼容性考虑。iOS4 以及之前还没有引入 `weak`，这种情况想表达弱引用的语义只能使用 `unsafe_unretained`。这种情况现在已经很少见了。
 2. 性能考虑。使用 `weak` 对性能有一些影响，因此对性能要求高的地方可以考虑使用 `unsafe_unretained` 替换 `weak`。一个例子是 [YYModel 的实现](https://github.com/ibireme/YYModel/blob/master/YYModel/NSObject%2BYYModel.m)，为了追求更高的性能，其中大量使用 `unsafe_unretained` 作为变量标识符。
