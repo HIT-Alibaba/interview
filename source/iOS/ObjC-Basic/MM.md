@@ -83,6 +83,19 @@ __strong Number* num = [[Number alloc] init];
 
 `copy` 类似于 `strong`，不过在赋值时进行 `copy` 操作而不是 `retain` 操作。通常在需要保留某个不可变对象（NSString最常见），并且防止它被意外改变时使用。
 
+##### 错误使用属性标识符的后果
+
+如果我们给一个原始类型设置 `strong\weak\copy` ，编译器会直接报错：
+
+> Property with 'retain (or strong)' attribute must be of object type
+
+设置为 `unsafe_unretained` 倒是可以通过编译，只是用起来跟 `assign` 也没有什么区别。
+
+反过来，我们给一个 NSObject 属性设置为 assign，编译器会报警：
+
+> Assigning retained object to unsafe property; object will be released after assignment
+
+正如警告所说的，对象在赋值之后被立即释放，对应的属性也就成了野指针，运行时跑到属性有关操作会直接崩溃掉。
 
 ### 引用循环
 
