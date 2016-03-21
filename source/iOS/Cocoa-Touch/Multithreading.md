@@ -521,11 +521,11 @@ NSOperation 有如下几种的运行状态：
 
 - Pending
 - Ready
-- Running
 - Executing
+- Finished
 - Canceled
 
-除 Finish 状态外，其他状态均可转换为 Canceled 状态。
+除 Finished 状态外，其他状态均可转换为 Canceled 状态。
 
 ![](https://raw.githubusercontent.com/WiInputMethod/interview/master/img/ios-nsoperation-lifecycle.png)
 
