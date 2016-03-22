@@ -26,6 +26,77 @@ static Singleton *instance = nil;
 
 Cocoa 库本身在一些地方也使用了单例模式，例如`[NSNotificationCenter defaultCenter]`，`[UIColor redColor]`等。
 
+这种写法的优点是，可以延迟加载，按需分配内存以节省开销。
+
+但是，这并非一个线程安全的写法，比如两个或多个线程并发的调用 `sharedInstance` 方法，有可能会得到多个实例，这里列出两种方法来创建一个线程安全的单例。
+
+### @synchronized
+
+可以使用@synchronized进行加锁，代码如下：
+
+```objectivec
+/* Singleton.h */
+#import <Foundation/Foundation.h>
+@interface Singleton : NSObject
++ (Singleton *)sharedInstance;
+@end
+/* Singleton.m */
+#import "Singleton.h"
+static Singleton *instance = nil;
+@implementation Singleton 
++ (Singleton *)sharedInstance { 
+    @synchronized (self) {
+        if (!instance) { 
+            instance = [[super alloc] init];
+        } 
+    }
+    return instance; 
+}
+```
+
+这种写法也是懒加载，不过虽然保证了线程安全但是由于锁的存在当多线程访问时，性能会降低。
+
+### GCD
+
+这里主要利用GCD中的dispatch_once方法，这是最普遍也是苹果最推荐的方法，函数原型如下：
+
+```objectivec
+void dispatch_once(
+   dispatch_once_t *predicate,
+   dispatch_block_t block);
+```
+
+单例实现代码如下：
+
+```objectivec
+/* Singleton.h */
+#import <Foundation/Foundation.h>
+@interface Singleton : NSObject
++ (Singleton *)sharedInstance;
+@end
+/* Singleton.m */
+#import "Singleton.h"
+static Singleton *instance = nil;
+@implementation Singleton 
++ (Singleton *)sharedInstance { 
+    static dispatch_once_t predicate;
+    dispatch_once(&predicate, ^{
+        instance = [[Singleton alloc] init];
+    });
+    return instance; 
+}
+```
+
+这样的方法有很多优势，首先满足了线程安全问题，其次很好满足静态分析器要求。
+
+GCD 可以确保以更快的方式完成这些检测，它可以保证 block 中的代码在任何线程通过 dispatch_once 调用之前被执行，但它不会强制每次调用这个函数都让代码进行同步控制。
+
+苹果的文档 [documentation for dispatch_once](https://developer.apple.com/library/ios/documentation/Performance/Reference/GCD_libdispatch_Ref/index.html#//apple_ref/c/func/dispatch_once) 是这么说的：
+
+> The predicate must point to a variable stored in global or static scope. The result of using a predicate with automatic or dynamic storage (including Objective-C instance variables) is undefined.
+
+所以，如果你的 predicate 不是静态的、不是全局的，还是不能用GCD。其实如果去看这个函数所在的头文件，你会发现目前它的实现其实是一个宏。
+
 ## 工厂模式（Factory）
 
 工厂模式是另一种常见的设计模式，本质上是使用方法来简化类的选择和初始化过程。
