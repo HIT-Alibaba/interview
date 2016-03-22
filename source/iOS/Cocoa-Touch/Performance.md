@@ -43,14 +43,14 @@
 
 ### cornerRadius
 
-```
-view.layer.cornerRadius = xxx
+```objectivec
+view.layer.cornerRadius = 6.0;
 view.layer.masksToBounds = YES;
 ```
 这种方式会触发两次离屏渲染，如果在滚动页面中这么做的话就会遇到性能问题。当然我们可以进行缓存以优化性能，如下：
 
-```
-view.layer.shouldRasterize = YES; 
+```objectivec
+view.layer.shouldRasterize = YES;
 view.layer.rasterizationScale = [UIScreen mainScreen].scale;
 ```
 
@@ -60,7 +60,7 @@ shouldRasterize = YES 会使视图渲染内容被缓存起来，下次绘制的�
 
 ### UIBezierPath
 
-```
+```objectivec
 - (void)drawRect:(CGRect)rect {
   CGRect bounds = self.bounds;
   [[UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:8.0] addClip];
@@ -116,7 +116,7 @@ extension UIView {
 
 在调用时 只需要像这样写：
 
-```
+```Swift
 let view = UIView(frame: CGRectMake(1,2,3,4))  
 view.kt_addCorner(radius: 6) 
 ```
@@ -163,7 +163,7 @@ extension UIImageView {
 
 在调用时只需要像如下这样写：
 
-```
+```Swift
 let imageView = let imgView1 = UIImageView(image: UIImage(name: ""))  
 imageView.kt_addCorner(radius: 6)  
 ```

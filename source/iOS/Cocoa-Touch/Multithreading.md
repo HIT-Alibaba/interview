@@ -16,7 +16,7 @@ Cocoa 中封装了 NSThread, NSOperation, GCD 三种多线程编程方式，他�
 
 * NSOperation
 
-    NSOperation 是一个抽象类，它封装了线程的细节实现，不需要自己管理线程的生命周期和线程的同步和互斥等。只是需要关注自己的业务逻辑处理，需要和 NSOperationQueue 一起使用。使用 NSOperation 时，你可以很方便的设置线程之间的依赖关系。这在略微复杂的业务需求中尤为重要。(在此后的GCD烧脑体操中，你将会深刻体会)
+    NSOperation 是一个抽象类，它封装了线程的细节实现，不需要自己管理线程的生命周期和线程的同步和互斥等。只是需要关注自己的业务逻辑处理，需要和 NSOperationQueue 一起使用。使用 NSOperation 时，你可以很方便的设置线程之间的依赖关系。这在略微复杂的业务需求中尤为重要。
 
 * GCD
 
@@ -172,15 +172,13 @@ printf("两个 block 都已经执行完毕\n");
 * 避免在任务中使用锁，如果使用锁的话可能会阻碍 queue 中其他 task 的运行
 * 不建议获取 dispatch_queue 底层所使用的 thread 的有关信息，也不建议在 queue 中再使用 pthread 系函数
 
-#### GCD烧脑体操
+#### GCD 案例分析
 
-说了 GCD 这么多，不如来几道烧脑体操吧，也借此机会体会一下 GCD。
-
-##### 烧脑体操第一节
+##### 案例一
 
 这是一个广为流传的例子，代码如下：
 
-```
+```objectivec
 NSLog(@"1"); // 任务1
 dispatch_sync(dispatch_get_main_queue(), ^{
     NSLog(@"2"); // 任务2
@@ -208,11 +206,11 @@ NSLog(@"3"); // 任务3
 
 主线程启动以后的加入顺序是：任务1，同步线程，任务三。执行完任务1，就会启动同步线程，然后将任务2加入队列。所以，任务3在任务2的前面。如图中所示的那样，这种情况下 任务2 与 任务 3都在等待彼此完成之后才能执行，这就造成了死锁。
 
-##### 烧脑体操第二节
+##### 案例二
 
-这个例子由此前的第一节演化而来，代码如下
+这个例子由此前的案例一演化而来，代码如下：
 
-```
+```objectivec
 NSLog(@"1"); // 任务1
 dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
     NSLog(@"2"); // 任务2
@@ -220,7 +218,7 @@ dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
 NSLog(@"3"); // 任务3
 ```
 
-正如你所期待的那样，这并不会造成死锁，控制台输出如下：
+这并不会造成死锁，控制台输出如下：
 
 ```
 1
@@ -234,13 +232,13 @@ NSLog(@"3"); // 任务3
 
 分析与过程描述：
 
-首先执行任务1，接下来会遇到一个同步线程，程序会进入等待。等待任务2执行完成以后，才能继续执行任务3。从dispatch_get_global_queue可以看出，任务2被加入到了全局的并行队列中，当并行队列执行完任务2以后，返回到主队列，继续执行任务3。
+首先执行任务1，接下来会遇到一个同步线程，程序会进入等待。等待任务2执行完成以后，才能继续执行任务3。从 dispatch_get_global_queue 可以看出，任务2被加入到了全局的并行队列中，当并行队列执行完任务2以后，返回到主队列，继续执行任务3。
 
-##### 烧脑体操第三节
+##### 案例三
 
 这个例子会比此前的两节复杂一些，代码如下：
 
-```
+```objectivec
 dispatch_queue_t queue = dispatch_queue_create("com.demo.serialQueue", DISPATCH_QUEUE_SERIAL);
 NSLog(@"1"); // 任务1
 dispatch_async(queue, ^{
@@ -262,7 +260,6 @@ NSLog(@"5"); // 任务5
 // 5和2的顺序不一定
 ```
 
-
 分析：这里没有使用系统提供的串行或并行队列，而是自己通过dispatch_queue_create函数创建了一个`DISPATCH_QUEUE_SERIAL`的串行队列。
 
 如图所示：
@@ -277,13 +274,11 @@ NSLog(@"5"); // 任务5
 4. 任务2执行完以后，遇到同步线程，这时，将任务3加入异步的串行队列
 5. 又因为任务4比任务3早加入串行队列，所以，任务3要等待任务4完成以后，才能执行。但是任务3所在的同步线程会阻塞，所以任务4必须等任务3执行完以后再执行。这就又陷入了无限的等待中，造成死锁。
 
-怎么样，是不是有点蒙逼，那快让我们进入第四小节吧！
-
-##### 烧脑体操第四节
+##### 案例四
 
 代码如下：
 
-```
+```objectivec
 NSLog(@"1"); // 任务1
 dispatch_async(dispatch_get_global_queue(0, 0), ^{
     NSLog(@"2"); // 任务2
@@ -322,11 +317,11 @@ NSLog(@"5"); // 任务5
 
 从以上的分析来看，得到的几个结果：1最先执行；2和5顺序不一定；4一定在3后面。
 
-##### 烧脑体操第五节 
+##### 案例五
 
-什么？之前的你懂看懂了？那第五节估计也难不倒你咯，代码如下：
+代码如下：
 
-```
+```objectivec
 dispatch_async(dispatch_get_global_queue(0, 0), ^{
     NSLog(@"1"); // 任务1
     dispatch_sync(dispatch_get_main_queue(), ^{
@@ -364,9 +359,9 @@ NSLog(@"5"); // 任务5
 
 最终，只能得到1和4顺序不定的结果。
 
-##### 烧脑体操总结
+##### 案例总结
 
-相信对于绝大多数人来说，在烧脑体操第三节开始，是否死锁以及整个的执行流程就变得不是那么显而易见了，没错这五节烧脑体操就意在展示 GCD 的问题：如果想要设置线程间的依赖关系，那就需要嵌套，如果嵌套就会使得非常恶心的事情发生。这应该是 GCD 的一个非常明显的缺陷之一了。
+相信对于绝大多数人来说，在案例三开始，是否死锁以及整个的执行流程就变得不是那么显而易见了，这五个案例就意在展示 GCD 的问题：如果想要设置线程间的依赖关系，那就需要嵌套，如果嵌套就会导致一些复杂的事情发生。这应该是 GCD 的一个非常明显的缺陷之一了。
 
 当然，NSOperation 为了我们提供了很方便设置依赖关系的解决方案。
 
@@ -567,3 +562,4 @@ typedef enum : NSInteger {
  * http://www.dribin.org/dave/blog/archives/2009/05/05/concurrent_operations/
  * http://www.jianshu.com/p/0b0d9b1f1f19
  * http://www.cnblogs.com/tangbinblog/p/4133481.html
+ * http://www.saitjr.com/ios/ios-gcd-deadlock.html
