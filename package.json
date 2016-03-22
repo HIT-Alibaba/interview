@@ -2,6 +2,6 @@
   "name": "interview",
   "version": "0.0.0",
   "devDependencies": {
-    "gitbook-cli": "^1.0.0",
+    "gitbook-cli": "^1.0.0"
   }
 }
