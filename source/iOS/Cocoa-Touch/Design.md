@@ -34,7 +34,7 @@ Cocoa 库本身在一些地方也使用了单例模式，例如`[NSNotificationC
 
 可以使用@synchronized进行加锁，代码如下：
 
-```
+```objectivec
 /* Singleton.h */
 #import <Foundation/Foundation.h>
 @interface Singleton : NSObject
@@ -60,7 +60,7 @@ static Singleton *instance = nil;
 
 这里主要利用GCD中的dispatch_once方法，这是最普遍也是苹果最推荐的方法，函数原型如下：
 
-```
+```objectivec
 void dispatch_once(
    dispatch_once_t *predicate,
    dispatch_block_t block);
@@ -68,7 +68,7 @@ void dispatch_once(
 
 单例实现代码如下：
 
-```
+```objectivec
 /* Singleton.h */
 #import <Foundation/Foundation.h>
 @interface Singleton : NSObject
@@ -310,4 +310,3 @@ int main(int argc, const char * argv[]) {
 * [Objective-C中Observer模式的实现](http://blog.csdn.net/zshtiger2414/article/details/6409695)
 * [Objective-C KVO编程](http://blog.csdn.net/kindazrael/article/details/7961601)
 * [iOS开发系列——Objective-C开发之KVC，KVO](http://www.cnblogs.com/kenshincui/p/3871178.html)
-* [浅谈iOS设计模式之单例模式](http://ijack.pw/2016/01/19/iOS设计模式之单例模式/)

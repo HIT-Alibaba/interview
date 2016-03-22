@@ -34,7 +34,7 @@ Objective-C中提供了两种内存管理机制：MRC（MannulReference Counting
 
 如下是四个黄金法则对应的代码示例：
 
-```
+```objectivec
 /*
  * 自己生成并持有该对象
  */
@@ -42,7 +42,7 @@ Objective-C中提供了两种内存管理机制：MRC（MannulReference Counting
  id obj1 = [NSObeject new];
 ```
 
-```
+```objectivec
 /*
  * 持有非自己生成的对象
  */
@@ -50,7 +50,7 @@ id obj = [NSArray array]; // 非自己生成的对象，且该对象存在，但
 [obj retain]; // 自己持有对象
 ```
 
-```
+```objectivec
 /*
  * 不在需要自己持有的对象的时候，释放
  */
@@ -62,7 +62,7 @@ id obj = [[NSObeject alloc] init]; // 此时持有对象
  */
 ```
 
-```
+```objectivec
 /*
  * 非自己持有的对象无法释放
  */
@@ -72,7 +72,7 @@ id obj = [NSArray array]; // 非自己生成的对象，且该对象存在，但
 
 其中 `非自己生成的对象，且该对象存在，但自己不持有` 这个特性是使用`autorelease`来实现的，示例代码如下：
 
-```
+```objectivec
 - (id) getAObjNotRetain {
     id obj = [[NSObject alloc] init]; // 自己持有对象
     [obj autorelease]; // 取得的对象存在，但自己不持有该对象
@@ -473,5 +473,4 @@ Allocations 工具主要用来检测 Abandoned memory. 主要思路是在一个�
 * https://stackoverflow.com/questions/17601274/arc-and-autorelease
 * https://stackoverflow.com/questions/8292060/arc-equivalent-of-autorelease
 * https://stackoverflow.com/questions/7906804/do-i-set-properties-to-nil-in-dealloc-when-using-arc
-* [ARC中的Trick](http://ijack.pw/2016/03/17/ARC-naive/)
 * http://wereadteam.github.io/2016/02/22/MLeaksFinder/?from=singlemessage&isappinstalled=0
