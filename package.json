@@ -1,6 +1,9 @@
 {
   "name": "interview",
   "version": "0.0.0",
+  "scripts": {
+    "test": "gitbook build"
+  }
   "devDependencies": {
     "gitbook-cli": "^1.0.0"
   }
