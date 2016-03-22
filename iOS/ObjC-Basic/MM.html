@@ -53,7 +53,7 @@
         data-chapter-title="Objective-C 内存管理"
         data-filepath="iOS/ObjC-Basic/MM.md"
         data-basepath="../.."
-        data-revision="Mon Mar 21 2016 14:07:20 GMT+0800 (CST)"
+        data-revision="Tue Mar 22 2016 14:35:20 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1147,30 +1147,86 @@
 <h2 id="mrc-&#x4E0E;-arc">MRC &#x4E0E; ARC</h2>
 <p>Objective-C&#x4E2D;&#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x79CD;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF1A;MRC&#xFF08;MannulReference Counting&#xFF09;&#x548C; ARC(Automatic Reference Counting)&#xFF0C;&#x5206;&#x522B;&#x63D0;&#x4F9B;&#x5BF9;&#x5185;&#x5B58;&#x7684;&#x624B;&#x52A8;&#x548C;&#x81EA;&#x52A8;&#x7BA1;&#x7406;&#xFF0C;&#x6765;&#x6EE1;&#x8DB3;&#x4E0D;&#x540C;&#x7684;&#x9700;&#x6C42;&#x3002;&#x73B0;&#x5728;&#x82F9;&#x679C;&#x63A8;&#x8350;&#x4F7F;&#x7528; ARC &#x6765;&#x8FDB;&#x884C;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x3002;</p>
 <h3 id="mrc">MRC</h3>
-<p>&#x5728;MRC&#x7684;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x4E0E;&#x5BF9;&#x53D8;&#x91CF;&#x7684;&#x7BA1;&#x7406;&#x76F8;&#x5173;&#x7684;&#x65B9;&#x6CD5;&#x6709;&#xFF1A;retain, release &#x548C; autorelease&#x3002;retain &#x548C; release &#x65B9;&#x6CD5;&#x64CD;&#x4F5C;&#x7684;&#x662F;&#x5F15;&#x7528;&#x8BB0;&#x6570;&#xFF0C;&#x5F53;&#x5F15;&#x7528;&#x8BB0;&#x6570;&#x4E3A;&#x96F6;&#x65F6;&#xFF0C;&#x4FBF;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x5185;&#x5B58;&#x3002;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x7528; NSAutoreleasePool &#x5BF9;&#x8C61;&#xFF0C;&#x5BF9;&#x52A0;&#x5165;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#xFF08;autorelease &#x8C03;&#x7528;&#xFF09;&#x7684;&#x53D8;&#x91CF;&#x8FDB;&#x884C;&#x7BA1;&#x7406;&#xFF0C;&#x5F53; drain &#x65F6;&#x56DE;&#x6536;&#x5185;&#x5B58;&#x3002;</p>
-<ol>
-<li>retain&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x5C06;&#x5185;&#x5B58;&#x6570;&#x636E;&#x7684;&#x6240;&#x6709;&#x6743;&#x9644;&#x7ED9;&#x53E6;&#x4E00;&#x6307;&#x9488;&#x53D8;&#x91CF;&#xFF0C;&#x5F15;&#x7528;&#x6570;&#x52A0;1&#xFF0C;&#x5373; retainCount+= 1;</li>
-<li>release&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x662F;&#x91CA;&#x653E;&#x6307;&#x9488;&#x53D8;&#x91CF;&#x5BF9;&#x5185;&#x5B58;&#x6570;&#x636E;&#x7684;&#x6240;&#x6709;&#x6743;&#xFF0C;&#x5F15;&#x7528;&#x6570;&#x51CF;1&#xFF0C;&#x5373; retainCount-= 1;</li>
-<li>autorelease&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x662F;&#x5C06;&#x8BE5;&#x5BF9;&#x8C61;&#x5185;&#x5B58;&#x7684;&#x7BA1;&#x7406;&#x653E;&#x5230; autoreleasepool &#x4E2D;&#x3002;</li>
-</ol>
-<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;:</p>
-<pre><code class="lang-objectivec"><span class="hljs-comment">//&#x5047;&#x8BBE;Number&#x4E3A;&#x9884;&#x5B9A;&#x4E49;&#x7684;&#x7C7B;</span>
-Number* num = [[Number alloc] init];
-Number* num2 = [num retain];<span class="hljs-comment">//&#x6B64;&#x65F6;&#x5F15;&#x7528;&#x8BB0;&#x6570;+1&#xFF0C;&#x73B0;&#x4E3A;2</span>
-
-[num2 release]; <span class="hljs-comment">//num2 &#x91CA;&#x653E;&#x5BF9;&#x5185;&#x5B58;&#x6570;&#x636E;&#x7684;&#x6240;&#x6709;&#x6743; &#x5F15;&#x7528;&#x8BB0;&#x6570;-1,&#x73B0;&#x4E3A;1;</span>
-[num release];<span class="hljs-comment">//num &#x91CA;&#x653E;&#x5BF9;&#x5185;&#x5B58;&#x6570;&#x636E;&#x7684;&#x6240;&#x6709;&#x6743; &#x5F15;&#x7528;&#x8BB0;&#x6570;-1,&#x73B0;&#x4E3A;0;</span>
-[num add:<span class="hljs-number">1</span> and <span class="hljs-number">2</span>];<span class="hljs-comment">//bug&#xFF0C;&#x6B64;&#x65F6;&#x5185;&#x5B58;&#x5DF2;&#x91CA;&#x653E;&#x3002;</span>
-
-<span class="hljs-comment">//autoreleasepool &#x7684;&#x4F7F;&#x7528; &#x5728;MRC&#x7BA1;&#x7406;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x6452;&#x5F03;&#x4EE5;&#x524D;&#x7684;&#x7528;&#x6CD5;&#xFF0C;NSAutoreleasePool&#x5BF9;&#x8C61;&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x65B0;&#x624B;&#x6BB5;&#x4E3A; @autoreleasepool</span>
-
-<span class="hljs-keyword">@autoreleasepool</span> {
-    Number* num = [[Number alloc] init];
-    [num autorelease];<span class="hljs-comment">//&#x7531; autoreleasepool &#x6765;&#x7BA1;&#x7406;&#x5176;&#x5185;&#x5B58;&#x7684;&#x91CA;&#x653E;</span>
+<h4 id="&#x5BF9;&#x8C61;&#x64CD;&#x4F5C;&#x7684;&#x56DB;&#x4E2A;&#x7C7B;&#x522B;">&#x5BF9;&#x8C61;&#x64CD;&#x4F5C;&#x7684;&#x56DB;&#x4E2A;&#x7C7B;&#x522B;</h4>
+<table>
+<thead>
+<tr>
+<th>&#x5BF9;&#x8C61;&#x64CD;&#x4F5C;</th>
+<th style="text-align:center">OC&#x4E2D;&#x5BF9;&#x5E94;&#x7684;&#x65B9;&#x6CD5;</th>
+<th style="text-align:center">&#x5BF9;&#x5E94;&#x7684; retainCount &#x53D8;&#x5316;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x751F;&#x6210;&#x5E76;&#x6301;&#x6709;&#x5BF9;&#x8C61;</td>
+<td style="text-align:center">alloc/new/copy/mutableCopy&#x7B49;</td>
+<td style="text-align:center">+1</td>
+</tr>
+<tr>
+<td>&#x6301;&#x6709;&#x5BF9;&#x8C61;</td>
+<td style="text-align:center">retain</td>
+<td style="text-align:center">+1</td>
+</tr>
+<tr>
+<td>&#x91CA;&#x653E;&#x5BF9;&#x8C61;</td>
+<td style="text-align:center">release</td>
+<td style="text-align:center">-1</td>
+</tr>
+<tr>
+<td>&#x5E9F;&#x5F03;&#x5BF9;&#x8C61;</td>
+<td style="text-align:center">dealloc</td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
+<p><strong>&#x6CE8;&#x610F;&#xFF1A;</strong>&#x8FD9;&#x4E9B;&#x5BF9;&#x8C61;&#x64CD;&#x4F5C;&#x7684;&#x65B9;&#x6CD5;&#x5176;&#x5B9E;&#x5E76;&#x4E0D;&#x5305;&#x62EC;&#x5728;OC&#x4E2D;&#xFF0C;&#x800C;&#x662F;&#x5305;&#x542B;&#x5728;Cocoa&#x6846;&#x67B6;&#x4E0B;&#x7684;Foundation&#x6846;&#x67B6;&#x4E2D;&#x3002;</p>
+<h4 id="&#x56DB;&#x4E2A;&#x6CD5;&#x5219;">&#x56DB;&#x4E2A;&#x6CD5;&#x5219;</h4>
+<ul>
+<li>&#x81EA;&#x5DF1;&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x81EA;&#x5DF1;&#x6301;&#x6709;&#x3002;</li>
+<li>&#x975E;&#x81EA;&#x5DF1;&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x81EA;&#x5DF1;&#x4E5F;&#x80FD;&#x6301;&#x6709;&#x3002;</li>
+<li>&#x4E0D;&#x5728;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x6301;&#x6709;&#x7684;&#x5BF9;&#x8C61;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x91CA;&#x653E;&#x3002;</li>
+<li>&#x975E;&#x81EA;&#x5DF1;&#x6301;&#x6709;&#x7684;&#x5BF9;&#x8C61;&#x65E0;&#x6CD5;&#x91CA;&#x653E;&#x3002;</li>
+</ul>
+<p>&#x5982;&#x4E0B;&#x662F;&#x56DB;&#x4E2A;&#x9EC4;&#x91D1;&#x6CD5;&#x5219;&#x5BF9;&#x5E94;&#x7684;&#x4EE3;&#x7801;&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-comment">/*
+ * &#x81EA;&#x5DF1;&#x751F;&#x6210;&#x5E76;&#x6301;&#x6709;&#x8BE5;&#x5BF9;&#x8C61;
+ */</span>
+ <span class="hljs-keyword">id</span> obj0 = [[<span class="hljs-built_in">NSObeject</span> alloc] init];
+ <span class="hljs-keyword">id</span> obj1 = [<span class="hljs-built_in">NSObeject</span> new];
+</code></pre>
+<pre><code class="lang-objectivec"><span class="hljs-comment">/*
+ * &#x6301;&#x6709;&#x975E;&#x81EA;&#x5DF1;&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;
+ */</span>
+<span class="hljs-keyword">id</span> obj = [<span class="hljs-built_in">NSArray</span> array]; <span class="hljs-comment">// &#x975E;&#x81EA;&#x5DF1;&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x4E14;&#x8BE5;&#x5BF9;&#x8C61;&#x5B58;&#x5728;&#xFF0C;&#x4F46;&#x81EA;&#x5DF1;&#x4E0D;&#x6301;&#x6709;</span>
+[obj retain]; <span class="hljs-comment">// &#x81EA;&#x5DF1;&#x6301;&#x6709;&#x5BF9;&#x8C61;</span>
+</code></pre>
+<pre><code class="lang-objectivec"><span class="hljs-comment">/*
+ * &#x4E0D;&#x5728;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x6301;&#x6709;&#x7684;&#x5BF9;&#x8C61;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x91CA;&#x653E;
+ */</span>
+<span class="hljs-keyword">id</span> obj = [[<span class="hljs-built_in">NSObeject</span> alloc] init]; <span class="hljs-comment">// &#x6B64;&#x65F6;&#x6301;&#x6709;&#x5BF9;&#x8C61;</span>
+[obj release]; <span class="hljs-comment">// &#x91CA;&#x653E;&#x5BF9;&#x8C61;</span>
+<span class="hljs-comment">/*
+ * &#x6307;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x9488;&#x4ECD;&#x5C31;&#x88AB;&#x4FDD;&#x7559;&#x5728;obj&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x4E2D;
+ * &#x4F46;&#x5BF9;&#x8C61;&#x5DF2;&#x7ECF;&#x91CA;&#x653E;&#xFF0C;&#x4E0D;&#x53EF;&#x8BBF;&#x95EE;
+ */</span>
+</code></pre>
+<pre><code class="lang-objectivec"><span class="hljs-comment">/*
+ * &#x975E;&#x81EA;&#x5DF1;&#x6301;&#x6709;&#x7684;&#x5BF9;&#x8C61;&#x65E0;&#x6CD5;&#x91CA;&#x653E;
+ */</span>
+<span class="hljs-keyword">id</span> obj = [<span class="hljs-built_in">NSArray</span> array]; <span class="hljs-comment">// &#x975E;&#x81EA;&#x5DF1;&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x4E14;&#x8BE5;&#x5BF9;&#x8C61;&#x5B58;&#x5728;&#xFF0C;&#x4F46;&#x81EA;&#x5DF1;&#x4E0D;&#x6301;&#x6709;</span>
+[obj release]; <span class="hljs-comment">// &#x6B64;&#x65F6;&#x5C06;&#x8FD0;&#x884C;&#x65F6;crash &#x6216;&#x7F16;&#x8BD1;&#x5668;&#x62A5;error</span>
+</code></pre>
+<p>&#x5176;&#x4E2D; <code>&#x975E;&#x81EA;&#x5DF1;&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x4E14;&#x8BE5;&#x5BF9;&#x8C61;&#x5B58;&#x5728;&#xFF0C;&#x4F46;&#x81EA;&#x5DF1;&#x4E0D;&#x6301;&#x6709;</code> &#x8FD9;&#x4E2A;&#x7279;&#x6027;&#x662F;&#x4F7F;&#x7528;<code>autorelease</code>&#x6765;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-objectivec">- (<span class="hljs-keyword">id</span>) getAObjNotRetain {
+    <span class="hljs-keyword">id</span> obj = [[<span class="hljs-built_in">NSObject</span> alloc] init]; <span class="hljs-comment">// &#x81EA;&#x5DF1;&#x6301;&#x6709;&#x5BF9;&#x8C61;</span>
+    [obj autorelease]; <span class="hljs-comment">// &#x53D6;&#x5F97;&#x7684;&#x5BF9;&#x8C61;&#x5B58;&#x5728;&#xFF0C;&#x4F46;&#x81EA;&#x5DF1;&#x4E0D;&#x6301;&#x6709;&#x8BE5;&#x5BF9;&#x8C61;</span>
+    <span class="hljs-keyword">return</span> obj;
 }
 </code></pre>
+<p><code>autorelease</code> &#x4F7F;&#x5F97;&#x5BF9;&#x8C61;&#x5728;&#x8D85;&#x51FA;&#x751F;&#x547D;&#x5468;&#x671F;&#x540E;&#x80FD;&#x6B63;&#x786E;&#x7684;&#x88AB;&#x91CA;&#x653E;(&#x901A;&#x8FC7;&#x8C03;&#x7528;release&#x65B9;&#x6CD5;)&#x3002;&#x5728;&#x8C03;&#x7528; <code>release</code> &#x540E;&#xFF0C;&#x5BF9;&#x8C61;&#x4F1A;&#x88AB;&#x7ACB;&#x5373;&#x91CA;&#x653E;&#xFF0C;&#x800C;&#x8C03;&#x7528; <code>autorelease</code> &#x540E;&#xFF0C;&#x5BF9;&#x8C61;&#x4E0D;&#x4F1A;&#x88AB;&#x7ACB;&#x5373;&#x91CA;&#x653E;&#xFF0C;&#x800C;&#x662F;&#x6CE8;&#x518C;&#x5230; <code>autoreleasepool</code> &#x4E2D;&#xFF0C;&#x7ECF;&#x8FC7;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x540E; <code>pool</code>&#x7ED3;&#x675F;&#xFF0C;&#x6B64;&#x65F6;&#x8C03;&#x7528;release&#x65B9;&#x6CD5;&#xFF0C;&#x5BF9;&#x8C61;&#x88AB;&#x91CA;&#x653E;&#x3002;</p>
+<p>&#x5728;MRC&#x7684;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x4E0E;&#x5BF9;&#x53D8;&#x91CF;&#x7684;&#x7BA1;&#x7406;&#x76F8;&#x5173;&#x7684;&#x65B9;&#x6CD5;&#x6709;&#xFF1A;retain, release &#x548C; autorelease&#x3002;retain &#x548C; release &#x65B9;&#x6CD5;&#x64CD;&#x4F5C;&#x7684;&#x662F;&#x5F15;&#x7528;&#x8BB0;&#x6570;&#xFF0C;&#x5F53;&#x5F15;&#x7528;&#x8BB0;&#x6570;&#x4E3A;&#x96F6;&#x65F6;&#xFF0C;&#x4FBF;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x5185;&#x5B58;&#x3002;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x7528; NSAutoreleasePool &#x5BF9;&#x8C61;&#xFF0C;&#x5BF9;&#x52A0;&#x5165;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#xFF08;autorelease &#x8C03;&#x7528;&#xFF09;&#x7684;&#x53D8;&#x91CF;&#x8FDB;&#x884C;&#x7BA1;&#x7406;&#xFF0C;&#x5F53; drain &#x65F6;&#x56DE;&#x6536;&#x5185;&#x5B58;&#x3002;</p>
 <h3 id="arc">ARC</h3>
-<p>ARC &#x662F;&#x82F9;&#x679C;&#x5F15;&#x5165;&#x7684;&#x4E00;&#x79CD;&#x81EA;&#x52A8;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x76D1;&#x89C6;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x5B58;&#x5468;&#x671F;&#xFF0C;&#x5E76;&#x5728;&#x7F16;&#x8BD1;&#x65F6;&#x671F;&#x81EA;&#x52A8;&#x5728;&#x5DF2;&#x6709;&#x4EE3;&#x7801;&#x4E2D;&#x63D2;&#x5165;&#x5408;&#x9002;&#x7684;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x4EE3;&#x7801;&#x3002;</p>
+<p>ARC &#x662F;&#x82F9;&#x679C;&#x5F15;&#x5165;&#x7684;&#x4E00;&#x79CD;&#x81EA;&#x52A8;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF0C;&#x4F1A;&#x6839;&#x636E;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x81EA;&#x52A8;&#x76D1;&#x89C6;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x5B58;&#x5468;&#x671F;&#xFF0C;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#x662F;&#x5728;&#x7F16;&#x8BD1;&#x65F6;&#x671F;&#x81EA;&#x52A8;&#x5728;&#x5DF2;&#x6709;&#x4EE3;&#x7801;&#x4E2D;&#x63D2;&#x5165;&#x5408;&#x9002;&#x7684;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x4EE3;&#x7801;&#x4EE5;&#x53CA;&#x5728; Runtime &#x505A;&#x4E00;&#x4E9B;&#x4F18;&#x5316;&#x3002;</p>
 <h4 id="&#x53D8;&#x91CF;&#x6807;&#x8BC6;&#x7B26;">&#x53D8;&#x91CF;&#x6807;&#x8BC6;&#x7B26;</h4>
 <p>&#x5728;ARC&#x4E2D;&#x4E0E;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x6709;&#x5173;&#x7684;&#x53D8;&#x91CF;&#x6807;&#x8BC6;&#x7B26;&#xFF0C;&#x6709;&#x4E0B;&#x9762;&#x51E0;&#x79CD;&#xFF1A;</p>
 <ul>
@@ -1396,6 +1452,27 @@ myController<span class="hljs-variable">.completionHandler</span> =  ^(<span cla
     <span class="hljs-keyword">self</span><span class="hljs-variable">.failureCompletionBlock</span> = <span class="hljs-literal">nil</span>;
 }
 </code></pre>
+<h4 id="arc-&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x671F;&#x7684;&#x4F18;&#x5316;">ARC &#x5728;&#x8FD0;&#x884C;&#x65F6;&#x671F;&#x7684;&#x4F18;&#x5316;</h4>
+<p>ARC &#x6240;&#x505A;&#x7684;&#x4E8B;&#x60C5;&#x5E76;&#x4E0D;&#x4EC5;&#x4EC5;&#x5C40;&#x9650;&#x4E8E;&#x5728;&#x7F16;&#x8BD1;&#x671F;&#x627E;&#x5230;&#x5408;&#x9002;&#x7684;&#x4F4D;&#x7F6E;&#x5E2E;&#x4F60;&#x63D2;&#x5165;&#x5408;&#x9002;&#x7684; <code>release</code> &#x7B49;&#x7B49;&#x8FD9;&#x6837;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x671F;&#x4E5F;&#x505A;&#x4E86;&#x4E00;&#x4E9B;&#x4F18;&#x5316;&#xFF0C;&#x5982;&#x4E0B;&#x662F;&#x4E24;&#x4E2A;&#x4F18;&#x5316;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<ul>
+<li><p>1.&#x5408;&#x5E76;&#x5BF9;&#x79F0;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x64CD;&#x4F5C;&#x3002;&#x6BD4;&#x5982;&#x5C06; +1/-1/+1/-1 &#x76F4;&#x63A5;&#x7F6E;&#x4E3A; 0.</p>
+</li>
+<li><p>2.&#x5DE7;&#x5999;&#x5730;&#x8DF3;&#x8FC7;&#x67D0;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B; <code>autorelease</code> &#x673A;&#x5236;&#x7684;&#x8C03;&#x7528;&#x3002;</p>
+</li>
+</ul>
+<p>&#x5982;&#x4E0B;&#x7528;&#x6765;&#x63CF;&#x8FF0;&#x4F18;&#x5316; 2 &#x7684;&#x5927;&#x81F4;&#x7684;&#x6D41;&#x7A0B;&#xFF1A;</p>
+<p>&#x5F53;&#x65B9;&#x6CD5;&#x5168;&#x90E8;&#x57FA;&#x4E8E; ARC &#x5B9E;&#x73B0;&#x65F6;&#xFF0C;&#x5728;&#x65B9;&#x6CD5; return &#x7684;&#x65F6;&#x5019;&#xFF0C;ARC &#x4F1A;&#x8C03;&#x7528; <code>objc_autoreleaseReturnValue()</code> &#x4EE5;&#x66FF;&#x4EE3; MRC &#x4E0B;&#x7684; <code>autorelease</code>&#x3002;&#x5728; MRC &#x4E0B;&#x60F3;&#x8981; retain &#x7684;&#x65F6;&#x5019;&#xFF0C;ARC &#x4F1A;&#x8C03;&#x7528; <code>objc_retainAutoreleasedReturnValue()</code>&#x3002;</p>
+<p>&#x5728;&#x8C03;&#x7528; <code>objc_autoreleaseReturnValue()</code> &#x65F6;&#xFF0C;&#x4F1A;&#x5728;&#x6808;&#x4E0A;&#x67E5;&#x8BE2; return address &#x4EE5;&#x786E;&#x5B9A; return value &#x662F;&#x5426;&#x4F1A;&#x88AB;&#x76F4;&#x63A5;&#x4F20;&#x7ED9; <code>objc_retainAutoreleasedReturnValue()</code>&#x3002; &#x5982;&#x679C;&#x6CA1;&#x4F20;&#xFF0C;&#x8BF4;&#x660E;&#x8FD4;&#x56DE;&#x503C;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x4ECE;&#x63D0;&#x4F9B;&#x65B9;&#x53D1;&#x9001;&#x7ED9;&#x63A5;&#x6536;&#x65B9;&#xFF0C;&#x8FD9;&#x65F6;&#x5C31;&#x4F1A;&#x8C03;&#x7528; <code>autorelease</code>&#xFF0C;&#x53CD;&#x4E4B;&#xFF0C;&#x5982;&#x679C;&#x8FD4;&#x56DE;&#x503C;&#x80FD;&#x987A;&#x5229;&#x7684;&#x4ECE;&#x63D0;&#x4F9B;&#x65B9;&#x4F20;&#x9001;&#x7ED9;&#x63A5;&#x6536;&#x65B9;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x76F4;&#x63A5;&#x8DF3;&#x8FC7; <code>autorelease</code> &#x8FC7;&#x7A0B;&#xFF0C;&#x5E76;&#x4E14;&#x4FEE;&#x6539;  return address &#x4EE5;&#x8DF3;&#x8FC7; <code>objc_retainAutoreleasedReturnValue()</code>&#x8FC7;&#x7A0B;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x8DF3;&#x8FC7;&#x4E86;&#x6574;&#x4E2A; <code>autorelease</code> &#x548C; <code>retain</code>&#x7684;&#x8FC7;&#x7A0B;&#x3002;</p>
+<h3 id="&#x5173;&#x4E8E;&#x5982;&#x4F55;&#x5199;&#x4E00;&#x4E2A;&#x68C0;&#x6D4B;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#x7684;&#x5DE5;&#x5177;">&#x5173;&#x4E8E;&#x5982;&#x4F55;&#x5199;&#x4E00;&#x4E2A;&#x68C0;&#x6D4B;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#x7684;&#x5DE5;&#x5177;</h3>
+<p>Instrument &#x4E3A;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86; Allocations/Leaks &#x8FD9;&#x6837;&#x597D;&#x7528;&#x7684;&#x5DE5;&#x5177;&#x7528;&#x6765;&#x68C0;&#x6D4B; memory leak &#x7684;&#x5DE5;&#x5177;&#x3002;&#x5982;&#x4E0B;&#x662F;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#x7684;&#x4E24;&#x79CD;&#x7C7B;&#x578B;&#xFF1A;</p>
+<ul>
+<li><p>Leaked memory: Memory unreferenced by your application that cannot be used again or freed (also detectable by using the Leaks instrument).</p>
+</li>
+<li><p>Abandoned memory: Memory still referenced by your application that has no useful purpose.</p>
+</li>
+</ul>
+<p>&#x5176;&#x4E2D; Leaks &#x5DE5;&#x5177;&#x4E3B;&#x8981;&#x7528;&#x6765;&#x68C0;&#x6D4B; Leaked memory&#xFF0C;&#x5728; MRC &#x65F6;&#x4EE3; &#x7A0B;&#x5E8F;&#x5458;&#x4F1A;&#x7ECF;&#x5E38;&#x5FD8;&#x8BB0;&#x5199; release &#x65B9;&#x6CD5;&#x5BFC;&#x81F4;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#xFF0C;&#x5728; ARC &#x65F6;&#x4EE3;&#x8FD9;&#x79CD;&#x5DF2;&#x7ECF;&#x4E0D;&#x592A;&#x5E38;&#x89C1;&#x3002;(ARC&#x65F6;&#x4EE3; &#x4E3B;&#x8981;&#x7684;Leaked Memory &#x6765;&#x81EA;&#x4E8E;&#x5E95;&#x5C42; C &#x8BED;&#x8A00;&#x4EE5;&#x53CA; &#x4E00;&#x4E9B;&#x7531; C &#x5199;&#x6210;&#x7684;&#x5E95;&#x5C42;&#x5E93;&#xFF0C;&#x5F80;&#x5F80;&#x4F1A;&#x56E0;&#x4E3A;&#x5FD8;&#x8BB0;&#x624B;&#x5DE5; free &#x800C;&#x5BFC;&#x81F4; leak )&#x3002;</p>
+<p>Allocations &#x5DE5;&#x5177;&#x4E3B;&#x8981;&#x7528;&#x6765;&#x68C0;&#x6D4B; Abandoned memory. &#x4E3B;&#x8981;&#x601D;&#x8DEF;&#x662F;&#x5728;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x5207;&#x7247;&#x5185;&#x68C0;&#x6D4B;&#x5BF9;&#x8C61;&#x7684;&#x58F0;&#x660E;&#x5468;&#x671F;&#x4EE5;&#x89C2;&#x5BDF;&#x5185;&#x5B58;&#x662F;&#x5426;&#x4F1A;&#x65E0;&#x9650;&#x589E;&#x957F;&#x3002;&#x901A;&#x8FC7; hook &#x6389; alloc&#xFF0C;dealloc&#xFF0C;retain&#xFF0C;release &#x7B49;&#x65B9;&#x6CD5;&#xFF0C;&#x6765;&#x8BB0;&#x5F55;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x3002;</p>
 <h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
 <ul>
 <li><a href="http://blog.csdn.net/fightingbull/article/details/8098133" target="_blank">Objective-C&#x5185;&#x5B58;&#x7BA1;&#x7406;MRC&#x4E0E;ARC</a></li>
@@ -1410,6 +1487,7 @@ myController<span class="hljs-variable">.completionHandler</span> =  ^(<span cla
 <li><a href="https://stackoverflow.com/questions/17601274/arc-and-autorelease" target="_blank">https://stackoverflow.com/questions/17601274/arc-and-autorelease</a></li>
 <li><a href="https://stackoverflow.com/questions/8292060/arc-equivalent-of-autorelease" target="_blank">https://stackoverflow.com/questions/8292060/arc-equivalent-of-autorelease</a></li>
 <li><a href="https://stackoverflow.com/questions/7906804/do-i-set-properties-to-nil-in-dealloc-when-using-arc" target="_blank">https://stackoverflow.com/questions/7906804/do-i-set-properties-to-nil-in-dealloc-when-using-arc</a></li>
+<li><a href="http://wereadteam.github.io/2016/02/22/MLeaksFinder/?from=singlemessage&amp;isappinstalled=0" target="_blank">http://wereadteam.github.io/2016/02/22/MLeaksFinder/?from=singlemessage&amp;isappinstalled=0</a></li>
 </ul>
 
                     
