@@ -23,4 +23,4 @@
 * [winlandiano](https://github.com/winlandiano)
 * [dodola](https://github.com/dodola)
 * [AveryLiu](https://github.com/AveryLiu)
-
+* [AlanMelody](https://github.com/AlanMelody)
