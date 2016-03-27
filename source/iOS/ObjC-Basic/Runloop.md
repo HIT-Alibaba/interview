@@ -59,7 +59,7 @@ Runloop 通过监控 Source 来决定有没有任务要做，除此之外，我�
 
 iOS 中公开暴露出来的只有 NSDefaultRunLoopMode 和 NSRunLoopCommonModes。 NSRunLoopCommonModes 实际上是一个 Mode 的集合，默认包括 NSDefaultRunLoopMode 和 NSEventTrackingRunLoopMode。
 
-### Runloop 的坑
+### 与 Runloop 相关的坑
 
 日常开发中，与 runLoop 接触得最近可能就是通过 NSTimer 了。一个 Timer 一次只能加入到一个 RunLoop 中。我们日常使用的时候，通常就是加入到当前的 runLoop 的 default mode 中，而ScrollView在用户滑动时，主线程RunLoop会转到UITrackingRunLoopMode。而这个时候，Timer就不会运行。
 
@@ -77,4 +77,3 @@ iOS 中公开暴露出来的只有 NSDefaultRunLoopMode 和 NSRunLoopCommonModes
 * http://www.cocoachina.com/ios/20111111/3487.html
 * http://mobile.51cto.com/iphone-386596.htm
 * http://blog.ibireme.com/2015/05/18/runloop/
-
