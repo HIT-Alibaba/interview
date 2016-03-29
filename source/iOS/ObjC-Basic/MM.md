@@ -459,6 +459,25 @@ Instrument 为我们提供了 Allocations/Leaks 这样好用的工具用来检�
 
 Allocations 工具主要用来检测 Abandoned memory. 主要思路是在一个时间切片内检测对象的声明周期以观察内存是否会无限增长。通过 hook 掉 alloc，dealloc，retain，release 等方法，来记录对象的生命周期。
 
+### weak 与 Autorelease
+
+众所周知，weak 不会持有对象，当给一个 weak 赋以一个自己生成的对象后，对象会立马被释放。
+
+一个很常见的 warning 就是 Assigning retained object to weak variable, object will be released after assignment.
+
+但是我们前面也提到了，可以持有非自己生成的对象，这通过 autorelease 实现。
+
+那么如果一个 weak 被赋以一个非自己生成的对象呢？代码如下：
+
+```
+__weak NSNumber *number = [NSNumber numberWithInt:100];
+NSLog(@"number = %@", number);
+```
+
+这种情况下是可以正确打印值的。
+
+[clang的文档](http://clang.llvm.org/docs/AutomaticReferenceCounting.html#arc-runtime-objc-loadweak) 是这么说的：这种情况下，weak 并不会立即释放，而是会通过 `objc_loadWeak` 这个方法注册到 AutoreleasePool 中，以延长生命周期。
+
 ### 参考资料
 
 * [Objective-C内存管理MRC与ARC](http://blog.csdn.net/fightingbull/article/details/8098133)
@@ -474,3 +493,4 @@ Allocations 工具主要用来检测 Abandoned memory. 主要思路是在一个�
 * https://stackoverflow.com/questions/8292060/arc-equivalent-of-autorelease
 * https://stackoverflow.com/questions/7906804/do-i-set-properties-to-nil-in-dealloc-when-using-arc
 * http://wereadteam.github.io/2016/02/22/MLeaksFinder/?from=singlemessage&isappinstalled=0
+* http://clang.llvm.org/docs/AutomaticReferenceCounting.html#arc-runtime-objc-loadweak
