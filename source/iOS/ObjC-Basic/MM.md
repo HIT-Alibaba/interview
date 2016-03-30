@@ -201,25 +201,6 @@ for (int i = 0; i < 100000000; i++)
 * 当 block 以异常（exception）结束时，pool 不会被 drain
 * Pool 的 drain 操作会把所有标记为 autorelease 的对象的引用计数减一，但是并不意味着这个对象一定会被释放掉，我们可以在 autorelease pool 中手动 retain 对象，以延长它的生命周期（在 MRC 中）。
 
-#### weak 与 Autorelease
-
-众所周知，weak 不会持有对象，当给一个 weak 赋以一个自己生成的对象后，对象会立马被释放。
-
-一个很常见的 warning 就是 Assigning retained object to weak variable, object will be released after assignment.
-
-但是我们前面也提到了，可以持有非自己生成的对象，这通过 autorelease 实现。
-
-那么如果一个 weak 被赋以一个非自己生成的对象呢？代码如下：
-
-```objectivec
-__weak NSNumber *number = [NSNumber numberWithInt:100];
-NSLog(@"number = %@", number);
-```
-
-这种情况下是可以正确打印值的。
-
-[clang的文档](http://clang.llvm.org/docs/AutomaticReferenceCounting.html#arc-runtime-objc-loadweak) 是这么说的：这种情况下，weak 并不会立即释放，而是会通过 `objc_loadWeak` 这个方法注册到 AutoreleasePool 中，以延长生命周期。
-
 #### main.m 中 Autorelease Pool 的解释
 
 大家都知道在 iOS 程序的 main.m 文件中有类似这样的语句：
@@ -377,6 +358,26 @@ self.property = a;
 
 这个和我们之前在 MRC 中做的不是完全一样。ARC 会把对象的生命周期延长，确保调用者能拿到并且使用这个返回值，但是并不一定会使用 autorelease，文档写的是在 worst case 的情况下才可能会使用，因此调用者不能假设返回值真的就在 autorelease pool 中。从性能的角度，这种做法也是可以理解的。如果我们能够知道一个对象的生命周期最长应该有多长，也就没有必要使用 autorelease 了，直接使用 release 就可以。如果很多对象都使用 autorelease 的话，也会导致整个 pool 在 drain 的时候性能下降。
 
+##### weak 与 Autorelease
+
+众所周知，weak 不会持有对象，当给一个 weak 赋以一个自己生成的对象后，对象会立马被释放。
+
+一个很常见的 warning 就是 Assigning retained object to weak variable, object will be released after assignment.
+
+但是我们前面也提到了，可以持有非自己生成的对象，这通过 autorelease 实现。
+
+那么如果一个 weak 被赋以一个非自己生成的对象（即上面提到的 unretained return value）呢？代码如下：
+
+```objectivec
+__weak NSNumber *number = [NSNumber numberWithInt:100];
+NSLog(@"number = %@", number);
+```
+
+这种情况下是可以正确打印值的。
+
+[clang的文档](http://clang.llvm.org/docs/AutomaticReferenceCounting.html#arc-runtime-objc-loadweak) 是这么说的：这种情况下，weak 并不会立即释放，而是会通过 `objc_loadWeak` 这个方法注册到 AutoreleasePool 中，以延长生命周期。
+
+
 ##### ARC 下是否还有必要在 dealloc 中把属性置为 nil？
 
 为了解决这个问题，首先让我们理清楚属性是个什么存在。属性(property) 实际上就是一种语法糖，每个属性背后都有实例变量(Ivar)做支持，编译器会帮我们自动生成有关的 setter 和 getter，对于下面的 property：
@@ -452,19 +453,47 @@ myController.completionHandler =  ^(NSInteger result) {
 }
 ```
 
-#### ARC 在运行时期的优化
+##### ARC 在运行时期的优化
 
-ARC 所做的事情并不仅仅局限于在编译期找到合适的位置帮你插入合适的 `release` 等等这样的方法，其在运行时期也做了一些优化，如下是两个优化的例子：
+上面提到对于 unretained return value， ARC “并不一定会使用 autorelease”，下面具体解释一下。
 
-- 1.合并对称的引用计数操作。比如将 +1/-1/+1/-1 直接置为 0.
+ARC 所做的事情并不仅仅局限于在编译期找到合适的位置帮你插入合适的 `release` 等等这样的内存管理方法，其在运行时期也做了一些优化，如下是两个优化的例子：
 
-- 2.巧妙地跳过某些情况下 `autorelease` 机制的调用。
+1. 合并对称的引用计数操作。比如将 +1/-1/+1/-1 直接置为 0.
 
-如下用来描述优化 2 的大致的流程：
+2. 巧妙地跳过某些情况下 `autorelease` 机制的调用。
 
-当方法全部基于 ARC 实现时，在方法 return 的时候，ARC 会调用 `objc_autoreleaseReturnValue()` 以替代 MRC 下的 `autorelease`。在 MRC 下想要 retain 的时候，ARC 会调用 `objc_retainAutoreleasedReturnValue()`。
+其中第二个优化，是 ARC 针对 `autorelease` 返回值提供的一套优化策略，大体的流程如下：
 
-在调用 `objc_autoreleaseReturnValue()` 时，会在栈上查询 return address 以确定 return value 是否会被直接传给 `objc_retainAutoreleasedReturnValue()`。 如果没传，说明返回值不能直接从提供方发送给接收方，这时就会调用 `autorelease`，反之，如果返回值能顺利的从提供方传送给接收方，那么就会直接跳过 `autorelease` 过程，并且修改  return address 以跳过 `objc_retainAutoreleasedReturnValue()`过程，这样就跳过了整个 `autorelease` 和 `retain`的过程。
+当方法全部基于 ARC 实现时，在方法 return 的时候，ARC 会调用 `objc_autoreleaseReturnValue()` 以替代 MRC 下的 `autorelease`。在 MRC 下需要 retain 的位置，ARC 会调用 `objc_retainAutoreleasedReturnValue()`。因此下面的 ARC 代码：
+
+```objectivec
++ (instancetype)createSark {
+    return [self new];
+}
+// caller
+Sark *sark = [Sark createSark];
+```
+
+实际上会被改写成类似这样：
+
+```objectivec
++ (instancetype)createSark {
+    id tmp = [self new];
+    return objc_autoreleaseReturnValue(tmp); // 代替我们调用autorelease
+}
+// caller
+id tmp = objc_retainAutoreleasedReturnValue([Sark createSark]) // 代替我们调用retain
+Sark *sark = tmp;
+objc_storeStrong(&sark, nil); // 相当于代替我们调用了release
+```
+
+有了这个基础，ARC 可以使用一些优化技术。在调用 `objc_autoreleaseReturnValue()` 时，会在栈上查询 return address 以确定 return value 是否会被直接传给 `objc_retainAutoreleasedReturnValue()`。 如果没传，说明返回值不能直接从提供方发送给接收方，这时就会调用 `autorelease`。反之，如果返回值能顺利的从提供方传送给接收方，那么就会直接跳过 `autorelease` 过程，并且修改 return address 以跳过 `objc_retainAutoreleasedReturnValue()`过程，这样就跳过了整个 `autorelease` 和 `retain`的过程。
+
+> 核心思想：当返回值被返回之后，紧接着就需要被 retain 的时候，没有必要进行 autorelease + retain，直接什么都不要做就好了。
+
+另外，当函数的调用方是非 ARC 环境时，ARC 还会进行更多的判断，在这里不再详述，详见 [黑幕背后的 Autorelease](http://blog.sunnyxx.com/2014/10/15/behind-autorelease/)。
+
 
 ### 关于如何写一个检测循环引用的工具
 
