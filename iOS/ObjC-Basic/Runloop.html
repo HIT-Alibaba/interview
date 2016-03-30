@@ -53,7 +53,7 @@
         data-chapter-title="Runloop"
         data-filepath="iOS/ObjC-Basic/Runloop.md"
         data-basepath="../.."
-        data-revision="Tue Mar 22 2016 15:00:49 GMT+0800 (CST)"
+        data-revision="Wed Mar 30 2016 19:10:51 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1181,6 +1181,21 @@
 <li>NSRunLoopCommonModes</li>
 </ul>
 <p>iOS &#x4E2D;&#x516C;&#x5F00;&#x66B4;&#x9732;&#x51FA;&#x6765;&#x7684;&#x53EA;&#x6709; NSDefaultRunLoopMode &#x548C; NSRunLoopCommonModes&#x3002; NSRunLoopCommonModes &#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x4E00;&#x4E2A; Mode &#x7684;&#x96C6;&#x5408;&#xFF0C;&#x9ED8;&#x8BA4;&#x5305;&#x62EC; NSDefaultRunLoopMode &#x548C; NSEventTrackingRunLoopMode&#x3002;</p>
+<h3 id="&#x4E0E;-runloop-&#x76F8;&#x5173;&#x7684;&#x5751;">&#x4E0E; Runloop &#x76F8;&#x5173;&#x7684;&#x5751;</h3>
+<p>&#x65E5;&#x5E38;&#x5F00;&#x53D1;&#x4E2D;&#xFF0C;&#x4E0E; runLoop &#x63A5;&#x89E6;&#x5F97;&#x6700;&#x8FD1;&#x53EF;&#x80FD;&#x5C31;&#x662F;&#x901A;&#x8FC7; NSTimer &#x4E86;&#x3002;&#x4E00;&#x4E2A; Timer &#x4E00;&#x6B21;&#x53EA;&#x80FD;&#x52A0;&#x5165;&#x5230;&#x4E00;&#x4E2A; RunLoop &#x4E2D;&#x3002;&#x6211;&#x4EEC;&#x65E5;&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x901A;&#x5E38;&#x5C31;&#x662F;&#x52A0;&#x5165;&#x5230;&#x5F53;&#x524D;&#x7684; runLoop &#x7684; default mode &#x4E2D;&#xFF0C;&#x800C; ScrollView &#x5728;&#x7528;&#x6237;&#x6ED1;&#x52A8;&#x65F6;&#xFF0C;&#x4E3B;&#x7EBF;&#x7A0B; RunLoop &#x4F1A;&#x8F6C;&#x5230; UITrackingRunLoopMode &#x3002;&#x800C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#xFF0C; Timer &#x5C31;&#x4E0D;&#x4F1A;&#x8FD0;&#x884C;&#x3002;</p>
+<p>&#x6709;&#x5982;&#x4E0B;&#x4E24;&#x79CD;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;</p>
+<ul>
+<li>&#x7B2C;&#x4E00;&#x79CD;: &#x8BBE;&#x7F6E;RunLoop Mode&#xFF0C;&#x4F8B;&#x5982;NSTimer,&#x6211;&#x4EEC;&#x6307;&#x5B9A;&#x5B83;&#x8FD0;&#x884C;&#x4E8E; NSRunLoopCommonModes &#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;Mode&#x7684;&#x96C6;&#x5408;&#x3002;&#x6CE8;&#x518C;&#x5230;&#x8FD9;&#x4E2A; Mode &#x4E0B;&#x540E;&#xFF0C;&#x65E0;&#x8BBA;&#x5F53;&#x524D; runLoop &#x8FD0;&#x884C;&#x54EA;&#x4E2A; mode &#xFF0C;&#x4E8B;&#x4EF6;&#x90FD;&#x80FD;&#x5F97;&#x5230;&#x6267;&#x884C;&#x3002;</li>
+<li>&#x7B2C;&#x4E8C;&#x79CD;: &#x53E6;&#x4E00;&#x79CD;&#x89E3;&#x51B3;Timer&#x7684;&#x65B9;&#x6CD5;&#x662F;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x548C;&#x5904;&#x7406; Timer &#x4E8B;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x66F4;&#x65B0;UI&#x3002;</li>
+</ul>
+<p>&#x5728; AFNetworking 3.0 &#x4E2D;&#xFF0C;&#x5C31;&#x6709;&#x76F8;&#x5173;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-objectivec">- (<span class="hljs-keyword">void</span>)startActivationDelayTimer {
+    <span class="hljs-keyword">self</span><span class="hljs-variable">.activationDelayTimer</span> = [<span class="hljs-built_in">NSTimer</span>
+                                 timerWithTimeInterval:<span class="hljs-keyword">self</span><span class="hljs-variable">.activationDelay</span> target:<span class="hljs-keyword">self</span> selector:<span class="hljs-keyword">@selector</span>(activationDelayTimerFired) userInfo:<span class="hljs-literal">nil</span> repeats:<span class="hljs-literal">NO</span>];
+    [[<span class="hljs-built_in">NSRunLoop</span> mainRunLoop] addTimer:<span class="hljs-keyword">self</span><span class="hljs-variable">.activationDelayTimer</span> forMode:<span class="hljs-built_in">NSRunLoopCommonModes</span>];
+}
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x5C31;&#x662F;&#x6DFB;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;&#x8BA1;&#x65F6;&#x5668;&#xFF0C;&#x7531;&#x4E8E;&#x6307;&#x5B9A;&#x4E86; NSRunLoopCommonModes&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x7BA1; RunLoop &#x51FA;&#x4E8E;&#x4EC0;&#x4E48;&#x72B6;&#x6001;&#xFF0C;&#x90FD;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x8BA1;&#x65F6;&#x5668;&#x4EFB;&#x52A1;&#x3002;</p>
 <h4 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h4>
 <ul>
 <li><a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Multithreading/RunLoopManagement/RunLoopManagement.html#//apple_ref/doc/uid/10000057i-CH16-SW1" target="_blank">https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Multithreading/RunLoopManagement/RunLoopManagement.html#//apple_ref/doc/uid/10000057i-CH16-SW1</a></li>

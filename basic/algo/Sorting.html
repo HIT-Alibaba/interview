@@ -53,7 +53,7 @@
         data-chapter-title="排序"
         data-filepath="basic/algo/Sorting.md"
         data-basepath="../.."
-        data-revision="Tue Mar 22 2016 15:00:49 GMT+0800 (CST)"
+        data-revision="Wed Mar 30 2016 19:10:51 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1145,6 +1145,7 @@
 <p>&#x7A33;&#x5B9A;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#x4F1A;&#x4F9D;&#x7167;&#x76F8;&#x7B49;&#x7684;&#x5173;&#x952E;&#xFF08;&#x6362;&#x8A00;&#x4E4B;&#x5C31;&#x662F;&#x503C;&#xFF09;&#x7EF4;&#x6301;&#x7EAA;&#x5F55;&#x7684;&#x76F8;&#x5BF9;&#x6B21;&#x5E8F;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#x662F;&#x7A33;&#x5B9A;&#x7684;&#xFF0C;&#x5C31;&#x662F;&#x5F53;&#x6709;&#x4E24;&#x4E2A;&#x6709;&#x76F8;&#x7B49;&#x5173;&#x952E;&#x7684;&#x7EAA;&#x5F55;R&#x548C;S&#xFF0C;&#x4E14;&#x5728;&#x539F;&#x672C;&#x7684;&#x4E32;&#x884C;&#x4E2D;R&#x51FA;&#x73B0;&#x5728;S&#x4E4B;&#x524D;&#xFF0C;&#x5728;&#x6392;&#x5E8F;&#x8FC7;&#x7684;&#x4E32;&#x884C;&#x4E2D;R&#x4E5F;&#x5C06;&#x4F1A;&#x662F;&#x5728;S&#x4E4B;&#x524D;&#x3002;</p>
 <h4 id="&#x8BA1;&#x7B97;&#x590D;&#x6742;&#x5EA6;&#xFF08;&#x6700;&#x5DEE;&#x3001;&#x5E73;&#x5747;&#x3001;&#x548C;&#x6700;&#x597D;&#x8868;&#x73B0;&#xFF09;">&#x8BA1;&#x7B97;&#x590D;&#x6742;&#x5EA6;&#xFF08;&#x6700;&#x5DEE;&#x3001;&#x5E73;&#x5747;&#x3001;&#x548C;&#x6700;&#x597D;&#x8868;&#x73B0;&#xFF09;</h4>
 <p>&#x4F9D;&#x636E;&#x4E32;&#x884C;&#xFF08;list&#xFF09;&#x7684;&#x5927;&#x5C0F;&#xFF08;n&#xFF09;&#xFF0C;&#x4E00;&#x822C;&#x800C;&#x8A00;&#xFF0C;&#x597D;&#x7684;&#x8868;&#x73B0;&#x662F;O(nlogn)&#xFF0C;&#x4E14;&#x574F;&#x7684;&#x884C;&#x4E3A;&#x662F;O(n2)&#x3002;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x6392;&#x5E8F;&#x7406;&#x60F3;&#x7684;&#x8868;&#x73B0;&#x662F;O(n)&#x3002;&#x4EC5;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x62BD;&#x8C61;&#x5173;&#x952E;&#x6BD4;&#x8F83;&#x8FD0;&#x7B97;&#x7684;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#x603B;&#x5E73;&#x5747;&#x4E0A;&#x603B;&#x662F;&#x81F3;&#x5C11;&#x9700;&#x8981;O(nlogn)&#x3002;</p>
+<p>&#x6240;&#x6709;&#x57FA;&#x4E8E;&#x6BD4;&#x8F83;&#x7684;&#x6392;&#x5E8F;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x81F3;&#x5C11;&#x662F; O(nlogn)&#x3002;</p>
 <h2 id="&#x5E38;&#x89C1;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;">&#x5E38;&#x89C1;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;</h2>
 <h4 id="&#x7A33;&#x5B9A;&#x6392;&#x5E8F;&#xFF1A;">&#x7A33;&#x5B9A;&#x6392;&#x5E8F;&#xFF1A;</h4>
 <ul>
@@ -1161,13 +1162,88 @@
 <li>&#x9009;&#x62E9;&#x6392;&#x5E8F;&#xFF08;Selection Sort&#xFF09;&#x2014; O(n&#xB2;)</li>
 <li>&#x5E0C;&#x5C14;&#x6392;&#x5E8F;&#xFF08;Shell Sort&#xFF09;&#x2014; O(nlogn)</li>
 <li>&#x5806;&#x6392;&#x5E8F;&#xFF08;Heapsort&#xFF09;&#x2014; O(nlogn)</li>
-<li>&#x5FEB;&#x901F;&#x6392;&#x5E8F;&#xFF08;Quicksort&#xFF09;&#x2014; O(nlogn) &#x671F;&#x671B;&#x65F6;&#x95F4;, O(n2) &#x6700;&#x574F;&#x60C5;&#x51B5;; &#x5BF9;&#x4E8E;&#x5927;&#x7684;&#x3001;&#x4E71;&#x6570;&#x4E32;&#x884C;&#x4E00;&#x822C;&#x76F8;&#x4FE1;&#x662F;&#x6700;&#x5FEB;&#x7684;&#x5DF2;&#x77E5;&#x6392;&#x5E8F;</li>
+<li>&#x5FEB;&#x901F;&#x6392;&#x5E8F;&#xFF08;Quicksort&#xFF09;&#x2014; O(nlogn) &#x671F;&#x671B;&#x65F6;&#x95F4;, O(n&#xB2;) &#x6700;&#x574F;&#x60C5;&#x51B5;; &#x5BF9;&#x4E8E;&#x5927;&#x7684;&#x3001;&#x4E71;&#x6570;&#x4E32;&#x884C;&#x4E00;&#x822C;&#x76F8;&#x4FE1;&#x662F;&#x6700;&#x5FEB;&#x7684;&#x5DF2;&#x77E5;&#x6392;&#x5E8F;</li>
 </ul>
+<h4 id="&#x5FEB;&#x6392;">&#x5FEB;&#x6392;</h4>
+<p>&#x5FEB;&#x6392;&#x662F;&#x7ECF;&#x5178;&#x7684; divide &amp; conquer &#x95EE;&#x9898;&#xFF0C;&#x5982;&#x4E0B;&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x5FEB;&#x6392;&#x7684;&#x601D;&#x60F3;&#x3001;&#x4F2A;&#x4EE3;&#x7801;&#x3001;&#x4EE3;&#x7801;&#x3001;&#x590D;&#x6742;&#x5EA6;&#x8BA1;&#x7B97;&#x4EE5;&#x53CA;&#x5FEB;&#x6392;&#x7684;&#x53D8;&#x5F62;&#x3002;</p>
+<h5 id="&#x5FEB;&#x6392;&#x7684;&#x601D;&#x60F3;">&#x5FEB;&#x6392;&#x7684;&#x601D;&#x60F3;</h5>
+<p>&#x5982;&#x4E0B;&#x7684;&#x4E09;&#x6B65;&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x5FEB;&#x6392;&#x7684;&#x6D41;&#x7A0B;&#xFF1A;</p>
+<ul>
+<li>&#x5728;&#x6570;&#x7EC4;&#x4E2D;&#x968F;&#x673A;&#x53D6;&#x4E00;&#x4E2A;&#x503C;&#x4F5C;&#x4E3A;&#x6807;&#x5175;</li>
+<li>&#x5BF9;&#x6807;&#x5175;&#x5DE6;&#x3001;&#x53F3;&#x7684;&#x533A;&#x95F4;&#x8FDB;&#x884C;&#x5212;&#x5206;(&#x5C06;&#x6BD4;&#x6807;&#x5175;&#x5927;&#x7684;&#x6570;&#x653E;&#x5728;&#x6807;&#x5175;&#x7684;&#x53F3;&#x9762;&#xFF0C;&#x6BD4;&#x6807;&#x5175;&#x5C0F;&#x7684;&#x6570;&#x653E;&#x5728;&#x6807;&#x5175;&#x7684;&#x5DE6;&#x9762;&#xFF0C;&#x5982;&#x679C;&#x5012;&#x5E8F;&#x5C31;&#x53CD;&#x8FC7;&#x6765;)</li>
+<li>&#x91CD;&#x590D;&#x5982;&#x4E0A;&#x4E24;&#x4E2A;&#x8FC7;&#x7A0B;&#xFF0C;&#x76F4;&#x5230;&#x9009;&#x53D6;&#x4E86;&#x6240;&#x6709;&#x7684;&#x6807;&#x5175;&#x5E76;&#x5212;&#x5206;(&#x6B64;&#x65F6;&#x6BCF;&#x4E2A;&#x6807;&#x5175;&#x51B3;&#x5B9A;&#x7684;&#x533A;&#x95F4;&#x4E2D;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x503C;&#xFF0C;&#x6545;&#x6709;&#x5E8F;)</li>
+</ul>
+<h5 id="&#x4F2A;&#x4EE3;&#x7801;">&#x4F2A;&#x4EE3;&#x7801;</h5>
+<p>&#x5982;&#x4E0B;&#x662F;&#x5FEB;&#x6392;&#x7684;&#x4E3B;&#x4F53;&#x4F2A;&#x4EE3;&#x7801;</p>
+<pre><code>QUCIKSORT(A, p, r)
+if p &lt; r
+    q = PARTITION(A, p, r)
+    QUICKSORT(A, p, q-1)
+    QUICKSORT(A, q+1, r)
+</code></pre><p>&#x5982;&#x4E0B;&#x662F;&#x7528;&#x4E8E;&#x9009;&#x53D6;&#x6807;&#x5175;&#x4EE5;&#x53CA;&#x5212;&#x5206;&#x7684;&#x4F2A;&#x4EE3;&#x7801;</p>
+<pre><code>PARTITION(A, p, r)
+x = A[r]
+i = p - 1
+for j = p to r - 1
+    if A[j] &lt;= x
+        i++
+        swap A[i] with A[j]
+swap A[i+1] with A[j]
+return i+1
+</code></pre><h5 id="&#x4EE3;&#x7801;">&#x4EE3;&#x7801;</h5>
+<pre><code class="lang-Swift"><span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">quickSort</span><span class="hljs-params">(<span class="hljs-keyword">inout</span> targetArray: [Int], begin: Int, end: Int)</span></span> {
+    <span class="hljs-keyword">if</span> begin &lt; end {
+        <span class="hljs-keyword">let</span> pivot = <span class="hljs-built_in">partition</span>(&amp;targetArray, begin: begin, end: end)
+        <span class="hljs-built_in">quickSort</span>(&amp;targetArray, begin: begin, end: pivot - <span class="hljs-number">1</span>)
+        <span class="hljs-built_in">quickSort</span>(&amp;targetArray, begin: pivot + <span class="hljs-number">1</span>, end: end)
+    }
+}
+
+<span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">partition</span><span class="hljs-params">(<span class="hljs-keyword">inout</span> targetArray: [Int], begin: Int, end: Int)</span></span> -&gt; <span class="hljs-type">Int</span> {
+    <span class="hljs-keyword">let</span> value = targetArray[end]
+    <span class="hljs-keyword">var</span> i = begin - <span class="hljs-number">1</span>
+    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> begin ..&lt; end {
+        <span class="hljs-keyword">if</span>  targetArray[j] &lt;= value {
+            i += <span class="hljs-number">1</span>;
+            swapTwoValue(&amp;targetArray[i], b: &amp;targetArray[j])
+        }
+    }
+    swapTwoValue(&amp;targetArray[i+<span class="hljs-number">1</span>], b: &amp;targetArray[end])
+    <span class="hljs-keyword">return</span> i+<span class="hljs-number">1</span>
+}
+
+<span class="hljs-func"><span class="hljs-keyword">func</span> <span class="hljs-title">swapTwoValue</span><span class="hljs-params">(<span class="hljs-keyword">inout</span> a: Int, <span class="hljs-keyword">inout</span> b: Int)</span></span> {
+    <span class="hljs-keyword">let</span> <span class="hljs-built_in">c</span> = a
+    a = b
+    b = <span class="hljs-built_in">c</span>
+}
+
+<span class="hljs-keyword">var</span> testArray :[<span class="hljs-type">Int</span>] = [<span class="hljs-number">123</span>,<span class="hljs-number">3333</span>,<span class="hljs-number">223</span>,<span class="hljs-number">231</span>,<span class="hljs-number">3121</span>,<span class="hljs-number">245</span>,<span class="hljs-number">1123</span>]
+
+<span class="hljs-built_in">quickSort</span>(&amp;testArray, begin: <span class="hljs-number">0</span>, end: testArray.<span class="hljs-built_in">count</span>-<span class="hljs-number">1</span>)
+</code></pre>
+<h5 id="&#x590D;&#x6742;&#x5EA6;&#x5206;&#x6790;">&#x590D;&#x6742;&#x5EA6;&#x5206;&#x6790;</h5>
+<p>&#x5728;&#x6700;&#x597D;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6BCF;&#x6B21; partition &#x90FD;&#x4F1A;&#x628A;&#x6570;&#x7EC4;&#x4E00;&#x5206;&#x4E3A;&#x4E8C;&#xFF0C;&#x6240;&#x4EE5;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6; T(n) = 2T(n/2) + O(n)</p>
+<p>&#x89E3;&#x4E3A; T(n) = O(nlog(n))</p>
+<p>&#x5728;&#x6700;&#x574F;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6570;&#x7EC4;&#x521A;&#x597D;&#x548C;&#x60F3;&#x8981;&#x7684;&#x7ED3;&#x679C;&#x987A;&#x5E8F;&#x76F8;&#x540C;&#xFF0C;&#x6BCF;&#x6B21; partition &#x5230;&#x7684;&#x90FD;&#x662F;&#x5F53;&#x524D;&#x65E0;&#x5E8F;&#x533A;&#x4E2D;&#x6700;&#x5C0F;(&#x6216;&#x6700;&#x5927;)&#x7684;&#x8BB0;&#x5F55;&#xFF0C;&#x56E0;&#x6B64;&#x53EA;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x6BD4;&#x4E0A;&#x4E00;&#x6B21;&#x5212;&#x5206;&#x5C11;&#x4E00;&#x4E2A;&#x8BB0;&#x5F55;&#x7684;&#x5B50;&#x5E8F;&#x5217;&#x3002;T(n) = O(n) + T(n-1)</p>
+<p>&#x89E3;&#x4E3A; T(n) = O(n&#xB2;)</p>
+<p>&#x5728;&#x5E73;&#x5747;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5FEB;&#x6392;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x662F; O(nlog(n))</p>
+<h5 id="&#x53D8;&#x5F62;">&#x53D8;&#x5F62;</h5>
+<p>&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x5FEB;&#x6392;&#x7684; PARTITION &#x601D;&#x60F3;&#x6C42;&#x6570;&#x7EC4;&#x4E2D;&#x7B2C;K&#x5927;&#x5143;&#x7D20;&#x8FD9;&#x6837;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x6B65;&#x9AA4;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x5728;&#x6570;&#x7EC4;&#x4E2D;&#x968F;&#x673A;&#x53D6;&#x4E00;&#x4E2A;&#x503C;&#x4F5C;&#x4E3A;&#x6807;&#x5175;&#xFF0C;&#x5DE6;&#x53F3;&#x5206;&#x5316;&#x540E;&#x5176;&#x987A;&#x5E8F;&#x4E3A;X</li>
+<li>&#x5982;&#x679C; X == Kth &#x8BF4;&#x660E;&#x8FD9;&#x5C31;&#x662F;&#x7B2C; K &#x5927;&#x7684;&#x6570;</li>
+<li>&#x5982;&#x679C; X &gt; Kth &#x8BF4;&#x660E;&#x7B2C; K &#x5927;&#x7684;&#x6570;&#x5728;&#x6807;&#x5175;&#x5DE6;&#x8FB9;&#xFF0C;&#x7EE7;&#x7EED;&#x5728;&#x5DE6;&#x8FB9;&#x5BFB;&#x627E;&#x7B2C; Kth &#x5927;&#x7684;&#x6570;</li>
+<li>&#x5982;&#x679C; X &lt; Kth &#x8BF4;&#x660E;&#x7B2C; K &#x5927;&#x7684;&#x6570;&#x5728;&#x6807;&#x5175;&#x53F3;&#x8FB9;&#xFF0C;&#x7EE7;&#x7EED;&#x5728;&#x53F3;&#x8FB9;&#x9700;&#x627E;&#x7B2C; Kth - X &#x5927;&#x7684;&#x6570;</li>
+</ul>
+<p>&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x662F; O(n)</p>
+<p>T(n) = n + n/2 + n/4 + ... = O(n)</p>
 <h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;">&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
 <ol>
 <li><a href="http://blog.sina.com.cn/s/blog_4080505a0101iewt.html" target="_blank">&#x5404;&#x79CD;&#x57FA;&#x672C;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#x7684;&#x603B;&#x7ED3;</a></li>
 <li><a href="http://blog.csdn.net/whuslei/article/details/6442755" target="_blank">&#x5E38;&#x7528;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#x5C0F;&#x7ED3;</a></li>
 <li><a href="http://blog.csdn.net/yexinghai/article/details/4649923" target="_blank">&#x516B;&#x5927;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#x603B;&#x7ED3;</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Quicksort" target="_blank">QuickSort</a></li>
 </ol>
 
                     

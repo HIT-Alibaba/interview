@@ -53,7 +53,7 @@
         data-chapter-title="Objective-C 内存管理"
         data-filepath="iOS/ObjC-Basic/MM.md"
         data-basepath="../.."
-        data-revision="Tue Mar 22 2016 15:00:49 GMT+0800 (CST)"
+        data-revision="Wed Mar 30 2016 19:10:51 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1240,7 +1240,7 @@
 <p><code>__unsafe_unretained</code> &#x58F0;&#x660E;&#x8FD9;&#x4E2A;&#x5F15;&#x7528;&#x4E0D;&#x4F1A;&#x4FDD;&#x6301;&#x88AB;&#x5F15;&#x7528;&#x5BF9;&#x8C61;&#x7684;&#x5B58;&#x6D3B;&#xFF0C;&#x5982;&#x679C;&#x5BF9;&#x8C61;&#x6CA1;&#x6709;&#x5F3A;&#x5F15;&#x7528;&#x4E86;&#xFF0C;&#x5B83;&#x4E0D;&#x4F1A;&#x88AB;&#x7F6E;&#x4E3A;nil&#x3002;&#x5982;&#x679C;&#x5B83;&#x5F15;&#x7528;&#x7684;&#x5BF9;&#x8C61;&#x88AB;&#x56DE;&#x6536;&#x6389;&#x4E86;&#xFF0C;&#x8BE5;&#x6307;&#x9488;&#x5C31;&#x53D8;&#x6210;&#x4E86;&#x91CE;&#x6307;&#x9488;&#x3002;</p>
 <p><code>__autoreleasing</code> &#x7528;&#x4E8E;&#x6807;&#x793A;&#x4F7F;&#x7528;&#x5F15;&#x7528;&#x4F20;&#x503C;&#x7684;&#x53C2;&#x6570;&#xFF08;id *&#xFF09;&#xFF0C;&#x5728;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x65F6;&#x4F1A;&#x88AB;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6389;&#x3002;</p>
 <p>&#x53D8;&#x91CF;&#x6807;&#x8BC6;&#x7B26;&#x7684;&#x7528;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code class="lang-objective-c">__strong Number* num = [[Number alloc] init];
+<pre><code class="lang-objectivec">__<span class="hljs-keyword">strong</span> Number* num = [[Number alloc] init];
 </code></pre>
 <h4 id="&#x5C5E;&#x6027;&#x6807;&#x8BC6;&#x7B26;">&#x5C5E;&#x6027;&#x6807;&#x8BC6;&#x7B26;</h4>
 <p>&#x7C7B;&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x4E5F;&#x53EF;&#x4EE5;&#x52A0;&#x4E0A;&#x6807;&#x5FD7;&#x7B26;&#xFF1A;</p>
@@ -1303,6 +1303,16 @@
 <li>&#x5F53; block &#x4EE5;&#x5F02;&#x5E38;&#xFF08;exception&#xFF09;&#x7ED3;&#x675F;&#x65F6;&#xFF0C;pool &#x4E0D;&#x4F1A;&#x88AB; drain</li>
 <li>Pool &#x7684; drain &#x64CD;&#x4F5C;&#x4F1A;&#x628A;&#x6240;&#x6709;&#x6807;&#x8BB0;&#x4E3A; autorelease &#x7684;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x51CF;&#x4E00;&#xFF0C;&#x4F46;&#x662F;&#x5E76;&#x4E0D;&#x610F;&#x5473;&#x7740;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x4E00;&#x5B9A;&#x4F1A;&#x88AB;&#x91CA;&#x653E;&#x6389;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728; autorelease pool &#x4E2D;&#x624B;&#x52A8; retain &#x5BF9;&#x8C61;&#xFF0C;&#x4EE5;&#x5EF6;&#x957F;&#x5B83;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF08;&#x5728; MRC &#x4E2D;&#xFF09;&#x3002;</li>
 </ul>
+<h4 id="weak-&#x4E0E;-autorelease">weak &#x4E0E; Autorelease</h4>
+<p>&#x4F17;&#x6240;&#x5468;&#x77E5;&#xFF0C;weak &#x4E0D;&#x4F1A;&#x6301;&#x6709;&#x5BF9;&#x8C61;&#xFF0C;&#x5F53;&#x7ED9;&#x4E00;&#x4E2A; weak &#x8D4B;&#x4EE5;&#x4E00;&#x4E2A;&#x81EA;&#x5DF1;&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#x540E;&#xFF0C;&#x5BF9;&#x8C61;&#x4F1A;&#x7ACB;&#x9A6C;&#x88AB;&#x91CA;&#x653E;&#x3002;</p>
+<p>&#x4E00;&#x4E2A;&#x5F88;&#x5E38;&#x89C1;&#x7684; warning &#x5C31;&#x662F; Assigning retained object to weak variable, object will be released after assignment.</p>
+<p>&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x524D;&#x9762;&#x4E5F;&#x63D0;&#x5230;&#x4E86;&#xFF0C;&#x53EF;&#x4EE5;&#x6301;&#x6709;&#x975E;&#x81EA;&#x5DF1;&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x901A;&#x8FC7; autorelease &#x5B9E;&#x73B0;&#x3002;</p>
+<p>&#x90A3;&#x4E48;&#x5982;&#x679C;&#x4E00;&#x4E2A; weak &#x88AB;&#x8D4B;&#x4EE5;&#x4E00;&#x4E2A;&#x975E;&#x81EA;&#x5DF1;&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#x5462;&#xFF1F;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-objectivec">__<span class="hljs-keyword">weak</span> <span class="hljs-built_in">NSNumber</span> *number = [<span class="hljs-built_in">NSNumber</span> numberWithInt:<span class="hljs-number">100</span>];
+<span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;number = %@&quot;</span>, number);
+</code></pre>
+<p>&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x662F;&#x53EF;&#x4EE5;&#x6B63;&#x786E;&#x6253;&#x5370;&#x503C;&#x7684;&#x3002;</p>
+<p><a href="http://clang.llvm.org/docs/AutomaticReferenceCounting.html#arc-runtime-objc-loadweak" target="_blank">clang&#x7684;&#x6587;&#x6863;</a> &#x662F;&#x8FD9;&#x4E48;&#x8BF4;&#x7684;&#xFF1A;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;weak &#x5E76;&#x4E0D;&#x4F1A;&#x7ACB;&#x5373;&#x91CA;&#x653E;&#xFF0C;&#x800C;&#x662F;&#x4F1A;&#x901A;&#x8FC7; <code>objc_loadWeak</code> &#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x6CE8;&#x518C;&#x5230; AutoreleasePool &#x4E2D;&#xFF0C;&#x4EE5;&#x5EF6;&#x957F;&#x751F;&#x547D;&#x5468;&#x671F;&#x3002;</p>
 <h4 id="mainm-&#x4E2D;-autorelease-pool-&#x7684;&#x89E3;&#x91CA;">main.m &#x4E2D; Autorelease Pool &#x7684;&#x89E3;&#x91CA;</h4>
 <p>&#x5927;&#x5BB6;&#x90FD;&#x77E5;&#x9053;&#x5728; iOS &#x7A0B;&#x5E8F;&#x7684; main.m &#x6587;&#x4EF6;&#x4E2D;&#x6709;&#x7C7B;&#x4F3C;&#x8FD9;&#x6837;&#x7684;&#x8BED;&#x53E5;&#xFF1A;</p>
 <pre><code class="lang-objectivec"><span class="hljs-keyword">int</span> main(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> * argv[]) {
@@ -1488,6 +1498,7 @@ myController<span class="hljs-variable">.completionHandler</span> =  ^(<span cla
 <li><a href="https://stackoverflow.com/questions/8292060/arc-equivalent-of-autorelease" target="_blank">https://stackoverflow.com/questions/8292060/arc-equivalent-of-autorelease</a></li>
 <li><a href="https://stackoverflow.com/questions/7906804/do-i-set-properties-to-nil-in-dealloc-when-using-arc" target="_blank">https://stackoverflow.com/questions/7906804/do-i-set-properties-to-nil-in-dealloc-when-using-arc</a></li>
 <li><a href="http://wereadteam.github.io/2016/02/22/MLeaksFinder/?from=singlemessage&amp;isappinstalled=0" target="_blank">http://wereadteam.github.io/2016/02/22/MLeaksFinder/?from=singlemessage&amp;isappinstalled=0</a></li>
+<li><a href="http://clang.llvm.org/docs/AutomaticReferenceCounting.html#arc-runtime-objc-loadweak" target="_blank">http://clang.llvm.org/docs/AutomaticReferenceCounting.html#arc-runtime-objc-loadweak</a></li>
 </ul>
 
                     
