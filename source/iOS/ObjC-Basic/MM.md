@@ -107,7 +107,7 @@ ARC 是苹果引入的一种自动内存管理机制，会根据引用计数自�
 
 变量标识符的用法如下：
 
-```objective-c
+```objectivec
 __strong Number* num = [[Number alloc] init];
 ``` 
 
@@ -200,6 +200,25 @@ for (int i = 0; i < 100000000; i++)
 
 * 当 block 以异常（exception）结束时，pool 不会被 drain
 * Pool 的 drain 操作会把所有标记为 autorelease 的对象的引用计数减一，但是并不意味着这个对象一定会被释放掉，我们可以在 autorelease pool 中手动 retain 对象，以延长它的生命周期（在 MRC 中）。
+
+#### weak 与 Autorelease
+
+众所周知，weak 不会持有对象，当给一个 weak 赋以一个自己生成的对象后，对象会立马被释放。
+
+一个很常见的 warning 就是 Assigning retained object to weak variable, object will be released after assignment.
+
+但是我们前面也提到了，可以持有非自己生成的对象，这通过 autorelease 实现。
+
+那么如果一个 weak 被赋以一个非自己生成的对象呢？代码如下：
+
+```objectivec
+__weak NSNumber *number = [NSNumber numberWithInt:100];
+NSLog(@"number = %@", number);
+```
+
+这种情况下是可以正确打印值的。
+
+[clang的文档](http://clang.llvm.org/docs/AutomaticReferenceCounting.html#arc-runtime-objc-loadweak) 是这么说的：这种情况下，weak 并不会立即释放，而是会通过 `objc_loadWeak` 这个方法注册到 AutoreleasePool 中，以延长生命周期。
 
 #### main.m 中 Autorelease Pool 的解释
 
@@ -458,25 +477,6 @@ Instrument 为我们提供了 Allocations/Leaks 这样好用的工具用来检�
 其中 Leaks 工具主要用来检测 Leaked memory，在 MRC 时代 程序员会经常忘记写 release 方法导致内存泄露，在 ARC 时代这种已经不太常见。(ARC时代 主要的Leaked Memory 来自于底层 C 语言以及 一些由 C 写成的底层库，往往会因为忘记手工 free 而导致 leak )。
 
 Allocations 工具主要用来检测 Abandoned memory. 主要思路是在一个时间切片内检测对象的声明周期以观察内存是否会无限增长。通过 hook 掉 alloc，dealloc，retain，release 等方法，来记录对象的生命周期。
-
-### weak 与 Autorelease
-
-众所周知，weak 不会持有对象，当给一个 weak 赋以一个自己生成的对象后，对象会立马被释放。
-
-一个很常见的 warning 就是 Assigning retained object to weak variable, object will be released after assignment.
-
-但是我们前面也提到了，可以持有非自己生成的对象，这通过 autorelease 实现。
-
-那么如果一个 weak 被赋以一个非自己生成的对象呢？代码如下：
-
-```
-__weak NSNumber *number = [NSNumber numberWithInt:100];
-NSLog(@"number = %@", number);
-```
-
-这种情况下是可以正确打印值的。
-
-[clang的文档](http://clang.llvm.org/docs/AutomaticReferenceCounting.html#arc-runtime-objc-loadweak) 是这么说的：这种情况下，weak 并不会立即释放，而是会通过 `objc_loadWeak` 这个方法注册到 AutoreleasePool 中，以延长生命周期。
 
 ### 参考资料
 

@@ -70,7 +70,7 @@ iOS 中公开暴露出来的只有 NSDefaultRunLoopMode 和 NSRunLoopCommonModes
 
 在 AFNetworking 3.0 中，就有相关的代码，如下：
 
-```
+```objectivec
 - (void)startActivationDelayTimer {
     self.activationDelayTimer = [NSTimer
                                  timerWithTimeInterval:self.activationDelay target:self selector:@selector(activationDelayTimerFired) userInfo:nil repeats:NO];
