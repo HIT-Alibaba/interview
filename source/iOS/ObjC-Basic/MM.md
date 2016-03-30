@@ -490,9 +490,9 @@ objc_storeStrong(&sark, nil); // 相当于代替我们调用了release
 
 有了这个基础，ARC 可以使用一些优化技术。在调用 `objc_autoreleaseReturnValue()` 时，会在栈上查询 return address 以确定 return value 是否会被直接传给 `objc_retainAutoreleasedReturnValue()`。 如果没传，说明返回值不能直接从提供方发送给接收方，这时就会调用 `autorelease`。反之，如果返回值能顺利的从提供方传送给接收方，那么就会直接跳过 `autorelease` 过程，并且修改 return address 以跳过 `objc_retainAutoreleasedReturnValue()`过程，这样就跳过了整个 `autorelease` 和 `retain`的过程。
 
-> 核心思想：当返回值被返回之后，紧接着就需要被 retain 的时候，没有必要进行 autorelease + retain，直接什么都不要做就好了。
+> **核心思想**：当返回值被返回之后，紧接着就需要被 retain 的时候，没有必要进行 autorelease + retain，直接什么都不要做就好了。
 
-另外，当函数的调用方是非 ARC 环境时，ARC 还会进行更多的判断，在这里不再详述，详见 [黑幕背后的 Autorelease](http://blog.sunnyxx.com/2014/10/15/behind-autorelease/)。
+另外，当函数的调用方是非 ARC 环境时，ARC 还会进行更多的判断，在这里不再详述，详见 [《黑幕背后的 Autorelease》](http://blog.sunnyxx.com/2014/10/15/behind-autorelease/)。
 
 
 ### 关于如何写一个检测循环引用的工具
@@ -513,6 +513,7 @@ Allocations 工具主要用来检测 Abandoned memory. 主要思路是在一个�
 * [10个Objective-C基础面试题，iOS面试必备](http://www.oschina.net/news/42288/10-objective-c-interview)
 * [黑幕背后的 Autorelease](http://blog.sunnyxx.com/2014/10/15/behind-autorelease/)
 * [Objective-C Autorelease Pool 的实现原理](http://blog.leichunfeng.com/blog/2015/05/31/objective-c-autorelease-pool-implementation-principle/)
+* [How does objc_retainAutoreleasedReturnValue work?](http://www.galloway.me.uk/2012/02/how-does-objc_retainautoreleasedreturnvalue-work/)
 * https://stackoverflow.com/questions/9784762/strong-weak-retain-unsafe-unretained-assign
 * https://stackoverflow.com/questions/29350634/ios-autoreleasepool-in-main-and-arc-alloc-release
 * https://stackoverflow.com/questions/6588211/why-do-the-ios-main-m-templates-include-a-return-statement-and-an-autorelease-po
