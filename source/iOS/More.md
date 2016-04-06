@@ -14,6 +14,7 @@
 * https://github.com/Aufree/trip-to-iOS （iOS 学习资料整理）
 * http://www.hrchen.com/2013/05/performance-with-instruments/ (iOS 性能优化）
 * https://github.com/huang303513/iOS-Study-Demo
+* https://github.com/seedante/iOS-Note
 
 #### 编码规范
 
