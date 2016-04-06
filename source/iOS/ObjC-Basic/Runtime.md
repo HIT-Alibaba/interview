@@ -16,7 +16,42 @@ Runtime 是 Objective-C 区别于 C 语言这样的静态语言的一个非常�
 
 metaClass是元类，也有 isa 指针、super_class 指针。其中保存了类方法列表。
 
+如下是 objc/runtime.h 中定义的类的结构:
+
+```objectivec
+struct objc_class {
+    Class isa  OBJC_ISA_AVAILABILITY;
+
+#if !__OBJC2__
+    Class super_class                                        OBJC2_UNAVAILABLE;
+    const char *name                                         OBJC2_UNAVAILABLE;
+    long version                                             OBJC2_UNAVAILABLE;
+    long info                                                OBJC2_UNAVAILABLE;
+    long instance_size                                       OBJC2_UNAVAILABLE;
+    struct objc_ivar_list *ivars                             OBJC2_UNAVAILABLE; // 成员变量地址列表
+    struct objc_method_list **methodLists                    OBJC2_UNAVAILABLE; // 方法地址列表
+    struct objc_cache *cache                                 OBJC2_UNAVAILABLE; // 缓存最近使用的方法地址，以避免多次在方法地址列表中查询，提升效率
+    struct objc_protocol_list *protocols                     OBJC2_UNAVAILABLE; // 遵循的协议列表
+#endif
+
+} OBJC2_UNAVAILABLE;
+/* Use `Class` instead of `struct objc_class *` */
+```
+
 ### SEL 与 IMP
+
+SEL 可以将其理解为方法的 ID. 结构如下：
+
+```objectivec
+typedef struct objc_selector *SEL;
+
+struct objc_selector {
+    char *name;                       OBJC2_UNAVAILABLE;
+    char *types;                      OBJC2_UNAVAILABLE;
+};
+```
+
+IMP 可以理解为函数指针，指向了最终的实现。
 
 SEL 与 IMP 的关系非常类似于 HashTable 中 key 与 value 的关系。OC 中不支持函数重载的原因就是因为一个类的方法列表中不能存在两个相同的 SEL 。但是多个方法却可以在不同的类中有一个相同的 SEL，不同类的实例对象执行相同的 SEL 时，会在各自的方法列表中去根据 SEL 去寻找自己对应的IMP。这使得OC可以支持函数重写。
 
@@ -26,9 +61,18 @@ SEL 与 IMP 的关系非常类似于 HashTable 中 key 与 value 的关系。OC 
 - 不涵盖消息cache机制
 - 需要对Objective-C runtime有一定的了解
 
+如下用于描述 objc_msgSend 函数的调用流程：
+
+- 1.检测 SEL 是否应该被忽略
+- 2.检测发送的 target 是否为 nil ，如果是则忽略该消息
+- 3.
+    - 当调用实例方法时，通过 isa 指针找到实例对应的 class 并且在其中的缓存方法列表以及方法列表中进行查询，如果找不到则根据 super_class 指针在父类中查询，直至根类(NSObject 或 NSProxy).
+    - 当调用类方法时，通过 isa 指针找到实例对应的 metaclass 并且在其中的缓存方法列表以及方法列表中进行查询，如果找不到则根据 super_class 指针在父类中查询，直至根类(NSObject 或 NSProxy). (根据此前的开篇中的图，Root Meta Class 还是有根类的。)
+- 如果还没找到则进入消息动态解析过程。
+
 *由于苹果对OC 2.0 Runtime的具体实现细节未完全开源，本节所引用源代码大部分来自OC 1.0，如有错误，敬请更正*  
 
-当一个对象sender调用代码`[receiver message];`的时候，实际上是调用了runtime的`objc_msgSend`函数，所以OC的方法调用并不像C函数一样能按照地址直接取用，而是经过了一系列的过程。这样的机制使得runtime可以在接收到消息后对消息进行特殊处理，这才使OC的一些特性譬如：给nil发送消息不崩溃，给类动态添加方法和消息转发等成为可能。也正因为每一次调用方法的时候实际上是调用了一些runtime的消息处理函数，OC的方法调用相对于C来说会相对较慢，但OC也通过引入cache机制来很大程度上的克服了这个缺点。下面我们就从一个对象sender调用代码`[receiver message];`这个情景开始，了解消息传递的过程。  
+当一个对象 sender 调用代码`[receiver message];`的时候，实际上是调用了runtime的`objc_msgSend`函数，所以OC的方法调用并不像C函数一样能按照地址直接取用，而是经过了一系列的过程。这样的机制使得 runtime 可以在接收到消息后对消息进行特殊处理，这才使OC的一些特性譬如：给 nil 发送消息不崩溃，给类动态添加方法和消息转发等成为可能。也正因为每一次调用方法的时候实际上是调用了一些 runtime 的消息处理函数，OC的方法调用相对于C来说会相对较慢，但 OC 也通过引入 cache 机制来很大程度上的克服了这个缺点。下面我们就从一个对象 sender 调用代码`[receiver message];`这个情景开始，了解消息传递的过程。  
 
 首先这行代码会被改写成`objc_msgSend(self, _cmd);`，这是一个runtime的函数，其原型为：
 
@@ -196,11 +240,19 @@ IMP lookUpImpOrForward(Class cls, SEL sel, id inst,
 
 我们可以看到每一个类都维护了一个cache，在一个对象调用runtime的objc_msgSend函数后，runtime在接收者所属的类的cache中查找与_cmd所对应的IMP，如果没有命中就寻找当前类的方法列表，再找不到就跳入while循环寻找超类的cache和方法列表，如果这些方法都失效，就调用`_class_resolveMethod`查找正在插入这个类的方法，之后再重新尝试整一个流程，如果最后还是没能找到一个对应的IMP，则调用消息转发机制。
 
+### 动态消息解析
+
+![](https://raw.githubusercontent.com/WiInputMethod/interview/master/img/ios-runtime-method-resolve.png)
+
+如下用于描述动态消息解析的流程:
+
+- 1.通过 resolveInstanceMethod 得知方法是否为动态添加，YES则通过 class_addMethod 动态添加方法，处理消息，否则进入下一步。dynamic 属性就与这个过程有关，当一个属性声明为 dynamic 时 就是告诉编译器：开发者一定会添加 setter/getter 的实现，而编译时不用自动生成。
+- 2.这步会进入 forwardingTargetForSelector 用于指定哪个对象来响应消息。如果返回nil 则进入第三步。这种方式把消息原封不动地转发给目标对象，有着比较高的效率。如果不能自己的类里面找到替代方法，可以重载这个方法，然后把消息转给其他的对象。
+- 3.这步调用 methodSignatureForSelector 进行方法签名，这可以将函数的参数类型和返回值封装。如果返回 nil 说明消息无法处理并报错 `unrecognized selector sent to instance`，如果返回 methodSignature，则进入 forwardInvocation ，在这里可以修改实现方法，修改响应对象等，如果方法调用成功，则结束。如果依然不能正确响应消息，则报错 `unrecognized selector sent to instance`.
+
+可以利用 2、3 中的步骤实现对接受消息对象的转移，可以实现“多重继承”的效果。
+
 #### 参考资料
 * http://yulingtianxia.com/blog/2014/11/05/objective-c-runtime/
 * http://www.cocoawithlove.com/2010/01/what-is-meta-class-in-objective-c.html
 * https://github.com/opensource-apple/objc4
-
-
-
-
