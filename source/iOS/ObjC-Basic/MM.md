@@ -97,19 +97,21 @@ ARC 是苹果引入的一种自动内存管理机制，会根据引用计数自�
 * `__unsafe_unretained`
 * `__autoreleasing`
 
-`__strong` 是默认使用的标识符。只有还有一个强指针指向某个对象，这个对象就会一种存活。
+`__strong` 是默认使用的标识符。只有还有一个强指针指向某个对象，这个对象就会一直存活。
 
-`__weak` 声明这个引用不会保持被引用对象的存活，如果对象没有强引用了，弱引用会被置为nil
+`__weak` 声明这个引用不会保持被引用对象的存活，如果对象没有强引用了，弱引用会被置为 nil
 
-`__unsafe_unretained` 声明这个引用不会保持被引用对象的存活，如果对象没有强引用了，它不会被置为nil。如果它引用的对象被回收掉了，该指针就变成了野指针。
+`__unsafe_unretained` 声明这个引用不会保持被引用对象的存活，如果对象没有强引用了，它不会被置为 nil。如果它引用的对象被回收掉了，该指针就变成了野指针。
 
 `__autoreleasing` 用于标示使用引用传值的参数（id *），在函数返回时会被自动释放掉。
 
 变量标识符的用法如下：
 
 ```objectivec
-__strong Number* num = [[Number alloc] init];
+Number* __strong num = [[Number alloc] init];
 ``` 
+
+注意 `__strong` 的位置应该放到 `*` 和变量名中间，放到其他的位置严格意义上说是不正确的，只不过编译器不会报错。
 
 #### 属性标识符
 
@@ -358,9 +360,9 @@ self.property = a;
 
 这个和我们之前在 MRC 中做的不是完全一样。ARC 会把对象的生命周期延长，确保调用者能拿到并且使用这个返回值，但是并不一定会使用 autorelease，文档写的是在 worst case 的情况下才可能会使用，因此调用者不能假设返回值真的就在 autorelease pool 中。从性能的角度，这种做法也是可以理解的。如果我们能够知道一个对象的生命周期最长应该有多长，也就没有必要使用 autorelease 了，直接使用 release 就可以。如果很多对象都使用 autorelease 的话，也会导致整个 pool 在 drain 的时候性能下降。
 
-##### weak 与 Autorelease
+##### weak 与 autorelease
 
-众所周知，weak 不会持有对象，当给一个 weak 赋以一个自己生成的对象后，对象会立马被释放。
+众所周知，weak 不会持有对象，当给一个 weak 赋以一个自己生成的对象（即上面提到的 retained return value）后，对象会立马被释放。
 
 一个很常见的 warning 就是 Assigning retained object to weak variable, object will be released after assignment.
 
@@ -369,7 +371,7 @@ self.property = a;
 那么如果一个 weak 被赋以一个非自己生成的对象（即上面提到的 unretained return value）呢？代码如下：
 
 ```objectivec
-__weak NSNumber *number = [NSNumber numberWithInt:100];
+NSNumber __weak *number = [NSNumber numberWithInt:100];
 NSLog(@"number = %@", number);
 ```
 
