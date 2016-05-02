@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>版本控制 | 笔试面试知识整理</title>
+        <title>随机 | 笔试面试知识整理</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.6">
@@ -37,10 +37,10 @@
         
     
     
-    <link rel="next" href="../../basic/scm/Git.html" />
+    <link rel="next" href="../../basic/algo/Greedy.html" />
     
     
-    <link rel="prev" href="../../basic/design/MVC.html" />
+    <link rel="prev" href="../../basic/algo/Sorting.html" />
     
 
         
@@ -49,9 +49,9 @@
         
         
     <div class="book"
-        data-level="1.7"
-        data-chapter-title="版本控制"
-        data-filepath="basic/scm/README.md"
+        data-level="1.2.8"
+        data-chapter-title="随机"
+        data-filepath="basic/algo/Random.md"
         data-basepath="../.."
         data-revision="Mon May 02 2016 08:29:55 GMT+0800 (CST)"
         data-innerlanguage="">
@@ -268,7 +268,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.8" data-path="basic/algo/Random.html">
+        <li class="chapter active" data-level="1.2.8" data-path="basic/algo/Random.html">
             
                 
                     <a href="../../basic/algo/Random.html">
@@ -574,7 +574,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.7" data-path="basic/scm/index.html">
+        <li class="chapter " data-level="1.7" data-path="basic/scm/index.html">
             
                 
                     <a href="../../basic/scm/index.html">
@@ -1164,7 +1164,42 @@
                 
                     <section class="normal" id="section-">
                     
-                        
+                        <h2 id="&#x6D17;&#x724C;&#x7B97;&#x6CD5;">&#x6D17;&#x724C;&#x7B97;&#x6CD5;</h2>
+<p>&#x6D17;&#x724C;&#x7B97;&#x6CD5;&#xFF0C;&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;&#x5C31;&#x662F;&#x53EA;&#x5229;&#x7528;&#x4E00;&#x6B21;&#x5FAA;&#x73AF;&#x7B49;&#x6982;&#x7387;&#x7684;&#x53D6;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x5143;&#x7D20;(&#x724C;)&#x3002;</p>
+<p>&#x5982;&#x679C;&#x5143;&#x7D20;&#x5B58;&#x5728;&#x4E8E;&#x6570;&#x7EC4;&#x4E2D;&#xFF0C;&#x5373;&#x53EF;&#x5C06;&#x6BCF;&#x6B21; random &#x5230;&#x7684;&#x5143;&#x7D20; &#x4E0E; &#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x8FDB;&#x884C;&#x4EA4;&#x6362;&#xFF0C;&#x7136;&#x540E; count--&#xFF0C;&#x5373;&#x53EF;&#x3002;</p>
+<p>&#x8FD9;&#x76F8;&#x5F53;&#x4E8E;&#x628A;&#x8FD9;&#x4E2A;&#x5143;&#x7D20;&#x5220;&#x9664;&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-cpp"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;ctime&gt;</span> </span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> maxn = <span class="hljs-number">10</span>;
+
+<span class="hljs-keyword">int</span> a[maxn];
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">randomInt</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a)</span> </span>{
+    <span class="hljs-keyword">return</span> rand()%a;
+}
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">swapTwoElement</span><span class="hljs-params">(<span class="hljs-keyword">int</span>*x,<span class="hljs-keyword">int</span>*y)</span> </span>{
+     <span class="hljs-keyword">int</span> temp;
+     temp=*x;
+     *x=*y;
+     *y=temp;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">int</span> count = <span class="hljs-keyword">sizeof</span>(a)/<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>);
+    <span class="hljs-keyword">int</span> count_b = count;
+    srand((<span class="hljs-keyword">unsigned</span>)time(<span class="hljs-literal">NULL</span>));
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; count; ++i) { a[i] = i; }
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; count_b; ++i) {
+        <span class="hljs-keyword">int</span> random = randomInt(count);
+        <span class="hljs-built_in">cout</span>&lt;&lt;a[random]&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;
+        swapTwoElement(&amp;a[random],&amp;a[count-<span class="hljs-number">1</span>]);
+        count--;
+    }
+}
+</code></pre>
+
                     
                     </section>
                 
@@ -1174,10 +1209,10 @@
         </div>
 
         
-        <a href="../../basic/design/MVC.html" class="navigation navigation-prev " aria-label="Previous page: MVC 与 MVVM"><i class="fa fa-angle-left"></i></a>
+        <a href="../../basic/algo/Sorting.html" class="navigation navigation-prev " aria-label="Previous page: 排序"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../basic/scm/Git.html" class="navigation navigation-next " aria-label="Next page: Git"><i class="fa fa-angle-right"></i></a>
+        <a href="../../basic/algo/Greedy.html" class="navigation navigation-next " aria-label="Next page: 贪心"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
