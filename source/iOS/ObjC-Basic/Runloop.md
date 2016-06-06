@@ -80,6 +80,9 @@ iOS 中公开暴露出来的只有 NSDefaultRunLoopMode 和 NSRunLoopCommonModes
 
 这里就是添加了一个计时器，由于指定了 NSRunLoopCommonModes，所以不管 RunLoop 出于什么状态，都执行这个计时器任务。
 
+### 输入理解 Runloop
+
+这里可以参考YY的博客[深入理解Runloop](http://blog.ibireme.com/2015/05/18/runloop/)。
 
 #### 参考资料
 
