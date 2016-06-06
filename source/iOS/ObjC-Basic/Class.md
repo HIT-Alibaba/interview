@@ -426,7 +426,7 @@ Objective-C 是建立在 Runtime 基础上的语言，类也不例外。OC 中�
 
 +load 方法是当类或分类被添加到 Objective-C runtime 时被调用的，实现这个方法可以让我们在类加载的时候执行一些类相关的行为。子类的 +load 方法会在它的所有父类的 +load 方法之后执行，而分类的 +load 方法会在它的主类的 +load 方法之后执行。但是不同的类之间的 +load 方法的调用顺序是不确定的。
 
-load 方法不会被类自动继承, 每一个类中的 load 方法都不需要像 viewDidLoad 方法一样调用父类的方法。子类、父类和分类中的 +load 方法的实现是被区别对待的。也就是说如果子类没有实现 +load 方法，那么当它被加载时 runtime 是不会去调用父类的 +load 方法的。同理，当一个类和它的分类都实现了 +load 方法时，两个方法都会被调用。因此，我们常常可以利用这个特性做一些“邪恶”的事情，比如说方法混淆（Method Swizzling）。FDTemplateLayoutCell 中就使用了这个方法，见[这里](https://github.com/forkingdog/UITableView-FDTemplateLayoutCell/blob/2bead7b80e40e8689201e7c1d6f034e952c9a155/Classes/UITableView%2BFDIndexPathHeightCache.m#L147)。
+load 方法不会被类自动继承, 每一个类中的 load 方法都不需要像 viewDidLoad 方法一样调用父类的方法。子类、父类和分类中的 +load 方法的实现是被区别对待的。也就是说如果子类没有实现 +load 方法，那么当它被加载时 runtime 是不会去调用父类的 +load 方法的<sup id="fnref:ref"><a href="#fn:ref" class="footnote">1</a></sup>。同理，当一个类和它的分类都实现了 +load 方法时，两个方法都会被调用。因此，我们常常可以利用这个特性做一些“邪恶”的事情，比如说方法混淆（Method Swizzling）。FDTemplateLayoutCell 中就使用了这个方法，见[这里](https://github.com/forkingdog/UITableView-FDTemplateLayoutCell/blob/2bead7b80e40e8689201e7c1d6f034e952c9a155/Classes/UITableView%2BFDIndexPathHeightCache.m#L147)。
 
 #### +initialize
 
@@ -434,6 +434,10 @@ load 方法不会被类自动继承, 每一个类中的 load 方法都不需要�
 
 +initialize 方法的调用与普通方法的调用是一样的，走的都是发送消息的流程。换言之，如果子类没有实现 +initialize 方法，那么继承自父类的实现会被调用；如果一个类的分类实现了 +initialize 方法，那么就会对这个类中的实现造成覆盖。
 
+### 注解
+
+<li id="fn:ref">
+<p> 1.举一个例子：有一个 Father 类，实现了 load 方法，打印类名，一个 Son 类继承自前者，没有实现 load 方法。实例出一个 Son 的对象时，结果是会输出父类的名字。但这个例子与之前的结论并不矛盾，这里说的是父类先被加载了，所以调用了父类的 load 方法，而子类被加载时没有调用父类的 load 方法。 暂时没找到例子可以严格的证明此前的结论，所以还是去看源码吧。<a href="#fnref:ref" class="reversefootnote">&#8617;</a></p>
 
 ### 参考资料
 
