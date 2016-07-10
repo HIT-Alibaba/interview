@@ -1,1170 +1,1108 @@
+
 <!DOCTYPE HTML>
-<html lang="en" >
-    
+<html lang="" >
     <head>
-        
+        <title>并发编程 · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>并发编程 | 笔试面试知识整理</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 2.6.6">
+        <meta name="generator" content="GitBook 3.1.1">
         
         
-        <meta name="HandheldFriendly" content="true"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
-        <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
         
+    
     <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
     
         
-        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+    
         
     
         
-        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-search/search.css">
+    
         
     
         
-        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
-        
     
+        
     
 
         
     
     
-    <link rel="next" href="../../iOS/Cocoa-Touch/File-System.html" />
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="File-System.html" />
     
     
-    <link rel="prev" href="../../iOS/Cocoa-Touch/Network.html" />
+    <link rel="prev" href="Network.html" />
     
 
-        
     </head>
     <body>
         
+<div class="book">
+    <div class="book-summary">
         
-    <div class="book"
-        data-level="2.2.7"
-        data-chapter-title="并发编程"
-        data-filepath="iOS/Cocoa-Touch/Multithreading.md"
-        data-basepath="../.."
-        data-revision="Mon Jun 06 2016 17:57:51 GMT+0800 (CST)"
-        data-innerlanguage="">
-    
-
-<div class="book-summary">
-    <nav role="navigation">
-        <ul class="summary">
             
-            
-            
-            
-
-            
-
-            
-    
-        <li class="chapter " data-level="0" data-path="index.html">
-            
-                
-                    <a href="../../index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                        Introduction
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1" data-path="basic/index.html">
-            
-                
-                    <a href="../../basic/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.</b>
-                        
-                        基础知识
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.1" data-path="basic/network/index.html">
-            
-                
-                    <a href="../../basic/network/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.</b>
-                        
-                        计算机网络
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.1.1" data-path="basic/network/HTTP.html">
-            
-                
-                    <a href="../../basic/network/HTTP.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.1.</b>
-                        
-                        HTTP 协议
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.2" data-path="basic/network/TCP.html">
-            
-                
-                    <a href="../../basic/network/TCP.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.2.</b>
-                        
-                        TCP 协议
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.3" data-path="basic/network/IP.html">
-            
-                
-                    <a href="../../basic/network/IP.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.3.</b>
-                        
-                        IP 协议
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.1.4" data-path="basic/network/Socket-Programming-Basic.html">
-            
-                
-                    <a href="../../basic/network/Socket-Programming-Basic.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.1.4.</b>
-                        
-                        Socket 编程
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2" data-path="basic/algo/index.html">
-            
-                
-                    <a href="../../basic/algo/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.2.</b>
-                        
-                        数据结构与算法
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.2.1" data-path="basic/algo/Linked-List.html">
-            
-            <span><b>1.2.1.</b> 链表</span>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.2" data-path="basic/algo/Tree.html">
-            
-                
-                    <a href="../../basic/algo/Tree.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.2.2.</b>
-                        
-                        树
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.3" data-path="basic/algo/Hash-Table.html">
-            
-                
-                    <a href="../../basic/algo/Hash-Table.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.2.3.</b>
-                        
-                        哈希表
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.4" data-path="basic/algo/Sorting.html">
-            
-                
-                    <a href="../../basic/algo/Sorting.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.2.4.</b>
-                        
-                        排序
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.5" >
-            
-            <span><b>1.2.5.</b> 搜索</span>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.6" >
-            
-            <span><b>1.2.6.</b> 字符串</span>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.7" >
-            
-            <span><b>1.2.7.</b> 向量/矩阵</span>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.8" data-path="basic/algo/Random.html">
-            
-                
-                    <a href="../../basic/algo/Random.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.2.8.</b>
-                        
-                        随机
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.9" data-path="basic/algo/Greedy.html">
-            
-                
-                    <a href="../../basic/algo/Greedy.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.2.9.</b>
-                        
-                        贪心
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2.10" data-path="basic/algo/DP.html">
-            
-                
-                    <a href="../../basic/algo/DP.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.2.10.</b>
-                        
-                        动态规划
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3" data-path="basic/arch/index.html">
-            
-                
-                    <a href="../../basic/arch/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.3.</b>
-                        
-                        体系结构与操作系统
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1" data-path="basic/arch/Arch.html">
-            
-                
-                    <a href="../../basic/arch/Arch.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.3.1.</b>
-                        
-                        体系结构基础
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.2" data-path="basic/arch/OS.html">
-            
-                
-                    <a href="../../basic/arch/OS.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.3.2.</b>
-                        
-                        操作系统基础
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.3" data-path="basic/arch/Concurrency.html">
-            
-                
-                    <a href="../../basic/arch/Concurrency.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.3.3.</b>
-                        
-                        并发技术
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.4" data-path="basic/arch/Memory-Management.html">
-            
-                
-                    <a href="../../basic/arch/Memory-Management.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.3.4.</b>
-                        
-                        内存管理
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.5" data-path="basic/arch/Disk-And-File.html">
-            
-                
-                    <a href="../../basic/arch/Disk-And-File.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.3.5.</b>
-                        
-                        磁盘与文件
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.6" >
-            
-            <span><b>1.3.6.</b> 进程管理</span>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4" data-path="basic/db/index.html">
-            
-                
-                    <a href="../../basic/db/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.4.</b>
-                        
-                        数据库系统
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.4.1" data-path="basic/db/Transaction.html">
-            
-                
-                    <a href="../../basic/db/Transaction.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.4.1.</b>
-                        
-                        事务处理
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.2" data-path="basic/db/DB-Index.html">
-            
-                
-                    <a href="../../basic/db/DB-Index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.4.2.</b>
-                        
-                        索引
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5" data-path="basic/compiler/index.html">
-            
-                
-                    <a href="../../basic/compiler/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.5.</b>
-                        
-                        编译原理
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.5.1" data-path="basic/compiler/Compiler-Arch.html">
-            
-                
-                    <a href="../../basic/compiler/Compiler-Arch.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.5.1.</b>
-                        
-                        编译器架构
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6" data-path="basic/design/index.html">
-            
-                
-                    <a href="../../basic/design/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.6.</b>
-                        
-                        设计模式
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.6.1" data-path="basic/design/OO-Basic.html">
-            
-                
-                    <a href="../../basic/design/OO-Basic.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.6.1.</b>
-                        
-                        面向对象基础
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.2" data-path="basic/design/GOP.html">
-            
-                
-                    <a href="../../basic/design/GOP.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.6.2.</b>
-                        
-                        四人帮设计模式
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.3" data-path="basic/design/MVC.html">
-            
-                
-                    <a href="../../basic/design/MVC.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.6.3.</b>
-                        
-                        MVC 与 MVVM
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7" data-path="basic/scm/index.html">
-            
-                
-                    <a href="../../basic/scm/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.7.</b>
-                        
-                        版本控制
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.7.1" data-path="basic/scm/Git.html">
-            
-                
-                    <a href="../../basic/scm/Git.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.7.1.</b>
-                        
-                        Git
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.2" data-path="basic/scm/SVN.html">
-            
-                
-                    <a href="../../basic/scm/SVN.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>1.7.2.</b>
-                        
-                        SVN
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="2" data-path="iOS/index.html">
-            
-                
-                    <a href="../../iOS/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.</b>
-                        
-                        iOS 开发
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="2.1" data-path="iOS/ObjC-Basic/index.html">
-            
-                
-                    <a href="../../iOS/ObjC-Basic/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.1.</b>
-                        
-                        Objective-C 语言基础
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="2.1.1" data-path="iOS/ObjC-Basic/Class.html">
-            
-                
-                    <a href="../../iOS/ObjC-Basic/Class.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.1.1.</b>
-                        
-                        类与对象
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.2" data-path="iOS/ObjC-Basic/Block.html">
-            
-                
-                    <a href="../../iOS/ObjC-Basic/Block.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.1.2.</b>
-                        
-                        Block 编程
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.3" data-path="iOS/ObjC-Basic/Runtime.html">
-            
-                
-                    <a href="../../iOS/ObjC-Basic/Runtime.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.1.3.</b>
-                        
-                        Objective-C Runtime
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.4" data-path="iOS/ObjC-Basic/MM.html">
-            
-                
-                    <a href="../../iOS/ObjC-Basic/MM.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.1.4.</b>
-                        
-                        Objective-C 内存管理
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.5" data-path="iOS/ObjC-Basic/Runloop.html">
-            
-                
-                    <a href="../../iOS/ObjC-Basic/Runloop.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.1.5.</b>
-                        
-                        Runloop
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2" data-path="iOS/Cocoa-Touch/index.html">
-            
-                
-                    <a href="../../iOS/Cocoa-Touch/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.2.</b>
-                        
-                        Cocoa Touch
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="2.2.1" data-path="iOS/Cocoa-Touch/Event-Handling.html">
-            
-                
-                    <a href="../../iOS/Cocoa-Touch/Event-Handling.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.2.1.</b>
-                        
-                        事件处理
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2.2" data-path="iOS/Cocoa-Touch/UIApplication.html">
-            
-                
-                    <a href="../../iOS/Cocoa-Touch/UIApplication.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.2.2.</b>
-                        
-                        UIApplication
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2.3" data-path="iOS/Cocoa-Touch/UIView-Basic.html">
-            
-                
-                    <a href="../../iOS/Cocoa-Touch/UIView-Basic.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.2.3.</b>
-                        
-                        UIView
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2.4" data-path="iOS/Cocoa-Touch/UIViewController.html">
-            
-                
-                    <a href="../../iOS/Cocoa-Touch/UIViewController.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.2.4.</b>
-                        
-                        UIViewController
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2.5" data-path="iOS/Cocoa-Touch/Animation.html">
-            
-                
-                    <a href="../../iOS/Cocoa-Touch/Animation.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.2.5.</b>
-                        
-                        动画
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2.6" data-path="iOS/Cocoa-Touch/Network.html">
-            
-                
-                    <a href="../../iOS/Cocoa-Touch/Network.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.2.6.</b>
-                        
-                        网络编程
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter active" data-level="2.2.7" data-path="iOS/Cocoa-Touch/Multithreading.html">
-            
-                
-                    <a href="../../iOS/Cocoa-Touch/Multithreading.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.2.7.</b>
-                        
-                        并发编程
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2.8" data-path="iOS/Cocoa-Touch/File-System.html">
-            
-                
-                    <a href="../../iOS/Cocoa-Touch/File-System.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.2.8.</b>
-                        
-                        文件系统
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2.9" data-path="iOS/Cocoa-Touch/Design.html">
-            
-                
-                    <a href="../../iOS/Cocoa-Touch/Design.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.2.9.</b>
-                        
-                        设计模式
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2.10" data-path="iOS/Cocoa-Touch/Performance.html">
-            
-                
-                    <a href="../../iOS/Cocoa-Touch/Performance.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.2.10.</b>
-                        
-                        性能
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="2.3" data-path="iOS/Questions.html">
-            
-                
-                    <a href="../../iOS/Questions.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.3.</b>
-                        
-                        面试问题
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.4" data-path="iOS/More.html">
-            
-                
-                    <a href="../../iOS/More.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.4.</b>
-                        
-                        更多资料
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="3" data-path="Android/index.html">
-            
-                
-                    <a href="../../Android/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.</b>
-                        
-                        Android 开发
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="3.1" data-path="Android/Java/index.html">
-            
-                
-                    <a href="../../Android/Java/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.1.</b>
-                        
-                        Java 基础
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="3.1.1" data-path="Android/Java/Questions.html">
-            
-                
-                    <a href="../../Android/Java/Questions.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.1.1.</b>
-                        
-                        面试问题
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="3.2" data-path="Android/basic/index.html">
-            
-                
-                    <a href="../../Android/basic/index.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.2.</b>
-                        
-                        Android 基础
-                    </a>
-            
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="3.2.1" data-path="Android/basic/Android-Arch.html">
-            
-                
-                    <a href="../../Android/basic/Android-Arch.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.2.1.</b>
-                        
-                        Android 系统架构
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="3.2.2" data-path="Android/basic/Activity-Service-Lifecircle.html">
-            
-                
-                    <a href="../../Android/basic/Activity-Service-Lifecircle.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.2.2.</b>
-                        
-                        Activity/Service 生命周期
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="3.2.3" data-path="Android/basic/Android-Animation.html">
-            
-                
-                    <a href="../../Android/basic/Android-Animation.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.2.3.</b>
-                        
-                        Android 中的动画(补帧与逐帧)
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="3.2.4" data-path="Android/basic/Android-LaunchMode.html">
-            
-                
-                    <a href="../../Android/basic/Android-LaunchMode.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.2.4.</b>
-                        
-                        Activity 的 4 种启动模式
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="3.2.5" data-path="Android/basic/ListView-Optimize.html">
-            
-                
-                    <a href="../../Android/basic/ListView-Optimize.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.2.5.</b>
-                        
-                        ListView原理与优化
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="3.2.6" data-path="Android/basic/Android-handler-thread-looper.html">
-            
-                
-                    <a href="../../Android/basic/Android-handler-thread-looper.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.2.6.</b>
-                        
-                        Android 中的 Thread, Looper 和 Handler 机制
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="3.3" data-path="Android/Questions.html">
-            
-                
-                    <a href="../../Android/Questions.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>3.3.</b>
-                        
-                        面试问题
-                    </a>
-            
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-
-            
-            <li class="divider"></li>
-            <li>
-                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-                    Published with GitBook
-                </a>
-            </li>
-            
-        </ul>
-    </nav>
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
 </div>
 
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../basic/">
+            
+                <a href="../../basic/">
+            
+                    
+                    基础知识
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../basic/network/">
+            
+                <a href="../../basic/network/">
+            
+                    
+                    计算机网络
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../../basic/network/HTTP.html">
+            
+                <a href="../../basic/network/HTTP.html">
+            
+                    
+                    HTTP 协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="../../basic/network/TCP.html">
+            
+                <a href="../../basic/network/TCP.html">
+            
+                    
+                    TCP 协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3" data-path="../../basic/network/IP.html">
+            
+                <a href="../../basic/network/IP.html">
+            
+                    
+                    IP 协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4" data-path="../../basic/network/Socket-Programming-Basic.html">
+            
+                <a href="../../basic/network/Socket-Programming-Basic.html">
+            
+                    
+                    Socket 编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../basic/algo/">
+            
+                <a href="../../basic/algo/">
+            
+                    
+                    数据结构与算法
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1" data-path="../../basic/algo/Linked-List.md">
+            
+                <span>
+            
+                    
+                    链表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.2" data-path="../../basic/algo/Tree.html">
+            
+                <a href="../../basic/algo/Tree.html">
+            
+                    
+                    树
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.3" data-path="../../basic/algo/Hash-Table.html">
+            
+                <a href="../../basic/algo/Hash-Table.html">
+            
+                    
+                    哈希表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.4" data-path="../../basic/algo/Sorting.html">
+            
+                <a href="../../basic/algo/Sorting.html">
+            
+                    
+                    排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.5" >
+            
+                <span>
+            
+                    
+                    搜索
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.6" >
+            
+                <span>
+            
+                    
+                    字符串
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.7" >
+            
+                <span>
+            
+                    
+                    向量/矩阵
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.8" data-path="../../basic/algo/Random.html">
+            
+                <a href="../../basic/algo/Random.html">
+            
+                    
+                    随机
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.9" data-path="../../basic/algo/Greedy.html">
+            
+                <a href="../../basic/algo/Greedy.html">
+            
+                    
+                    贪心
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.10" data-path="../../basic/algo/DP.html">
+            
+                <a href="../../basic/algo/DP.html">
+            
+                    
+                    动态规划
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../basic/arch/">
+            
+                <a href="../../basic/arch/">
+            
+                    
+                    体系结构与操作系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.3.1" data-path="../../basic/arch/Arch.html">
+            
+                <a href="../../basic/arch/Arch.html">
+            
+                    
+                    体系结构基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.2" data-path="../../basic/arch/OS.html">
+            
+                <a href="../../basic/arch/OS.html">
+            
+                    
+                    操作系统基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.3" data-path="../../basic/arch/Concurrency.html">
+            
+                <a href="../../basic/arch/Concurrency.html">
+            
+                    
+                    并发技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.4" data-path="../../basic/arch/Memory-Management.html">
+            
+                <a href="../../basic/arch/Memory-Management.html">
+            
+                    
+                    内存管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.5" data-path="../../basic/arch/Disk-And-File.html">
+            
+                <a href="../../basic/arch/Disk-And-File.html">
+            
+                    
+                    磁盘与文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.6" >
+            
+                <span>
+            
+                    
+                    进程管理
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../../basic/db/">
+            
+                <a href="../../basic/db/">
+            
+                    
+                    数据库系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.4.1" data-path="../../basic/db/Transaction.html">
+            
+                <a href="../../basic/db/Transaction.html">
+            
+                    
+                    事务处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.2" data-path="../../basic/db/DB-Index.html">
+            
+                <a href="../../basic/db/DB-Index.html">
+            
+                    
+                    索引
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../../basic/compiler/">
+            
+                <a href="../../basic/compiler/">
+            
+                    
+                    编译原理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.5.1" data-path="../../basic/compiler/Compiler-Arch.html">
+            
+                <a href="../../basic/compiler/Compiler-Arch.html">
+            
+                    
+                    编译器架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../../basic/design/">
+            
+                <a href="../../basic/design/">
+            
+                    
+                    设计模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.6.1" data-path="../../basic/design/OO-Basic.html">
+            
+                <a href="../../basic/design/OO-Basic.html">
+            
+                    
+                    面向对象基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6.2" data-path="../../basic/design/GOP.html">
+            
+                <a href="../../basic/design/GOP.html">
+            
+                    
+                    四人帮设计模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6.3" data-path="../../basic/design/MVC.html">
+            
+                <a href="../../basic/design/MVC.html">
+            
+                    
+                    MVC 与 MVVM
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../../basic/scm/">
+            
+                <a href="../../basic/scm/">
+            
+                    
+                    版本控制
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.7.1" data-path="../../basic/scm/Git.html">
+            
+                <a href="../../basic/scm/Git.html">
+            
+                    
+                    Git
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7.2" data-path="../../basic/scm/SVN.html">
+            
+                <a href="../../basic/scm/SVN.html">
+            
+                    
+                    SVN
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    iOS 开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../ObjC-Basic/">
+            
+                <a href="../ObjC-Basic/">
+            
+                    
+                    Objective-C 语言基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../ObjC-Basic/Class.html">
+            
+                <a href="../ObjC-Basic/Class.html">
+            
+                    
+                    类与对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../ObjC-Basic/Block.html">
+            
+                <a href="../ObjC-Basic/Block.html">
+            
+                    
+                    Block 编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../ObjC-Basic/Runtime.html">
+            
+                <a href="../ObjC-Basic/Runtime.html">
+            
+                    
+                    Objective-C Runtime
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4" data-path="../ObjC-Basic/MM.html">
+            
+                <a href="../ObjC-Basic/MM.html">
+            
+                    
+                    Objective-C 内存管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.5" data-path="../ObjC-Basic/Runloop.html">
+            
+                <a href="../ObjC-Basic/Runloop.html">
+            
+                    
+                    Runloop
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Cocoa Touch
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" data-path="Event-Handling.html">
+            
+                <a href="Event-Handling.html">
+            
+                    
+                    事件处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2" data-path="UIApplication.html">
+            
+                <a href="UIApplication.html">
+            
+                    
+                    UIApplication
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.3" data-path="UIView-Basic.html">
+            
+                <a href="UIView-Basic.html">
+            
+                    
+                    UIView
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.4" data-path="UIViewController.html">
+            
+                <a href="UIViewController.html">
+            
+                    
+                    UIViewController
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.5" data-path="Animation.html">
+            
+                <a href="Animation.html">
+            
+                    
+                    动画
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.6" data-path="Network.html">
+            
+                <a href="Network.html">
+            
+                    
+                    网络编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.2.7" data-path="Multithreading.html">
+            
+                <a href="Multithreading.html">
+            
+                    
+                    并发编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.8" data-path="File-System.html">
+            
+                <a href="File-System.html">
+            
+                    
+                    文件系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.9" data-path="Design.html">
+            
+                <a href="Design.html">
+            
+                    
+                    设计模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.10" data-path="Performance.html">
+            
+                <a href="Performance.html">
+            
+                    
+                    性能
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../Questions.html">
+            
+                <a href="../Questions.html">
+            
+                    
+                    面试问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../More.html">
+            
+                <a href="../More.html">
+            
+                    
+                    更多资料
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../Android/">
+            
+                <a href="../../Android/">
+            
+                    
+                    Android 开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../Android/Java/">
+            
+                <a href="../../Android/Java/">
+            
+                    
+                    Java 基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="../../Android/Java/Questions.html">
+            
+                <a href="../../Android/Java/Questions.html">
+            
+                    
+                    面试问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../Android/basic/">
+            
+                <a href="../../Android/basic/">
+            
+                    
+                    Android 基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="../../Android/basic/Android-Arch.html">
+            
+                <a href="../../Android/basic/Android-Arch.html">
+            
+                    
+                    Android 系统架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="../../Android/basic/Activity-Service-Lifecircle.html">
+            
+                <a href="../../Android/basic/Activity-Service-Lifecircle.html">
+            
+                    
+                    Activity/Service 生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.3" data-path="../../Android/basic/Android-Animation.html">
+            
+                <a href="../../Android/basic/Android-Animation.html">
+            
+                    
+                    Android 中的动画(补帧与逐帧)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.4" data-path="../../Android/basic/Android-LaunchMode.html">
+            
+                <a href="../../Android/basic/Android-LaunchMode.html">
+            
+                    
+                    Activity 的 4 种启动模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.5" data-path="../../Android/basic/ListView-Optimize.html">
+            
+                <a href="../../Android/basic/ListView-Optimize.html">
+            
+                    
+                    ListView原理与优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.6" data-path="../../Android/basic/Android-handler-thread-looper.html">
+            
+                <a href="../../Android/basic/Android-handler-thread-looper.html">
+            
+                    
+                    Android 中的 Thread, Looper 和 Handler 机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../Android/Questions.html">
+            
+                <a href="../../Android/Questions.html">
+            
+                    
+                    面试问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
     <div class="book-body">
-        <div class="body-inner">
-            <div class="book-header" role="navigation">
-    <!-- Actions Left -->
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
     
 
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../../" >笔试面试知识整理</a>
+        <a href="../.." >并发编程</a>
     </h1>
 </div>
 
-            <div class="page-wrapper" tabindex="-1" role="main">
-                <div class="page-inner">
-                
-                
-                    <section class="normal" id="section-">
-                    
-                        <h2 id="cocoa-&#x5E76;&#x53D1;&#x7F16;&#x7A0B;">Cocoa &#x5E76;&#x53D1;&#x7F16;&#x7A0B;</h2>
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="cocoa-&#x5E76;&#x53D1;&#x7F16;&#x7A0B;">Cocoa &#x5E76;&#x53D1;&#x7F16;&#x7A0B;</h2>
 <p>iOS &#x4E2D;&#x7684;&#x591A;&#x7EBF;&#x7A0B;&#xFF0C;&#x662F; Cocoa &#x6846;&#x67B6;&#x4E0B;&#x7684;&#x591A;&#x7EBF;&#x7A0B;&#xFF0C;&#x901A;&#x8FC7; Cocoa &#x7684;&#x5C01;&#x88C5;&#xFF0C;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x66F4;&#x4E3A;&#x65B9;&#x4FBF;&#x7684;&#x8FDB;&#x884C;&#x591A;&#x7EBF;&#x7A0B;&#x7F16;&#x7A0B;&#x3002;</p>
 <p>&#x5728;&#x4ECB;&#x7ECD; Cocoa &#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x7406;&#x6E05;&#x4F1A;&#x63D0;&#x5230;&#x7684;&#x51E0;&#x4E2A;&#x672F;&#x8BED;&#xFF1A;</p>
 <ul>
@@ -1436,7 +1374,7 @@ printf(<span class="hljs-string">&quot;&#x4E24;&#x4E2A; block &#x90FD;&#x5DF2;&#
 <span class="hljs-keyword">@end</span>
 </code></pre>
 <p>&#x7136;&#x540E;&#x542F;&#x52A8;&#x5B83;&#xFF1A; </p>
-<pre><code class="lang-objectivec"><span class="hljs-preprocessor">#import <span class="hljs-title">&quot;MyOperation.h&quot;</span></span>
+<pre><code class="lang-objectivec"><span class="hljs-meta">#import <span class="hljs-meta-string">&quot;MyOperation.h&quot;</span></span>
 
 <span class="hljs-keyword">int</span> main(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[]) {
     <span class="hljs-keyword">@autoreleasepool</span> {
@@ -1452,7 +1390,7 @@ printf(<span class="hljs-string">&quot;&#x4E24;&#x4E2A; block &#x90FD;&#x5DF2;&#
 Main Function
 </code></pre><p>&#x5373;&#x6574;&#x4E2A; Operation &#x5C31;&#x662F;&#x5728;&#x5F53;&#x524D;&#x7684;&#x7EBF;&#x7A0B;&#x4E2D;&#x4EE5;&#x963B;&#x585E;&#x7684;&#x5F62;&#x5F0F;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x5F53; operation &#x7684; main &#x51FD;&#x6570;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x4E4B;&#x540E;&#xFF0C;&#x7A0B;&#x5E8F;&#x7684;&#x63A7;&#x5236;&#x6743;&#x8FD4;&#x56DE;&#x5230;&#x4E3B;&#x7684; main &#x51FD;&#x6570;&#x4E2D;&#x3002;&#x8FD9;&#x6837;&#x770B;&#x6765; operation &#x8DDF;&#x666E;&#x901A;&#x7684;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x5C31;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#x4E86;&#x3002;</p>
 <p>&#x5BF9;&#x4E8E;&#x5E76;&#x53D1;&#x7684; Operation&#xFF0C;&#x8981;&#x5B9E;&#x73B0;&#x8FD8;&#x662F;&#x6709;&#x70B9;&#x9EBB;&#x70E6;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x91CD;&#x8F7D; start&#xFF0C;isAsynchronous&#xFF0C;isExecuting&#xFF0C;isFinished &#x56DB;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x540C;&#x65F6;&#x8FD8;&#x6700;&#x597D;&#x5728; start &#x548C; main &#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#x652F;&#x6301; cancel &#x64CD;&#x4F5C;&#x3002;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x8FD9;&#x4E48;&#x9EBB;&#x70E6;&#x5462;&#xFF1F;&#x56E0;&#x4E3A;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x5E76;&#x53D1;&#x7684; Operation&#xFF0C;&#x8C03;&#x7528;&#x8005;&#x77E5;&#x9053;&#x5B83;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x5F00;&#x59CB;&#xFF0C;&#x5374;&#x4E0D;&#x80FD;&#x77E5;&#x9053;&#x5B83;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x7ED3;&#x675F;&#x3002;&#x5728; NSOperation &#x7684;&#x4F53;&#x7CFB;&#x4E0B;&#xFF0C;&#x662F;&#x901A;&#x8FC7; KVO &#x76D1;&#x6D4B; isExecuting &#x548C; isFinished &#x8FD9;&#x51E0;&#x4E2A;&#x53D8;&#x91CF;&#xFF0C;&#x6765;&#x76D1;&#x6D4B; Operation &#x7684;&#x5B8C;&#x6210;&#x72B6;&#x6001;&#x7684;&#x3002;&#x51FA;&#x4E8E;&#x517C;&#x5BB9;&#x6027;&#x7684;&#x8003;&#x8651;&#xFF08;&#x53C2;&#x8003;<a href="https://stackoverflow.com/questions/3573236/why-does-nsoperation-disable-automatic-key-value-observing" target="_blank">&#x8FD9;&#x91CC;</a>&#xFF09;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x5FC5;&#x987B;&#x624B;&#x52A8;&#x89E6;&#x53D1; KVO &#x901A;&#x77E5;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x793A;&#x4F8B;&#xFF1A;</p>
-<pre><code class="lang-objectivec"><span class="hljs-preprocessor">#import <span class="hljs-title">&quot;MyOperation.h&quot;</span></span>
+<pre><code class="lang-objectivec"><span class="hljs-meta">#import <span class="hljs-meta-string">&quot;MyOperation.h&quot;</span></span>
 
 <span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">MyOperation</span>()</span>
 
@@ -1468,7 +1406,7 @@ Main Function
     {
         <span class="hljs-comment">// Move the operation to the finished state if it is canceled.</span>
         [<span class="hljs-keyword">self</span> willChangeValueForKey:<span class="hljs-string">@&quot;isFinished&quot;</span>];
-        <span class="hljs-keyword">self</span><span class="hljs-variable">._finished</span> = <span class="hljs-literal">YES</span>;
+        <span class="hljs-keyword">self</span>._finished = <span class="hljs-literal">YES</span>;
         [<span class="hljs-keyword">self</span> didChangeValueForKey:<span class="hljs-string">@&quot;isFinished&quot;</span>];
         <span class="hljs-keyword">return</span>;
     }
@@ -1476,7 +1414,7 @@ Main Function
     <span class="hljs-comment">// If the operation is not canceled, begin executing the task.</span>
     [<span class="hljs-keyword">self</span> willChangeValueForKey:<span class="hljs-string">@&quot;isExecuting&quot;</span>];
     [<span class="hljs-built_in">NSThread</span> detachNewThreadSelector:<span class="hljs-keyword">@selector</span>(main) toTarget:<span class="hljs-keyword">self</span> withObject:<span class="hljs-literal">nil</span>];
-    <span class="hljs-keyword">self</span><span class="hljs-variable">._executing</span> = <span class="hljs-literal">YES</span>;
+    <span class="hljs-keyword">self</span>._executing = <span class="hljs-literal">YES</span>;
     [<span class="hljs-keyword">self</span> didChangeValueForKey:<span class="hljs-string">@&quot;isExecuting&quot;</span>];
 
 }
@@ -1497,19 +1435,19 @@ Main Function
 }
 
 - (<span class="hljs-built_in">BOOL</span>)isExecuting {
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span><span class="hljs-variable">._executing</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>._executing;
 }
 
 - (<span class="hljs-built_in">BOOL</span>)isFinished {
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span><span class="hljs-variable">._finished</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">self</span>._finished;
 }
 
 - (<span class="hljs-keyword">void</span>)completeOperation {
     [<span class="hljs-keyword">self</span> willChangeValueForKey:<span class="hljs-string">@&quot;isFinished&quot;</span>];
     [<span class="hljs-keyword">self</span> willChangeValueForKey:<span class="hljs-string">@&quot;isExecuting&quot;</span>];
 
-    <span class="hljs-keyword">self</span><span class="hljs-variable">._executing</span> = <span class="hljs-literal">NO</span>;
-    <span class="hljs-keyword">self</span><span class="hljs-variable">._finished</span> = <span class="hljs-literal">YES</span>;
+    <span class="hljs-keyword">self</span>._executing = <span class="hljs-literal">NO</span>;
+    <span class="hljs-keyword">self</span>._finished = <span class="hljs-literal">YES</span>;
 
     [<span class="hljs-keyword">self</span> didChangeValueForKey:<span class="hljs-string">@&quot;isExecuting&quot;</span>];
     [<span class="hljs-keyword">self</span> didChangeValueForKey:<span class="hljs-string">@&quot;isFinished&quot;</span>];
@@ -1552,8 +1490,8 @@ Main Function
 <h4 id="queue-&#x7684;&#x4F18;&#x5148;&#x7EA7;">Queue &#x7684;&#x4F18;&#x5148;&#x7EA7;</h4>
 <p>NSOperation &#x53EF;&#x4EE5;&#x4F7F;&#x7528; queuePriority &#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x4F18;&#x5148;&#x7EA7;&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x6709;&#x4E0B;&#x9762;&#x51E0;&#x79CD;&#xFF1A;</p>
 <pre><code class="lang-objectivec"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">enum</span> : <span class="hljs-built_in">NSInteger</span> {
-   <span class="hljs-built_in">NSOperationQueuePriorityVeryLow</span> = -<span class="hljs-number">8</span>,
-   <span class="hljs-built_in">NSOperationQueuePriorityLow</span> = -<span class="hljs-number">4</span>,
+   <span class="hljs-built_in">NSOperationQueuePriorityVeryLow</span> = <span class="hljs-number">-8</span>,
+   <span class="hljs-built_in">NSOperationQueuePriorityLow</span> = <span class="hljs-number">-4</span>,
    <span class="hljs-built_in">NSOperationQueuePriorityNormal</span> = <span class="hljs-number">0</span>,
    <span class="hljs-built_in">NSOperationQueuePriorityHigh</span> = <span class="hljs-number">4</span>,
    <span class="hljs-built_in">NSOperationQueuePriorityVeryHigh</span> = <span class="hljs-number">8</span>
@@ -1578,50 +1516,82 @@ Main Function
 <li><a href="http://www.saitjr.com/ios/ios-gcd-deadlock.html" target="_blank">http://www.saitjr.com/ios/ios-gcd-deadlock.html</a></li>
 </ul>
 
-                    
-                    </section>
-                
-                
-                </div>
-            </div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
         </div>
-
-        
-        <a href="../../iOS/Cocoa-Touch/Network.html" class="navigation navigation-prev " aria-label="Previous page: 网络编程"><i class="fa fa-angle-left"></i></a>
-        
-        
-        <a href="../../iOS/Cocoa-Touch/File-System.html" class="navigation navigation-next " aria-label="Next page: 文件系统"><i class="fa fa-angle-right"></i></a>
-        
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
     </div>
 </div>
 
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Network.html" class="navigation navigation-prev " aria-label="Previous page: 网络编程">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="File-System.html" class="navigation navigation-next " aria-label="Next page: 文件系统">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
         
-<script src="../../gitbook/app.js"></script>
+    </div>
 
-    
-    <script src="../../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
-    
-
-    
-    <script src="../../gitbook/plugins/gitbook-plugin-search/search.js"></script>
-    
-
-    
-    <script src="../../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
-    
-
-    
-    <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
-    
-
-<script>
-require(["gitbook"], function(gitbook) {
-    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
-    gitbook.start(config);
-});
-</script>
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"并发编程","level":"1.3.2.7","depth":3,"next":{"title":"文件系统","level":"1.3.2.8","depth":3,"path":"iOS/Cocoa-Touch/File-System.md","ref":"iOS/Cocoa-Touch/File-System.md","articles":[]},"previous":{"title":"网络编程","level":"1.3.2.6","depth":3,"path":"iOS/Cocoa-Touch/Network.md","ref":"iOS/Cocoa-Touch/Network.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Cocoa-Touch/Multithreading.md","mtime":"2016-03-22T06:34:56.000Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-07-10T13:06:32.532Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
 
         
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
     </body>
-    
 </html>
+
