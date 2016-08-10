@@ -15,6 +15,7 @@
 * http://www.hrchen.com/2013/05/performance-with-instruments/ (iOS 性能优化）
 * https://github.com/huang303513/iOS-Study-Demo
 * https://github.com/seedante/iOS-Note
+* https://zsisme.gitbooks.io/ios-/content/index.html（iOS Core Animation: Advanced Techniques中文译本）
 
 #### 编码规范
 
