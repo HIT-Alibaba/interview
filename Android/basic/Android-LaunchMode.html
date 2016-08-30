@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.1.1">
+        <meta name="generator" content="GitBook 3.2.0">
         
         
         
@@ -1102,55 +1102,33 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="android-activity&#x7684;launch-mode">Android Activity&#x7684;Launch Mode</h3>
-<h4 id="&#x7EFC;&#x8FF0;">&#x7EFC;&#x8FF0;</h4>
-<p>&#x5BF9;&#x5B89;&#x5353;&#x800C;&#x8A00;&#xFF0C;Activity&#x6709;&#x56DB;&#x79CD;&#x542F;&#x52A8;&#x6A21;&#x5F0F;&#xFF0C;&#x5B83;&#x4EEC;&#x662F;&#xFF1A;</p>
-<ul>
-<li>standard &#x6807;&#x51C6;&#x6A21;&#x5F0F;&#xFF0C;&#x6BCF;&#x6B21;&#x90FD;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;</li>
-<li>singleTop &#x5982;&#x679C;&#x5728;&#x4EFB;&#x52A1;&#x6808;&#x9876;&#x53D1;&#x73B0;&#x4E86;&#x76F8;&#x540C;&#x7684;&#x5B9E;&#x4F8B;&#x5219;&#x91CD;&#x7528;&#xFF0C;&#x5426;&#x5219;&#x65B0;&#x5EFA;&#x5E76;&#x538B;&#x5165;&#x6808;&#x9876;</li>
-<li>singleTask &#x5982;&#x679C;&#x5728;&#x4EFB;&#x52A1;&#x6808;&#x4E2D;&#x53D1;&#x73B0;&#x4E86;&#x76F8;&#x540C;&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x5C06;&#x5176;&#x4E0A;&#x9762;&#x7684;&#x4EFB;&#x52A1;&#x7EC8;&#x6B62;&#x5E76;&#x79FB;&#x9664;&#xFF0C;&#x91CD;&#x7528;&#x8BE5;&#x5B9E;&#x4F8B;&#x3002;&#x5426;&#x5219;&#x65B0;&#x5EFA;&#x5B9E;&#x4F8B;&#x5E76;&#x5165;&#x6808;</li>
-<li>singleInstance &#x5141;&#x8BB8;&#x4E0D;&#x540C;&#x5E94;&#x7528;&#xFF0C;&#x8FDB;&#x7A0B;&#x7EBF;&#x7A0B;&#x7B49;&#x5171;&#x7528;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#xFF0C;&#x65E0;&#x8BBA;&#x4ECE;&#x4F55;&#x5E94;&#x7528;&#x8C03;&#x7528;&#x8BE5;&#x5B9E;&#x4F8B;&#x90FD;&#x91CD;&#x7528;</li>
-</ul>
-<p>&#x60F3;&#x8981;&#x611F;&#x53D7;&#x4E00;&#x4E0B;&#x7684;&#x8BDD;&#x5199;&#x4E00;&#x4E2A;&#x5C0F;demo&#xFF0C;&#x7136;&#x540E;&#x81EA;&#x5DF1;&#x542F;&#x52A8;&#x81EA;&#x5DF1;&#x518D;&#x70B9;&#x8FD4;&#x56DE;&#x952E;&#x5C31;&#x770B;&#x51FA;&#x6765;&#x4E86;&#x3002;&#x4E0B;&#x9762;&#x8BE6;&#x7EC6;&#x8BF4;&#x8BF4;&#x6BCF;&#x4E00;&#x79CD;&#x542F;&#x52A8;&#x6A21;&#x5F0F;</p>
-<h4 id="standard">standard</h4>
-<p>&#x4E00;&#x5F20;&#x56FE;&#x5C31;&#x5F88;&#x597D;&#x7406;&#x89E3;</p>
-<p><img src="https://github.com/HIT-Alibaba/interview/blob/master/img/android-lanchmode-standard.gif?raw=true" alt="standard&#x542F;&#x52A8;&#x6A21;&#x5F0F;"></p>
-<p>&#x4EC0;&#x4E48;&#x914D;&#x7F6E;&#x90FD;&#x4E0D;&#x5199;&#x7684;&#x8BDD;&#x5C31;&#x662F;&#x8FD9;&#x79CD;&#x542F;&#x52A8;&#x6A21;&#x5F0F;&#x3002;&#x4F46;&#x662F;&#x6BCF;&#x6B21;&#x90FD;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x7684;&#x8BDD;&#x771F;&#x662F;&#x8FC7;&#x4E8E;&#x6D6A;&#x8D39;&#xFF0C;&#x4E3A;&#x4E86;&#x4F18;&#x5316;&#x5E94;&#x8BE5;&#x5C3D;&#x91CF;&#x8003;&#x8651;&#x4F59;&#x4E0B;&#x4E09;&#x79CD;&#x65B9;&#x5F0F;&#x3002;</p>
-<h4 id="singletop">singleTop</h4>
-<p>&#x6BCF;&#x6B21;&#x626B;&#x63CF;&#x6808;&#x9876;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x4EFB;&#x52A1;&#x6808;&#x9876;&#x53D1;&#x73B0;&#x4E86;&#x76F8;&#x540C;&#x7684;&#x5B9E;&#x4F8B;&#x5219;&#x91CD;&#x7528;&#xFF0C;&#x5426;&#x5219;&#x65B0;&#x5EFA;&#x5E76;&#x538B;&#x5165;&#x6808;&#x9876;&#x3002;</p>
-<p><img src="https://github.com/HIT-Alibaba/interview/blob/master/img/android-lanchmode-singletop.gif?raw=true" alt="singleTop"></p>
-<p>&#x914D;&#x5236;&#x65B9;&#x6CD5;&#x5B9E;&#x5728;Mainifest.xml&#x4E2D;&#x8FDB;&#x884C;&#xFF1A;</p>
-<pre><code>&lt;activity
+                                <h3 id="android-activity&#x7684;launch-mode">Android Activity&#x7684;Launch Mode</h3><h4 id="&#x7EFC;&#x8FF0;">&#x7EFC;&#x8FF0;</h4><p>&#x5BF9;&#x5B89;&#x5353;&#x800C;&#x8A00;&#xFF0C;Activity&#x6709;&#x56DB;&#x79CD;&#x542F;&#x52A8;&#x6A21;&#x5F0F;&#xFF0C;&#x5B83;&#x4EEC;&#x662F;&#xFF1A;</p><ul><li>standard &#x6807;&#x51C6;&#x6A21;&#x5F0F;&#xFF0C;&#x6BCF;&#x6B21;&#x90FD;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;
+</li>
+<li>singleTop &#x5982;&#x679C;&#x5728;&#x4EFB;&#x52A1;&#x6808;&#x9876;&#x53D1;&#x73B0;&#x4E86;&#x76F8;&#x540C;&#x7684;&#x5B9E;&#x4F8B;&#x5219;&#x91CD;&#x7528;&#xFF0C;&#x5426;&#x5219;&#x65B0;&#x5EFA;&#x5E76;&#x538B;&#x5165;&#x6808;&#x9876;
+</li>
+<li>singleTask &#x5982;&#x679C;&#x5728;&#x4EFB;&#x52A1;&#x6808;&#x4E2D;&#x53D1;&#x73B0;&#x4E86;&#x76F8;&#x540C;&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x5C06;&#x5176;&#x4E0A;&#x9762;&#x7684;&#x4EFB;&#x52A1;&#x7EC8;&#x6B62;&#x5E76;&#x79FB;&#x9664;&#xFF0C;&#x91CD;&#x7528;&#x8BE5;&#x5B9E;&#x4F8B;&#x3002;&#x5426;&#x5219;&#x65B0;&#x5EFA;&#x5B9E;&#x4F8B;&#x5E76;&#x5165;&#x6808;
+</li>
+<li>singleInstance &#x5141;&#x8BB8;&#x4E0D;&#x540C;&#x5E94;&#x7528;&#xFF0C;&#x8FDB;&#x7A0B;&#x7EBF;&#x7A0B;&#x7B49;&#x5171;&#x7528;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#xFF0C;&#x65E0;&#x8BBA;&#x4ECE;&#x4F55;&#x5E94;&#x7528;&#x8C03;&#x7528;&#x8BE5;&#x5B9E;&#x4F8B;&#x90FD;&#x91CD;&#x7528;
+</li></ul>
+<p>&#x60F3;&#x8981;&#x611F;&#x53D7;&#x4E00;&#x4E0B;&#x7684;&#x8BDD;&#x5199;&#x4E00;&#x4E2A;&#x5C0F;demo&#xFF0C;&#x7136;&#x540E;&#x81EA;&#x5DF1;&#x542F;&#x52A8;&#x81EA;&#x5DF1;&#x518D;&#x70B9;&#x8FD4;&#x56DE;&#x952E;&#x5C31;&#x770B;&#x51FA;&#x6765;&#x4E86;&#x3002;&#x4E0B;&#x9762;&#x8BE6;&#x7EC6;&#x8BF4;&#x8BF4;&#x6BCF;&#x4E00;&#x79CD;&#x542F;&#x52A8;&#x6A21;&#x5F0F;</p><h4 id="standard">standard</h4><p>&#x4E00;&#x5F20;&#x56FE;&#x5C31;&#x5F88;&#x597D;&#x7406;&#x89E3;</p><p><img alt="standard&#x542F;&#x52A8;&#x6A21;&#x5F0F;" src="https://github.com/HIT-Alibaba/interview/blob/master/img/android-lanchmode-standard.gif?raw=true"></p><p>&#x4EC0;&#x4E48;&#x914D;&#x7F6E;&#x90FD;&#x4E0D;&#x5199;&#x7684;&#x8BDD;&#x5C31;&#x662F;&#x8FD9;&#x79CD;&#x542F;&#x52A8;&#x6A21;&#x5F0F;&#x3002;&#x4F46;&#x662F;&#x6BCF;&#x6B21;&#x90FD;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x7684;&#x8BDD;&#x771F;&#x662F;&#x8FC7;&#x4E8E;&#x6D6A;&#x8D39;&#xFF0C;&#x4E3A;&#x4E86;&#x4F18;&#x5316;&#x5E94;&#x8BE5;&#x5C3D;&#x91CF;&#x8003;&#x8651;&#x4F59;&#x4E0B;&#x4E09;&#x79CD;&#x65B9;&#x5F0F;&#x3002;</p><h4 id="singletop">singleTop</h4><p>&#x6BCF;&#x6B21;&#x626B;&#x63CF;&#x6808;&#x9876;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x4EFB;&#x52A1;&#x6808;&#x9876;&#x53D1;&#x73B0;&#x4E86;&#x76F8;&#x540C;&#x7684;&#x5B9E;&#x4F8B;&#x5219;&#x91CD;&#x7528;&#xFF0C;&#x5426;&#x5219;&#x65B0;&#x5EFA;&#x5E76;&#x538B;&#x5165;&#x6808;&#x9876;&#x3002;</p><p><img alt="singleTop" src="https://github.com/HIT-Alibaba/interview/blob/master/img/android-lanchmode-singletop.gif?raw=true"></p><p>&#x914D;&#x5236;&#x65B9;&#x6CD5;&#x5B9E;&#x5728;Mainifest.xml&#x4E2D;&#x8FDB;&#x884C;&#xFF1A;</p><pre><code>&lt;activity
     android:name=&quot;.SingleTopActivity&quot;
     android:label=&quot;@string/singletop&quot;
     android:launchMode=&quot;singleTop&quot; &gt;
-&lt;/activity&gt;
-</code></pre><h4 id="singletask">singleTask</h4>
-<p>&#x4E0E;singleTop&#x7684;&#x533A;&#x522B;&#x662F;singleTask&#x4F1A;&#x626B;&#x63CF;&#x6574;&#x4E2A;&#x4EFB;&#x52A1;&#x6808;&#x5E76;&#x5236;&#x5B9A;&#x7B56;&#x7565;&#x3002;&#x4E0A;&#x6548;&#x679C;&#x56FE;&#xFF1A;</p>
-<p><img src="https://github.com/HIT-Alibaba/interview/blob/master/img/android-lanchmode-singletask.gif?raw=true" alt="singleTask"></p>
-<p>&#x4F7F;&#x7528;&#x65F6;&#x9700;&#x8981;&#x5C0F;&#x5FC3;&#x56E0;&#x4E3A;&#x4F1A;&#x5C06;&#x4E4B;&#x524D;&#x5165;&#x6808;&#x7684;&#x5B9E;&#x4F8B;&#x4E4B;&#x4E0A;&#x7684;&#x5B9E;&#x4F8B;&#x5168;&#x90E8;&#x79FB;&#x9664;&#xFF0C;&#x9700;&#x8981;&#x683C;&#x5916;&#x5C0F;&#x5FC3;&#x903B;&#x8F91;&#x3002;</p>
-<p>&#x914D;&#x5236;&#x65B9;&#x6CD5;&#xFF1A;</p>
-<pre><code>&lt;activity
+&lt;/activity&gt;</code></pre>
+<h4 id="singletask">singleTask</h4><p>&#x4E0E;singleTop&#x7684;&#x533A;&#x522B;&#x662F;singleTask&#x4F1A;&#x626B;&#x63CF;&#x6574;&#x4E2A;&#x4EFB;&#x52A1;&#x6808;&#x5E76;&#x5236;&#x5B9A;&#x7B56;&#x7565;&#x3002;&#x4E0A;&#x6548;&#x679C;&#x56FE;&#xFF1A;</p><p><img alt="singleTask" src="https://github.com/HIT-Alibaba/interview/blob/master/img/android-lanchmode-singletask.gif?raw=true"></p><p>&#x4F7F;&#x7528;&#x65F6;&#x9700;&#x8981;&#x5C0F;&#x5FC3;&#x56E0;&#x4E3A;&#x4F1A;&#x5C06;&#x4E4B;&#x524D;&#x5165;&#x6808;&#x7684;&#x5B9E;&#x4F8B;&#x4E4B;&#x4E0A;&#x7684;&#x5B9E;&#x4F8B;&#x5168;&#x90E8;&#x79FB;&#x9664;&#xFF0C;&#x9700;&#x8981;&#x683C;&#x5916;&#x5C0F;&#x5FC3;&#x903B;&#x8F91;&#x3002;</p><p>&#x914D;&#x5236;&#x65B9;&#x6CD5;&#xFF1A;</p><pre><code>&lt;activity
     android:name=&quot;.SingleTopActivity&quot;
     android:label=&quot;@string/singletop&quot;
     android:launchMode=&quot;singleTop&quot; &gt;
-&lt;/activity&gt;
-</code></pre><h4 id="singleinstance">singleInstance</h4>
-<p>&#x8FD9;&#x4E2A;&#x7684;&#x7406;&#x89E3;&#x53EF;&#x4EE5;&#x8FD9;&#x4E48;&#x770B;&#xFF1A;&#x5728;&#x5FAE;&#x4FE1;&#x91CC;&#x70B9;&#x51FB;&#x201C;&#x7528;&#x6D4F;&#x89C8;&#x5668;&#x6253;&#x5F00;&#x201D;&#x4E00;&#x4E2A;&#x670B;&#x53CB;&#x5708;&#xFF0C;&#x7136;&#x540E;&#x5207;&#x5230;QQ&#x518D;&#x7528;&#x6D4F;&#x89C8;&#x5668;&#x5F00;&#x4E00;&#x4E2A;&#x7F51;&#x9875;&#xFF0C;&#x518D;&#x8DD1;&#x5230;&#x54EA;&#x91CC;&#x518D;&#x5F00;&#x4E00;&#x4E2A;&#x9875;&#x9762;&#x3002;&#x6BCF;&#x6B21;&#x6211;&#x4EEC;&#x90FD;&#x5728;Activity&#x4E2D;&#x8BD5;&#x56FE;&#x542F;&#x52A8;&#x53E6;&#x4E00;&#x4E2A;&#x6D4F;&#x89C8;&#x5668;Activity&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x7AEF;&#x770B;&#x6765;&#xFF0C;&#x90FD;&#x662F;&#x8C03;&#x7528;&#x4E86;&#x540C;&#x4E00;&#x4E2A;&#x81EA;&#x5DF1;&#x3002;&#x56E0;&#x4E3A;&#x4F7F;&#x7528;&#x4E86;singleInstance&#x6A21;&#x5F0F;&#xFF0C;&#x4E0D;&#x540C;&#x5E94;&#x7528;&#x8C03;&#x7528;&#x7684;Activity&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x5171;&#x4EAB;&#x7684;&#x3002;</p>
-<p>&#x4E0A;&#x8BF4;&#x660E;&#x56FE;&#xFF1A;</p>
-<p><img src="https://github.com/HIT-Alibaba/interview/blob/master/img/android-lanchmode-singleinstance.gif?raw=true" alt="singleInstance"></p>
-<p>&#x914D;&#x5236;&#x65B9;&#x6CD5;&#xFF1A;</p>
-<pre><code>&lt;activity
+&lt;/activity&gt;</code></pre>
+<h4 id="singleinstance">singleInstance</h4><p>&#x8FD9;&#x4E2A;&#x7684;&#x7406;&#x89E3;&#x53EF;&#x4EE5;&#x8FD9;&#x4E48;&#x770B;&#xFF1A;&#x5728;&#x5FAE;&#x4FE1;&#x91CC;&#x70B9;&#x51FB;&#x201C;&#x7528;&#x6D4F;&#x89C8;&#x5668;&#x6253;&#x5F00;&#x201D;&#x4E00;&#x4E2A;&#x670B;&#x53CB;&#x5708;&#xFF0C;&#x7136;&#x540E;&#x5207;&#x5230;QQ&#x518D;&#x7528;&#x6D4F;&#x89C8;&#x5668;&#x5F00;&#x4E00;&#x4E2A;&#x7F51;&#x9875;&#xFF0C;&#x518D;&#x8DD1;&#x5230;&#x54EA;&#x91CC;&#x518D;&#x5F00;&#x4E00;&#x4E2A;&#x9875;&#x9762;&#x3002;&#x6BCF;&#x6B21;&#x6211;&#x4EEC;&#x90FD;&#x5728;Activity&#x4E2D;&#x8BD5;&#x56FE;&#x542F;&#x52A8;&#x53E6;&#x4E00;&#x4E2A;&#x6D4F;&#x89C8;&#x5668;Activity&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x7AEF;&#x770B;&#x6765;&#xFF0C;&#x90FD;&#x662F;&#x8C03;&#x7528;&#x4E86;&#x540C;&#x4E00;&#x4E2A;&#x81EA;&#x5DF1;&#x3002;&#x56E0;&#x4E3A;&#x4F7F;&#x7528;&#x4E86;singleInstance&#x6A21;&#x5F0F;&#xFF0C;&#x4E0D;&#x540C;&#x5E94;&#x7528;&#x8C03;&#x7528;&#x7684;Activity&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x5171;&#x4EAB;&#x7684;&#x3002;</p><p>&#x4E0A;&#x8BF4;&#x660E;&#x56FE;&#xFF1A;</p><p><img alt="singleInstance" src="https://github.com/HIT-Alibaba/interview/blob/master/img/android-lanchmode-singleinstance.gif?raw=true"></p><p>&#x914D;&#x5236;&#x65B9;&#x6CD5;&#xFF1A;</p><pre><code>&lt;activity
     android:name=&quot;.SingleTopActivity&quot;
     android:label=&quot;@string/singletop&quot;
     android:launchMode=&quot;singleTop&quot; &gt;
-&lt;/activity&gt;
-</code></pre><h4 id="&#x53C2;&#x8003;&#x535A;&#x5BA2;">&#x53C2;&#x8003;&#x535A;&#x5BA2;</h4>
-<p>&#x4F20;&#x9001;&#x95E8;&#xFF1A;</p>
-<ul>
-<li><a href="Android&#x4E2D;Activity&#x542F;&#x52A8;&#x6A21;&#x5F0F;&#x8BE6;&#x89E3;">http://www.cnblogs.com/fanchangfa/archive/2012/08/25/2657012.html</a></li>
-<li><a href="http://www.cnblogs.com/meizixiong/archive/2013/07/03/3170591.html" target="_blank">Android&#x5165;&#x95E8;&#xFF1A;Activity&#x56DB;&#x79CD;&#x542F;&#x52A8;&#x6A21;&#x5F0F;</a></li>
-</ul>
+&lt;/activity&gt;</code></pre>
+<h4 id="&#x53C2;&#x8003;&#x535A;&#x5BA2;">&#x53C2;&#x8003;&#x535A;&#x5BA2;</h4><p>&#x4F20;&#x9001;&#x95E8;&#xFF1A;</p><ul><li><a href="Android&#x4E2D;Activity&#x542F;&#x52A8;&#x6A21;&#x5F0F;&#x8BE6;&#x89E3;">http://www.cnblogs.com/fanchangfa/archive/2012/08/25/2657012.html</a>
+</li>
+<li><a href="http://www.cnblogs.com/meizixiong/archive/2013/07/03/3170591.html" target="_blank">Android&#x5165;&#x95E8;&#xFF1A;Activity&#x56DB;&#x79CD;&#x542F;&#x52A8;&#x6A21;&#x5F0F;</a>
+</li></ul>
 
                                 
                                 </section>
@@ -1194,7 +1172,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Activity 的 4 种启动模式","level":"1.4.2.4","depth":3,"next":{"title":"ListView原理与优化","level":"1.4.2.5","depth":3,"path":"Android/basic/ListView-Optimize.md","ref":"Android/basic/ListView-Optimize.md","articles":[]},"previous":{"title":"Android 中的动画(补帧与逐帧)","level":"1.4.2.3","depth":3,"path":"Android/basic/Android-Animation.md","ref":"Android/basic/Android-Animation.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Android/basic/Android-LaunchMode.md","mtime":"2015-12-31T11:12:09.000Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-08-10T12:29:16.433Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Activity 的 4 种启动模式","level":"1.4.2.4","depth":3,"next":{"title":"ListView原理与优化","level":"1.4.2.5","depth":3,"path":"Android/basic/ListView-Optimize.md","ref":"Android/basic/ListView-Optimize.md","articles":[]},"previous":{"title":"Android 中的动画(补帧与逐帧)","level":"1.4.2.3","depth":3,"path":"Android/basic/Android-Animation.md","ref":"Android/basic/Android-Animation.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Android/basic/Android-LaunchMode.md","mtime":"2015-12-31T11:12:09.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-08-30T12:37:22.738Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
