@@ -118,7 +118,9 @@ dispatch_async(backgroundQueue, {
 那岂不是自己创建队列就没有什么意义了？其实不是的。通过我们自己创建的队列，以及 dispatch_set_target_queue 和 barrier 等操作，可以实现比较复杂的任务之间的同步，可以参考[这里](http://blog.csdn.net/growinggiant/article/details/41077221) 和 [这里](http://www.humancode.us/2014/08/14/target-queues.html)。
 
 通常情况下，对于串行队列，我们应该自己创建，对于并行队列，就直接使用系统提供的 Default 优先级的 queue。
- 
+
+**注意：**对于 `dispatch_barrier` 系列函数来说，传入的函数应当是**自己创建的**并行队列，否则 barrier 将失去作用。详情请参考苹果文档。
+
 #### 创建的 Queue 需要释放吗？
  
  在 iOS6 之前，使用 `dispatch_queue_create` 创建的 queue 需要使用 `dispatch_retain` 和 `dispatch_release` 进行管理，在 iOS 6 系统把 dispatch queue 也纳入了 ARC 管理的范围，就不需要我们进行手动管理了。使用这两个函数会导致报错。

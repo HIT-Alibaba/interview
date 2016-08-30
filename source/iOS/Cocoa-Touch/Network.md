@@ -8,7 +8,9 @@ Cocoa 中网络编程层次结构分为三层，自上而下分别是：
 * Core Foundation 层：基于 C 的 CFNetwork 和 CFNetServices
 * OS 层:基于 C 的 BSD socket
 
-这里主要介绍处于 Cocoa 层的基于 NSURL 的一系列方法。在 iOS7 之前，主要使用的网络编程 API 是 NSURLConnection 一族的类，在 iOS7 之后苹果引入了 NSURLSession 族的类，用于替代 NSURLConnection。
+这里主要介绍处于 Cocoa 层的基于 NSURL 的一系列方法。在 iOS7 之前，主要使用的网络编程 API 是 NSURLConnection 一族的类，在 iOS7 之后苹果引入了 NSURLSession 类族，用于替代 NSURLConnection。
+
+**注意：在 Xcode 7 / iOS 9.0 中苹果正式废弃了 NSURLConnection 系列 API，并建议开发者尽快迁移到 NSURLSession。因此下面的内容有关 NSURLConnection 的内容仅作为使用。**
 
 ## NSURLConnection
 
