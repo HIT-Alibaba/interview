@@ -112,18 +112,18 @@ OC 中的方法只要声明在 @interface里，就可以认为都是公有的。
     NSString *_name;
 }
 
--(NSString*) name;
--(void) setName:(NSString*)newName;
+-(NSString*)name;
+-(void)setName:(NSString*)newName;
 @end
 
 // AClass.m
 @implementation AClass
 
--(NSString*) name{
+-(NSString*)name{
     return _name;
 }
 
--(void) setName:(NSString *)name{
+-(void)setName:(NSString *)name{
     if (_name != name) {
         [_name release];
         _name = [name copy];
@@ -173,11 +173,11 @@ Protocol 类似 Java 中的 interface，定义了一个方法列表，这个方�
 
 ```objectivec
 @protocol TestProtocol<NSObject> // NSObject也是一个 Protocol，这里即继承 NSObject 里的方法
--(void)Print;               
+-(void)print;
 @end
 
 @interface B : NSObject<TestProtocol>
--(void)Print; // 默认方法是@required的，即必须实现
+-(void)print; // 默认方法是 @required 的，即必须实现
 @end
 
 ```
@@ -228,7 +228,7 @@ Delegate（委托）是 Cocoa 中常见的一种设计模式，其实现依赖�
 @property (nonatomic, retain) UIWindow *window NS_AVAILABLE_IOS(5_0);
 ```
 
-在 `AppDelegate.h` 中我们可以看到这个：
+在 `AppDelegate.h` 中我们可以看到再次对 `windows` 进行了声明：
 
 ```objectivec
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
@@ -248,7 +248,7 @@ Category 常见的使用方法如下：
 // SomeClass.h
 @interface SomeClass : NSObject{
 }
--(void) print;
+-(void)print;
 @end 
 
 // SomeClass+Hello.h
@@ -262,7 +262,7 @@ Category 常见的使用方法如下：
 #import "SomeClass+Hello.h"
 @implementationSomeClass (Hello)
 -(void)hello{
-    NSLog (@"name：%@ ", @"Jacky");
+    NSLog(@"name：%@ ", @"Jacky");
 }
 @end 
 ```
@@ -393,9 +393,23 @@ static NSOperationQueue * _personOperationQueue = nil;
 
 为什么这里要判断是否为 nil 呢？因为 `initialize` 方法可能会调用多次，后面会提到。
 
-如果是通过 Category 呢？当然也可以通过 initialize，不过除非必须的情况下，并不推荐在 Category 当中进行重载。
+如果是在 Category 中想声明全局变量呢？当然也可以通过 initialize，不过除非必须的情况下，并不推荐在 Category 当中进行方法重载。
 
-下面介绍一个有点黑魔法的方法，除了 initilize 之外，我们还可以通过编译器的 `__attribute__` 特性来实现初始化：
+有一种方法是声明 static 函数，下面的代码来自 [AFNetworking](https://github.com/AFNetworking/AFNetworking/blob/master/AFNetworking/AFURLSessionManager.m)，声明了一个当前文件范围可用的队列：
+
+```objectivec
+static dispatch_queue_t url_session_manager_creation_queue() {
+    static dispatch_queue_t af_url_session_manager_creation_queue;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        af_url_session_manager_creation_queue = dispatch_queue_create("com.alamofire.networking.session.manager.creation", DISPATCH_QUEUE_SERIAL);
+    });
+
+    return af_url_session_manager_creation_queue;
+}
+```
+
+下面介绍一个有点黑魔法的方法，除了上面两种方法之外，我们还可以通过编译器的 `__attribute__` 特性来实现初始化：
 
 ```objectivec
 __attribute__((constructor))
