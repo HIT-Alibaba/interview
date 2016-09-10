@@ -91,7 +91,7 @@ OC 中的方法只要声明在 @interface里，就可以认为都是公有的。
 
 ## 类变量
 
-苹果推荐在现代 Objective-C 中使用 @property 来实现成员变量：
+苹果推荐在现代 Objective-C 中使用 `@property` 来实现成员变量：
 
 ```objectivec
 @interface AClass : NSObject
@@ -101,9 +101,9 @@ OC 中的方法只要声明在 @interface里，就可以认为都是公有的。
 @end
 ```
 
-使用@property声明的变量可以使用`实例名.变量名`来获取和修改。
+使用 `@property` 声明的变量可以使用`实例名.变量名`来获取和修改。
 
-@property可以看做是一种语法糖，在 MRC 下，使用 @property 可以看成实现了下面的代码：
+`@property` 可以看做是一种语法糖，在 MRC 下，使用 `@property` 可以看成实现了下面的代码：
 
 ```objectivec
 // AClass.h
@@ -132,9 +132,9 @@ OC 中的方法只要声明在 @interface里，就可以认为都是公有的。
 @end
 ```
 
-也就是说，@property 会自动生成 getter 和 setter， 同时进行自动内存管理。
+也就是说，`@property` 会自动生成 getter 和 setter， 同时进行自动内存管理。
 
-@property 的说明可以有以下几种：
+`@property` 的属性可以有以下几种：
 
 * readwrite 是可读可写特性；需要生成 getter 方法和 setter 方法
 * readonly 是只读特性，只会生成 getter 方法 不会生成 setter 方法，不希望属性在类外改变时使用
@@ -143,13 +143,22 @@ OC 中的方法只要声明在 @interface里，就可以认为都是公有的。
 * copy 表示拷贝特性，setter 方法将传入对象复制一份；需要完全一份新的变量时。
 * nonatomic 和 atomic ，决定编译器生成的 setter getter是否是原子操作。 atomic 表示使用原子操作，可以在一定程度上保证线程安全。一般推荐使用 nonatomic ，因为 nonatomic 编译出的代码更快
 
-默认的 @property 是 readwrite，assign，atomic。
+默认的 `@property` 是 readwrite，assign，atomic。
+
+ 同时，我们还可以使用自己定义 accessor 的名字：
+
+```objectivec
+@property (getter=isFinished) BOOL finished;
+```
+
+这种情况下，编译器也会只生成 getter，而不生成 setter。
 
 ### @synthesize 和 @dynamic
 
-@property 背后使用 synthesize 来生成 getter 和 setter，对于现代 OC 来说，编译器默认会进行自动 synthesize，把 ivar 和属性绑定起来：
+对于现代 OC 来说，在使用 `@property` 时， 编译器默认会进行自动 synthesize，生成 getter 和 setter，同时把 ivar 和属性绑定起来：
 
 ```objectivec
+/// 现代 OC 不再需要手动进行下面的声明，编译器会自动处理
 @synthesize propertyName = _propertyName
 ```
 
@@ -159,7 +168,7 @@ OC 中的方法只要声明在 @interface里，就可以认为都是公有的。
 
 * 可读写(readwrite)属性实现了自己的 getter 和 setter
 * 只读(readonly)属性实现了自己的 getter
-* 使用 @dynamic，显式表示不希望编译器生成 getter 和 setter
+* 使用 `@dynamic`，显式表示不希望编译器生成 getter 和 setter
 * protocol 中定义的属性，编译器不会自动 synthesize，需要手动写
 * 当重载父类中的属性时，也必须手动写 synthesize
 
