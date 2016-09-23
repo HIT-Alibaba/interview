@@ -86,7 +86,7 @@ OC 中的方法只要声明在 @interface里，就可以认为都是公有的。
 和使用 Category 相比，使用 Extension 有以下两个好处：
 
 1. Extension 声明的方法必须在类的主 @implementation 区间内实现，可以避免使用有名 Category 带来的多个不必要的 implementation 段。
-2. 如果 Extension 中声明的方法没有实现，编译器会给出 Warning，使用 Category 则不会。
+2. Extension 可以添加成员变量。
 
 
 ## 类变量
