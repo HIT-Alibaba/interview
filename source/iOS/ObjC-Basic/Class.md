@@ -147,7 +147,7 @@ OC 中的方法只要声明在 @interface里，就可以认为都是公有的。
 @property (getter=isFinished) BOOL finished;
 ```
 
-这种情况下，编译器也会只生成 getter，而不生成 setter。
+这种情况下，编译器生成的 getter 方法名为 `isFinished`，而不是 `finished`。
 
 ### @synthesize 和 @dynamic
 
