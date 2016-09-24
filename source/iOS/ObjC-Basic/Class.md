@@ -81,13 +81,9 @@ OC 中的方法只要声明在 @interface里，就可以认为都是公有的。
 @end
 ```
 
-与使用 Category 类似，由于声明隐藏在 .m 中，调用者无法看到其声明，也就无法调用 `privateSayHello` 这个方法，在ARC下会引发编译错误。
+与使用 Category 类似，由于声明隐藏在 .m 中，调用者无法看到其声明，也就无法调用 `privateSayHello` 这个方法，会引发编译错误。
 
-和使用 Category 相比，使用 Extension 有以下两个好处：
-
-1. Extension 声明的方法必须在类的主 @implementation 区间内实现，可以避免使用有名 Category 带来的多个不必要的 implementation 段。
-2. Extension 可以添加成员变量。
-
+关于 Category 和 Extension 的一些区别，在[这里](#extension)。
 
 ## 类变量
 
@@ -290,8 +286,11 @@ Category 常见的使用方法如下：
 Extension 可以认为是一种匿名的 Category， Extension 与 Category 有如下几点显著的区别：
 
 1. 使用 Extension 必须有原有类的源码
-2. Extension 可以在类中添加新的属性和实例变量，Category 不可以（注：在 Category 中实际上可以通过运行时添加新的属性，下面会讲到）
-3. Extension 里添加的方法必须要有实现（没有实现编译器会给出警告）
+2. Extension 声明的方法必须在类的主 @implementation 区间内实现，可以避免使用有名 Category 带来的多个不必要的 implementation 段。
+3. Extension 可以在类中添加新的属性和实例变量，Category 不可以（注：在 Category 中实际上可以通过运行时添加新的属性，下面会讲到）
+4. <del>Extension 里添加的方法必须要有实现（没有实现编译器会给出警告）</del> 
+
+>**注**：现代 ObjC 中 Extension 和 Category 中声明的方法如果没有实现编译器都会给出警告。
 
 下面是一个 Extension 的例子：
 
