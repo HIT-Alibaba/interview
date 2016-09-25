@@ -78,7 +78,7 @@ TypeName blockName = ^returnType(parameters) {...};
 
 ### Block 可以捕获外部变量
 
-Block 可以来自外部作用域的变量，这是Block一个很强大的特性。
+Block 可以捕获来自外部作用域的变量，这是Block一个很强大的特性。
 
 ```objectivec
 - (void)testMethod {
