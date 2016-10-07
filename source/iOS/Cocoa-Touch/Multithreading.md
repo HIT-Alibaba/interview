@@ -67,7 +67,7 @@ GCD 这么受大家欢迎，它具体好用在哪里呢？GCD 主要的功劳在
     ```
     
 2. 并行队列
-    系统默认提供了四个全局可用的并行队列，其优先级不同，分别为 DISPATCH_QUEUE_PRIORITY_HIGH，DISPATCH_QUEUE_PRIORITY_DEFAULT， DISPATCH_QUEUE_PRIORITY_LOW， DISPATCH_QUEUE_PRIORITY_BACKGROUND ，优先级依次降低。优先级越高的队列中的任务会更早执行：
+    系统默认提供了四个全局可用的并行队列，其优先级不同，分别为 `DISPATCH_QUEUE_PRIORITY_HIGH`，`DISPATCH_QUEUE_PRIORITY_DEFAULT`， `DISPATCH_QUEUE_PRIORITY_LOW`， `DISPATCH_QUEUE_PRIORITY_BACKGROUND` ，优先级依次降低。优先级越高的队列中的任务会更早执行：
     
     ```objectivec
     dispatch_queue_t aQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -88,7 +88,7 @@ GCD 这么受大家欢迎，它具体好用在哪里呢？GCD 主要的功劳在
     * `QOS_CLASS_UTILITY`
     * `QOS_CLASS_BACKGROUND`
 
-    在支持的平台上，推荐使用这几个类别对应的 queue，示例代码如下(Swift)：
+    在支持的平台上，推荐使用这几个类别对应的 queue，示例代码如下(Swift 2)：
 
     ```swift
 let qualityOfServiceClass = QOS_CLASS_BACKGROUND
@@ -534,7 +534,7 @@ NSOperation 有如下几种的运行状态：
 
 #### Queue 的优先级
 
-NSOperation 可以使用 queuePriority 属性设置优先级，具体的优先级有下面几种：
+NSOperationQueue 可以使用 queuePriority 属性设置优先级，具体的优先级有下面几种：
 
 ```objectivec
 typedef enum : NSInteger {
@@ -547,6 +547,11 @@ typedef enum : NSInteger {
 ```
 
 在 Queue 中优先级较高的会先执行。
+
+**注1：**尽管系统会尽量使得优先级高的任务优先执行，不过并不能确保优先级高的任务一定会先于优先级低的任务执行，即优先级并不能保证任务的执行先后顺序。要先让一个任务先于另一个任务执行，需要使用设置dependency 来实现。
+
+**注2：**同 NSOperation 一样，NSOperationQueue 也具有若干 QoS 选项可供选择。有关 QoS 配置的具体细节，例如当 NSOperation 和 NSOperationQueue 具有不同的 QoS 时出现的效果，以及如何改变 QoS 等，可以参考苹果官方文档 [Energy Efficiency Guide for iOS Apps
+](https://developer.apple.com/library/content/documentation/Performance/Conceptual/EnergyGuide-iOS/PrioritizeWorkWithQoS.html)。
 
 ## GCD 与 NSOperation 的对比
 
