@@ -70,7 +70,7 @@ id obj = [[NSObeject alloc] init]; // 此时持有对象
  * 非自己持有的对象无法释放
  */
 id obj = [NSArray array]; // 非自己生成的对象，且该对象存在，但自己不持有
-[obj release]; // 非 ARC 下，调用该方法会导致编译器报 issues。此操作的行为是未定义的，可能会导致运行时 crash 或者 其它未知行为 ~~~此时将运行时crash 或编译器报error~~~
+[obj release]; // 此时将运行时crash 或编译器报error
 ```
 
 其中 `非自己生成的对象，且该对象存在，但自己不持有` 这个特性是使用`autorelease`来实现的，示例代码如下：
