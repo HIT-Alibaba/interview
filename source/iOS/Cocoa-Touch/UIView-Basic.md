@@ -65,7 +65,7 @@ UIView 是按需绘制的，当整个视图或者视图的一部分由于布局�
 * 程序调用视图的`setNeedsLayout`或`layoutIfNeeded`方法
 * 程序调用视图 layer 的`setNeedsLayout`方法
 
-#### Autoresizing
+#### Auto Resizing
 
 视图的`autoresizesSubviews`属性决定了在视图大小发生变化时，如何自动调节子视图。
 
@@ -99,7 +99,7 @@ UIView 当中提供了一个 `layoutSubviews` 函数，UIView 的子类可以重
 
 那么 layoutSubviews 方法具体调用的时机有哪些呢？在 stackoverflow 的[这个答案](http://stackoverflow.com/questions/728372/when-is-layoutsubviews-called)里有所讨论，具体有下面几种情况：
 
-1. addSubview 会导致被 add 的 view 调用 layoutSubviews, 同时 add 的 target view 以及它所有的子 view 都会被调用。
+1. 在父 view 的 autoresize mask 为 ON 的情况下，addSubview 会导致被 add 的 view 调用 layoutSubviews, 同时 add 的 target view 以及它所有的子 view 都会被调用。
 2. setFrame 当新的 frame 和 旧的不同时（即 view 的大小改变时）会调用 layoutSubviews
 3. 滚动一个 UIScollView 会导致这个 scrollView 以及它的父 View 调用 layoutSubviews
 4. 旋转设备会导致当前所响应的 ViewController 的主 View 调用 layoutSubviews
@@ -124,3 +124,4 @@ UIView 是 UIResponder 的子类，可以响应触控事件。
 
 * [UIView详解](http://blog.csdn.net/chengyingzhilian/article/details/7894276)
 * [UIView你知道多少](http://www.cnblogs.com/likwo/archive/2011/06/18/2084192.html)
+* http://stackoverflow.com/questions/728372/when-is-layoutsubviews-called
