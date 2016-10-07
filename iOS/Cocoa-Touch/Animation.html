@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>动画 · 笔试面试知识整理</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>动画 · 笔试面试知识整理</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -1164,44 +1164,60 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="core-animation"><a name="core-animation" class="plugin-anchor" href="#core-animation"><i class="fa fa-link" aria-hidden="true"></i></a>Core Animation</h2><p><strong>&#x6CE8;</strong>&#xFF1A;&#x793A;&#x4F8B;&#x4E2D;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x7684;&#x5B8C;&#x6574;&#x7248;&#x53EF;&#x4EE5;&#x5728;<a href="https://github.com/yixiangboy/IOSAnimationDemo" target="_blank">&#x8FD9;&#x91CC;</a>&#x627E;&#x5230;&#x3002;</p><h3 id="uiview-animation"><a name="uiview-animation" class="plugin-anchor" href="#uiview-animation"><i class="fa fa-link" aria-hidden="true"></i></a>UIView Animation</h3><h4 id="&#x7B80;&#x5355;&#x52A8;&#x753B;"><a name="&#x7B80;&#x5355;&#x52A8;&#x753B;" class="plugin-anchor" href="#&#x7B80;&#x5355;&#x52A8;&#x753B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7B80;&#x5355;&#x52A8;&#x753B;</h4><p>&#x5BF9;&#x4E8E; UIView &#x4E0A;&#x7B80;&#x5355;&#x7684;&#x52A8;&#x753B;&#xFF0C;iOS &#x63D0;&#x4F9B;&#x4E86;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x51FD;&#x6570;&#xFF1A;</p><pre><code>+ animateWithDuration:animations:</code></pre>
-<p>&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x52A8;&#x753B;&#x7684;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x4E00;&#x4E2A; block&#xFF0C;&#x5728; <code>animations</code> block &#x4E2D;&#x5BF9; UIView &#x7684;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x8C03;&#x6574;&#xFF0C;&#x8BBE;&#x7F6E; UIView &#x52A8;&#x753B;&#x7ED3;&#x675F;&#x540E;&#x6700;&#x7EC8;&#x7684;&#x6548;&#x679C;&#xFF0C;iOS &#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x8865;&#x5145;&#x4E2D;&#x95F4;&#x5E27;&#xFF0C;&#x5F62;&#x6210;&#x52A8;&#x753B;&#x3002;</p><p>&#x53EF;&#x4EE5;&#x66F4;&#x6539;&#x7684;&#x5C5E;&#x6027;&#x6709;:</p><ul><li>frame
-</li>
-<li>bounds
-</li>
-<li>center
-</li>
-<li>transform
-</li>
-<li>alpha
-</li>
-<li>backgroundColor
-</li>
-<li>contentStretch
-</li></ul>
-<p>&#x8FD9;&#x4E9B;&#x5C5E;&#x6027;&#x5927;&#x90FD;&#x662F; View &#x7684;&#x57FA;&#x672C;&#x5C5E;&#x6027;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#x7684;&#x52A8;&#x753B;&#x4F1A;&#x540C;&#x65F6;&#x6539;&#x53D8; View &#x7684; <code>frame</code>&#xFF0C;<code>backgroundColor</code> &#x548C; <code>alpha</code> &#xFF1A;</p><pre><code class="lang-objectivec">[<span class="hljs-built_in">UIView</span> animateWithDuration:<span class="hljs-number">2.0</span> animations:^{
+                                <h2 id="core-animation"><a name="core-animation" class="plugin-anchor" href="#core-animation"><i class="fa fa-link" aria-hidden="true"></i></a>Core Animation</h2>
+<p><strong>&#x6CE8;</strong>&#xFF1A;&#x793A;&#x4F8B;&#x4E2D;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x7684;&#x5B8C;&#x6574;&#x7248;&#x53EF;&#x4EE5;&#x5728;<a href="https://github.com/yixiangboy/IOSAnimationDemo" target="_blank">&#x8FD9;&#x91CC;</a>&#x627E;&#x5230;&#x3002;</p>
+<h3 id="uiview-animation"><a name="uiview-animation" class="plugin-anchor" href="#uiview-animation"><i class="fa fa-link" aria-hidden="true"></i></a>UIView Animation</h3>
+<h4 id="&#x7B80;&#x5355;&#x52A8;&#x753B;"><a name="&#x7B80;&#x5355;&#x52A8;&#x753B;" class="plugin-anchor" href="#&#x7B80;&#x5355;&#x52A8;&#x753B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7B80;&#x5355;&#x52A8;&#x753B;</h4>
+<p>&#x5BF9;&#x4E8E; UIView &#x4E0A;&#x7B80;&#x5355;&#x7684;&#x52A8;&#x753B;&#xFF0C;iOS &#x63D0;&#x4F9B;&#x4E86;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x51FD;&#x6570;&#xFF1A;</p>
+<pre><code>+ animateWithDuration:animations:
+</code></pre><p>&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x52A8;&#x753B;&#x7684;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x4E00;&#x4E2A; block&#xFF0C;&#x5728; <code>animations</code> block &#x4E2D;&#x5BF9; UIView &#x7684;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x8C03;&#x6574;&#xFF0C;&#x8BBE;&#x7F6E; UIView &#x52A8;&#x753B;&#x7ED3;&#x675F;&#x540E;&#x6700;&#x7EC8;&#x7684;&#x6548;&#x679C;&#xFF0C;iOS &#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x8865;&#x5145;&#x4E2D;&#x95F4;&#x5E27;&#xFF0C;&#x5F62;&#x6210;&#x52A8;&#x753B;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x66F4;&#x6539;&#x7684;&#x5C5E;&#x6027;&#x6709;:</p>
+<ul>
+<li>frame</li>
+<li>bounds</li>
+<li>center</li>
+<li>transform</li>
+<li>alpha</li>
+<li>backgroundColor</li>
+<li>contentStretch</li>
+</ul>
+<p>&#x8FD9;&#x4E9B;&#x5C5E;&#x6027;&#x5927;&#x90FD;&#x662F; View &#x7684;&#x57FA;&#x672C;&#x5C5E;&#x6027;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#x7684;&#x52A8;&#x753B;&#x4F1A;&#x540C;&#x65F6;&#x6539;&#x53D8; View &#x7684; <code>frame</code>&#xFF0C;<code>backgroundColor</code> &#x548C; <code>alpha</code> &#xFF1A;</p>
+<pre><code class="lang-objectivec">[<span class="hljs-built_in">UIView</span> animateWithDuration:<span class="hljs-number">2.0</span> animations:^{
     myView.frame = <span class="hljs-built_in">CGRectMake</span>(<span class="hljs-number">50</span>, <span class="hljs-number">200</span>, <span class="hljs-number">200</span>, <span class="hljs-number">200</span>);
     myView.backgroundColor = [<span class="hljs-built_in">UIColor</span> blueColor];
     myView.alpha = <span class="hljs-number">0.7</span>;
-}];</code></pre>
-<p>&#x5176;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#x7684; <code>transform</code> &#x5C5E;&#x6027;&#xFF0C;&#x5B83;&#x7684;&#x7C7B;&#x578B;&#x662F; <code>CGAffineTransform</code>&#xFF0C;&#x5373; 2D &#x4EFF;&#x5C04;&#x53D8;&#x6362;&#xFF0C;&#x8FD9;&#x662F;&#x4E2A;&#x6570;&#x5B66;&#x4E2D;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x7528;&#x4E00;&#x4E2A;&#x4E09;&#x7EF4;&#x77E9;&#x9635;&#x6765;&#x8868;&#x8FF0; 2D &#x56FE;&#x5F62;&#x7684;&#x77E2;&#x91CF;&#x53D8;&#x6362;&#x3002;&#x7528; <code>transform</code> &#x5C5E;&#x6027;&#x5BF9; View &#x8FDB;&#x884C;&#xFF1A;</p><ul><li>&#x65CB;&#x8F6C;
-</li>
-<li>&#x7F29;&#x653E;
-</li>
-<li>&#x5176;&#x4ED6;&#x81EA;&#x5B9A;&#x4E49; 2D &#x53D8;&#x6362;
-</li></ul>
-<p>iOS &#x63D0;&#x4F9B;&#x4E86;&#x4E0B;&#x9762;&#x7684;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x7B80;&#x5355;&#x7684; 2D &#x53D8;&#x6362;&#xFF1A;</p><ul><li><code>CGAffineTransformMakeScale</code>
-</li>
-<li><code>CGAffineTransformMakeRotation</code>
-</li>
-<li><code>CGAffineTransformMakeTranslation</code>
-</li></ul>
-<p>&#x4F8B;&#x5982;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4F1A;&#x5C06; View &#x7F29;&#x5C0F;&#x81F3;&#x539F;&#x6765;&#x7684; 1/4 &#x5927;&#x5C0F;&#xFF1A;</p><pre><code class="lang-objectivec">[<span class="hljs-built_in">UIView</span> animateWithDuration:<span class="hljs-number">2.0</span> animations:^{
+}];
+</code></pre>
+<p>&#x5176;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#x7684; <code>transform</code> &#x5C5E;&#x6027;&#xFF0C;&#x5B83;&#x7684;&#x7C7B;&#x578B;&#x662F; <code>CGAffineTransform</code>&#xFF0C;&#x5373; 2D &#x4EFF;&#x5C04;&#x53D8;&#x6362;&#xFF0C;&#x8FD9;&#x662F;&#x4E2A;&#x6570;&#x5B66;&#x4E2D;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x7528;&#x4E00;&#x4E2A;&#x4E09;&#x7EF4;&#x77E9;&#x9635;&#x6765;&#x8868;&#x8FF0; 2D &#x56FE;&#x5F62;&#x7684;&#x77E2;&#x91CF;&#x53D8;&#x6362;&#x3002;&#x7528; <code>transform</code> &#x5C5E;&#x6027;&#x5BF9; View &#x8FDB;&#x884C;&#xFF1A;</p>
+<ul>
+<li>&#x65CB;&#x8F6C;</li>
+<li>&#x7F29;&#x653E;</li>
+<li>&#x5176;&#x4ED6;&#x81EA;&#x5B9A;&#x4E49; 2D &#x53D8;&#x6362;</li>
+</ul>
+<p>iOS &#x63D0;&#x4F9B;&#x4E86;&#x4E0B;&#x9762;&#x7684;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x7B80;&#x5355;&#x7684; 2D &#x53D8;&#x6362;&#xFF1A;</p>
+<ul>
+<li><code>CGAffineTransformMakeScale</code></li>
+<li><code>CGAffineTransformMakeRotation</code></li>
+<li><code>CGAffineTransformMakeTranslation</code></li>
+</ul>
+<p>&#x4F8B;&#x5982;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4F1A;&#x5C06; View &#x7F29;&#x5C0F;&#x81F3;&#x539F;&#x6765;&#x7684; 1/4 &#x5927;&#x5C0F;&#xFF1A;</p>
+<pre><code class="lang-objectivec">[<span class="hljs-built_in">UIView</span> animateWithDuration:<span class="hljs-number">2.0</span> animations:^{
     myView.transform = <span class="hljs-built_in">CGAffineTransformMakeScale</span>(<span class="hljs-number">0.5</span>, <span class="hljs-number">0.5</span>);
-}];</code></pre>
-<h4 id="&#x8C03;&#x8282;&#x53C2;&#x6570;"><a name="&#x8C03;&#x8282;&#x53C2;&#x6570;" class="plugin-anchor" href="#&#x8C03;&#x8282;&#x53C2;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8C03;&#x8282;&#x53C2;&#x6570;</h4><p>&#x5B8C;&#x6574;&#x7248;&#x7684; animate &#x51FD;&#x6570;&#x5176;&#x5B9E;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p><pre><code>+ animateWithDuration:delay:options:animations:completion:</code></pre>
-<p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>delay</code> &#x53C2;&#x6570;&#x8C03;&#x8282;&#x8BA9;&#x52A8;&#x753B;&#x5EF6;&#x8FDF;&#x4EA7;&#x751F;&#xFF0C;&#x540C;&#x65F6;&#x8FD8;&#x4E00;&#x4E2A; <code>options</code> &#x9009;&#x9879;&#x53EF;&#x4EE5;&#x8C03;&#x8282;&#x52A8;&#x753B;&#x8FDB;&#x884C;&#x7684;&#x65B9;&#x5F0F;&#x3002;&#x53EF;&#x7528;&#x7684; <code>options</code> &#x53EF;&#x5206;&#x4E3A;&#x4E24;&#x7C7B;&#xFF1A;</p><p><strong>&#x63A7;&#x5236;&#x8FC7;&#x7A0B;</strong></p><p>&#x4F8B;&#x5982; <code>UIViewAnimationOptionRepeat</code> &#x53EF;&#x4EE5;&#x8BA9;&#x52A8;&#x753B;&#x53CD;&#x590D;&#x8FDB;&#x884C;&#xFF0C; <code>UIViewAnimationOptionAllowUserInteraction</code> &#x53EF;&#x4EE5;&#x8BA9;&#x5141;&#x8BB8;&#x7528;&#x6237;&#x5BF9;&#x52A8;&#x753B;&#x8FDB;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x540C; View &#x8FDB;&#x884C;&#x4EA4;&#x4E92;&#xFF08;&#x9ED8;&#x8BA4;&#x662F;&#x4E0D;&#x5141;&#x8BB8;&#x7684;&#xFF09;</p><p><strong>&#x63A7;&#x5236;&#x901F;&#x5EA6;</strong></p><p>&#x52A8;&#x753B;&#x7684;&#x8FDB;&#x884C;&#x901F;&#x5EA6;&#x53EF;&#x4EE5;&#x7528;&#x901F;&#x5EA6;&#x66F2;&#x7EBF;&#x6765;&#x8868;&#x793A;&#xFF08;&#x53C2;&#x8003;<a href="http://zhuanlan.zhihu.com/cheerfox/20031427#!" target="_blank">&#x8FD9;&#x91CC;</a>&#xFF09;&#xFF0C;&#x63D0;&#x4F9B;&#x7684;&#x9009;&#x9879;&#x4F8B;&#x5982; <code>UIViewAnimationOptionCurveEaseIn</code> &#x662F;&#x5148;&#x6162;&#x540E;&#x5FEB;&#xFF0C;<code>UIViewAnimationOptionCurveEaseOut</code> &#x662F;&#x5148;&#x5FEB;&#x540E;&#x6162;&#x3002;</p><p>&#x4E0D;&#x540C;&#x7684;&#x9009;&#x9879;&#x76F4;&#x63A5;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x201C;&#x4E0E;&#x201D;&#x64CD;&#x4F5C;&#x8FDB;&#x884C;&#x5408;&#x5E76;&#xFF0C;&#x540C;&#x65F6;&#x4F7F;&#x7528;&#xFF0C;&#x4F8B;&#x5982;:</p><pre><code>UIViewAnimationOptionRepeat | UIViewAnimationOptionAllowUserInteraction</code></pre>
-<h4 id="&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;"><a name="&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;" class="plugin-anchor" href="#&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;</h4><p>&#x4E0A;&#x9762;&#x4ECB;&#x7ECD;&#x7684;&#x52A8;&#x753B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x80FD;&#x63A7;&#x5236;&#x5F00;&#x59CB;&#x548C;&#x7ED3;&#x675F;&#x65F6;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x7136;&#x540E;&#x7531;&#x7CFB;&#x7EDF;&#x8865;&#x5168;&#x4E2D;&#x95F4;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x6709;&#x4E9B;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x8BBE;&#x5B9A;&#x82E5;&#x5E72;&#x5173;&#x952E;&#x5E27;&#xFF0C;&#x5B9E;&#x73B0;&#x66F4;&#x590D;&#x6742;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x5C31;&#x9700;&#x8981;&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;&#x7684;&#x652F;&#x6301;&#x4E86;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x793A;&#x4F8B;&#xFF1A;</p><pre><code class="lang-objectivec">[<span class="hljs-built_in">UIView</span> animateKeyframesWithDuration:<span class="hljs-number">2.0</span> delay:<span class="hljs-number">0.0</span> options:<span class="hljs-built_in">UIViewKeyframeAnimationOptionRepeat</span> | <span class="hljs-built_in">UIViewKeyframeAnimationOptionAutoreverse</span> animations:^{
+}];
+</code></pre>
+<h4 id="&#x8C03;&#x8282;&#x53C2;&#x6570;"><a name="&#x8C03;&#x8282;&#x53C2;&#x6570;" class="plugin-anchor" href="#&#x8C03;&#x8282;&#x53C2;&#x6570;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8C03;&#x8282;&#x53C2;&#x6570;</h4>
+<p>&#x5B8C;&#x6574;&#x7248;&#x7684; animate &#x51FD;&#x6570;&#x5176;&#x5B9E;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
+<pre><code>+ animateWithDuration:delay:options:animations:completion:
+</code></pre><p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>delay</code> &#x53C2;&#x6570;&#x8C03;&#x8282;&#x8BA9;&#x52A8;&#x753B;&#x5EF6;&#x8FDF;&#x4EA7;&#x751F;&#xFF0C;&#x540C;&#x65F6;&#x8FD8;&#x4E00;&#x4E2A; <code>options</code> &#x9009;&#x9879;&#x53EF;&#x4EE5;&#x8C03;&#x8282;&#x52A8;&#x753B;&#x8FDB;&#x884C;&#x7684;&#x65B9;&#x5F0F;&#x3002;&#x53EF;&#x7528;&#x7684; <code>options</code> &#x53EF;&#x5206;&#x4E3A;&#x4E24;&#x7C7B;&#xFF1A;</p>
+<p><strong>&#x63A7;&#x5236;&#x8FC7;&#x7A0B;</strong></p>
+<p>&#x4F8B;&#x5982; <code>UIViewAnimationOptionRepeat</code> &#x53EF;&#x4EE5;&#x8BA9;&#x52A8;&#x753B;&#x53CD;&#x590D;&#x8FDB;&#x884C;&#xFF0C; <code>UIViewAnimationOptionAllowUserInteraction</code> &#x53EF;&#x4EE5;&#x8BA9;&#x5141;&#x8BB8;&#x7528;&#x6237;&#x5BF9;&#x52A8;&#x753B;&#x8FDB;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x540C; View &#x8FDB;&#x884C;&#x4EA4;&#x4E92;&#xFF08;&#x9ED8;&#x8BA4;&#x662F;&#x4E0D;&#x5141;&#x8BB8;&#x7684;&#xFF09;</p>
+<p><strong>&#x63A7;&#x5236;&#x901F;&#x5EA6;</strong></p>
+<p>&#x52A8;&#x753B;&#x7684;&#x8FDB;&#x884C;&#x901F;&#x5EA6;&#x53EF;&#x4EE5;&#x7528;&#x901F;&#x5EA6;&#x66F2;&#x7EBF;&#x6765;&#x8868;&#x793A;&#xFF08;&#x53C2;&#x8003;<a href="http://zhuanlan.zhihu.com/cheerfox/20031427#!" target="_blank">&#x8FD9;&#x91CC;</a>&#xFF09;&#xFF0C;&#x63D0;&#x4F9B;&#x7684;&#x9009;&#x9879;&#x4F8B;&#x5982; <code>UIViewAnimationOptionCurveEaseIn</code> &#x662F;&#x5148;&#x6162;&#x540E;&#x5FEB;&#xFF0C;<code>UIViewAnimationOptionCurveEaseOut</code> &#x662F;&#x5148;&#x5FEB;&#x540E;&#x6162;&#x3002;</p>
+<p>&#x4E0D;&#x540C;&#x7684;&#x9009;&#x9879;&#x76F4;&#x63A5;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x201C;&#x4E0E;&#x201D;&#x64CD;&#x4F5C;&#x8FDB;&#x884C;&#x5408;&#x5E76;&#xFF0C;&#x540C;&#x65F6;&#x4F7F;&#x7528;&#xFF0C;&#x4F8B;&#x5982;:</p>
+<pre><code>UIViewAnimationOptionRepeat | UIViewAnimationOptionAllowUserInteraction
+</code></pre><h4 id="&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;"><a name="&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;" class="plugin-anchor" href="#&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;</h4>
+<p>&#x4E0A;&#x9762;&#x4ECB;&#x7ECD;&#x7684;&#x52A8;&#x753B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x80FD;&#x63A7;&#x5236;&#x5F00;&#x59CB;&#x548C;&#x7ED3;&#x675F;&#x65F6;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x7136;&#x540E;&#x7531;&#x7CFB;&#x7EDF;&#x8865;&#x5168;&#x4E2D;&#x95F4;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x6709;&#x4E9B;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x8BBE;&#x5B9A;&#x82E5;&#x5E72;&#x5173;&#x952E;&#x5E27;&#xFF0C;&#x5B9E;&#x73B0;&#x66F4;&#x590D;&#x6742;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x5C31;&#x9700;&#x8981;&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;&#x7684;&#x652F;&#x6301;&#x4E86;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-objectivec">[<span class="hljs-built_in">UIView</span> animateKeyframesWithDuration:<span class="hljs-number">2.0</span> delay:<span class="hljs-number">0.0</span> options:<span class="hljs-built_in">UIViewKeyframeAnimationOptionRepeat</span> | <span class="hljs-built_in">UIViewKeyframeAnimationOptionAutoreverse</span> animations:^{
     [<span class="hljs-built_in">UIView</span> addKeyframeWithRelativeStartTime:<span class="hljs-number">0.0</span> relativeDuration:<span class="hljs-number">0.5</span> animations:^{
         <span class="hljs-keyword">self</span>.myView.frame = <span class="hljs-built_in">CGRectMake</span>(<span class="hljs-number">10</span>, <span class="hljs-number">50</span>, <span class="hljs-number">100</span>, <span class="hljs-number">100</span>);
     }];
@@ -1211,59 +1227,78 @@
     [<span class="hljs-built_in">UIView</span> addKeyframeWithRelativeStartTime:<span class="hljs-number">0.8</span> relativeDuration:<span class="hljs-number">0.2</span> animations:^{
         <span class="hljs-keyword">self</span>.myView.transform = <span class="hljs-built_in">CGAffineTransformMakeScale</span>(<span class="hljs-number">0.5</span>, <span class="hljs-number">0.5</span>);
     }];
-} completion:<span class="hljs-literal">nil</span>];</code></pre>
-<p>&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x6DFB;&#x52A0;&#x4E86;&#x4E09;&#x4E2A;&#x5173;&#x952E;&#x5E27;&#xFF0C;&#x5728;&#x5916;&#x9762;&#x7684; <code>animateKeyframesWithDuration</code> &#x4E2D;&#x6211;&#x4EEC;&#x8BBE;&#x7F6E;&#x4E86;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x4E3A; 2.0 &#x79D2;&#xFF0C;&#x8FD9;&#x662F;&#x771F;&#x5B9E;&#x610F;&#x4E49;&#x4E0A;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x91CC;&#x9762;&#x7684; <code>startTime</code> &#x548C; <code>relativeDuration</code> &#x90FD;&#x662F;&#x76F8;&#x5BF9;&#x65F6;&#x95F4;&#x3002;&#x4EE5;&#x7B2C;&#x4E00;&#x4E2A;&#x4E3A;&#x4F8B;&#xFF0C;<code>startTime</code> &#x4E3A; 0.0&#xFF0C;<code>relativeTime</code> &#x4E3A; 0.5&#xFF0C;&#x8FD9;&#x4E2A;&#x52A8;&#x753B;&#x4F1A;&#x76F4;&#x63A5;&#x5F00;&#x59CB;&#xFF0C;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x4E3A; 2.0 X 0.5 = 1.0 &#x79D2;&#xFF0C;&#x4E0B;&#x9762;&#x7B2C;&#x4E8C;&#x4E2A;&#x7684;&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#x662F; 0.5&#xFF0C;&#x6B63;&#x597D;&#x627F;&#x63A5;&#x4E0A;&#x4E00;&#x4E2A;&#x7ED3;&#x675F;&#xFF0C;&#x7B2C;&#x4E09;&#x4E2A;&#x540C;&#x7406;&#xFF0C;&#x8FD9;&#x6837;&#x4E09;&#x4E2A;&#x52A8;&#x753B;&#x5C31;&#x53D8;&#x6210;&#x8FDE;&#x7EED;&#x7684;&#x52A8;&#x753B;&#x4E86;&#x3002;</p><h4 id="view-&#x7684;&#x8F6C;&#x6362;"><a name="view-&#x7684;&#x8F6C;&#x6362;" class="plugin-anchor" href="#view-&#x7684;&#x8F6C;&#x6362;"><i class="fa fa-link" aria-hidden="true"></i></a>View &#x7684;&#x8F6C;&#x6362;</h4><p>iOS &#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x7528;&#x4E8E;&#x8FDB;&#x884C;&#x4E24;&#x4E2A; View &#x4E4B;&#x95F4;&#x901A;&#x8FC7;&#x52A8;&#x753B;&#x6362;&#x573A;&#xFF1A;</p><pre><code>+ transitionWithView:duration:options:animations:completion:
-+ transitionFromView:toView:duration:options:completion:</code></pre>
-<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x6362;&#x573A;&#x52A8;&#x753B;&#x4F1A;&#x5728;&#x8FD9;&#x4E24;&#x4E2A; View &#x5171;&#x540C;&#x7684;&#x7236; View &#x4E0A;&#x8FDB;&#x884C;&#xFF0C;&#x5728;&#x5199;&#x52A8;&#x753B;&#x4E4B;&#x524D;&#xFF0C;&#x5148;&#x8981;&#x8BBE;&#x8BA1;&#x597D; View &#x7684;&#x7EE7;&#x627F;&#x7ED3;&#x6784;&#x3002;</p><p>&#x540C;&#x6837;&#xFF0C;View &#x4E4B;&#x95F4;&#x7684;&#x8F6C;&#x6362;&#x4E5F;&#x6709;&#x5F88;&#x591A;&#x9009;&#x9879;&#x53EF;&#x9009;&#xFF0C;&#x4F8B;&#x5982; <code>UIViewAnimationOptionTransitionFlipFromLeft</code> &#x4ECE;&#x5DE6;&#x8FB9;&#x7FFB;&#x8F6C;&#xFF0C;<code>UIViewAnimationOptionTransitionCrossDissolve</code> &#x6E10;&#x53D8;&#x7B49;&#x7B49;&#x3002;</p><h3 id="calayer-animation"><a name="calayer-animation" class="plugin-anchor" href="#calayer-animation"><i class="fa fa-link" aria-hidden="true"></i></a>CALayer Animation</h3><p>UIView &#x7684;&#x52A8;&#x753B;&#x7B80;&#x5355;&#x6613;&#x7528;&#xFF0C;&#x4F46;&#x662F;&#x80FD;&#x5B9E;&#x73B0;&#x7684;&#x6548;&#x679C;&#x76F8;&#x5BF9;&#x6709;&#x9650;&#xFF0C;&#x4E0A;&#x9762;&#x4ECB;&#x7ECD;&#x7684; UIView &#x7684;&#x51E0;&#x79CD;&#x52A8;&#x753B;&#x65B9;&#x5F0F;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x5BF9;&#x5E95;&#x5C42; CALayer &#x52A8;&#x753B;&#x7684;&#x4E00;&#x79CD;&#x5C01;&#x88C5;&#x3002;&#x76F4;&#x63A5;&#x4F7F;&#x7528; CALayer &#x5C42;&#x7684;&#x52A8;&#x753B;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x66F4;&#x591A;&#x9AD8;&#x7EA7;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;&#x3002;</p><p><strong>&#x6CE8;&#x610F;</strong>&#xFF1A;&#x4F7F;&#x7528; CALayer &#x52A8;&#x753B;&#x4E4B;&#x524D;&#xFF0C;&#x9996;&#x5148;&#x9700;&#x8981;&#x5F15;&#x5165; QuartzCore.framework&#x3002;</p><h4 id="&#x57FA;&#x672C;&#x52A8;&#x753B;&#xFF08;cabasicanimation&#xFF09;"><a name="&#x57FA;&#x672C;&#x52A8;&#x753B;&#xFF08;cabasicanimation&#xFF09;" class="plugin-anchor" href="#&#x57FA;&#x672C;&#x52A8;&#x753B;&#xFF08;cabasicanimation&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x57FA;&#x672C;&#x52A8;&#x753B;&#xFF08;CABasicAnimation&#xFF09;</h4><p>CABasicAnimation &#x7528;&#x4E8E;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; CALayer &#x4E0A;&#x7684;&#x57FA;&#x672C;&#x52A8;&#x753B;&#x6548;&#x679C;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-built_in">CABasicAnimation</span> *animation = [<span class="hljs-built_in">CABasicAnimation</span> animationWithKeyPath:<span class="hljs-string">@&quot;position.x&quot;</span>];
+} completion:<span class="hljs-literal">nil</span>];
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x6DFB;&#x52A0;&#x4E86;&#x4E09;&#x4E2A;&#x5173;&#x952E;&#x5E27;&#xFF0C;&#x5728;&#x5916;&#x9762;&#x7684; <code>animateKeyframesWithDuration</code> &#x4E2D;&#x6211;&#x4EEC;&#x8BBE;&#x7F6E;&#x4E86;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x4E3A; 2.0 &#x79D2;&#xFF0C;&#x8FD9;&#x662F;&#x771F;&#x5B9E;&#x610F;&#x4E49;&#x4E0A;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x91CC;&#x9762;&#x7684; <code>startTime</code> &#x548C; <code>relativeDuration</code> &#x90FD;&#x662F;&#x76F8;&#x5BF9;&#x65F6;&#x95F4;&#x3002;&#x4EE5;&#x7B2C;&#x4E00;&#x4E2A;&#x4E3A;&#x4F8B;&#xFF0C;<code>startTime</code> &#x4E3A; 0.0&#xFF0C;<code>relativeTime</code> &#x4E3A; 0.5&#xFF0C;&#x8FD9;&#x4E2A;&#x52A8;&#x753B;&#x4F1A;&#x76F4;&#x63A5;&#x5F00;&#x59CB;&#xFF0C;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x4E3A; 2.0 X 0.5 = 1.0 &#x79D2;&#xFF0C;&#x4E0B;&#x9762;&#x7B2C;&#x4E8C;&#x4E2A;&#x7684;&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#x662F; 0.5&#xFF0C;&#x6B63;&#x597D;&#x627F;&#x63A5;&#x4E0A;&#x4E00;&#x4E2A;&#x7ED3;&#x675F;&#xFF0C;&#x7B2C;&#x4E09;&#x4E2A;&#x540C;&#x7406;&#xFF0C;&#x8FD9;&#x6837;&#x4E09;&#x4E2A;&#x52A8;&#x753B;&#x5C31;&#x53D8;&#x6210;&#x8FDE;&#x7EED;&#x7684;&#x52A8;&#x753B;&#x4E86;&#x3002;</p>
+<h4 id="view-&#x7684;&#x8F6C;&#x6362;"><a name="view-&#x7684;&#x8F6C;&#x6362;" class="plugin-anchor" href="#view-&#x7684;&#x8F6C;&#x6362;"><i class="fa fa-link" aria-hidden="true"></i></a>View &#x7684;&#x8F6C;&#x6362;</h4>
+<p>iOS &#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x7528;&#x4E8E;&#x8FDB;&#x884C;&#x4E24;&#x4E2A; View &#x4E4B;&#x95F4;&#x901A;&#x8FC7;&#x52A8;&#x753B;&#x6362;&#x573A;&#xFF1A;</p>
+<pre><code>+ transitionWithView:duration:options:animations:completion:
++ transitionFromView:toView:duration:options:completion:
+</code></pre><p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x6362;&#x573A;&#x52A8;&#x753B;&#x4F1A;&#x5728;&#x8FD9;&#x4E24;&#x4E2A; View &#x5171;&#x540C;&#x7684;&#x7236; View &#x4E0A;&#x8FDB;&#x884C;&#xFF0C;&#x5728;&#x5199;&#x52A8;&#x753B;&#x4E4B;&#x524D;&#xFF0C;&#x5148;&#x8981;&#x8BBE;&#x8BA1;&#x597D; View &#x7684;&#x7EE7;&#x627F;&#x7ED3;&#x6784;&#x3002;</p>
+<p>&#x540C;&#x6837;&#xFF0C;View &#x4E4B;&#x95F4;&#x7684;&#x8F6C;&#x6362;&#x4E5F;&#x6709;&#x5F88;&#x591A;&#x9009;&#x9879;&#x53EF;&#x9009;&#xFF0C;&#x4F8B;&#x5982; <code>UIViewAnimationOptionTransitionFlipFromLeft</code> &#x4ECE;&#x5DE6;&#x8FB9;&#x7FFB;&#x8F6C;&#xFF0C;<code>UIViewAnimationOptionTransitionCrossDissolve</code> &#x6E10;&#x53D8;&#x7B49;&#x7B49;&#x3002;</p>
+<h3 id="calayer-animation"><a name="calayer-animation" class="plugin-anchor" href="#calayer-animation"><i class="fa fa-link" aria-hidden="true"></i></a>CALayer Animation</h3>
+<p>UIView &#x7684;&#x52A8;&#x753B;&#x7B80;&#x5355;&#x6613;&#x7528;&#xFF0C;&#x4F46;&#x662F;&#x80FD;&#x5B9E;&#x73B0;&#x7684;&#x6548;&#x679C;&#x76F8;&#x5BF9;&#x6709;&#x9650;&#xFF0C;&#x4E0A;&#x9762;&#x4ECB;&#x7ECD;&#x7684; UIView &#x7684;&#x51E0;&#x79CD;&#x52A8;&#x753B;&#x65B9;&#x5F0F;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x5BF9;&#x5E95;&#x5C42; CALayer &#x52A8;&#x753B;&#x7684;&#x4E00;&#x79CD;&#x5C01;&#x88C5;&#x3002;&#x76F4;&#x63A5;&#x4F7F;&#x7528; CALayer &#x5C42;&#x7684;&#x52A8;&#x753B;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x66F4;&#x591A;&#x9AD8;&#x7EA7;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;&#x3002;</p>
+<p><strong>&#x6CE8;&#x610F;</strong>&#xFF1A;&#x4F7F;&#x7528; CALayer &#x52A8;&#x753B;&#x4E4B;&#x524D;&#xFF0C;&#x9996;&#x5148;&#x9700;&#x8981;&#x5F15;&#x5165; QuartzCore.framework&#x3002;</p>
+<h4 id="&#x57FA;&#x672C;&#x52A8;&#x753B;&#xFF08;cabasicanimation&#xFF09;"><a name="&#x57FA;&#x672C;&#x52A8;&#x753B;&#xFF08;cabasicanimation&#xFF09;" class="plugin-anchor" href="#&#x57FA;&#x672C;&#x52A8;&#x753B;&#xFF08;cabasicanimation&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x57FA;&#x672C;&#x52A8;&#x753B;&#xFF08;CABasicAnimation&#xFF09;</h4>
+<p>CABasicAnimation &#x7528;&#x4E8E;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; CALayer &#x4E0A;&#x7684;&#x57FA;&#x672C;&#x52A8;&#x753B;&#x6548;&#x679C;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-built_in">CABasicAnimation</span> *animation = [<span class="hljs-built_in">CABasicAnimation</span> animationWithKeyPath:<span class="hljs-string">@&quot;position.x&quot;</span>];
 animation.toValue = @<span class="hljs-number">200</span>;
 animation.duration = <span class="hljs-number">0.8</span>;
 animation.repeatCount = <span class="hljs-number">5</span>;
 animation.beginTime = <span class="hljs-built_in">CACurrentMediaTime</span>() + <span class="hljs-number">0.5</span>;
 animation.fillMode = k<span class="hljs-built_in">CAFillModeRemoved</span>;
-[<span class="hljs-keyword">self</span>.myView.layer addAnimation:animation forKey:<span class="hljs-literal">nil</span>];</code></pre>
-<h5 id="keypath"><a name="keypath" class="plugin-anchor" href="#keypath"><i class="fa fa-link" aria-hidden="true"></i></a>KeyPath</h5><p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x4E86; <code>animationWithKeyPath</code> &#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x6765;&#x6539;&#x53D8; layer &#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;&#x6709;&#x5F88;&#x591A;&#xFF0C;&#x5177;&#x4F53;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/AnimatableProperties/AnimatableProperties.html" target="_blank">&#x8FD9;&#x91CC;</a>&#x548C;<a href="http://www.cnblogs.com/pengyingh/articles/2379631.html" target="_blank">&#x8FD9;&#x91CC;</a>&#x3002;&#x5176;&#x4E2D;&#x5F88;&#x591A;&#x5C5E;&#x6027;&#x5728;&#x524D;&#x9762;&#x4ECB;&#x7ECD;&#x7684; UIView &#x52A8;&#x753B;&#x90E8;&#x5206;&#x6211;&#x4EEC;&#x4E5F;&#x770B;&#x5230;&#x8FC7;&#xFF0C;&#x8FDB;&#x4E00;&#x6B65;&#x9A8C;&#x8BC1;&#x4E86; UIView &#x7684;&#x52A8;&#x753B;&#x65B9;&#x6CD5;&#x662F;&#x5BF9;&#x5E95;&#x5C42; CALayer &#x7684;&#x4E00;&#x79CD;&#x5C01;&#x88C5;&#x3002;</p><p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x4E00;&#x70B9;&#x662F;&#xFF0C;&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x4E86; <code>position</code> &#x5C5E;&#x6027;&#xFF0C; layer &#x7684;&#x8FD9;&#x4E2A; <code>position</code> &#x5C5E;&#x6027;&#x548C; View &#x7684; <code>frame</code> &#x4EE5;&#x53CA; <code>bounds</code> &#x5C5E;&#x6027;&#x90FD;&#x4E0D;&#x76F8;&#x540C;&#xFF0C;&#x800C;&#x662F;&#x548C; Layer &#x7684; <code>anchorPoint</code> &#x6709;&#x5173;&#xFF0C;&#x53EF;&#x4EE5;&#x7531;&#x4E0B;&#x9762;&#x7684;&#x516C;&#x5F0F;&#x8BA1;&#x7B97;&#x5F97;&#x5230;&#xFF1A;</p><pre><code class="lang-objectivec">position.x = frame.origin.x + <span class="hljs-number">0.5</span> * bounds.size.width&#xFF1B;  
-position.y = frame.origin.y + <span class="hljs-number">0.5</span> * bounds.size.height&#xFF1B; </code></pre>
-<p>&#x5173;&#x4E8E; <code>anchorPoint</code> &#x548C; <code>position</code> &#x5C5E;&#x6027;&#x7684;&#x4EE5;&#x53CA;&#x5177;&#x4F53;&#x8BA1;&#x7B97;&#x7684;&#x539F;&#x7406;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="http://wonderffee.github.io/blog/2013/10/13/understand-anchorpoint-and-position/" target="_blank">&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;</a>&#x3002;</p><h5 id="&#x5C5E;&#x6027;"><a name="&#x5C5E;&#x6027;" class="plugin-anchor" href="#&#x5C5E;&#x6027;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5C5E;&#x6027;</h5><p>CABasicAnimation &#x7684;&#x5C5E;&#x6027;&#x6709;&#x4E0B;&#x9762;&#x51E0;&#x4E2A;&#xFF1A;</p><ul><li>beginTime
-</li>
-<li>duration
-</li>
-<li>fromValue
-</li>
-<li>toValue
-</li>
-<li>byValue
-</li>
-<li>repeatCount
-</li>
-<li>autoreverses
-</li>
-<li>timingFunction
-</li></ul>
-<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5176;&#x4E2D; beginTime&#xFF0C;duration&#xFF0C;repeatCount &#x7B49;&#x5C5E;&#x6027;&#x548C;&#x4E0A;&#x9762;&#x5728; UIView &#x4E2D;&#x4F7F;&#x7528;&#x5230;&#x7684; duration&#xFF0C;UIViewAnimationOptionRepeat &#x7B49;&#x9009;&#x9879;&#x662F;&#x76F8;&#x5BF9;&#x5E94;&#x7684;&#xFF0C;&#x4E0D;&#x8FC7;&#x8FD9;&#x91CC;&#x7684;&#x9009;&#x9879;&#x80FD;&#x591F;&#x63D0;&#x4F9B;&#x66F4;&#x591A;&#x7684;&#x6269;&#x5C55;&#x6027;&#x3002;</p><p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F; <code>fromValue</code>&#xFF0C;<code>toValue</code>&#xFF0C;<code>byValue</code> &#x8FD9;&#x51E0;&#x4E2A;&#x9009;&#x9879;&#xFF0C;&#x652F;&#x6301;&#x7684;&#x8BBE;&#x7F6E;&#x6A21;&#x5F0F;&#x6709;&#x4E0B;&#x9762;&#x51E0;&#x79CD;&#xFF1A;</p><ul><li>&#x8BBE;&#x7F6E; fromValue &#x548C; toValue&#xFF1A;&#x4ECE; fromValue &#x53D8;&#x5316;&#x5230; toValue
-</li>
-<li>&#x8BBE;&#x7F6E; fromValue &#x548C; byValue&#xFF1A;&#x4ECE; fromValue &#x53D8;&#x5316;&#x5230; fromValue + byValue
-</li>
-<li>&#x8BBE;&#x7F6E; byValue &#x548C; toValue&#xFF1A;&#x4ECE; toValue - byValue &#x53D8;&#x5316;&#x5230; toValue
-</li>
-<li>&#x8BBE;&#x7F6E; fromValue&#xFF1A; &#x4ECE; fromValue &#x53D8;&#x5316;&#x5230;&#x5C5E;&#x6027;&#x5F53;&#x524D;&#x503C;
-</li>
-<li>&#x8BBE;&#x7F6E; toValue&#xFF1A;&#x4ECE;&#x5C5E;&#x6027;&#x5F53;&#x524D;&#x503C;&#x53D8;&#x5316;&#x5230; toValue
-</li>
-<li>&#x8BBE;&#x7F6E; byValue&#xFF1A;&#x4ECE;&#x5C5E;&#x6027;&#x5F53;&#x524D;&#x503C;&#x53D8;&#x5316;&#x5230;&#x5C5E;&#x6027;&#x5F53;&#x524D;&#x503C; + toValue
-</li></ul>
-<p>&#x770B;&#x8D77;&#x6765;&#x633A;&#x590D;&#x6742;&#xFF0C;&#x5176;&#x5B9E;&#x6982;&#x62EC;&#x8D77;&#x6765;&#x57FA;&#x672C;&#x5C31;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x67D0;&#x4E2A;&#x503C;&#x4E0D;&#x8BBE;&#x7F6E;&#xFF0C;&#x5C31;&#x662F;&#x7528;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x5F53;&#x524D;&#x7684;&#x503C;&#x3002;</p><p>&#x53E6;&#x5916;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7684;:</p><pre><code class="lang-objecitive-c">animation.toValue = @200;</code></pre>
-<p>&#x800C;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x4F7F;&#x7528; 200&#xFF0C;&#x56E0;&#x4E3A; <code>toValue</code> &#x4E4B;&#x7C7B;&#x7684;&#x5C5E;&#x6027;&#x4E3A; <code>id</code> &#x7C7B;&#x578B;&#xFF0C;&#x6216;&#x8005;&#x50CF;&#x8FD9;&#x6837;&#x4F7F;&#x7528; @ &#x7B26;&#x53F7;&#xFF0C;&#x6216;&#x8005;&#x4F7F;&#x7528;&#xFF1A;</p><pre><code class="lang-objecitive-c">animation.toValue = [NSNumber numberWithInt:200];</code></pre>
-<p>&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x6709;&#x610F;&#x601D;&#x7684;&#x662F; <code>timingFunction</code> &#x5C5E;&#x6027;&#xFF0C;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x52A8;&#x753B;&#x7684;&#x8FD0;&#x52A8;&#x66F2;&#x7EBF;&#xFF08;&#x8282;&#x594F;&#xFF0C;pacing&#xFF09;&#xFF0C;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x4E86;&#x4E94;&#x79CD;&#x503C;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#xFF1A;</p><ul><li>kCAMediaTimingFunctionLinear &#x7EBF;&#x6027;&#x52A8;&#x753B;
-</li>
-<li>kCAMediaTimingFunctionEaseIn &#x5148;&#x5FEB;&#x540E;&#x6162;
-</li>
-<li>kCAMediaTimingFunctionEaseOut &#x5148;&#x6162;&#x540E;&#x5FEB;
-</li>
-<li>kCAMediaTimingFunctionEaseInEaseOut &#x5148;&#x6162;&#x540E;&#x5FEB;&#x518D;&#x6162;
-</li>
-<li>kCAMediaTimingFunctionDefault &#x9ED8;&#x8BA4;&#xFF0C;&#x4E5F;&#x5C5E;&#x4E8E;&#x4E2D;&#x95F4;&#x6BD4;&#x8F83;&#x5FEB;
-</li></ul>
-<p>&#x6B64;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; [CAMediaTimingFunction functionWithControlPoints] &#x65B9;&#x6CD5;&#x6765;&#x81EA;&#x5B9A;&#x4E49;&#x8FD0;&#x52A8;&#x66F2;&#x7EBF;&#xFF0C;<a href="http://netcetera.org/camtf-playground.html" target="_blank">&#x8FD9;&#x4E2A;&#x7F51;&#x7AD9;</a>&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x5C06;&#x53C2;&#x6570;&#x8C03;&#x8282;&#x53EF;&#x89C6;&#x5316;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x5173;&#x4E8E;&#x52A8;&#x753B;&#x65F6;&#x95F4;&#x7CFB;&#x7EDF;&#x7684;&#x5177;&#x4F53;&#x4ECB;&#x7ECD;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="http://geeklu.com/2012/09/animation-in-ios/" target="_blank">&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;</a>&#x3002;</p><h4 id="&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;&#xFF08;cakeyframeanimation&#xFF09;"><a name="&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;&#xFF08;cakeyframeanimation&#xFF09;" class="plugin-anchor" href="#&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;&#xFF08;cakeyframeanimation&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;&#xFF08;CAKeyframeAnimation&#xFF09;</h4><p>&#x540C; UIView &#x4E2D;&#x7684;&#x7C7B;&#x4F3C;&#xFF0C;CALayer &#x5C42;&#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;&#x7684;&#x652F;&#x6301;&#xFF0C;CAKeyFrameAnimation &#x548C; CABasicAnimation &#x90FD;&#x7EE7;&#x627F;&#x81EA; CAPropertyAnimation&#xFF0C;&#x56E0;&#x6B64;&#x5B83;&#x6709;&#x5177;&#x6709;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x90A3;&#x4E9B;&#x5C5E;&#x6027;&#xFF0C;&#x6B64;&#x5916;&#xFF0C;CAKeyFrameAnimation &#x8FD8;&#x6709;&#x7279;&#x6709;&#x7684;&#x51E0;&#x4E2A;&#x5C5E;&#x6027;&#x3002;</p><h5 id="values-&#x548C;-keytimes"><a name="values-&#x548C;-keytimes" class="plugin-anchor" href="#values-&#x548C;-keytimes"><i class="fa fa-link" aria-hidden="true"></i></a>values &#x548C; keyTimes</h5><p>&#x4F7F;&#x7528; <code>values</code> &#x548C; <code>keyTimes</code> &#x53EF;&#x4EE5;&#x5171;&#x540C;&#x786E;&#x5B9A;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x7684;&#x82E5;&#x5E72;&#x5173;&#x952E;&#x5E27;&#xFF0C;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-built_in">CAKeyframeAnimation</span> *anima = [<span class="hljs-built_in">CAKeyframeAnimation</span> animationWithKeyPath:<span class="hljs-string">@&quot;transform.rotation&quot;</span>];<span class="hljs-comment">//&#x5728;&#x8FD9;&#x91CC;@&quot;transform.rotation&quot;==@&quot;transform.rotation.z&quot;</span>
+[<span class="hljs-keyword">self</span>.myView.layer addAnimation:animation forKey:<span class="hljs-literal">nil</span>];
+</code></pre>
+<h5 id="keypath"><a name="keypath" class="plugin-anchor" href="#keypath"><i class="fa fa-link" aria-hidden="true"></i></a>KeyPath</h5>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x4E86; <code>animationWithKeyPath</code> &#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x6765;&#x6539;&#x53D8; layer &#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;&#x6709;&#x5F88;&#x591A;&#xFF0C;&#x5177;&#x4F53;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/AnimatableProperties/AnimatableProperties.html" target="_blank">&#x8FD9;&#x91CC;</a>&#x548C;<a href="http://www.cnblogs.com/pengyingh/articles/2379631.html" target="_blank">&#x8FD9;&#x91CC;</a>&#x3002;&#x5176;&#x4E2D;&#x5F88;&#x591A;&#x5C5E;&#x6027;&#x5728;&#x524D;&#x9762;&#x4ECB;&#x7ECD;&#x7684; UIView &#x52A8;&#x753B;&#x90E8;&#x5206;&#x6211;&#x4EEC;&#x4E5F;&#x770B;&#x5230;&#x8FC7;&#xFF0C;&#x8FDB;&#x4E00;&#x6B65;&#x9A8C;&#x8BC1;&#x4E86; UIView &#x7684;&#x52A8;&#x753B;&#x65B9;&#x6CD5;&#x662F;&#x5BF9;&#x5E95;&#x5C42; CALayer &#x7684;&#x4E00;&#x79CD;&#x5C01;&#x88C5;&#x3002;</p>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x4E00;&#x70B9;&#x662F;&#xFF0C;&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x4E86; <code>position</code> &#x5C5E;&#x6027;&#xFF0C; layer &#x7684;&#x8FD9;&#x4E2A; <code>position</code> &#x5C5E;&#x6027;&#x548C; View &#x7684; <code>frame</code> &#x4EE5;&#x53CA; <code>bounds</code> &#x5C5E;&#x6027;&#x90FD;&#x4E0D;&#x76F8;&#x540C;&#xFF0C;&#x800C;&#x662F;&#x548C; Layer &#x7684; <code>anchorPoint</code> &#x6709;&#x5173;&#xFF0C;&#x53EF;&#x4EE5;&#x7531;&#x4E0B;&#x9762;&#x7684;&#x516C;&#x5F0F;&#x8BA1;&#x7B97;&#x5F97;&#x5230;&#xFF1A;</p>
+<pre><code class="lang-objectivec">position.x = frame.origin.x + <span class="hljs-number">0.5</span> * bounds.size.width&#xFF1B;  
+position.y = frame.origin.y + <span class="hljs-number">0.5</span> * bounds.size.height&#xFF1B;
+</code></pre>
+<p>&#x5173;&#x4E8E; <code>anchorPoint</code> &#x548C; <code>position</code> &#x5C5E;&#x6027;&#x7684;&#x4EE5;&#x53CA;&#x5177;&#x4F53;&#x8BA1;&#x7B97;&#x7684;&#x539F;&#x7406;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="http://wonderffee.github.io/blog/2013/10/13/understand-anchorpoint-and-position/" target="_blank">&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;</a>&#x3002;</p>
+<h5 id="&#x5C5E;&#x6027;"><a name="&#x5C5E;&#x6027;" class="plugin-anchor" href="#&#x5C5E;&#x6027;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5C5E;&#x6027;</h5>
+<p>CABasicAnimation &#x7684;&#x5C5E;&#x6027;&#x6709;&#x4E0B;&#x9762;&#x51E0;&#x4E2A;&#xFF1A;</p>
+<ul>
+<li>beginTime</li>
+<li>duration</li>
+<li>fromValue</li>
+<li>toValue</li>
+<li>byValue</li>
+<li>repeatCount</li>
+<li>autoreverses</li>
+<li>timingFunction</li>
+</ul>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5176;&#x4E2D; beginTime&#xFF0C;duration&#xFF0C;repeatCount &#x7B49;&#x5C5E;&#x6027;&#x548C;&#x4E0A;&#x9762;&#x5728; UIView &#x4E2D;&#x4F7F;&#x7528;&#x5230;&#x7684; duration&#xFF0C;UIViewAnimationOptionRepeat &#x7B49;&#x9009;&#x9879;&#x662F;&#x76F8;&#x5BF9;&#x5E94;&#x7684;&#xFF0C;&#x4E0D;&#x8FC7;&#x8FD9;&#x91CC;&#x7684;&#x9009;&#x9879;&#x80FD;&#x591F;&#x63D0;&#x4F9B;&#x66F4;&#x591A;&#x7684;&#x6269;&#x5C55;&#x6027;&#x3002;</p>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F; <code>fromValue</code>&#xFF0C;<code>toValue</code>&#xFF0C;<code>byValue</code> &#x8FD9;&#x51E0;&#x4E2A;&#x9009;&#x9879;&#xFF0C;&#x652F;&#x6301;&#x7684;&#x8BBE;&#x7F6E;&#x6A21;&#x5F0F;&#x6709;&#x4E0B;&#x9762;&#x51E0;&#x79CD;&#xFF1A;</p>
+<ul>
+<li>&#x8BBE;&#x7F6E; fromValue &#x548C; toValue&#xFF1A;&#x4ECE; fromValue &#x53D8;&#x5316;&#x5230; toValue</li>
+<li>&#x8BBE;&#x7F6E; fromValue &#x548C; byValue&#xFF1A;&#x4ECE; fromValue &#x53D8;&#x5316;&#x5230; fromValue + byValue</li>
+<li>&#x8BBE;&#x7F6E; byValue &#x548C; toValue&#xFF1A;&#x4ECE; toValue - byValue &#x53D8;&#x5316;&#x5230; toValue</li>
+<li>&#x8BBE;&#x7F6E; fromValue&#xFF1A; &#x4ECE; fromValue &#x53D8;&#x5316;&#x5230;&#x5C5E;&#x6027;&#x5F53;&#x524D;&#x503C;</li>
+<li>&#x8BBE;&#x7F6E; toValue&#xFF1A;&#x4ECE;&#x5C5E;&#x6027;&#x5F53;&#x524D;&#x503C;&#x53D8;&#x5316;&#x5230; toValue</li>
+<li>&#x8BBE;&#x7F6E; byValue&#xFF1A;&#x4ECE;&#x5C5E;&#x6027;&#x5F53;&#x524D;&#x503C;&#x53D8;&#x5316;&#x5230;&#x5C5E;&#x6027;&#x5F53;&#x524D;&#x503C; + toValue</li>
+</ul>
+<p>&#x770B;&#x8D77;&#x6765;&#x633A;&#x590D;&#x6742;&#xFF0C;&#x5176;&#x5B9E;&#x6982;&#x62EC;&#x8D77;&#x6765;&#x57FA;&#x672C;&#x5C31;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x67D0;&#x4E2A;&#x503C;&#x4E0D;&#x8BBE;&#x7F6E;&#xFF0C;&#x5C31;&#x662F;&#x7528;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x5F53;&#x524D;&#x7684;&#x503C;&#x3002;</p>
+<p>&#x53E6;&#x5916;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7684;:</p>
+<pre><code class="lang-objecitive-c">animation.toValue = @200;
+</code></pre>
+<p>&#x800C;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x4F7F;&#x7528; 200&#xFF0C;&#x56E0;&#x4E3A; <code>toValue</code> &#x4E4B;&#x7C7B;&#x7684;&#x5C5E;&#x6027;&#x4E3A; <code>id</code> &#x7C7B;&#x578B;&#xFF0C;&#x6216;&#x8005;&#x50CF;&#x8FD9;&#x6837;&#x4F7F;&#x7528; @ &#x7B26;&#x53F7;&#xFF0C;&#x6216;&#x8005;&#x4F7F;&#x7528;&#xFF1A;</p>
+<pre><code class="lang-objecitive-c">animation.toValue = [NSNumber numberWithInt:200];
+</code></pre>
+<p>&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x6709;&#x610F;&#x601D;&#x7684;&#x662F; <code>timingFunction</code> &#x5C5E;&#x6027;&#xFF0C;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x52A8;&#x753B;&#x7684;&#x8FD0;&#x52A8;&#x66F2;&#x7EBF;&#xFF08;&#x8282;&#x594F;&#xFF0C;pacing&#xFF09;&#xFF0C;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x4E86;&#x4E94;&#x79CD;&#x503C;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#xFF1A;</p>
+<ul>
+<li>kCAMediaTimingFunctionLinear &#x7EBF;&#x6027;&#x52A8;&#x753B;</li>
+<li>kCAMediaTimingFunctionEaseIn &#x5148;&#x5FEB;&#x540E;&#x6162;</li>
+<li>kCAMediaTimingFunctionEaseOut &#x5148;&#x6162;&#x540E;&#x5FEB;</li>
+<li>kCAMediaTimingFunctionEaseInEaseOut &#x5148;&#x6162;&#x540E;&#x5FEB;&#x518D;&#x6162;</li>
+<li>kCAMediaTimingFunctionDefault &#x9ED8;&#x8BA4;&#xFF0C;&#x4E5F;&#x5C5E;&#x4E8E;&#x4E2D;&#x95F4;&#x6BD4;&#x8F83;&#x5FEB;</li>
+</ul>
+<p>&#x6B64;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; [CAMediaTimingFunction functionWithControlPoints] &#x65B9;&#x6CD5;&#x6765;&#x81EA;&#x5B9A;&#x4E49;&#x8FD0;&#x52A8;&#x66F2;&#x7EBF;&#xFF0C;<a href="http://netcetera.org/camtf-playground.html" target="_blank">&#x8FD9;&#x4E2A;&#x7F51;&#x7AD9;</a>&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x5C06;&#x53C2;&#x6570;&#x8C03;&#x8282;&#x53EF;&#x89C6;&#x5316;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x5173;&#x4E8E;&#x52A8;&#x753B;&#x65F6;&#x95F4;&#x7CFB;&#x7EDF;&#x7684;&#x5177;&#x4F53;&#x4ECB;&#x7ECD;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="http://geeklu.com/2012/09/animation-in-ios/" target="_blank">&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;</a>&#x3002;</p>
+<h4 id="&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;&#xFF08;cakeyframeanimation&#xFF09;"><a name="&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;&#xFF08;cakeyframeanimation&#xFF09;" class="plugin-anchor" href="#&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;&#xFF08;cakeyframeanimation&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;&#xFF08;CAKeyframeAnimation&#xFF09;</h4>
+<p>&#x540C; UIView &#x4E2D;&#x7684;&#x7C7B;&#x4F3C;&#xFF0C;CALayer &#x5C42;&#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x5173;&#x952E;&#x5E27;&#x52A8;&#x753B;&#x7684;&#x652F;&#x6301;&#xFF0C;CAKeyFrameAnimation &#x548C; CABasicAnimation &#x90FD;&#x7EE7;&#x627F;&#x81EA; CAPropertyAnimation&#xFF0C;&#x56E0;&#x6B64;&#x5B83;&#x6709;&#x5177;&#x6709;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x90A3;&#x4E9B;&#x5C5E;&#x6027;&#xFF0C;&#x6B64;&#x5916;&#xFF0C;CAKeyFrameAnimation &#x8FD8;&#x6709;&#x7279;&#x6709;&#x7684;&#x51E0;&#x4E2A;&#x5C5E;&#x6027;&#x3002;</p>
+<h5 id="values-&#x548C;-keytimes"><a name="values-&#x548C;-keytimes" class="plugin-anchor" href="#values-&#x548C;-keytimes"><i class="fa fa-link" aria-hidden="true"></i></a>values &#x548C; keyTimes</h5>
+<p>&#x4F7F;&#x7528; <code>values</code> &#x548C; <code>keyTimes</code> &#x53EF;&#x4EE5;&#x5171;&#x540C;&#x786E;&#x5B9A;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x7684;&#x82E5;&#x5E72;&#x5173;&#x952E;&#x5E27;&#xFF0C;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-built_in">CAKeyframeAnimation</span> *anima = [<span class="hljs-built_in">CAKeyframeAnimation</span> animationWithKeyPath:<span class="hljs-string">@&quot;transform.rotation&quot;</span>];<span class="hljs-comment">//&#x5728;&#x8FD9;&#x91CC;@&quot;transform.rotation&quot;==@&quot;transform.rotation.z&quot;</span>
 <span class="hljs-built_in">NSValue</span> *value1 = [<span class="hljs-built_in">NSNumber</span> numberWithFloat:-M_PI/<span class="hljs-number">180</span>*<span class="hljs-number">4</span>];
 <span class="hljs-built_in">NSValue</span> *value2 = [<span class="hljs-built_in">NSNumber</span> numberWithFloat:M_PI/<span class="hljs-number">180</span>*<span class="hljs-number">4</span>];
 <span class="hljs-built_in">NSValue</span> *value3 = [<span class="hljs-built_in">NSNumber</span> numberWithFloat:-M_PI/<span class="hljs-number">180</span>*<span class="hljs-number">4</span>];
@@ -1271,13 +1306,20 @@ anima.values = @[value1,value2,value3];
 <span class="hljs-comment">// anima.keyTimes = @[@0.0, @0.5, @1.0];</span>
 anima.repeatCount = MAXFLOAT;
 
-[_demoView.layer addAnimation:anima forKey:<span class="hljs-string">@&quot;shakeAnimation&quot;</span>];</code></pre>
-<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x52A8;&#x753B;&#x5171;&#x6709;&#x4E09;&#x4E2A;&#x5173;&#x952E;&#x5E27;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x6307;&#x5B9A; <code>keyTimes</code> &#x5219;&#x5404;&#x4E2A;&#x5173;&#x952E;&#x5E27;&#x4F1A;&#x5E73;&#x5206;&#x6574;&#x4E2A;&#x52A8;&#x753B;&#x7684;&#x65F6;&#x95F4;(duration)&#x3002;</p><h5 id="path"><a name="path" class="plugin-anchor" href="#path"><i class="fa fa-link" aria-hidden="true"></i></a>path</h5><p>&#x4F7F;&#x7528; path &#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x7684;&#x8FD0;&#x52A8;&#x8DEF;&#x5F84;&#xFF0C;&#x6CE8;&#x610F; path &#x53EA;&#x5BF9; CALayer &#x7684; anchorPoint &#x548C;position &#x5C5E;&#x6027;&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x53E6;&#x5916;&#x5982;&#x679C;&#x4F60;&#x8BBE;&#x7F6E;&#x4E86; path &#xFF0C;&#x90A3;&#x4E48; values &#x5C06;&#x88AB;&#x5FFD;&#x7565;&#x3002;</p><pre><code class="lang-objectivec"><span class="hljs-built_in">CAKeyframeAnimation</span> *anima = [<span class="hljs-built_in">CAKeyframeAnimation</span> animationWithKeyPath:<span class="hljs-string">@&quot;position&quot;</span>];
+[_demoView.layer addAnimation:anima forKey:<span class="hljs-string">@&quot;shakeAnimation&quot;</span>];
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x52A8;&#x753B;&#x5171;&#x6709;&#x4E09;&#x4E2A;&#x5173;&#x952E;&#x5E27;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x6307;&#x5B9A; <code>keyTimes</code> &#x5219;&#x5404;&#x4E2A;&#x5173;&#x952E;&#x5E27;&#x4F1A;&#x5E73;&#x5206;&#x6574;&#x4E2A;&#x52A8;&#x753B;&#x7684;&#x65F6;&#x95F4;(duration)&#x3002;</p>
+<h5 id="path"><a name="path" class="plugin-anchor" href="#path"><i class="fa fa-link" aria-hidden="true"></i></a>path</h5>
+<p>&#x4F7F;&#x7528; path &#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x7684;&#x8FD0;&#x52A8;&#x8DEF;&#x5F84;&#xFF0C;&#x6CE8;&#x610F; path &#x53EA;&#x5BF9; CALayer &#x7684; anchorPoint &#x548C;position &#x5C5E;&#x6027;&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x53E6;&#x5916;&#x5982;&#x679C;&#x4F60;&#x8BBE;&#x7F6E;&#x4E86; path &#xFF0C;&#x90A3;&#x4E48; values &#x5C06;&#x88AB;&#x5FFD;&#x7565;&#x3002;</p>
+<pre><code class="lang-objectivec"><span class="hljs-built_in">CAKeyframeAnimation</span> *anima = [<span class="hljs-built_in">CAKeyframeAnimation</span> animationWithKeyPath:<span class="hljs-string">@&quot;position&quot;</span>];
 <span class="hljs-built_in">UIBezierPath</span> *path = [<span class="hljs-built_in">UIBezierPath</span> bezierPathWithOvalInRect:<span class="hljs-built_in">CGRectMake</span>(SCREEN_WIDTH/<span class="hljs-number">2</span><span class="hljs-number">-100</span>, SCREEN_HEIGHT/<span class="hljs-number">2</span><span class="hljs-number">-100</span>, <span class="hljs-number">200</span>, <span class="hljs-number">200</span>)];
 anima.path = path.CGPath;
 anima.duration = <span class="hljs-number">2.0</span>f;
-[_demoView.layer addAnimation:anima forKey:<span class="hljs-string">@&quot;pathAnimation&quot;</span>];</code></pre>
-<h4 id="&#x7EC4;&#x52A8;&#x753B;&#xFF08;caanimationgroup"><a name="&#x7EC4;&#x52A8;&#x753B;&#xFF08;caanimationgroup" class="plugin-anchor" href="#&#x7EC4;&#x52A8;&#x753B;&#xFF08;caanimationgroup"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7EC4;&#x52A8;&#x753B;&#xFF08;CAAnimationGroup)</h4><p>&#x7EC4;&#x52A8;&#x753B;&#x53EF;&#x4EE5;&#x5C06;&#x4E00;&#x7EC4;&#x52A8;&#x753B;&#x7EC4;&#x5408;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x6240;&#x6709;&#x52A8;&#x753B;&#x5BF9;&#x8C61;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x8FD0;&#x884C;&#xFF0C;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-built_in">CAAnimationGroup</span> *group = [[<span class="hljs-built_in">CAAnimationGroup</span> alloc] init];
+[_demoView.layer addAnimation:anima forKey:<span class="hljs-string">@&quot;pathAnimation&quot;</span>];
+</code></pre>
+<h4 id="&#x7EC4;&#x52A8;&#x753B;&#xFF08;caanimationgroup"><a name="&#x7EC4;&#x52A8;&#x753B;&#xFF08;caanimationgroup" class="plugin-anchor" href="#&#x7EC4;&#x52A8;&#x753B;&#xFF08;caanimationgroup"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7EC4;&#x52A8;&#x753B;&#xFF08;CAAnimationGroup)</h4>
+<p>&#x7EC4;&#x52A8;&#x753B;&#x53EF;&#x4EE5;&#x5C06;&#x4E00;&#x7EC4;&#x52A8;&#x753B;&#x7EC4;&#x5408;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x6240;&#x6709;&#x52A8;&#x753B;&#x5BF9;&#x8C61;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x8FD0;&#x884C;&#xFF0C;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-built_in">CAAnimationGroup</span> *group = [[<span class="hljs-built_in">CAAnimationGroup</span> alloc] init];
 <span class="hljs-built_in">CABasicAnimation</span> *animationOne = [<span class="hljs-built_in">CABasicAnimation</span> animationWithKeyPath:<span class="hljs-string">@&quot;transform.scale&quot;</span>];
 
 animationOne.toValue = @<span class="hljs-number">2.0</span>;
@@ -1288,8 +1330,12 @@ animationTwo.toValue = @<span class="hljs-number">400</span>;
 animationTwo.duration = <span class="hljs-number">1.0</span>;
 
 [group setAnimations:@[animationOne, animationTwo]];
-[<span class="hljs-keyword">self</span>.myView.layer addAnimation:group forKey:<span class="hljs-literal">nil</span>];</code></pre>
-<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x4E00;&#x4E2A; group &#x7EC4;&#x5185;&#x7684;&#x67D0;&#x4E2A;&#x52A8;&#x753B;&#x7684;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#xFF08;duration&#xFF09;&#xFF0C;&#x5982;&#x679C;&#x8D85;&#x8FC7;&#x4E86;&#x6574;&#x4E2A;&#x7EC4;&#x7684;&#x52A8;&#x753B;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#xFF0C;&#x90A3;&#x4E48;&#x591A;&#x51FA;&#x7684;&#x52A8;&#x753B;&#x65F6;&#x95F4;&#x5C06;&#x4E0D;&#x4F1A;&#x88AB;&#x5C55;&#x793A;&#x3002;&#x4F8B;&#x5982;&#x4E00;&#x4E2A; group  &#x7684;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x662F; 5s&#xFF0C;&#x800C;&#x7EC4;&#x5185;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x4E3A; 10s &#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A; 10s &#x7684;&#x52A8;&#x753B;&#x53EA;&#x4F1A;&#x5C55;&#x793A;&#x524D; 5s &#x3002;</p><h4 id="&#x5207;&#x6362;&#x52A8;&#x753B;&#xFF08;catransition&#xFF09;"><a name="&#x5207;&#x6362;&#x52A8;&#x753B;&#xFF08;catransition&#xFF09;" class="plugin-anchor" href="#&#x5207;&#x6362;&#x52A8;&#x753B;&#xFF08;catransition&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5207;&#x6362;&#x52A8;&#x753B;&#xFF08;CATransition&#xFF09;</h4><p>CATransition &#x53EF;&#x4EE5;&#x7528;&#x4E8E; View &#x6216; ViewController &#x76F4;&#x63A5;&#x7684;&#x6362;&#x573A;&#x52A8;&#x753B;&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-keyword">self</span>.myView.backgroundColor = [<span class="hljs-built_in">UIColor</span> blueColor];
+[<span class="hljs-keyword">self</span>.myView.layer addAnimation:group forKey:<span class="hljs-literal">nil</span>];
+</code></pre>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x4E00;&#x4E2A; group &#x7EC4;&#x5185;&#x7684;&#x67D0;&#x4E2A;&#x52A8;&#x753B;&#x7684;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#xFF08;duration&#xFF09;&#xFF0C;&#x5982;&#x679C;&#x8D85;&#x8FC7;&#x4E86;&#x6574;&#x4E2A;&#x7EC4;&#x7684;&#x52A8;&#x753B;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#xFF0C;&#x90A3;&#x4E48;&#x591A;&#x51FA;&#x7684;&#x52A8;&#x753B;&#x65F6;&#x95F4;&#x5C06;&#x4E0D;&#x4F1A;&#x88AB;&#x5C55;&#x793A;&#x3002;&#x4F8B;&#x5982;&#x4E00;&#x4E2A; group  &#x7684;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x662F; 5s&#xFF0C;&#x800C;&#x7EC4;&#x5185;&#x4E00;&#x4E2A;&#x52A8;&#x753B;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x4E3A; 10s &#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A; 10s &#x7684;&#x52A8;&#x753B;&#x53EA;&#x4F1A;&#x5C55;&#x793A;&#x524D; 5s &#x3002;</p>
+<h4 id="&#x5207;&#x6362;&#x52A8;&#x753B;&#xFF08;catransition&#xFF09;"><a name="&#x5207;&#x6362;&#x52A8;&#x753B;&#xFF08;catransition&#xFF09;" class="plugin-anchor" href="#&#x5207;&#x6362;&#x52A8;&#x753B;&#xFF08;catransition&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5207;&#x6362;&#x52A8;&#x753B;&#xFF08;CATransition&#xFF09;</h4>
+<p>CATransition &#x53EF;&#x4EE5;&#x7528;&#x4E8E; View &#x6216; ViewController &#x76F4;&#x63A5;&#x7684;&#x6362;&#x573A;&#x52A8;&#x753B;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-keyword">self</span>.myView.backgroundColor = [<span class="hljs-built_in">UIColor</span> blueColor];
 <span class="hljs-built_in">CATransition</span> *trans = [<span class="hljs-built_in">CATransition</span> animation];
 trans.duration = <span class="hljs-number">1.0</span>;
 trans.type = <span class="hljs-string">@&quot;push&quot;</span>;
@@ -1297,8 +1343,14 @@ trans.type = <span class="hljs-string">@&quot;push&quot;</span>;
 [<span class="hljs-keyword">self</span>.myView.layer addAnimation:trans forKey:<span class="hljs-literal">nil</span>];
 
 <span class="hljs-comment">// &#x8FD9;&#x53E5;&#x653E;&#x5728;&#x4E0B;&#x9762;&#x4E5F;&#x53EF;&#x4EE5;</span>
-<span class="hljs-comment">// self.myView.backgroundColor = [UIColor blueColor];</span></code></pre>
-<p>&#x4E3A;&#x4EC0;&#x4E48;&#x6539;&#x53D8;&#x989C;&#x8272;&#x653E;&#x5728;&#x524D;&#x540E;&#x90FD;&#x53EF;&#x4EE5;&#x5462;&#xFF1F;&#x5177;&#x4F53;&#x7684;&#x89E3;&#x91CA;&#x53EF;&#x4EE5;&#x53C2;&#x8003; SO &#x4E0A;&#x7684;<a href="http://stackoverflow.com/questions/2233692/how-does-catransition-work" target="_blank">&#x8FD9;&#x4E2A;&#x56DE;&#x7B54;</a>&#x3002;&#x7B80;&#x5355;&#x6765;&#x8BF4;&#x5C31;&#x662F;&#x52A8;&#x753B;&#x548C;&#x7ED8;&#x5236;&#x4E4B;&#x95F4;&#x5E76;&#x4E0D;&#x51B2;&#x7A81;&#x3002;</p><h3 id="&#x66F4;&#x9AD8;&#x7EA7;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;"><a name="&#x66F4;&#x9AD8;&#x7EA7;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;" class="plugin-anchor" href="#&#x66F4;&#x9AD8;&#x7EA7;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x66F4;&#x9AD8;&#x7EA7;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;</h3><h4 id="cadisplaylink"><a name="cadisplaylink" class="plugin-anchor" href="#cadisplaylink"><i class="fa fa-link" aria-hidden="true"></i></a>CADisplayLink</h4><p>CADisplayLink &#x662F;&#x4E00;&#x4E2A;&#x8BA1;&#x65F6;&#x5668;&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x5468;&#x671F;&#x6027;&#x7684;&#x8C03;&#x7528;&#x67D0;&#x4E2A; selecor &#x65B9;&#x6CD5;&#x3002;&#x76F8;&#x6BD4; NSTimer &#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x4EE5;&#x548C;&#x5C4F;&#x5E55;&#x5237;&#x65B0;&#x7387;&#x540C;&#x6B65;&#x7684;&#x9891;&#x7387;&#xFF08;&#x6BCF;&#x79D2;60&#x6B21;&#xFF09;&#x6765;&#x8C03;&#x7528;&#x7ED8;&#x5236;&#x51FD;&#x6570;&#xFF0C;&#x5B9E;&#x73B0;&#x754C;&#x9762;&#x8FDE;&#x7EED;&#x7684;&#x4E0D;&#x505C;&#x91CD;&#x7ED8;&#xFF0C;&#x4ECE;&#x800C;&#x5B9E;&#x73B0;&#x52A8;&#x753B;&#x6548;&#x679C;&#x3002;</p><p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF08;&#x4FEE;&#x6539;&#x81EA;<a href="http://www.cocoachina.com/ios/20150320/11382.html" target="_blank">&#x8FD9;&#x91CC;</a>)&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-meta">#import <span class="hljs-meta-string">&quot;BlockView.h&quot;</span></span>
+<span class="hljs-comment">// self.myView.backgroundColor = [UIColor blueColor];</span>
+</code></pre>
+<p>&#x4E3A;&#x4EC0;&#x4E48;&#x6539;&#x53D8;&#x989C;&#x8272;&#x653E;&#x5728;&#x524D;&#x540E;&#x90FD;&#x53EF;&#x4EE5;&#x5462;&#xFF1F;&#x5177;&#x4F53;&#x7684;&#x89E3;&#x91CA;&#x53EF;&#x4EE5;&#x53C2;&#x8003; SO &#x4E0A;&#x7684;<a href="http://stackoverflow.com/questions/2233692/how-does-catransition-work" target="_blank">&#x8FD9;&#x4E2A;&#x56DE;&#x7B54;</a>&#x3002;&#x7B80;&#x5355;&#x6765;&#x8BF4;&#x5C31;&#x662F;&#x52A8;&#x753B;&#x548C;&#x7ED8;&#x5236;&#x4E4B;&#x95F4;&#x5E76;&#x4E0D;&#x51B2;&#x7A81;&#x3002;</p>
+<h3 id="&#x66F4;&#x9AD8;&#x7EA7;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;"><a name="&#x66F4;&#x9AD8;&#x7EA7;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;" class="plugin-anchor" href="#&#x66F4;&#x9AD8;&#x7EA7;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x66F4;&#x9AD8;&#x7EA7;&#x7684;&#x52A8;&#x753B;&#x6548;&#x679C;</h3>
+<h4 id="cadisplaylink"><a name="cadisplaylink" class="plugin-anchor" href="#cadisplaylink"><i class="fa fa-link" aria-hidden="true"></i></a>CADisplayLink</h4>
+<p>CADisplayLink &#x662F;&#x4E00;&#x4E2A;&#x8BA1;&#x65F6;&#x5668;&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x5468;&#x671F;&#x6027;&#x7684;&#x8C03;&#x7528;&#x67D0;&#x4E2A; selecor &#x65B9;&#x6CD5;&#x3002;&#x76F8;&#x6BD4; NSTimer &#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x4EE5;&#x548C;&#x5C4F;&#x5E55;&#x5237;&#x65B0;&#x7387;&#x540C;&#x6B65;&#x7684;&#x9891;&#x7387;&#xFF08;&#x6BCF;&#x79D2;60&#x6B21;&#xFF09;&#x6765;&#x8C03;&#x7528;&#x7ED8;&#x5236;&#x51FD;&#x6570;&#xFF0C;&#x5B9E;&#x73B0;&#x754C;&#x9762;&#x8FDE;&#x7EED;&#x7684;&#x4E0D;&#x505C;&#x91CD;&#x7ED8;&#xFF0C;&#x4ECE;&#x800C;&#x5B9E;&#x73B0;&#x52A8;&#x753B;&#x6548;&#x679C;&#x3002;</p>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF08;&#x4FEE;&#x6539;&#x81EA;<a href="http://www.cocoachina.com/ios/20150320/11382.html" target="_blank">&#x8FD9;&#x91CC;</a>)&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-meta">#import <span class="hljs-meta-string">&quot;BlockView.h&quot;</span></span>
 
 <span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">BlockView</span></span>
 
@@ -1347,31 +1399,36 @@ trans.type = <span class="hljs-string">@&quot;push&quot;</span>;
 
 <span class="hljs-keyword">@end</span>
 </code></pre>
-<h4 id="uidynamicanimator"><a name="uidynamicanimator" class="plugin-anchor" href="#uidynamicanimator"><i class="fa fa-link" aria-hidden="true"></i></a>UIDynamicAnimator</h4><p>UIDynamicAnimator &#x662F; iOS 7 &#x5F15;&#x5165;&#x7684;&#x4E00;&#x4E2A;&#x65B0;&#x7C7B;&#xFF0C;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x51FA;&#x5177;&#x6709;&#x7269;&#x7406;&#x4EFF;&#x771F;&#x6548;&#x679C;&#x7684;&#x52A8;&#x753B;&#xFF0C;&#x5177;&#x4F53;&#x63D0;&#x4F9B;&#x4E86;&#x4E0B;&#x9762;&#x51E0;&#x79CD;&#x7269;&#x7406;&#x4EFF;&#x771F;&#x884C;&#x4E3A;&#xFF1A;</p><ul><li>UIGravityBehavior&#xFF1A;&#x91CD;&#x529B;&#x884C;&#x4E3A;
-</li>
-<li>UICollisionBehavior&#xFF1A;&#x78B0;&#x649E;&#x884C;&#x4E3A;
-</li>
-<li>UISnapBehavior&#xFF1A;&#x6355;&#x6349;&#x884C;&#x4E3A;
-</li>
-<li>UIPushBehavior&#xFF1A;&#x63A8;&#x52A8;&#x884C;&#x4E3A;
-</li>
-<li>UIAttachmentBehavior&#xFF1A;&#x9644;&#x7740;&#x884C;&#x4E3A;
-</li>
-<li>UIDynamicItemBehavior&#xFF1A;&#x52A8;&#x529B;&#x5143;&#x7D20;&#x884C;&#x4E3A;
-</li></ul>
-<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF08;&#x6765;&#x81EA;<a href="http://www.teehanlax.com/blog/introduction-to-uikit-dynamics/" target="_blank">&#x8FD9;&#x91CC;</a>)</p><pre><code class="lang-objectivec"><span class="hljs-keyword">self</span>.animator = [[<span class="hljs-built_in">UIDynamicAnimator</span> alloc] initWithReferenceView:<span class="hljs-keyword">self</span>.view];
+<h4 id="uidynamicanimator"><a name="uidynamicanimator" class="plugin-anchor" href="#uidynamicanimator"><i class="fa fa-link" aria-hidden="true"></i></a>UIDynamicAnimator</h4>
+<p>UIDynamicAnimator &#x662F; iOS 7 &#x5F15;&#x5165;&#x7684;&#x4E00;&#x4E2A;&#x65B0;&#x7C7B;&#xFF0C;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x51FA;&#x5177;&#x6709;&#x7269;&#x7406;&#x4EFF;&#x771F;&#x6548;&#x679C;&#x7684;&#x52A8;&#x753B;&#xFF0C;&#x5177;&#x4F53;&#x63D0;&#x4F9B;&#x4E86;&#x4E0B;&#x9762;&#x51E0;&#x79CD;&#x7269;&#x7406;&#x4EFF;&#x771F;&#x884C;&#x4E3A;&#xFF1A;</p>
+<ul>
+<li>UIGravityBehavior&#xFF1A;&#x91CD;&#x529B;&#x884C;&#x4E3A;</li>
+<li>UICollisionBehavior&#xFF1A;&#x78B0;&#x649E;&#x884C;&#x4E3A;</li>
+<li>UISnapBehavior&#xFF1A;&#x6355;&#x6349;&#x884C;&#x4E3A;</li>
+<li>UIPushBehavior&#xFF1A;&#x63A8;&#x52A8;&#x884C;&#x4E3A;</li>
+<li>UIAttachmentBehavior&#xFF1A;&#x9644;&#x7740;&#x884C;&#x4E3A;</li>
+<li>UIDynamicItemBehavior&#xFF1A;&#x52A8;&#x529B;&#x5143;&#x7D20;&#x884C;&#x4E3A;</li>
+</ul>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF08;&#x6765;&#x81EA;<a href="http://www.teehanlax.com/blog/introduction-to-uikit-dynamics/" target="_blank">&#x8FD9;&#x91CC;</a>)</p>
+<pre><code class="lang-objectivec"><span class="hljs-keyword">self</span>.animator = [[<span class="hljs-built_in">UIDynamicAnimator</span> alloc] initWithReferenceView:<span class="hljs-keyword">self</span>.view];
 
 <span class="hljs-built_in">UIGravityBehavior</span>* gravityBehavior = [[<span class="hljs-built_in">UIGravityBehavior</span> alloc] initWithItems:@[<span class="hljs-keyword">self</span>.myView]];
 [<span class="hljs-keyword">self</span>.animator addBehavior:gravityBehavior];
 
 <span class="hljs-built_in">UICollisionBehavior</span>* collisionBehavior = [[<span class="hljs-built_in">UICollisionBehavior</span> alloc] initWithItems:@[<span class="hljs-keyword">self</span>.myView]];
 collisionBehavior.translatesReferenceBoundsIntoBoundary = <span class="hljs-literal">YES</span>;
-[<span class="hljs-keyword">self</span>.animator addBehavior:collisionBehavior];</code></pre>
-<p>&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x548C;&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x5199;&#x7684;&#x52A8;&#x753B;&#x4EE3;&#x7801;&#x6709;&#x5F88;&#x5927;&#x4E0D;&#x540C;&#xFF0C;&#x5728;&#x8FD9;&#x91CC; behavior &#x662F;&#x7528;&#x4E8E;&#x63A7;&#x5236; View &#x884C;&#x4E3A;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x505A;&#x7684;&#x64CD;&#x4F5C;&#x662F;&#x628A;&#x5404;&#x79CD;&#x4E0D;&#x540C;&#x7684; behavior &#x52A0;&#x5230; animator &#x4E2D;&#x3002;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#x4E86; View &#x56E0;&#x4E3A;&#x201C;&#x91CD;&#x529B;&#x201D;&#x539F;&#x56E0;&#x201C;&#x6389;&#x5230;&#x201D;&#x5730;&#x4E0A;&#xFF0C;&#x843D;&#x5730;&#x7684;&#x540C;&#x65F6;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x78B0;&#x649E;&#x6548;&#x679C;&#x3002;</p><h4 id="caemitterlayer"><a name="caemitterlayer" class="plugin-anchor" href="#caemitterlayer"><i class="fa fa-link" aria-hidden="true"></i></a>CAEmitterLayer</h4><p>CAEmitterLayer &#x662F; Core Animation &#x63D0;&#x4F9B;&#x7684;&#x4E00;&#x4E2A;&#x7C92;&#x5B50;&#x53D1;&#x751F;&#x5668;&#x7CFB;&#x7EDF;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x521B;&#x5EFA;&#x5404;&#x79CD;&#x7C92;&#x5B50;&#x52A8;&#x753B;&#xFF0C;&#x4F8B;&#x5982;&#x70DF;&#x96FE;&#xFF0C;&#x7130;&#x706B;&#x7B49;&#x6548;&#x679C;&#x3002;</p><p>CAEmitterLayer &#x9700;&#x8981;&#x8C03;&#x8282;&#x7684;&#x53C2;&#x6570;&#x5F88;&#x591A;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x7684;&#x6548;&#x679C;&#x4E5F;&#x975E;&#x5E38;&#x70AB;&#x9177;&#xFF0C;&#x5177;&#x4F53;&#x53EF;&#x53C2;&#x8003;&#x4E0B;&#x9762;&#x51E0;&#x4E2A;&#x7F51;&#x5740;&#xFF1A;</p><ul><li><a href="http://enharmonichq.com/tutorial-particle-systems-in-core-animation-with-caemitterlayer/#prettyPhoto/0/" target="_blank">http://enharmonichq.com/tutorial-particle-systems-in-core-animation-with-caemitterlayer/#prettyPhoto/0/</a>
-</li>
-<li><a href="https://www.invasivecode.com/weblog/caemitterlayer-and-the-ios-particle-system-lets/?doing_wp_cron=1438657800.4759559631347656250000" target="_blank">https://www.invasivecode.com/weblog/caemitterlayer-and-the-ios-particle-system-lets/?doing_wp_cron=1438657800.4759559631347656250000</a>
-</li></ul>
+[<span class="hljs-keyword">self</span>.animator addBehavior:collisionBehavior];
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x548C;&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x5199;&#x7684;&#x52A8;&#x753B;&#x4EE3;&#x7801;&#x6709;&#x5F88;&#x5927;&#x4E0D;&#x540C;&#xFF0C;&#x5728;&#x8FD9;&#x91CC; behavior &#x662F;&#x7528;&#x4E8E;&#x63A7;&#x5236; View &#x884C;&#x4E3A;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x505A;&#x7684;&#x64CD;&#x4F5C;&#x662F;&#x628A;&#x5404;&#x79CD;&#x4E0D;&#x540C;&#x7684; behavior &#x52A0;&#x5230; animator &#x4E2D;&#x3002;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#x4E86; View &#x56E0;&#x4E3A;&#x201C;&#x91CD;&#x529B;&#x201D;&#x539F;&#x56E0;&#x201C;&#x6389;&#x5230;&#x201D;&#x5730;&#x4E0A;&#xFF0C;&#x843D;&#x5730;&#x7684;&#x540C;&#x65F6;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x78B0;&#x649E;&#x6548;&#x679C;&#x3002;</p>
+<h4 id="caemitterlayer"><a name="caemitterlayer" class="plugin-anchor" href="#caemitterlayer"><i class="fa fa-link" aria-hidden="true"></i></a>CAEmitterLayer</h4>
+<p>CAEmitterLayer &#x662F; Core Animation &#x63D0;&#x4F9B;&#x7684;&#x4E00;&#x4E2A;&#x7C92;&#x5B50;&#x53D1;&#x751F;&#x5668;&#x7CFB;&#x7EDF;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x521B;&#x5EFA;&#x5404;&#x79CD;&#x7C92;&#x5B50;&#x52A8;&#x753B;&#xFF0C;&#x4F8B;&#x5982;&#x70DF;&#x96FE;&#xFF0C;&#x7130;&#x706B;&#x7B49;&#x6548;&#x679C;&#x3002;</p>
+<p>CAEmitterLayer &#x9700;&#x8981;&#x8C03;&#x8282;&#x7684;&#x53C2;&#x6570;&#x5F88;&#x591A;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x7684;&#x6548;&#x679C;&#x4E5F;&#x975E;&#x5E38;&#x70AB;&#x9177;&#xFF0C;&#x5177;&#x4F53;&#x53EF;&#x53C2;&#x8003;&#x4E0B;&#x9762;&#x51E0;&#x4E2A;&#x7F51;&#x5740;&#xFF1A;</p>
+<ul>
+<li><a href="http://enharmonichq.com/tutorial-particle-systems-in-core-animation-with-caemitterlayer/#prettyPhoto/0/" target="_blank">http://enharmonichq.com/tutorial-particle-systems-in-core-animation-with-caemitterlayer/#prettyPhoto/0/</a></li>
+<li><a href="https://www.invasivecode.com/weblog/caemitterlayer-and-the-ios-particle-system-lets/?doing_wp_cron=1438657800.4759559631347656250000" target="_blank">https://www.invasivecode.com/weblog/caemitterlayer-and-the-ios-particle-system-lets/?doing_wp_cron=1438657800.4759559631347656250000</a></li>
+</ul>
 <p><a href="https://github.com/lexrus/LTMorphingLabel" target="_blank">LTMorphingLabel</a> &#x8FD9;&#x4E2A;&#x9879;&#x76EE;&#x4F7F;&#x7528; CAEmitterLayer &#x5B9E;&#x73B0;&#x4E86;&#x5404;&#x79CD;&#x9AD8;&#x7AEF;&#x70AB;&#x9177;&#x6389;&#x6E23;&#x5929;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x5927;&#x5BB6;&#x60F3;&#x5B66;&#x4E60;&#x7684;&#x8BDD;&#x53EF;&#x4EE5;&#x53BB;&#x770B;&#x770B;&#x5B83;&#x7684;&#x4EE3;&#x7801;&#x3002;</p>
+
                                 
                                 </section>
                             
@@ -1414,7 +1471,7 @@ collisionBehavior.translatesReferenceBoundsIntoBoundary = <span class="hljs-lite
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"动画","level":"1.3.2.5","depth":3,"next":{"title":"网络编程","level":"1.3.2.6","depth":3,"path":"iOS/Cocoa-Touch/Network.md","ref":"iOS/Cocoa-Touch/Network.md","articles":[]},"previous":{"title":"UIViewController","level":"1.3.2.4","depth":3,"path":"iOS/Cocoa-Touch/UIViewController.md","ref":"iOS/Cocoa-Touch/UIViewController.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"笔试面试知识整理","gitbook":"*","description":"一些 IT 笔试面试有关知识的整理，包括基础知识，安卓，iOS 开发等，希望对大家有所帮助"},"file":{"path":"iOS/Cocoa-Touch/Animation.md","mtime":"2015-12-31T11:12:09.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-25T11:51:20.654Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"动画","level":"1.3.2.5","depth":3,"next":{"title":"网络编程","level":"1.3.2.6","depth":3,"path":"iOS/Cocoa-Touch/Network.md","ref":"iOS/Cocoa-Touch/Network.md","articles":[]},"previous":{"title":"UIViewController","level":"1.3.2.4","depth":3,"path":"iOS/Cocoa-Touch/UIViewController.md","ref":"iOS/Cocoa-Touch/UIViewController.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"笔试面试知识整理","gitbook":"*","description":"一些 IT 笔试面试有关知识的整理，包括基础知识，安卓，iOS 开发等，希望对大家有所帮助"},"file":{"path":"iOS/Cocoa-Touch/Animation.md","mtime":"2015-12-31T11:12:09.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-10-07T07:42:05.896Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

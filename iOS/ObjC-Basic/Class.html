@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>类与对象 · 笔试面试知识整理</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>类与对象 · 笔试面试知识整理</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -1164,14 +1164,20 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x7C7B;&#x65B9;&#x6CD5;"><a name="&#x7C7B;&#x65B9;&#x6CD5;" class="plugin-anchor" href="#&#x7C7B;&#x65B9;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7C7B;&#x65B9;&#x6CD5;</h2><p>OC&#x4E2D;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x53EA;&#x6709;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x548C;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x4E24;&#x79CD;&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">Controller</span> : <span class="hljs-title">NSObject</span></span>
+                                <h2 id="&#x7C7B;&#x65B9;&#x6CD5;"><a name="&#x7C7B;&#x65B9;&#x6CD5;" class="plugin-anchor" href="#&#x7C7B;&#x65B9;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7C7B;&#x65B9;&#x6CD5;</h2>
+<p>OC&#x4E2D;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x53EA;&#x6709;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x548C;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x4E24;&#x79CD;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">Controller</span> : <span class="hljs-title">NSObject</span></span>
 
 + (<span class="hljs-keyword">void</span>)thisIsAStaticMethod; <span class="hljs-comment">// &#x9759;&#x6001;&#x65B9;&#x6CD5;</span>
 
 &#x2013; (<span class="hljs-keyword">void</span>)thisIsAnInstanceMethod; <span class="hljs-comment">// &#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;</span>
 
-<span class="hljs-keyword">@end</span></code></pre>
-<p>OC &#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x53EA;&#x8981;&#x58F0;&#x660E;&#x5728; @interface&#x91CC;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x90FD;&#x662F;&#x516C;&#x6709;&#x7684;&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;OC &#x6CA1;&#x6709;&#x50CF; Java&#xFF0C;C++ &#x4E2D;&#x7684;&#x90A3;&#x79CD;&#x7EDD;&#x5BF9;&#x7684;&#x79C1;&#x6709;&#x53CA;&#x4FDD;&#x62A4;&#x6210;&#x5458;&#x65B9;&#x6CD5;&#xFF0C;&#x4EC5;&#x4EC5;&#x53EF;&#x4EE5;&#x5BF9;&#x8C03;&#x7528;&#x8005;&#x9690;&#x85CF;&#x67D0;&#x4E9B;&#x65B9;&#x6CD5;&#x3002;</p><p>&#x58F0;&#x660E;&#x548C;&#x5B9E;&#x73B0;&#x90FD;&#x5199;&#x5728; @implementation &#x91CC;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x7C7B;&#x7684;&#x5916;&#x90E8;&#x662F;&#x770B;&#x4E0D;&#x5230;&#x7684;&#x3002;</p><p>&#x53EF;&#x4EE5;&#x4F7F;&#x7528; Category &#x6765;&#x5B9E;&#x73B0;&#x79C1;&#x6709;&#x65B9;&#x6CD5;&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-comment">// AClass.h</span>
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<p>OC &#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x53EA;&#x8981;&#x58F0;&#x660E;&#x5728; @interface&#x91CC;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x90FD;&#x662F;&#x516C;&#x6709;&#x7684;&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;OC &#x6CA1;&#x6709;&#x50CF; Java&#xFF0C;C++ &#x4E2D;&#x7684;&#x90A3;&#x79CD;&#x7EDD;&#x5BF9;&#x7684;&#x79C1;&#x6709;&#x53CA;&#x4FDD;&#x62A4;&#x6210;&#x5458;&#x65B9;&#x6CD5;&#xFF0C;&#x4EC5;&#x4EC5;&#x53EF;&#x4EE5;&#x5BF9;&#x8C03;&#x7528;&#x8005;&#x9690;&#x85CF;&#x67D0;&#x4E9B;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x58F0;&#x660E;&#x548C;&#x5B9E;&#x73B0;&#x90FD;&#x5199;&#x5728; @implementation &#x91CC;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x7C7B;&#x7684;&#x5916;&#x90E8;&#x662F;&#x770B;&#x4E0D;&#x5230;&#x7684;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x4F7F;&#x7528; Category &#x6765;&#x5B9E;&#x73B0;&#x79C1;&#x6709;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-comment">// AClass.h</span>
 <span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">AClass</span> : <span class="hljs-title">NSObject</span></span>
 
 -(<span class="hljs-keyword">void</span>)sayHello;
@@ -1193,13 +1199,18 @@
 
 -(<span class="hljs-keyword">void</span>)privateSayHello {
     <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;Private Hello&quot;</span>);
-}</code></pre>
-<p>&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x5916;&#x90E8;&#x5C31;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x5230; <code>privateSayHello</code> &#x65B9;&#x6CD5;&#x3002;</p><p>&#x6CE8;&#x610F;&#x5728;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x91CC;&#x9762;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x60F3;&#x901A;&#x8FC7; Category &#x6765;&#x8FDB;&#x884C;&#x65B9;&#x6CD5;&#x9690;&#x85CF;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;&#x5B9E;&#x73B0;&#x653E;&#x5728;&#x4E3B; implementation &#x91CC;&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x60F3;&#x6269;&#x5C55;&#x522B;&#x7684;&#x4E0D;&#x80FD;&#x83B7;&#x53D6;&#x5230;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x7C7B;&#xFF0C;&#x6216;&#x8005;&#x60F3;&#x628A;&#x4E0D;&#x540C; Category &#x7684;&#x5B9E;&#x73B0;&#x5206;&#x5F00;&#xFF0C;&#x53EF;&#x4EE5;&#x65B0;&#x5EFA; <code>&lt;ClassName&gt;+CategoryName.m</code> &#x6587;&#x4EF6;&#xFF0C;&#x5728;&#x91CC;&#x9762;&#x8FDB;&#x884C;&#x5B9E;&#x73B0;&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-meta">#import <span class="hljs-meta-string">&quot;SystemClass+CategoryName.h&quot;</span></span>
+}
+</code></pre>
+<p>&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x5916;&#x90E8;&#x5C31;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x5230; <code>privateSayHello</code> &#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#x5728;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x91CC;&#x9762;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x60F3;&#x901A;&#x8FC7; Category &#x6765;&#x8FDB;&#x884C;&#x65B9;&#x6CD5;&#x9690;&#x85CF;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;&#x5B9E;&#x73B0;&#x653E;&#x5728;&#x4E3B; implementation &#x91CC;&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x60F3;&#x6269;&#x5C55;&#x522B;&#x7684;&#x4E0D;&#x80FD;&#x83B7;&#x53D6;&#x5230;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x7C7B;&#xFF0C;&#x6216;&#x8005;&#x60F3;&#x628A;&#x4E0D;&#x540C; Category &#x7684;&#x5B9E;&#x73B0;&#x5206;&#x5F00;&#xFF0C;&#x53EF;&#x4EE5;&#x65B0;&#x5EFA; <code>&lt;ClassName&gt;+CategoryName.m</code> &#x6587;&#x4EF6;&#xFF0C;&#x5728;&#x91CC;&#x9762;&#x8FDB;&#x884C;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-meta">#import <span class="hljs-meta-string">&quot;SystemClass+CategoryName.h&quot;</span></span>
 
 <span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">SystemClass</span> ( <span class="hljs-title">CategoryName</span> )</span>
 <span class="hljs-comment">// method definitions</span>
-<span class="hljs-keyword">@end</span></code></pre>
-<p>&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; Extension &#x6765;&#x5B9E;&#x73B0;&#x79C1;&#x6709;&#x65B9;&#x6CD5;&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-comment">// AClass.h &#x4E0E;&#x4E0A;&#x9762;&#x76F8;&#x540C;</span>
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<p>&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; Extension &#x6765;&#x5B9E;&#x73B0;&#x79C1;&#x6709;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-comment">// AClass.h &#x4E0E;&#x4E0A;&#x9762;&#x76F8;&#x540C;</span>
 
 <span class="hljs-comment">// AClass.m </span>
 <span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">AClass</span>()</span>
@@ -1218,13 +1229,21 @@
     <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;Private Hello&quot;</span>);
 }
 
-<span class="hljs-keyword">@end</span></code></pre>
-<p>&#x4E0E;&#x4F7F;&#x7528; Category &#x7C7B;&#x4F3C;&#xFF0C;&#x7531;&#x4E8E;&#x58F0;&#x660E;&#x9690;&#x85CF;&#x5728; .m &#x4E2D;&#xFF0C;&#x8C03;&#x7528;&#x8005;&#x65E0;&#x6CD5;&#x770B;&#x5230;&#x5176;&#x58F0;&#x660E;&#xFF0C;&#x4E5F;&#x5C31;&#x65E0;&#x6CD5;&#x8C03;&#x7528; <code>privateSayHello</code> &#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x4F1A;&#x5F15;&#x53D1;&#x7F16;&#x8BD1;&#x9519;&#x8BEF;&#x3002;</p><p>&#x5173;&#x4E8E; Category &#x548C; Extension &#x7684;&#x4E00;&#x4E9B;&#x533A;&#x522B;&#xFF0C;&#x5728;<a href="#extension">&#x8FD9;&#x91CC;</a>&#x3002;</p><h2 id="&#x7C7B;&#x53D8;&#x91CF;"><a name="&#x7C7B;&#x53D8;&#x91CF;" class="plugin-anchor" href="#&#x7C7B;&#x53D8;&#x91CF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7C7B;&#x53D8;&#x91CF;</h2><p>&#x82F9;&#x679C;&#x63A8;&#x8350;&#x5728;&#x73B0;&#x4EE3; Objective-C &#x4E2D;&#x4F7F;&#x7528; <code>@property</code> &#x6765;&#x5B9E;&#x73B0;&#x6210;&#x5458;&#x53D8;&#x91CF;&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">AClass</span> : <span class="hljs-title">NSObject</span></span>
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<p>&#x4E0E;&#x4F7F;&#x7528; Category &#x7C7B;&#x4F3C;&#xFF0C;&#x7531;&#x4E8E;&#x58F0;&#x660E;&#x9690;&#x85CF;&#x5728; .m &#x4E2D;&#xFF0C;&#x8C03;&#x7528;&#x8005;&#x65E0;&#x6CD5;&#x770B;&#x5230;&#x5176;&#x58F0;&#x660E;&#xFF0C;&#x4E5F;&#x5C31;&#x65E0;&#x6CD5;&#x8C03;&#x7528; <code>privateSayHello</code> &#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x4F1A;&#x5F15;&#x53D1;&#x7F16;&#x8BD1;&#x9519;&#x8BEF;&#x3002;</p>
+<p>&#x5173;&#x4E8E; Category &#x548C; Extension &#x7684;&#x4E00;&#x4E9B;&#x533A;&#x522B;&#xFF0C;&#x5728;<a href="#extension">&#x8FD9;&#x91CC;</a>&#x3002;</p>
+<h2 id="&#x7C7B;&#x53D8;&#x91CF;"><a name="&#x7C7B;&#x53D8;&#x91CF;" class="plugin-anchor" href="#&#x7C7B;&#x53D8;&#x91CF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7C7B;&#x53D8;&#x91CF;</h2>
+<p>&#x82F9;&#x679C;&#x63A8;&#x8350;&#x5728;&#x73B0;&#x4EE3; Objective-C &#x4E2D;&#x4F7F;&#x7528; <code>@property</code> &#x6765;&#x5B9E;&#x73B0;&#x6210;&#x5458;&#x53D8;&#x91CF;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">AClass</span> : <span class="hljs-title">NSObject</span></span>
 
 <span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">copy</span>) <span class="hljs-built_in">NSString</span> *name;
 
-<span class="hljs-keyword">@end</span></code></pre>
-<p>&#x4F7F;&#x7528; <code>@property</code> &#x58F0;&#x660E;&#x7684;&#x53D8;&#x91CF;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>&#x5B9E;&#x4F8B;&#x540D;.&#x53D8;&#x91CF;&#x540D;</code>&#x6765;&#x83B7;&#x53D6;&#x548C;&#x4FEE;&#x6539;&#x3002;</p><p><code>@property</code> &#x53EF;&#x4EE5;&#x770B;&#x505A;&#x662F;&#x4E00;&#x79CD;&#x8BED;&#x6CD5;&#x7CD6;&#xFF0C;&#x5728; MRC &#x4E0B;&#xFF0C;&#x4F7F;&#x7528; <code>@property</code> &#x53EF;&#x4EE5;&#x770B;&#x6210;&#x5B9E;&#x73B0;&#x4E86;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-comment">// AClass.h</span>
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<p>&#x4F7F;&#x7528; <code>@property</code> &#x58F0;&#x660E;&#x7684;&#x53D8;&#x91CF;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>&#x5B9E;&#x4F8B;&#x540D;.&#x53D8;&#x91CF;&#x540D;</code>&#x6765;&#x83B7;&#x53D6;&#x548C;&#x4FEE;&#x6539;&#x3002;</p>
+<p><code>@property</code> &#x53EF;&#x4EE5;&#x770B;&#x505A;&#x662F;&#x4E00;&#x79CD;&#x8BED;&#x6CD5;&#x7CD6;&#xFF0C;&#x5728; MRC &#x4E0B;&#xFF0C;&#x4F7F;&#x7528; <code>@property</code> &#x53EF;&#x4EE5;&#x770B;&#x6210;&#x5B9E;&#x73B0;&#x4E86;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-comment">// AClass.h</span>
 <span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">AClass</span> : <span class="hljs-title">NSObject</span></span>{
 <span class="hljs-keyword">@public</span>
     <span class="hljs-built_in">NSString</span> *_name;
@@ -1247,33 +1266,42 @@
         _name = [name <span class="hljs-keyword">copy</span>];
     }
 }
-<span class="hljs-keyword">@end</span></code></pre>
-<p>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;<code>@property</code> &#x4F1A;&#x81EA;&#x52A8;&#x751F;&#x6210; getter &#x548C; setter&#xFF0C; &#x540C;&#x65F6;&#x8FDB;&#x884C;&#x81EA;&#x52A8;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x3002;</p><p><code>@property</code> &#x7684;&#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#xFF1A;</p><ul><li>readwrite &#x662F;&#x53EF;&#x8BFB;&#x53EF;&#x5199;&#x7279;&#x6027;&#xFF1B;&#x9700;&#x8981;&#x751F;&#x6210; getter &#x65B9;&#x6CD5;&#x548C; setter &#x65B9;&#x6CD5;
-</li>
-<li>readonly &#x662F;&#x53EA;&#x8BFB;&#x7279;&#x6027;&#xFF0C;&#x53EA;&#x4F1A;&#x751F;&#x6210; getter &#x65B9;&#x6CD5; &#x4E0D;&#x4F1A;&#x751F;&#x6210; setter &#x65B9;&#x6CD5;&#xFF0C;&#x4E0D;&#x5E0C;&#x671B;&#x5C5E;&#x6027;&#x5728;&#x7C7B;&#x5916;&#x6539;&#x53D8;&#x65F6;&#x4F7F;&#x7528;
-</li>
-<li>assign &#x662F;&#x8D4B;&#x503C;&#x7279;&#x6027;&#xFF0C;setter &#x65B9;&#x6CD5;&#x5C06;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x8D4B;&#x503C;&#x7ED9;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#xFF1B;&#x4EC5;&#x8BBE;&#x7F6E;&#x53D8;&#x91CF;&#x65F6;&#xFF1B;
-</li>
-<li>retain &#x8868;&#x793A;&#x6301;&#x6709;&#x7279;&#x6027;&#xFF0C;setter &#x65B9;&#x6CD5;&#x5C06;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x5148;&#x4FDD;&#x7559;&#xFF0C;&#x518D;&#x8D4B;&#x503C;&#xFF0C;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x7684; retain count &#x4F1A;+1;
-</li>
-<li>copy &#x8868;&#x793A;&#x62F7;&#x8D1D;&#x7279;&#x6027;&#xFF0C;setter &#x65B9;&#x6CD5;&#x5C06;&#x4F20;&#x5165;&#x5BF9;&#x8C61;&#x590D;&#x5236;&#x4E00;&#x4EFD;&#xFF1B;&#x9700;&#x8981;&#x5B8C;&#x5168;&#x4E00;&#x4EFD;&#x65B0;&#x7684;&#x53D8;&#x91CF;&#x65F6;&#x3002;
-</li>
-<li>nonatomic &#x548C; atomic &#xFF0C;&#x51B3;&#x5B9A;&#x7F16;&#x8BD1;&#x5668;&#x751F;&#x6210;&#x7684; setter getter&#x662F;&#x5426;&#x662F;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#x3002; atomic &#x8868;&#x793A;&#x4F7F;&#x7528;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x4E0A;&#x4FDD;&#x8BC1;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x3002;&#x4E00;&#x822C;&#x63A8;&#x8350;&#x4F7F;&#x7528; nonatomic &#xFF0C;&#x56E0;&#x4E3A; nonatomic &#x7F16;&#x8BD1;&#x51FA;&#x7684;&#x4EE3;&#x7801;&#x66F4;&#x5FEB;
-</li></ul>
-<p>&#x9ED8;&#x8BA4;&#x7684; <code>@property</code> &#x662F; readwrite&#xFF0C;assign&#xFF0C;atomic&#x3002;</p><p>&#x540C;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x81EA;&#x5DF1;&#x5B9A;&#x4E49; accessor &#x7684;&#x540D;&#x5B57;&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-keyword">@property</span> (getter=isFinished) <span class="hljs-built_in">BOOL</span> finished;</code></pre>
-<p>&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x751F;&#x6210;&#x7684; getter &#x65B9;&#x6CD5;&#x540D;&#x4E3A; <code>isFinished</code>&#xFF0C;&#x800C;&#x4E0D;&#x662F; <code>finished</code>&#x3002;</p><h3 id="synthesize-&#x548C;-dynamic"><a name="synthesize-&#x548C;-dynamic" class="plugin-anchor" href="#synthesize-&#x548C;-dynamic"><i class="fa fa-link" aria-hidden="true"></i></a>@synthesize &#x548C; @dynamic</h3><p>&#x5BF9;&#x4E8E;&#x73B0;&#x4EE3; OC &#x6765;&#x8BF4;&#xFF0C;&#x5728;&#x4F7F;&#x7528; <code>@property</code> &#x65F6;&#xFF0C; &#x7F16;&#x8BD1;&#x5668;&#x9ED8;&#x8BA4;&#x4F1A;&#x8FDB;&#x884C;&#x81EA;&#x52A8; synthesize&#xFF0C;&#x751F;&#x6210; getter &#x548C; setter&#xFF0C;&#x540C;&#x65F6;&#x628A; ivar &#x548C;&#x5C5E;&#x6027;&#x7ED1;&#x5B9A;&#x8D77;&#x6765;&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-comment">/// &#x73B0;&#x4EE3; OC &#x4E0D;&#x518D;&#x9700;&#x8981;&#x624B;&#x52A8;&#x8FDB;&#x884C;&#x4E0B;&#x9762;&#x7684;&#x58F0;&#x660E;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x81EA;&#x52A8;&#x5904;&#x7406;</span>
-<span class="hljs-keyword">@synthesize</span> propertyName = _propertyName</code></pre>
-<p>&#x4E0D;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x5199;&#x4EFB;&#x4F55;&#x4EE3;&#x7801;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528; getter &#x548C; setter &#x4E86;&#x3002;</p><p>&#x7136;&#x800C;&#x5E76;&#x4E0D;&#x662F;&#x6240;&#x6709;&#x60C5;&#x51B5;&#x4E0B;&#x7F16;&#x8BD1;&#x5668;&#x90FD;&#x4F1A;&#x8FDB;&#x884C;&#x81EA;&#x52A8; synthesize&#xFF0C;&#x5177;&#x4F53;&#x7531;&#x4E0B;&#x9762;&#x51E0;&#x79CD;&#xFF1A;</p><ul><li>&#x53EF;&#x8BFB;&#x5199;(readwrite)&#x5C5E;&#x6027;&#x5B9E;&#x73B0;&#x4E86;&#x81EA;&#x5DF1;&#x7684; getter &#x548C; setter
-</li>
-<li>&#x53EA;&#x8BFB;(readonly)&#x5C5E;&#x6027;&#x5B9E;&#x73B0;&#x4E86;&#x81EA;&#x5DF1;&#x7684; getter
-</li>
-<li>&#x4F7F;&#x7528; <code>@dynamic</code>&#xFF0C;&#x663E;&#x5F0F;&#x8868;&#x793A;&#x4E0D;&#x5E0C;&#x671B;&#x7F16;&#x8BD1;&#x5668;&#x751F;&#x6210; getter &#x548C; setter
-</li>
-<li>protocol &#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4E0D;&#x4F1A;&#x81EA;&#x52A8; synthesize&#xFF0C;&#x9700;&#x8981;&#x624B;&#x52A8;&#x5199;
-</li>
-<li>&#x5F53;&#x91CD;&#x8F7D;&#x7236;&#x7C7B;&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x65F6;&#xFF0C;&#x4E5F;&#x5FC5;&#x987B;&#x624B;&#x52A8;&#x5199; synthesize
-</li></ul>
-<h2 id="&#x7C7B;&#x7684;&#x6269;&#x5C55;&#x2014;&#x2014;protocol-category-&#x548C;-extension"><a name="&#x7C7B;&#x7684;&#x6269;&#x5C55;&#x2014;&#x2014;protocol-category-&#x548C;-extension" class="plugin-anchor" href="#&#x7C7B;&#x7684;&#x6269;&#x5C55;&#x2014;&#x2014;protocol-category-&#x548C;-extension"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7C7B;&#x7684;&#x6269;&#x5C55;&#x2014;&#x2014;Protocol, Category &#x548C; Extension</h2><h3 id="protocol"><a name="protocol" class="plugin-anchor" href="#protocol"><i class="fa fa-link" aria-hidden="true"></i></a>Protocol</h3><p>OC&#x662F;&#x5355;&#x7EE7;&#x627F;&#x7684;&#xFF0C;OC&#x4E2D;&#x7684;&#x7C7B;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x591A;&#x4E2A; protocol &#x6765;&#x5B9E;&#x73B0;&#x7C7B;&#x4F3C; C++ &#x4E2D;&#x591A;&#x91CD;&#x7EE7;&#x627F;&#x7684;&#x6548;&#x679C;&#x3002;</p><p>Protocol &#x7C7B;&#x4F3C; Java &#x4E2D;&#x7684; interface&#xFF0C;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>@required</code>&#xFF0C; <code>@optional</code> &#x6807;&#x6CE8;&#xFF0C;&#x4EE5;&#x8868;&#x793A;&#x8BE5;&#x65B9;&#x6CD5;&#x662F;&#x5426;&#x662F;&#x5BA2;&#x6237;&#x7C7B;&#x5FC5;&#x987B;&#x8981;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#x3002; &#x4E00;&#x4E2A; protocol &#x53EF;&#x4EE5;&#x7EE7;&#x627F;&#x5176;&#x4ED6;&#x7684; protocol &#x3002;</p><pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@protocol</span> <span class="hljs-title">TestProtocol</span>&lt;<span class="hljs-title">NSObject</span>&gt; // <span class="hljs-title">NSObject</span>&#x4E5F;&#x662F;&#x4E00;&#x4E2A; <span class="hljs-title">Protocol</span>&#xFF0C;&#x8FD9;&#x91CC;&#x5373;&#x7EE7;&#x627F; <span class="hljs-title">NSObject</span> &#x91CC;&#x7684;&#x65B9;&#x6CD5;</span>
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;<code>@property</code> &#x4F1A;&#x81EA;&#x52A8;&#x751F;&#x6210; getter &#x548C; setter&#xFF0C; &#x540C;&#x65F6;&#x8FDB;&#x884C;&#x81EA;&#x52A8;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x3002;</p>
+<p><code>@property</code> &#x7684;&#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#xFF1A;</p>
+<ul>
+<li>readwrite &#x662F;&#x53EF;&#x8BFB;&#x53EF;&#x5199;&#x7279;&#x6027;&#xFF1B;&#x9700;&#x8981;&#x751F;&#x6210; getter &#x65B9;&#x6CD5;&#x548C; setter &#x65B9;&#x6CD5;</li>
+<li>readonly &#x662F;&#x53EA;&#x8BFB;&#x7279;&#x6027;&#xFF0C;&#x53EA;&#x4F1A;&#x751F;&#x6210; getter &#x65B9;&#x6CD5; &#x4E0D;&#x4F1A;&#x751F;&#x6210; setter &#x65B9;&#x6CD5;&#xFF0C;&#x4E0D;&#x5E0C;&#x671B;&#x5C5E;&#x6027;&#x5728;&#x7C7B;&#x5916;&#x6539;&#x53D8;&#x65F6;&#x4F7F;&#x7528;</li>
+<li>assign &#x662F;&#x8D4B;&#x503C;&#x7279;&#x6027;&#xFF0C;setter &#x65B9;&#x6CD5;&#x5C06;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x8D4B;&#x503C;&#x7ED9;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#xFF1B;&#x4EC5;&#x8BBE;&#x7F6E;&#x53D8;&#x91CF;&#x65F6;&#xFF1B;</li>
+<li>retain &#x8868;&#x793A;&#x6301;&#x6709;&#x7279;&#x6027;&#xFF0C;setter &#x65B9;&#x6CD5;&#x5C06;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x5148;&#x4FDD;&#x7559;&#xFF0C;&#x518D;&#x8D4B;&#x503C;&#xFF0C;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x7684; retain count &#x4F1A;+1;</li>
+<li>copy &#x8868;&#x793A;&#x62F7;&#x8D1D;&#x7279;&#x6027;&#xFF0C;setter &#x65B9;&#x6CD5;&#x5C06;&#x4F20;&#x5165;&#x5BF9;&#x8C61;&#x590D;&#x5236;&#x4E00;&#x4EFD;&#xFF1B;&#x9700;&#x8981;&#x5B8C;&#x5168;&#x4E00;&#x4EFD;&#x65B0;&#x7684;&#x53D8;&#x91CF;&#x65F6;&#x3002;</li>
+<li>nonatomic &#x548C; atomic &#xFF0C;&#x51B3;&#x5B9A;&#x7F16;&#x8BD1;&#x5668;&#x751F;&#x6210;&#x7684; setter getter&#x662F;&#x5426;&#x662F;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#x3002; atomic &#x8868;&#x793A;&#x4F7F;&#x7528;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x4E0A;&#x4FDD;&#x8BC1;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x3002;&#x4E00;&#x822C;&#x63A8;&#x8350;&#x4F7F;&#x7528; nonatomic &#xFF0C;&#x56E0;&#x4E3A; nonatomic &#x7F16;&#x8BD1;&#x51FA;&#x7684;&#x4EE3;&#x7801;&#x66F4;&#x5FEB;</li>
+</ul>
+<p>&#x9ED8;&#x8BA4;&#x7684; <code>@property</code> &#x662F; readwrite&#xFF0C;assign&#xFF0C;atomic&#x3002;</p>
+<p> &#x540C;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x81EA;&#x5DF1;&#x5B9A;&#x4E49; accessor &#x7684;&#x540D;&#x5B57;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-keyword">@property</span> (getter=isFinished) <span class="hljs-built_in">BOOL</span> finished;
+</code></pre>
+<p>&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x751F;&#x6210;&#x7684; getter &#x65B9;&#x6CD5;&#x540D;&#x4E3A; <code>isFinished</code>&#xFF0C;&#x800C;&#x4E0D;&#x662F; <code>finished</code>&#x3002;</p>
+<h3 id="synthesize-&#x548C;-dynamic"><a name="synthesize-&#x548C;-dynamic" class="plugin-anchor" href="#synthesize-&#x548C;-dynamic"><i class="fa fa-link" aria-hidden="true"></i></a>@synthesize &#x548C; @dynamic</h3>
+<p>&#x5BF9;&#x4E8E;&#x73B0;&#x4EE3; OC &#x6765;&#x8BF4;&#xFF0C;&#x5728;&#x4F7F;&#x7528; <code>@property</code> &#x65F6;&#xFF0C; &#x7F16;&#x8BD1;&#x5668;&#x9ED8;&#x8BA4;&#x4F1A;&#x8FDB;&#x884C;&#x81EA;&#x52A8; synthesize&#xFF0C;&#x751F;&#x6210; getter &#x548C; setter&#xFF0C;&#x540C;&#x65F6;&#x628A; ivar &#x548C;&#x5C5E;&#x6027;&#x7ED1;&#x5B9A;&#x8D77;&#x6765;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-comment">/// &#x73B0;&#x4EE3; OC &#x4E0D;&#x518D;&#x9700;&#x8981;&#x624B;&#x52A8;&#x8FDB;&#x884C;&#x4E0B;&#x9762;&#x7684;&#x58F0;&#x660E;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x81EA;&#x52A8;&#x5904;&#x7406;</span>
+<span class="hljs-keyword">@synthesize</span> propertyName = _propertyName
+</code></pre>
+<p>&#x4E0D;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x5199;&#x4EFB;&#x4F55;&#x4EE3;&#x7801;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528; getter &#x548C; setter &#x4E86;&#x3002;</p>
+<p>&#x7136;&#x800C;&#x5E76;&#x4E0D;&#x662F;&#x6240;&#x6709;&#x60C5;&#x51B5;&#x4E0B;&#x7F16;&#x8BD1;&#x5668;&#x90FD;&#x4F1A;&#x8FDB;&#x884C;&#x81EA;&#x52A8; synthesize&#xFF0C;&#x5177;&#x4F53;&#x7531;&#x4E0B;&#x9762;&#x51E0;&#x79CD;&#xFF1A;</p>
+<ul>
+<li>&#x53EF;&#x8BFB;&#x5199;(readwrite)&#x5C5E;&#x6027;&#x5B9E;&#x73B0;&#x4E86;&#x81EA;&#x5DF1;&#x7684; getter &#x548C; setter</li>
+<li>&#x53EA;&#x8BFB;(readonly)&#x5C5E;&#x6027;&#x5B9E;&#x73B0;&#x4E86;&#x81EA;&#x5DF1;&#x7684; getter</li>
+<li>&#x4F7F;&#x7528; <code>@dynamic</code>&#xFF0C;&#x663E;&#x5F0F;&#x8868;&#x793A;&#x4E0D;&#x5E0C;&#x671B;&#x7F16;&#x8BD1;&#x5668;&#x751F;&#x6210; getter &#x548C; setter</li>
+<li>protocol &#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4E0D;&#x4F1A;&#x81EA;&#x52A8; synthesize&#xFF0C;&#x9700;&#x8981;&#x624B;&#x52A8;&#x5199;</li>
+<li>&#x5F53;&#x91CD;&#x8F7D;&#x7236;&#x7C7B;&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x65F6;&#xFF0C;&#x4E5F;&#x5FC5;&#x987B;&#x624B;&#x52A8;&#x5199; synthesize</li>
+</ul>
+<h2 id="&#x7C7B;&#x7684;&#x6269;&#x5C55;&#x2014;&#x2014;protocol-category-&#x548C;-extension"><a name="&#x7C7B;&#x7684;&#x6269;&#x5C55;&#x2014;&#x2014;protocol-category-&#x548C;-extension" class="plugin-anchor" href="#&#x7C7B;&#x7684;&#x6269;&#x5C55;&#x2014;&#x2014;protocol-category-&#x548C;-extension"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7C7B;&#x7684;&#x6269;&#x5C55;&#x2014;&#x2014;Protocol, Category &#x548C; Extension</h2>
+<h3 id="protocol"><a name="protocol" class="plugin-anchor" href="#protocol"><i class="fa fa-link" aria-hidden="true"></i></a>Protocol</h3>
+<p>OC&#x662F;&#x5355;&#x7EE7;&#x627F;&#x7684;&#xFF0C;OC&#x4E2D;&#x7684;&#x7C7B;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x591A;&#x4E2A; protocol &#x6765;&#x5B9E;&#x73B0;&#x7C7B;&#x4F3C; C++ &#x4E2D;&#x591A;&#x91CD;&#x7EE7;&#x627F;&#x7684;&#x6548;&#x679C;&#x3002;</p>
+<p>Protocol &#x7C7B;&#x4F3C; Java &#x4E2D;&#x7684; interface&#xFF0C;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>@required</code>&#xFF0C; <code>@optional</code> &#x6807;&#x6CE8;&#xFF0C;&#x4EE5;&#x8868;&#x793A;&#x8BE5;&#x65B9;&#x6CD5;&#x662F;&#x5426;&#x662F;&#x5BA2;&#x6237;&#x7C7B;&#x5FC5;&#x987B;&#x8981;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#x3002; &#x4E00;&#x4E2A; protocol &#x53EF;&#x4EE5;&#x7EE7;&#x627F;&#x5176;&#x4ED6;&#x7684; protocol &#x3002;</p>
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@protocol</span> <span class="hljs-title">TestProtocol</span>&lt;<span class="hljs-title">NSObject</span>&gt; // <span class="hljs-title">NSObject</span>&#x4E5F;&#x662F;&#x4E00;&#x4E2A; <span class="hljs-title">Protocol</span>&#xFF0C;&#x8FD9;&#x91CC;&#x5373;&#x7EE7;&#x627F; <span class="hljs-title">NSObject</span> &#x91CC;&#x7684;&#x65B9;&#x6CD5;</span>
 -(<span class="hljs-keyword">void</span>)print;
 <span class="hljs-keyword">@end</span>
 
@@ -1281,7 +1309,10 @@
 -(<span class="hljs-keyword">void</span>)print; <span class="hljs-comment">// &#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#x662F; @required &#x7684;&#xFF0C;&#x5373;&#x5FC5;&#x987B;&#x5B9E;&#x73B0;</span>
 <span class="hljs-keyword">@end</span>
 </code></pre>
-<p>Delegate&#xFF08;&#x59D4;&#x6258;&#xFF09;&#x662F; Cocoa &#x4E2D;&#x5E38;&#x89C1;&#x7684;&#x4E00;&#x79CD;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;&#x5176;&#x5B9E;&#x73B0;&#x4F9D;&#x8D56;&#x4E8E; protocol &#x8FD9;&#x4E2A;&#x8BED;&#x8A00;&#x7279;&#x6027;&#x3002;</p><h4 id="&#x542B;&#x6709;-property-&#x7684;-protocol"><a name="&#x542B;&#x6709;-property-&#x7684;-protocol" class="plugin-anchor" href="#&#x542B;&#x6709;-property-&#x7684;-protocol"><i class="fa fa-link" aria-hidden="true"></i></a>&#x542B;&#x6709; property &#x7684; Protocol</h4><p>&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x8FC7;&#xFF0C;&#x5F53; Protocol &#x4E2D;&#x542B;&#x6709; property &#x65F6;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x662F;&#x4E0D;&#x4F1A;&#x8FDB;&#x884C;&#x81EA;&#x52A8; synthesize &#x7684;&#xFF0C;&#x9700;&#x8981;&#x624B;&#x52A8;&#x5904;&#x7406;&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@class</span> <span class="hljs-title">ExampleClass</span>;</span>
+<p>Delegate&#xFF08;&#x59D4;&#x6258;&#xFF09;&#x662F; Cocoa &#x4E2D;&#x5E38;&#x89C1;&#x7684;&#x4E00;&#x79CD;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;&#x5176;&#x5B9E;&#x73B0;&#x4F9D;&#x8D56;&#x4E8E; protocol &#x8FD9;&#x4E2A;&#x8BED;&#x8A00;&#x7279;&#x6027;&#x3002;</p>
+<h4 id="&#x542B;&#x6709;-property-&#x7684;-protocol"><a name="&#x542B;&#x6709;-property-&#x7684;-protocol" class="plugin-anchor" href="#&#x542B;&#x6709;-property-&#x7684;-protocol"><i class="fa fa-link" aria-hidden="true"></i></a>&#x542B;&#x6709; property &#x7684; Protocol</h4>
+<p>&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x8FC7;&#xFF0C;&#x5F53; Protocol &#x4E2D;&#x542B;&#x6709; property &#x65F6;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x662F;&#x4E0D;&#x4F1A;&#x8FDB;&#x884C;&#x81EA;&#x52A8; synthesize &#x7684;&#xFF0C;&#x9700;&#x8981;&#x624B;&#x52A8;&#x5904;&#x7406;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@class</span> <span class="hljs-title">ExampleClass</span>;</span>
 
 <span class="hljs-class"><span class="hljs-keyword">@protocol</span> <span class="hljs-title">ExampleProtocol</span></span>
 
@@ -1289,26 +1320,38 @@
 
 <span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, retain) ExampleClass *item;
 
-<span class="hljs-keyword">@end</span></code></pre>
-<p>&#x5728;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A; Protocol &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8981;&#x4E48;&#x518D;&#x6B21;&#x58F0;&#x660E; property&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">MyObject</span> : <span class="hljs-title">NSObject</span> &lt;<span class="hljs-title">ExampleProtocol</span>&gt;</span>
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<p>&#x5728;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A; Protocol &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8981;&#x4E48;&#x518D;&#x6B21;&#x58F0;&#x660E; property&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">MyObject</span> : <span class="hljs-title">NSObject</span> &lt;<span class="hljs-title">ExampleProtocol</span>&gt;</span>
 
 <span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, retain) ExampleClass *item;
 
-<span class="hljs-keyword">@end</span></code></pre>
-<p>&#x8981;&#x4E48;&#x8FDB;&#x884C;&#x624B;&#x52A8; synthesize&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">MyObject</span> : <span class="hljs-title">NSObject</span> &lt;<span class="hljs-title">ExampleProtocol</span>&gt;</span>
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<p>&#x8981;&#x4E48;&#x8FDB;&#x884C;&#x624B;&#x52A8; synthesize&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">MyObject</span> : <span class="hljs-title">NSObject</span> &lt;<span class="hljs-title">ExampleProtocol</span>&gt;</span>
 <span class="hljs-keyword">@end</span>
 
 <span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">MyObject</span></span>
 <span class="hljs-keyword">@synthesize</span> item;
 
-<span class="hljs-keyword">@end</span></code></pre>
-<p>&#x5DE5;&#x7A0B;&#x81EA;&#x5E26;&#x7684; <code>AppDelegate</code> &#x4F7F;&#x7528;&#x4E86;&#x524D;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;<code>UIApplicationDelegate</code> protocol &#x5F53;&#x4E2D;&#x5B9A;&#x4E49;&#x4E86; <code>window</code> &#x5C5E;&#x6027;&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, retain) <span class="hljs-built_in">UIWindow</span> *window <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">5</span>_0);</code></pre>
-<p>&#x5728; <code>AppDelegate.h</code> &#x4E2D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x518D;&#x6B21;&#x5BF9; <code>windows</code> &#x8FDB;&#x884C;&#x4E86;&#x58F0;&#x660E;&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">AppDelegate</span> : <span class="hljs-title">UIResponder</span> &lt;<span class="hljs-title">UIApplicationDelegate</span>&gt;</span>
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<p>&#x5DE5;&#x7A0B;&#x81EA;&#x5E26;&#x7684; <code>AppDelegate</code> &#x4F7F;&#x7528;&#x4E86;&#x524D;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;<code>UIApplicationDelegate</code> protocol &#x5F53;&#x4E2D;&#x5B9A;&#x4E49;&#x4E86; <code>window</code> &#x5C5E;&#x6027;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, retain) <span class="hljs-built_in">UIWindow</span> *window <span class="hljs-built_in">NS_AVAILABLE_IOS</span>(<span class="hljs-number">5</span>_0);
+</code></pre>
+<p>&#x5728; <code>AppDelegate.h</code> &#x4E2D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x518D;&#x6B21;&#x5BF9; <code>windows</code> &#x8FDB;&#x884C;&#x4E86;&#x58F0;&#x660E;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">AppDelegate</span> : <span class="hljs-title">UIResponder</span> &lt;<span class="hljs-title">UIApplicationDelegate</span>&gt;</span>
 
 <span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) <span class="hljs-built_in">UIWindow</span> *window;
 
-<span class="hljs-keyword">@end</span></code></pre>
-<h3 id="category"><a name="category" class="plugin-anchor" href="#category"><i class="fa fa-link" aria-hidden="true"></i></a>Category</h3><p>Category &#x662F;&#x4E00;&#x79CD;&#x5F88;&#x7075;&#x6D3B;&#x7684;&#x6269;&#x5C55;&#x539F;&#x6709;&#x7C7B;&#x7684;&#x673A;&#x5236;&#xFF0C;&#x4F7F;&#x7528; Category &#x4E0D;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x539F;&#x6709;&#x7C7B;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4E5F;&#x65E0;&#x9700;&#x7EE7;&#x627F;&#x3002;Category&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x6765;&#x5B9E;&#x73B0;&#x7C7B;&#x7684;&#x76F8;&#x5173;&#x65B9;&#x6CD5;&#x7684;&#x6A21;&#x5757;&#x5316;&#xFF0C;&#x628A;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x65B9;&#x6CD5;&#x5206;&#x914D;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x6587;&#x4EF6;&#x4E2D;&#x3002;</p><p>Category &#x5E38;&#x89C1;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-comment">// SomeClass.h</span>
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<h3 id="category"><a name="category" class="plugin-anchor" href="#category"><i class="fa fa-link" aria-hidden="true"></i></a>Category</h3>
+<p>Category &#x662F;&#x4E00;&#x79CD;&#x5F88;&#x7075;&#x6D3B;&#x7684;&#x6269;&#x5C55;&#x539F;&#x6709;&#x7C7B;&#x7684;&#x673A;&#x5236;&#xFF0C;&#x4F7F;&#x7528; Category &#x4E0D;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x539F;&#x6709;&#x7C7B;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4E5F;&#x65E0;&#x9700;&#x7EE7;&#x627F;&#x3002;Category&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x6765;&#x5B9E;&#x73B0;&#x7C7B;&#x7684;&#x76F8;&#x5173;&#x65B9;&#x6CD5;&#x7684;&#x6A21;&#x5757;&#x5316;&#xFF0C;&#x628A;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x65B9;&#x6CD5;&#x5206;&#x914D;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x6587;&#x4EF6;&#x4E2D;&#x3002;</p>
+<p>Category &#x5E38;&#x89C1;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-comment">// SomeClass.h</span>
 <span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">SomeClass</span> : <span class="hljs-title">NSObject</span></span>{
 }
 -(<span class="hljs-keyword">void</span>)print;
@@ -1327,19 +1370,26 @@
 -(<span class="hljs-keyword">void</span>)hello{
     <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;name&#xFF1A;%@ &quot;</span>, <span class="hljs-string">@&quot;Jacky&quot;</span>);
 }
-<span class="hljs-keyword">@end</span> </code></pre>
-<p>&#x5728;&#x4F7F;&#x7528; Category &#x65F6;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x4E00;&#x70B9;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x591A;&#x4E2A;&#x547D;&#x540D; Category &#x5747;&#x5B9E;&#x73B0;&#x4E86;&#x540C;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF08;&#x5373;&#x51FA;&#x73B0;&#x4E86;&#x547D;&#x540D;&#x51B2;&#x7A81;&#xFF09;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x5177;&#x4F53;&#x54EA;&#x4E2A;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x662F;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#x3002;&#x56E0;&#x6B64;&#x5728;&#x7ED9;&#x5DF2;&#x6709;&#x7684;&#x7C7B;&#xFF08;&#x7279;&#x522B;&#x662F; Cocoa &#x7C7B;&#xFF09;&#x6DFB;&#x52A0; Category &#x65F6;&#xFF0C;&#x63A8;&#x8350;&#x7684;&#x51FD;&#x6570;&#x547D;&#x540D;&#x65B9;&#x6CD5;&#x662F;&#x52A0;&#x4E0A;&#x524D;&#x7F00;&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">NSSortDescriptor</span> (<span class="hljs-title">XYZAdditions</span>)</span>
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<p>&#x5728;&#x4F7F;&#x7528; Category &#x65F6;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x4E00;&#x70B9;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x591A;&#x4E2A;&#x547D;&#x540D; Category &#x5747;&#x5B9E;&#x73B0;&#x4E86;&#x540C;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF08;&#x5373;&#x51FA;&#x73B0;&#x4E86;&#x547D;&#x540D;&#x51B2;&#x7A81;&#xFF09;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x5177;&#x4F53;&#x54EA;&#x4E2A;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x662F;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#x3002;&#x56E0;&#x6B64;&#x5728;&#x7ED9;&#x5DF2;&#x6709;&#x7684;&#x7C7B;&#xFF08;&#x7279;&#x522B;&#x662F; Cocoa &#x7C7B;&#xFF09;&#x6DFB;&#x52A0; Category &#x65F6;&#xFF0C;&#x63A8;&#x8350;&#x7684;&#x51FD;&#x6570;&#x547D;&#x540D;&#x65B9;&#x6CD5;&#x662F;&#x52A0;&#x4E0A;&#x524D;&#x7F00;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">NSSortDescriptor</span> (<span class="hljs-title">XYZAdditions</span>)</span>
 + (<span class="hljs-keyword">id</span>)xyz_sortDescriptorWithKey:(<span class="hljs-built_in">NSString</span> *)key ascending:(<span class="hljs-built_in">BOOL</span>)ascending;
-<span class="hljs-keyword">@end</span></code></pre>
-<h3 id="extension"><a name="extension" class="plugin-anchor" href="#extension"><i class="fa fa-link" aria-hidden="true"></i></a>Extension</h3><p>Extension &#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x79CD;&#x533F;&#x540D;&#x7684; Category&#xFF0C; Extension &#x4E0E; Category &#x6709;&#x5982;&#x4E0B;&#x51E0;&#x70B9;&#x663E;&#x8457;&#x7684;&#x533A;&#x522B;&#xFF1A;</p><ol><li>&#x4F7F;&#x7528; Extension &#x5FC5;&#x987B;&#x6709;&#x539F;&#x6709;&#x7C7B;&#x7684;&#x6E90;&#x7801;
-</li>
-<li>Extension &#x58F0;&#x660E;&#x7684;&#x65B9;&#x6CD5;&#x5FC5;&#x987B;&#x5728;&#x7C7B;&#x7684;&#x4E3B; @implementation &#x533A;&#x95F4;&#x5185;&#x5B9E;&#x73B0;&#xFF0C;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x4F7F;&#x7528;&#x6709;&#x540D; Category &#x5E26;&#x6765;&#x7684;&#x591A;&#x4E2A;&#x4E0D;&#x5FC5;&#x8981;&#x7684; implementation &#x6BB5;&#x3002;
-</li>
-<li>Extension &#x53EF;&#x4EE5;&#x5728;&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#xFF0C;Category &#x4E0D;&#x53EF;&#x4EE5;&#xFF08;&#x6CE8;&#xFF1A;&#x5728; Category &#x4E2D;&#x5B9E;&#x9645;&#x4E0A;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8FD0;&#x884C;&#x65F6;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x4E0B;&#x9762;&#x4F1A;&#x8BB2;&#x5230;&#xFF09;
-</li>
-<li><del>Extension &#x91CC;&#x6DFB;&#x52A0;&#x7684;&#x65B9;&#x6CD5;&#x5FC5;&#x987B;&#x8981;&#x6709;&#x5B9E;&#x73B0;&#xFF08;&#x6CA1;&#x6709;&#x5B9E;&#x73B0;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x7ED9;&#x51FA;&#x8B66;&#x544A;&#xFF09;</del> 
-</li></ol>
-<blockquote><p><strong>&#x6CE8;</strong>&#xFF1A;&#x73B0;&#x4EE3; ObjC &#x4E2D; Extension &#x548C; Category &#x4E2D;&#x58F0;&#x660E;&#x7684;&#x65B9;&#x6CD5;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5B9E;&#x73B0;&#x7F16;&#x8BD1;&#x5668;&#x90FD;&#x4F1A;&#x7ED9;&#x51FA;&#x8B66;&#x544A;&#x3002;</p></blockquote><p>&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A; Extension &#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">MyClass</span> : <span class="hljs-title">NSObject</span>  </span>
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<h3 id="extension"><a name="extension" class="plugin-anchor" href="#extension"><i class="fa fa-link" aria-hidden="true"></i></a>Extension</h3>
+<p>Extension &#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x79CD;&#x533F;&#x540D;&#x7684; Category&#xFF0C; Extension &#x4E0E; Category &#x6709;&#x5982;&#x4E0B;&#x51E0;&#x70B9;&#x663E;&#x8457;&#x7684;&#x533A;&#x522B;&#xFF1A;</p>
+<ol>
+<li>&#x4F7F;&#x7528; Extension &#x5FC5;&#x987B;&#x6709;&#x539F;&#x6709;&#x7C7B;&#x7684;&#x6E90;&#x7801;</li>
+<li>Extension &#x58F0;&#x660E;&#x7684;&#x65B9;&#x6CD5;&#x5FC5;&#x987B;&#x5728;&#x7C7B;&#x7684;&#x4E3B; @implementation &#x533A;&#x95F4;&#x5185;&#x5B9E;&#x73B0;&#xFF0C;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x4F7F;&#x7528;&#x6709;&#x540D; Category &#x5E26;&#x6765;&#x7684;&#x591A;&#x4E2A;&#x4E0D;&#x5FC5;&#x8981;&#x7684; implementation &#x6BB5;&#x3002;</li>
+<li>Extension &#x53EF;&#x4EE5;&#x5728;&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#xFF0C;Category &#x4E0D;&#x53EF;&#x4EE5;&#xFF08;&#x6CE8;&#xFF1A;&#x5728; Category &#x4E2D;&#x5B9E;&#x9645;&#x4E0A;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8FD0;&#x884C;&#x65F6;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x4E0B;&#x9762;&#x4F1A;&#x8BB2;&#x5230;&#xFF09;</li>
+<li><del>Extension &#x91CC;&#x6DFB;&#x52A0;&#x7684;&#x65B9;&#x6CD5;&#x5FC5;&#x987B;&#x8981;&#x6709;&#x5B9E;&#x73B0;&#xFF08;&#x6CA1;&#x6709;&#x5B9E;&#x73B0;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x7ED9;&#x51FA;&#x8B66;&#x544A;&#xFF09;</del> </li>
+</ol>
+<blockquote>
+<p><strong>&#x6CE8;</strong>&#xFF1A;&#x73B0;&#x4EE3; ObjC &#x4E2D; Extension &#x548C; Category &#x4E2D;&#x58F0;&#x660E;&#x7684;&#x65B9;&#x6CD5;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5B9E;&#x73B0;&#x7F16;&#x8BD1;&#x5668;&#x90FD;&#x4F1A;&#x7ED9;&#x51FA;&#x8B66;&#x544A;&#x3002;</p>
+</blockquote>
+<p>&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A; Extension &#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">MyClass</span> : <span class="hljs-title">NSObject</span>  </span>
 - (<span class="hljs-keyword">float</span>)value;  
 <span class="hljs-keyword">@end</span>  
 
@@ -1358,43 +1408,67 @@
 - (<span class="hljs-keyword">void</span>)setValue:(<span class="hljs-keyword">float</span>)newValue {  
     value = newValue;  
 }  
-<span class="hljs-keyword">@end</span> </code></pre>
-<p>Extension &#x5F88;&#x5E38;&#x89C1;&#x7684;&#x7528;&#x6CD5;&#xFF0C;&#x662F;&#x7528;&#x6765;&#x7ED9;&#x7C7B;&#x6DFB;&#x52A0;<strong>&#x79C1;&#x6709;</strong>&#x7684;&#x53D8;&#x91CF;&#x548C;&#x65B9;&#x6CD5;&#xFF0C;&#x7528;&#x4E8E;&#x5728;&#x7C7B;&#x7684;&#x5185;&#x90E8;&#x4F7F;&#x7528;&#x3002;&#x4F8B;&#x5982;&#x5728; interface &#x4E2D;&#x5B9A;&#x4E49;&#x4E3A; <code>readonly</code> &#x7C7B;&#x578B;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x5728;&#x5B9E;&#x73B0;&#x4E2D;&#x6DFB;&#x52A0; extension&#xFF0C;&#x5C06;&#x5176;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;&#x4E3A; <code>readwrite</code>&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5728;&#x7C7B;&#x7684;&#x5185;&#x90E8;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4FEE;&#x6539;&#x5B83;&#x7684;&#x503C;&#xFF0C;&#x7136;&#x800C;&#x5916;&#x90E8;&#x4F9D;&#x7136;&#x4E0D;&#x80FD;&#x8C03;&#x7528; <code>setter</code> &#x65B9;&#x6CD5;&#x6765;&#x4FEE;&#x6539;&#x3002;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF08;&#x6765;&#x81EA;&#x82F9;&#x679C;&#x5B98;&#x65B9;<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html#//apple_ref/doc/uid/TP40011210-CH6-SW3" target="_blank">&#x6587;&#x6863;</a>&#xFF09;:</p><p><code>XYZPerson.h</code></p><pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">XYZPerson</span> : <span class="hljs-title">NSObject</span></span>
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<p>Extension &#x5F88;&#x5E38;&#x89C1;&#x7684;&#x7528;&#x6CD5;&#xFF0C;&#x662F;&#x7528;&#x6765;&#x7ED9;&#x7C7B;&#x6DFB;&#x52A0;<strong>&#x79C1;&#x6709;</strong>&#x7684;&#x53D8;&#x91CF;&#x548C;&#x65B9;&#x6CD5;&#xFF0C;&#x7528;&#x4E8E;&#x5728;&#x7C7B;&#x7684;&#x5185;&#x90E8;&#x4F7F;&#x7528;&#x3002;&#x4F8B;&#x5982;&#x5728; interface &#x4E2D;&#x5B9A;&#x4E49;&#x4E3A; <code>readonly</code> &#x7C7B;&#x578B;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x5728;&#x5B9E;&#x73B0;&#x4E2D;&#x6DFB;&#x52A0; extension&#xFF0C;&#x5C06;&#x5176;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;&#x4E3A; <code>readwrite</code>&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5728;&#x7C7B;&#x7684;&#x5185;&#x90E8;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4FEE;&#x6539;&#x5B83;&#x7684;&#x503C;&#xFF0C;&#x7136;&#x800C;&#x5916;&#x90E8;&#x4F9D;&#x7136;&#x4E0D;&#x80FD;&#x8C03;&#x7528; <code>setter</code> &#x65B9;&#x6CD5;&#x6765;&#x4FEE;&#x6539;&#x3002;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF08;&#x6765;&#x81EA;&#x82F9;&#x679C;&#x5B98;&#x65B9;<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html#//apple_ref/doc/uid/TP40011210-CH6-SW3" target="_blank">&#x6587;&#x6863;</a>&#xFF09;:</p>
+<p><code>XYZPerson.h</code></p>
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">XYZPerson</span> : <span class="hljs-title">NSObject</span></span>
 ...
 <span class="hljs-keyword">@property</span> (<span class="hljs-keyword">readonly</span>) <span class="hljs-built_in">NSString</span> *uniqueIdentifier;
 
-<span class="hljs-keyword">@end</span></code></pre>
-<p><code>XYZPerson.m</code></p><pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">XYZPerson</span> ()</span>
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<p><code>XYZPerson.m</code></p>
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">XYZPerson</span> ()</span>
 <span class="hljs-keyword">@property</span> (<span class="hljs-keyword">readwrite</span>) <span class="hljs-built_in">NSString</span> *uniqueIdentifier;
 <span class="hljs-keyword">@end</span>
 
 <span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">XYZPerson</span></span>
 ...
-<span class="hljs-keyword">@end</span></code></pre>
-<h4 id="&#x5982;&#x4F55;&#x7ED9;&#x5DF2;&#x6709;&#x7684;&#x7C7B;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;"><a name="&#x5982;&#x4F55;&#x7ED9;&#x5DF2;&#x6709;&#x7684;&#x7C7B;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;" class="plugin-anchor" href="#&#x5982;&#x4F55;&#x7ED9;&#x5DF2;&#x6709;&#x7684;&#x7C7B;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5982;&#x4F55;&#x7ED9;&#x5DF2;&#x6709;&#x7684;&#x7C7B;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;</h4><p>&#x9996;&#x5148;&#x5F3A;&#x8C03;&#x4E00;&#x4E0B;&#x4E0A;&#x9762;&#x4F8B;&#x5B50;&#x4E2D;&#x6240;&#x5C55;&#x793A;&#x7684;&#xFF0C;Extension &#x53EF;&#x4EE5;&#x7ED9;&#x7C7B;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x81EA;&#x52A8;&#x751F;&#x6210; getter&#xFF0C;setter &#x548C; ivar&#x3002; Category &#x5E76;&#x4E0D;&#x652F;&#x6301;&#x8FD9;&#x4E9B;&#x3002;&#x5982;&#x679C;&#x4F7F;&#x7528; Category &#x7684;&#x8BDD;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">XYZPerson</span> (<span class="hljs-title">UDID</span>)</span>
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<h4 id="&#x5982;&#x4F55;&#x7ED9;&#x5DF2;&#x6709;&#x7684;&#x7C7B;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;"><a name="&#x5982;&#x4F55;&#x7ED9;&#x5DF2;&#x6709;&#x7684;&#x7C7B;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;" class="plugin-anchor" href="#&#x5982;&#x4F55;&#x7ED9;&#x5DF2;&#x6709;&#x7684;&#x7C7B;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5982;&#x4F55;&#x7ED9;&#x5DF2;&#x6709;&#x7684;&#x7C7B;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;</h4>
+<p>&#x9996;&#x5148;&#x5F3A;&#x8C03;&#x4E00;&#x4E0B;&#x4E0A;&#x9762;&#x4F8B;&#x5B50;&#x4E2D;&#x6240;&#x5C55;&#x793A;&#x7684;&#xFF0C;Extension &#x53EF;&#x4EE5;&#x7ED9;&#x7C7B;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x81EA;&#x52A8;&#x751F;&#x6210; getter&#xFF0C;setter &#x548C; ivar&#x3002; Category &#x5E76;&#x4E0D;&#x652F;&#x6301;&#x8FD9;&#x4E9B;&#x3002;&#x5982;&#x679C;&#x4F7F;&#x7528; Category &#x7684;&#x8BDD;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">XYZPerson</span> (<span class="hljs-title">UDID</span>)</span>
 <span class="hljs-keyword">@property</span> (<span class="hljs-keyword">readwrite</span>) <span class="hljs-built_in">NSString</span> *uniqueIdentifier;
 <span class="hljs-keyword">@end</span>
 
 <span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">XYZPerson</span> (<span class="hljs-title">UDID</span>)</span>
 ...
-<span class="hljs-keyword">@end</span></code></pre>
-<p>&#x5C3D;&#x7BA1;&#x7F16;&#x8BD1;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#xFF0C;&#x4F46;&#x662F;&#x5F53;&#x771F;&#x6B63;&#x4F7F;&#x7528; <code>uniqueIdentifier</code> &#x65F6;&#x76F4;&#x63A5;&#x4F1A;&#x5BFC;&#x81F4;&#x7A0B;&#x5E8F;&#x5D29;&#x6E83;&#x3002;</p><p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x624B;&#x52A8;&#x53BB; synthesize &#x5462;&#xFF1F;&#x50CF;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">XYZPerson</span> (<span class="hljs-title">UDID</span>)</span>
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<p>&#x5C3D;&#x7BA1;&#x7F16;&#x8BD1;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#xFF0C;&#x4F46;&#x662F;&#x5F53;&#x771F;&#x6B63;&#x4F7F;&#x7528; <code>uniqueIdentifier</code> &#x65F6;&#x76F4;&#x63A5;&#x4F1A;&#x5BFC;&#x81F4;&#x7A0B;&#x5E8F;&#x5D29;&#x6E83;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x624B;&#x52A8;&#x53BB; synthesize &#x5462;&#xFF1F;&#x50CF;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">XYZPerson</span> (<span class="hljs-title">UDID</span>)</span>
 <span class="hljs-keyword">@synthesize</span> uniqueIdentifier;
 ...
-<span class="hljs-keyword">@end</span></code></pre>
-<p>&#x7136;&#x800C;&#x8FD9;&#x6837;&#x505A;&#x7684;&#x8BDD;&#xFF0C;&#x4EE3;&#x7801;&#x76F4;&#x63A5;&#x62A5;&#x7F16;&#x8BD1;&#x9519;&#x8BEF;&#x4E86;&#xFF1A;</p><p><code>@synthesize not allowed in a category&apos;s implementation</code></p><p>&#x770B;&#x6765;&#x8FD9;&#x6761;&#x8DEF;&#x662F;&#x5F7B;&#x5E95;&#x8D70;&#x4E0D;&#x901A;&#x4E86;&#x3002;</p><p>&#x4E0D;&#x8FC7;&#x6211;&#x4EEC;&#x8FD8;&#x6709;&#x522B;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x60F3;&#x901A;&#x8FC7; Category &#x6DFB;&#x52A0;&#x5C5E;&#x6027;&#x7684;&#x8BDD;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; Runtime &#x5F53;&#x4E2D;&#x63D0;&#x4F9B;&#x7684; associated object &#x7279;&#x6027;&#x3002;NSHipster &#x7684; <a href="http://nshipster.cn/associated-objects/" target="_blank">&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;</a> &#x5C55;&#x793A;&#x4E86;&#x5177;&#x4F53;&#x7684;&#x505A;&#x6CD5;&#x3002;</p><h4 id="&#x5982;&#x4F55;&#x5728;&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x5168;&#x5C40;&#x53D8;&#x91CF;"><a name="&#x5982;&#x4F55;&#x5728;&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x5168;&#x5C40;&#x53D8;&#x91CF;" class="plugin-anchor" href="#&#x5982;&#x4F55;&#x5728;&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x5168;&#x5C40;&#x53D8;&#x91CF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5982;&#x4F55;&#x5728;&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x5168;&#x5C40;&#x53D8;&#x91CF;</h4><p>&#x6709;&#x4E9B;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5728;&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x67D0;&#x4E2A;&#x5728;&#x7C7B;&#x4E2D;&#x5168;&#x5C40;&#x53EF;&#x7528;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x6C61;&#x67D3;&#x4F5C;&#x7528;&#x57DF;&#xFF0C;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x597D;&#x7684;&#x505A;&#x6CD5;&#x662F;&#x5728; .m &#x6587;&#x4EF6;&#x4E2D;&#x4F7F;&#x7528; static &#x53D8;&#x91CF;&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-keyword">static</span> <span class="hljs-built_in">NSOperationQueue</span> * _personOperationQueue = <span class="hljs-literal">nil</span>;
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<p>&#x7136;&#x800C;&#x8FD9;&#x6837;&#x505A;&#x7684;&#x8BDD;&#xFF0C;&#x4EE3;&#x7801;&#x76F4;&#x63A5;&#x62A5;&#x7F16;&#x8BD1;&#x9519;&#x8BEF;&#x4E86;&#xFF1A;</p>
+<p><code>@synthesize not allowed in a category&apos;s implementation</code></p>
+<p>&#x770B;&#x6765;&#x8FD9;&#x6761;&#x8DEF;&#x662F;&#x5F7B;&#x5E95;&#x8D70;&#x4E0D;&#x901A;&#x4E86;&#x3002;</p>
+<p>&#x4E0D;&#x8FC7;&#x6211;&#x4EEC;&#x8FD8;&#x6709;&#x522B;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x60F3;&#x901A;&#x8FC7; Category &#x6DFB;&#x52A0;&#x5C5E;&#x6027;&#x7684;&#x8BDD;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; Runtime &#x5F53;&#x4E2D;&#x63D0;&#x4F9B;&#x7684; associated object &#x7279;&#x6027;&#x3002;NSHipster &#x7684; <a href="http://nshipster.cn/associated-objects/" target="_blank">&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;</a> &#x5C55;&#x793A;&#x4E86;&#x5177;&#x4F53;&#x7684;&#x505A;&#x6CD5;&#x3002;</p>
+<h4 id="&#x5982;&#x4F55;&#x5728;&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x5168;&#x5C40;&#x53D8;&#x91CF;"><a name="&#x5982;&#x4F55;&#x5728;&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x5168;&#x5C40;&#x53D8;&#x91CF;" class="plugin-anchor" href="#&#x5982;&#x4F55;&#x5728;&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x5168;&#x5C40;&#x53D8;&#x91CF;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5982;&#x4F55;&#x5728;&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x5168;&#x5C40;&#x53D8;&#x91CF;</h4>
+<p>&#x6709;&#x4E9B;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5728;&#x7C7B;&#x4E2D;&#x6DFB;&#x52A0;&#x67D0;&#x4E2A;&#x5728;&#x7C7B;&#x4E2D;&#x5168;&#x5C40;&#x53EF;&#x7528;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x6C61;&#x67D3;&#x4F5C;&#x7528;&#x57DF;&#xFF0C;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x597D;&#x7684;&#x505A;&#x6CD5;&#x662F;&#x5728; .m &#x6587;&#x4EF6;&#x4E2D;&#x4F7F;&#x7528; static &#x53D8;&#x91CF;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-keyword">static</span> <span class="hljs-built_in">NSOperationQueue</span> * _personOperationQueue = <span class="hljs-literal">nil</span>;
 
 <span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">XYZPerson</span></span>
 ...
-<span class="hljs-keyword">@end</span></code></pre>
-<p>&#x7531;&#x4E8E; static &#x53D8;&#x91CF;&#x5728;&#x7F16;&#x8BD1;&#x671F;&#x5C31;&#x662F;&#x786E;&#x5B9A;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x5BF9;&#x4E8E; NSObject &#x5BF9;&#x8C61;&#x6765;&#x8BF4;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x7684;&#x503C;&#x53EA;&#x80FD;&#x662F; nil&#x3002;&#x5982;&#x4F55;&#x8FDB;&#x884C;&#x7C7B;&#x4F3C; init &#x7684;&#x521D;&#x59CB;&#x5316;&#x5462;&#xFF1F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x91CD;&#x8F7D; initialize &#x65B9;&#x6CD5;&#x6765;&#x505A;&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">XYZPerson</span></span>
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<p>&#x7531;&#x4E8E; static &#x53D8;&#x91CF;&#x5728;&#x7F16;&#x8BD1;&#x671F;&#x5C31;&#x662F;&#x786E;&#x5B9A;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x5BF9;&#x4E8E; NSObject &#x5BF9;&#x8C61;&#x6765;&#x8BF4;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x7684;&#x503C;&#x53EA;&#x80FD;&#x662F; nil&#x3002;&#x5982;&#x4F55;&#x8FDB;&#x884C;&#x7C7B;&#x4F3C; init &#x7684;&#x521D;&#x59CB;&#x5316;&#x5462;&#xFF1F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x91CD;&#x8F7D; initialize &#x65B9;&#x6CD5;&#x6765;&#x505A;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">XYZPerson</span></span>
 - (<span class="hljs-keyword">void</span>)initialize {
     <span class="hljs-keyword">if</span> (!_personOperationQueue) {
         _personOperationQueue = [[<span class="hljs-built_in">NSOperationQueue</span> alloc] init];
     }
 }
-<span class="hljs-keyword">@end</span></code></pre>
-<p>&#x4E3A;&#x4EC0;&#x4E48;&#x8FD9;&#x91CC;&#x8981;&#x5224;&#x65AD;&#x662F;&#x5426;&#x4E3A; nil &#x5462;&#xFF1F;&#x56E0;&#x4E3A; <code>initialize</code> &#x65B9;&#x6CD5;&#x53EF;&#x80FD;&#x4F1A;&#x8C03;&#x7528;&#x591A;&#x6B21;&#xFF0C;&#x540E;&#x9762;&#x4F1A;&#x63D0;&#x5230;&#x3002;</p><p>&#x5982;&#x679C;&#x662F;&#x5728; Category &#x4E2D;&#x60F3;&#x58F0;&#x660E;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x5462;&#xFF1F;&#x5F53;&#x7136;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; initialize&#xFF0C;&#x4E0D;&#x8FC7;&#x9664;&#x975E;&#x5FC5;&#x987B;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5E76;&#x4E0D;&#x63A8;&#x8350;&#x5728; Category &#x5F53;&#x4E2D;&#x8FDB;&#x884C;&#x65B9;&#x6CD5;&#x91CD;&#x8F7D;&#x3002;</p><p>&#x6709;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x662F;&#x58F0;&#x660E; static &#x51FD;&#x6570;&#xFF0C;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x6765;&#x81EA; <a href="https://github.com/AFNetworking/AFNetworking/blob/master/AFNetworking/AFURLSessionManager.m" target="_blank">AFNetworking</a>&#xFF0C;&#x58F0;&#x660E;&#x4E86;&#x4E00;&#x4E2A;&#x5F53;&#x524D;&#x6587;&#x4EF6;&#x8303;&#x56F4;&#x53EF;&#x7528;&#x7684;&#x961F;&#x5217;&#xFF1A;</p><pre><code class="lang-objectivec"><span class="hljs-keyword">static</span> <span class="hljs-built_in">dispatch_queue_t</span> url_session_manager_creation_queue() {
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<p>&#x4E3A;&#x4EC0;&#x4E48;&#x8FD9;&#x91CC;&#x8981;&#x5224;&#x65AD;&#x662F;&#x5426;&#x4E3A; nil &#x5462;&#xFF1F;&#x56E0;&#x4E3A; <code>initialize</code> &#x65B9;&#x6CD5;&#x53EF;&#x80FD;&#x4F1A;&#x8C03;&#x7528;&#x591A;&#x6B21;&#xFF0C;&#x540E;&#x9762;&#x4F1A;&#x63D0;&#x5230;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x662F;&#x5728; Category &#x4E2D;&#x60F3;&#x58F0;&#x660E;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x5462;&#xFF1F;&#x5F53;&#x7136;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; initialize&#xFF0C;&#x4E0D;&#x8FC7;&#x9664;&#x975E;&#x5FC5;&#x987B;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5E76;&#x4E0D;&#x63A8;&#x8350;&#x5728; Category &#x5F53;&#x4E2D;&#x8FDB;&#x884C;&#x65B9;&#x6CD5;&#x91CD;&#x8F7D;&#x3002;</p>
+<p>&#x6709;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x662F;&#x58F0;&#x660E; static &#x51FD;&#x6570;&#xFF0C;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x6765;&#x81EA; <a href="https://github.com/AFNetworking/AFNetworking/blob/master/AFNetworking/AFURLSessionManager.m" target="_blank">AFNetworking</a>&#xFF0C;&#x58F0;&#x660E;&#x4E86;&#x4E00;&#x4E2A;&#x5F53;&#x524D;&#x6587;&#x4EF6;&#x8303;&#x56F4;&#x53EF;&#x7528;&#x7684;&#x961F;&#x5217;&#xFF1A;</p>
+<pre><code class="lang-objectivec"><span class="hljs-keyword">static</span> <span class="hljs-built_in">dispatch_queue_t</span> url_session_manager_creation_queue() {
     <span class="hljs-keyword">static</span> <span class="hljs-built_in">dispatch_queue_t</span> af_url_session_manager_creation_queue;
     <span class="hljs-keyword">static</span> <span class="hljs-built_in">dispatch_once_t</span> onceToken;
     <span class="hljs-built_in">dispatch_once</span>(&amp;onceToken, ^{
@@ -1402,54 +1476,54 @@
     });
 
     <span class="hljs-keyword">return</span> af_url_session_manager_creation_queue;
-}</code></pre>
-<p>&#x4E0B;&#x9762;&#x4ECB;&#x7ECD;&#x4E00;&#x4E2A;&#x6709;&#x70B9;&#x9ED1;&#x9B54;&#x6CD5;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x9664;&#x4E86;&#x4E0A;&#x9762;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#x4E4B;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7F16;&#x8BD1;&#x5668;&#x7684; <code>__attribute__</code> &#x7279;&#x6027;&#x6765;&#x5B9E;&#x73B0;&#x521D;&#x59CB;&#x5316;&#xFF1A;</p><pre><code class="lang-objectivec">__attribute__((constructor))
+}
+</code></pre>
+<p>&#x4E0B;&#x9762;&#x4ECB;&#x7ECD;&#x4E00;&#x4E2A;&#x6709;&#x70B9;&#x9ED1;&#x9B54;&#x6CD5;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x9664;&#x4E86;&#x4E0A;&#x9762;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#x4E4B;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7F16;&#x8BD1;&#x5668;&#x7684; <code>__attribute__</code> &#x7279;&#x6027;&#x6765;&#x5B9E;&#x73B0;&#x521D;&#x59CB;&#x5316;&#xFF1A;</p>
+<pre><code class="lang-objectivec">__attribute__((constructor))
 <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> initialize_Queue() {
     _personOperationQueue = [[<span class="hljs-built_in">NSOperationQueue</span> alloc] init];
 }
 
 <span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">XYZPerson</span> (<span class="hljs-title">Operation</span>)</span>
 
-<span class="hljs-keyword">@end</span></code></pre>
-<h2 id="&#x7C7B;&#x7684;&#x5BFC;&#x5165;"><a name="&#x7C7B;&#x7684;&#x5BFC;&#x5165;" class="plugin-anchor" href="#&#x7C7B;&#x7684;&#x5BFC;&#x5165;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7C7B;&#x7684;&#x5BFC;&#x5165;</h2><p>&#x5BFC;&#x5165;&#x7C7B;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>#include</code> , <code>#import</code> &#x548C; <code>@class</code> &#x4E09;&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x533A;&#x522B;&#x5982;&#x4E0B;&#xFF1A;</p><ul><li><code>#import</code>&#x662F;Objective-C&#x5BFC;&#x5165;&#x5934;&#x6587;&#x4EF6;&#x7684;&#x5173;&#x952E;&#x5B57;&#xFF0C;<code>#include</code>&#x662F;C/C++&#x5BFC;&#x5165;&#x5934;&#x6587;&#x4EF6;&#x7684;&#x5173;&#x952E;&#x5B57;
-</li>
-<li>&#x4F7F;&#x7528;<code>#import</code>&#x5934;&#x6587;&#x4EF6;&#x4F1A;&#x81EA;&#x52A8;&#x53EA;&#x5BFC;&#x5165;&#x4E00;&#x6B21;&#xFF0C;&#x4E0D;&#x4F1A;&#x91CD;&#x590D;&#x5BFC;&#x5165;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;<code>#include</code>&#x548C;<code>#pragma once</code>&#xFF1B;
-</li>
-<li><code>@class</code>&#x544A;&#x8BC9;&#x7F16;&#x8BD1;&#x5668;&#x9700;&#x8981;&#x77E5;&#x9053;&#x67D0;&#x4E2A;&#x7C7B;&#x7684;&#x58F0;&#x660E;&#xFF0C;&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x5934;&#x6587;&#x4EF6;&#x7684;&#x76F8;&#x4E92;&#x5305;&#x542B;&#x95EE;&#x9898;&#xFF1B;
-</li></ul>
-<p><code>@class</code>&#x662F;&#x653E;&#x5728;interface&#x4E2D;&#x7684;&#xFF0C;&#x53EA;&#x662F;&#x5728;&#x5F15;&#x7528;&#x4E00;&#x4E2A;&#x7C7B;&#xFF0C;&#x5C06;&#x8FD9;&#x4E2A;&#x88AB;&#x5F15;&#x7528;&#x7C7B;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x4F7F;&#x7528;&#x3002;&#x5728;&#x5B9E;&#x73B0;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x5F15;&#x7528;&#x5230;&#x88AB;&#x5F15;&#x7528;&#x7C7B;&#x7684;&#x5B9E;&#x4F53;&#x53D8;&#x91CF;&#x6216;&#x8005;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x4F7F;&#x7528;<code>#import</code>&#x65B9;&#x5F0F;&#x5F15;&#x5165;&#x88AB;&#x5F15;&#x7528;&#x7C7B;&#x3002;</p><h2 id="&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x5316;"><a name="&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x5316;" class="plugin-anchor" href="#&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x5316;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x5316;</h2><p>Objective-C &#x662F;&#x5EFA;&#x7ACB;&#x5728; Runtime &#x57FA;&#x7840;&#x4E0A;&#x7684;&#x8BED;&#x8A00;&#xFF0C;&#x7C7B;&#x4E5F;&#x4E0D;&#x4F8B;&#x5916;&#x3002;OC &#x4E2D;&#x7C7B;&#x662F;&#x521D;&#x59CB;&#x5316;&#x4E5F;&#x662F;&#x52A8;&#x6001;&#x7684;&#x3002;&#x5728; OC &#x4E2D;&#x7EDD;&#x5927;&#x90E8;&#x5206;&#x7C7B;&#x90FD;&#x7EE7;&#x627F;&#x81EA; <code>NSObject</code>&#xFF0C;&#x5B83;&#x6709;&#x4E24;&#x4E2A;&#x975E;&#x5E38;&#x7279;&#x6B8A;&#x7684;&#x7C7B;&#x65B9;&#x6CD5; <code>load</code> &#x548C; <code>initilize</code>&#xFF0C;&#x7528;&#x4E8E;&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x5316;</p><h4 id="load"><a name="load" class="plugin-anchor" href="#load"><i class="fa fa-link" aria-hidden="true"></i></a>+load</h4><p>+load &#x65B9;&#x6CD5;&#x662F;&#x5F53;&#x7C7B;&#x6216;&#x5206;&#x7C7B;&#x88AB;&#x6DFB;&#x52A0;&#x5230; Objective-C runtime &#x65F6;&#x88AB;&#x8C03;&#x7528;&#x7684;&#xFF0C;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x5728;&#x7C7B;&#x52A0;&#x8F7D;&#x7684;&#x65F6;&#x5019;&#x6267;&#x884C;&#x4E00;&#x4E9B;&#x7C7B;&#x76F8;&#x5173;&#x7684;&#x884C;&#x4E3A;&#x3002;&#x5B50;&#x7C7B;&#x7684; +load &#x65B9;&#x6CD5;&#x4F1A;&#x5728;&#x5B83;&#x7684;&#x6240;&#x6709;&#x7236;&#x7C7B;&#x7684; +load &#x65B9;&#x6CD5;&#x4E4B;&#x540E;&#x6267;&#x884C;&#xFF0C;&#x800C;&#x5206;&#x7C7B;&#x7684; +load &#x65B9;&#x6CD5;&#x4F1A;&#x5728;&#x5B83;&#x7684;&#x4E3B;&#x7C7B;&#x7684; +load &#x65B9;&#x6CD5;&#x4E4B;&#x540E;&#x6267;&#x884C;&#x3002;&#x4F46;&#x662F;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x4E4B;&#x95F4;&#x7684; +load &#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x662F;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#x3002;</p><p>load &#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x88AB;&#x7C7B;&#x81EA;&#x52A8;&#x7EE7;&#x627F;, &#x6BCF;&#x4E00;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684; load &#x65B9;&#x6CD5;&#x90FD;&#x4E0D;&#x9700;&#x8981;&#x50CF; viewDidLoad &#x65B9;&#x6CD5;&#x4E00;&#x6837;&#x8C03;&#x7528;&#x7236;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x5B50;&#x7C7B;&#x3001;&#x7236;&#x7C7B;&#x548C;&#x5206;&#x7C7B;&#x4E2D;&#x7684; +load &#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x662F;&#x88AB;&#x533A;&#x522B;&#x5BF9;&#x5F85;&#x7684;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5982;&#x679C;&#x5B50;&#x7C7B;&#x6CA1;&#x6709;&#x5B9E;&#x73B0; +load &#x65B9;&#x6CD5;&#xFF0C;&#x90A3;&#x4E48;&#x5F53;&#x5B83;&#x88AB;&#x52A0;&#x8F7D;&#x65F6; runtime &#x662F;&#x4E0D;&#x4F1A;&#x53BB;&#x8C03;&#x7528;&#x7236;&#x7C7B;&#x7684; +load &#x65B9;&#x6CD5;&#x7684;<sup id="fnref:ref"><a href="#fn:ref" class="footnote">1</a></sup>&#x3002;&#x540C;&#x7406;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A;&#x7C7B;&#x548C;&#x5B83;&#x7684;&#x5206;&#x7C7B;&#x90FD;&#x5B9E;&#x73B0;&#x4E86; +load &#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x90FD;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x5E38;&#x5E38;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x8FD9;&#x4E2A;&#x7279;&#x6027;&#x505A;&#x4E00;&#x4E9B;&#x201C;&#x90AA;&#x6076;&#x201D;&#x7684;&#x4E8B;&#x60C5;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#x65B9;&#x6CD5;&#x6DF7;&#x6DC6;&#xFF08;Method Swizzling&#xFF09;&#x3002;FDTemplateLayoutCell &#x4E2D;&#x5C31;&#x4F7F;&#x7528;&#x4E86;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x89C1;<a href="https://github.com/forkingdog/UITableView-FDTemplateLayoutCell/blob/2bead7b80e40e8689201e7c1d6f034e952c9a155/Classes/UITableView%2BFDIndexPathHeightCache.m#L147" target="_blank">&#x8FD9;&#x91CC;</a>&#x3002;</p><h4 id="initialize"><a name="initialize" class="plugin-anchor" href="#initialize"><i class="fa fa-link" aria-hidden="true"></i></a>+initialize</h4><p>+initialize &#x65B9;&#x6CD5;&#x662F;&#x5728;&#x7C7B;&#x6216;&#x5B83;&#x7684;&#x5B50;&#x7C7B;&#x6536;&#x5230;&#x7B2C;&#x4E00;&#x6761;&#x6D88;&#x606F;&#x4E4B;&#x524D;&#x88AB;&#x8C03;&#x7528;&#x7684;&#xFF0C;&#x8FD9;&#x91CC;&#x6240;&#x6307;&#x7684;&#x6D88;&#x606F;&#x5305;&#x62EC;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x548C;&#x7C7B;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4; +initialize &#x65B9;&#x6CD5;&#x662F;&#x4EE5;&#x61D2;&#x52A0;&#x8F7D;&#x7684;&#x65B9;&#x5F0F;&#x88AB;&#x8C03;&#x7528;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x7A0B;&#x5E8F;&#x4E00;&#x76F4;&#x6CA1;&#x6709;&#x7ED9;&#x67D0;&#x4E2A;&#x7C7B;&#x6216;&#x5B83;&#x7684;&#x5B50;&#x7C7B;&#x53D1;&#x9001;&#x6D88;&#x606F;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x7C7B;&#x7684; +initialize &#x65B9;&#x6CD5;&#x662F;&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x7684;&#x3002;</p><p>+initialize &#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x4E0E;&#x666E;&#x901A;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x8D70;&#x7684;&#x90FD;&#x662F;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x7684;&#x6D41;&#x7A0B;&#x3002;&#x6362;&#x8A00;&#x4E4B;&#xFF0C;&#x5982;&#x679C;&#x5B50;&#x7C7B;&#x6CA1;&#x6709;&#x5B9E;&#x73B0; +initialize &#x65B9;&#x6CD5;&#xFF0C;&#x90A3;&#x4E48;&#x7EE7;&#x627F;&#x81EA;&#x7236;&#x7C7B;&#x7684;&#x5B9E;&#x73B0;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF1B;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x5206;&#x7C7B;&#x5B9E;&#x73B0;&#x4E86; +initialize &#x65B9;&#x6CD5;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x5BF9;&#x8FD9;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684;&#x5B9E;&#x73B0;&#x9020;&#x6210;&#x8986;&#x76D6;&#x3002;</p><h3 id="&#x6CE8;&#x89E3;"><a name="&#x6CE8;&#x89E3;" class="plugin-anchor" href="#&#x6CE8;&#x89E3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6CE8;&#x89E3;</h3><li id="fn:ref">
-
-
-
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<h2 id="&#x7C7B;&#x7684;&#x5BFC;&#x5165;"><a name="&#x7C7B;&#x7684;&#x5BFC;&#x5165;" class="plugin-anchor" href="#&#x7C7B;&#x7684;&#x5BFC;&#x5165;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7C7B;&#x7684;&#x5BFC;&#x5165;</h2>
+<p>&#x5BFC;&#x5165;&#x7C7B;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>#include</code> , <code>#import</code> &#x548C; <code>@class</code> &#x4E09;&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x533A;&#x522B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li><code>#import</code>&#x662F;Objective-C&#x5BFC;&#x5165;&#x5934;&#x6587;&#x4EF6;&#x7684;&#x5173;&#x952E;&#x5B57;&#xFF0C;<code>#include</code>&#x662F;C/C++&#x5BFC;&#x5165;&#x5934;&#x6587;&#x4EF6;&#x7684;&#x5173;&#x952E;&#x5B57;</li>
+<li>&#x4F7F;&#x7528;<code>#import</code>&#x5934;&#x6587;&#x4EF6;&#x4F1A;&#x81EA;&#x52A8;&#x53EA;&#x5BFC;&#x5165;&#x4E00;&#x6B21;&#xFF0C;&#x4E0D;&#x4F1A;&#x91CD;&#x590D;&#x5BFC;&#x5165;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;<code>#include</code>&#x548C;<code>#pragma once</code>&#xFF1B;</li>
+<li><code>@class</code>&#x544A;&#x8BC9;&#x7F16;&#x8BD1;&#x5668;&#x9700;&#x8981;&#x77E5;&#x9053;&#x67D0;&#x4E2A;&#x7C7B;&#x7684;&#x58F0;&#x660E;&#xFF0C;&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x5934;&#x6587;&#x4EF6;&#x7684;&#x76F8;&#x4E92;&#x5305;&#x542B;&#x95EE;&#x9898;&#xFF1B;</li>
+</ul>
+<p><code>@class</code>&#x662F;&#x653E;&#x5728;interface&#x4E2D;&#x7684;&#xFF0C;&#x53EA;&#x662F;&#x5728;&#x5F15;&#x7528;&#x4E00;&#x4E2A;&#x7C7B;&#xFF0C;&#x5C06;&#x8FD9;&#x4E2A;&#x88AB;&#x5F15;&#x7528;&#x7C7B;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x4F7F;&#x7528;&#x3002;&#x5728;&#x5B9E;&#x73B0;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x5F15;&#x7528;&#x5230;&#x88AB;&#x5F15;&#x7528;&#x7C7B;&#x7684;&#x5B9E;&#x4F53;&#x53D8;&#x91CF;&#x6216;&#x8005;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x4F7F;&#x7528;<code>#import</code>&#x65B9;&#x5F0F;&#x5F15;&#x5165;&#x88AB;&#x5F15;&#x7528;&#x7C7B;&#x3002;</p>
+<h2 id="&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x5316;"><a name="&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x5316;" class="plugin-anchor" href="#&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x5316;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x5316;</h2>
+<p>Objective-C &#x662F;&#x5EFA;&#x7ACB;&#x5728; Runtime &#x57FA;&#x7840;&#x4E0A;&#x7684;&#x8BED;&#x8A00;&#xFF0C;&#x7C7B;&#x4E5F;&#x4E0D;&#x4F8B;&#x5916;&#x3002;OC &#x4E2D;&#x7C7B;&#x662F;&#x521D;&#x59CB;&#x5316;&#x4E5F;&#x662F;&#x52A8;&#x6001;&#x7684;&#x3002;&#x5728; OC &#x4E2D;&#x7EDD;&#x5927;&#x90E8;&#x5206;&#x7C7B;&#x90FD;&#x7EE7;&#x627F;&#x81EA; <code>NSObject</code>&#xFF0C;&#x5B83;&#x6709;&#x4E24;&#x4E2A;&#x975E;&#x5E38;&#x7279;&#x6B8A;&#x7684;&#x7C7B;&#x65B9;&#x6CD5; <code>load</code> &#x548C; <code>initilize</code>&#xFF0C;&#x7528;&#x4E8E;&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x5316;</p>
+<h4 id="load"><a name="load" class="plugin-anchor" href="#load"><i class="fa fa-link" aria-hidden="true"></i></a>+load</h4>
+<p>+load &#x65B9;&#x6CD5;&#x662F;&#x5F53;&#x7C7B;&#x6216;&#x5206;&#x7C7B;&#x88AB;&#x6DFB;&#x52A0;&#x5230; Objective-C runtime &#x65F6;&#x88AB;&#x8C03;&#x7528;&#x7684;&#xFF0C;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x5728;&#x7C7B;&#x52A0;&#x8F7D;&#x7684;&#x65F6;&#x5019;&#x6267;&#x884C;&#x4E00;&#x4E9B;&#x7C7B;&#x76F8;&#x5173;&#x7684;&#x884C;&#x4E3A;&#x3002;&#x5B50;&#x7C7B;&#x7684; +load &#x65B9;&#x6CD5;&#x4F1A;&#x5728;&#x5B83;&#x7684;&#x6240;&#x6709;&#x7236;&#x7C7B;&#x7684; +load &#x65B9;&#x6CD5;&#x4E4B;&#x540E;&#x6267;&#x884C;&#xFF0C;&#x800C;&#x5206;&#x7C7B;&#x7684; +load &#x65B9;&#x6CD5;&#x4F1A;&#x5728;&#x5B83;&#x7684;&#x4E3B;&#x7C7B;&#x7684; +load &#x65B9;&#x6CD5;&#x4E4B;&#x540E;&#x6267;&#x884C;&#x3002;&#x4F46;&#x662F;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x4E4B;&#x95F4;&#x7684; +load &#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x987A;&#x5E8F;&#x662F;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#x3002;</p>
+<p>load &#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x88AB;&#x7C7B;&#x81EA;&#x52A8;&#x7EE7;&#x627F;, &#x6BCF;&#x4E00;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684; load &#x65B9;&#x6CD5;&#x90FD;&#x4E0D;&#x9700;&#x8981;&#x50CF; viewDidLoad &#x65B9;&#x6CD5;&#x4E00;&#x6837;&#x8C03;&#x7528;&#x7236;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x5B50;&#x7C7B;&#x3001;&#x7236;&#x7C7B;&#x548C;&#x5206;&#x7C7B;&#x4E2D;&#x7684; +load &#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x662F;&#x88AB;&#x533A;&#x522B;&#x5BF9;&#x5F85;&#x7684;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5982;&#x679C;&#x5B50;&#x7C7B;&#x6CA1;&#x6709;&#x5B9E;&#x73B0; +load &#x65B9;&#x6CD5;&#xFF0C;&#x90A3;&#x4E48;&#x5F53;&#x5B83;&#x88AB;&#x52A0;&#x8F7D;&#x65F6; runtime &#x662F;&#x4E0D;&#x4F1A;&#x53BB;&#x8C03;&#x7528;&#x7236;&#x7C7B;&#x7684; +load &#x65B9;&#x6CD5;&#x7684;<sup id="fnref:ref"><a href="#fn:ref" class="footnote">1</a></sup>&#x3002;&#x540C;&#x7406;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A;&#x7C7B;&#x548C;&#x5B83;&#x7684;&#x5206;&#x7C7B;&#x90FD;&#x5B9E;&#x73B0;&#x4E86; +load &#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x90FD;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x5E38;&#x5E38;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x8FD9;&#x4E2A;&#x7279;&#x6027;&#x505A;&#x4E00;&#x4E9B;&#x201C;&#x90AA;&#x6076;&#x201D;&#x7684;&#x4E8B;&#x60C5;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#x65B9;&#x6CD5;&#x6DF7;&#x6DC6;&#xFF08;Method Swizzling&#xFF09;&#x3002;FDTemplateLayoutCell &#x4E2D;&#x5C31;&#x4F7F;&#x7528;&#x4E86;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x89C1;<a href="https://github.com/forkingdog/UITableView-FDTemplateLayoutCell/blob/2bead7b80e40e8689201e7c1d6f034e952c9a155/Classes/UITableView%2BFDIndexPathHeightCache.m#L147" target="_blank">&#x8FD9;&#x91CC;</a>&#x3002;</p>
+<h4 id="initialize"><a name="initialize" class="plugin-anchor" href="#initialize"><i class="fa fa-link" aria-hidden="true"></i></a>+initialize</h4>
+<p>+initialize &#x65B9;&#x6CD5;&#x662F;&#x5728;&#x7C7B;&#x6216;&#x5B83;&#x7684;&#x5B50;&#x7C7B;&#x6536;&#x5230;&#x7B2C;&#x4E00;&#x6761;&#x6D88;&#x606F;&#x4E4B;&#x524D;&#x88AB;&#x8C03;&#x7528;&#x7684;&#xFF0C;&#x8FD9;&#x91CC;&#x6240;&#x6307;&#x7684;&#x6D88;&#x606F;&#x5305;&#x62EC;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x548C;&#x7C7B;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4; +initialize &#x65B9;&#x6CD5;&#x662F;&#x4EE5;&#x61D2;&#x52A0;&#x8F7D;&#x7684;&#x65B9;&#x5F0F;&#x88AB;&#x8C03;&#x7528;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x7A0B;&#x5E8F;&#x4E00;&#x76F4;&#x6CA1;&#x6709;&#x7ED9;&#x67D0;&#x4E2A;&#x7C7B;&#x6216;&#x5B83;&#x7684;&#x5B50;&#x7C7B;&#x53D1;&#x9001;&#x6D88;&#x606F;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x7C7B;&#x7684; +initialize &#x65B9;&#x6CD5;&#x662F;&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x7684;&#x3002;</p>
+<p>+initialize &#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x4E0E;&#x666E;&#x901A;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x8D70;&#x7684;&#x90FD;&#x662F;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x7684;&#x6D41;&#x7A0B;&#x3002;&#x6362;&#x8A00;&#x4E4B;&#xFF0C;&#x5982;&#x679C;&#x5B50;&#x7C7B;&#x6CA1;&#x6709;&#x5B9E;&#x73B0; +initialize &#x65B9;&#x6CD5;&#xFF0C;&#x90A3;&#x4E48;&#x7EE7;&#x627F;&#x81EA;&#x7236;&#x7C7B;&#x7684;&#x5B9E;&#x73B0;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF1B;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x5206;&#x7C7B;&#x5B9E;&#x73B0;&#x4E86; +initialize &#x65B9;&#x6CD5;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x5BF9;&#x8FD9;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684;&#x5B9E;&#x73B0;&#x9020;&#x6210;&#x8986;&#x76D6;&#x3002;</p>
+<h3 id="&#x6CE8;&#x89E3;"><a name="&#x6CE8;&#x89E3;" class="plugin-anchor" href="#&#x6CE8;&#x89E3;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6CE8;&#x89E3;</h3>
+<p><li id="fn:ref"></li></p>
 <p> 1.&#x4E3E;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;&#x6709;&#x4E00;&#x4E2A; Father &#x7C7B;&#xFF0C;&#x5B9E;&#x73B0;&#x4E86; load &#x65B9;&#x6CD5;&#xFF0C;&#x6253;&#x5370;&#x7C7B;&#x540D;&#xFF0C;&#x4E00;&#x4E2A; Son &#x7C7B;&#x7EE7;&#x627F;&#x81EA;&#x524D;&#x8005;&#xFF0C;&#x6CA1;&#x6709;&#x5B9E;&#x73B0; load &#x65B9;&#x6CD5;&#x3002;&#x5B9E;&#x4F8B;&#x51FA;&#x4E00;&#x4E2A; Son &#x7684;&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;&#x7ED3;&#x679C;&#x662F;&#x4F1A;&#x8F93;&#x51FA;&#x7236;&#x7C7B;&#x7684;&#x540D;&#x5B57;&#x3002;&#x4F46;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E0E;&#x4E4B;&#x524D;&#x7684;&#x7ED3;&#x8BBA;&#x5E76;&#x4E0D;&#x77DB;&#x76FE;&#xFF0C;&#x8FD9;&#x91CC;&#x8BF4;&#x7684;&#x662F;&#x7236;&#x7C7B;&#x5148;&#x88AB;&#x52A0;&#x8F7D;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x8C03;&#x7528;&#x4E86;&#x7236;&#x7C7B;&#x7684; load &#x65B9;&#x6CD5;&#xFF0C;&#x800C;&#x5B50;&#x7C7B;&#x88AB;&#x52A0;&#x8F7D;&#x65F6;&#x6CA1;&#x6709;&#x8C03;&#x7528;&#x7236;&#x7C7B;&#x7684; load &#x65B9;&#x6CD5;&#x3002; &#x6682;&#x65F6;&#x6CA1;&#x627E;&#x5230;&#x4F8B;&#x5B50;&#x53EF;&#x4EE5;&#x4E25;&#x683C;&#x7684;&#x8BC1;&#x660E;&#x6B64;&#x524D;&#x7684;&#x7ED3;&#x8BBA;&#xFF0C;&#x6240;&#x4EE5;&#x8FD8;&#x662F;&#x53BB;&#x770B;&#x6E90;&#x7801;&#x5427;&#x3002;<a href="#fnref:ref" class="reversefootnote">&#x21A9;</a></p>
 
+<h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;"><a name="&#x53C2;&#x8003;&#x8D44;&#x6599;" class="plugin-anchor" href="#&#x53C2;&#x8003;&#x8D44;&#x6599;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x53C2;&#x8003;&#x8D44;&#x6599;</h3>
+<ul>
+<li><a href="http://blog.csdn.net/xunyn/article/details/8302787" target="_blank">iOS&#x5F00;&#x53D1;&#x57FA;&#x7840;&#x9762;&#x8BD5;&#x9898;&#x7CFB;&#x5217;</a></li>
+<li><a href="http://www.oschina.net/news/42288/10-objective-c-interview" target="_blank">10&#x4E2A;Objective-C&#x57FA;&#x7840;&#x9762;&#x8BD5;&#x9898;&#xFF0C;iOS&#x9762;&#x8BD5;&#x5FC5;&#x5907;</a></li>
+<li><a href="http://blog.sina.com.cn/s/blog_74e9d98d01013au8.html" target="_blank">Objective-C&#x4E2D;&#x201C;&#x79C1;&#x6709;&#x65B9;&#x6CD5;&#x201D;&#x7684;&#x5B9E;&#x73B0;&quot;</a></li>
+<li><a href="http://www.cnblogs.com/andyque/archive/2011/08/03/2125728.html" target="_blank">Objective-C&#x4E2D;@property&#x8BE6;&#x89E3;</a></li>
+<li><a href="http://www.cnblogs.com/whyandinside/archive/2013/02/28/2937217.html" target="_blank">Objective-C&#x4E2D;&#x7684;protocol&#x548C;delegate</a></li>
+<li><a href="http://www.cnblogs.com/chijianqiang/archive/2012/06/22/objc-category-protocol.html" target="_blank">Objective-C&#x2014;&#x2014;&#x6D88;&#x606F;&#xFF0C;Category &#x4E0E; Protocol</a></li>
+<li><a href="http://www.cnblogs.com/martin1009/archive/2012/06/24/2560218.html" target="_blank">&#x6DF1;&#x5165;&#x7406;&#x89E3;Objective-C&#x4E2D;&#x7684;@class</a></li>
+<li><a href="http://blog.leichunfeng.com/blog/2015/05/02/objective-c-plus-load-vs-plus-initialize/" target="_blank">Objective-C +load vs +initialize</a></li>
+<li><a href="http://tech.meituan.com/DiveIntoCategory.html" target="_blank">&#x6DF1;&#x5165;&#x7406;&#x89E3;Objective-C&#xFF1A;Category</a></li>
+<li><a href="https://stackoverflow.com/questions/19784454/when-should-i-use-synthesize-explicitly" target="_blank">https://stackoverflow.com/questions/19784454/when-should-i-use-synthesize-explicitly</a></li>
+<li><a href="http://www.fantageek.com/blog/2014/07/13/property-in-protocol/" target="_blank">http://www.fantageek.com/blog/2014/07/13/property-in-protocol/</a></li>
+<li><a href="http://www.friday.com/bbum/2009/09/06/iniailize-can-be-executed-multiple-times-load-not-so-much/" target="_blank">http://www.friday.com/bbum/2009/09/06/iniailize-can-be-executed-multiple-times-load-not-so-much/</a></li>
+</ul>
 
-
-<h3 id="&#x53C2;&#x8003;&#x8D44;&#x6599;"><a name="&#x53C2;&#x8003;&#x8D44;&#x6599;" class="plugin-anchor" href="#&#x53C2;&#x8003;&#x8D44;&#x6599;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x53C2;&#x8003;&#x8D44;&#x6599;</h3><ul><li><a href="http://blog.csdn.net/xunyn/article/details/8302787" target="_blank">iOS&#x5F00;&#x53D1;&#x57FA;&#x7840;&#x9762;&#x8BD5;&#x9898;&#x7CFB;&#x5217;</a>
-</li>
-<li><a href="http://www.oschina.net/news/42288/10-objective-c-interview" target="_blank">10&#x4E2A;Objective-C&#x57FA;&#x7840;&#x9762;&#x8BD5;&#x9898;&#xFF0C;iOS&#x9762;&#x8BD5;&#x5FC5;&#x5907;</a>
-</li>
-<li><a href="http://blog.sina.com.cn/s/blog_74e9d98d01013au8.html" target="_blank">Objective-C&#x4E2D;&#x201C;&#x79C1;&#x6709;&#x65B9;&#x6CD5;&#x201D;&#x7684;&#x5B9E;&#x73B0;&quot;</a>
-</li>
-<li><a href="http://www.cnblogs.com/andyque/archive/2011/08/03/2125728.html" target="_blank">Objective-C&#x4E2D;@property&#x8BE6;&#x89E3;</a>
-</li>
-<li><a href="http://www.cnblogs.com/whyandinside/archive/2013/02/28/2937217.html" target="_blank">Objective-C&#x4E2D;&#x7684;protocol&#x548C;delegate</a>
-</li>
-<li><a href="http://www.cnblogs.com/chijianqiang/archive/2012/06/22/objc-category-protocol.html" target="_blank">Objective-C&#x2014;&#x2014;&#x6D88;&#x606F;&#xFF0C;Category &#x4E0E; Protocol</a>
-</li>
-<li><a href="http://www.cnblogs.com/martin1009/archive/2012/06/24/2560218.html" target="_blank">&#x6DF1;&#x5165;&#x7406;&#x89E3;Objective-C&#x4E2D;&#x7684;@class</a>
-</li>
-<li><a href="http://blog.leichunfeng.com/blog/2015/05/02/objective-c-plus-load-vs-plus-initialize/" target="_blank">Objective-C +load vs +initialize</a>
-</li>
-<li><a href="http://tech.meituan.com/DiveIntoCategory.html" target="_blank">&#x6DF1;&#x5165;&#x7406;&#x89E3;Objective-C&#xFF1A;Category</a>
-</li>
-<li><a href="https://stackoverflow.com/questions/19784454/when-should-i-use-synthesize-explicitly" target="_blank">https://stackoverflow.com/questions/19784454/when-should-i-use-synthesize-explicitly</a>
-</li>
-<li><a href="http://www.fantageek.com/blog/2014/07/13/property-in-protocol/" target="_blank">http://www.fantageek.com/blog/2014/07/13/property-in-protocol/</a>
-</li>
-<li><a href="http://www.friday.com/bbum/2009/09/06/iniailize-can-be-executed-multiple-times-load-not-so-much/" target="_blank">http://www.friday.com/bbum/2009/09/06/iniailize-can-be-executed-multiple-times-load-not-so-much/</a>
-</li></ul>
-</li>
                                 
                                 </section>
                             
@@ -1492,7 +1566,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"类与对象","level":"1.3.1.1","depth":3,"next":{"title":"Block 编程","level":"1.3.1.2","depth":3,"path":"iOS/ObjC-Basic/Block.md","ref":"iOS/ObjC-Basic/Block.md","articles":[]},"previous":{"title":"Objective-C 语言基础","level":"1.3.1","depth":2,"path":"iOS/ObjC-Basic/README.md","ref":"iOS/ObjC-Basic/README.md","articles":[{"title":"类与对象","level":"1.3.1.1","depth":3,"path":"iOS/ObjC-Basic/Class.md","ref":"iOS/ObjC-Basic/Class.md","articles":[]},{"title":"Block 编程","level":"1.3.1.2","depth":3,"path":"iOS/ObjC-Basic/Block.md","ref":"iOS/ObjC-Basic/Block.md","articles":[]},{"title":"Objective-C Runtime","level":"1.3.1.3","depth":3,"path":"iOS/ObjC-Basic/Runtime.md","ref":"iOS/ObjC-Basic/Runtime.md","articles":[]},{"title":"Objective-C 内存管理","level":"1.3.1.4","depth":3,"path":"iOS/ObjC-Basic/MM.md","ref":"iOS/ObjC-Basic/MM.md","articles":[]},{"title":"Runloop","level":"1.3.1.5","depth":3,"path":"iOS/ObjC-Basic/Runloop.md","ref":"iOS/ObjC-Basic/Runloop.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"笔试面试知识整理","gitbook":"*","description":"一些 IT 笔试面试有关知识的整理，包括基础知识，安卓，iOS 开发等，希望对大家有所帮助"},"file":{"path":"iOS/ObjC-Basic/Class.md","mtime":"2016-09-25T07:58:27.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-25T11:51:20.654Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"类与对象","level":"1.3.1.1","depth":3,"next":{"title":"Block 编程","level":"1.3.1.2","depth":3,"path":"iOS/ObjC-Basic/Block.md","ref":"iOS/ObjC-Basic/Block.md","articles":[]},"previous":{"title":"Objective-C 语言基础","level":"1.3.1","depth":2,"path":"iOS/ObjC-Basic/README.md","ref":"iOS/ObjC-Basic/README.md","articles":[{"title":"类与对象","level":"1.3.1.1","depth":3,"path":"iOS/ObjC-Basic/Class.md","ref":"iOS/ObjC-Basic/Class.md","articles":[]},{"title":"Block 编程","level":"1.3.1.2","depth":3,"path":"iOS/ObjC-Basic/Block.md","ref":"iOS/ObjC-Basic/Block.md","articles":[]},{"title":"Objective-C Runtime","level":"1.3.1.3","depth":3,"path":"iOS/ObjC-Basic/Runtime.md","ref":"iOS/ObjC-Basic/Runtime.md","articles":[]},{"title":"Objective-C 内存管理","level":"1.3.1.4","depth":3,"path":"iOS/ObjC-Basic/MM.md","ref":"iOS/ObjC-Basic/MM.md","articles":[]},{"title":"Runloop","level":"1.3.1.5","depth":3,"path":"iOS/ObjC-Basic/Runloop.md","ref":"iOS/ObjC-Basic/Runloop.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"笔试面试知识整理","gitbook":"*","description":"一些 IT 笔试面试有关知识的整理，包括基础知识，安卓，iOS 开发等，希望对大家有所帮助"},"file":{"path":"iOS/ObjC-Basic/Class.md","mtime":"2016-09-25T07:58:27.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-10-07T07:42:05.896Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

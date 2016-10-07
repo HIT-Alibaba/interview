@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>Android 中的 Thread, Looper 和 Handler 机制 · 笔试面试知识整理</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Android 中的 Thread, Looper 和 Handler 机制 · 笔试面试知识整理</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -1164,33 +1164,38 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="android&#x4E2D;&#x7684;thread-looper&#x548C;handler&#x673A;&#x5236;&#x9644;&#x5E26;handlerthread&#x4E0E;asynctask"><a name="android&#x4E2D;&#x7684;thread-looper&#x548C;handler&#x673A;&#x5236;&#x9644;&#x5E26;handlerthread&#x4E0E;asynctask" class="plugin-anchor" href="#android&#x4E2D;&#x7684;thread-looper&#x548C;handler&#x673A;&#x5236;&#x9644;&#x5E26;handlerthread&#x4E0E;asynctask"><i class="fa fa-link" aria-hidden="true"></i></a>Android&#x4E2D;&#x7684;Thread, Looper&#x548C;Handler&#x673A;&#x5236;(&#x9644;&#x5E26;HandlerThread&#x4E0E;AsyncTask)</h1><h2 id="thread&#xFF0C;looper&#x548C;handler&#x7684;&#x5173;&#x7CFB;"><a name="thread&#xFF0C;looper&#x548C;handler&#x7684;&#x5173;&#x7CFB;" class="plugin-anchor" href="#thread&#xFF0C;looper&#x548C;handler&#x7684;&#x5173;&#x7CFB;"><i class="fa fa-link" aria-hidden="true"></i></a>Thread&#xFF0C;Looper&#x548C;Handler&#x7684;&#x5173;&#x7CFB;</h2><p>&#x4E0E;Windows&#x7CFB;&#x7EDF;&#x4E00;&#x6837;&#xFF0C;Android&#x4E5F;&#x662F;&#x6D88;&#x606F;&#x9A71;&#x52A8;&#x578B;&#x7684;&#x7CFB;&#x7EDF;&#x3002;&#x5F15;&#x7528;&#x4E00;&#x4E0B;&#x6D88;&#x606F;&#x9A71;&#x52A8;&#x673A;&#x5236;&#x7684;&#x56DB;&#x8981;&#x7D20;&#xFF1A;</p><ul><li>&#x63A5;&#x6536;&#x6D88;&#x606F;&#x7684;&#x201C;&#x6D88;&#x606F;&#x961F;&#x5217;&#x201D;
-</li>
-<li>&#x963B;&#x585E;&#x5F0F;&#x5730;&#x4ECE;&#x6D88;&#x606F;&#x961F;&#x5217;&#x4E2D;&#x63A5;&#x6536;&#x6D88;&#x606F;&#x5E76;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x7684;&#x201C;&#x7EBF;&#x7A0B;&#x201D;
-</li>
-<li>&#x53EF;&#x53D1;&#x9001;&#x7684;&#x201C;&#x6D88;&#x606F;&#x7684;&#x683C;&#x5F0F;&#x201D;
-</li>
-<li>&#x201C;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x51FD;&#x6570;&#x201D;
-</li></ul>
-<p>&#x4E0E;&#x4E4B;&#x5BF9;&#x5E94;&#xFF0C;Android&#x4E2D;&#x7684;&#x5B9E;&#x73B0;&#x5BF9;&#x5E94;&#x4E86;</p><ul><li>&#x63A5;&#x6536;&#x6D88;&#x606F;&#x7684;&#x201C;&#x6D88;&#x606F;&#x961F;&#x5217;&#x201D; &#x2014;&#x2014;&#x3010;MessageQueue&#x3011;
-</li>
-<li>&#x963B;&#x585E;&#x5F0F;&#x5730;&#x4ECE;&#x6D88;&#x606F;&#x961F;&#x5217;&#x4E2D;&#x63A5;&#x6536;&#x6D88;&#x606F;&#x5E76;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x7684;&#x201C;&#x7EBF;&#x7A0B;&#x201D; &#x2014;&#x2014;&#x3010;Thread+Looper&#x3011;
-</li>
-<li>&#x53EF;&#x53D1;&#x9001;&#x7684;&#x201C;&#x6D88;&#x606F;&#x7684;&#x683C;&#x5F0F;&#x201D; &#x2014;&#x2014;&#x3010;Message<runnable被封装在message中>&#x3011;
-</runnable被封装在message中></li>
-<li>&#x201C;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x51FD;&#x6570;&#x201D;&#x2014;&#x2014;&#x3010;Handler&#x7684;post&#x548C;sendMessage&#x3011;
-</li></ul>
-<p>&#x4E00;&#x4E2A;<code>Looper</code>&#x7C7B;&#x4F3C;&#x4E00;&#x4E2A;&#x6D88;&#x606F;&#x6CF5;&#x3002;&#x5B83;&#x672C;&#x8EAB;&#x662F;&#x4E00;&#x4E2A;&#x6B7B;&#x5FAA;&#x73AF;&#xFF0C;&#x4E0D;&#x65AD;&#x5730;&#x4ECE;<code>MessageQueue</code>&#x4E2D;&#x63D0;&#x53D6;<code>Message</code>&#x6216;&#x8005;Runnable&#x3002;&#x800C;<code>Handler</code>&#x53EF;&#x4EE5;&#x770B;&#x505A;&#x662F;&#x4E00;&#x4E2A;<code>Looper</code>&#x7684;&#x66B4;&#x9732;&#x63A5;&#x53E3;&#xFF0C;&#x5411;&#x5916;&#x90E8;&#x66B4;&#x9732;&#x4E00;&#x4E9B;&#x4E8B;&#x4EF6;&#xFF0C;&#x5E76;&#x66B4;&#x9732;<code>sendMessage()</code>&#x548C;<code>post()</code>&#x51FD;&#x6570;&#x3002;</p><p>&#x5728;&#x5B89;&#x5353;&#x4E2D;&#xFF0C;&#x9664;&#x4E86;<code>UI&#x7EBF;&#x7A0B;</code>/<code>&#x4E3B;&#x7EBF;&#x7A0B;</code>&#x4EE5;&#x5916;&#xFF0C;&#x666E;&#x901A;&#x7684;&#x7EBF;&#x7A0B;(&#x5148;&#x4E0D;&#x63D0;<code>HandlerThread</code>)&#x662F;&#x4E0D;&#x81EA;&#x5E26;<code>Looper</code>&#x7684;&#x3002;&#x60F3;&#x8981;&#x901A;&#x8FC7;UI&#x7EBF;&#x7A0B;&#x4E0E;&#x5B50;&#x7EBF;&#x7A0B;&#x901A;&#x4FE1;&#x9700;&#x8981;&#x5728;&#x5B50;&#x7EBF;&#x7A0B;&#x5185;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;<code>Looper</code>&#x3002;&#x5F00;&#x542F;Looper&#x5206;<strong><em>&#x4E09;&#x6B65;&#x8D70;</em></strong>&#xFF1A;</p><ol><li>&#x5224;&#x5B9A;&#x662F;&#x5426;&#x5DF2;&#x6709;<code>Looper</code>&#x5E76;<code>Looper.prepare()</code>
-</li>
-<li>&#x505A;&#x4E00;&#x4E9B;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;(&#x5982;&#x66B4;&#x9732;handler&#x7B49;)
-</li>
-<li>&#x8C03;&#x7528;<code>Looper.loop()</code>&#xFF0C;&#x7EBF;&#x7A0B;&#x8FDB;&#x5165;&#x963B;&#x585E;&#x6001;
-</li></ol>
-<p>&#x7531;&#x4E8E;&#x6BCF;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5185;&#x6700;&#x591A;&#x53EA;&#x53EF;&#x4EE5;&#x6709;&#x4E00;&#x4E2A;<code>Looper</code>&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x5B9A;&#x8981;&#x5728;<code>Looper.prepare()</code>&#x4E4B;&#x524D;&#x505A;&#x597D;&#x5224;&#x5B9A;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x629B;&#x51FA;<code>java.lang.RuntimeException: Only one Looper may be created per thread</code>&#x3002;&#x4E3A;&#x4E86;&#x83B7;&#x53D6;Looper&#x7684;&#x4FE1;&#x606F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF1A;</p><ul><li>Looper.myLooper() 
-</li>
-<li>Looper.getMainLooper()
-</li></ul>
-<p><code>Looper.myLooper()</code>&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x7ED1;&#x5B9A;&#x7684;Looper&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8FD4;&#x56DE;<code>null</code>&#x3002;<code>Looper.getMainLooper()</code>&#x8FD4;&#x56DE;&#x4E3B;&#x7EBF;&#x7A0B;&#x7684;<code>Looper</code>,&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x7684;&#x4E0E;&#x4E3B;&#x7EBF;&#x7A0B;&#x901A;&#x4FE1;&#x3002;&#x6CE8;&#x610F;&#xFF1A;<strong>&#x5728;<code>Thread</code>&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E2D;&#x8C03;&#x7528;<code>Looper.myLooper</code>&#x53EA;&#x4F1A;&#x5F97;&#x5230;&#x4E3B;&#x7EBF;&#x7A0B;&#x7684;<code>Looper</code></strong>&#xFF0C;&#x56E0;&#x4E3A;&#x6B64;&#x65F6;&#x65B0;&#x7EBF;&#x7A0B;&#x8FD8;&#x672A;&#x6784;&#x9020;&#x597D;</p><p>&#x4E0B;&#x9762;&#x7ED9;&#x4E00;&#x6BB5;&#x4EE3;&#x7801;&#xFF0C;&#x901A;&#x8FC7;Thread&#xFF0C;Looper&#x548C;Handler&#x5B9E;&#x73B0;&#x7EBF;&#x7A0B;&#x901A;&#x4FE1;&#xFF1A;</p><h3 id="mainactivityjava"><a name="mainactivityjava" class="plugin-anchor" href="#mainactivityjava"><i class="fa fa-link" aria-hidden="true"></i></a>MainActivity.java</h3><pre><code>public class MainActivity extends Activity {
+                                <h1 id="android&#x4E2D;&#x7684;thread-looper&#x548C;handler&#x673A;&#x5236;&#x9644;&#x5E26;handlerthread&#x4E0E;asynctask"><a name="android&#x4E2D;&#x7684;thread-looper&#x548C;handler&#x673A;&#x5236;&#x9644;&#x5E26;handlerthread&#x4E0E;asynctask" class="plugin-anchor" href="#android&#x4E2D;&#x7684;thread-looper&#x548C;handler&#x673A;&#x5236;&#x9644;&#x5E26;handlerthread&#x4E0E;asynctask"><i class="fa fa-link" aria-hidden="true"></i></a>Android&#x4E2D;&#x7684;Thread, Looper&#x548C;Handler&#x673A;&#x5236;(&#x9644;&#x5E26;HandlerThread&#x4E0E;AsyncTask)</h1>
+<h2 id="thread&#xFF0C;looper&#x548C;handler&#x7684;&#x5173;&#x7CFB;"><a name="thread&#xFF0C;looper&#x548C;handler&#x7684;&#x5173;&#x7CFB;" class="plugin-anchor" href="#thread&#xFF0C;looper&#x548C;handler&#x7684;&#x5173;&#x7CFB;"><i class="fa fa-link" aria-hidden="true"></i></a>Thread&#xFF0C;Looper&#x548C;Handler&#x7684;&#x5173;&#x7CFB;</h2>
+<p>&#x4E0E;Windows&#x7CFB;&#x7EDF;&#x4E00;&#x6837;&#xFF0C;Android&#x4E5F;&#x662F;&#x6D88;&#x606F;&#x9A71;&#x52A8;&#x578B;&#x7684;&#x7CFB;&#x7EDF;&#x3002;&#x5F15;&#x7528;&#x4E00;&#x4E0B;&#x6D88;&#x606F;&#x9A71;&#x52A8;&#x673A;&#x5236;&#x7684;&#x56DB;&#x8981;&#x7D20;&#xFF1A;</p>
+<ul>
+<li>&#x63A5;&#x6536;&#x6D88;&#x606F;&#x7684;&#x201C;&#x6D88;&#x606F;&#x961F;&#x5217;&#x201D;</li>
+<li>&#x963B;&#x585E;&#x5F0F;&#x5730;&#x4ECE;&#x6D88;&#x606F;&#x961F;&#x5217;&#x4E2D;&#x63A5;&#x6536;&#x6D88;&#x606F;&#x5E76;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x7684;&#x201C;&#x7EBF;&#x7A0B;&#x201D;</li>
+<li>&#x53EF;&#x53D1;&#x9001;&#x7684;&#x201C;&#x6D88;&#x606F;&#x7684;&#x683C;&#x5F0F;&#x201D;</li>
+<li>&#x201C;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x51FD;&#x6570;&#x201D;</li>
+</ul>
+<p>&#x4E0E;&#x4E4B;&#x5BF9;&#x5E94;&#xFF0C;Android&#x4E2D;&#x7684;&#x5B9E;&#x73B0;&#x5BF9;&#x5E94;&#x4E86;</p>
+<ul>
+<li>&#x63A5;&#x6536;&#x6D88;&#x606F;&#x7684;&#x201C;&#x6D88;&#x606F;&#x961F;&#x5217;&#x201D; &#x2014;&#x2014;&#x3010;MessageQueue&#x3011;</li>
+<li>&#x963B;&#x585E;&#x5F0F;&#x5730;&#x4ECE;&#x6D88;&#x606F;&#x961F;&#x5217;&#x4E2D;&#x63A5;&#x6536;&#x6D88;&#x606F;&#x5E76;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x7684;&#x201C;&#x7EBF;&#x7A0B;&#x201D; &#x2014;&#x2014;&#x3010;Thread+Looper&#x3011;</li>
+<li>&#x53EF;&#x53D1;&#x9001;&#x7684;&#x201C;&#x6D88;&#x606F;&#x7684;&#x683C;&#x5F0F;&#x201D; &#x2014;&#x2014;&#x3010;Message<runnable被封装在message中>&#x3011;</runnable被封装在message中></li>
+<li>&#x201C;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x51FD;&#x6570;&#x201D;&#x2014;&#x2014;&#x3010;Handler&#x7684;post&#x548C;sendMessage&#x3011;</li>
+</ul>
+<p>&#x4E00;&#x4E2A;<code>Looper</code>&#x7C7B;&#x4F3C;&#x4E00;&#x4E2A;&#x6D88;&#x606F;&#x6CF5;&#x3002;&#x5B83;&#x672C;&#x8EAB;&#x662F;&#x4E00;&#x4E2A;&#x6B7B;&#x5FAA;&#x73AF;&#xFF0C;&#x4E0D;&#x65AD;&#x5730;&#x4ECE;<code>MessageQueue</code>&#x4E2D;&#x63D0;&#x53D6;<code>Message</code>&#x6216;&#x8005;Runnable&#x3002;&#x800C;<code>Handler</code>&#x53EF;&#x4EE5;&#x770B;&#x505A;&#x662F;&#x4E00;&#x4E2A;<code>Looper</code>&#x7684;&#x66B4;&#x9732;&#x63A5;&#x53E3;&#xFF0C;&#x5411;&#x5916;&#x90E8;&#x66B4;&#x9732;&#x4E00;&#x4E9B;&#x4E8B;&#x4EF6;&#xFF0C;&#x5E76;&#x66B4;&#x9732;<code>sendMessage()</code>&#x548C;<code>post()</code>&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x5728;&#x5B89;&#x5353;&#x4E2D;&#xFF0C;&#x9664;&#x4E86;<code>UI&#x7EBF;&#x7A0B;</code>/<code>&#x4E3B;&#x7EBF;&#x7A0B;</code>&#x4EE5;&#x5916;&#xFF0C;&#x666E;&#x901A;&#x7684;&#x7EBF;&#x7A0B;(&#x5148;&#x4E0D;&#x63D0;<code>HandlerThread</code>)&#x662F;&#x4E0D;&#x81EA;&#x5E26;<code>Looper</code>&#x7684;&#x3002;&#x60F3;&#x8981;&#x901A;&#x8FC7;UI&#x7EBF;&#x7A0B;&#x4E0E;&#x5B50;&#x7EBF;&#x7A0B;&#x901A;&#x4FE1;&#x9700;&#x8981;&#x5728;&#x5B50;&#x7EBF;&#x7A0B;&#x5185;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;<code>Looper</code>&#x3002;&#x5F00;&#x542F;Looper&#x5206;<strong><em>&#x4E09;&#x6B65;&#x8D70;</em></strong>&#xFF1A;</p>
+<ol>
+<li>&#x5224;&#x5B9A;&#x662F;&#x5426;&#x5DF2;&#x6709;<code>Looper</code>&#x5E76;<code>Looper.prepare()</code></li>
+<li>&#x505A;&#x4E00;&#x4E9B;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;(&#x5982;&#x66B4;&#x9732;handler&#x7B49;)</li>
+<li>&#x8C03;&#x7528;<code>Looper.loop()</code>&#xFF0C;&#x7EBF;&#x7A0B;&#x8FDB;&#x5165;&#x963B;&#x585E;&#x6001;</li>
+</ol>
+<p>&#x7531;&#x4E8E;&#x6BCF;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5185;&#x6700;&#x591A;&#x53EA;&#x53EF;&#x4EE5;&#x6709;&#x4E00;&#x4E2A;<code>Looper</code>&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x5B9A;&#x8981;&#x5728;<code>Looper.prepare()</code>&#x4E4B;&#x524D;&#x505A;&#x597D;&#x5224;&#x5B9A;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x629B;&#x51FA;<code>java.lang.RuntimeException: Only one Looper may be created per thread</code>&#x3002;&#x4E3A;&#x4E86;&#x83B7;&#x53D6;Looper&#x7684;&#x4FE1;&#x606F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li>Looper.myLooper() </li>
+<li>Looper.getMainLooper()</li>
+</ul>
+<p><code>Looper.myLooper()</code>&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x7ED1;&#x5B9A;&#x7684;Looper&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8FD4;&#x56DE;<code>null</code>&#x3002;<code>Looper.getMainLooper()</code>&#x8FD4;&#x56DE;&#x4E3B;&#x7EBF;&#x7A0B;&#x7684;<code>Looper</code>,&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x7684;&#x4E0E;&#x4E3B;&#x7EBF;&#x7A0B;&#x901A;&#x4FE1;&#x3002;&#x6CE8;&#x610F;&#xFF1A;<strong>&#x5728;<code>Thread</code>&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E2D;&#x8C03;&#x7528;<code>Looper.myLooper</code>&#x53EA;&#x4F1A;&#x5F97;&#x5230;&#x4E3B;&#x7EBF;&#x7A0B;&#x7684;<code>Looper</code></strong>&#xFF0C;&#x56E0;&#x4E3A;&#x6B64;&#x65F6;&#x65B0;&#x7EBF;&#x7A0B;&#x8FD8;&#x672A;&#x6784;&#x9020;&#x597D;</p>
+<p>&#x4E0B;&#x9762;&#x7ED9;&#x4E00;&#x6BB5;&#x4EE3;&#x7801;&#xFF0C;&#x901A;&#x8FC7;Thread&#xFF0C;Looper&#x548C;Handler&#x5B9E;&#x73B0;&#x7EBF;&#x7A0B;&#x901A;&#x4FE1;&#xFF1A;</p>
+<h3 id="mainactivityjava"><a name="mainactivityjava" class="plugin-anchor" href="#mainactivityjava"><i class="fa fa-link" aria-hidden="true"></i></a>MainActivity.java</h3>
+<pre><code>public class MainActivity extends Activity {
     public static final String TAG = &quot;Main Acticity&quot;;
     Button btn = null;
     Button btn2 = null;
@@ -1229,8 +1234,9 @@
             }
         });
     }
-}</code></pre>
-<h3 id="myhandlerthreadjava"><a name="myhandlerthreadjava" class="plugin-anchor" href="#myhandlerthreadjava"><i class="fa fa-link" aria-hidden="true"></i></a>MyHandlerThread.java</h3><pre><code>public class MyHandlerThread extends Thread {
+}
+</code></pre><h3 id="myhandlerthreadjava"><a name="myhandlerthreadjava" class="plugin-anchor" href="#myhandlerthreadjava"><i class="fa fa-link" aria-hidden="true"></i></a>MyHandlerThread.java</h3>
+<pre><code>public class MyHandlerThread extends Thread {
     public static final String TAG = &quot;MyHT&quot;;
 
     public Handler mHandler = null;
@@ -1249,8 +1255,16 @@
         };
         Looper.loop();
     }
-}</code></pre>
-<hr><h2 id="handlerthread-&#x548C;-asynctask"><a name="handlerthread-&#x548C;-asynctask" class="plugin-anchor" href="#handlerthread-&#x548C;-asynctask"><i class="fa fa-link" aria-hidden="true"></i></a>HandlerThread &#x548C; AsyncTask</h2><h3 id="handlerthread"><a name="handlerthread" class="plugin-anchor" href="#handlerthread"><i class="fa fa-link" aria-hidden="true"></i></a>HandlerThread</h3><p>Android&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x5BF9;<code>Thread</code>&#x548C;<code>Handler</code>&#x8FDB;&#x884C;&#x5C01;&#x88C5;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;<code>HandlerThread</code>&#x3002;&#x6587;&#x6863;&#x4E2D;&#x5BF9;<code>HandlerThread</code>&#x7684;&#x5B9A;&#x4E49;&#x662F;&#xFF1A;</p><blockquote><p>Handy class for starting a new thread that has a looper. The looper can then be used to create handler classes. Note that start() must still be called.</p></blockquote><p><code>HandlerThread</code>&#x7EE7;&#x627F;&#x81EA;<code>Thread</code>&#xFF0C;&#x8BF4;&#x767D;&#x4E86;&#x5C31;&#x662F;<code>Thread</code>&#x52A0;&#x4E0A;&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;<code>Looper</code>&#x3002;&#x5206;&#x6790;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;:</p><pre><code>public class MyHandlerThread extends HandlerThread{
+}
+</code></pre><hr>
+<h2 id="handlerthread-&#x548C;-asynctask"><a name="handlerthread-&#x548C;-asynctask" class="plugin-anchor" href="#handlerthread-&#x548C;-asynctask"><i class="fa fa-link" aria-hidden="true"></i></a>HandlerThread &#x548C; AsyncTask</h2>
+<h3 id="handlerthread"><a name="handlerthread" class="plugin-anchor" href="#handlerthread"><i class="fa fa-link" aria-hidden="true"></i></a>HandlerThread</h3>
+<p>Android&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x5BF9;<code>Thread</code>&#x548C;<code>Handler</code>&#x8FDB;&#x884C;&#x5C01;&#x88C5;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;<code>HandlerThread</code>&#x3002;&#x6587;&#x6863;&#x4E2D;&#x5BF9;<code>HandlerThread</code>&#x7684;&#x5B9A;&#x4E49;&#x662F;&#xFF1A;</p>
+<blockquote>
+<p>Handy class for starting a new thread that has a looper. The looper can then be used to create handler classes. Note that start() must still be called.</p>
+</blockquote>
+<p><code>HandlerThread</code>&#x7EE7;&#x627F;&#x81EA;<code>Thread</code>&#xFF0C;&#x8BF4;&#x767D;&#x4E86;&#x5C31;&#x662F;<code>Thread</code>&#x52A0;&#x4E0A;&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;<code>Looper</code>&#x3002;&#x5206;&#x6790;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;:</p>
+<pre><code>public class MyHandlerThread extends HandlerThread{
     @Override
     public void run(){
         if(Looper.myLooper == null){
@@ -1258,8 +1272,15 @@
         }
         super.run();
     }
-}</code></pre>
-<p>&#x4F1A;&#x629B;&#x51FA;<code>java.lang.RuntimeException: Only one Looper may be created per thread</code>&#x9519;&#x8BEF;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x628A;super.run()&#x6CE8;&#x91CA;&#x6389;&#x5C31;&#x4E0D;&#x4F1A;&#x6709;&#x8FD9;&#x6837;&#x7684;&#x9519;&#x8BEF;&#x3002;&#x663E;&#x7136;&#x5728;<code>super.run()</code>&#x4E2D;&#x8FDB;&#x884C;&#x4E86;Looper&#x7684;&#x7ED1;&#x5B9A;&#x3002;</p><h3 id="asynctask"><a name="asynctask" class="plugin-anchor" href="#asynctask"><i class="fa fa-link" aria-hidden="true"></i></a>AsyncTask</h3><p>AsyncTask&#x662F;&#x8C37;&#x6B4C;&#x5BF9;Thread&#x548C;Handler&#x7684;&#x8FDB;&#x4E00;&#x6B65;&#x5C01;&#x88C5;&#xFF0C;&#x5B8C;&#x5168;&#x9690;&#x85CF;&#x8D77;&#x4E86;&#x8FD9;&#x4E24;&#x4E2A;&#x6982;&#x5FF5;&#xFF0C;&#x800C;&#x7528;<code>doInBackground(Params... params)</code>&#x53D6;&#x800C;&#x4EE3;&#x4E4B;&#x3002;&#x4F46;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;AsyncTask&#x7684;&#x6548;&#x7387;&#x4E0D;&#x662F;&#x5F88;&#x9AD8;&#x800C;&#x4E14;&#x8D44;&#x6E90;&#x4EE3;&#x4EF7;&#x4E5F;&#x6BD4;&#x8F83;&#x91CD;&#xFF0C;&#x53EA;&#x6709;&#x5F53;&#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x5C0F;&#x578B;&#x64CD;&#x4F5C;&#x65F6;&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#x4F7F;&#x7528;&#x3002;&#x8FD9;&#x4E00;&#x70B9;&#x5728;&#x5B98;&#x65B9;&#x6587;&#x6863;&#x5199;&#x7684;&#x5F88;&#x6E05;&#x695A;:</p><blockquote><p>AsyncTask is designed to be a helper class around Thread and Handler and does not constitute a generic threading framework. AsyncTasks should ideally be used for short operations (a few seconds at the most.) If you need to keep threads running for long periods of time, it is highly recommended you use the various APIs provided by the java.util.concurrent package such as Executor, ThreadPoolExecutor and FutureTask.</p></blockquote><p>&#x7531;&#x4E8E;&#x4F7F;&#x7528;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x5E94;&#x8BE5;&#x4E0D;&#x9700;&#x8981;&#x7EC6;&#x8BF4;&#x3002;&#x5982;&#x6709;&#x9700;&#x8981;&#x4F1A;&#x5728;&#x672A;&#x6765;&#x66F4;&#x65B0;&#x3002;</p>
+}
+</code></pre><p>&#x4F1A;&#x629B;&#x51FA;<code>java.lang.RuntimeException: Only one Looper may be created per thread</code>&#x9519;&#x8BEF;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x628A;super.run()&#x6CE8;&#x91CA;&#x6389;&#x5C31;&#x4E0D;&#x4F1A;&#x6709;&#x8FD9;&#x6837;&#x7684;&#x9519;&#x8BEF;&#x3002;&#x663E;&#x7136;&#x5728;<code>super.run()</code>&#x4E2D;&#x8FDB;&#x884C;&#x4E86;Looper&#x7684;&#x7ED1;&#x5B9A;&#x3002;</p>
+<h3 id="asynctask"><a name="asynctask" class="plugin-anchor" href="#asynctask"><i class="fa fa-link" aria-hidden="true"></i></a>AsyncTask</h3>
+<p>AsyncTask&#x662F;&#x8C37;&#x6B4C;&#x5BF9;Thread&#x548C;Handler&#x7684;&#x8FDB;&#x4E00;&#x6B65;&#x5C01;&#x88C5;&#xFF0C;&#x5B8C;&#x5168;&#x9690;&#x85CF;&#x8D77;&#x4E86;&#x8FD9;&#x4E24;&#x4E2A;&#x6982;&#x5FF5;&#xFF0C;&#x800C;&#x7528;<code>doInBackground(Params... params)</code>&#x53D6;&#x800C;&#x4EE3;&#x4E4B;&#x3002;&#x4F46;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;AsyncTask&#x7684;&#x6548;&#x7387;&#x4E0D;&#x662F;&#x5F88;&#x9AD8;&#x800C;&#x4E14;&#x8D44;&#x6E90;&#x4EE3;&#x4EF7;&#x4E5F;&#x6BD4;&#x8F83;&#x91CD;&#xFF0C;&#x53EA;&#x6709;&#x5F53;&#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x5C0F;&#x578B;&#x64CD;&#x4F5C;&#x65F6;&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x8D77;&#x89C1;&#x4F7F;&#x7528;&#x3002;&#x8FD9;&#x4E00;&#x70B9;&#x5728;&#x5B98;&#x65B9;&#x6587;&#x6863;&#x5199;&#x7684;&#x5F88;&#x6E05;&#x695A;:</p>
+<blockquote>
+<p>AsyncTask is designed to be a helper class around Thread and Handler and does not constitute a generic threading framework. AsyncTasks should ideally be used for short operations (a few seconds at the most.) If you need to keep threads running for long periods of time, it is highly recommended you use the various APIs provided by the java.util.concurrent package such as Executor, ThreadPoolExecutor and FutureTask.</p>
+</blockquote>
+<p>&#x7531;&#x4E8E;&#x4F7F;&#x7528;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x5E94;&#x8BE5;&#x4E0D;&#x9700;&#x8981;&#x7EC6;&#x8BF4;&#x3002;&#x5982;&#x6709;&#x9700;&#x8981;&#x4F1A;&#x5728;&#x672A;&#x6765;&#x66F4;&#x65B0;&#x3002;</p>
+
                                 
                                 </section>
                             
@@ -1302,7 +1323,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Android 中的 Thread, Looper 和 Handler 机制","level":"1.4.2.6","depth":3,"next":{"title":"面试问题","level":"1.4.3","depth":2,"path":"Android/Questions.md","ref":"Android/Questions.md","articles":[]},"previous":{"title":"ListView原理与优化","level":"1.4.2.5","depth":3,"path":"Android/basic/ListView-Optimize.md","ref":"Android/basic/ListView-Optimize.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"笔试面试知识整理","gitbook":"*","description":"一些 IT 笔试面试有关知识的整理，包括基础知识，安卓，iOS 开发等，希望对大家有所帮助"},"file":{"path":"Android/basic/Android-handler-thread-looper.md","mtime":"2015-12-31T11:12:09.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-09-25T11:51:20.654Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Android 中的 Thread, Looper 和 Handler 机制","level":"1.4.2.6","depth":3,"next":{"title":"面试问题","level":"1.4.3","depth":2,"path":"Android/Questions.md","ref":"Android/Questions.md","articles":[]},"previous":{"title":"ListView原理与优化","level":"1.4.2.5","depth":3,"path":"Android/basic/ListView-Optimize.md","ref":"Android/basic/ListView-Optimize.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"笔试面试知识整理","gitbook":"*","description":"一些 IT 笔试面试有关知识的整理，包括基础知识，安卓，iOS 开发等，希望对大家有所帮助"},"file":{"path":"Android/basic/Android-handler-thread-looper.md","mtime":"2015-12-31T11:12:09.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-10-07T07:42:05.896Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
