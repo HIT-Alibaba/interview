@@ -106,7 +106,7 @@ UIView 当中提供了一个 `layoutSubviews` 函数，UIView 的子类可以重
 5. 改变 View 的 size 会导致父 View 调用 layoutSubviews
 6. removeFromSuperview 也会导致父 View 调用 layoutSubviews
 
-重载 layoutSubviews 可以让我们实现更复杂的布局效果，[这篇博客](http://bachiscoding.com/blog/2014/12/15/when-will-layoutsubviews-be-invoked/)里以[RDVTabBarController](https://github.com/robbdimitrov/RDVTabBarController)为例进行了简单介绍。
+重载 layoutSubviews 可以让我们实现更复杂的布局效果，[这篇博客](http://bachiscoding.com/2014/12/15/when-will-layoutsubviews-be-invoked/)里以[RDVTabBarController](https://github.com/robbdimitrov/RDVTabBarController)为例进行了简单介绍。
 
 ## 事件处理
 
