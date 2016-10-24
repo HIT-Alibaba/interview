@@ -23,7 +23,6 @@
         * [并发技术](basic/arch/Concurrency.md)
         * [内存管理](basic/arch/Memory-Management.md)
         * [磁盘与文件](basic/arch/Disk-And-File.md)
-        * [进程管理](basic/arch/Concurrency.md)
     * [数据库系统](basic/db/README.md)
         * [事务处理](basic/db/Transaction.md)
         * [索引](basic/db/DB-Index.md)

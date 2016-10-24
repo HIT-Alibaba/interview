@@ -347,33 +347,35 @@ int main() {
 
 使用协程(python)改写生产者-消费者问题：
 
-    import time
+```python
+import time
 
-    def consumer():
-        r = ''
-        while True:
-            n = yield r
-            if not n:
-                return
-            print('[CONSUMER] Consuming %s...' % n)
-            time.sleep(1)
-            r = '200 OK'
+def consumer():
+    r = ''
+    while True:
+        n = yield r
+        if not n:
+            return
+        print('[CONSUMER] Consuming %s...' % n)
+        time.sleep(1)
+        r = '200 OK'
 
-    def produce(c):
-        next(c)                   #python 3.x中使用next(c)，python 2.x中使用c.next()
-        n = 0
-        while n < 5:
-            n = n + 1
-            print('[PRODUCER] Producing %s...' % n)
-            r = c.send(n)
-            print('[PRODUCER] Consumer return: %s' % r)
-        c.close()
+def produce(c):
+    next(c)                   #python 3.x中使用next(c)，python 2.x中使用c.next()
+    n = 0
+    while n < 5:
+        n = n + 1
+        print('[PRODUCER] Producing %s...' % n)
+        r = c.send(n)
+        print('[PRODUCER] Consumer return: %s' % r)
+    c.close()
 
-    if __name__=='__main__':
-        c = consumer()
-        produce(c)
-        
-        
+if __name__=='__main__':
+    c = consumer()
+    produce(c)
+```
+
+    
 可以看到，使用协程不再需要显式地对锁进行操作。
 
 ## IO多路复用
