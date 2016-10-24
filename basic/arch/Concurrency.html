@@ -419,19 +419,6 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3.6" >
-            
-                <span>
-            
-                    
-                    进程管理
-            
-                </span>
-            
-
-            
-        </li>
-    
 
             </ul>
             
@@ -1446,32 +1433,33 @@ Consumer()
 <p>&#x534F;&#x7A0B;&#xFF0C;&#x53C8;&#x79F0;&#x5FAE;&#x7EBF;&#x7A0B;&#xFF0C;&#x7EA4;&#x7A0B;&#x3002;&#x82F1;&#x6587;&#x540D;Coroutine&#x3002;</p>
 <p>&#x534F;&#x7A0B;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x7528;&#x6237;&#x7EA7;&#x7EBF;&#x7A0B;&#xFF0C;&#x534F;&#x7A0B;&#x548C;&#x7EBF;&#x7A0B;&#x7684;&#x533A;&#x522B;&#x662F;&#xFF1A;&#x7EBF;&#x7A0B;&#x662F;&#x62A2;&#x5360;&#x5F0F;&#x7684;&#x8C03;&#x5EA6;&#xFF0C;&#x800C;&#x534F;&#x7A0B;&#x662F;&#x534F;&#x540C;&#x5F0F;&#x7684;&#x8C03;&#x5EA6;&#xFF0C;&#x534F;&#x7A0B;&#x907F;&#x514D;&#x4E86;&#x65E0;&#x610F;&#x4E49;&#x7684;&#x8C03;&#x5EA6;&#xFF0C;&#x7531;&#x6B64;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;&#x6027;&#x80FD;&#xFF0C;&#x4F46;&#x4E5F;&#x56E0;&#x6B64;&#xFF0C;&#x7A0B;&#x5E8F;&#x5458;&#x5FC5;&#x987B;&#x81EA;&#x5DF1;&#x627F;&#x62C5;&#x8C03;&#x5EA6;&#x7684;&#x8D23;&#x4EFB;&#xFF0C;&#x540C;&#x65F6;&#xFF0C;&#x534F;&#x7A0B;&#x4E5F;&#x5931;&#x53BB;&#x4E86;&#x6807;&#x51C6;&#x7EBF;&#x7A0B;&#x4F7F;&#x7528;&#x591A;CPU&#x7684;&#x80FD;&#x529B;&#x3002;</p>
 <p>&#x4F7F;&#x7528;&#x534F;&#x7A0B;(python)&#x6539;&#x5199;&#x751F;&#x4EA7;&#x8005;-&#x6D88;&#x8D39;&#x8005;&#x95EE;&#x9898;&#xFF1A;</p>
-<pre><code>import time
+<pre><code class="lang-python"><span class="hljs-keyword">import</span> time
 
-def consumer():
-    r = &apos;&apos;
-    while True:
-        n = yield r
-        if not n:
-            return
-        print(&apos;[CONSUMER] Consuming %s...&apos; % n)
-        time.sleep(1)
-        r = &apos;200 OK&apos;
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">consumer</span><span class="hljs-params">()</span>:</span>
+    r = <span class="hljs-string">&apos;&apos;</span>
+    <span class="hljs-keyword">while</span> <span class="hljs-keyword">True</span>:
+        n = <span class="hljs-keyword">yield</span> r
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> n:
+            <span class="hljs-keyword">return</span>
+        print(<span class="hljs-string">&apos;[CONSUMER] Consuming %s...&apos;</span> % n)
+        time.sleep(<span class="hljs-number">1</span>)
+        r = <span class="hljs-string">&apos;200 OK&apos;</span>
 
-def produce(c):
-    next(c)                   #python 3.x&#x4E2D;&#x4F7F;&#x7528;next(c)&#xFF0C;python 2.x&#x4E2D;&#x4F7F;&#x7528;c.next()
-    n = 0
-    while n &lt; 5:
-        n = n + 1
-        print(&apos;[PRODUCER] Producing %s...&apos; % n)
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">produce</span><span class="hljs-params">(c)</span>:</span>
+    next(c)                   <span class="hljs-comment">#python 3.x&#x4E2D;&#x4F7F;&#x7528;next(c)&#xFF0C;python 2.x&#x4E2D;&#x4F7F;&#x7528;c.next()</span>
+    n = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">while</span> n &lt; <span class="hljs-number">5</span>:
+        n = n + <span class="hljs-number">1</span>
+        print(<span class="hljs-string">&apos;[PRODUCER] Producing %s...&apos;</span> % n)
         r = c.send(n)
-        print(&apos;[PRODUCER] Consumer return: %s&apos; % r)
+        print(<span class="hljs-string">&apos;[PRODUCER] Consumer return: %s&apos;</span> % r)
     c.close()
 
-if __name__==&apos;__main__&apos;:
+<span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&apos;__main__&apos;</span>:
     c = consumer()
     produce(c)
-</code></pre><p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x4F7F;&#x7528;&#x534F;&#x7A0B;&#x4E0D;&#x518D;&#x9700;&#x8981;&#x663E;&#x5F0F;&#x5730;&#x5BF9;&#x9501;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#x3002;</p>
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x4F7F;&#x7528;&#x534F;&#x7A0B;&#x4E0D;&#x518D;&#x9700;&#x8981;&#x663E;&#x5F0F;&#x5730;&#x5BF9;&#x9501;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#x3002;</p>
 <h2 id="io&#x591A;&#x8DEF;&#x590D;&#x7528;"><a name="io&#x591A;&#x8DEF;&#x590D;&#x7528;" class="plugin-anchor" href="#io&#x591A;&#x8DEF;&#x590D;&#x7528;"><i class="fa fa-link" aria-hidden="true"></i></a>IO&#x591A;&#x8DEF;&#x590D;&#x7528;</h2>
 <h3 id="&#x57FA;&#x672C;&#x6982;&#x5FF5;"><a name="&#x57FA;&#x672C;&#x6982;&#x5FF5;" class="plugin-anchor" href="#&#x57FA;&#x672C;&#x6982;&#x5FF5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x57FA;&#x672C;&#x6982;&#x5FF5;</h3>
 <p>IO&#x591A;&#x8DEF;&#x590D;&#x7528;&#x662F;&#x6307;&#x5185;&#x6838;&#x4E00;&#x65E6;&#x53D1;&#x73B0;&#x8FDB;&#x7A0B;&#x6307;&#x5B9A;&#x7684;&#x4E00;&#x4E2A;&#x6216;&#x8005;&#x591A;&#x4E2A;IO&#x6761;&#x4EF6;&#x51C6;&#x5907;&#x8BFB;&#x53D6;&#xFF0C;&#x5B83;&#x5C31;&#x901A;&#x77E5;&#x8BE5;&#x8FDB;&#x7A0B;&#x3002;IO&#x591A;&#x8DEF;&#x590D;&#x7528;&#x9002;&#x7528;&#x5982;&#x4E0B;&#x573A;&#x5408;&#xFF1A;</p>
@@ -1542,7 +1530,7 @@ if __name__==&apos;__main__&apos;:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"并发技术","level":"1.2.3.3","depth":3,"next":{"title":"内存管理","level":"1.2.3.4","depth":3,"path":"basic/arch/Memory-Management.md","ref":"basic/arch/Memory-Management.md","articles":[]},"previous":{"title":"操作系统基础","level":"1.2.3.2","depth":3,"path":"basic/arch/OS.md","ref":"basic/arch/OS.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"笔试面试知识整理","gitbook":"*","description":"一些 IT 笔试面试有关知识的整理，包括基础知识，安卓，iOS 开发等，希望对大家有所帮助"},"file":{"path":"basic/arch/Concurrency.md","mtime":"2016-03-17T09:07:58.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-10-15T10:16:52.746Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"并发技术","level":"1.2.3.3","depth":3,"next":{"title":"内存管理","level":"1.2.3.4","depth":3,"path":"basic/arch/Memory-Management.md","ref":"basic/arch/Memory-Management.md","articles":[]},"previous":{"title":"操作系统基础","level":"1.2.3.2","depth":3,"path":"basic/arch/OS.md","ref":"basic/arch/OS.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"笔试面试知识整理","gitbook":"*","description":"一些 IT 笔试面试有关知识的整理，包括基础知识，安卓，iOS 开发等，希望对大家有所帮助"},"file":{"path":"basic/arch/Concurrency.md","mtime":"2016-10-24T12:58:14.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-10-24T12:58:35.524Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
