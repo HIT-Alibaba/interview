@@ -42,5 +42,5 @@ ViewController 生命周期的第一步是初始化。不过具体调用的方�
 
 ### 参考资料
 
-1. [UIViewController生命周期方法执行顺序](blog.csdn.net/fanjunxi1990/article/details/16940271)
+1. [UIViewController生命周期方法执行顺序](http://blog.csdn.net/fanjunxi1990/article/details/16940271)
 2. http://blog.devtang.com/blog/2013/05/18/goodbye-viewdidunload/
