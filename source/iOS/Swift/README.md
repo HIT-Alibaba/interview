@@ -1,3 +1,3 @@
 ## Swift
 
-Swift 3.0 随着 Xcode 8 & iOS 10 正式发布了。经历了 Swift 1 -> 2 -> 3 当中无数次的 breaking change 之后，Swift 终于到达了一个相对稳定的阶段。本文档的 Swift 系列也正式开坑了，欢迎大家帮忙来填坑。
+本以为 Swift 3 之后 Swift 就会稳定了，听闻 Swift 4 还会有 breaking change，本文档 Swift 部分暂时先搁置吧...
