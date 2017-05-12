@@ -113,7 +113,7 @@ dispatch_async(backgroundQueue, {
 
 #### 自己创建的队列与系统队列有什么不同？
 
-事实上，我们自己创建的队列，最终会把任务分配到系统提供的主队列和四个全局的并行队列上，这种操作叫做 Target queues。具体来说，我们创建的串行队列的 target queue 就是系统的主队列，我们创建的并行队列的 target queue 默认是系统 default 优先级的全局串行队列。所有放在我们创建的队列中的任务，最终都会到 target queue 中完成真正的执行。
+事实上，我们自己创建的队列，最终会把任务分配到系统提供的主队列和四个全局的并行队列上，这种操作叫做 Target queues。具体来说，我们创建的串行队列的 target queue 就是系统的主队列，我们创建的并行队列的 target queue 默认是系统 default 优先级的全局并行队列。所有放在我们创建的队列中的任务，最终都会到 target queue 中完成真正的执行。
 
 那岂不是自己创建队列就没有什么意义了？其实不是的。通过我们自己创建的队列，以及 dispatch_set_target_queue 和 barrier 等操作，可以实现比较复杂的任务之间的同步，可以参考[这里](http://blog.csdn.net/growinggiant/article/details/41077221) 和 [这里](http://www.humancode.us/2014/08/14/target-queues.html)。
 
