@@ -120,6 +120,8 @@ myController.completionHandler =  ^(NSInteger result) {
 };
 ```
 
+## Block 进阶
+
 ### 使用 Block 时的注意事项
 
 在非 ARC 的情况下，对于 block 类型的属性应该使用 `copy` ，因为 block 需要维持其作用域中捕获的变量。在 ARC 中编译器会自动对 block 进行 copy 操作，因此使用 `strong` 或者 `copy` 都可以，没有什么区别，但是苹果仍然建议使用 `copy` 来指明编译器的行为。
@@ -174,6 +176,61 @@ NSBlockOperation *op = [[[NSBlockOperation alloc] init] autorelease];
 #### Bonus
 
 很多文章对于 weakSelf 的解释中并没有详细说，为什么有可能 block 执行的过程当中 weakSelf 变为 nil，这就涉及到 weak 本身的机制了。weak 置 nil 的操作发生在 dealloc 中，苹果在 [TN2109 - The Deallocation Problem](https://developer.apple.com/library/content/technotes/tn2109/_index.html#//apple_ref/doc/uid/DTS40010274-CH1-SUBSECTION11) 中指出，最后一个持有 object 的对象被释放的时候，会触发对象的 dealloc，而这个持有者的释放操作就不一定保证发生在哪个线程了。因此 block 执行的过程中 weakSelf 有可能在另外的线程中被置为 nil。
+
+### Block 在堆上还是在栈上？
+
+首先要指出，Block 在非 ARC 和 ARC 两种环境下的内存机制差别很大。
+
+在 MRC 下，Block 默认是分配在栈上的，除非进行显式的 copy：
+
+```objectivec
+__block int val = 10;
+blk stackBlock = ^{NSLog(@"val = %d", ++val);};
+NSLog(@"stackBlock: %@", stackBlock); // stackBlock: <__NSStackBlock__: 0xbfffdb28>
+
+tempBlock = [stackBlock copy];
+NSLog(@"tempBlock: %@", tempBlock);  // tempBlock: <__NSMallocBlock__: 0x756bf20>
+```
+
+想把 Block 用作返回值的时候，也要加入 `copy` 和 `autorelease`：
+
+```objectivec
+- (blk)myTestBlock {
+    __block int val = 10;
+    blk stackBlock = ^{NSLog(@"val = %d", ++val);};
+    return [[stackBlock copy] autorelease];
+}
+```
+
+在 ARC 环境下，Block 使用简化了很多，原因是 ARC 更加倾向于把 Block 放到堆上：
+
+```objectivec
+__blockint val = 10;
+__strong blk strongPointerBlock = ^{NSLog(@"val = %d", ++val);};
+NSLog(@"strongPointerBlock: %@", strongPointerBlock); // strongPointerBlock: <__NSMallocBlock__: 0x7625120>
+
+__weak blk weakPointerBlock = ^{NSLog(@"val = %d", ++val);};
+NSLog(@"weakPointerBlock: %@", weakPointerBlock); // weakPointerBlock: <__NSStackBlock__: 0xbfffdb30>
+
+NSLog(@"mallocBlock: %@", [weakPointerBlock copy]); // mallocBlock: <__NSMallocBlock__: 0x714ce60>
+
+NSLog(@"test %@", ^{NSLog(@"val = %d", ++val);}); // test <__NSStackBlock__: 0xbfffdb18>
+```
+
+可以看到只有显式的 `__weak` 以及纯匿名 Block 是放到栈上的，默认只有赋值给 `__strong` 指针（也就是默认赋值）都会导致在堆上创建 Block。
+
+对于把 Block 作为函数返回值的情况，ARC 也能自动处理：
+
+```objectivec
+- (__unsafe_unretained blk) blockTest {
+    int val = 11;
+    return ^{NSLog(@"val = %d", val);};
+}
+
+NSLog(@"block return from function: %@", [self blockTest]); // block return from function: <__NSMallocBlock__: 0x7685640>
+```
+
+PS：经过上面的讨论，可以发现巧神的[这篇博客](http://blog.devtang.com/2013/07/28/a-look-inside-blocks/) 中认为在 ARC 情况下不再有 `NSConcreteStackBlock`，其实是不完全准确的。
 
 #### 参考资料
 
