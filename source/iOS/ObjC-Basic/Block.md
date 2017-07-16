@@ -238,3 +238,4 @@ PS：经过上面的讨论，可以发现巧神的[这篇博客](http://blog.dev
 * http://blog.waterworld.com.hk/post/block-weakself-strongself
 * https://stackoverflow.com/questions/17384599/why-are-block-variables-not-retained-in-non-arc-environments
 * https://stackoverflow.com/questions/2746197/dealloc-on-background-thread/24410372#24410372
+* http://www.cnblogs.com/biosli/archive/2013/05/29/iOS_Objective-C_Block.html
