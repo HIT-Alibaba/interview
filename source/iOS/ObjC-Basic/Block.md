@@ -171,8 +171,13 @@ NSBlockOperation *op = [[[NSBlockOperation alloc] init] autorelease];
 
 `__strong` 这一句在执行的时候，如果 WeakSelf 还没有变成 nil，那么就会 retain self，让 self 在 block 执行期间不会变为 nil。这样上面的 `doSomething` 和 `doMoreThing` 要么全执行成功，要么全失败，不会出现一个成功一个失败，即执行到中间 `self` 变成 nil 的情况。
 
+#### Bonus
+
+很多文章对于 weakSelf 的解释中并没有详细说，为什么有可能 block 执行的过程当中 weakSelf 变为 nil，这就涉及到 weak 本身的机制了。weak 置 nil 的操作发生在 dealloc 中，苹果在 [TN2109 - The Deallocation Problem](https://developer.apple.com/library/content/technotes/tn2109/_index.html#//apple_ref/doc/uid/DTS40010274-CH1-SUBSECTION11) 中指出，最后一个持有 object 的对象被释放的时候，会触发对象的 dealloc，而这个持有者的释放操作就不一定保证发生在哪个线程了。因此 block 执行的过程中 weakSelf 有可能在另外的线程中被置为 nil。
+
 #### 参考资料
 
 * https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/WorkingwithBlocks/WorkingwithBlocks.html#//apple_ref/doc/uid/TP40011210-CH8-SW16
 * http://blog.waterworld.com.hk/post/block-weakself-strongself
 * https://stackoverflow.com/questions/17384599/why-are-block-variables-not-retained-in-non-arc-environments
+* https://stackoverflow.com/questions/2746197/dealloc-on-background-thread/24410372#24410372
