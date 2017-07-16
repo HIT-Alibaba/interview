@@ -205,7 +205,7 @@ NSLog(@"tempBlock: %@", tempBlock);  // tempBlock: <__NSMallocBlock__: 0x756bf20
 在 ARC 环境下，Block 使用简化了很多，同时 ARC 也更加倾向于把 Block 放到堆上：
 
 ```objectivec
-__blockint val = 10;
+__block int val = 10;
 __strong blk strongPointerBlock = ^{NSLog(@"val = %d", ++val);};
 NSLog(@"strongPointerBlock: %@", strongPointerBlock); // strongPointerBlock: <__NSMallocBlock__: 0x7625120>
 
@@ -239,3 +239,5 @@ PS：经过上面的讨论，可以发现巧神的[这篇博客](http://blog.dev
 * https://stackoverflow.com/questions/17384599/why-are-block-variables-not-retained-in-non-arc-environments
 * https://stackoverflow.com/questions/2746197/dealloc-on-background-thread/24410372#24410372
 * http://www.cnblogs.com/biosli/archive/2013/05/29/iOS_Objective-C_Block.html
+
+
