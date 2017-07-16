@@ -202,7 +202,7 @@ NSLog(@"tempBlock: %@", tempBlock);  // tempBlock: <__NSMallocBlock__: 0x756bf20
 }
 ```
 
-在 ARC 环境下，Block 使用简化了很多，原因是 ARC 更加倾向于把 Block 放到堆上：
+在 ARC 环境下，Block 使用简化了很多，同时 ARC 也更加倾向于把 Block 放到堆上：
 
 ```objectivec
 __blockint val = 10;
@@ -217,7 +217,7 @@ NSLog(@"mallocBlock: %@", [weakPointerBlock copy]); // mallocBlock: <__NSMallocB
 NSLog(@"test %@", ^{NSLog(@"val = %d", ++val);}); // test <__NSStackBlock__: 0xbfffdb18>
 ```
 
-可以看到只有显式的 `__weak` 以及纯匿名 Block 是放到栈上的，默认只有赋值给 `__strong` 指针（也就是默认赋值）都会导致在堆上创建 Block。
+可以看到只有显式的 `__weak` 以及纯匿名 Block 是放到栈上的，赋值给 `__strong` 指针（也就是默认赋值）都会导致在堆上创建 Block。
 
 对于把 Block 作为函数返回值的情况，ARC 也能自动处理：
 
