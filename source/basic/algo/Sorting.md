@@ -1,10 +1,10 @@
 ## 排序算法的评价
 
-#### 稳定性
+### 稳定性
 
 稳定排序算法会依照相等的关键（换言之就是值）维持纪录的相对次序。也就是一个排序算法是稳定的，就是当有两个有相等关键的纪录R和S，且在原本的串行中R出现在S之前，在排序过的串行中R也将会是在S之前。
 
-#### 计算复杂度（最差、平均、和最好表现）
+### 计算复杂度（最差、平均、和最好表现）
 
 依据串行（list）的大小（n），一般而言，好的表现是O(nlogn)，且坏的行为是O(n2)。对于一个排序理想的表现是O(n)。仅使用一个抽象关键比较运算的排序算法总平均上总是至少需要O(nlogn)。
 
@@ -12,7 +12,7 @@
 
 ## 常见排序算法
 
-#### 稳定排序：
+常见的稳定排序算法有：
 
 * 冒泡排序（Bubble Sort） — O(n²)
 * 插入排序（Insertion Sort）— O(n²)
@@ -22,18 +22,136 @@
 * 二叉排序树排序 （Binary tree sort） — O(n log n) 期望时间; O(n²)最坏时间; 需要 O(n) 额外空间
 * 基数排序（Radix sort）— O(n·k); 需要 O(n) 额外空间
 
-#### 不稳定排序
+常见的不稳定排序算法有：
 
 * 选择排序（Selection Sort）— O(n²)
 * 希尔排序（Shell Sort）— O(nlogn)
 * 堆排序（Heapsort）— O(nlogn)
 * 快速排序（Quicksort）— O(nlogn) 期望时间, O(n²) 最坏情况; 对于大的、乱数串行一般相信是最快的已知排序
 
-#### 快排
+### 冒泡排序
+
+冒泡排序是最简单最容易理解的排序算法之一，其思想是通过无序区中相邻记录关键字间的比较和位置的交换,使关键字最小的记录如气泡一般逐渐往上“漂浮”直至“水面”。 冒泡排序的复杂度，在最好情况下，即正序有序，则只需要比较n次。故，为O(n) ，最坏情况下，即逆序有序，则需要比较(n-1)+(n-2)+……+1，故，为O(N*N)。
+
+#### 乌龟和兔子
+
+在冒泡排序中，最大元素的移动速度是最快的，哪怕一开始最大元素处于序列开头，也可以在一轮内层循环之后，移动到序列末尾。而对于最小元素，每一轮内层循环只能向前挪动一位，如果最小元素在序列末尾，就需要 n-1 次交换才能移动到序列开头。这两种类型的元素分别被称为兔子和乌龟。
+
+#### 代码实现：
+
+```csharp
+private static void BubbleSort(int[] array)
+{
+    for (var i = 0; i < array.Length - 1; i++)  // 若最小元素在序列末尾，需要 n-1 次交换，才能交换到序列开头
+    {
+        for (var j = 0; j < array.Length - 1; j++)
+        {
+            if (array[j] > array[j + 1])   // 若这里的条件是 >=，则变成不稳定排序
+            {
+                Swap(array, j, j+1);
+            }
+        }
+    }
+}
+```
+
+#### 优化
+
+在非最坏的情况下，冒泡排序过程中，可以检测到整个序列是否已经排序完成，进而可以避免掉后续的循环：
+
+```csharp
+private static void BubbleSort(int[] array)
+{
+    for (var i = 0; i < array.Length - 1; i++)
+    {
+        var swapped = false;
+        for (var j = 0; j < array.Length - 1; j++)
+        {
+            if (array[j] > array[j + 1])
+            {
+                Swap(array, j, j+1);
+                swapped = true;
+            }
+        }
+
+        if (!swapped)  // 没有发生交互，证明排序已经完成
+        {
+            break;
+        }
+    }
+}
+```
+
+进一步地，在每轮循环之后，可以确认，最后一次发生交换的位置之后的元素，都是已经排好序的，因此可以不再比较那个位置之后的元素，大幅度减少了比较的次数：
+
+```csharp
+private static void BubbleSort(int[] array)
+{
+    var n = array.Length;
+    for (var i = 0; i < array.Length - 1; i++)
+    {
+        var newn = 0;
+        for (var j = 0; j < n - 1; j++)
+        {
+            if (array[j] > array[j + 1])
+            {
+                Swap(array, j, j+1);
+                newn = j + 1;   // newn 以及之后的元素，都是排好序的
+            }
+        }
+
+        n = newn;
+
+        if (n == 0)
+        {
+            break;
+        }
+    }
+}
+```
+
+更进一步地，为了优化之前提到的乌龟和兔子问题，可以进行双向的循环，正向循环把最大元素移动到末尾，逆向循环把最小元素移动到最前，这种优化过的冒泡排序，被称为鸡尾酒排序：
+
+```csharp
+private static void CocktailSort(int[] array)
+{
+    var begin = 0;
+    var end = array.Length - 1;
+    while (begin <= end)
+    {
+	var newBegin = end;
+	var newEnd = begin;
+
+	for (var j = begin; j < end; j++)
+	{
+	    if (array[j] > array[j + 1])
+	    {
+		Swap(array, j, j + 1);
+		newEnd = j + 1;
+	    }
+	}
+
+	end = newEnd - 1;
+
+	for (var j = end; j > begin - 1; j--)
+	{
+	    if (array[j] > array[j + 1])
+	    {
+		Swap(array, j, j + 1);
+		newBegin = j;
+	    }
+	}
+
+	begin = newBegin + 1;
+    }
+}
+```
+
+### 快排
 
 快排是经典的 divide & conquer 问题，如下用于描述快排的思想、伪代码、代码、复杂度计算以及快排的变形。
 
-##### 快排的思想
+#### 快排的思想
 
 如下的三步用于描述快排的流程：
 
