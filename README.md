@@ -24,3 +24,9 @@
 * [dodola](https://github.com/dodola)
 * [AveryLiu](https://github.com/AveryLiu)
 * [JackAlan](https://github.com/AlanMelody)
+
+
+### 更多优秀教程：
+
+* [Heart First Java Web](https://github.com/skyline75489/Heart-First-JavaWeb) ——可能是第一个说人话的 Java Web 入门教程
+* [learnrx-zh-cn](https://github.com/skyline75489/learnrx-zh-cn)——Rx 官方出品互动式教程，中文精心翻译，新手老手都能有所收获
