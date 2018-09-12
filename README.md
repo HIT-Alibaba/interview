@@ -28,5 +28,6 @@
 
 ### 更多优秀教程：
 
+* [what-happens-when-zh_CN](https://github.com/skyline75489/what-happens-when-zh_CN)——你可能想象不到，浏览器中有如此多的不为人知
 * [Heart First Java Web](https://github.com/skyline75489/Heart-First-JavaWeb) ——可能是第一个说人话的 Java Web 入门教程
 * [learnrx-zh-cn](https://github.com/skyline75489/learnrx-zh-cn)——Rx 官方出品互动式教程，中文精心翻译，新手老手都能有所收获
