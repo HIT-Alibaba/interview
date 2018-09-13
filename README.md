@@ -11,12 +11,6 @@
 
 使用 [知识共享“署名-非商业性使用-相同方式共享 3.0 中国大陆”许可协议](https://creativecommons.org/licenses/by-nc-sa/3.0/cn/) 授权。
 
-### 编辑流程
-
-* 首先请安装 [Gitbook](https://github.com/GitbookIO/gitbook/blob/master/docs/setup.md) 并参考其文档进行编辑
-* 完成编辑之后，可以执行 `./serve.sh`，在浏览器中即时预览结果
-* 随时欢迎 issue 和 PR。只需要更改 master 分支的内容，我会去更新 gh-pages。
- 
 ### 贡献者：
 
 * [skyline75489](https://github.com/skyline75489)
