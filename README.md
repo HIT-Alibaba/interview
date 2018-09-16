@@ -28,4 +28,4 @@
 
 ### 联系作者
 
-[group](./qq.jpeg)
+![group](./qq.jpeg)
