@@ -24,7 +24,7 @@
 此状态由onResume()进入，由onPause()退出
 
 ####2. 暂停(Paused)状态
-当Activity失去焦点但仍对用户可见(如在它之上有另一个透明的Activity或Toast、AlertDialog等弹出窗口时)它处于暂停状态。暂停的Activity仍然是存活状态(它保留着所有的状态和成员信息并保持和窗口管理器的连接),但是当系统内存极小时可以被系统杀掉。
+当Activity失去焦点(如在它之上有另一个透明的Activity或返回桌面)它将处于暂停, 再进而进入其他状态。暂停的Activity仍然是存活状态(它保留着所有的状态和成员信息并保持和窗口管理器的连接),但是当系统内存极小时可以被系统杀掉。Android7.0后, 多窗口模式下失去焦点的Activity也将进入onPause，但这不意味着Activity中的活动(动画、视频)等会暂停。虽然官方文档使用的是"an activity is going into the background" 来描述，但这不意味着一个Toast或者由本Activity创建的Dialog会调用onPause。结合[这里](https://hit-alibaba.github.io/interview/Android/basic/Android-LaunchMode.html)对Activity的栈机制不难理解，只要当前Activity仍处于栈顶，系统就默认其仍处于活跃状态。
 
 此状态由onPause()进入，可能下一步进入onResume()或者onCreate()重新唤醒软件，或者被onStop()杀掉
 
