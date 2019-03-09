@@ -98,3 +98,60 @@ ListNode *detectCycle(ListNode *head) {
 ```
 
 #### 单链表找交点 [LeetCode 160](https://leetcode.com/problems/intersection-of-two-linked-lists/)
+
+和找环的方法类似，同样可以使用 Hash 表存储所有节点，发现重复的节点即交点。
+
+一个容易想到的方法是，先得到两个链表的长度，然后得到长度的差值 distance，两个指针分别从两个链表头部遍历，其中较长链表指针先走 distance 步，然后同时向后走，当两个指针相遇的时候，即链表的交点：
+
+```cpp
+int getListLength(ListNode *head) {
+    if (head == nullptr) {
+        return 0;
+    }
+    int length = 0;
+    ListNode *p = head;
+    while (p!=nullptr) {
+        p = p->next;
+        length ++;
+    }
+    return length;
+}
+
+ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+    int lengthA = getListLength(headA);
+    int lengthB = getListLength(headB);
+
+    if (lengthA > lengthB) {
+        std::swap(headA, headB);
+    };
+    int distance = abs(lengthB - lengthA);
+    ListNode *p1 = headA;
+    ListNode *p2 = headB;
+    while(distance--) {
+        p2 = p2->next;
+    }
+    while (p1 != nullptr && p2 != nullptr) {
+        if (p1 == p2)
+            return p1;
+        p1 = p1->next;
+        p2 = p2->next;
+    }
+    return NULL;
+}
+```
+
+另一个较快的方法时，两个指针 pa，pb 分别从 headA，headB开始遍历，当 pa 遍历到尾部的时候，指向 headB，当 pb 遍历到尾部的时候，转向 headA。当两个指针再次相遇的时候，如果两个链表有交点，则指向交点，如果没有则指向 NULL：
+
+```cpp
+ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+    ListNode *pa = headA;
+    ListNode *pb = headB;
+
+    while (pa != pb) {
+        pa = pa != nullptr ? pa->next : headB;
+        pb = pb != nullptr ? pb->next : headA;
+    }
+
+    return pa;
+}
+```
