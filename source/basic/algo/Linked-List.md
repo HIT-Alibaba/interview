@@ -1,4 +1,4 @@
-## 单链表
+## 单链表例题
 
 #### 单链表翻转 [LeetCode 206](https://leetcode.com/problems/reverse-linked-list/)
 
@@ -153,5 +153,51 @@ ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
     }
 
     return pa;
+}
+```
+
+
+#### 单链表找中间节点 [LeetCode 876](https://leetcode.com/problems/middle-of-the-linked-list/)
+
+用快慢指针法，当快指针走到链表结尾时，慢指针刚好走到链表的中间：
+
+```cpp
+ListNode* middleNode(ListNode* head) {
+    ListNode *slow = head;
+    ListNode *fast = head;
+    while (fast && fast->next) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    return slow;
+}
+```
+
+#### 单链表合并 [LeetCode 21](https://leetcode.com/problems/merge-two-sorted-lists/)
+
+两个链表本身都是排序过的，把两个链表从头节点开始，逐个节点开始进行比较，最后剩下的节点接到尾部：
+
+```cpp
+ListNode *mergeTwoLists(ListNode *l1, ListNode *l2) {
+    if (l1 == nullptr) {
+        return l2;
+    }
+    if (l2 == nullptr) {
+        return l1;
+    }
+    ListNode dummy(-1);
+    ListNode *p = &dummy;
+    for (; l1 && l2; p = p->next) {
+        if (l1->val < l2->val) {
+            p->next = l1;
+            l1 = l1->next;
+        } else {
+            p->next = l2;
+            l2 = l2->next;
+        }
+    }
+    p->next = l1 != nullptr ? l1 : l2;
+    return dummy.next;
 }
 ```
