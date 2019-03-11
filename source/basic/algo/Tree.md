@@ -175,7 +175,7 @@ vector<int> inorderTraversal(TreeNode* root) {
 }
 ```
 
-非递归遍历中，后序遍历相对更难实现，因为需要在遍历完左右子节点之后，再遍历根节点，因此不能直接将根节点出栈。这里使用一个 last 指针记录上次出栈的节点，当且仅当节点的右孩子为空，或者有孩子已经出栈，才将本节点出栈：
+非递归遍历中，后序遍历相对更难实现，因为需要在遍历完左右子节点之后，再遍历根节点，因此不能直接将根节点出栈。这里使用一个 last 指针记录上次出栈的节点，当且仅当节点的右孩子为空（top->right == NULL），或者右孩子已经出栈（top->right == last），才将本节点出栈：
 
 非递归后序遍历（[LeetCode 145](https://leetcode.com/problems/binary-tree-postorder-traversal/)）：
 
@@ -272,6 +272,26 @@ vector<vector<int>> levelOrder(TreeNode* root) {
     return result;
 }
 ```
+
+### 二叉树子树 [LeetCode 572](https://leetcode.com/problems/subtree-of-another-tree/)
+
+判断二叉树是否是另一棵二叉树的子树，使用递归实现：
+
+```cpp
+bool isSubtree(TreeNode* s, TreeNode* t) {
+    if (!s) return false;
+    if (sameTree(s, t)) return true;
+    return isSubtree(s->left, t) || isSubtree(s->right, t);
+}
+
+bool sameTree(TreeNode* s, TreeNode* t) {
+    if (!s && !t) return true;
+    if (!s || !t) return false;
+    if (s->val != t->val) return false;
+    return sameTree(s->left, t->left) && sameTree(s->right, t->right);
+}
+```
+
 ### 参考资料
 
 * [百度百科：哈弗曼树](http://baike.baidu.com/view/127820.htm)
