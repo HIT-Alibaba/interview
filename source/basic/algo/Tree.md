@@ -292,6 +292,28 @@ bool sameTree(TreeNode* s, TreeNode* t) {
 }
 ```
 
+### 翻转二叉树 [LeetCode 226](https://leetcode.com/problems/invert-binary-tree/)
+
+交互树的左右儿子节点，使用递归实现：
+
+```cpp
+TreeNode* invertTree(TreeNode* root) {
+    if (root == nullptr) {
+        return nullptr;
+    }
+    TreeNode *tmp = root->left;
+    root->left = root->right;
+    root->right = tmp;
+    if (root->left) {
+        invertTree(root->left);
+    }
+    if (root->right) {
+        invertTree(root->right);
+    }
+    return root;
+}
+```
+
 ### 参考资料
 
 * [百度百科：哈弗曼树](http://baike.baidu.com/view/127820.htm)
