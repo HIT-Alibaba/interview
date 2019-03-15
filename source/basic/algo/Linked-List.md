@@ -1,4 +1,4 @@
-## 单链表例题
+## 例题
 
 #### 单链表翻转 [LeetCode 206](https://leetcode.com/problems/reverse-linked-list/)
 
