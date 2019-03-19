@@ -46,7 +46,7 @@ int climbStairs(int n) {
 
 #### 连续子数组的最大和 [LeetCode 53](https://leetcode.com/problems/maximum-subarray/)
 
-在已经有 `n-1` 长度的数组的结果之后，容易想到状态转移方程为`dp[n] = max(dp[n-1] + num[n], num[n])`，从第 1 个元素开始，自顶向上求解：
+用 `dp[n`] 表示元素 n 作为末尾的连续序列的最大和，容易想到状态转移方程为`dp[n] = max(dp[n-1] + num[n], num[n])`，从第 1 个元素开始，自顶向上求解：
 
 ```cpp
 int maxSubArray(vector<int>& nums) {
