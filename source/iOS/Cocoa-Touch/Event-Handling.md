@@ -51,7 +51,7 @@ iOS 系统检测到手指触摸 (Touch) 操作时会将其打包成一个 UIEven
                 break;
             }
         }
-    }else{
+    } else {
         touchView = nil;
     }
 
@@ -61,7 +61,7 @@ iOS 系统检测到手指触摸 (Touch) 操作时会将其打包成一个 UIEven
 
 #### 说明
 
-1. 如果最终 hit-test 没有找到第一响应者，或者第一响应者没有处理该事件，则该事件会沿着响应者链向上回溯，如果 UIWindow 实例和 UIApplication 实例都不能处理该事件，则该事件会被丢弃（这个过程即上面提到的响应值链）；
+1. 如果最终 hit-test 没有找到第一响应者，或者第一响应者没有处理该事件，则该事件会沿着响应者链向上回溯，如果 UIWindow 实例和 UIApplication 实例都不能处理该事件，则该事件会被丢弃；
 2. `hitTest:withEvent:` 方法将会忽略隐藏 (hidden=YES) 的视图，禁止用户操作 (`userInteractionEnabled=NO`) 的视图，以及 alpha 级别小于 0.01(alpha<0.01)的视图。如果一个子视图的区域超过父视图的 bound 区域(父视图的 clipsToBounds 属性为 NO，这样超过父视图 bound 区域的子视图内容也会显示)，那么正常情况下对子视图在父视图之外区域的触摸操作不会被识别, 因为父视图的 `pointInside:withEvent:` 方法会返回 NO, 这样就不会继续向下遍历子视图了。当然，也可以重写 `pointInside:withEvent:` 方法来处理这种情况。
 3. 我们可以重写 `hitTest:withEvent:` 来达到某些特定的目的。
 

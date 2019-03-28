@@ -1,4 +1,4 @@
-UIView 表示屏幕上的一块矩形区域，负责渲染区域的内容，并且响应该区域内发生的触摸事件。它在iOS App中占有绝对重要的地位，因为iOS中几乎所有可视化控件都是 UIView 的子类。
+UIView 表示屏幕上的一块矩形区域，负责渲染区域的内容，并且响应该区域内发生的触摸事件。它在 iOS App 中占有绝对重要的地位，因为 iOS 中几乎所有可视化控件都是 UIView 的子类。
 
 UIView 可以负责以下几种任务：
 
@@ -10,9 +10,9 @@ UIView 可以负责以下几种任务：
 
 ### 视图绘制
 
-UIView 是按需绘制的，当整个视图或者视图的一部分由于布局变化，变成可见的，系统会要求视图进行绘制。对于那些需要使用 UIKit 或者 CoreGraphics 进行自定义绘制的视图，系统会调用`drawRect:`方法进行绘制。
+UIView 是按需绘制的，当整个视图或者视图的一部分由于布局变化，变成可见的，系统会要求视图进行绘制。对于那些需要使用 UIKit 或者 CoreGraphics 进行自定义绘制的视图，系统会调用 `drawRect:` 方法进行绘制。
 
-当视图内容发生变化时，需要调用`setNeedsDisplay`或者`setNeedsDisplayInRect:`方法，告诉系统该重新绘制这个视图了。调用这个方法之后，系统会在下一个绘制周期更新这个视图的内容。由于系统要等到下一个绘制周期才真正进行绘制，可以一次性对多个视图调用`setNeedsDisplay`，它们会同时被更新。
+当视图内容发生变化时，需要调用 `setNeedsDisplay` 或者 `setNeedsDisplayInRect:` 方法，告诉系统该重新绘制这个视图了。调用这个方法之后，系统会在下一个绘制周期更新这个视图的内容。由于系统要等到下一个绘制周期才真正进行绘制，可以一次性对多个视图调用 `setNeedsDisplay`，它们会同时被更新。
 
 
 ### 视图的几何属性
@@ -79,7 +79,7 @@ UIView 是按需绘制的，当整个视图或者视图的一部分由于布局�
 * UIViewAutoresizingFlexibleBottomMargin
 * UIViewAutoresizingFlexibleTopMargin
 
-可以通过位运算符将它们组合起来，例如`UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth`。
+可以通过位运算符将它们组合起来，例如 `UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth`。
 
 #### Constraint
 
@@ -112,7 +112,7 @@ UIView 当中提供了一个 `layoutSubviews` 函数，UIView 的子类可以重
 
 UIView 是 UIResponder 的子类，可以响应触控事件。
 
-通常可以使用`addGestureRecognizer:`添加手势识别器来响应触控事件，如果需要手动处理，则按需要重载 UIView 中的下面四个函数：
+通常可以使用 `addGestureRecognizer:` 添加手势识别器来响应触控事件，如果需要手动处理，则按需要重载 UIView 中的下面四个函数：
 
 * `touchesBegan:withEvent:`
 * `touchesMoved:withEvent:`
