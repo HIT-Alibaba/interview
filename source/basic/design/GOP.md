@@ -12,7 +12,8 @@
 - 迪米特法则：一个对象应该对其他对象保持最少的了解
 - 开闭原则：对扩展开放，对修改关闭
 # 设计模式归纳
-![1](./gop.png)
+![1](/img/basic-design-gop.png)
 
-## 转载：
+## 参考：
 - [设计模式六大原则](https://www.cnblogs.com/shijingjing07/p/6227728.html)
+- [23中设计模式](https://www.cnblogs.com/pony1223/p/7608955.html)
