@@ -1,4 +1,5 @@
 #!/bin/sh
+git pull --rebase
 git add -A
 git commit -am "update `date`"
 git push
