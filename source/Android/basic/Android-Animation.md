@@ -1,8 +1,11 @@
 ##Android中的动画
+
 ###综述
+
 Android中的动画分为补间动画(Tweened Animation)和逐帧动画(Frame-by-Frame Animation)。没有意外的，补间动画是在几个关键的节点对对象进行描述又系统进行填充。而逐帧动画是在固定的时间点以一定速率播放一系列的drawable资源。下面对两种动画进行分别简要说明。
 
 ###补间动画
+
 补间动画分为如下种
 
 + Alpha 淡入淡出
@@ -12,6 +15,7 @@ Android中的动画分为补间动画(Tweened Animation)和逐帧动画(Frame-by
 
 这些动画是可以同时进行和顺次进行的。需要用到AnimationSet来实现。调用AnimationSet.addAnimation()即可。
 实现方法举例:
+
 ```
 (Button)btn = (Button)findViewById(...);
 AnimationSet as = new AnimationSet(false);//新建AnimationSet实例
@@ -54,6 +58,7 @@ btn.setOnClickListener(new OnClickListener(){
 文档连接http://developer.android.com/reference/android/view/animation/Animation.html
 
 ###逐帧动画
+
 这一部分只涉及非常基础的知识。逐帧动画适用于更高级的动画效果，原因可想而知。我们可以将每帧图片资源放到drawable下然后代码中canvas.drawBitmap(Bitmap, Matrix, Paint)进行动画播放，但这样就将动画资源与代码耦合，如果哪天美工说我要换一下效果就呵呵了。因此我们要做的是将资源等信息放入配置文件然后教会美工怎么改配置文件，这样才有时间去刷知乎而不被打扰^_^。
 大致分为两种方法：
 
@@ -61,8 +66,11 @@ btn.setOnClickListener(new OnClickListener(){
 + 所有动画帧都存在一张png图片中
 
 当然还有的专门的游戏公司有自己的动画编辑器，这里不加说明。
+
 ####每一帧是一张png
-说的就是这个效果：<br/>
+
+说的就是这个效果：
+
 ![每一帧是一张png例图](https://github.com/HIT-Alibaba/interview/blob/master/img/android-animation-eachpng.jpg?raw=true)
 
 在animation1.xml文件中进行如下配置：
@@ -87,12 +95,16 @@ animationIV.setImageResource(R.drawable.animation1);
 animationDrawable = (AnimationDrawable) animationIV.getDrawable();
 animationDrawable.start();
 ```
+
 注意动画的播放是按照xml文件中的顺序顺次播放，如果要考虑到循环播放的时候应该写两个xml一个正向一个反向才能很好地循环播放。
 
 ####所有动画在一张png中
-说的就是这个效果：<br/>
+
+说的就是这个效果：
+
 ![所有动画放在一张png中](https://github.com/HIT-Alibaba/interview/blob/master/img/android-animation-onepng.jpg?raw=true)
 animation.xml的配置：
+
 ```
 <key>010001.png</key>
 <dict>
@@ -120,6 +132,7 @@ animation.xml的配置：
 </dict>
 …
 ```
+
 其中：
 
 + frame 指定在原图中截取的框大小；
