@@ -1257,15 +1257,15 @@
 <h3 id="&#x83B7;&#x53D6;&#x961F;&#x5217;"><a name="&#x83B7;&#x53D6;&#x961F;&#x5217;" class="plugin-anchor" href="#&#x83B7;&#x53D6;&#x961F;&#x5217;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x83B7;&#x53D6;&#x961F;&#x5217;</h3>
 <p>&#x6309;&#x7167;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x4E09;&#x79CD;&#x961F;&#x5217;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x4E09;&#x79CD;&#x83B7;&#x53D6;&#x961F;&#x5217;&#x7684;&#x65B9;&#x5F0F;&#xFF1A;</p>
 <ol>
-<li><p>&#x4E32;&#x884C;&#x961F;&#x5217;
- &#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x5E76;&#x4E0D;&#x63D0;&#x4F9B;&#x4E32;&#x884C;&#x961F;&#x5217;&#xFF0C;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x624B;&#x52A8;&#x521B;&#x5EFA;&#xFF1A;</p>
+<li><p>&#x4E32;&#x884C;&#x961F;&#x5217;</p>
+<p> &#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x5E76;&#x4E0D;&#x63D0;&#x4F9B;&#x4E32;&#x884C;&#x961F;&#x5217;&#xFF0C;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x624B;&#x52A8;&#x521B;&#x5EFA;&#xFF1A;</p>
 <pre><code class="lang-objectivec"> <span class="hljs-built_in">dispatch_queue_t</span> queue;
  queue = dispatch_queue_create(<span class="hljs-string">&quot;com.example.MyQueue&quot;</span>, <span class="hljs-literal">NULL</span>); <span class="hljs-comment">// OS X 10.7 &#x548C; iOS 4.3 &#x4E4B;&#x524D;</span>
  queue = dispatch_queue_create(<span class="hljs-string">&quot;com.example.MyQueue&quot;</span>,  DISPATCH_QUEUE_SERIAL); <span class="hljs-comment">// &#x4E4B;&#x540E;</span>
 </code></pre>
 </li>
-<li><p>&#x5E76;&#x884C;&#x961F;&#x5217;
- &#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x63D0;&#x4F9B;&#x4E86;&#x56DB;&#x4E2A;&#x5168;&#x5C40;&#x53EF;&#x7528;&#x7684;&#x5E76;&#x884C;&#x961F;&#x5217;&#xFF0C;&#x5176;&#x4F18;&#x5148;&#x7EA7;&#x4E0D;&#x540C;&#xFF0C;&#x5206;&#x522B;&#x4E3A; <code>DISPATCH_QUEUE_PRIORITY_HIGH</code>&#xFF0C;<code>DISPATCH_QUEUE_PRIORITY_DEFAULT</code>&#xFF0C; <code>DISPATCH_QUEUE_PRIORITY_LOW</code>&#xFF0C; <code>DISPATCH_QUEUE_PRIORITY_BACKGROUND</code> &#xFF0C;&#x4F18;&#x5148;&#x7EA7;&#x4F9D;&#x6B21;&#x964D;&#x4F4E;&#x3002;&#x4F18;&#x5148;&#x7EA7;&#x8D8A;&#x9AD8;&#x7684;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x4EFB;&#x52A1;&#x4F1A;&#x66F4;&#x65E9;&#x6267;&#x884C;&#xFF1A;</p>
+<li><p>&#x5E76;&#x884C;&#x961F;&#x5217;</p>
+<p> &#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x63D0;&#x4F9B;&#x4E86;&#x56DB;&#x4E2A;&#x5168;&#x5C40;&#x53EF;&#x7528;&#x7684;&#x5E76;&#x884C;&#x961F;&#x5217;&#xFF0C;&#x5176;&#x4F18;&#x5148;&#x7EA7;&#x4E0D;&#x540C;&#xFF0C;&#x5206;&#x522B;&#x4E3A; <code>DISPATCH_QUEUE_PRIORITY_HIGH</code>&#xFF0C;<code>DISPATCH_QUEUE_PRIORITY_DEFAULT</code>&#xFF0C; <code>DISPATCH_QUEUE_PRIORITY_LOW</code>&#xFF0C; <code>DISPATCH_QUEUE_PRIORITY_BACKGROUND</code> &#xFF0C;&#x4F18;&#x5148;&#x7EA7;&#x4F9D;&#x6B21;&#x964D;&#x4F4E;&#x3002;&#x4F18;&#x5148;&#x7EA7;&#x8D8A;&#x9AD8;&#x7684;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x4EFB;&#x52A1;&#x4F1A;&#x66F4;&#x65E9;&#x6267;&#x884C;&#xFF1A;</p>
 <pre><code class="lang-objectivec"> <span class="hljs-built_in">dispatch_queue_t</span> aQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="hljs-number">0</span>);
 </code></pre>
 <p> &#x5F53;&#x7136;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x81EA;&#x5DF1;&#x7684;&#x5E76;&#x884C;&#x961F;&#x5217;&#xFF1A;</p>
@@ -1278,19 +1278,21 @@
 <li><code>QOS_CLASS_USER_INITIATED</code></li>
 <li><code>QOS_CLASS_UTILITY</code></li>
 <li><p><code>QOS_CLASS_BACKGROUND</code></p>
-<p>&#x5728;&#x652F;&#x6301;&#x7684;&#x5E73;&#x53F0;&#x4E0A;&#xFF0C;&#x63A8;&#x8350;&#x4F7F;&#x7528;&#x8FD9;&#x51E0;&#x4E2A;&#x7C7B;&#x522B;&#x5BF9;&#x5E94;&#x7684; queue&#xFF0C;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;(Swift 2)&#xFF1A;</p>
-<pre><code class="lang-swift"><span class="hljs-keyword">let</span> qualityOfServiceClass = <span class="hljs-type">QOS_CLASS_BACKGROUND</span>
-<span class="hljs-keyword">let</span> backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, <span class="hljs-number">0</span>)
-dispatch_async(backgroundQueue, {
-<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;This is run on the background queue&quot;</span>)
- dispatch_async(dispatch_get_main_queue(), { () -&gt; <span class="hljs-type">Void</span> <span class="hljs-keyword">in</span>
-     <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;This is run on the main queue, after the previous code in outer block&quot;</span>)
-  })
-})
-</code></pre>
+<p>&#x5728;&#x652F;&#x6301;&#x7684;&#x5E73;&#x53F0;&#x4E0A;&#xFF0C;&#x63A8;&#x8350;&#x4F7F;&#x7528;&#x8FD9;&#x51E0;&#x4E2A;&#x7C7B;&#x522B;&#x5BF9;&#x5E94;&#x7684; queue&#xFF0C;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;(Swift 5)&#xFF1A;</p>
+<p>```swift</p>
 </li>
 </ul>
 </li>
+</ol>
+<p>let backgroundQueue = DispatchQueue.global(qos: .background)</p>
+<p>backgroundQueue.async {
+    print(&quot;This is run on the background queue&quot;)
+    DispatchQueue.main.async {
+        print(&quot;This is run on the main queue, after the previous code in outer block&quot;)
+    }
+}</p>
+<pre><code>```
+</code></pre><ol>
 <li><p>&#x4E3B;&#x961F;&#x5217;
  &#x4E3B;&#x961F;&#x5217;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>dispatch_get_main_queue()</code> &#x83B7;&#x53D6;&#xFF1A;</p>
 <pre><code class="lang-objectivec">  <span class="hljs-built_in">dispatch_async</span>(dispatch_get_main_queue(), ^{
@@ -1669,7 +1671,7 @@ Main Function
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"并发编程","level":"1.3.2.7","depth":3,"next":{"title":"文件系统","level":"1.3.2.8","depth":3,"path":"iOS/Cocoa-Touch/File-System.md","ref":"iOS/Cocoa-Touch/File-System.md","articles":[]},"previous":{"title":"网络编程","level":"1.3.2.6","depth":3,"path":"iOS/Cocoa-Touch/Network.md","ref":"iOS/Cocoa-Touch/Network.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"笔试面试知识整理","gitbook":"*","description":"一些 IT 笔试面试有关知识的整理，包括基础知识，安卓，iOS 开发等，希望对大家有所帮助"},"file":{"path":"iOS/Cocoa-Touch/Multithreading.md","mtime":"2019-07-29T09:21:55.320Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-29T14:49:33.589Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"并发编程","level":"1.3.2.7","depth":3,"next":{"title":"文件系统","level":"1.3.2.8","depth":3,"path":"iOS/Cocoa-Touch/File-System.md","ref":"iOS/Cocoa-Touch/File-System.md","articles":[]},"previous":{"title":"网络编程","level":"1.3.2.6","depth":3,"path":"iOS/Cocoa-Touch/Network.md","ref":"iOS/Cocoa-Touch/Network.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchors":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"笔试面试知识整理","gitbook":"*","description":"一些 IT 笔试面试有关知识的整理，包括基础知识，安卓，iOS 开发等，希望对大家有所帮助"},"file":{"path":"iOS/Cocoa-Touch/Multithreading.md","mtime":"2019-11-03T09:08:00.162Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-03T09:08:37.466Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
