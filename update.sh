@@ -10,7 +10,7 @@ if which gitbook > /dev/null; then
     cp -R * ../../../interview-gitbook/
     cd ../../../interview-gitbook/
     git add -A
-    GIT_COMMITTER_NAME='skyline75489'; GIT_COMMITTER_EMAIL='skyline75489@outlook.com'; git commit --author="skyline75489 <skyline75489@outlook.com>" -am "[CI] auto update"
+    git commit --author="skyline75489 <skyline75489@outlook.com>" -am "[CI] auto update"
     git push
 else
     echo "Gitbook not installed."
