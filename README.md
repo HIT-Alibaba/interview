@@ -28,4 +28,4 @@
 
 ### 联系作者
 
-![group](./qq.jpeg)
+[Telegram 群](https://t.me/joinchat/LrG3NxxPhcgvNJ6pB49UPg)
